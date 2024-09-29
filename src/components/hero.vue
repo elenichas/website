@@ -6,21 +6,14 @@
           <slot name="heading1">
             <!--Default content for heading1-->
             <div class="hero17-fragment3">
-              <h1 class="hero17-text7 thq-heading-1">Showcasing My Work</h1>
+              <h1 class="hero17-text7 thq-heading-1">
+                This is an archive of everything I am passionate about, from
+                architecture to design and coding. All shared here to inspire
+                you!
+              </h1>
             </div>
           </slot>
         </h1>
-        <p>
-          <slot name="content1">
-            <!--Default content for content1-->
-            <div class="hero17-fragment4">
-              <p class="hero17-text8 thq-body-large">
-                Welcome to my personal website where I showcase my design and
-                coding projects. Explore my portfolio to see my latest work!
-              </p>
-            </div>
-          </slot>
-        </p>
       </div>
       <div class="hero17-actions">
         <button class="thq-button-filled hero17-button1">
