@@ -9,6 +9,7 @@
     <!-- Features Component -->
     <app-features> </app-features>
 
+    <app-contact></app-contact>
     <!-- Call to Action Component -->
     <app-cta></app-cta>
 
