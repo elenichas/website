@@ -1,160 +1,18 @@
 <template>
   <div class="home-container">
     <!-- Navbar Component -->
-    <app-navbar>
-      <template v-slot:page4Description>
-        <div class="project-description">
-          <span class="thq-body-small">
-            Check out my coding projects and see my technical skills in action.
-          </span>
-        </div>
-      </template>
+    <app-navbar> </app-navbar>
 
-      <template v-slot:action1>
-        <div class="project-action">
-          <span>View Design Projects</span>
-        </div>
-      </template>
-
-      <template v-slot:link2>
-        <div class="project-link">
-          <span class="thq-link thq-body-small">Design</span>
-        </div>
-      </template>
-
-      <template v-slot:page1>
-        <div class="page-title">
-          <span class="thq-body-large">Home</span>
-        </div>
-      </template>
-
-      <template v-slot:link1>
-        <div class="project-link">
-          <span class="thq-link thq-body-small">#home</span>
-        </div>
-      </template>
-
-      <template v-slot:page4>
-        <div class="page-title">
-          <span class="thq-body-large">Coding Projects</span>
-        </div>
-      </template>
-
-      <template v-slot:page2>
-        <div class="page-title">
-          <span class="thq-body-large">Design Projects</span>
-        </div>
-      </template>
-
-      <template v-slot:link4>
-        <div class="project-link">
-          <span class="thq-link thq-body-small">Coding</span>
-        </div>
-      </template>
-
-      <template v-slot:page1Description>
-        <div class="project-description">
-          <span class="thq-body-small">
-            Welcome to my personal website showcasing my work and projects.
-            Explore my design projects and see my creative process.
-          </span>
-        </div>
-      </template>
-
-      <template v-slot:link3>
-        <div class="project-link">
-          <span class="thq-link thq-body-small">UX/UI</span>
-        </div>
-      </template>
-
-      <template v-slot:page3>
-        <div class="page-title">
-          <span class="thq-body-large">UX/UI Design Projects</span>
-        </div>
-      </template>
-
-      <template v-slot:page3Description>
-        <div class="project-description">
-          <span class="thq-body-small">
-            Discover my UX/UI design projects and how I approach user
-            experience.
-          </span>
-        </div>
-      </template>
-
-      <template v-slot:action2>
-        <div class="project-action">
-          <span>View UX/UI Design Projects</span>
-        </div>
-      </template>
-    </app-navbar>
-
-    <!-- Hero Section -->
+    <!-- Hero Component -->
     <app-hero> </app-hero>
 
-    <!-- Features Section -->
-    <app-features>
-      <template v-slot:feature1Title>
-        <div class="feature-title">
-          <span class="thq-heading-2">Architecture</span>
-        </div>
-      </template>
-      <template v-slot:feature1Description>
-        <div class="feature-description">
-          <span class="thq-body-small">
-            Architectural and Computational design samples
-          </span>
-        </div>
-      </template>
+    <!-- Features Component -->
+    <app-features> </app-features>
 
-      <template v-slot:feature2Title>
-        <div class="feature-title">
-          <span class="thq-heading-2">UX/UI</span>
-        </div>
-      </template>
-      <template v-slot:feature2Description>
-        <div class="feature-description">
-          <span class="thq-body-small"> UX/UI design projects approach. </span>
-        </div>
-      </template>
+    <!-- Call to Action Component -->
+    <app-cta></app-cta>
 
-      <template v-slot:feature3Title>
-        <div class="feature-title">
-          <span class="thq-heading-2">Development</span>
-        </div>
-      </template>
-      <template v-slot:feature3Description>
-        <div class="feature-description">
-          <span class="thq-body-small">
-            Front-end and full stack projects
-          </span>
-        </div>
-      </template>
-    </app-features>
-
-    <!-- Call to Action Section -->
-    <app-cta>
-      <template v-slot:heading1>
-        <div class="cta-heading">
-          <span class="thq-heading-2">Ready to take the next step?</span>
-        </div>
-      </template>
-
-      <template v-slot:content1>
-        <div class="cta-content">
-          <span class="thq-body-large"
-            >Let&apos;s work together to bring your ideas to life.</span
-          >
-        </div>
-      </template>
-
-      <template v-slot:action1>
-        <div class="cta-action">
-          <span>Contact Me</span>
-        </div>
-      </template>
-    </app-cta>
-
+    <!-- Footer Component -->
     <app-footer> </app-footer>
   </div>
 </template>
