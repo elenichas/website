@@ -35,7 +35,7 @@
             <slot name="location1">
               <!--Default content for location1-->
               <div class="contact10-fragment5">
-                <h3 class="contact10-text20 thq-heading-3">Bucharest</h3>
+                <h3 class="contact10-text20 thq-heading-3">London</h3>
               </div>
             </slot>
           </h3>
@@ -57,7 +57,7 @@
               rel="noreferrer noopener"
               class="thq-button-flat thq-body-small"
             >
-              Get directions
+              travel with me
             </a>
           </div>
         </div>
@@ -71,7 +71,7 @@
             <slot name="location2">
               <!--Default content for location2-->
               <div class="contact10-fragment6">
-                <h3 class="contact10-text21 thq-heading-3">Cluj - Napoca</h3>
+                <h3 class="contact10-text21 thq-heading-3">Greece</h3>
               </div>
             </slot>
           </h3>
@@ -93,7 +93,7 @@
               rel="noreferrer noopener"
               class="thq-button-flat thq-body-small"
             >
-              Get directions
+              travel with me
             </a>
           </div>
         </div>
@@ -104,28 +104,28 @@
 
 <script>
 export default {
-  name: 'Contact10',
+  name: "Contact10",
   props: {
     location2ImageSrc: {
       type: String,
       default:
-        'https://images.unsplash.com/3/doctype-hi-res.jpg?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3MXw&ixlib=rb-4.0.3&q=80&w=1080',
+        "https://images.unsplash.com/3/doctype-hi-res.jpg?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3MXw&ixlib=rb-4.0.3&q=80&w=1080",
     },
     location1ImageSrc: {
       type: String,
       default:
-        'https://images.unsplash.com/photo-1547119957-637f8679db1e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3MXw&ixlib=rb-4.0.3&q=80&w=1080',
+        "https://images.unsplash.com/photo-1547119957-637f8679db1e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3MXw&ixlib=rb-4.0.3&q=80&w=1080",
     },
     location2ImageAlt: {
       type: String,
-      default: 'image2Alt',
+      default: "image2Alt",
     },
     location1ImageAlt: {
       type: String,
-      default: 'image1Alt',
+      default: "image1Alt",
     },
   },
-}
+};
 </script>
 
 <style scoped>
@@ -135,14 +135,17 @@ export default {
   align-items: flex-start;
   flex-direction: column;
 }
+
 .contact10-max-width {
   align-self: center;
 }
+
 .contact10-content1 {
   width: 100%;
   margin-bottom: var(--dl-space-space-threeunits);
   justify-content: flex-start;
 }
+
 .contact10-content2 {
   gap: var(--dl-space-space-unit);
   display: flex;
@@ -150,12 +153,14 @@ export default {
   align-items: flex-start;
   flex-direction: column;
 }
+
 .contact10-content3 {
   width: 100%;
   align-items: flex-start;
   flex-direction: row;
   justify-content: space-between;
 }
+
 .contact10-container2 {
   gap: var(--dl-space-space-oneandhalfunits);
   flex: 1;
@@ -163,9 +168,11 @@ export default {
   align-items: center;
   flex-direction: column;
 }
+
 .contact10-image1 {
   object-fit: cover;
 }
+
 .contact10-container3 {
   flex: 0 0 auto;
   width: 100%;
@@ -174,6 +181,7 @@ export default {
   align-items: flex-start;
   justify-content: center;
 }
+
 .contact10-container4 {
   gap: var(--dl-space-space-oneandhalfunits);
   flex: 1;
@@ -181,9 +189,11 @@ export default {
   align-items: center;
   flex-direction: column;
 }
+
 .contact10-image2 {
   object-fit: cover;
 }
+
 .contact10-container5 {
   flex: 0 0 auto;
   width: 100%;
@@ -192,62 +202,79 @@ export default {
   align-items: flex-start;
   justify-content: center;
 }
+
 .contact10-fragment1 {
   display: contents;
 }
+
 .contact10-text16 {
   display: inline-block;
 }
+
 .contact10-fragment2 {
   display: contents;
 }
+
 .contact10-text17 {
   display: inline-block;
 }
+
 .contact10-fragment3 {
   display: contents;
 }
+
 .contact10-text18 {
   display: inline-block;
 }
+
 .contact10-fragment4 {
   display: contents;
 }
+
 .contact10-text19 {
   display: inline-block;
 }
+
 .contact10-fragment5 {
   display: contents;
 }
+
 .contact10-text20 {
   display: inline-block;
   text-align: center;
 }
+
 .contact10-fragment6 {
   display: contents;
 }
+
 .contact10-text21 {
   display: inline-block;
   text-align: center;
 }
-@media(max-width: 991px) {
+
+@media (max-width: 991px) {
   .contact10-content1 {
     align-items: flex-start;
     justify-content: flex-start;
   }
+
   .contact10-content3 {
     position: relative;
     align-items: center;
     flex-direction: column;
   }
 }
-@media(max-width: 767px) {
+
+@media (max-width: 767px) {
   .contact10-content1 {
     gap: var(--dl-space-space-oneandhalfunits);
   }
+
   .contact10-image1 {
     width: 100%;
   }
+
   .contact10-image2 {
     width: 100%;
   }
