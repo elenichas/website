@@ -47,7 +47,9 @@
           </div>
         </nav>
         <div class="navbar8-buttons1">
-          <button class="navbar8-action11 thq-button-animated thq-button-filled">
+          <button
+            class="navbar8-action11 thq-button-animated thq-button-filled"
+          >
             <span class="thq-body-small">
               <slot name="action1">
                 <!--Default content for action1-->
@@ -55,7 +57,9 @@
               </slot>
             </span>
           </button>
-          <button class="navbar8-action21 thq-button-outline thq-button-animated">
+          <button
+            class="navbar8-action21 thq-button-outline thq-button-animated"
+          >
             <span class="thq-body-small">
               <slot name="action2">
                 <!--Default content for action2-->
@@ -219,8 +223,8 @@
                           <!--Default content for page3Description-->
                           <div>
                             <span>
-                              Discover my UX/UI design projects and how I approach
-                              user experience.
+                              Discover my UX/UI design projects and how I
+                              approach user experience.
                             </span>
                           </div>
                         </slot>
@@ -275,7 +279,9 @@
                 <slot name="action2">
                   <!--Default content for action2-->
                   <div class="navbar8-fragment23">
-                    <span class="navbar8-text27">View UX/UI Design Projects</span>
+                    <span class="navbar8-text27"
+                      >View UX/UI Design Projects</span
+                    >
                   </div>
                 </slot>
               </span>
@@ -298,7 +304,10 @@
           </svg>
         </div>
       </div>
-      <div v-if="link5DropdownVisible" class="navbar8-container7 thq-box-shadow">
+      <div
+        v-if="link5DropdownVisible"
+        class="navbar8-container7 thq-box-shadow"
+      >
         <div class="navbar8-link5-menu-list">
           <a :href="linkUrlPage1">
             <div class="navbar8-menu-item5">
@@ -384,8 +393,8 @@
                     <!--Default content for page3Description-->
                     <div class="navbar8-fragment22">
                       <span class="navbar8-text26 thq-body-small">
-                        Discover my UX/UI design projects and how I approach user
-                        experience.
+                        Discover my UX/UI design projects and how I approach
+                        user experience.
                       </span>
                     </div>
                   </slot>
@@ -438,89 +447,89 @@
 
 <script>
 export default {
-  name: 'Navbar8',
+  name: "Navbar8",
   props: {
     linkUrlPage4: {
       type: String,
-      default: 'https://www.teleporthq.io',
+      default: "https://www.teleporthq.io",
     },
     link2Url: {
       type: String,
-      default: 'https://www.teleporthq.io',
+      default: "https://www.teleporthq.io",
     },
     page1ImageSrc: {
       type: String,
       default:
-        'https://images.unsplash.com/photo-1627660080110-20045fd3875d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3MXw&ixlib=rb-4.0.3&q=80&w=1080',
+        "https://images.unsplash.com/photo-1627660080110-20045fd3875d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3MXw&ixlib=rb-4.0.3&q=80&w=1080",
     },
     page2ImageAlt: {
       type: String,
-      default: 'Image for Design Projects Page',
+      default: "Image for Design Projects Page",
     },
     linkUrlPage2: {
       type: String,
-      default: 'https://www.teleporthq.io',
+      default: "https://www.teleporthq.io",
     },
     logoAlt: {
       type: String,
-      default: 'Logo for Personal Website',
+      default: "Logo for Personal Website",
     },
     logoSrc: {
       type: String,
       default:
-        'https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/84ec08e8-34e9-42c7-9445-d2806d156403/fac575ac-7a41-484f-b7ac-875042de11f8?org_if_sml=1&force_format=original',
+        "https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/84ec08e8-34e9-42c7-9445-d2806d156403/fac575ac-7a41-484f-b7ac-875042de11f8?org_if_sml=1&force_format=original",
     },
     page3ImageAlt: {
       type: String,
-      default: 'Image for UX/UI Design Projects Page',
+      default: "Image for UX/UI Design Projects Page",
     },
     linkUrlPage1: {
       type: String,
-      default: 'https://www.teleporthq.io',
+      default: "https://www.teleporthq.io",
     },
     page4ImageSrc: {
       type: String,
       default:
-        'https://images.unsplash.com/photo-1642888621621-ff7d83f3fdcf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3MXw&ixlib=rb-4.0.3&q=80&w=1080',
+        "https://images.unsplash.com/photo-1642888621621-ff7d83f3fdcf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3MXw&ixlib=rb-4.0.3&q=80&w=1080",
     },
     linkUrlPage3: {
       type: String,
-      default: 'https://www.teleporthq.io',
+      default: "https://www.teleporthq.io",
     },
     page4ImageAlt: {
       type: String,
-      default: 'Image for Coding Projects Page',
+      default: "Image for Coding Projects Page",
     },
     page2ImageSrc: {
       type: String,
       default:
-        'https://images.unsplash.com/photo-1526413232644-8a40f03cc03b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3MXw&ixlib=rb-4.0.3&q=80&w=1080',
+        "https://images.unsplash.com/photo-1526413232644-8a40f03cc03b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3MXw&ixlib=rb-4.0.3&q=80&w=1080",
     },
     page3ImageSrc: {
       type: String,
       default:
-        'https://images.unsplash.com/photo-1642091335543-96bb9725f24b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3MXw&ixlib=rb-4.0.3&q=80&w=1080',
+        "https://images.unsplash.com/photo-1642091335543-96bb9725f24b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3MXw&ixlib=rb-4.0.3&q=80&w=1080",
     },
     link1Url: {
       type: String,
-      default: 'https://www.teleporthq.io',
+      default: "https://www.teleporthq.io",
     },
     page1ImageAlt: {
       type: String,
-      default: 'Image for Home Page',
+      default: "Image for Home Page",
     },
     link3Url: {
       type: String,
-      default: 'https://www.teleporthq.io',
+      default: "https://www.teleporthq.io",
     },
   },
   data() {
     return {
       link5AccordionOpen: false,
       link5DropdownVisible: false,
-    }
+    };
   },
-}
+};
 </script>
 
 <style scoped>
@@ -1026,7 +1035,7 @@ export default {
 .navbar8-text27 {
   display: inline-block;
 }
-@media(max-width: 767px) {
+@media (max-width: 767px) {
   .navbar8-navbar-interactive {
     padding-left: var(--dl-space-space-twounits);
     padding-right: var(--dl-space-space-twounits);
@@ -1050,7 +1059,7 @@ export default {
     display: none;
   }
 }
-@media(max-width: 479px) {
+@media (max-width: 479px) {
   .navbar8-navbar-interactive {
     padding: var(--dl-space-space-unit);
   }

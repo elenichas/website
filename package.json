@@ -1,5 +1,5 @@
 {
-  "name": "altruistic-squeaky-opossum",
+  "name": "portfolio",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -7,11 +7,12 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "vue": "^2.6.7",
-    "vue-router": "^3.0.2",
-    "vue-meta": "^2.2.1",
+    "@fortawesome/fontawesome-free": "^6.6.0",
     "@lottiefiles/vue-lottie-player": "1.0.4",
-    "dangerous-html": "0.1.13"
+    "dangerous-html": "0.1.13",
+    "vue": "^2.6.7",
+    "vue-meta": "^2.2.1",
+    "vue-router": "^3.0.2"
   },
   "devDependencies": {
     "@vue/babel-preset-app": "^5.0.8",
