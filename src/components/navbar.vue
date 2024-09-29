@@ -1,7 +1,9 @@
 <template>
   <header class="navbar8-container1">
     <header data-thq="thq-navbar" class="navbar8-navbar-interactive">
-      <!-- <img :alt="logoAlt" :src="logoSrc" class="navbar8-image1" /> -->
+      <img :alt="logoAlt" :src="logoSrc" class="navbar8-image1" />
+      <div>Eleni <br />Chasioti</div>
+
       <div data-thq="thq-navbar-nav" class="navbar8-desktop-menu">
         <nav class="navbar8-links1">
           <a :href="link1Url">
@@ -70,11 +72,13 @@
         </div> -->
       </div>
       <div data-thq="thq-burger-menu" class="navbar8-burger-menu">
-        <svg viewBox="0 0 1024 1024" class="navbar8-icon14">
-          <path
-            d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
-          ></path>
-        </svg>
+        <div class="hamburger-container">
+          <svg viewBox="0 0 1024 1024" class="navbar8-icon14">
+            <path
+              d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
+            ></path>
+          </svg>
+        </div>
       </div>
       <div data-thq="thq-mobile-menu" class="navbar8-mobile-menu">
         <div class="navbar8-nav">
@@ -476,8 +480,7 @@ export default {
     },
     logoSrc: {
       type: String,
-      default:
-        "https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/84ec08e8-34e9-42c7-9445-d2806d156403/fac575ac-7a41-484f-b7ac-875042de11f8?org_if_sml=1&force_format=original",
+      default: require("@/images/logo.png"), // Local image file,
     },
     page3ImageAlt: {
       type: String,
@@ -540,28 +543,29 @@ export default {
   z-index: 1000;
   position: sticky;
   justify-content: center;
-  background-color: var(--dl-color-theme-neutral-light);
+  background-color: var(--dl-color-theme-neutral-dark);
 }
+
 .navbar8-navbar-interactive {
   width: 100%;
   display: flex;
   z-index: 100;
   max-width: var(--dl-size-size-maxwidth);
   align-items: center;
-  padding-top: var(--dl-space-space-oneandhalfunits);
-  padding-left: var(--dl-space-space-threeunits);
-  padding-right: var(--dl-space-space-threeunits);
-  padding-bottom: var(--dl-space-space-oneandhalfunits);
+  padding: var(--dl-space-space-oneandhalfunits);
   justify-content: space-between;
 }
+
 .navbar8-image1 {
   height: 3rem;
 }
+
 .navbar8-desktop-menu {
   flex: 1;
   display: flex;
   justify-content: space-between;
 }
+
 .navbar8-links1 {
   gap: var(--dl-space-space-twounits);
   flex: 1;
@@ -571,6 +575,7 @@ export default {
   flex-direction: row;
   justify-content: center;
 }
+
 .navbar8-link4-dropdown-trigger {
   gap: 4px;
   cursor: pointer;
@@ -580,12 +585,14 @@ export default {
   flex-direction: row;
   justify-content: flex-end;
 }
+
 .navbar8-icon-container1 {
   display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: flex-end;
 }
+
 .navbar8-container2 {
   display: flex;
   align-items: center;
@@ -598,10 +605,12 @@ export default {
   animation-iteration-count: 1;
   animation-timing-function: ease;
 }
+
 .navbar8-icon10 {
   width: 24px;
   height: 24px;
 }
+
 .navbar8-container3 {
   display: flex;
   align-items: center;
@@ -614,31 +623,50 @@ export default {
   animation-iteration-count: 1;
   animation-timing-function: ease;
 }
+
 .navbar8-icon12 {
   width: 24px;
   height: 24px;
 }
+
 .navbar8-buttons1 {
   gap: var(--dl-space-space-twounits);
   display: flex;
   align-items: center;
   flex-direction: row;
 }
+
 .navbar8-action11 {
   display: flex;
   flex-direction: row;
 }
+
 .navbar8-action21 {
   display: flex;
   flex-direction: row;
 }
+
 .navbar8-burger-menu {
   display: none;
 }
+
+.hamburger-container {
+  background-color: var(--dl-color-theme-neutral-light);
+  height: 32px;
+  width: 32px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 100px;
+}
+
 .navbar8-icon14 {
   width: var(--dl-size-size-xsmall);
   height: var(--dl-size-size-xsmall);
+  background-color: var(--dl-color-theme-neutral-light);
 }
+
 .navbar8-mobile-menu {
   top: 0px;
   left: 0px;
@@ -652,11 +680,13 @@ export default {
   justify-content: space-between;
   background-color: var(--dl-color-theme-neutral-light);
 }
+
 .navbar8-nav {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
 }
+
 .navbar8-top {
   width: 100%;
   display: flex;
@@ -664,18 +694,22 @@ export default {
   margin-bottom: var(--dl-space-space-threeunits);
   justify-content: space-between;
 }
+
 .navbar8-logo {
   height: 3rem;
 }
+
 .navbar8-close-menu {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .navbar8-icon16 {
   width: var(--dl-size-size-xsmall);
   height: var(--dl-size-size-xsmall);
 }
+
 .navbar8-links2 {
   gap: var(--dl-space-space-unit);
   flex: 0 0 auto;
@@ -684,11 +718,13 @@ export default {
   align-self: flex-start;
   flex-direction: column;
 }
+
 .navbar8-link4-accordion {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
 }
+
 .navbar8-trigger {
   width: 100%;
   cursor: pointer;
@@ -697,38 +733,45 @@ export default {
   flex-direction: row;
   justify-content: space-between;
 }
+
 .navbar8-icon-container2 {
   display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: flex-end;
 }
+
 .navbar8-container4 {
   display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: flex-end;
 }
+
 .navbar8-icon18 {
   width: 24px;
   height: 24px;
 }
+
 .navbar8-container5 {
   display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: flex-end;
 }
+
 .navbar8-icon20 {
   width: 24px;
   height: 24px;
 }
+
 .navbar8-container6 {
   width: 100%;
   display: grid;
   grid-gap: var(--dl-space-space-halfunit);
   grid-template-columns: 1fr;
 }
+
 .navbar8-menu-item1 {
   gap: var(--dl-space-space-unit);
   width: 100%;
@@ -739,10 +782,12 @@ export default {
   align-items: center;
   flex-shrink: 0;
 }
+
 .navbar8-page1-image1 {
   width: 50px;
   height: 50px;
 }
+
 .navbar8-content1 {
   width: 340px;
   display: flex;
@@ -751,6 +796,7 @@ export default {
   flex-shrink: 0;
   flex-direction: column;
 }
+
 .navbar8-menu-item2 {
   gap: var(--dl-space-space-unit);
   width: 100%;
@@ -761,10 +807,12 @@ export default {
   align-items: center;
   flex-shrink: 0;
 }
+
 .navbar8-page2-image1 {
   width: 50px;
   height: 50px;
 }
+
 .navbar8-content2 {
   width: 340px;
   display: flex;
@@ -773,6 +821,7 @@ export default {
   flex-shrink: 0;
   flex-direction: column;
 }
+
 .navbar8-menu-item3 {
   gap: var(--dl-space-space-unit);
   width: 100%;
@@ -783,10 +832,12 @@ export default {
   align-items: center;
   flex-shrink: 0;
 }
+
 .navbar8-page3-image1 {
   width: 50px;
   height: 50px;
 }
+
 .navbar8-content3 {
   width: 340px;
   display: flex;
@@ -795,6 +846,7 @@ export default {
   flex-shrink: 0;
   flex-direction: column;
 }
+
 .navbar8-menu-item4 {
   gap: var(--dl-space-space-unit);
   width: 100%;
@@ -805,10 +857,12 @@ export default {
   align-items: center;
   flex-shrink: 0;
 }
+
 .navbar8-page4-image1 {
   width: 50px;
   height: 50px;
 }
+
 .navbar8-content4 {
   width: 340px;
   display: flex;
@@ -817,6 +871,7 @@ export default {
   flex-shrink: 0;
   flex-direction: column;
 }
+
 .navbar8-buttons2 {
   gap: var(--dl-space-space-twounits);
   display: flex;
@@ -824,10 +879,12 @@ export default {
   align-items: center;
   flex-direction: row;
 }
+
 .navbar8-icon-group {
   gap: var(--dl-space-space-twounits);
   display: flex;
 }
+
 .navbar8-container7 {
   top: 100%;
   left: 0px;
@@ -844,6 +901,7 @@ export default {
   animation-iteration-count: 1;
   animation-timing-function: ease;
 }
+
 .navbar8-link5-menu-list {
   width: 100%;
   display: grid;
@@ -852,6 +910,7 @@ export default {
   max-width: var(--dl-size-size-maxwidth);
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
+
 .navbar8-menu-item5 {
   gap: var(--dl-space-space-unit);
   width: 100%;
@@ -862,16 +921,19 @@ export default {
   align-items: center;
   text-decoration: none;
 }
+
 .navbar8-page1-image2 {
   width: 30px;
   height: 30px;
 }
+
 .navbar8-content5 {
   display: flex;
   flex-grow: 1;
   align-items: flex-start;
   flex-direction: column;
 }
+
 .navbar8-menu-item6 {
   gap: var(--dl-space-space-unit);
   width: 100%;
@@ -882,16 +944,19 @@ export default {
   align-items: center;
   text-decoration: none;
 }
+
 .navbar8-page2-image2 {
   width: 30px;
   height: 30px;
 }
+
 .navbar8-content6 {
   display: flex;
   flex-grow: 1;
   align-items: flex-start;
   flex-direction: column;
 }
+
 .navbar8-menu-item7 {
   gap: var(--dl-space-space-unit);
   width: 100%;
@@ -902,16 +967,19 @@ export default {
   align-items: center;
   text-decoration: none;
 }
+
 .navbar8-page3-image2 {
   width: 30px;
   height: 30px;
 }
+
 .navbar8-content7 {
   display: flex;
   flex-grow: 1;
   align-items: flex-start;
   flex-direction: column;
 }
+
 .navbar8-menu-item8 {
   gap: var(--dl-space-space-unit);
   width: 100%;
@@ -922,16 +990,19 @@ export default {
   align-items: center;
   text-decoration: none;
 }
+
 .navbar8-page4-image2 {
   width: 30px;
   height: 30px;
 }
+
 .navbar8-content8 {
   display: flex;
   flex-grow: 1;
   align-items: flex-start;
   flex-direction: column;
 }
+
 .navbar8-container8 {
   top: 0px;
   width: 100%;
@@ -941,128 +1012,164 @@ export default {
   align-items: flex-start;
   flex-direction: column;
 }
+
 .navbar8-fragment10 {
   display: contents;
 }
+
 .navbar8-text14 {
   display: inline-block;
 }
+
 .navbar8-fragment11 {
   display: contents;
 }
+
 .navbar8-text15 {
   display: inline-block;
 }
+
 .navbar8-fragment12 {
   display: contents;
 }
+
 .navbar8-text16 {
   display: inline-block;
 }
+
 .navbar8-fragment13 {
   display: contents;
 }
+
 .navbar8-text17 {
   display: inline-block;
   font-style: normal;
   font-weight: 600;
 }
+
 .navbar8-fragment14 {
   display: contents;
 }
+
 .navbar8-text18 {
   display: inline-block;
   text-decoration: none;
 }
+
 .navbar8-fragment15 {
   display: contents;
 }
+
 .navbar8-text19 {
   display: inline-block;
   font-style: normal;
   font-weight: 600;
 }
+
 .navbar8-fragment16 {
   display: contents;
 }
+
 .navbar8-text20 {
   display: inline-block;
   font-style: normal;
   font-weight: 600;
 }
+
 .navbar8-fragment17 {
   display: contents;
 }
+
 .navbar8-text21 {
   display: inline-block;
 }
+
 .navbar8-fragment18 {
   display: contents;
 }
+
 .navbar8-text22 {
   display: inline-block;
 }
+
 .navbar8-fragment19 {
   display: contents;
 }
+
 .navbar8-text23 {
   display: inline-block;
 }
+
 .navbar8-fragment20 {
   display: contents;
 }
+
 .navbar8-text24 {
   display: inline-block;
   text-decoration: none;
 }
+
 .navbar8-fragment21 {
   display: contents;
 }
+
 .navbar8-text25 {
   display: inline-block;
   font-style: normal;
   font-weight: 600;
 }
+
 .navbar8-fragment22 {
   display: contents;
 }
+
 .navbar8-text26 {
   display: inline-block;
 }
+
 .navbar8-fragment23 {
   display: contents;
 }
+
 .navbar8-text27 {
   display: inline-block;
 }
+
 @media (max-width: 767px) {
   .navbar8-navbar-interactive {
     padding-left: var(--dl-space-space-twounits);
     padding-right: var(--dl-space-space-twounits);
   }
+
   .navbar8-desktop-menu {
     display: none;
   }
+
   .navbar8-burger-menu {
     display: flex;
     align-items: center;
     justify-content: center;
   }
+
   .navbar8-mobile-menu {
     padding-top: var(--dl-space-space-oneandhalfunits);
     padding-bottom: var(--dl-space-space-oneandhalfunits);
   }
+
   .navbar8-container6 {
     grid-gap: 0;
   }
+
   .navbar8-link5-menu-list {
     display: none;
   }
 }
+
 @media (max-width: 479px) {
   .navbar8-navbar-interactive {
     padding: var(--dl-space-space-unit);
   }
+
   .navbar8-mobile-menu {
     padding: var(--dl-space-space-unit);
   }

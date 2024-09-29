@@ -1,5 +1,17 @@
 <template>
   <footer class="footer">
+    <div>
+      <div class="text-footer-copyright">
+        © 2024 Eleni Chasioti All Rights Reserved.
+      </div>
+      <div class="text-under-copyright">
+        Made with love and iced lattes( no sugar) 1,2024
+      </div>
+      <div class="text-under-copyright-small">
+        Last updated by Eleni on October 1,2024
+      </div>
+    </div>
+
     <div class="footer-container">
       <a
         href="https://www.facebook.com/eleni.xasiwth?locale=en_GB"
@@ -54,16 +66,41 @@ export default {
 <style scoped>
 .footer {
   width: 100%;
-  background-color: #2b2b2b;
   padding: 20px 0;
   text-align: center;
-  color: white;
+  color: var(--dl-color-theme-neutral-light);
+  justify-content: center;
+  background-color: var(--dl-color-theme-neutral-dark);
 }
 
 .footer-container {
   display: flex;
   justify-content: center;
   gap: 20px;
+  padding-top: 1%;
+}
+
+.text-under-copyright {
+  opacity: 0.5;
+  letter-spacing: 0.2px;
+  text-transform: none;
+  font-family: Neue Montreal, sans-serif;
+}
+
+.text-under-copyright-small {
+  opacity: 0.5;
+  letter-spacing: 0.2px;
+  text-transform: none;
+  font-family: Neue Montreal, sans-serif;
+  font-size: 12px;
+}
+
+.text-footer-copyright {
+  letter-spacing: 0.2px;
+  font-family: Neue Montreal, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
 }
 
 .social-icon {
@@ -74,6 +111,7 @@ export default {
 }
 
 .social-icon:hover {
-  color: #1da1f2; /* Hover color, adjust as needed */
+  color: #1da1f2;
+  /* Hover color, adjust as needed */
 }
 </style>
