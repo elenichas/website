@@ -1,25 +1,25 @@
 <template>
   <header class="navbar8-container1">
     <header data-thq="thq-navbar" class="navbar8-navbar-interactive">
-      <img :alt="logoAlt" :src="logoSrc" class="navbar8-image1" />
+      <!-- <img :alt="logoAlt" :src="logoSrc" class="navbar8-image1" /> -->
       <div data-thq="thq-navbar-nav" class="navbar8-desktop-menu">
         <nav class="navbar8-links1">
           <a :href="link1Url">
             <slot name="link1">
               <!--Default content for link1-->
-              <div><span>#home</span></div>
+              <div><span>Home</span></div>
             </slot>
           </a>
           <a :href="link2Url">
             <slot name="link2">
               <!--Default content for link2-->
-              <div><span>#design-projects</span></div>
+              <div><span>Design</span></div>
             </slot>
           </a>
           <a :href="link3Url" target="_blank" rel="noreferrer noopener">
             <slot name="link3">
               <!--Default content for link3-->
-              <div><span>#ux-ui-projects</span></div>
+              <div><span>Development</span></div>
             </slot>
           </a>
           <div
@@ -29,10 +29,10 @@
             <span>
               <slot name="link4">
                 <!--Default content for link4-->
-                <div><span>#coding-projects</span></div>
+                <div><span>About me</span></div>
               </slot>
             </span>
-            <div class="navbar8-icon-container1">
+            <!-- <div class="navbar8-icon-container1">
               <div v-if="link5DropdownVisible" class="navbar8-container2">
                 <svg viewBox="0 0 1024 1024" class="navbar8-icon10">
                   <path d="M298 426h428l-214 214z"></path>
@@ -43,16 +43,16 @@
                   <path d="M426 726v-428l214 214z"></path>
                 </svg>
               </div>
-            </div>
+            </div> -->
           </div>
         </nav>
-        <div class="navbar8-buttons1">
+        <!-- <div class="navbar8-buttons1">
           <button
             class="navbar8-action11 thq-button-animated thq-button-filled"
           >
             <span class="thq-body-small">
               <slot name="action1">
-                <!--Default content for action1-->
+          
                 <div><span>View Design Projects</span></div>
               </slot>
             </span>
@@ -62,12 +62,12 @@
           >
             <span class="thq-body-small">
               <slot name="action2">
-                <!--Default content for action2-->
+            
                 <div><span>View UX/UI Design Projects</span></div>
               </slot>
             </span>
           </button>
-        </div>
+        </div> -->
       </div>
       <div data-thq="thq-burger-menu" class="navbar8-burger-menu">
         <svg viewBox="0 0 1024 1024" class="navbar8-icon14">
@@ -94,7 +94,7 @@
                 <!--Default content for link1-->
                 <div class="navbar8-fragment14">
                   <span class="navbar8-text18 thq-link thq-body-small">
-                    #home
+                    Home
                   </span>
                 </div>
               </slot>
@@ -104,7 +104,7 @@
                 <!--Default content for link2-->
                 <div class="navbar8-fragment12">
                   <span class="navbar8-text16 thq-link thq-body-small">
-                    #design-projects
+                    Design
                   </span>
                 </div>
               </slot>
@@ -114,7 +114,7 @@
                 <!--Default content for link3-->
                 <div class="navbar8-fragment20">
                   <span class="navbar8-text24 thq-link thq-body-small">
-                    #ux-ui-projects
+                    Development
                   </span>
                 </div>
               </slot>
@@ -129,12 +129,12 @@
                     <!--Default content for link4-->
                     <div class="navbar8-fragment17">
                       <span class="navbar8-text21 thq-link thq-body-small">
-                        #coding-projects
+                        About me
                       </span>
                     </div>
                   </slot>
                 </span>
-                <div class="navbar8-icon-container2">
+                <!-- <div class="navbar8-icon-container2">
                   <div v-if="link5AccordionOpen" class="navbar8-container4">
                     <svg viewBox="0 0 1024 1024" class="navbar8-icon18">
                       <path d="M298 426h428l-214 214z"></path>
@@ -145,9 +145,9 @@
                       <path d="M426 726v-428l214 214z"></path>
                     </svg>
                   </div>
-                </div>
+                </div> -->
               </div>
-              <div v-if="link5AccordionOpen" class="navbar8-container6">
+              <!-- <div v-if="link5AccordionOpen" class="navbar8-container6">
                 <a :href="linkUrlPage1">
                   <div class="navbar8-menu-item1">
                     <img
@@ -158,13 +158,13 @@
                     <div class="navbar8-content1">
                       <span>
                         <slot name="page1">
-                          <!--Default content for page1-->
+                   
                           <div><span>Home</span></div>
                         </slot>
                       </span>
                       <span>
                         <slot name="page1Description">
-                          <!--Default content for page1Description-->
+                       
                           <div>
                             <span>
                               Welcome to my personal website showcasing my work
@@ -186,13 +186,13 @@
                     <div class="navbar8-content2">
                       <span>
                         <slot name="page2">
-                          <!--Default content for page2-->
+                      
                           <div><span>Design Projects</span></div>
                         </slot>
                       </span>
                       <span>
                         <slot name="page2Description">
-                          <!--Default content for page2Description-->
+                       
                           <div>
                             <span>
                               Explore my design projects and see my creative
@@ -214,13 +214,13 @@
                     <div class="navbar8-content3">
                       <span>
                         <slot name="page3">
-                          <!--Default content for page3-->
+                        
                           <div><span>UX/UI Design Projects</span></div>
                         </slot>
                       </span>
                       <span>
                         <slot name="page3Description">
-                          <!--Default content for page3Description-->
+                      
                           <div>
                             <span>
                               Discover my UX/UI design projects and how I
@@ -242,13 +242,13 @@
                     <div class="navbar8-content4">
                       <span>
                         <slot name="page4">
-                          <!--Default content for page4-->
+                       
                           <div><span>Coding Projects</span></div>
                         </slot>
                       </span>
                       <span>
                         <slot name="page4Description">
-                          <!--Default content for page4Description-->
+                        
                           <div>
                             <span>
                               Check out my coding projects and see my technical
@@ -260,14 +260,14 @@
                     </div>
                   </div>
                 </a>
-              </div>
+              </div> -->
             </div>
           </nav>
-          <div class="navbar8-buttons2">
+          <!-- <div class="navbar8-buttons2">
             <button class="thq-button-filled">
               <span>
                 <slot name="action1">
-                  <!--Default content for action1-->
+
                   <div class="navbar8-fragment11">
                     <span class="navbar8-text15">View Design Projects</span>
                   </div>
@@ -277,7 +277,7 @@
             <button class="thq-button-outline">
               <span>
                 <slot name="action2">
-                  <!--Default content for action2-->
+             
                   <div class="navbar8-fragment23">
                     <span class="navbar8-text27"
                       >View UX/UI Design Projects</span
@@ -286,7 +286,7 @@
                 </slot>
               </span>
             </button>
-          </div>
+          </div> -->
         </div>
         <div class="navbar8-icon-group">
           <svg viewBox="0 0 950.8571428571428 1024" class="thq-icon-x-small">
@@ -569,7 +569,7 @@ export default {
   align-items: center;
   margin-left: var(--dl-space-space-twounits);
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
 }
 .navbar8-link4-dropdown-trigger {
   gap: 4px;
