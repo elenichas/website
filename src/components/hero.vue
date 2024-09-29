@@ -16,7 +16,7 @@
             <div class="hero17-fragment4">
               <p class="hero17-text8 thq-body-large">
                 Welcome to my personal website where I showcase my design and
-                coding projects. Explore my portfolio to see my latest work.
+                coding projects. Explore my portfolio to see my latest work!
               </p>
             </div>
           </slot>
@@ -38,7 +38,9 @@
             <slot name="action2">
               <!--Default content for action2-->
               <div class="hero17-fragment1">
-                <span class="hero17-text5 thq-body-small">Secondary action</span>
+                <span class="hero17-text5 thq-body-small"
+                  >Secondary action</span
+                >
               </div>
             </slot>
           </span>
@@ -213,124 +215,124 @@
 </template>
 
 <script>
-import DangerousHTML from 'dangerous-html/vue'
+import DangerousHTML from "dangerous-html/vue";
 
 export default {
-  name: 'Hero17',
+  name: "Hero17",
   props: {
     image3Src: {
       type: String,
       default:
-        'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3MXw&ixlib=rb-4.0.3&q=80&w=1080',
+        "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3MXw&ixlib=rb-4.0.3&q=80&w=1080",
     },
     image8Alt: {
       type: String,
-      default: 'Hero Image',
+      default: "Hero Image",
     },
     image2Src: {
       type: String,
       default:
-        'https://images.unsplash.com/photo-1586717799252-bd134ad00e26?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3MXw&ixlib=rb-4.0.3&q=80&w=1080',
+        "https://images.unsplash.com/photo-1586717799252-bd134ad00e26?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3MXw&ixlib=rb-4.0.3&q=80&w=1080",
     },
     image6Alt: {
       type: String,
-      default: 'Hero Image',
+      default: "Hero Image",
     },
     image11Src: {
       type: String,
       default:
-        'https://images.unsplash.com/photo-1471086569966-db3eebc25a59?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3MXw&ixlib=rb-4.0.3&q=80&w=1080',
+        "https://images.unsplash.com/photo-1471086569966-db3eebc25a59?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3MXw&ixlib=rb-4.0.3&q=80&w=1080",
     },
     image5Alt: {
       type: String,
-      default: 'Hero Image',
+      default: "Hero Image",
     },
     image1Alt: {
       type: String,
-      default: 'Hero Image',
+      default: "Hero Image",
     },
     image7Src: {
       type: String,
       default:
-        'https://images.unsplash.com/photo-1626366671564-c1132037165e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3Mnw&ixlib=rb-4.0.3&q=80&w=1080',
+        "https://images.unsplash.com/photo-1626366671564-c1132037165e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3Mnw&ixlib=rb-4.0.3&q=80&w=1080",
     },
     image7Alt: {
       type: String,
-      default: 'Hero Image',
+      default: "Hero Image",
     },
     image12Alt: {
       type: String,
-      default: 'Hero Image',
+      default: "Hero Image",
     },
     image2Alt: {
       type: String,
-      default: 'Hero Image',
+      default: "Hero Image",
     },
     image6Src: {
       type: String,
       default:
-        'https://images.unsplash.com/photo-1581093196277-9f608bb3d4b6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3Mnw&ixlib=rb-4.0.3&q=80&w=1080',
+        "https://images.unsplash.com/photo-1581093196277-9f608bb3d4b6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3Mnw&ixlib=rb-4.0.3&q=80&w=1080",
     },
     image12Src: {
       type: String,
       default:
-        'https://images.unsplash.com/photo-1529068755536-a5ade0dcb4e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3Mnw&ixlib=rb-4.0.3&q=80&w=1080',
+        "https://images.unsplash.com/photo-1529068755536-a5ade0dcb4e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3Mnw&ixlib=rb-4.0.3&q=80&w=1080",
     },
     image3Alt: {
       type: String,
-      default: 'Hero Image',
+      default: "Hero Image",
     },
     image9Src: {
       type: String,
       default:
-        'https://images.unsplash.com/photo-1505330622279-bf7d7fc918f4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3Mnw&ixlib=rb-4.0.3&q=80&w=1080',
+        "https://images.unsplash.com/photo-1505330622279-bf7d7fc918f4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3Mnw&ixlib=rb-4.0.3&q=80&w=1080",
     },
     image11Alt: {
       type: String,
-      default: 'Hero Image',
+      default: "Hero Image",
     },
     image8Src: {
       type: String,
       default:
-        'https://images.unsplash.com/photo-1675169052183-fcad520b4b85?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3Mnw&ixlib=rb-4.0.3&q=80&w=1080',
+        "https://images.unsplash.com/photo-1675169052183-fcad520b4b85?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3Mnw&ixlib=rb-4.0.3&q=80&w=1080",
     },
     image5Src: {
       type: String,
       default:
-        'https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3M3w&ixlib=rb-4.0.3&q=80&w=1080',
+        "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3M3w&ixlib=rb-4.0.3&q=80&w=1080",
     },
     image4Src: {
       type: String,
       default:
-        'https://images.unsplash.com/photo-1518613559939-e680cdc77551?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3M3w&ixlib=rb-4.0.3&q=80&w=1080',
+        "https://images.unsplash.com/photo-1518613559939-e680cdc77551?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3M3w&ixlib=rb-4.0.3&q=80&w=1080",
     },
     image10Alt: {
       type: String,
-      default: 'Hero Image',
+      default: "Hero Image",
     },
     image4Alt: {
       type: String,
-      default: 'Hero Image',
+      default: "Hero Image",
     },
     image10Src: {
       type: String,
       default:
-        'https://images.unsplash.com/photo-1417733403748-83bbc7c05140?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3M3w&ixlib=rb-4.0.3&q=80&w=1080',
+        "https://images.unsplash.com/photo-1417733403748-83bbc7c05140?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3M3w&ixlib=rb-4.0.3&q=80&w=1080",
     },
     image9Alt: {
       type: String,
-      default: 'Hero Image',
+      default: "Hero Image",
     },
     image1Src: {
       type: String,
       default:
-        'https://images.unsplash.com/photo-1644329968124-4c68f17c21e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3M3w&ixlib=rb-4.0.3&q=80&w=1080',
+        "https://images.unsplash.com/photo-1644329968124-4c68f17c21e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3M3w&ixlib=rb-4.0.3&q=80&w=1080",
     },
   },
   components: {
     DangerousHTML,
   },
-}
+};
 </script>
 
 <style scoped>
@@ -505,12 +507,12 @@ export default {
   display: inline-block;
   text-align: center;
 }
-@media(max-width: 767px) {
+@media (max-width: 767px) {
   .hero17-content2 {
     width: 100%;
   }
 }
-@media(max-width: 479px) {
+@media (max-width: 479px) {
   .hero17-actions {
     width: 100%;
     flex-direction: column;

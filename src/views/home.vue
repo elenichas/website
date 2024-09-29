@@ -1,766 +1,207 @@
 <template>
   <div class="home-container">
-    <app-navbar8>
+    <!-- Navbar Component -->
+    <app-navbar>
       <template v-slot:page4Description>
-        <div class="home-fragment100">
-          <span class="home-text100 thq-body-small">
+        <div class="project-description">
+          <span class="thq-body-small">
             Check out my coding projects and see my technical skills in action.
           </span>
         </div>
       </template>
+
       <template v-slot:action1>
-        <div class="home-fragment101">
-          <span class="home-text101">View Design Projects</span>
+        <div class="project-action">
+          <span>View Design Projects</span>
         </div>
       </template>
+
       <template v-slot:link2>
-        <div class="home-fragment102">
-          <span class="home-text102 thq-link thq-body-small">
-            #design-projects
-          </span>
+        <div class="project-link">
+          <span class="thq-link thq-body-small">Design</span>
         </div>
       </template>
+
       <template v-slot:page1>
-        <div class="home-fragment103">
-          <span class="home-text103 thq-body-large">Home</span>
+        <div class="page-title">
+          <span class="thq-body-large">Home</span>
         </div>
       </template>
+
       <template v-slot:link1>
-        <div class="home-fragment104">
-          <span class="home-text104 thq-link thq-body-small">#home</span>
+        <div class="project-link">
+          <span class="thq-link thq-body-small">#home</span>
         </div>
       </template>
+
       <template v-slot:page4>
-        <div class="home-fragment105">
-          <span class="home-text105 thq-body-large">Coding Projects</span>
+        <div class="page-title">
+          <span class="thq-body-large">Coding Projects</span>
         </div>
       </template>
+
       <template v-slot:page2>
-        <div class="home-fragment106">
-          <span class="home-text106 thq-body-large">Design Projects</span>
+        <div class="page-title">
+          <span class="thq-body-large">Design Projects</span>
         </div>
       </template>
+
       <template v-slot:link4>
-        <div class="home-fragment107">
-          <span class="home-text107 thq-link thq-body-small">
-            #coding-projects
-          </span>
+        <div class="project-link">
+          <span class="thq-link thq-body-small">Coding</span>
         </div>
       </template>
+
       <template v-slot:page1Description>
-        <div class="home-fragment108">
-          <span class="home-text108 thq-body-small">
+        <div class="project-description">
+          <span class="thq-body-small">
             Welcome to my personal website showcasing my work and projects.
-          </span>
-        </div>
-      </template>
-      <template v-slot:page2Description>
-        <div class="home-fragment109">
-          <span class="home-text109 thq-body-small">
             Explore my design projects and see my creative process.
           </span>
         </div>
       </template>
+
       <template v-slot:link3>
-        <div class="home-fragment110">
-          <span class="home-text110 thq-link thq-body-small">
-            #ux-ui-projects
-          </span>
+        <div class="project-link">
+          <span class="thq-link thq-body-small">UX/UI</span>
         </div>
       </template>
+
       <template v-slot:page3>
-        <div class="home-fragment111">
-          <span class="home-text111 thq-body-large">UX/UI Design Projects</span>
+        <div class="page-title">
+          <span class="thq-body-large">UX/UI Design Projects</span>
         </div>
       </template>
+
       <template v-slot:page3Description>
-        <div class="home-fragment112">
-          <span class="home-text112 thq-body-small">
-            Discover my UX/UI design projects and how I approach user experience.
+        <div class="project-description">
+          <span class="thq-body-small">
+            Discover my UX/UI design projects and how I approach user
+            experience.
           </span>
         </div>
       </template>
+
       <template v-slot:action2>
-        <div class="home-fragment113">
-          <span class="home-text113">View UX/UI Design Projects</span>
+        <div class="project-action">
+          <span>View UX/UI Design Projects</span>
         </div>
       </template>
-    </app-navbar8>
-    <app-hero17>
-      <template v-slot:action2>
-        <div class="home-fragment114">
-          <span class="home-text114 thq-body-small">Secondary action</span>
-        </div>
-      </template>
-      <template v-slot:action1>
-        <div class="home-fragment115">
-          <span class="home-text115 thq-body-small">Main action</span>
-        </div>
-      </template>
-      <template v-slot:heading1>
-        <div class="home-fragment116">
-          <span class="home-text116 thq-heading-1">Showcasing My Work</span>
-        </div>
-      </template>
-      <template v-slot:content1>
-        <div class="home-fragment117">
-          <span class="home-text117 thq-body-large">
-            Welcome to my personal website where I showcase my design and coding
-            projects. Explore my portfolio to see my latest work.
-          </span>
-        </div>
-      </template>
-    </app-hero17>
-    <app-features24>
-      <template v-slot:feature3Description>
-        <div class="home-fragment118">
-          <span class="home-text118 thq-body-small">
-            View my coding projects to see my technical skills in action.
-          </span>
-        </div>
-      </template>
-      <template v-slot:feature3Title>
-        <div class="home-fragment119">
-          <span class="home-text119 thq-heading-2">Coding Projects</span>
-        </div>
-      </template>
-      <template v-slot:feature2Description>
-        <div class="home-fragment120">
-          <span class="home-text120 thq-body-small">
-            Explore my UX/UI design projects to see my creative problem-solving
-            approach.
-          </span>
-        </div>
-      </template>
+    </app-navbar>
+
+    <!-- Hero Section -->
+    <app-hero> </app-hero>
+
+    <!-- Features Section -->
+    <app-features>
       <template v-slot:feature1Title>
-        <div class="home-fragment121">
-          <span class="home-text121 thq-heading-2">Design Projects</span>
+        <div class="feature-title">
+          <span class="thq-heading-2">Architecture</span>
         </div>
       </template>
       <template v-slot:feature1Description>
-        <div class="home-fragment122">
-          <span class="home-text122 thq-body-small">
-            Check out my design projects to see my aesthetic sense and attention
-            to detail.
+        <div class="feature-description">
+          <span class="thq-body-small">
+            Architectural and Computational design samples
           </span>
         </div>
       </template>
+
       <template v-slot:feature2Title>
-        <div class="home-fragment123">
-          <span class="home-text123 thq-heading-2">UX/UI Design Projects</span>
-        </div>
-      </template>
-    </app-features24>
-    <app-cta26>
-      <template v-slot:heading1>
-        <div class="home-fragment124">
-          <span class="home-text124 thq-heading-2">
-            Ready to take the next step?
-          </span>
-        </div>
-      </template>
-      <template v-slot:content1>
-        <div class="home-fragment125">
-          <span class="home-text125 thq-body-large">
-            Let&apos;s work together to bring your ideas to life.
-          </span>
-        </div>
-      </template>
-      <template v-slot:action1>
-        <div class="home-fragment126">
-          <span class="home-text126">Contact Me</span>
-        </div>
-      </template>
-    </app-cta26>
-    <app-features25>
-      <template v-slot:feature3Description>
-        <div class="home-fragment127">
-          <span class="home-text127 thq-body-small">
-            Displaying a range of coding projects I have worked on, including
-            websites, applications, and other software development.
-          </span>
-        </div>
-      </template>
-      <template v-slot:feature1Description>
-        <div class="home-fragment128">
-          <span class="home-text128 thq-body-small">
-            Showcasing a collection of my design projects including branding,
-            illustrations, and digital designs.
-          </span>
-        </div>
-      </template>
-      <template v-slot:feature2Title>
-        <div class="home-fragment129">
-          <span class="home-text129 thq-heading-2">UX/UI Design Projects</span>
-        </div>
-      </template>
-      <template v-slot:feature1Title>
-        <div class="home-fragment130">
-          <span class="home-text130 thq-heading-2">Design Projects</span>
+        <div class="feature-title">
+          <span class="thq-heading-2">UX/UI</span>
         </div>
       </template>
       <template v-slot:feature2Description>
-        <div class="home-fragment131">
-          <span class="home-text131 thq-body-small">
-            Highlighting my UX/UI design projects that focus on user experience
-            and interface design for various platforms.
-          </span>
+        <div class="feature-description">
+          <span class="thq-body-small"> UX/UI design projects approach. </span>
         </div>
       </template>
+
       <template v-slot:feature3Title>
-        <div class="home-fragment132">
-          <span class="home-text132 thq-heading-2">Coding Projects</span>
+        <div class="feature-title">
+          <span class="thq-heading-2">Development</span>
         </div>
       </template>
-    </app-features25>
-    <app-pricing14>
-      <template v-slot:plan3Price>
-        <div class="home-fragment133">
-          <span class="home-text133 thq-heading-3">$199</span>
-        </div>
-      </template>
-      <template v-slot:plan3Action>
-        <div class="home-fragment134">
-          <span class="home-text134 thq-body-small">Buy Now</span>
-        </div>
-      </template>
-      <template v-slot:plan11>
-        <div class="home-fragment135">
-          <span class="home-text135 thq-body-large">Basic plan</span>
-        </div>
-      </template>
-      <template v-slot:plan1Action>
-        <div class="home-fragment136">
-          <span class="home-text136 thq-body-small">Buy Now</span>
-        </div>
-      </template>
-      <template v-slot:plan31>
-        <div class="home-fragment137">
-          <span class="home-text137 thq-body-large">Enterprise plan</span>
-        </div>
-      </template>
-      <template v-slot:plan3Feature41>
-        <div class="home-fragment138">
-          <span class="home-text138 thq-body-small">Feature text goes here</span>
-        </div>
-      </template>
-      <template v-slot:plan1Feature2>
-        <div class="home-fragment139">
-          <span class="home-text139 thq-body-small">
-            UX/UI Design Projects Showcase
+      <template v-slot:feature3Description>
+        <div class="feature-description">
+          <span class="thq-body-small">
+            Front-end and full stack projects
           </span>
         </div>
       </template>
-      <template v-slot:plan2Feature11>
-        <div class="home-fragment140">
-          <span class="home-text140 thq-body-small">Feature text goes here</span>
-        </div>
-      </template>
-      <template v-slot:plan3Feature51>
-        <div class="home-fragment141">
-          <span class="home-text141 thq-body-small">Feature text goes here</span>
-        </div>
-      </template>
-      <template v-slot:plan2Feature41>
-        <div class="home-fragment142">
-          <span class="home-text142 thq-body-small">Feature text goes here</span>
-        </div>
-      </template>
-      <template v-slot:plan2Feature2>
-        <div class="home-fragment143">
-          <span class="home-text143 thq-body-small">
-            UX/UI Design Projects Showcase
-          </span>
-        </div>
-      </template>
-      <template v-slot:plan3Feature21>
-        <div class="home-fragment144">
-          <span class="home-text144 thq-body-small">Feature text goes here</span>
-        </div>
-      </template>
-      <template v-slot:plan2Feature4>
-        <div class="home-fragment145">
-          <span class="home-text145 thq-body-small">Feature text goes here</span>
-        </div>
-      </template>
-      <template v-slot:plan2Yearly>
-        <div class="home-fragment146">
-          <span class="home-text146 thq-body-large">$1499</span>
-        </div>
-      </template>
-      <template v-slot:plan1Action1>
-        <div class="home-fragment147">
-          <span class="home-text147 thq-body-small">Get started</span>
-        </div>
-      </template>
-      <template v-slot:plan2Action>
-        <div class="home-fragment148">
-          <span class="home-text148 thq-body-small">Buy Now</span>
-        </div>
-      </template>
-      <template v-slot:plan3Feature1>
-        <div class="home-fragment149">
-          <span class="home-text149 thq-body-small">
-            Design Projects Showcase
-          </span>
-        </div>
-      </template>
-      <template v-slot:plan2Feature3>
-        <div class="home-fragment150">
-          <span class="home-text150 thq-body-small">
-            Coding Projects Showcase
-          </span>
-        </div>
-      </template>
-      <template v-slot:plan1Price1>
-        <div class="home-fragment151">
-          <span class="home-text151 thq-heading-3">$200/yr</span>
-        </div>
-      </template>
-      <template v-slot:plan2>
-        <div class="home-fragment152">
-          <span class="home-text152 thq-body-large">Business plan</span>
-        </div>
-      </template>
-      <template v-slot:plan2Feature21>
-        <div class="home-fragment153">
-          <span class="home-text153 thq-body-small">Feature text goes here</span>
-        </div>
-      </template>
-      <template v-slot:plan2Action1>
-        <div class="home-fragment154">
-          <span class="home-text154 thq-body-small">Get started</span>
-        </div>
-      </template>
-      <template v-slot:plan3Feature2>
-        <div class="home-fragment155">
-          <span class="home-text155 thq-body-small">
-            UX/UI Design Projects Showcase
-          </span>
-        </div>
-      </template>
-      <template v-slot:content1>
-        <div class="home-fragment156">
-          <span class="home-text156 thq-body-small">
-            Choose the perfect plan for you
-          </span>
-        </div>
-      </template>
-      <template v-slot:plan2Feature1>
-        <div class="home-fragment157">
-          <span class="home-text157 thq-body-small">
-            Design Projects Showcase
-          </span>
-        </div>
-      </template>
+    </app-features>
+
+    <!-- Call to Action Section -->
+    <app-cta>
       <template v-slot:heading1>
-        <div class="home-fragment158">
-          <span class="home-text158 thq-heading-2">Pricing plan</span>
+        <div class="cta-heading">
+          <span class="thq-heading-2">Ready to take the next step?</span>
         </div>
       </template>
-      <template v-slot:plan3Feature31>
-        <div class="home-fragment159">
-          <span class="home-text159 thq-body-small">Feature text goes here</span>
-        </div>
-      </template>
-      <template v-slot:plan1>
-        <div class="home-fragment160">
-          <span class="home-text160 thq-body-large">Basic plan</span>
-        </div>
-      </template>
-      <template v-slot:plan21>
-        <div class="home-fragment161">
-          <span class="home-text161 thq-body-large">Business plan</span>
-        </div>
-      </template>
-      <template v-slot:plan1Feature11>
-        <div class="home-fragment162">
-          <span class="home-text162 thq-body-small">Feature text goes here</span>
-        </div>
-      </template>
-      <template v-slot:plan1Feature21>
-        <div class="home-fragment163">
-          <span class="home-text163 thq-body-small">Feature text goes here</span>
-        </div>
-      </template>
-      <template v-slot:plan3Feature5>
-        <div class="home-fragment164">
-          <span class="home-text164 thq-body-small">Feature text goes here</span>
-        </div>
-      </template>
-      <template v-slot:plan2Yearly1>
-        <div class="home-fragment165">
-          <span class="home-text165 thq-body-large">or $29 monthly</span>
-        </div>
-      </template>
-      <template v-slot:plan2Price>
-        <div class="home-fragment166">
-          <span class="home-text166 thq-heading-3">$149</span>
-        </div>
-      </template>
-      <template v-slot:plan3Yearly1>
-        <div class="home-fragment167">
-          <span class="home-text167 thq-body-large">or $49 monthly</span>
-        </div>
-      </template>
-      <template v-slot:plan2Feature31>
-        <div class="home-fragment168">
-          <span class="home-text168 thq-body-small">Feature text goes here</span>
-        </div>
-      </template>
-      <template v-slot:plan3Feature11>
-        <div class="home-fragment169">
-          <span class="home-text169 thq-body-small">Feature text goes here</span>
-        </div>
-      </template>
-      <template v-slot:plan1Yearly1>
-        <div class="home-fragment170">
-          <span class="home-text170 thq-body-large">or $20 monthly</span>
-        </div>
-      </template>
-      <template v-slot:plan2Price1>
-        <div class="home-fragment171">
-          <span class="home-text171 thq-heading-3">$299/yr</span>
-        </div>
-      </template>
-      <template v-slot:plan3Yearly>
-        <div class="home-fragment172">
-          <span class="home-text172 thq-body-large">$1999</span>
-        </div>
-      </template>
-      <template v-slot:plan3Feature4>
-        <div class="home-fragment173">
-          <span class="home-text173 thq-body-small">Feature text goes here</span>
-        </div>
-      </template>
-      <template v-slot:plan3Price1>
-        <div class="home-fragment174">
-          <span class="home-text174 thq-heading-3">$499/yr</span>
-        </div>
-      </template>
-      <template v-slot:plan1Feature31>
-        <div class="home-fragment175">
-          <span class="home-text175 thq-body-small">Feature text goes here</span>
-        </div>
-      </template>
-      <template v-slot:plan1Feature3>
-        <div class="home-fragment176">
-          <span class="home-text176 thq-body-small">
-            Coding Projects Showcase
-          </span>
-        </div>
-      </template>
-      <template v-slot:plan1Yearly>
-        <div class="home-fragment177">
-          <span class="home-text177 thq-body-large">$999</span>
-        </div>
-      </template>
-      <template v-slot:plan1Feature1>
-        <div class="home-fragment178">
-          <span class="home-text178 thq-body-small">
-            Design Projects Showcase
-          </span>
-        </div>
-      </template>
-      <template v-slot:plan3Feature3>
-        <div class="home-fragment179">
-          <span class="home-text179 thq-body-small">
-            Coding Projects Showcase
-          </span>
-        </div>
-      </template>
-      <template v-slot:content2>
-        <div class="home-fragment180">
-          <span class="home-text180 thq-body-large">
-            <span>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              <span v-html="rawd7uz"></span>
-            </span>
-            <span><span v-html="rawdnpm"></span></span>
-          </span>
-        </div>
-      </template>
-      <template v-slot:plan3Action1>
-        <div class="home-fragment181">
-          <span class="home-text183 thq-body-small">Get started</span>
-        </div>
-      </template>
-      <template v-slot:plan1Price>
-        <div class="home-fragment182">
-          <span class="home-text184 thq-heading-3">$99</span>
-        </div>
-      </template>
-      <template v-slot:plan3>
-        <div class="home-fragment183">
-          <span class="home-text185 thq-body-large">Enterprise plan</span>
-        </div>
-      </template>
-    </app-pricing14>
-    <app-steps2>
-      <template v-slot:step1Description>
-        <div class="home-fragment184">
-          <span class="home-text186 thq-body-small">
-            Collect and organize your design and coding projects to showcase on
-            your website.
-          </span>
-        </div>
-      </template>
-      <template v-slot:step3Description>
-        <div class="home-fragment185">
-          <span class="home-text187 thq-body-small">
-            Craft a brief bio and include relevant personal information on a
-            dedicated page.
-          </span>
-        </div>
-      </template>
-      <template v-slot:step2Title>
-        <div class="home-fragment186">
-          <span class="home-text188 thq-heading-2">Design Your Portfolio</span>
-        </div>
-      </template>
-      <template v-slot:step2Description>
-        <div class="home-fragment187">
-          <span class="home-text189 thq-body-small">
-            Create a clean and modern layout for your portfolio website that
-            highlights your work effectively.
-          </span>
-        </div>
-      </template>
-      <template v-slot:step1Title>
-        <div class="home-fragment188">
-          <span class="home-text190 thq-heading-2">Gather Work Samples</span>
-        </div>
-      </template>
-      <template v-slot:step3Title>
-        <div class="home-fragment189">
-          <span class="home-text191 thq-heading-2">Write Personal Info</span>
-        </div>
-      </template>
-      <template v-slot:step4Description>
-        <div class="home-fragment190">
-          <span class="home-text192 thq-body-small">
-            Publish your website online to start showcasing your work and
-            attracting potential job opportunities.
-          </span>
-        </div>
-      </template>
-      <template v-slot:step4Title>
-        <div class="home-fragment191">
-          <span class="home-text193 thq-heading-2">Launch Your Website</span>
-        </div>
-      </template>
-    </app-steps2>
-    <app-testimonial17>
-      <template v-slot:author2Position>
-        <div class="home-fragment192">
-          <span class="home-text194 thq-body-small">
-            Head of Marketing at Company Y
-          </span>
-        </div>
-      </template>
-      <template v-slot:author1Position>
-        <div class="home-fragment193">
-          <span class="home-text195 thq-body-small">CEO at Company X</span>
-        </div>
-      </template>
-      <template v-slot:author1Name>
-        <div class="home-fragment194">
-          <span class="home-text196 thq-body-large">John Doe</span>
-        </div>
-      </template>
-      <template v-slot:author3Name>
-        <div class="home-fragment195">
-          <span class="home-text197 thq-body-large">Alex Johnson</span>
-        </div>
-      </template>
-      <template v-slot:review2>
-        <div class="home-fragment196">
-          <span class="home-text198 thq-body-small">Highly recommended</span>
-        </div>
-      </template>
-      <template v-slot:author2Name>
-        <div class="home-fragment197">
-          <span class="home-text199 thq-body-large">Jane Smith</span>
-        </div>
-      </template>
-      <template v-slot:author4Position>
-        <div class="home-fragment198">
-          <span class="home-text200 thq-body-small">Position, Company name</span>
-        </div>
-      </template>
-      <template v-slot:author4Name>
-        <div class="home-fragment199">
-          <span class="home-text201 thq-body-large">Author Name</span>
-        </div>
-      </template>
+
       <template v-slot:content1>
-        <div class="home-fragment200">
-          <span class="home-text202 thq-body-small">
-            Working with [Your Name] was a great experience. Their attention to
-            detail and creativity really stood out. I highly recommend them for
-            any design project.
-          </span>
+        <div class="cta-content">
+          <span class="thq-body-large"
+            >Let&apos;s work together to bring your ideas to life.</span
+          >
         </div>
       </template>
-      <template v-slot:author3Position>
-        <div class="home-fragment201">
-          <span class="home-text203 thq-body-small">Founder of Startup Z</span>
+
+      <template v-slot:action1>
+        <div class="cta-action">
+          <span>Contact Me</span>
         </div>
       </template>
-      <template v-slot:review1>
-        <div class="home-fragment202">
-          <span class="home-text204 thq-body-small">5 stars</span>
-        </div>
-      </template>
-      <template v-slot:heading1>
-        <div class="home-fragment203">
-          <span class="home-text205 thq-heading-2">Testimonials</span>
-        </div>
-      </template>
-      <template v-slot:review3>
-        <div class="home-fragment204">
-          <span class="home-text206 thq-body-small">Impressive work</span>
-        </div>
-      </template>
-      <template v-slot:review4>
-        <div class="home-fragment205">
-          <span class="home-text207 thq-body-small">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            varius enim in eros elementum tristique. Duis cursus, mi quis viverra
-            ornare, eros dolor interdum nulla.
-          </span>
-        </div>
-      </template>
-    </app-testimonial17>
-    <app-contact10>
-      <template v-slot:content1>
-        <div class="home-fragment206">
-          <span class="home-text208 thq-body-large">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            varius enim in ero.
-          </span>
-        </div>
-      </template>
-      <template v-slot:location1Description>
-        <div class="home-fragment207">
-          <span class="home-text209 thq-body-large">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            varius enim in ero.
-          </span>
-        </div>
-      </template>
-      <template v-slot:heading1>
-        <div class="home-fragment208">
-          <span class="home-text210 thq-heading-2">Locations</span>
-        </div>
-      </template>
-      <template v-slot:location2Description>
-        <div class="home-fragment209">
-          <span class="home-text211 thq-body-large">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            varius enim in ero.
-          </span>
-        </div>
-      </template>
-      <template v-slot:location1>
-        <div class="home-fragment210">
-          <span class="home-text212 thq-heading-3">Bucharest</span>
-        </div>
-      </template>
-      <template v-slot:location2>
-        <div class="home-fragment211">
-          <span class="home-text213 thq-heading-3">Cluj - Napoca</span>
-        </div>
-      </template>
-    </app-contact10>
-    <app-footer4>
-      <template v-slot:link5>
-        <div class="home-fragment212">
-          <span class="home-text214 thq-body-small">Resume</span>
-        </div>
-      </template>
-      <template v-slot:link3>
-        <div class="home-fragment213">
-          <span class="home-text215 thq-body-small">About Me</span>
-        </div>
-      </template>
-      <template v-slot:link1>
-        <div class="home-fragment214">
-          <span class="home-text216 thq-body-small">Home</span>
-        </div>
-      </template>
-      <template v-slot:termsLink>
-        <div class="home-fragment215">
-          <span class="home-text217 thq-body-small">Terms of Use</span>
-        </div>
-      </template>
-      <template v-slot:link2>
-        <div class="home-fragment216">
-          <span class="home-text218 thq-body-small">Projects</span>
-        </div>
-      </template>
-      <template v-slot:link4>
-        <div class="home-fragment217">
-          <span class="home-text219 thq-body-small">Contact</span>
-        </div>
-      </template>
-      <template v-slot:cookiesLink>
-        <div class="home-fragment218">
-          <span class="home-text220 thq-body-small">Cookies Policy</span>
-        </div>
-      </template>
-      <template v-slot:privacyLink>
-        <div class="home-fragment219">
-          <span class="home-text221 thq-body-small">Privacy Policy</span>
-        </div>
-      </template>
-    </app-footer4>
+    </app-cta>
+
+    <app-footer> </app-footer>
   </div>
 </template>
 
 <script>
-import AppNavbar8 from '../components/navbar8'
-import AppHero17 from '../components/hero17'
-import AppFeatures24 from '../components/features24'
-import AppCta26 from '../components/cta26'
-import AppFeatures25 from '../components/features25'
-import AppPricing14 from '../components/pricing14'
-import AppSteps2 from '../components/steps2'
-import AppTestimonial17 from '../components/testimonial17'
-import AppContact10 from '../components/contact10'
-import AppFooter4 from '../components/footer4'
+import AppNavbar from "../components/navbar";
+import AppHero from "../components/hero";
+import AppFeatures from "../components/features";
+import AppCta from "../components/content";
+import AppFeatures2 from "../components/features2";
+import AppPricing from "../components/pricing";
+import AppSteps from "../components/steps";
+import AppTestimonial from "../components/testimonial";
+import AppContact from "../components/contact";
+import AppFooter from "../components/footer";
 
 export default {
-  name: 'Home',
+  name: "Home",
   props: {},
   components: {
-    AppNavbar8,
-    AppHero17,
-    AppFeatures24,
-    AppCta26,
-    AppFeatures25,
-    AppPricing14,
-    AppSteps2,
-    AppTestimonial17,
-    AppContact10,
-    AppFooter4,
+    AppNavbar,
+    AppHero,
+    AppFeatures,
+    AppCta,
+    AppFeatures2,
+    AppPricing,
+    AppSteps,
+    AppTestimonial,
+    AppContact,
+    AppFooter,
   },
   data() {
     return {
-      rawd7uz: ' ',
-      rawdnpm: ' ',
-    }
+      rawd7uz: " ",
+      rawdnpm: " ",
+    };
   },
   metaInfo: {
-    title: 'Altruistic Squeaky Opossum',
+    title: "Work by Eleni Chasioti",
     meta: [
       {
-        property: 'og:title',
-        content: 'Altruistic Squeaky Opossum',
+        property: "og:title",
+        content: "Work by Eleni Chasioti",
       },
     ],
   },
-}
+};
 </script>
 
 <style scoped>

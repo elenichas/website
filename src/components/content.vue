@@ -47,16 +47,17 @@
 
 <script>
 export default {
-  name: 'CTA26',
+  name: "CTA26",
   props: {},
-}
+};
 </script>
 
 <style scoped>
 .cta26-accent2-bg {
   gap: var(--dl-space-space-oneandhalfunits);
   display: flex;
-  transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(1deg) skew(0deg, 0deg);
+  transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg)
+    rotateY(0deg) rotateZ(1deg) skew(0deg, 0deg);
   align-self: stretch;
   transition: 0.3s;
   align-items: center;
@@ -66,12 +67,13 @@ export default {
   background-color: var(--dl-color-theme-accent2);
 }
 .cta26-accent2-bg:hover {
-  transform: scale3d(1.1,1.1,1.1);
+  transform: scale3d(1.1, 1.1, 1.1);
 }
 .cta26-accent1-bg {
   width: 100%;
   display: flex;
-  transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-2deg) skew(0deg, 0deg);
+  transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg)
+    rotateY(0deg) rotateZ(-2deg) skew(0deg, 0deg);
   align-items: center;
   border-radius: var(--dl-radius-radius-cardradius);
   justify-content: space-between;
@@ -82,7 +84,8 @@ export default {
   gap: var(--dl-space-space-threeunits);
   width: 100%;
   display: flex;
-  transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(1deg) skew(0deg, 0deg);
+  transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg)
+    rotateY(0deg) rotateZ(1deg) skew(0deg, 0deg);
   transition: 0.3s;
   align-items: center;
   padding-top: var(--dl-space-space-sixunits);
@@ -126,14 +129,14 @@ export default {
 .cta26-text6 {
   display: inline-block;
 }
-@media(max-width: 767px) {
+@media (max-width: 767px) {
   .cta26-container2 {
     gap: var(--dl-space-space-oneandhalfunits);
     flex-direction: column;
     justify-content: flex-start;
   }
 }
-@media(max-width: 479px) {
+@media (max-width: 479px) {
   .cta26-actions {
     flex-wrap: wrap;
     align-self: stretch;
