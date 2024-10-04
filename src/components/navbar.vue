@@ -543,7 +543,7 @@ export default {
   z-index: 1000;
   position: sticky;
   justify-content: center;
-  background-color: var(--dl-color-theme-neutral-dark);
+  background-color: var(--dl-color-theme-neutral-light);
 }
 
 .navbar8-navbar-interactive {
