@@ -179,7 +179,7 @@
       </div>
     </div>
     <div>
-      <div class="hero17-container2">
+      <!-- <div class="hero17-container2">
         <DangerousHTML
           html="<style>
     @keyframes scroll-x {
@@ -202,13 +202,13 @@
   </style>
   "
         ></DangerousHTML>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
 
 <script>
-import DangerousHTML from "dangerous-html/vue";
+// import DangerousHTML from "dangerous-html/vue";
 
 export default {
   name: "Hero17",
@@ -323,7 +323,7 @@ export default {
     },
   },
   components: {
-    DangerousHTML,
+    // DangerousHTML,
   },
 };
 </script>
