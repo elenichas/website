@@ -8,11 +8,12 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.6.0",
-    "@lottiefiles/vue-lottie-player": "1.0.4",
-    "dangerous-html": "0.1.13",
-    "vue": "^2.6.7",
-    "vue-meta": "^2.2.1",
-    "vue-router": "^3.0.2"
+    "@mdi/font": "^7.4.47",
+    "@vueuse/head": "^2.0.0",
+    "vue": "^3.5.11",
+    "vue-router": "^4.4.5",
+    "vue3-lottie": "^3.3.1",
+    "vuetify": "^3.7.0-beta.1"
   },
   "devDependencies": {
     "@vue/babel-preset-app": "^5.0.8",
