@@ -12,6 +12,9 @@
     <!-- Contact Component -->
     <app-contact></app-contact>
 
+    <!-- github account graph Component -->
+    <GithubAccount> </GithubAccount>
+
     <!-- Call to Action Component -->
     <app-cta></app-cta>
 
@@ -27,6 +30,7 @@ import AppFeatures from "../components/features";
 import AppCta from "../components/content";
 import AppContact from "../components/contact";
 import AppFooter from "../components/footer";
+import GithubAccount from "../components/githubAccount.vue";
 
 export default {
   name: "Home",
@@ -37,6 +41,7 @@ export default {
     AppCta,
     AppContact,
     AppFooter,
+    GithubAccount,
   },
   metaInfo: {
     title: "Work by Eleni Chasioti",
