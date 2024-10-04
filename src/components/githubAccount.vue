@@ -18,13 +18,32 @@ export default {
     };
   },
   mounted() {
+    checkRateLimit();
     this.fetchGithubData();
   },
   methods: {
+    async checkRateLimit() {
+      try {
+        const response = await axios.get(`https://api.github.com/rate_limit`, {
+          headers: {
+            Authorization: `Bearer ${process.env.VUE_APP_GITHUB_TOKEN}`,
+          },
+        });
+        console.log("Rate Limit Info:", response.data);
+      } catch (error) {
+        console.error("Error checking rate limit:", error);
+      }
+    },
+
     async fetchGithubData() {
       try {
         const response = await axios.get(
-          `https://api.github.com/users/${this.githubUsername}/repos?per_page=100`
+          `https://api.github.com/users/${this.githubUsername}/repos`,
+          {
+            headers: {
+              Authorization: `Bearer ${process.env.VUE_APP_GITHUB_TOKEN}`,
+            },
+          }
         );
         const repos = response.data;
 
@@ -37,6 +56,7 @@ export default {
             language: repo.language,
             created_at: new Date(repo.created_at),
             commits: commitsResponse.data.length,
+            url: repo.html_url, // Add the URL of the repo
           };
         });
 
@@ -49,7 +69,7 @@ export default {
       }
     },
     createGraph() {
-      const margin = { top: 20, right: 20, bottom: 30, left: 50 };
+      const margin = { top: 50, right: 50, bottom: 50, left: 50 };
       const width = 800 - margin.left - margin.right;
       const height = 500 - margin.top - margin.bottom;
 
@@ -57,9 +77,6 @@ export default {
         .select(this.$refs.graph)
         .append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
-
-      // Parse date
-      const parseDate = d3.timeParse("%Y-%m-%d");
 
       // Set x and y scales
       const x = d3
@@ -77,41 +94,106 @@ export default {
         .scaleOrdinal(d3.schemeCategory10)
         .domain([...new Set(this.repos.map((d) => d.language))]);
 
+      // Set radius scale based on the number of commits
+      const radius = d3
+        .scaleSqrt()
+        .domain([0, d3.max(this.repos, (d) => d.commits)])
+        .range([5, 20]);
+
       // Add x-axis
       svg
         .append("g")
         .attr("transform", `translate(0,${height})`)
-        .call(d3.axisBottom(x));
+        .call(d3.axisBottom(x))
+        .append("text")
+        .attr("fill", "#000")
+        .attr("x", width / 2)
+        .attr("y", 40)
+        .attr("text-anchor", "middle")
+        .text("Creation Date");
 
       // Add y-axis
-      svg.append("g").call(d3.axisLeft(y));
+      svg
+        .append("g")
+        .call(d3.axisLeft(y))
+        .append("text")
+        .attr("fill", "#000")
+        .attr("x", -height / 2)
+        .attr("y", -40)
+        .attr("dy", "0.75em")
+        .attr("text-anchor", "middle")
+        .attr("transform", "rotate(-90)")
+        .text("Number of Commits");
 
       // Add circles for each repo
-      svg
+      const circles = svg
         .selectAll("circle")
         .data(this.repos)
         .enter()
         .append("circle")
         .attr("cx", (d) => x(d.created_at))
         .attr("cy", (d) => y(d.commits))
-        .attr("r", 5)
+        .attr("r", (d) => radius(d.commits))
         .attr("fill", (d) => color(d.language))
         .attr("stroke", "#333")
         .attr("stroke-width", 1)
+        .on("click", (event, d) => {
+          window.open(d.url, "_blank");
+        });
+
+      // Add hover interaction to show repo names
+      const tooltip = svg
+        .append("text")
+        .attr("x", width / 2)
+        .attr("y", height - 20)
+        .attr("text-anchor", "middle")
+        .attr("class", "repo-name")
+        .style("opacity", 0);
+
+      circles
         .on("mouseover", function (event, d) {
           d3.select(this)
             .transition()
             .duration(200)
-            .attr("r", 10)
+            .attr("r", radius(d.commits) + 5)
             .attr("stroke-width", 2);
+
+          tooltip.transition().duration(200).style("opacity", 1).text(d.name);
         })
-        .on("mouseout", function (event, d) {
+        .on("mouseout", function () {
           d3.select(this)
             .transition()
             .duration(200)
-            .attr("r", 5)
+            .attr("r", radius(d.commits))
             .attr("stroke-width", 1);
+
+          tooltip.transition().duration(500).style("opacity", 0);
         });
+
+      // Add legend for languages
+      const legend = svg
+        .selectAll(".legend")
+        .data(color.domain())
+        .enter()
+        .append("g")
+        .attr("class", "legend")
+        .attr("transform", (d, i) => `translate(0,${i * 20})`);
+
+      legend
+        .append("rect")
+        .attr("x", width - 18)
+        .attr("width", 18)
+        .attr("height", 18)
+        .attr("fill", color);
+
+      legend
+        .append("text")
+        .attr("x", width - 24)
+        .attr("y", 9)
+        .attr("dy", ".35em")
+        .attr("text-anchor", "end")
+        .style("fill", "#000") // Set legend text color explicitly to black
+        .text((d) => d);
     },
   },
 };
@@ -120,5 +202,23 @@ export default {
 <style scoped>
 svg {
   border: 1px solid #ccc;
+}
+
+.repo-name {
+  font-size: 16px;
+  fill: #333;
+}
+
+.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 140px;
+  padding: 8px;
+  background-color: lightsteelblue;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  pointer-events: none;
+  font-size: 12px;
+  color: #333;
 }
 </style>
