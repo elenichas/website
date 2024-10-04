@@ -1,99 +1,83 @@
 <template>
-  <div class="contact10-container1 thq-section-padding">
-    <div class="contact10-max-width thq-section-max-width">
-      <div class="contact10-content1 thq-flex-row">
-        <div class="contact10-content2">
+  <div class="contact-container thq-section-padding">
+    <div class="contact-max-width thq-section-max-width">
+      <div class="contact-content thq-flex-row">
+        <div class="contact-details">
           <h2>
             <slot name="heading1">
-              <!--Default content for heading1-->
-              <div class="contact10-fragment3">
-                <h2 class="contact10-text18 thq-heading-2">Locations</h2>
-              </div>
+              <h2 class="contact-heading">Locations</h2>
             </slot>
           </h2>
           <p>
             <slot name="content1">
-              <!--Default content for content1-->
-              <div class="contact10-fragment1">
-                <p class="contact10-text16 thq-body-large">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Suspendisse varius enim in ero.
-                </p>
-              </div>
+              <p class="contact-description">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Suspendisse varius enim in ero.
+              </p>
             </slot>
           </p>
         </div>
       </div>
-      <div class="contact10-content3 thq-flex-row">
-        <div class="contact10-container2">
+
+      <div class="contact-locations thq-flex-row">
+        <div class="contact-location">
           <img
             :alt="location1ImageAlt"
             :src="location1ImageSrc"
-            class="contact10-image1 thq-img-ratio-16-9"
+            class="contact-image thq-img-ratio-16-9"
           />
           <h3>
             <slot name="location1">
-              <!--Default content for location1-->
-              <div class="contact10-fragment5">
-                <h3 class="contact10-text20 thq-heading-3">London</h3>
-              </div>
+              <h3 class="contact-location-name">London</h3>
             </slot>
           </h3>
           <p>
             <slot name="location1Description">
-              <!--Default content for location1Description-->
-              <div class="contact10-fragment2">
-                <p class="contact10-text17 thq-body-large">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Suspendisse varius enim in ero.
-                </p>
-              </div>
+              <p class="contact-description">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Suspendisse varius enim in ero.
+              </p>
             </slot>
           </p>
-          <div class="contact10-container3">
+          <div class="contact-button-container">
             <a
               href="https://example.com"
               target="_blank"
               rel="noreferrer noopener"
               class="thq-button-flat thq-body-small"
             >
-              travel with me
+              Travel with me
             </a>
           </div>
         </div>
-        <div class="contact10-container4">
+
+        <div class="contact-location">
           <img
             :alt="location2ImageAlt"
             :src="location2ImageSrc"
-            class="contact10-image2 thq-img-ratio-16-9"
+            class="contact-image thq-img-ratio-16-9"
           />
           <h3>
             <slot name="location2">
-              <!--Default content for location2-->
-              <div class="contact10-fragment6">
-                <h3 class="contact10-text21 thq-heading-3">Greece</h3>
-              </div>
+              <h3 class="contact-location-name">Greece</h3>
             </slot>
           </h3>
           <p>
             <slot name="location2Description">
-              <!--Default content for location2Description-->
-              <div class="contact10-fragment4">
-                <p class="contact10-text19 thq-body-large">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Suspendisse varius enim in ero.
-                </p>
-              </div>
+              <p class="contact-description">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Suspendisse varius enim in ero.
+              </p>
             </slot>
           </p>
-          <div class="contact10-container5">
+          <div class="contact-button-container">
             <a
               href="https://example.com"
               target="_blank"
               rel="noreferrer noopener"
               class="thq-button-flat thq-body-small"
             >
-              travel with me
+              Travel with me
             </a>
           </div>
         </div>
@@ -104,7 +88,7 @@
 
 <script>
 export default {
-  name: "Contact10",
+  name: "Contact",
   props: {
     location2ImageSrc: {
       type: String,
@@ -118,164 +102,85 @@ export default {
     },
     location2ImageAlt: {
       type: String,
-      default: "image2Alt",
+      default: "Greece",
     },
     location1ImageAlt: {
       type: String,
-      default: "image1Alt",
+      default: "London",
     },
   },
 };
 </script>
 
 <style scoped>
-.contact10-container1 {
+.contact-container {
   display: flex;
   position: relative;
-  align-items: flex-start;
   flex-direction: column;
+  align-items: flex-start;
 }
 
-.contact10-max-width {
+.contact-max-width {
   align-self: center;
 }
 
-.contact10-content1 {
+.contact-content {
   width: 100%;
   margin-bottom: var(--dl-space-space-threeunits);
   justify-content: flex-start;
 }
 
-.contact10-content2 {
+.contact-details {
   gap: var(--dl-space-space-unit);
   display: flex;
-  align-self: stretch;
   align-items: flex-start;
   flex-direction: column;
 }
 
-.contact10-content3 {
+.contact-locations {
   width: 100%;
-  align-items: flex-start;
-  flex-direction: row;
+  display: flex;
   justify-content: space-between;
+  flex-direction: row;
+  align-items: flex-start;
 }
 
-.contact10-container2 {
+.contact-location {
   gap: var(--dl-space-space-oneandhalfunits);
   flex: 1;
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
 }
 
-.contact10-image1 {
+.contact-image {
   object-fit: cover;
 }
 
-.contact10-container3 {
-  flex: 0 0 auto;
-  width: 100%;
-  height: 100%;
+.contact-button-container {
   display: flex;
-  align-items: flex-start;
   justify-content: center;
-}
-
-.contact10-container4 {
-  gap: var(--dl-space-space-oneandhalfunits);
-  flex: 1;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.contact10-image2 {
-  object-fit: cover;
-}
-
-.contact10-container5 {
-  flex: 0 0 auto;
   width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
 }
 
-.contact10-fragment1 {
-  display: contents;
-}
-
-.contact10-text16 {
-  display: inline-block;
-}
-
-.contact10-fragment2 {
-  display: contents;
-}
-
-.contact10-text17 {
-  display: inline-block;
-}
-
-.contact10-fragment3 {
-  display: contents;
-}
-
-.contact10-text18 {
-  display: inline-block;
-}
-
-.contact10-fragment4 {
-  display: contents;
-}
-
-.contact10-text19 {
-  display: inline-block;
-}
-
-.contact10-fragment5 {
-  display: contents;
-}
-
-.contact10-text20 {
-  display: inline-block;
+.contact-heading,
+.contact-location-name {
   text-align: center;
 }
 
-.contact10-fragment6 {
-  display: contents;
-}
-
-.contact10-text21 {
-  display: inline-block;
+.contact-description {
   text-align: center;
 }
 
 @media (max-width: 991px) {
-  .contact10-content1 {
-    align-items: flex-start;
-    justify-content: flex-start;
-  }
-
-  .contact10-content3 {
-    position: relative;
-    align-items: center;
+  .contact-locations {
     flex-direction: column;
+    align-items: center;
   }
 }
 
 @media (max-width: 767px) {
-  .contact10-content1 {
-    gap: var(--dl-space-space-oneandhalfunits);
-  }
-
-  .contact10-image1 {
-    width: 100%;
-  }
-
-  .contact10-image2 {
+  .contact-image {
     width: 100%;
   }
 }
