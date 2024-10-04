@@ -1,7 +1,16 @@
 <template>
-  <div>
-    <h1>GitHub Repositories Overview</h1>
-    <svg ref="graph" width="800" height="500"></svg>
+  <div id="mygraph">
+    <h1>
+      <a
+        href="https://github.com/elenichas"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        My GitHub
+      </a>
+    </h1>
+    <svg ref="graph" width="1200" height="600"></svg>
+    <h6>graph created with d3.js</h6>
   </div>
 </template>
 
@@ -18,7 +27,7 @@ export default {
     };
   },
   mounted() {
-    checkRateLimit();
+    this.checkRateLimit();
     this.fetchGithubData();
   },
   methods: {
@@ -49,7 +58,12 @@ export default {
 
         const repoDataPromises = repos.map(async (repo) => {
           const commitsResponse = await axios.get(
-            `https://api.github.com/repos/${this.githubUsername}/${repo.name}/commits`
+            `https://api.github.com/repos/${this.githubUsername}/${repo.name}/commits`,
+            {
+              headers: {
+                Authorization: `Bearer ${process.env.VUE_APP_GITHUB_TOKEN}`,
+              },
+            }
           );
           return {
             name: repo.name,
@@ -70,7 +84,7 @@ export default {
     },
     createGraph() {
       const margin = { top: 50, right: 50, bottom: 50, left: 50 };
-      const width = 800 - margin.left - margin.right;
+      const width = 1200 - margin.left - margin.right;
       const height = 500 - margin.top - margin.bottom;
 
       const svg = d3
@@ -141,14 +155,18 @@ export default {
           window.open(d.url, "_blank");
         });
 
-      // Add hover interaction to show repo names
-      const tooltip = svg
-        .append("text")
-        .attr("x", width / 2)
-        .attr("y", height - 20)
-        .attr("text-anchor", "middle")
-        .attr("class", "repo-name")
-        .style("opacity", 0);
+      // Tooltip div (HTML element for better positioning)
+      // create a tooltip
+      var tooltip = d3
+        .select("#mygraph")
+        .append("div")
+        .style("position", "absolute")
+        .style("z-index", 100)
+        .style("padding", "8px")
+        .style("border-radius", "4px")
+        .style("pointer-events", "none") // Tooltip won't interfere with mouse events
+        .style("font-size", "12px")
+        .style("color", "#333");
 
       circles
         .on("mouseover", function (event, d) {
@@ -158,16 +176,25 @@ export default {
             .attr("r", radius(d.commits) + 5)
             .attr("stroke-width", 2);
 
-          tooltip.transition().duration(200).style("opacity", 1).text(d.name);
+          console.log(d.name);
+          tooltip
+            .style("visibility", "visible")
+            .style("opacity", 1)
+            .text(d.name);
         })
-        .on("mouseout", function () {
+        .on("mouseout", function (event, d) {
           d3.select(this)
             .transition()
             .duration(200)
             .attr("r", radius(d.commits))
             .attr("stroke-width", 1);
 
-          tooltip.transition().duration(500).style("opacity", 0);
+          tooltip.style("visibility", "hidden");
+        })
+        .on("mousemove", function (event) {
+          tooltip
+            .style("left", `${event.pageX + 10}px`) // Offset the tooltip by 10px to the right of the cursor
+            .style("top", `${event.pageY - 20}px`); // Offset the tooltip by 20px above the cursor
         });
 
       // Add legend for languages
@@ -177,21 +204,22 @@ export default {
         .enter()
         .append("g")
         .attr("class", "legend")
-        .attr("transform", (d, i) => `translate(0,${i * 20})`);
+        .attr("transform", (d, i) => `translate(${i * 100},${height + 40})`);
 
       legend
         .append("rect")
-        .attr("x", width - 18)
+        .attr("x", 0)
+        .attr("y", 0)
         .attr("width", 18)
         .attr("height", 18)
         .attr("fill", color);
 
       legend
         .append("text")
-        .attr("x", width - 24)
+        .attr("x", 24)
         .attr("y", 9)
         .attr("dy", ".35em")
-        .attr("text-anchor", "end")
+        .attr("text-anchor", "start")
         .style("fill", "#000") // Set legend text color explicitly to black
         .text((d) => d);
     },
