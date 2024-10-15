@@ -75,7 +75,7 @@
 import AppNavbar from "../components/navbar";
 
 export default {
-  name: "Design",
+  name: "DesignComp",
   components: {
     AppNavbar,
   },

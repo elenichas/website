@@ -22,18 +22,14 @@
         <!-- Font Awesome Icon -->
       </a>
       <a
-        href="https://www.instagram.com/your-profile"
+        href="https://www.instagram.com/elenchasioti/"
         target="_blank"
         class="social-icon"
       >
         <i class="fab fa-instagram"></i>
         <!-- Font Awesome Icon -->
       </a>
-      <a
-        href="https://twitter.com/your-profile"
-        target="_blank"
-        class="social-icon"
-      >
+      <a href="https://x.com/elenichas" target="_blank" class="social-icon">
         <i class="fab fa-twitter"></i>
         <!-- Font Awesome Icon -->
       </a>

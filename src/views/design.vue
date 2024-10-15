@@ -1,72 +1,11 @@
 <template>
-  <!-- Navbar Component -->
   <app-navbar></app-navbar>
-
-  <div class="design">
-    <!-- THESIS -->
-    <div class="section">
-      <h1>Hapi: Housing & Automated Production Infrastructure</h1>
-      <div class="text-image-container">
-        <div class="text-content">
-          <h4>
-            The Hapi project delves into the digital possibilities of how people
-            may coexist in future mega cities. It tackles the growing housing
-            shortage in urban centers and emphasizes the need for sustainable,
-            affordable, and adaptable living spaces. The project's goal is to
-            provide solutions to these challenges by proposing a large-scale,
-            modular structure composed of 3D-printed elements, which are
-            assembled on-site and then elevated to their designated floors. Each
-            home is designed using a unique algorithmic process, tailored to
-            accommodate various family sizes. The project offers flexible
-            solutions for cohabitation, with options for the connection or
-            expansion of housing units. Additionally, the homes are equipped
-            with smart sensors and robotic systems to monitor internal
-            conditions, optimizing energy use and promoting efficiency.
-          </h4>
-        </div>
-        <div class="design-image">
-          <img :src="imageSrc2" alt="thesis hero image" class="image" />
-        </div>
+  <div class="gallery-container">
+    <div class="gallery-item" v-for="(image, index) in images" :key="index">
+      <div class="image-wrapper">
+        <img :src="image.src" :alt="image.alt" />
       </div>
-
-      <!-- Full-width Image -->
-      <div class="full-width-image">
-        <img :src="imageSrc" alt="thesis buildings image" class="image" />
-      </div>
-    </div>
-
-    <!-- wORKSHOP -->
-    <div class="section">
-      <h1>Digital Futures: Habitat Workshop</h1>
-      <div class="text-image-container">
-        <div class="text-content">
-          <h4>
-            This initiative by Digital Futures provided an online platform for a
-            week-long series of talks and workshops, exploring the
-            transformative impact of digital technologies in architecture. The
-            event showcased the innovative potential of digital design,
-            highlighting new possibilities. One key workshop, Habitat, focused
-            on Architectural Geometry (AG) and the synthesis of shapes to ensure
-            structural and fabrication efficiency. It was closely aligned with
-            advancements in robotic and digital fabrication (RDF) technologies
-            and design methodologies. During the workshop, participants explored
-            aggregation techniques on sloped fields and designed building
-            elements suitable for hot wire cutting technology. The process
-            culminated in the assembly of the prefabricated units. Finally, the
-            produced units were uploaded to a game-based configurator, enabling
-            non-expert users to assemble customized houses from the
-            prefabricated components.
-          </h4>
-        </div>
-        <div class="design-image">
-          <img :src="imageSrc4" alt="workshop image" class="image" />
-        </div>
-      </div>
-
-      <!-- Full-width Image -->
-      <div class="full-width-image">
-        <img :src="imageSrc3" alt="workshop image" class="image" />
-      </div>
+      <p class="image-title">{{ image.title }}</p>
     </div>
   </div>
 </template>
@@ -81,66 +20,90 @@ export default {
   },
   data() {
     return {
-      imageSrc: require("@/images/thesis/exploded.png"),
-      imageSrc2: require("@/images/thesis/thesisPlan.png"),
-      imageSrc3: require("@/images/thesis/workshop1.png"),
-      imageSrc4: require("@/images/thesis/units.png"),
+      images: [
+        {
+          src: require("@/images/gallery/hapi.png"),
+          alt: "Hapi Project",
+          title: "Hapi Project",
+        },
+        {
+          src: require("@/images/gallery/thesis.png"),
+          alt: "Thesis Project",
+          title: "Thesis Project",
+        },
+        {
+          src: require("@/images/gallery/workshop.png"),
+          alt: "Workshop Design",
+          title: "Workshop Design",
+        },
+        {
+          src: require("@/images/gallery/hapi.png"),
+          alt: "Hapi Design",
+          title: "Filos Mobile App",
+        },
+        {
+          src: require("@/images/gallery/hapi.png"),
+          alt: "Another Hapi Design",
+          title: "Local Bakery App",
+        },
+        {
+          src: require("@/images/gallery/hapi.png"),
+          alt: "Yet Another Hapi Design",
+          title: "Animal Shelter Website",
+        },
+      ],
     };
   },
 };
 </script>
 
 <style scoped>
-.design {
-  margin-top: 50px;
-  padding: 0 40px;
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  margin: 0 auto;
+  width: 90%;
+  /* max-width: 1200px; */
 }
 
-.text-image-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 50px;
+/* Individual Gallery Item */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
 }
 
-.text-content {
-  flex: 1;
-  padding-right: 20px;
+/* Image Wrapper */
+.image-wrapper {
+  overflow: hidden;
+  border-radius: 10px;
+  height: 0;
+  padding-bottom: 150%; /* Adjust the ratio if needed (150% gives a vertical aspect ratio) */
+  position: relative;
+  transition: transform 0.3s ease-in-out;
 }
 
-.design-image {
-  flex: 1;
-}
-
-.image {
-  max-width: 100%;
-  height: auto;
-  border-radius: 16px;
-  object-fit: cover;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.full-width-image {
+.image-wrapper img {
   width: 100%;
-  margin: 50px 0;
+  height: 100%;
+  object-fit: cover; /* This ensures that the image covers the entire wrapper */
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 0.3s ease-in-out;
 }
 
-.full-width-image img {
-  width: 100%;
-  height: auto;
-  border-radius: 16px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Hover Effect: Zoom Image */
+.image-wrapper:hover img {
+  transform: scale(1.2);
 }
 
-/* Media Queries */
-@media (max-width: 991px) {
-  .text-image-container {
-    flex-direction: column;
-  }
-
-  .text-content {
-    padding-right: 0;
-    margin-bottom: 20px;
-  }
+/* Image Title */
+.image-title {
+  font-size: 1.1rem;
+  margin-top: 10px;
+  font-weight: 500;
 }
 </style>
