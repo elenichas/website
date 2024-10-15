@@ -4,7 +4,7 @@
     <router-link to="/home" class="back-link">
       <i class="fas fa-arrow-left"></i>
       <img :src="logoSrc" alt="Logo" class="back-logo" />
-      <span>Eleni Chasioti</span>
+      <span> { Eleni Chasioti }</span>
     </router-link>
   </div>
 </template>

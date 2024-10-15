@@ -10,7 +10,7 @@
             class="navbar8-image1"
           />
         </router-link>
-        <div class="navbar8-name">Eleni <br />Chasioti</div>
+        <span> { Eleni Chasioti }</span>
       </div>
 
       <!-- Desktop Menu -->
