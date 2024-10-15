@@ -4,7 +4,7 @@
       <div class="contact-content thq-flex-row">
         <div class="contact-details">
           <slot name="heading1">
-            <h2 class="contact-heading">Locations</h2>
+            <h1 class="contact-heading">Locations</h1>
           </slot>
           <slot name="content1">
             <p class="contact-description">
