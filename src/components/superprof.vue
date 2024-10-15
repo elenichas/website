@@ -1,5 +1,12 @@
 <template>
   <div class="superprof-card">
+    <div class="contact-content thq-flex-row">
+      <div class="contact-details">
+        <slot name="heading1">
+          <h1 class="contact-heading">Teaching</h1>
+        </slot>
+      </div>
+    </div>
     <!-- Top Header Section with Filters -->
     <div class="header-filters flex space-x-4 mb-4">
       <span class="filter-tag">Graphic design</span>
@@ -90,14 +97,17 @@ img {
   border: 1px solid #eee;
   border-radius: 8px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 2% 0;
 }
 
 .header-filters {
+  padding-top: 16px;
   font-size: 0.9rem;
 }
 
 .filter-tag {
-  background-color: #f3f4f6;
+  background-color: #f87171;
+  color: white;
   padding: 5px 10px;
   border-radius: 50px;
 }

@@ -163,6 +163,12 @@ export default {
 <style scoped>
 #mygraph {
   width: 85%;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 2% 0;
 }
 
 .svg-container {
@@ -171,7 +177,7 @@ export default {
 }
 
 svg {
-  border: 1px solid #ccc;
+  background: #f5f5f5;
 }
 
 @media (max-width: 768px) {
