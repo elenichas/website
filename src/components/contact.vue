@@ -3,83 +3,48 @@
     <div class="contact-max-width thq-section-max-width">
       <div class="contact-content thq-flex-row">
         <div class="contact-details">
-          <h2>
-            <slot name="heading1">
-              <h2 class="contact-heading">Locations</h2>
-            </slot>
-          </h2>
-          <p>
-            <slot name="content1">
-              <p class="contact-description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse varius enim in ero.
-              </p>
-            </slot>
-          </p>
+          <slot name="heading1">
+            <h2 class="contact-heading">Locations</h2>
+          </slot>
+          <slot name="content1">
+            <p class="contact-description">
+              I spend my time between London and Greece!
+            </p>
+          </slot>
         </div>
       </div>
 
       <div class="contact-locations thq-flex-row">
         <div class="contact-location">
           <img
-            :alt="location1ImageAlt"
-            :src="location1ImageSrc"
+            alt="image of London riverside"
+            :src="imageSrc"
             class="contact-image thq-img-ratio-16-9"
           />
-          <h3>
-            <slot name="location1">
-              <h3 class="contact-location-name">London</h3>
-            </slot>
-          </h3>
-          <p>
-            <slot name="location1Description">
-              <p class="contact-description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse varius enim in ero.
-              </p>
-            </slot>
-          </p>
-          <div class="contact-button-container">
-            <a
-              href="https://example.com"
-              target="_blank"
-              rel="noreferrer noopener"
-              class="thq-button-flat thq-body-small"
-            >
-              Travel with me
-            </a>
-          </div>
+          <slot name="location1">
+            <h3 class="contact-location-name">London</h3>
+          </slot>
+          <slot name="location1Description">
+            <p class="contact-description">
+              Always enjoy a walk by the river and a museum visit.
+            </p>
+          </slot>
         </div>
 
         <div class="contact-location">
           <img
-            :alt="location2ImageAlt"
-            :src="location2ImageSrc"
+            alt="Image of seaside in Greece"
+            :src="imageSrc2"
             class="contact-image thq-img-ratio-16-9"
           />
-          <h3>
-            <slot name="location2">
-              <h3 class="contact-location-name">Greece</h3>
-            </slot>
-          </h3>
-          <p>
-            <slot name="location2Description">
-              <p class="contact-description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse varius enim in ero.
-              </p>
-            </slot>
-          </p>
-          <div class="contact-button-container">
-            <a
-              href="https://example.com"
-              target="_blank"
-              rel="noreferrer noopener"
-              class="thq-button-flat thq-body-small"
-            >
-              Travel with me
-            </a>
-          </div>
+          <slot name="location2">
+            <h3 class="contact-location-name">Greece</h3>
+          </slot>
+          <slot name="location2Description">
+            <p class="contact-description">
+              During summer, I find some time to spend by the sea.
+            </p>
+          </slot>
         </div>
       </div>
     </div>
@@ -87,27 +52,16 @@
 </template>
 
 <script>
+const imageSrc = require("@/images/travel/london.jpg");
+const imageSrc2 = require("@/images/travel/greece.jpg");
+
 export default {
   name: "Contact",
-  props: {
-    location2ImageSrc: {
-      type: String,
-      default:
-        "https://images.unsplash.com/3/doctype-hi-res.jpg?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3MXw&ixlib=rb-4.0.3&q=80&w=1080",
-    },
-    location1ImageSrc: {
-      type: String,
-      default:
-        "https://images.unsplash.com/photo-1547119957-637f8679db1e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcyNTkxMjg3MXw&ixlib=rb-4.0.3&q=80&w=1080",
-    },
-    location2ImageAlt: {
-      type: String,
-      default: "Greece",
-    },
-    location1ImageAlt: {
-      type: String,
-      default: "London",
-    },
+  data() {
+    return {
+      imageSrc,
+      imageSrc2,
+    };
   },
 };
 </script>
@@ -155,12 +109,7 @@ export default {
 
 .contact-image {
   object-fit: cover;
-}
-
-.contact-button-container {
-  display: flex;
-  justify-content: center;
-  width: 100%;
+  height: 600px;
 }
 
 .contact-heading,

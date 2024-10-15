@@ -166,8 +166,9 @@ h2 {
 }
 
 .avatar-img {
-  width: 300px;
-  height: 300px;
+  width: 80%;
+  height: 80%;
+
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
