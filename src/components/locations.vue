@@ -1,52 +1,50 @@
 <template>
   <div class="locations-card">
-    <div class="contact-container thq-section-padding">
-      <div class="contact-max-width thq-section-max-width">
-        <div class="contact-content thq-flex-row">
-          <div class="contact-details">
-            <slot name="heading1">
-              <h1 class="contact-heading">Locations</h1>
-            </slot>
-            <slot name="content1">
-              <p class="contact-description">
-                I spend my time between London and Greece!
-              </p>
-            </slot>
-          </div>
+    <div class="contact-max-width thq-section-max-width">
+      <div class="contact-content thq-flex-row">
+        <div class="contact-details">
+          <slot name="heading1">
+            <h1 class="contact-heading">Locations</h1>
+          </slot>
+          <slot name="content1">
+            <p class="contact-description">
+              I spend my time between London and Greece!
+            </p>
+          </slot>
+        </div>
+      </div>
+
+      <div class="contact-locations thq-flex-row">
+        <div class="contact-location">
+          <img
+            alt="image of London riverside"
+            :src="imageSrc"
+            class="contact-image thq-img-ratio-16-9"
+          />
+          <slot name="location1">
+            <h3 class="contact-location-name">London</h3>
+          </slot>
+          <slot name="location1Description">
+            <p class="contact-description">
+              Always enjoy a walk by the river and a museum visit.
+            </p>
+          </slot>
         </div>
 
-        <div class="contact-locations thq-flex-row">
-          <div class="contact-location">
-            <img
-              alt="image of London riverside"
-              :src="imageSrc"
-              class="contact-image thq-img-ratio-16-9"
-            />
-            <slot name="location1">
-              <h3 class="contact-location-name">London</h3>
-            </slot>
-            <slot name="location1Description">
-              <p class="contact-description">
-                Always enjoy a walk by the river and a museum visit.
-              </p>
-            </slot>
-          </div>
-
-          <div class="contact-location">
-            <img
-              alt="Image of seaside in Greece"
-              :src="imageSrc2"
-              class="contact-image thq-img-ratio-16-9"
-            />
-            <slot name="location2">
-              <h3 class="contact-location-name">Greece</h3>
-            </slot>
-            <slot name="location2Description">
-              <p class="contact-description">
-                During summer, I find some time to spend by the sea.
-              </p>
-            </slot>
-          </div>
+        <div class="contact-location">
+          <img
+            alt="Image of seaside in Greece"
+            :src="imageSrc2"
+            class="contact-image thq-img-ratio-16-9"
+          />
+          <slot name="location2">
+            <h3 class="contact-location-name">Greece</h3>
+          </slot>
+          <slot name="location2Description">
+            <p class="contact-description">
+              During summer, I find some time to spend by the sea.
+            </p>
+          </slot>
         </div>
       </div>
     </div>

@@ -1,20 +1,15 @@
 <template>
   <div class="home-container">
-    <!-- Navbar Component -->
     <app-navbar></app-navbar>
 
     <welcome-card></welcome-card>
 
-    <!-- github account graph Component -->
     <GithubAccount> </GithubAccount>
 
-    <!-- Call to Action Component -->
-    <app-cta></app-cta>
+    <super-prof></super-prof>
 
-    <!-- Contact Component -->
     <location></location>
 
-    <!-- Footer Component -->
     <app-footer></app-footer>
   </div>
 </template>
@@ -22,7 +17,6 @@
 <script>
 import AppNavbar from "../components/navbar";
 import AppHero from "../components/hero";
-import AppFeatures from "../components/features";
 import SuperProf from "../components/superprof";
 import Location from "../components/locations";
 import AppFooter from "../components/footer";
@@ -34,8 +28,7 @@ export default {
   components: {
     AppNavbar,
     AppHero,
-    AppFeatures,
-    AppCta: SuperProf,
+    SuperProf,
     Location,
     AppFooter,
     GithubAccount,
