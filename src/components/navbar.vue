@@ -90,7 +90,6 @@ export default {
 
 .navbar8-navbar-interactive {
   width: 100%;
-  max-width: 1200px;
   display: flex;
   align-items: center;
   padding: 20px;

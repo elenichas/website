@@ -4,20 +4,15 @@
     <app-navbar></app-navbar>
 
     <welcome-card></welcome-card>
-    <!--Hero Component
-    <app-hero></app-hero>-->
-
-    <!-- Features Component -->
-    <!-- <app-features></app-features> -->
 
     <!-- github account graph Component -->
     <GithubAccount> </GithubAccount>
 
-    <!-- Contact Component -->
-    <app-contact></app-contact>
-
     <!-- Call to Action Component -->
     <app-cta></app-cta>
+
+    <!-- Contact Component -->
+    <location></location>
 
     <!-- Footer Component -->
     <app-footer></app-footer>
@@ -28,8 +23,8 @@
 import AppNavbar from "../components/navbar";
 import AppHero from "../components/hero";
 import AppFeatures from "../components/features";
-import AppCta from "../components/content";
-import AppContact from "../components/contact";
+import SuperProf from "../components/superprof";
+import Location from "../components/locations";
 import AppFooter from "../components/footer";
 import GithubAccount from "../components/githubAccount.vue";
 import WelcomeCard from "../components/welcomeCard.vue";
@@ -40,8 +35,8 @@ export default {
     AppNavbar,
     AppHero,
     AppFeatures,
-    AppCta,
-    AppContact,
+    AppCta: SuperProf,
+    Location,
     AppFooter,
     GithubAccount,
     WelcomeCard,
