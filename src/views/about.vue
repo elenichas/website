@@ -1,19 +1,20 @@
 <template>
   <div class="about">
     <BackToHome />
-    <!-- Add this line to include the back button -->
-    <h1>About Us</h1>
-    <p>Find out more about our team and our mission.</p>
+
+    <skill-set></skill-set>
   </div>
 </template>
 
 <script>
 import BackToHome from "../components/backToHome.vue";
+import SkillSet from "../components/skillSet.vue";
 
 export default {
   name: "About",
   components: {
-    BackToHome, // Register the component
+    BackToHome,
+    SkillSet,
   },
 };
 </script>
