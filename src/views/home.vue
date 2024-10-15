@@ -8,13 +8,13 @@
     <app-hero></app-hero>-->
 
     <!-- Features Component -->
-    <app-features></app-features>
-
-    <!-- Contact Component -->
-    <app-contact></app-contact>
+    <!-- <app-features></app-features> -->
 
     <!-- github account graph Component -->
     <GithubAccount> </GithubAccount>
+
+    <!-- Contact Component -->
+    <app-contact></app-contact>
 
     <!-- Call to Action Component -->
     <app-cta></app-cta>

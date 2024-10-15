@@ -29,6 +29,8 @@ import AdobeXD from "@/images/skills/adobexd.png";
 import Figma from "@/images/skills/figma.png";
 import Rhino3D from "@/images/skills/rhino.png";
 import Grasshopper from "@/images/skills/grasshopper.png";
+import Three from "@/images/skills/three.png";
+import D3 from "@/images/skills/d3.svg";
 
 export default {
   name: "Skillset",
@@ -42,6 +44,8 @@ export default {
         { name: "NodeJS", src: NodeJS },
         { name: "Vue.js", src: VueJS },
         { name: "C#", src: CSharp },
+        { name: "D3", src: D3 },
+        { name: "Three", src: Three },
         { name: "MongoDB", src: MongoDB },
         { name: "NPM", src: NPM },
         { name: "VSCode", src: VSCode },
