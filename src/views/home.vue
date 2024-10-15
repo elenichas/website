@@ -3,8 +3,9 @@
     <!-- Navbar Component -->
     <app-navbar></app-navbar>
 
-    <!-- Hero Component -->
-    <app-hero></app-hero>
+    <welcome-card></welcome-card>
+    <!--Hero Component
+    <app-hero></app-hero>-->
 
     <!-- Features Component -->
     <app-features></app-features>
@@ -31,6 +32,7 @@ import AppCta from "../components/content";
 import AppContact from "../components/contact";
 import AppFooter from "../components/footer";
 import GithubAccount from "../components/githubAccount.vue";
+import WelcomeCard from "../components/welcomeCard.vue";
 
 export default {
   name: "Home",
@@ -42,6 +44,7 @@ export default {
     AppContact,
     AppFooter,
     GithubAccount,
+    WelcomeCard,
   },
   metaInfo: {
     title: "Work by Eleni Chasioti",
