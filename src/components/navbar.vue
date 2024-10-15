@@ -16,19 +16,15 @@
       <!-- Desktop Menu -->
       <nav class="navbar8-links1" v-if="!isMobileMenuOpen">
         <router-link to="/home" class="navbar-link">
-          <i class="fas fa-home"></i>
           <span>Home</span>
         </router-link>
         <router-link to="/design" class="navbar-link">
-          <i class="fas fa-palette"></i>
           <span>Design</span>
         </router-link>
         <router-link to="/development" class="navbar-link">
-          <i class="fas fa-code"></i>
           <span>Development</span>
         </router-link>
         <router-link to="/about" class="navbar-link">
-          <i class="fas fa-user"></i>
           <span>About Me</span>
         </router-link>
       </nav>
