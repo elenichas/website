@@ -9,6 +9,7 @@
         My GitHub
       </a>
     </h1>
+    <p>Click on the graph to see the repo in github account!</p>
     <div class="svg-container">
       <svg ref="graph"></svg>
     </div>
@@ -32,7 +33,9 @@ export default {
   mounted() {
     this.checkRateLimit();
     this.fetchGithubData();
-    window.addEventListener("resize", this.createGraph); // Add resize event listener
+    this.$nextTick(() => {
+      window.addEventListener("resize", this.createGraph); // Add resize event listener after DOM is ready
+    });
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.createGraph); // Clean up the event listener
@@ -91,7 +94,14 @@ export default {
     },
 
     createGraph() {
-      const containerWidth = this.$refs.graph.parentElement.clientWidth;
+      if (!this.$refs.graph) {
+        console.log("no graph!");
+        return; // Stop if the SVG element isn't rendered yet
+      }
+      const containerWidth = this.$refs.graph.parentElement
+        ? this.$refs.graph.parentElement.clientWidth
+        : 600; // Default width if parent element is not available
+
       const width = containerWidth - this.margin.left - this.margin.right;
       const height = 500 - this.margin.top - this.margin.bottom;
 
@@ -152,7 +162,7 @@ export default {
 
 <style scoped>
 #mygraph {
-  width: 80%;
+  width: 85%;
 }
 
 .svg-container {

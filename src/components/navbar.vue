@@ -4,11 +4,11 @@
       <!-- Logo and title container aligned to the left -->
       <div class="navbar8-logo-container">
         <router-link to="/home">
-          <img
+          <!-- <img
             alt="Eleni Chasioti Logo"
             :src="logoSrc"
             class="navbar8-image1"
-          />
+          /> -->
         </router-link>
         <span> { Eleni Chasioti }</span>
       </div>
@@ -38,20 +38,20 @@
     <!-- Mobile Menu Dropdown -->
     <div v-if="isMobileMenuOpen" class="navbar8-mobile-menu">
       <router-link to="/" class="mobile-link" @click="closeMobileMenu">
-        <i class="fas fa-home"></i> Home
+        Home
       </router-link>
       <router-link to="/design" class="mobile-link" @click="closeMobileMenu">
-        <i class="fas fa-palette"></i> Design
+        Design
       </router-link>
       <router-link
         to="/development"
         class="mobile-link"
         @click="closeMobileMenu"
       >
-        <i class="fas fa-code"></i> Development
+        Development
       </router-link>
       <router-link to="/about" class="mobile-link" @click="closeMobileMenu">
-        <i class="fas fa-user"></i> About Me
+        About Me
       </router-link>
     </div>
   </header>

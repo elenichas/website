@@ -1,6 +1,8 @@
 <template>
+  <app-navbar></app-navbar>
   <div class="about">
-    <BackToHome />
+    <!-- Navbar Component -->
+
     <div class="about-container">
       <div class="about-image">
         <img :src="imageSrc" alt="Eleni Working at Desk" class="about-avatar" />
@@ -24,6 +26,7 @@
 </template>
 
 <script>
+import AppNavbar from "../components/navbar";
 import BackToHome from "../components/backToHome.vue";
 import SkillSet from "../components/skillSet.vue";
 
@@ -36,7 +39,7 @@ const cvLink = "/cv/Eleni_Chasioti_CV.pdf"; // This points to the public folder
 export default {
   name: "About",
   components: {
-    BackToHome,
+    AppNavbar,
     SkillSet,
   },
   data() {
