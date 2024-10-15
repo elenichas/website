@@ -1,5 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "./views/home.vue";
+import Design from "./views/design.vue";
+import Development from "./views/development.vue";
+import About from "./views/about.vue";
 import NotFound from "./views/not-found.vue";
 import "./style.css";
 
@@ -7,8 +10,23 @@ import "./style.css";
 const routes = [
   {
     name: "Home",
-    path: "/",
+    path: "/home",
     component: Home,
+  },
+  {
+    name: "Design",
+    path: "/design",
+    component: Design,
+  },
+  {
+    name: "Development",
+    path: "/development",
+    component: Development,
+  },
+  {
+    name: "About",
+    path: "/about",
+    component: About,
   },
   {
     name: "404 - Not Found",
