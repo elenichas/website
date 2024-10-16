@@ -8,7 +8,8 @@
 
     <super-prof></super-prof>
 
-    <location></location>
+    <!-- <location></location> -->
+    <contact></contact>
 
     <app-footer></app-footer>
   </div>
@@ -22,6 +23,7 @@ import Location from "../components/locations";
 import AppFooter from "../components/footer";
 import GithubAccount from "../components/githubAccount.vue";
 import WelcomeCard from "../components/welcomeCard.vue";
+import Contact from "../components/contact.vue";
 
 export default {
   name: "Home",
@@ -33,6 +35,7 @@ export default {
     AppFooter,
     GithubAccount,
     WelcomeCard,
+    Contact,
   },
   metaInfo: {
     title: "Work by Eleni Chasioti",

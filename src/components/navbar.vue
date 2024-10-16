@@ -3,14 +3,8 @@
     <div class="navbar8-navbar-interactive">
       <!-- Logo and title container aligned to the left -->
       <div class="navbar8-logo-container">
-        <router-link to="/home">
-          <!-- <img
-            alt="Eleni Chasioti Logo"
-            :src="logoSrc"
-            class="navbar8-image1"
-          /> -->
-        </router-link>
-        <span> { Eleni Chasioti }</span>
+        <router-link to="/home"> </router-link>
+        <span class="initial"> E.</span>
       </div>
 
       <!-- Desktop Menu -->
@@ -78,6 +72,25 @@ export default {
 </script>
 
 <style scoped>
+.initial {
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+/* Style for links in the navigation bar */
+nav span {
+  font-size: 1rem;
+  font-weight: normal; /* Normal weight for non-hovered state */
+  text-decoration: none; /* No underline by default */
+  transition: font-weight 0.3s, text-decoration 0.3s; /* Smooth transition */
+}
+
+nav span:hover {
+  font-size: 1rem;
+  font-weight: bold; /* Bolder on hover */
+  text-decoration: underline; /* Underline on hover */
+}
+
 .navbar8-container1 {
   z-index: 10;
   top: 0;
@@ -85,7 +98,7 @@ export default {
   display: flex;
   position: sticky;
   justify-content: center;
-  background-color: #fff;
+  background-color: var(--dl-color-theme-neutral-light);
 }
 
 .navbar8-navbar-interactive {
@@ -133,7 +146,7 @@ export default {
 }
 
 .hamburger-container {
-  background-color: #fff;
+  background-color: var(--dl-color-theme-neutral-light);
   height: 32px;
   width: 32px;
   display: flex;
@@ -148,10 +161,10 @@ export default {
   display: none;
   flex-direction: column;
   position: absolute;
-  top: 70px;
+  top: 90px;
   left: 0;
   width: 100%;
-  background-color: #fff;
+  background-color: var(--dl-color-theme-neutral-light);
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
