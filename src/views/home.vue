@@ -5,6 +5,7 @@
     <welcome-card></welcome-card>
 
     <GithubAccount> </GithubAccount>
+    <cube-scene></cube-scene>
 
     <super-prof></super-prof>
 
@@ -24,6 +25,7 @@ import AppFooter from "../components/footer";
 import GithubAccount from "../components/githubAccount.vue";
 import WelcomeCard from "../components/welcomeCard.vue";
 import Contact from "../components/contact.vue";
+import CubeScene from "../components/cubeScene.vue";
 
 export default {
   name: "Home",
@@ -36,6 +38,7 @@ export default {
     GithubAccount,
     WelcomeCard,
     Contact,
+    CubeScene,
   },
   metaInfo: {
     title: "Work by Eleni Chasioti",
