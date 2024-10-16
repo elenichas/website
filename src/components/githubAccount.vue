@@ -9,11 +9,11 @@
         My GitHub
       </a>
     </h1>
-    <p>Click on the graph to see the repo in github account!</p>
+    <p>Each circle in the graph is a repo, click to find out more!</p>
     <div class="svg-container">
       <svg ref="graph"></svg>
     </div>
-    <h6>graph created with d3.js</h6>
+    <h6>Graph created with d3.js</h6>
   </div>
 </template>
 
@@ -27,7 +27,7 @@ export default {
     return {
       githubUsername: "elenichas",
       repos: [],
-      margin: { top: 50, right: 50, bottom: 50, left: 50 },
+      margin: { top: 50, right: 150, bottom: 50, left: 50 }, // Added right margin to fit the legend
     };
   },
   mounted() {
@@ -134,14 +134,34 @@ export default {
         .domain([0, d3.max(this.repos, (d) => d.commits)])
         .range([5, 20]);
 
+      // Add X axis
       svg
         .append("g")
         .attr("transform", `translate(0,${height})`)
         .call(d3.axisBottom(x));
 
+      // Add X axis label
+      svg
+        .append("text")
+        .attr("text-anchor", "end")
+        .attr("x", width / 2 + this.margin.left)
+        .attr("y", height + this.margin.top - 10)
+        .text("Creation Date");
+
+      // Add Y axis
       svg.append("g").call(d3.axisLeft(y));
 
-      const circles = svg
+      // Add Y axis label
+      svg
+        .append("text")
+        .attr("text-anchor", "end")
+        .attr("x", -height / 2 + this.margin.top)
+        .attr("y", -this.margin.left + 20)
+        .attr("transform", "rotate(-90)")
+        .text("Number of Commits");
+
+      // Add circles for repos
+      svg
         .selectAll("circle")
         .data(this.repos)
         .enter()
@@ -150,11 +170,50 @@ export default {
         .attr("cy", (d) => y(d.commits))
         .attr("r", (d) => radius(d.commits))
         .attr("fill", (d) => color(d.language))
-        .attr("stroke", "#333")
-        .attr("stroke-width", 1)
         .on("click", (event, d) => {
           window.open(d.url, "_blank");
+        })
+        .on("mouseover", function (event, d) {
+          d3.select(this).attr("stroke", "#000").attr("stroke-width", 2);
+
+          svg
+            .append("text")
+            .attr("x", x(d.created_at))
+            .attr("y", y(d.commits) - radius(d.commits) - 10) // Position above the circle
+            .attr("text-anchor", "middle")
+            .attr("class", "repo-name")
+            .text(d.name);
+        })
+        .on("mouseout", function () {
+          d3.select(this).attr("stroke", null).attr("stroke-width", null);
+
+          // Remove the text on mouseout
+          svg.selectAll(".repo-name").remove();
         });
+
+      // Add legend to the right of the graph
+      const legend = svg
+        .selectAll(".legend")
+        .data(color.domain())
+        .enter()
+        .append("g")
+        .attr("class", "legend")
+        .attr("transform", (d, i) => `translate(${width + 20},${i * 20})`); // Adjust translation for legend
+
+      legend
+        .append("rect")
+        .attr("x", 0)
+        .attr("width", 18)
+        .attr("height", 18)
+        .style("fill", color);
+
+      legend
+        .append("text")
+        .attr("x", 24)
+        .attr("y", 9)
+        .attr("dy", ".35em")
+        .style("text-anchor", "start")
+        .text((d) => d || "Unknown Language");
     },
   },
 };
@@ -165,19 +224,21 @@ export default {
   width: 85%;
   margin: auto;
   padding: 20px;
-  border: 1px solid #eee;
+  /* border: 1px solid #eee; 
   border-radius: 8px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); */
   margin: 2% 0;
+  fill: black;
 }
 
 .svg-container {
   width: 100%;
   overflow: hidden;
+  padding-top: 8px;
 }
 
 svg {
-  background: #f5f5f5;
+  background: #ffffff;
 }
 
 @media (max-width: 768px) {

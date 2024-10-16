@@ -25,12 +25,13 @@
   --dl-space-space-threeunits: 48px;
   --dl-color-theme-neutral-dark: #191818;
   --dl-radius-radius-cardradius: 8px;
-  --dl-color-theme-neutral-light: #fbfaf9;
+  --dl-color-theme-neutral-light: #dfdfdf;
   --dl-radius-radius-imageradius: 8px;
   --dl-radius-radius-inputradius: 24px;
   --dl-radius-radius-buttonradius: 24px;
   --dl-space-space-oneandhalfunits: 24px;
 }
+
 .button {
   color: var(--dl-color-theme-neutral-dark);
   display: inline-block;
@@ -166,35 +167,35 @@
 }
 .thq-heading-1 {
   font-size: 48px;
-  font-family: "SF Pro Display Regular", "SF Pro Display Regular Placeholder",
-    "-apple-system", "BlinkMacSystemFont", sans-serif;
+  font-family: "Red Hat Display", "-apple-system", "BlinkMacSystemFont",
+    sans-serif;
   font-weight: 700;
   line-height: 1.5;
 }
 .thq-heading-2 {
   font-size: 35px;
-  font-family: "SF Pro Display Regular", "SF Pro Display Regular Placeholder",
-    "-apple-system", "BlinkMacSystemFont", sans-serif;
+  font-family: "Red Hat Display", "-apple-system", "BlinkMacSystemFont",
+    sans-serif;
   font-weight: 600;
   line-height: 1.5;
 }
 .thq-heading-3 {
   font-size: 26px;
-  font-family: "SF Pro Display Regular", "SF Pro Display Regular Placeholder",
-    "-apple-system", "BlinkMacSystemFont", sans-serif;
+  font-family: "Red Hat Display", "-apple-system", "BlinkMacSystemFont",
+    sans-serif;
   font-weight: 600;
   line-height: 1.5;
 }
 .thq-body-large {
   font-size: 18px;
-  font-family: "SF Pro Display Regular", "SF Pro Display Regular Placeholder",
-    "-apple-system", "BlinkMacSystemFont", sans-serif;
+  font-family: "Red Hat Display", "-apple-system", "BlinkMacSystemFont",
+    sans-serif;
   line-height: 1.5;
 }
 .thq-body-small {
   font-size: 16px;
-  font-family: "SF Pro Display Regular", "SF Pro Display Regular Placeholder",
-    "-apple-system", "BlinkMacSystemFont", sans-serif;
+  font-family: "Red Hat Display", "-apple-system", "BlinkMacSystemFont",
+    sans-serif;
   line-height: 1.5;
 }
 .thq-team-image-round {
@@ -495,8 +496,7 @@
 }
 .Content {
   font-size: 16px;
-  font-family: "SF Pro Display Regular", "SF Pro Display Regular Placeholder",
-    "-apple-system", "BlinkMacSystemFont", sans-serif;
+  font-family: "Red Hat Display", sans-serif;
   font-weight: 400;
   line-height: 1.15;
   text-transform: none;

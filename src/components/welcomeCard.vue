@@ -24,7 +24,7 @@ export default {
   name: "WelcomeCard",
   data() {
     return {
-      avatarSrc: require("@/images/avatar.png"), // Path to your avatar image
+      avatarSrc: require("@/images/eleniBig.png"), // Path to your avatar image
       titles: [
         "I'm an Architect",
         "I am a Frontend Developer",
@@ -91,7 +91,7 @@ export default {
   align-items: center;
   padding: 20px;
   border-radius: 20px;
-  background-color: #f9f9f9;
+  /* background-color: #f9f9f9; */
   max-width: 800px;
   margin: 0 auto;
 }
@@ -111,7 +111,7 @@ export default {
 .name {
   font-size: 2.5rem;
   font-weight: bold;
-  color: #6c63ff; /* Customize your color */
+  color: #000000; /* Customize your color */
   margin-bottom: 10px;
 }
 
