@@ -7,6 +7,9 @@
     <!-- <cube-scene></cube-scene> -->
     <!-- <super-prof></super-prof> -->
     <!-- <location></location> -->
+
+    <skill-set></skill-set>
+
     <contact></contact>
 
     <app-footer></app-footer>
@@ -23,6 +26,7 @@ import GithubAccount from "../components/githubAccount.vue";
 import WelcomeCard from "../components/welcomeCard.vue";
 import Contact from "../components/contact.vue";
 import CubeScene from "../components/cubeScene.vue";
+import SkillSet from "../components/skillSet.vue";
 
 export default {
   name: "Home",
@@ -35,6 +39,7 @@ export default {
     WelcomeCard,
     Contact,
     CubeScene,
+    SkillSet,
   },
   metaInfo: {
     title: "Work by Eleni Chasioti",

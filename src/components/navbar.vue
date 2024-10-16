@@ -19,7 +19,7 @@
           <span>Development</span>
         </router-link>
         <router-link to="/about" class="navbar-link">
-          <span>About Me</span>
+          <span>Playground</span>
         </router-link>
       </nav>
 

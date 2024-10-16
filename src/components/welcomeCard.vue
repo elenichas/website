@@ -11,7 +11,8 @@
         ever-improving, high-performing solutions.
       </p>
       <!-- Use router-link to navigate to the "About" page -->
-      <router-link to="/about" class="about-me-btn"> About me </router-link>
+      <!-- <router-link to="/about" class="about-me-btn"> About me </router-link> -->
+      <a :href="cvLink" download class="download-btn"> download CV </a>
     </div>
     <div class="welcome-avatar">
       <img :src="avatarSrc" alt="Eleni Chasioti Avatar" class="avatar-img" />
@@ -20,10 +21,14 @@
 </template>
 
 <script>
+// Use a direct path for the CV as it's located in the public folder
+const cvLink = "/cv/Eleni_Chasioti_CV.pdf"; // This points to the public folder
+
 export default {
   name: "WelcomeCard",
   data() {
     return {
+      cvLink,
       avatarSrc: require("@/images/eleniBig.png"), // Path to your avatar image
       titles: [
         "I'm an Architect",
@@ -85,6 +90,25 @@ export default {
 </script>
 
 <style scoped>
+.download-btn {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  font-size: 1em;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.download-btn i {
+  margin-right: 10px;
+}
+
+.download-btn:hover {
+  background-color: #555;
+}
 .welcome-card {
   display: flex;
   justify-content: center;
