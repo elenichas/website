@@ -5,10 +5,10 @@
         © 2024 Eleni Chasioti All Rights Reserved.
       </div>
       <div class="text-under-copyright">
-        Made with love and iced lattes( no sugar) 1,2024
+        Made with love and iced lattes( no sugar)
       </div>
       <div class="text-under-copyright-small">
-        Last updated by Eleni on October 1,2024
+        Last updated by Eleni on October 16th, 2024
       </div>
     </div>
 

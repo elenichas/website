@@ -1,14 +1,16 @@
 <template>
   <div class="superprof-card">
-    <div class="contact-content thq-flex-row">
+    <!-- Contact Section -->
+    <div class="contact-content flex justify-between items-center">
       <div class="contact-details">
         <slot name="heading1">
           <h1 class="contact-heading">Teaching</h1>
         </slot>
       </div>
     </div>
+
     <!-- Top Header Section with Filters -->
-    <div class="header-filters flex space-x-4 mb-4">
+    <div class="header-filters flex flex-wrap space-x-4 mb-4">
       <span class="filter-tag">Graphic design</span>
       <span class="filter-tag">Web Design</span>
       <span class="filter-tag">UX design</span>
@@ -18,10 +20,8 @@
     <!-- Main Content -->
     <div
       class="main-content flex flex-col md:flex-row justify-between items-start"
-      style="display: flex"
     >
-      <!-- Left Section with Title and Description -->
-      <div class="left-content">
+      <div class="md:w-1/2">
         <h1 class="title">
           Unlock Your Creative Potential with Online UX/UI Design Lessons!
         </h1>
@@ -29,23 +29,10 @@
           Ready to dive into the exciting world of UX/UI design using Figma and
           Adobe XD? Join me today!
         </p>
-
-        <!-- Lesson Location -->
-        <div class="lesson-location mt-4">
-          <h2>Lesson location</h2>
-          <button class="location-btn">Online</button>
-        </div>
       </div>
 
-      <!-- Right Section with Tutor Info -->
-      <div class="right-content flex flex-col items-center mt-8 md:mt-0">
-        <img
-          class="tutor-image rounded-full w-32 h-32 object-cover"
-          :src="src"
-          alt="Tutor"
-        />
-
-        <h2 class="tutor-name mt-4">Eleni</h2>
+      <div class="tutor-info md:w-1/3 mt-6 md:mt-0">
+        <h2 class="tutor-name">Eleni</h2>
         <p class="rating"><span>⭐ 5</span> (8 reviews)</p>
         <p class="hourly-rate mt-2">Hourly rate: £50</p>
         <p class="response-time mt-1">Response Time: 2h</p>
@@ -60,16 +47,16 @@
           <button class="contact-btn mt-4">Contact</button>
         </a>
         <p class="free-lesson mt-2">1st lesson free</p>
-      </div>
-    </div>
 
-    <!-- Footer with SuperProf Description -->
-    <div class="footer mt-8">
-      <p class="superprof-description">
-        Eleni is one of our best Graphic design tutors. They have a high-quality
-        profile, verified qualifications, a quick response time, and great
-        reviews from students!
-      </p>
+        <!-- Footer Section -->
+        <div class="footer mt-8">
+          <p class="superprof-description">
+            Eleni is one of our best Graphic design tutors. They have a
+            high-quality profile, verified qualifications, a quick response
+            time, and great reviews from students!
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -77,31 +64,20 @@
 <script>
 export default {
   name: "SuperprofCard",
-  data() {
-    return {
-      src: require("@/images/eleni.jpg"), // Path to your avatar image
-    };
-  },
 };
 </script>
 
 <style scoped>
-img {
-  width: 20%;
-  border-radius: 8px;
-}
 .superprof-card {
-  width: 85%;
+  background-color: white;
+  width: 90%;
   margin: auto;
   padding: 20px;
-  border: 1px solid #eee;
-  border-radius: 8px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-  margin: 2% 0;
 }
-
+.contact-heading {
+  padding: 12px;
+}
 .header-filters {
-  padding-top: 16px;
   font-size: 0.9rem;
 }
 
@@ -110,10 +86,11 @@ img {
   color: white;
   padding: 5px 10px;
   border-radius: 50px;
+  margin: 4px;
 }
 
 .title {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: bold;
 }
 
@@ -122,28 +99,12 @@ img {
   font-size: 1.1rem;
 }
 
-.lesson-location {
-  font-size: 1.1rem;
-}
-
-.location-btn {
-  background-color: #f3f4f6;
-  padding: 8px 16px;
-  border-radius: 50px;
-  font-weight: bold;
-  margin-top: 0.5rem;
-}
-
-.right-content {
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
+.tutor-info {
+  text-align: left;
 }
 
 .tutor-name {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: bold;
 }
 
@@ -173,5 +134,27 @@ img {
   border-radius: 8px;
   margin-top: 20px;
   font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.4rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+  }
+  .tutor-name {
+    font-size: 1.2rem;
+  }
+  .tutor-info {
+    margin-top: 20px;
+  }
+}
+
+@media (min-width: 769px) {
+  .superprof-card {
+    max-width: 1200px;
+  }
 }
 </style>
