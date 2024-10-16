@@ -1,34 +1,26 @@
 <template>
   <app-navbar></app-navbar>
   <div class="about">
-    <!-- Navbar Component -->
-
     <div class="about-container">
-      <div class="about-image">
-        <img :src="imageSrc" alt="Eleni Working at Desk" class="about-avatar" />
-      </div>
-      <div class="about-content">
-        <h2>About me.</h2>
-        <p>
-          I am a constantly evolving web developer passionate about designing
-          captivating web solutions with great attention to detail! I love
-          working on the intersection of design and development, creating
-          intuitive user experiences!
-        </p>
-        <!-- Use the download attribute to enable PDF download -->
-        <a :href="cvLink" download class="download-btn">
-          <i class="fas fa-download"></i> DOWNLOAD CV
-        </a>
-      </div>
+      <h2>About me</h2>
+      <p>
+        I am a constantly evolving web developer passionate about designing
+        captivating web solutions with great attention to detail! I love working
+        on the intersection of design and development, creating intuitive user
+        experiences!
+      </p>
+      <!-- Use the download attribute to enable PDF download -->
+      <a :href="cvLink" download class="download-btn"> DOWNLOAD CV </a>
     </div>
-    <skill-set></skill-set>
   </div>
+  <skill-set></skill-set>
+  <GithubAccount> </GithubAccount>
 </template>
 
 <script>
 import AppNavbar from "../components/navbar";
-import BackToHome from "../components/backToHome.vue";
 import SkillSet from "../components/skillSet.vue";
+import GithubAccount from "../components/githubAccount.vue";
 
 // Use require if the image is inside the src/assets directory
 const imageSrc = require("@/images/avatar.png"); // Use require if it's in the assets folder
@@ -41,6 +33,7 @@ export default {
   components: {
     AppNavbar,
     SkillSet,
+    GithubAccount,
   },
   data() {
     return {
@@ -53,14 +46,9 @@ export default {
 
 <style scoped>
 .about-container {
-  display: flex;
+  text-align: center;
   align-items: center;
-  justify-content: space-between;
-  padding: 40px;
-  background-color: #f9f9f9;
-  border-radius: 20px;
-  max-width: 900px;
-  margin: 0 auto;
+  padding: 4% 20%;
 }
 
 .about-image {
@@ -80,7 +68,7 @@ export default {
 
 h2 {
   font-size: 2.5rem;
-  color: #6c63ff;
+  color: #000000;
   margin-bottom: 20px;
 }
 
@@ -95,7 +83,7 @@ p {
   align-items: center;
   padding: 10px 20px;
   border-radius: 12px;
-  background-color: #6c63ff;
+  background-color: #000000;
   color: white;
   text-decoration: none;
   font-size: 1rem;
@@ -108,6 +96,7 @@ p {
 }
 
 .download-btn:hover {
-  background-color: #5a54db;
+  background-color: #ffffff;
+  color: #000000;
 }
 </style>

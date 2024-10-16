@@ -1,6 +1,6 @@
 <template>
   <div class="skillset-container">
-    <h2>My skill-set.</h2>
+    <h2>My skill-set</h2>
     <div class="skills-grid">
       <div v-for="(skill, index) in skills" :key="index" class="skill-icon">
         <img :src="skill.src" :alt="skill.name" />
@@ -73,7 +73,7 @@ export default {
 
 h2 {
   font-size: 2rem;
-  color: #6c63ff;
+  color: #000000;
   margin-bottom: 20px;
 }
 
