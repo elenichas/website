@@ -1,19 +1,18 @@
 <template>
   <app-navbar></app-navbar>
-  <div class="about">
+  <!-- <div class="about">
     <div class="about-container">
-      <h2>About me</h2>
       <p>
         I am a constantly evolving web developer passionate about designing
         captivating web solutions with great attention to detail! I love working
         on the intersection of design and development, creating intuitive user
         experiences!
       </p>
-      <!-- Use the download attribute to enable PDF download -->
-      <a :href="cvLink" download class="download-btn"> download CV </a>
+     Use the download attribute to enable PDF download 
+      <a :href="cvLink" download class="download-btn"> download CV </a> 
     </div>
   </div>
-  <skill-set></skill-set>
+  <skill-set></skill-set> -->
   <GithubAccount> </GithubAccount>
 </template>
 
