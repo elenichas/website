@@ -44,7 +44,11 @@
       >
         Development
       </router-link>
-      <router-link to="/about" class="mobile-link" @click="closeMobileMenu">
+      <router-link
+        to="/about"
+        class="mobile-link-button"
+        @click="closeMobileMenu"
+      >
         About Me
       </router-link>
     </div>
@@ -72,6 +76,22 @@ export default {
 </script>
 
 <style scoped>
+.mobile-link-button {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  font-size: 1em;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.mobile-link-button:hover {
+  background-color: #555;
+}
+
 .initial {
   font-size: 4rem;
   font-weight: bold;
