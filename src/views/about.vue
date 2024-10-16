@@ -10,7 +10,7 @@
         experiences!
       </p>
       <!-- Use the download attribute to enable PDF download -->
-      <a :href="cvLink" download class="download-btn"> DOWNLOAD CV </a>
+      <a :href="cvLink" download class="download-btn"> download CV </a>
     </div>
   </div>
   <skill-set></skill-set>
@@ -79,15 +79,14 @@ p {
 }
 
 .download-btn {
-  display: inline-flex;
-  align-items: center;
   padding: 10px 20px;
-  border-radius: 12px;
-  background-color: #000000;
-  color: white;
-  text-decoration: none;
-  font-size: 1rem;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  font-size: 1em;
   cursor: pointer;
+  margin-top: 15px;
   transition: background-color 0.3s ease;
 }
 
@@ -96,7 +95,6 @@ p {
 }
 
 .download-btn:hover {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #555;
 }
 </style>

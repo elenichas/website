@@ -11,7 +11,7 @@
         ever-improving, high-performing solutions.
       </p>
       <!-- Use router-link to navigate to the "About" page -->
-      <router-link to="/about" class="about-me-btn"> ABOUT ME </router-link>
+      <router-link to="/about" class="about-me-btn"> About me </router-link>
     </div>
     <div class="welcome-avatar">
       <img :src="avatarSrc" alt="Eleni Chasioti Avatar" class="avatar-img" />
@@ -143,21 +143,25 @@ h2 {
 }
 
 .description {
-  margin-top: 10px;
+  padding: 10px;
   font-size: 1rem;
   color: #555;
 }
 
 .about-me-btn {
-  display: inline-block;
-  margin-top: 20px;
   padding: 10px 20px;
-  border-radius: 10px;
-  color: white;
-  background-color: #000;
-  text-decoration: none;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  font-size: 1em;
   cursor: pointer;
-  font-size: 1rem;
+  margin-top: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.about-me-btn:hover {
+  background-color: #555;
 }
 
 .welcome-avatar {
