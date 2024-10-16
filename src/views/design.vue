@@ -1,7 +1,7 @@
 <template>
   <app-navbar></app-navbar>
   <!-- UX/UI Gallery -->
-  <h2 class="gallery-title">UX/UI</h2>
+  <h2 class="gallery-title">UX/UI Design</h2>
   <div class="gallery-container">
     <div class="gallery-item" v-for="(image, index) in uxuiImages" :key="index">
       <router-link :to="image.route">
@@ -14,7 +14,7 @@
   </div>
 
   <!-- Architecture Gallery -->
-  <h2 class="gallery-title">Architecture</h2>
+  <h2 class="gallery-title">Computational Design</h2>
   <div class="gallery-container">
     <div
       class="gallery-item"
