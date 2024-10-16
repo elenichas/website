@@ -1,6 +1,6 @@
 <template>
   <div class="contact-section">
-    <p class="contact-info"><span class="wave">👋</span> Get in touch at</p>
+    <p class="contact-info">Get in touch at</p>
     <h1 class="email">eleni.chasioti.19@alumni.ucl.ac.uk</h1>
     <div class="button-container">
       <a

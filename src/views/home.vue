@@ -3,12 +3,9 @@
     <app-navbar></app-navbar>
 
     <welcome-card></welcome-card>
-
     <!-- <GithubAccount> </GithubAccount> -->
     <!-- <cube-scene></cube-scene> -->
-
-    <super-prof></super-prof>
-
+    <!-- <super-prof></super-prof> -->
     <!-- <location></location> -->
     <contact></contact>
 
