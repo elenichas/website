@@ -1,6 +1,6 @@
 <template>
-  <div id="mygraph">
-    <h1>
+  <div class="github-container">
+    <h2>
       <a
         href="https://github.com/elenichas"
         target="_blank"
@@ -8,12 +8,14 @@
       >
         My GitHub
       </a>
-    </h1>
-    <p>Each circle in the graph is a repo, click to find out more!</p>
-    <div class="svg-container">
-      <svg ref="graph"></svg>
+    </h2>
+    <div id="mygraph">
+      <p>Each circle in the graph is a repo, click to find out more!</p>
+      <div class="svg-container">
+        <svg ref="graph"></svg>
+      </div>
+      <h6>Graph created with d3.js with data from the github API</h6>
     </div>
-    <h6>Graph created with d3.js</h6>
   </div>
 </template>
 
@@ -220,15 +222,22 @@ export default {
 </script>
 
 <style scoped>
+.github-container {
+  text-align: center;
+  margin-top: 40px;
+  padding: 0 5%;
+}
+
 #mygraph {
   width: 85%;
   margin: auto;
   padding: 20px;
-  /* border: 1px solid #eee; 
-  border-radius: 8px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); */
-  margin: 2% 0;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   fill: black;
+  background-color: white;
 }
 
 .svg-container {
@@ -238,7 +247,7 @@ export default {
 }
 
 svg {
-  background: #ffffff;
+  /* background: #e6e6e6; */
 }
 
 @media (max-width: 768px) {

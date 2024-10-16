@@ -107,6 +107,7 @@ nav span:hover {
   align-items: center;
   padding: 20px;
   justify-content: space-between;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Logo and name container aligned to the left */

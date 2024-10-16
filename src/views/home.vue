@@ -4,8 +4,8 @@
 
     <welcome-card></welcome-card>
 
-    <GithubAccount> </GithubAccount>
-    <cube-scene></cube-scene>
+    <!-- <GithubAccount> </GithubAccount> -->
+    <!-- <cube-scene></cube-scene> -->
 
     <super-prof></super-prof>
 
@@ -35,7 +35,6 @@ export default {
     SuperProf,
     Location,
     AppFooter,
-    GithubAccount,
     WelcomeCard,
     Contact,
     CubeScene,
