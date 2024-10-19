@@ -26,6 +26,18 @@
       <h3 class="marquee-heading-medium">Skills —</h3>
       <h3 class="marquee-heading-medium">Skills —</h3>
       <h3 class="marquee-heading-medium">Skills —</h3>
+      <h3 class="marquee-heading-medium">Skills —</h3>
+      <h3 class="marquee-heading-medium">Skills —</h3>
+      <h3 class="marquee-heading-medium">Skills —</h3>
+      <h3 class="marquee-heading-medium">Skills —</h3>
+      <h3 class="marquee-heading-medium">Skills —</h3>
+      <h3 class="marquee-heading-medium">Skills —</h3>
+      <h3 class="marquee-heading-medium">Skills —</h3>
+      <h3 class="marquee-heading-medium">Skills —</h3>
+      <h3 class="marquee-heading-medium">Skills —</h3>
+      <h3 class="marquee-heading-medium">Skills —</h3>
+      <h3 class="marquee-heading-medium">Skills —</h3>
+      <h3 class="marquee-heading-medium">Skills —</h3>
     </div>
     <div class="skills-grid">
       <div v-for="(skill, index) in skills" :key="index" class="skill-icon">
@@ -121,6 +133,8 @@ h2 {
   gap: 20px;
   justify-items: center;
   max-width: 800px;
+  justify-self: center;
+  padding-top: 2%;
 }
 
 .skill-icon {
