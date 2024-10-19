@@ -64,9 +64,9 @@ export default {
   width: 100%;
   padding: 20px 0;
   text-align: center;
-  color: var(--dl-color-theme-neutral-light);
+  color: var(--dl-color-theme-neutral-dark);
   justify-content: center;
-  background-color: var(--dl-color-theme-neutral-dark);
+  background-color: var(--dl-color-theme-neutral-light);
 }
 
 .footer-container {
@@ -100,14 +100,14 @@ export default {
 }
 
 .social-icon {
-  color: white;
+  color: rgb(0, 0, 0);
   font-size: 24px;
   transition: color 0.3s ease;
   text-decoration: none;
 }
 
 .social-icon:hover {
-  color: #1da1f2;
+  color: #a1a1a1;
   /* Hover color, adjust as needed */
 }
 </style>

@@ -10,7 +10,7 @@
 
     <skill-set></skill-set>
 
-    <contact></contact>
+    <!-- <contact></contact> -->
 
     <app-footer></app-footer>
   </div>

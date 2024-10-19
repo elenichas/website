@@ -16,7 +16,7 @@ import "./style.css";
 const routes = [
   {
     name: "Home",
-    path: "/home",
+    path: "/",
     component: Home,
   },
   {
