@@ -1,6 +1,32 @@
 <template>
   <div class="skillset-container">
-    <h2>My skill-set</h2>
+    <div
+      data-w-id="5cef7106-c6d1-63a8-a9b3-8676c72f168d"
+      class="section-marquee"
+      style="
+        will-change: transform;
+        transform: translate3d(-25.0439vw, 0px, 0px) scale3d(1, 1, 1)
+          rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+        transform-style: preserve-3d;
+      "
+    >
+      <h3 class="marquee-heading-medium">Skills —</h3>
+      <h3 class="marquee-heading-medium">Skills —</h3>
+      <h3 class="marquee-heading-medium">Skills —</h3>
+      <h3 class="marquee-heading-medium">Skills —</h3>
+      <h3 class="marquee-heading-medium">Skills —</h3>
+      <h3 class="marquee-heading-medium">Skills —</h3>
+      <h3 class="marquee-heading-medium">Skills —</h3>
+      <h3 class="marquee-heading-medium">Skills —</h3>
+      <h3 class="marquee-heading-medium">Skills —</h3>
+      <h3 class="marquee-heading-medium">Skills —</h3>
+      <h3 class="marquee-heading-medium">Skills —</h3>
+      <h3 class="marquee-heading-medium">Skills —</h3>
+      <h3 class="marquee-heading-medium">Skills —</h3>
+      <h3 class="marquee-heading-medium">Skills —</h3>
+      <h3 class="marquee-heading-medium">Skills —</h3>
+      <h3 class="marquee-heading-medium">Skills —</h3>
+    </div>
     <div class="skills-grid">
       <div v-for="(skill, index) in skills" :key="index" class="skill-icon">
         <img :src="skill.src" :alt="skill.name" />
@@ -65,6 +91,18 @@ export default {
 </script>
 
 <style scoped>
+.section-marquee {
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+  display: flex;
+}
+
+.marquee-heading-medium {
+  white-space: nowrap;
+  font-weight: 300;
+  font-size: 2rem;
+}
+
 .skillset-container {
   text-align: center;
   margin-top: 40px;
@@ -82,11 +120,12 @@ h2 {
   grid-template-columns: repeat(5, 1fr);
   gap: 20px;
   justify-items: center;
+  max-width: 800px;
 }
 
 .skill-icon {
   background-color: #fff;
-  padding: 15px;
+  padding: 5px;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;

@@ -1,8 +1,10 @@
 <template>
   <div class="welcome-card">
     <div class="welcome-text">
-      <p>Hi 👋, my name is</p>
-      <h1 class="name">Eleni Chasioti</h1>
+      <div class="welcome-avatar">
+        <img :src="avatarSrc" alt="Eleni Chasioti Avatar" class="avatar-img" />
+      </div>
+      <h1 class="name">I am Eleni Chasioti</h1>
       <h2>
         <span class="job-title">{{ animatedTitle }}</span>
       </h2>
@@ -13,9 +15,9 @@
       <!-- Use router-link to navigate to the "About" page -->
       <!-- <router-link to="/about" class="about-me-btn"> About me </router-link> -->
       <a :href="cvLink" download class="download-btn"> download CV </a>
-    </div>
-    <div class="welcome-avatar">
-      <img :src="avatarSrc" alt="Eleni Chasioti Avatar" class="avatar-img" />
+      <a href="mailto:eleni.chasioti.19@alumni.ucl.ac.uk" class="download-btn">
+        Contact Me
+      </a>
     </div>
   </div>
 </template>
@@ -30,11 +32,7 @@ export default {
     return {
       cvLink,
       avatarSrc: require("@/images/eleniBig.png"), // Path to your avatar image
-      titles: [
-        "I'm an Architect",
-        "I am a Frontend Developer",
-        "I am a Product Designer",
-      ], // Titles to rotate through
+      titles: ["an Architect", "a Frontend Developer", "a UX/ UI Designer"], // Titles to rotate through
       currentTitleIndex: 0, // Index to track the current title
       animatedTitle: "", // Variable for displaying the current animated text
       isErasing: false, // Flag to track whether text is being erased
@@ -98,7 +96,7 @@ export default {
   border-radius: 25px;
   font-size: 1em;
   cursor: pointer;
-  margin-top: 15px;
+  margin: 5px;
   transition: background-color 0.3s ease;
 }
 
@@ -111,20 +109,19 @@ export default {
 }
 .welcome-card {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 20px;
   border-radius: 20px;
-  /* background-color: #f9f9f9; */
-  max-width: 800px;
   margin: 0 auto;
+  text-align: center;
 }
 
 .welcome-text {
   flex: 1;
   padding-right: 20px;
-  text-align: right; /* Add this line to align the text to the right */
-  width: 300px;
+  text-align: center; /* Add this line to align the text to the right */
 }
 
 .welcome-text p {
@@ -140,7 +137,7 @@ export default {
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 8rem;
   color: #333;
 }
 
@@ -191,14 +188,13 @@ h2 {
 .welcome-avatar {
   flex: 0.5;
   text-align: center;
+  justify-items: center;
+  padding-bottom: 5%;
 }
 
 .avatar-img {
-  width: 80%;
-  height: 80%;
-
-  border-radius: 50%;
+  width: 15%;
+  height: 15%;
   object-fit: cover;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 </style>

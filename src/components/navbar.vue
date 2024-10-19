@@ -3,13 +3,13 @@
     <div class="navbar8-navbar-interactive">
       <!-- Logo and title container aligned to the left -->
       <div class="navbar8-logo-container">
-        <router-link to="/home"> </router-link>
+        <router-link to="/"> </router-link>
         <span class="initial"> E.</span>
       </div>
 
       <!-- Desktop Menu -->
       <nav class="navbar8-links1" v-if="!isMobileMenuOpen">
-        <router-link to="/home" class="navbar-link">
+        <router-link to="/" class="navbar-link">
           <span>Home</span>
         </router-link>
         <router-link to="/design" class="navbar-link">
@@ -43,13 +43,6 @@
         @click="closeMobileMenu"
       >
         Development
-      </router-link>
-      <router-link
-        to="/about"
-        class="mobile-link-button"
-        @click="closeMobileMenu"
-      >
-        About Me
       </router-link>
     </div>
   </header>
@@ -118,7 +111,7 @@ nav span:hover {
   display: flex;
   position: sticky;
   justify-content: center;
-  background-color: var(--dl-color-theme-neutral-light);
+  /* background-color: var(--dl-color-theme-neutral-light); */
 }
 
 .navbar8-navbar-interactive {
@@ -127,7 +120,7 @@ nav span:hover {
   align-items: center;
   padding: 20px;
   justify-content: space-between;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
 }
 
 /* Logo and name container aligned to the left */
