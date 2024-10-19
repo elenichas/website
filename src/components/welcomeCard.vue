@@ -15,7 +15,7 @@
       <!-- Use router-link to navigate to the "About" page -->
       <!-- <router-link to="/about" class="about-me-btn"> About me </router-link> -->
       <a :href="cvLink" download class="download-btn"> download CV </a>
-      <a href="mailto:eleni.chasioti.19@alumni.ucl.ac.uk" class="download-btn">
+      <a href="mailto:eleni.chasioti.19@alumni.ucl.ac.uk" class="contact-btn">
         Contact Me
       </a>
     </div>
@@ -93,7 +93,18 @@ export default {
   background-color: #333;
   color: #fff;
   border: none;
-  border-radius: 25px;
+  border-radius: 25px 0 0 25px;
+  font-size: 1em;
+  cursor: pointer;
+  margin: 2px;
+  transition: background-color 0.3s ease;
+}
+.contact-btn {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 0 25px 25px 0;
   font-size: 1em;
   cursor: pointer;
   margin: 5px;
