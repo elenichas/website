@@ -1,132 +1,154 @@
 <template>
   <app-navbar></app-navbar>
+  <div class="container">
+    <div>
+      <img class="hero-image" :src="hero" alt="hero image" />
+    </div>
+    <div>
+      <h1 class="title">Hapi</h1>
+      <h1 class="title">Housing & Automated Production Infrastructure</h1>
+      <h4>Architectural Thesis, 2019</h4>
+      <h4>Team : Georgia Strinopoulou, Eleni Chasioti</h4>
+    </div>
+
+    <section>
+      <h2>Research and Precedents</h2>
+      <p>
+        The Hapi project delves into the digital possibilities of how people may
+        coexist in future mega cities. It tackles the growing housing shortage
+        in urban centers and emphasizes the need for sustainable, affordable,
+        and adaptable living spaces. The project's goal is to provide solutions
+        to these challenges by proposing a large-scale, modular structure
+        composed of 3D-printed elements, which are assembled on-site and then
+        elevated to their designated floors. Each home is designed using a
+        unique algorithmic process, tailored to accommodate various family
+        sizes. The project offers flexible solutions for cohabitation, with
+        options for the connection or expansion of housing units. Additionally,
+        the homes are equipped with smart sensors and robotic systems to monitor
+        internal conditions, optimizing energy use and promoting efficiency.
+      </p>
+    </section>
+
+    <div>
+      <img :src="tall" alt="Background" class="tall" />
+      <!-- Your other content here -->
+    </div>
+    <section height="40%">
+      <v-carousel cycle hide-delimiters show-arrows="hover">
+        <v-carousel-item
+          v-for="(image, index) in images"
+          :key="index"
+          :src="image.url"
+          :alt="'Workshop Image ' + (index + 1)"
+        ></v-carousel-item>
+      </v-carousel>
+    </section>
+    <section>
+      <h2>Design Process & Results</h2>
+      <p>
+        <v-list two-line>
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title
+                ><strong>Innovative Aggregations:</strong></v-list-item-title
+              >
+              <v-list-item-subtitle
+                >Modular voxels enabled flexible and scalable housing
+                solutions.</v-list-item-subtitle
+              >
+            </v-list-item-content>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title
+                ><strong>Efficiency and Livability:</strong></v-list-item-title
+              >
+              <v-list-item-subtitle
+                >Shortest path and density studies ensured functional and
+                livable environments.</v-list-item-subtitle
+              >
+            </v-list-item-content>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title
+                ><strong
+                  >Customization and Adaptation:</strong
+                ></v-list-item-title
+              >
+              <v-list-item-subtitle
+                >The modular approach allowed for diverse configurations
+                adaptable to various contexts and needs.</v-list-item-subtitle
+              >
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title
+                ><strong
+                  >Advanced Fabrication Technigues:</strong
+                ></v-list-item-title
+              >
+              <v-list-item-subtitle
+                >The modular components were analyzed into rulings to then be
+                fabricated with hotwire cutting.
+              </v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </p>
+    </section>
+    <section height="40%">
+      <v-carousel
+        cycle
+        hide-delimiters
+        autoplay
+        interval="4000"
+        show-arrows="hover"
+      >
+        <v-carousel-item
+          v-for="(image, index) in renders"
+          :key="index"
+          :src="image.url"
+          :alt="'Workshop Image ' + (index + 1)"
+        ></v-carousel-item>
+      </v-carousel>
+    </section>
+  </div>
 </template>
 
 <script>
 import AppNavbar from "@/components/navbar";
+const videoSrc = "/vids/habitatVideo.webm";
 
 export default {
-  name: "HapiProject",
+  name: "WorkshopDesign",
   components: {
     AppNavbar,
   },
   data() {
     return {
-      hero: require("@/images/thesis/hero.jpg"),
-      wireframes: require("@/images/filosWireframes.png"),
-      prototypes: require("@/images/filosPrototypes.png"),
-      responsive: require("@/images/filosResponsive.png"),
+      tall: require("@/images/hapi/iso.png"),
+      hero: require("@/images/hapi/hapihero.jpg"),
+      images: [
+        { url: require("@/images/hapi/carousel0.png") },
+        { url: require("@/images/hapi/carousel1.png") },
+        { url: require("@/images/hapi/carousel2.png") },
+      ],
+      renders: [
+        { url: require("@/images/hapi/render1.jpg") },
+        { url: require("@/images/hapi/render2.jpg") },
+        { url: require("@/images/hapi/render3.jpg") },
+        { url: require("@/images/hapi/render4.jpg") },
+      ],
     };
   },
 };
 </script>
 
 <style scoped>
-.hero-image {
-  width: 100%;
-}
-
-.image-full-width {
-  width: 100%;
-}
-
-.visual-design-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px; /* Adds space between the two children */
-  padding-bottom: 20px;
-}
-
-/* Media query to stack the children on smaller screens */
-@media (max-width: 1000px) {
-  .visual-design-container {
-    flex-direction: column; /* Stack the children vertically */
-    gap: 20px; /* Adds space between the two children */
-  }
-}
-
-.visual-design-text {
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-.style-guide {
-  display: flex;
-  justify-content: space-between;
-  background-color: #ffffff;
-  color: #000;
-  padding: 20px;
-  width: 100%;
-}
-
-.typography-section {
-  flex: 1;
-}
-
-.typography {
-  margin-top: 20px;
-}
-
-.large-text {
-  font-size: 100px;
-  font-family: "Inter";
-  color: #000;
-}
-
-.font-name {
-  font-size: 18px;
-  margin-top: 10px;
-}
-
-.alphabet {
-  font-size: 24px;
-  color: rgba(47, 47, 47, 0.7);
-}
-
-.colors-section {
-  flex: 1;
-}
-
-.color-swatches {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.color-swatch {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 14px;
-  color: white;
-  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
-}
-
-.btn {
-  padding: 10px 20px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 25px;
-  font-size: 1em;
-  cursor: pointer;
-  margin-top: 15px;
-  transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-  background-color: #555;
-}
-
-.ux-case-study {
-  margin: 0 auto;
-  padding: 0 4%;
-}
-
 .title {
   font-size: 2.5rem;
   color: #333;
@@ -142,10 +164,6 @@ section {
   margin-bottom: 40px;
 }
 
-ul {
-  padding: 8px;
-}
-
 h2 {
   font-size: 1.75rem;
   padding-bottom: 5px;
@@ -158,53 +176,46 @@ p {
   margin-bottom: 15px;
 }
 
-.personas-container {
-  display: flex;
-  margin-bottom: 40px;
+.background-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.persona {
-  flex: 1;
-  padding: 40px;
+.tall {
+  width: 100%;
+  height: 100%;
+  padding-bottom: 2%;
 }
 
-.persona1 {
-  background-color: #2d3030;
-  color: #eeece7;
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  /* Ensures the image is behind other content */
 }
 
-.persona2 {
-  background-color: #eeece7;
-  color: #2d3030;
+.container {
+  margin: 0 auto;
+  padding: 0 4%;
 }
 
-@media (max-width: 768px) {
-  .ux-case-study {
-    padding: 15px;
-  }
+.hero-image {
+  width: 100%;
+}
 
-  .title {
-    font-size: 2rem;
-  }
+.workshop-presentation {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
 
-  h2 {
-    font-size: 1.5rem;
-  }
-
-  p {
-    font-size: 0.95rem;
-  }
-
-  .personas-container {
-    flex-direction: column;
-  }
-
-  .visual-design-text {
-    width: 100%;
-  }
-
-  .style-guide {
-    flex-direction: column;
-  }
+.v-carousel-item img {
+  object-fit: cover;
 }
 </style>

@@ -46,19 +46,19 @@ export default {
           src: require("@/images/gallery/hapi.png"),
           alt: "Hapi Project",
           title: "Hapi Thesis Project",
-          route: "/architecture/hapi-project",
+          route: "/design/hapi-project",
         },
         {
           src: require("@/images/gallery/thesis.png"),
           alt: "Thesis Project",
           title: "Circket Master Thesis Project",
-          route: "/architecture/thesis-project",
+          route: "/design/thesis-project",
         },
         {
           src: require("@/images/gallery/workshop.png"),
           alt: "Workshop Design",
           title: "Digital Features Workshop",
-          route: "/architecture/workshop-design",
+          route: "/design/workshop-design",
         },
       ],
       uxuiImages: [

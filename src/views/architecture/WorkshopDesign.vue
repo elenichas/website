@@ -8,7 +8,7 @@
       <h1 class="title">Architectural Geometry and Habitat</h1>
       <h2 class="title">Digital Futures 2020</h2>
       <h4>Role: Computational Designer</h4>
-      <h4>Team : Peter Bus, Jackson Bi, Sandro Sanin</h4>
+      <h4>Team : Peter Bus, Jackson Bi, Sandro Sanin, Eleni Chasioti</h4>
     </div>
     <section>
       <h2>Research and Precedents</h2>
@@ -32,8 +32,14 @@
       </p>
     </section>
 
-    <section>
-      <v-carousel cycle hide-delimiters autoplay interval="4000" height="40%">
+    <section height="40%">
+      <v-carousel
+        cycle
+        hide-delimiters
+        autoplay
+        interval="4000"
+        show-arrows="hover"
+      >
         <v-carousel-item
           v-for="(image, index) in images"
           :key="index"

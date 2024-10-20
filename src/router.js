@@ -40,15 +40,15 @@ const routes = [
     component: NotFound,
   },
   {
-    path: "/architecture/hapi-project",
+    path: "/design/hapi-project",
     component: HapiProject,
   },
   {
-    path: "/architecture/thesis-project",
+    path: "/design/thesis-project",
     component: ThesisProject,
   },
   {
-    path: "/architecture/workshop-design",
+    path: "/design/workshop-design",
     component: WorkshopDesign,
   },
   {
