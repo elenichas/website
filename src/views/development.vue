@@ -92,4 +92,14 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+h3 {
+  padding-top: 3%;
+}
+
+a:hover {
+  font-size: 1rem;
+  font-weight: bold; /* Bolder on hover */
+  text-decoration: underline; /* Underline on hover */
+}
+</style>
