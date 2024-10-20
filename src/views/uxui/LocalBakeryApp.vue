@@ -12,22 +12,17 @@
     </div>
 
     <section>
-      <h2>1. Problem Statement & Research</h2>
+      <h2>1. Problem Statement</h2>
 
       <p>
-        <strong>Problem Statement</strong> <br />
         The local Filipino coffee shop in my neighborhood is very popular with
         working people, but they experience long queues in the morning, which
         leads to delays. I designed this app to allow customers to preorder or
         get their coffee and pastries delivered, helping reduce wait times and
-        expand the business.
-      </p>
-      <p>
-        <strong>Research</strong> <br />
-        I observed the morning rush at the coffee shop and interviewed several
-        customers and staff to understand the impact of long queues. I also
-        analyzed existing apps in the food service industry that offer
-        preordering and delivery to identify best practices and areas for
+        expand the business. I observed the morning rush at the coffee shop and
+        interviewed several customers and staff to understand the impact of long
+        queues. I also analyzed existing apps in the food service industry that
+        offer preordering and delivery to identify best practices and areas for
         improvement. The shop already has a strong brand identity, which I
         incorporated into the app design for consistency.
       </p>
@@ -135,25 +130,6 @@
         <img style="width: 100%" :src="prototypes" alt="hero image" />
       </div>
     </section>
-
-    <!-- <section>
-      <h2>5. User Testing & Feedback</h2>
-      <p>
-        <strong>Usability Testing</strong> <br />
-        I tested the app with six users, including regular customers and new
-        users. The testing focused on the preorder flow, delivery tracking, and
-        product browsing. The main feedback was that users wanted clearer icons
-        for delivery and pickup options and more prominent notifications for
-        order updates.
-      </p>
-      <p>
-        <strong>Iterations Based on Feedback:</strong> Based on the feedback, I
-        made changes to the icons and added push notifications for order
-        statuses (e.g., order confirmed, ready for pickup, or out for delivery).
-        I also optimized the delivery tracking map to display estimated times
-        more clearly.
-      </p>
-    </section> -->
 
     <section>
       <h2>6. Visual Design & Branding</h2>

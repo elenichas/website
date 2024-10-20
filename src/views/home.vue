@@ -3,14 +3,10 @@
     <app-navbar></app-navbar>
 
     <welcome-card></welcome-card>
-    <!-- <GithubAccount> </GithubAccount> -->
-    <!-- <cube-scene></cube-scene> -->
-    <!-- <super-prof></super-prof> -->
-    <!-- <location></location> -->
 
     <skill-set></skill-set>
 
-    <!-- <contact></contact> -->
+    <GithubAccount> </GithubAccount>
 
     <app-footer></app-footer>
   </div>
@@ -40,6 +36,7 @@ export default {
     Contact,
     CubeScene,
     SkillSet,
+    GithubAccount,
   },
   metaInfo: {
     title: "Work by Eleni Chasioti",

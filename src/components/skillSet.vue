@@ -1,6 +1,6 @@
 <template>
   <div class="skillset-container">
-    <div
+    <!-- <div
       data-w-id="5cef7106-c6d1-63a8-a9b3-8676c72f168d"
       class="section-marquee"
       style="
@@ -38,7 +38,7 @@
       <h3 class="marquee-heading-medium">Skills —</h3>
       <h3 class="marquee-heading-medium">Skills —</h3>
       <h3 class="marquee-heading-medium">Skills —</h3>
-    </div>
+    </div> -->
     <div class="skills-grid">
       <div v-for="(skill, index) in skills" :key="index" class="skill-icon">
         <img :src="skill.src" :alt="skill.name" />
