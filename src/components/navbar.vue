@@ -18,9 +18,9 @@
         <router-link to="/development" class="navbar-link">
           <span>Development</span>
         </router-link>
-        <router-link to="/about" class="navbar-link">
+        <!-- <router-link to="/about" class="navbar-link">
           <span>Playground</span>
-        </router-link>
+        </router-link> -->
       </nav>
 
       <!-- Hamburger menu for mobile -->

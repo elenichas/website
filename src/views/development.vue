@@ -5,13 +5,24 @@
   <!-- Architecture Gallery -->
   <h2 class="gallery-title">Development</h2>
   <div class="gallery-container">
-    <div class="gallery-item" v-for="(image, index) in images" :key="index">
+    <div class="gallery-item" v-for="(image, index) in images0" :key="index">
       <div class="image-wrapper">
         <img :src="image.src" :alt="image.alt" />
       </div>
       <h3>{{ image.name }}</h3>
       <p>Stack: {{ image.stack }}</p>
-      <p>Date: {{ image.date }}</p>
+      <a :href="image.gitlabLink" target="_blank" class="gallery-link"
+        >View on GitLab</a
+      >
+    </div>
+  </div>
+  <div class="gallery-container">
+    <div class="gallery-item" v-for="(image, index) in images1" :key="index">
+      <div class="image-wrapper">
+        <img :src="image.src" :alt="image.alt" />
+      </div>
+      <h3>{{ image.name }}</h3>
+      <p>Stack: {{ image.stack }}</p>
       <a :href="image.gitlabLink" target="_blank" class="gallery-link"
         >View on GitLab</a
       >
@@ -29,48 +40,51 @@ export default {
   },
   data() {
     return {
-      images: [
+      images0: [
         {
           name: "Master Thesis (Cricket Plug in)",
-          stack: "C#",
+          stack: "C#,Rhino, Grasshopper",
           date: "2024-10-01",
-          gitlabLink: "https://gitlab.com/your-gitlab-link-1",
-          src: require("@/images/thesis/hero.jpg"),
+          gitlabLink:
+            "https://github.com/elenichas/Cricket-Plugin-Master-thesis",
+          src: require("@/images/development/cricket2.png"),
         },
         {
-          name: "View Analysis( GH Plug in)",
-          stack: "C#",
+          name: "View Analysis (GH Plug in)",
+          stack: "C#,Rhino, Grasshopper",
           date: "2024-09-15",
-          gitlabLink: "https://gitlab.com/your-gitlab-link-2",
-          src: require("@/images/thesis/hero.jpg"),
+          gitlabLink: "https://github.com/elenichas/view-analysis-plugin",
+          src: require("@/images/development/viewAnalysis.png"),
         },
         {
           name: "Portfolio Website",
-          stack: "Vue.js, JavaScript,CSS,HTML",
+          stack: "Vue.js, JavaScript,CSS,HTML,d3",
           date: "2024-08-20",
-          gitlabLink: "https://gitlab.com/your-gitlab-link-3",
-          src: require("@/images/thesis/hero.jpg"),
+          gitlabLink: "https://github.com/elenichas/website",
+          src: require("@/images/development/portfolio.png"),
         },
+      ],
+      images1: [
         {
-          name: "Book Record App",
+          name: "Book Reviews App",
           stack: "Express.Js, Node.js,JavaScript",
           date: "2024-07-10",
-          gitlabLink: "https://gitlab.com/your-gitlab-link-4",
-          src: require("@/images/thesis/hero.jpg"),
+          gitlabLink: "https://github.com/elenichas/expressBookReviews",
+          src: require("@/images/development/expressApp.png"),
         },
         {
-          name: "Budget App",
-          stack: "React,JavaScript,HTML,CSS",
+          name: "Expenses App",
+          stack: "React,TypeScript,HTML,CSS,React Bootstrap,react-chartjs-2",
           date: "2024-06-30",
-          gitlabLink: "https://gitlab.com/your-gitlab-link-5",
-          src: require("@/images/thesis/hero.jpg"),
+          gitlabLink: "https://github.com/elenichas/expenses-app",
+          src: require("@/images/development/reactApp.jpg"),
         },
         {
-          name: "Open Library Search",
+          name: "Book Search App",
           stack: "Flask,Python,HTML,HTTP",
           date: "2024-05-12",
-          gitlabLink: "https://github.com/elenichas/flask-python-API",
-          src: require("@/images/thesis/hero.jpg"),
+          gitlabLink: "https://github.com/elenichas/book-search-python-flask",
+          src: require("@/images/development/bookSearchApp.png"),
         },
       ],
     };
@@ -78,56 +92,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.gallery-title {
-  font-size: 2rem;
-  font-weight: bold;
-  text-align: center;
-  margin-top: 40px;
-  margin-bottom: 20px;
-}
-
-.gallery-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  padding: 20px;
-  margin: 0 auto;
-  width: 90%;
-}
-
-.gallery-item {
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-}
-
-.image-wrapper {
-  overflow: hidden;
-  /* border-radius: 10px; */
-  height: 0;
-  padding-bottom: 150%;
-  position: relative;
-  transition: transform 0.3s ease-in-out;
-}
-
-.image-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: transform 0.3s ease-in-out;
-}
-
-.image-wrapper:hover img {
-  transform: scale(1.2);
-}
-
-.image-title {
-  font-size: 1.1rem;
-  margin-top: 10px;
-  font-weight: 500;
-}
-</style>
+<style scoped></style>

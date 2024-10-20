@@ -45,19 +45,19 @@ export default {
         {
           src: require("@/images/gallery/hapi.png"),
           alt: "Hapi Project",
-          title: "Hapi Project",
+          title: "Hapi Thesis Project",
           route: "/architecture/hapi-project",
         },
         {
           src: require("@/images/gallery/thesis.png"),
           alt: "Thesis Project",
-          title: "Thesis Project",
+          title: "Circket Master Thesis Project",
           route: "/architecture/thesis-project",
         },
         {
           src: require("@/images/gallery/workshop.png"),
           alt: "Workshop Design",
-          title: "Workshop Design",
+          title: "Digital Features Workshop",
           route: "/architecture/workshop-design",
         },
       ],
@@ -70,14 +70,14 @@ export default {
         },
         {
           src: require("@/images/gallery/kapihan.png"),
-          alt: "Local Bakery App",
-          title: "Local Bakery App",
+          alt: "Coffee shop App",
+          title: "Coffee shop App",
           route: "/uxui/local-bakery-app",
         },
         {
-          src: require("@/images/gallery/hapi.png"),
-          alt: "Animal Shelter Website",
-          title: "Animal Shelter Website",
+          src: require("@/images/gallery/wip.png"),
+          alt: "Building Configurator App",
+          title: "Building Configurator App",
           route: "/uxui/animal-shelter-website",
         },
       ],
@@ -85,56 +85,4 @@ export default {
   },
 };
 </script>
-<style scoped>
-.gallery-title {
-  font-size: 2rem;
-  font-weight: bold;
-  text-align: center;
-  margin-top: 40px;
-  margin-bottom: 20px;
-}
-
-.gallery-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  padding: 20px;
-  margin: 0 auto;
-  width: 90%;
-}
-
-.gallery-item {
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-}
-
-.image-wrapper {
-  overflow: hidden;
-  /* border-radius: 10px; */
-  height: 0;
-  padding-bottom: 150%;
-  position: relative;
-  transition: transform 0.3s ease-in-out;
-}
-
-.image-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: transform 0.3s ease-in-out;
-}
-
-.image-wrapper:hover img {
-  transform: scale(1.2);
-}
-
-.image-title {
-  font-size: 1.1rem;
-  margin-top: 10px;
-  font-weight: 500;
-}
-</style>
+<style scoped></style>
