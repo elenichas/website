@@ -16,7 +16,6 @@
 import AppNavbar from "../components/navbar";
 import AppHero from "../components/hero";
 import SuperProf from "../components/superprof";
-import Location from "../components/locations";
 import AppFooter from "../components/footer";
 import GithubAccount from "../components/githubAccount.vue";
 import WelcomeCard from "../components/welcomeCard.vue";
@@ -30,7 +29,6 @@ export default {
     AppNavbar,
     AppHero,
     SuperProf,
-    Location,
     AppFooter,
     WelcomeCard,
     Contact,
