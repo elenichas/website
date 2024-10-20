@@ -1,6 +1,6 @@
 <template>
   <app-navbar></app-navbar>
-  <div class="ux-case-study">
+  <div class="container">
     <div>
       <img class="hero-image" :src="hero" alt="hero image" />
     </div>
@@ -17,8 +17,7 @@
         href="https://ucl.academia.edu/EleniChasioti"
         target="_blank"
         class="link"
-        >Read paper on Academia</a
-      >
+        >Read paper on Academia</a>
     </div>
     <section>
       <h2>1. Overview</h2>
@@ -280,7 +279,7 @@ export default {
   background-color: #555;
 }
 
-.ux-case-study {
+.container {
   margin: 0 auto;
   padding: 0 4%;
 }
@@ -337,7 +336,7 @@ p {
 }
 
 @media (max-width: 768px) {
-  .ux-case-study {
+  .container {
     padding: 15px;
   }
 
