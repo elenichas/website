@@ -32,3 +32,7 @@ This project is a Vue.js application that uses D3.js to visualize data from a Gi
    ```bash
    git clone https://github.com/your-username/your-repo.git
    ```
+
+# optimize mp4 videos
+
+Run `ffmpeg -i source.mp4 -c:v libvpx -b:v 1M -c:a libvorbis target.mp4`
