@@ -1,5 +1,13 @@
 <template>
   <footer class="footer">
+    <button class="custom-button">
+      <a href="mailto:eleni.chasioti.19@alumni.ucl.ac.uk" class="button-text"
+        >Let's talk</a
+      >
+      <div class="button-icon">
+        <span class="mdi mdi-arrow-bottom-right"></span>
+      </div>
+    </button>
     <div>
       <div class="text-footer-copyright">
         © 2024 Eleni Chasioti All Rights Reserved.
@@ -41,9 +49,13 @@ export default {
 </script>
 
 <style scoped>
+.custom-button {
+  margin-bottom: 24px;
+}
+
 .footer {
   width: 100%;
-  padding: 20px;
+  margin-top: 32px;
   color: var(--dl-color-theme-neutral-dark);
 }
 

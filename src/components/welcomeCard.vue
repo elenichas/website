@@ -5,16 +5,13 @@
       <h2>
         <span class="job-title">{{ animatedTitle }}</span>
       </h2>
-      <!-- <p class="description">
-        Constantly focused on learning and expanding my expertise, crafting
-        ever-improving, high-performing solutions.
-      </p> -->
-      <!-- Use router-link to navigate to the "About" page -->
-      <!-- <router-link to="/about" class="about-me-btn"> About me </router-link> -->
-      <a :href="cvLink" download class="download-btn"> download CV </a>
-      <a href="mailto:eleni.chasioti.19@alumni.ucl.ac.uk" class="contact-btn">
-        Contact Me
-      </a>
+
+      <button class="custom-button">
+        <a :href="cvLink" download class="button-text">Download CV</a>
+        <div class="button-icon">
+          <span class="mdi mdi-arrow-bottom-right"></span>
+        </div>
+      </button>
     </div>
   </div>
 </template>
@@ -89,6 +86,52 @@ export default {
 </script>
 
 <style scoped>
+.custom-button {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  padding: 8px 6px 8px 24px;
+  border: 2px solid black;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s, color 0.3;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+.button-text {
+  font-size: 14px;
+  margin-right: 15px;
+  color: black;
+}
+
+.button-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  border-radius: 50%;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+.custom-button:hover {
+  background-color: black;
+  color: white;
+  transform: translate3d(2px, -2px, 4px);
+  transform-style: preserve-3d;
+}
+
+.custom-button:hover .button-text {
+  color: white;
+}
+
 .download-btn {
   padding: 10px 20px;
   background-color: #333;
@@ -100,6 +143,7 @@ export default {
   margin: 2px;
   transition: background-color 0.3s ease;
 }
+
 .contact-btn {
   padding: 10px 20px;
   background-color: #333;
@@ -123,7 +167,6 @@ export default {
 .welcome-card {
   display: flex;
   flex-direction: column;
-  padding: 20px;
   margin: 0 auto;
 }
 
@@ -138,23 +181,25 @@ export default {
 }
 
 .name {
-  font-size: 2.5rem;
+  font-size: 4vw;
   font-weight: bold;
-  color: #000000; /* Customize your color */
+  color: #000000;
+  /* Customize your color */
   margin-bottom: 10px;
 }
 
 .job-title {
   color: #000;
   font-weight: bold;
-  border-right: 2px solid black; /* Cursor effect */
+  border-right: 2px solid black;
+  /* Cursor effect */
   display: inline-block;
   padding-right: 5px;
   animation: blinkCursor 0.7s steps(1) infinite;
-  font-size: 6vw;
+  font-size: 3vw;
   color: #333;
   padding: 4% 0;
-  min-height: 140px;
+  height: 60px;
 }
 
 /* Cursor blinking animation */
@@ -162,9 +207,11 @@ export default {
   0% {
     border-right-color: black;
   }
+
   50% {
     border-right-color: transparent;
   }
+
   100% {
     border-right-color: black;
   }

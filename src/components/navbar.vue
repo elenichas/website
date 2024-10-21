@@ -17,13 +17,11 @@
         </router-link>
         <router-link to="/design" class="navbar-link">
           <div>
-            <span class="mdi mdi-circle-medium"></span>
             <span>DESIGN</span>
           </div>
         </router-link>
         <router-link to="/development" class="navbar-link">
           <div>
-            <span class="mdi mdi-circle-medium"></span>
             <span>DEVELOPMENT</span>
           </div>
         </router-link>
