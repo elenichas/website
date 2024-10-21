@@ -1,44 +1,8 @@
 <template>
   <div class="skillset-container">
-    <!-- <div
-      data-w-id="5cef7106-c6d1-63a8-a9b3-8676c72f168d"
-      class="section-marquee"
-      style="
-        will-change: transform;
-        transform: translate3d(-25.0439vw, 0px, 0px) scale3d(1, 1, 1)
-          rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
-        transform-style: preserve-3d;
-      "
-    >
-      <h3 class="marquee-heading-medium">Skills —</h3>
-      <h3 class="marquee-heading-medium">Skills —</h3>
-      <h3 class="marquee-heading-medium">Skills —</h3>
-      <h3 class="marquee-heading-medium">Skills —</h3>
-      <h3 class="marquee-heading-medium">Skills —</h3>
-      <h3 class="marquee-heading-medium">Skills —</h3>
-      <h3 class="marquee-heading-medium">Skills —</h3>
-      <h3 class="marquee-heading-medium">Skills —</h3>
-      <h3 class="marquee-heading-medium">Skills —</h3>
-      <h3 class="marquee-heading-medium">Skills —</h3>
-      <h3 class="marquee-heading-medium">Skills —</h3>
-      <h3 class="marquee-heading-medium">Skills —</h3>
-      <h3 class="marquee-heading-medium">Skills —</h3>
-      <h3 class="marquee-heading-medium">Skills —</h3>
-      <h3 class="marquee-heading-medium">Skills —</h3>
-      <h3 class="marquee-heading-medium">Skills —</h3>
-      <h3 class="marquee-heading-medium">Skills —</h3>
-      <h3 class="marquee-heading-medium">Skills —</h3>
-      <h3 class="marquee-heading-medium">Skills —</h3>
-      <h3 class="marquee-heading-medium">Skills —</h3>
-      <h3 class="marquee-heading-medium">Skills —</h3>
-      <h3 class="marquee-heading-medium">Skills —</h3>
-      <h3 class="marquee-heading-medium">Skills —</h3>
-      <h3 class="marquee-heading-medium">Skills —</h3>
-      <h3 class="marquee-heading-medium">Skills —</h3>
-      <h3 class="marquee-heading-medium">Skills —</h3>
-      <h3 class="marquee-heading-medium">Skills —</h3>
-      <h3 class="marquee-heading-medium">Skills —</h3>
-    </div> -->
+    <h2>
+      <a> My stack </a>
+    </h2>
     <div class="skills-grid">
       <div v-for="(skill, index) in skills" :key="index" class="skill-icon">
         <img :src="skill.src" :alt="skill.name" />
@@ -103,38 +67,22 @@ export default {
 </script>
 
 <style scoped>
-.section-marquee {
-  grid-column-gap: 16px;
-  grid-row-gap: 16px;
-  display: flex;
-}
-
-.marquee-heading-medium {
-  white-space: nowrap;
-  font-weight: 300;
-  font-size: 2rem;
-}
-
 .skillset-container {
-  text-align: center;
-  margin-top: 40px;
-  padding: 0 100px; /* Add padding to the sides for smaller screens */
+  padding-top: 20px;
 }
-
 h2 {
   font-size: 2rem;
   color: #000000;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(10, 1fr);
   gap: 20px;
   justify-items: center;
   max-width: 800px;
-  justify-self: center;
-  padding-top: 2%;
+  justify-self: flex-start;
 }
 
 .skill-icon {
@@ -195,7 +143,7 @@ h2 {
 /* Responsive Design */
 @media (max-width: 1024px) {
   .skills-grid {
-    grid-template-columns: repeat(4, 1fr); /* 4 columns for tablet screens */
+    grid-template-columns: repeat(5, 1fr); /* 4 columns for tablet screens */
   }
 }
 

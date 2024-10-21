@@ -9,8 +9,8 @@
         My GitHub
       </a>
     </h2>
+    <p>Each circle in the graph is a repo, click to find out more!</p>
     <div id="mygraph">
-      <p>Each circle in the graph is a repo, click to find out more!</p>
       <div class="svg-container">
         <svg ref="graph"></svg>
       </div>
@@ -235,9 +235,9 @@ export default {
 
 #mygraph {
   width: 100%;
-  margin: auto;
-  padding: 20px;
+  margin-top: 24px;
   fill: black;
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
 .svg-container {
@@ -245,9 +245,10 @@ export default {
   overflow: hidden;
   padding-top: 8px;
 }
-
-svg {
-  /* background: #e6e6e6; */
+h2 {
+  font-size: 2rem;
+  color: #000000;
+  margin-bottom: 20px;
 }
 
 @media (max-width: 768px) {

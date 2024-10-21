@@ -3,17 +3,19 @@
 
   <div class="main-container">
     <div class="left-section">
-      <!-- <skill-set></skill-set> -->
       <div class="welcome-avatar">
         <img :src="avatarSrc" alt="Eleni Chasioti Avatar" class="avatar-img" />
       </div>
-
-      <app-footer></app-footer>
     </div>
 
     <div class="right-section">
       <welcome-card></welcome-card>
+
+      <skill-set></skill-set>
+
       <GithubAccount> </GithubAccount>
+
+      <app-footer></app-footer>
     </div>
   </div>
 </template>
@@ -69,7 +71,7 @@ export default {
 
 .avatar-img {
   width: 60%;
-  height: 60%;
+
   min-height: 120px;
   min-width: 120px;
   object-fit: cover;
@@ -89,10 +91,13 @@ export default {
 }
 
 .left-section {
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .right-section {
-  padding: 20px;
+  padding: 20px 20px 20px 0px;
 }
 </style>
