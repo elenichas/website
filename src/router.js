@@ -60,7 +60,7 @@ const routes = [
     component: LocalBakeryApp,
   },
   {
-    path: "/uxui/animal-shelter-website",
+    path: "/uxui/configurator-app",
     component: AnimalShelterWebsite,
   },
 ];

@@ -128,7 +128,7 @@ export default {
       this.view = viewType;
     },
     updateMousePosition(event) {
-      this.mouseX = event.clientX + 20; // Offset the position slightly for better visibility
+      this.mouseX = event.clientX + 100; // Offset the position slightly for better visibility
       this.mouseY = event.clientY;
     },
   },
@@ -189,7 +189,8 @@ export default {
   left: 10px;
   font-size: 18px;
   font-weight: bold;
-  color: #ababab;
+  color: #000000;
+  background-color: #ababab62;
   text-transform: uppercase;
   padding: 5px 10px;
   transition: opacity 0.3s ease;
@@ -203,18 +204,17 @@ export default {
 .gallery-title.list {
   font-size: 8vw;
   font-weight: 700;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   text-align: left;
-  padding-left: 32px;
 }
 
 /* For list view, show only text items */
 .image-title.list {
-  font-size: 20px;
+  font-size: 24px;
   font-size: 7vw;
   font-weight: bold;
   text-align: left;
-  cursor: pointer;
+  cursor: crosshair;
   color: #ababab;
   text-transform: uppercase;
   margin: 0;

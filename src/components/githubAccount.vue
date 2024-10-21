@@ -182,12 +182,12 @@ export default {
             .attr("stroke", (d) => color(d.language))
             .attr("stroke-width", 2)
             .attr("opacity", 1)
-            .attr("r", (d) => radius(d.commits * 2));
+            .attr("r", (d) => radius(d.commits * 4));
 
           svg
             .append("text")
             .attr("x", x(d.created_at))
-            .attr("y", y(d.commits) - radius(d.commits) - 10) // Position above the circle
+            .attr("y", y(d.commits) - radius(d.commits) - 20) // Position above the circle
             .attr("text-anchor", "middle")
             .attr("class", "repo-name")
             .text(d.name);
