@@ -5,41 +5,21 @@
         © 2024 Eleni Chasioti All Rights Reserved.
       </div>
       <div class="text-under-copyright">
-        Made with love and iced lattes( no sugar)
+        Made with love and lots of esspreso.
       </div>
       <div class="text-under-copyright-small">
-        Last updated by Eleni on October 16th, 2024
+        Last updated by Eleni on October, 2024
       </div>
     </div>
 
     <div class="footer-container">
-      <a
-        href="https://www.facebook.com/eleni.xasiwth?locale=en_GB"
-        target="_blank"
-        class="social-icon"
-      >
-        <i class="fab fa-facebook-f"></i>
-        <!-- Font Awesome Icon -->
-      </a>
-      <a
-        href="https://www.instagram.com/elenchasioti/"
-        target="_blank"
-        class="social-icon"
-      >
-        <i class="fab fa-instagram"></i>
-        <!-- Font Awesome Icon -->
-      </a>
-      <a href="https://x.com/elenichas" target="_blank" class="social-icon">
-        <i class="fab fa-twitter"></i>
-        <!-- Font Awesome Icon -->
-      </a>
       <a
         href="https://www.linkedin.com/in/eleni-chasioti-948486194/"
         target="_blank"
         class="social-icon"
       >
         <i class="fab fa-linkedin-in"></i>
-        <!-- Font Awesome Icon -->
+        <span class="mdi mdi-linkedin"></span>
       </a>
       <a
         href="https://github.com/elenichas"
@@ -47,7 +27,8 @@
         class="social-icon"
       >
         <i class="fab fa-github"></i>
-        <!-- Font Awesome Icon for GitHub -->
+
+        <span class="mdi mdi-github"></span>
       </a>
     </div>
   </footer>
@@ -62,16 +43,12 @@ export default {
 <style scoped>
 .footer {
   width: 100%;
-  padding: 20px 0;
-  text-align: center;
+  padding: 20px;
   color: var(--dl-color-theme-neutral-dark);
-  justify-content: center;
-  background-color: var(--dl-color-theme-neutral-light);
 }
 
 .footer-container {
   display: flex;
-  justify-content: center;
   gap: 20px;
   padding-top: 1%;
 }

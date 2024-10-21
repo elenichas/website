@@ -67,6 +67,7 @@ export default {
           }
         );
         const repos = response.data;
+        console.log(repos);
 
         const repoDataPromises = repos.map(async (repo) => {
           const commitsResponse = await axios.get(
@@ -128,7 +129,7 @@ export default {
         .range([height, 0]);
 
       const color = d3
-        .scaleOrdinal(d3.schemeCategory10)
+        .scaleOrdinal(d3.schemePastel1)
         .domain([...new Set(this.repos.map((d) => d.language))]);
 
       const radius = d3
@@ -172,11 +173,16 @@ export default {
         .attr("cy", (d) => y(d.commits))
         .attr("r", (d) => radius(d.commits))
         .attr("fill", (d) => color(d.language))
+        .attr("opacity", 0.6)
         .on("click", (event, d) => {
           window.open(d.url, "_blank");
         })
         .on("mouseover", function (event, d) {
-          d3.select(this).attr("stroke", "#000").attr("stroke-width", 2);
+          d3.select(this)
+            .attr("stroke", (d) => color(d.language))
+            .attr("stroke-width", 2)
+            .attr("opacity", 1)
+            .attr("r", (d) => radius(d.commits * 2));
 
           svg
             .append("text")
@@ -223,21 +229,15 @@ export default {
 
 <style scoped>
 .github-container {
-  text-align: center;
   margin-top: 40px;
-  padding: 0 5%;
+  /* padding: 0 5%; */
 }
 
 #mygraph {
-  width: 85%;
+  width: 100%;
   margin: auto;
   padding: 20px;
-  background-color: #fff;
-  padding: 15px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   fill: black;
-  background-color: white;
 }
 
 .svg-container {

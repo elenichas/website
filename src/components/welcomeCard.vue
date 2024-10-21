@@ -1,17 +1,14 @@
 <template>
   <div class="welcome-card">
     <div class="welcome-text">
-      <div class="welcome-avatar">
-        <img :src="avatarSrc" alt="Eleni Chasioti Avatar" class="avatar-img" />
-      </div>
       <h1 class="name">I am Eleni Chasioti</h1>
       <h2>
         <span class="job-title">{{ animatedTitle }}</span>
       </h2>
-      <p class="description">
+      <!-- <p class="description">
         Constantly focused on learning and expanding my expertise, crafting
         ever-improving, high-performing solutions.
-      </p>
+      </p> -->
       <!-- Use router-link to navigate to the "About" page -->
       <!-- <router-link to="/about" class="about-me-btn"> About me </router-link> -->
       <a :href="cvLink" download class="download-btn"> download CV </a>
@@ -32,9 +29,13 @@ export default {
     return {
       cvLink,
       avatarSrc: require("@/images/eleniBig.png"), // Path to your avatar image
-      titles: ["an Architect", "a Frontend Developer", "a UX/ UI Designer"], // Titles to rotate through
+      titles: [
+        "an Architect",
+        "a Computational Designer",
+        "a Software Developer",
+      ], // Titles to rotate through
       currentTitleIndex: 0, // Index to track the current title
-      animatedTitle: "", // Variable for displaying the current animated text
+      animatedTitle: "...", // Variable for displaying the current animated text
       isErasing: false, // Flag to track whether text is being erased
       typeSpeed: 150, // Typing speed in ms
       eraseSpeed: 100, // Erasing speed in ms
@@ -118,21 +119,17 @@ export default {
 .download-btn:hover {
   background-color: #555;
 }
+
 .welcome-card {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   padding: 20px;
-  border-radius: 20px;
   margin: 0 auto;
-  text-align: center;
 }
 
 .welcome-text {
   flex: 1;
   padding-right: 20px;
-  text-align: center; /* Add this line to align the text to the right */
 }
 
 .welcome-text p {
@@ -147,11 +144,6 @@ export default {
   margin-bottom: 10px;
 }
 
-h2 {
-  font-size: 8rem;
-  color: #333;
-}
-
 .job-title {
   color: #000;
   font-weight: bold;
@@ -159,6 +151,10 @@ h2 {
   display: inline-block;
   padding-right: 5px;
   animation: blinkCursor 0.7s steps(1) infinite;
+  font-size: 6vw;
+  color: #333;
+  padding: 4% 0;
+  min-height: 140px;
 }
 
 /* Cursor blinking animation */
