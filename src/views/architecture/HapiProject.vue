@@ -30,7 +30,7 @@
     </section>
 
     <div>
-      <img :src="tall" alt="Background" class="tall" />
+      <!-- <img :src="tall" alt="Background" class="tall" /> -->
       <!-- Your other content here -->
     </div>
     <section height="40%">
@@ -130,7 +130,7 @@ export default {
   },
   data() {
     return {
-      tall: require("@/images/hapi/iso.png"),
+      //tall: require("@/images/hapi/iso.png"),
       hero: require("@/images/hapi/hapihero.jpg"),
       images: [
         { url: require("@/images/hapi/carousel0.png") },

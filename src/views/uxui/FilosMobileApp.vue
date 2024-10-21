@@ -201,13 +201,17 @@
         with other users directly and finalize the details of the activity. Once
         agreed, the activity is scheduled in both users' calendars.
       </p>
-      <a
-        href="https://www.figma.com/proto/dSiLtVj2GKzRZYcfYoe8iW/KapihanApp?node-id=49-5572&t=qR7dRV7dwGhpgw8c-1"
-        target="_blank"
-        class="btn"
-      >
-        View the Interactive Prototype
-      </a>
+
+      <button class="custom-button">
+        <a
+          href="https://www.figma.com/proto/dSiLtVj2GKzRZYcfYoe8iW/KapihanApp?node-id=49-5572&t=qR7dRV7dwGhpgw8c-1"
+          class="button-text"
+          >Interactive Prototype</a
+        >
+        <div class="button-icon">
+          <span class="mdi mdi-arrow-bottom-right"></span>
+        </div>
+      </button>
     </section>
 
     <section>
