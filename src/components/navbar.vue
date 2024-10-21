@@ -4,32 +4,38 @@
       <!-- Logo and title container aligned to the left -->
       <div class="navbar8-logo-container">
         <router-link to="/"> </router-link>
-        <span class="initial"> E.</span>
+        <span class="initial">E.</span>
       </div>
 
-      <!-- Desktop Menu -->
-      <nav class="navbar8-links1" v-if="!isMobileMenuOpen">
+      <!-- Desktop Menu (only shown on large screens) -->
+      <nav class="navbar8-links1">
         <router-link to="/" class="navbar-link">
-          <span>Home</span>
+          <div>
+            <span class="mdi mdi-circle-medium"></span>
+            <span>HOME</span>
+          </div>
         </router-link>
         <router-link to="/design" class="navbar-link">
-          <span>Design</span>
+          <div>
+            <span class="mdi mdi-circle-medium"></span>
+            <span>DESIGN</span>
+          </div>
         </router-link>
         <router-link to="/development" class="navbar-link">
-          <span>Development</span>
+          <div>
+            <span class="mdi mdi-circle-medium"></span>
+            <span>DEVELOPMENT</span>
+          </div>
         </router-link>
-        <!-- <router-link to="/about" class="navbar-link">
-          <span>Playground</span>
-        </router-link> -->
       </nav>
 
-      <!-- Hamburger menu for mobile -->
+      <!-- Hamburger menu for mobile (shown on small screens) -->
       <div class="navbar8-burger-menu" @click="toggleMobileMenu">
-        <i class="fas fa-bars"></i>
+        <span class="mdi mdi-menu"></span>
       </div>
     </div>
 
-    <!-- Mobile Menu Dropdown -->
+    <!-- Mobile Menu Dropdown (only shown when hamburger is clicked) -->
     <div v-if="isMobileMenuOpen" class="navbar8-mobile-menu">
       <router-link to="/" class="mobile-link" @click="closeMobileMenu">
         Home
@@ -54,7 +60,6 @@ export default {
   data() {
     return {
       isMobileMenuOpen: false,
-      logoSrc: require("@/images/logo.png"), // Adjust the path to your logo image
     };
   },
   methods: {
@@ -69,39 +74,25 @@ export default {
 </script>
 
 <style scoped>
-.mobile-link-button {
-  padding: 10px 20px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 25px;
-  font-size: 1em;
-  cursor: pointer;
-  margin-top: 15px;
-  transition: background-color 0.3s ease;
-}
-
-.mobile-link-button:hover {
-  background-color: #555;
-}
-
+/* Initial Styles */
 .initial {
   font-size: 4rem;
   font-weight: bold;
 }
 
 /* Style for links in the navigation bar */
-nav span {
-  font-size: 1rem;
-  font-weight: normal; /* Normal weight for non-hovered state */
-  text-decoration: none; /* No underline by default */
-  transition: font-weight 0.3s, text-decoration 0.3s; /* Smooth transition */
+nav div {
+  font-size: 1.5rem;
+  font-weight: normal;
+  text-decoration: none;
+  transition: font-weight 0.3s, text-decoration 0.3s;
+  color: rgb(36, 36, 36);
 }
 
-nav span:hover {
-  font-size: 1rem;
-  font-weight: bold; /* Bolder on hover */
-  text-decoration: underline; /* Underline on hover */
+nav div:hover {
+  font-weight: bold;
+  text-decoration: underline;
+  color: rgb(0, 0, 0);
 }
 
 .navbar8-container1 {
@@ -111,7 +102,6 @@ nav span:hover {
   display: flex;
   position: sticky;
   justify-content: center;
-  /* background-color: var(--dl-color-theme-neutral-light); */
 }
 
 .navbar8-navbar-interactive {
@@ -120,54 +110,27 @@ nav span:hover {
   align-items: center;
   padding: 20px;
   justify-content: space-between;
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
 }
 
-/* Logo and name container aligned to the left */
+/* Logo container aligned to the left */
 .navbar8-logo-container {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 10px; /* Space between logo and name */
+  gap: 10px;
 }
 
-.navbar8-image1 {
-  height: 3rem;
-}
-
-.navbar8-name {
-  font-size: 1.2rem;
-  line-height: 1.5;
-  color: black;
-}
-
+/* Desktop navigation links */
 .navbar8-links1 {
   display: flex;
   gap: 20px;
   align-items: center;
 }
 
-.navbar-link {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  text-decoration: none;
-  color: black;
-}
-
+/* Hide the burger menu on large screens */
 .navbar8-burger-menu {
   display: none;
-}
-
-.hamburger-container {
-  background-color: var(--dl-color-theme-neutral-light);
-  height: 32px;
-  width: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  cursor: pointer;
+  font-size: 2rem;
 }
 
 /* Mobile Menu Styles */
@@ -178,34 +141,33 @@ nav span:hover {
   top: 90px;
   left: 0;
   width: 100%;
-  background-color: var(--dl-color-theme-neutral-light);
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  justify-content: flex-end;
+
+  z-index: 100;
 }
 
 .mobile-link {
-  display: flex;
-  align-items: center;
-  gap: 10px;
   padding: 15px 0;
   text-decoration: none;
   color: black;
 }
 
-.mobile-link i {
-  margin-right: 10px;
-}
-
+/* Responsive styling for smaller screens */
 @media (max-width: 767px) {
+  /* Hide desktop navigation links */
   .navbar8-links1 {
     display: none;
   }
 
+  /* Show the hamburger menu */
   .navbar8-burger-menu {
     display: flex;
     cursor: pointer;
   }
 
+  /* Show mobile menu when open */
   .navbar8-mobile-menu {
     display: flex;
   }

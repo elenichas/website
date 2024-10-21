@@ -1,14 +1,20 @@
 <template>
-  <div class="home-container">
-    <app-navbar></app-navbar>
+  <app-navbar></app-navbar>
 
-    <welcome-card></welcome-card>
+  <div class="main-container">
+    <div class="left-section">
+      <!-- <skill-set></skill-set> -->
+      <div class="welcome-avatar">
+        <img :src="avatarSrc" alt="Eleni Chasioti Avatar" class="avatar-img" />
+      </div>
 
-    <skill-set></skill-set>
+      <app-footer></app-footer>
+    </div>
 
-    <GithubAccount> </GithubAccount>
-
-    <app-footer></app-footer>
+    <div class="right-section">
+      <welcome-card></welcome-card>
+      <GithubAccount> </GithubAccount>
+    </div>
   </div>
 </template>
 
@@ -45,15 +51,48 @@ export default {
       },
     ],
   },
+  data() {
+    return {
+      avatarSrc: require("@/images/eleniBig.png"), // Path to your avatar image
+    };
+  },
 };
 </script>
 
 <style scoped>
+.welcome-avatar {
+  flex: 0.5;
+  text-align: center;
+  justify-items: center;
+  padding-bottom: 5%;
+}
+
+.avatar-img {
+  width: 60%;
+  height: 60%;
+  min-height: 120px;
+  min-width: 120px;
+  object-fit: cover;
+}
 .home-container {
   width: 100%;
   display: flex;
   min-height: 100vh;
   align-items: center;
   flex-direction: column;
+}
+
+.main-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 20px;
+}
+
+.left-section {
+  padding: 20px;
+}
+
+.right-section {
+  padding: 20px;
 }
 </style>

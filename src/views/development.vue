@@ -83,14 +83,14 @@ export default {
       mouseY: 0, // Mouse Y position
       images: [
         {
-          name: "Master Thesis (Cricket Plug in)",
+          name: "Master Thesis",
           stack: "C#, Rhino, Grasshopper",
           gitlabLink:
             "https://github.com/elenichas/Cricket-Plugin-Master-thesis",
           src: require("@/images/development/cricket2.png"),
         },
         {
-          name: "View Analysis (GH Plug in)",
+          name: "View Analysis",
           stack: "C#, Rhino, Grasshopper",
           gitlabLink: "https://github.com/elenichas/view-analysis-plugin",
           src: require("@/images/development/viewAnalysis.png"),
@@ -168,7 +168,7 @@ export default {
 
 /* Grid mode styling */
 .gallery-title.grid {
-  font-size: 5rem;
+  font-size: 8vw;
   font-weight: 700;
   margin-bottom: 20px;
   text-align: left;
@@ -201,7 +201,7 @@ export default {
 }
 
 .gallery-title.list {
-  font-size: 5rem;
+  font-size: 8vw;
   font-weight: 700;
   margin-bottom: 20px;
   text-align: left;
@@ -211,7 +211,7 @@ export default {
 /* For list view, show only text items */
 .image-title.list {
   font-size: 20px;
-  font-size: 4rem;
+  font-size: 7vw;
   font-weight: bold;
   text-align: left;
   cursor: pointer;

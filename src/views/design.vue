@@ -161,7 +161,7 @@ export default {
 
 /* Grid mode styling */
 .gallery-title.grid {
-  font-size: 5rem;
+  font-size: 8vw;
   font-weight: 700;
   margin-bottom: 20px;
   text-align: left;
@@ -182,7 +182,7 @@ export default {
 
 /* List mode styling */
 .gallery-title.list {
-  font-size: 5rem;
+  font-size: 8vw;
   font-weight: 700;
   margin-bottom: 20px;
   text-align: left;
@@ -191,7 +191,7 @@ export default {
 
 .image-title.list {
   font-size: 20px;
-  font-size: 4rem;
+  font-size: 7vw;
   font-weight: bold;
   text-align: left;
   cursor: pointer;
@@ -205,7 +205,7 @@ export default {
 
 .image-title.list:hover {
   font-size: 20px;
-  font-size: 4rem;
+  font-size: 7vw;
   font-weight: bold;
   text-align: left;
   cursor: pointer;
