@@ -123,7 +123,7 @@ export default {
           src: require("@/images/gallery/wip.png"),
           alt: "Building Configurator App",
           title: "Building Configurator App",
-          route: "/uxui/animal-shelter-website",
+          route: "/uxui/configurator-app",
         },
       ],
     };
@@ -133,7 +133,7 @@ export default {
       this.view = viewType;
     },
     updateMousePosition(event) {
-      this.mouseX = event.clientX + 200; // Offset the position by 20px for better visibility
+      this.mouseX = event.clientX + 100; // Offset the position by 20px for better visibility
       this.mouseY = event.clientY;
     },
   },
@@ -186,7 +186,6 @@ export default {
   font-weight: 700;
   margin-bottom: 20px;
   text-align: left;
-  padding-left: 32px;
 }
 
 .image-title.list {
