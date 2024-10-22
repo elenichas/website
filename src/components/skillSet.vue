@@ -79,7 +79,8 @@ h2 {
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  gap: 20px;
+  gap: 3%;
+
   justify-items: center;
   max-width: 800px;
   justify-self: flex-start;
@@ -143,25 +144,41 @@ h2 {
 /* Responsive Design */
 @media (max-width: 1024px) {
   .skills-grid {
-    grid-template-columns: repeat(5, 1fr); /* 4 columns for tablet screens */
+    grid-template-columns: repeat(10, 1fr); /*  for tablet screens */
+  }
+  .skill-icon img {
+    width: 32px;
+    height: 32px;
   }
 }
 
 @media (max-width: 768px) {
   .skills-grid {
-    grid-template-columns: repeat(3, 1fr); /* 3 columns for small tablets */
+    grid-template-columns: repeat(10, 1fr); /* for small tablets */
+  }
+  .skill-icon img {
+    width: 32px;
+    height: 32px;
   }
 }
 
 @media (max-width: 480px) {
   .skills-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile phones */
+    grid-template-columns: repeat(8, 1fr); /* for mobile phones */
+  }
+  .skill-icon img {
+    width: 24px;
+    height: 24px;
   }
 }
 
 @media (max-width: 320px) {
   .skills-grid {
-    grid-template-columns: 1fr; /* 1 column for very small screens */
+    grid-template-columns: repeat(8, 1fr); /* for mobile phones */
+  }
+  .skill-icon img {
+    width: 24px;
+    height: 24px;
   }
 }
 </style>

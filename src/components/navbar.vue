@@ -136,13 +136,34 @@ nav div:hover {
   display: none;
   flex-direction: column;
   position: absolute;
-  top: 90px;
+  top: 100px;
   left: 0;
   width: 100%;
-  padding: 20px;
+  padding: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.459);
   justify-content: flex-end;
-
+  background: linear-gradient(-90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(-90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(
+      transparent 3px,
+      #f2f2f2 3px,
+      #f2f2f2 78px,
+      transparent 78px
+    ),
+    linear-gradient(-90deg, #aaa 1px, transparent 1px),
+    linear-gradient(
+      -90deg,
+      transparent 3px,
+      #f2f2f2 3px,
+      #f2f2f2 78px,
+      transparent 78px
+    ),
+    linear-gradient(#aaa 1px, transparent 1px), #f2f2f2;
+  background-size: 4px 4px, 4px 4px, 80px 80px, 80px 80px, 80px 80px, 80px 80px,
+    80px 80px, 80px 80px;
   z-index: 100;
 }
 

@@ -38,7 +38,7 @@
             <img :src="image.src" :alt="image.alt" />
             <p :class="['image-title', view]">
               {{ image.name }} <br />
-              <a :href="image.gitlabLink" target="_blank" class="gallery-link"
+              <a :href="image.gitlabLink" target="_blank" class="onImage"
                 >View on GitLab</a
               >
             </p>
@@ -102,12 +102,6 @@ export default {
           src: require("@/images/development/portfolio.png"),
         },
         {
-          name: "Book Reviews App",
-          stack: "Express.js, Node.js, JavaScript",
-          gitlabLink: "https://github.com/elenichas/expressBookReviews",
-          src: require("@/images/development/expressApp.png"),
-        },
-        {
           name: "Expenses App",
           stack:
             "React, TypeScript, HTML, CSS, React Bootstrap, react-chartjs-2",
@@ -115,7 +109,13 @@ export default {
           src: require("@/images/development/reactApp.jpg"),
         },
         {
-          name: "Book Search App",
+          name: "Book Reviews App",
+          stack: "Express.js, Node.js, JavaScript",
+          gitlabLink: "https://github.com/elenichas/expressBookReviews",
+          src: require("@/images/development/expressApp.png"),
+        },
+        {
+          name: "Book Search API",
           stack: "Flask, Python, HTML, HTTP",
           gitlabLink: "https://github.com/elenichas/book-search-python-flask",
           src: require("@/images/development/bookSearchApp.png"),
@@ -136,6 +136,13 @@ export default {
 </script>
 
 <style scoped>
+.onImage {
+  color: #000000 !important;
+  letter-spacing: normal !important;
+  padding: 0 !important;
+  font-size: small;
+}
+
 .main-container {
   display: grid;
   grid-template-columns: 1fr 3fr;
@@ -211,10 +218,18 @@ export default {
 /* For list view, show only text items */
 .image-title.list {
   font-size: 24px;
-  font-size: 7vw;
+  font-size: 6vw;
   font-weight: bold;
   text-align: left;
+  color: #ababab;
+  text-transform: uppercase;
+  margin: 0;
   cursor: crosshair;
+  letter-spacing: 0.2rem;
+  padding: 0.4rem;
+}
+
+a {
   color: #ababab;
   text-transform: uppercase;
   margin: 0;
@@ -263,6 +278,30 @@ export default {
 @media (max-width: 768px) {
   .gallery-container.grid {
     grid-template-columns: 1fr;
+  }
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Change to 1 column */
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Change to 1 column */
+    gap: 10px;
+  }
+}
+
+@media (max-width: 320px) {
+  .main-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Change to 1 column */
+    gap: 10px;
   }
 }
 </style>
