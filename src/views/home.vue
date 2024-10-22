@@ -88,6 +88,8 @@ export default {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 20px;
+  min-height: 100vh; /* Ensures full screen height */
+  padding: 12px;
 }
 
 .left-section {
@@ -99,5 +101,34 @@ export default {
 
 .right-section {
   padding: 20px 20px 20px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distributes content to keep footer at the bottom */
+  flex-grow: 1; /* Ensures the section grows to fill space */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Change to 1 column */
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Change to 1 column */
+    gap: 10px;
+  }
+}
+
+@media (max-width: 320px) {
+  .main-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Change to 1 column */
+    gap: 10px;
+  }
 }
 </style>
