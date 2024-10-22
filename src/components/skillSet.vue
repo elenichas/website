@@ -154,7 +154,7 @@ h2 {
 
 @media (max-width: 768px) {
   .skills-grid {
-    grid-template-columns: repeat(5, 1fr); /* for small tablets */
+    grid-template-columns: repeat(10, 1fr); /* for small tablets */
   }
   .skill-icon img {
     width: 32px;
@@ -164,7 +164,7 @@ h2 {
 
 @media (max-width: 480px) {
   .skills-grid {
-    grid-template-columns: repeat(5, 1fr); /* for mobile phones */
+    grid-template-columns: repeat(8, 1fr); /* for mobile phones */
   }
   .skill-icon img {
     width: 24px;
@@ -174,7 +174,7 @@ h2 {
 
 @media (max-width: 320px) {
   .skills-grid {
-    grid-template-columns: repeat(5, 1fr); /* for mobile phones */
+    grid-template-columns: repeat(8, 1fr); /* for mobile phones */
   }
   .skill-icon img {
     width: 24px;

@@ -32,7 +32,7 @@
     <div>
       <img :src="tall" alt="Background" class="tall" />
     </div>
-    <section height="40%">
+    <section>
       <v-carousel cycle hide-delimiters show-arrows="hover">
         <v-carousel-item
           v-for="(image, index) in images"
@@ -99,7 +99,7 @@
         </v-list>
       </p>
     </section>
-    <section height="40%">
+    <section>
       <v-carousel
         cycle
         hide-delimiters
