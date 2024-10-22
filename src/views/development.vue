@@ -214,7 +214,15 @@ export default {
   font-size: 7vw;
   font-weight: bold;
   text-align: left;
+  color: #ababab;
+  text-transform: uppercase;
+  margin: 0;
   cursor: crosshair;
+  letter-spacing: 0.2rem;
+  padding: 0.4rem;
+}
+
+a {
   color: #ababab;
   text-transform: uppercase;
   margin: 0;
@@ -263,6 +271,30 @@ export default {
 @media (max-width: 768px) {
   .gallery-container.grid {
     grid-template-columns: 1fr;
+  }
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Change to 1 column */
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Change to 1 column */
+    gap: 10px;
+  }
+}
+
+@media (max-width: 320px) {
+  .main-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Change to 1 column */
+    gap: 10px;
   }
 }
 </style>

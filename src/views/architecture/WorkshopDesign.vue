@@ -32,7 +32,7 @@
       </p>
     </section>
 
-    <section height="40%">
+    <section>
       <v-carousel
         cycle
         hide-delimiters
