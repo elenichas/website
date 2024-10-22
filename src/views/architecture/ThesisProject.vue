@@ -210,7 +210,6 @@ export default {
 .style-guide {
   display: flex;
   justify-content: space-between;
-  background-color: #ffffff;
   color: #000;
   padding: 20px;
   width: 100%;

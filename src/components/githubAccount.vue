@@ -230,21 +230,22 @@ export default {
 <style scoped>
 .github-container {
   margin-top: 40px;
-  /* padding: 0 5%; */
+  width: 100%;
+  height: auto;
 }
 
 #mygraph {
-  width: 100%;
   margin-top: 24px;
   fill: black;
   background-color: rgba(255, 255, 255, 0.7);
+  padding: 12px;
 }
 
 .svg-container {
-  width: 100%;
-  overflow: hidden;
-  padding-top: 8px;
+  height: 100%;
+  padding: 8px;
 }
+
 h2 {
   font-size: 2rem;
   color: #000000;
@@ -252,11 +253,56 @@ h2 {
 }
 
 @media (max-width: 768px) {
-  h1 {
-    font-size: 18px;
+  .github-container {
+    margin-top: 20px;
+    width: 100vw;
+    height: auto; /* Let height adjust in mobile view */
   }
-  h6 {
-    font-size: 12px;
+
+  #mygraph {
+    width: 100vw;
+    overflow-x: auto;
+    overflow-y: auto;
+  }
+
+  .svg-container {
+    width: 800px;
+  }
+}
+
+@media (max-width: 480px) {
+  .github-container {
+    margin-top: 20px;
+    width: 100vw;
+    height: auto; /* Let height adjust in mobile view */
+  }
+
+  #mygraph {
+    width: 100vw;
+    overflow-x: auto;
+    overflow-y: auto;
+  }
+
+  .svg-container {
+    width: 800px;
+  }
+}
+
+@media (max-width: 320px) {
+  .github-container {
+    margin-top: 20px;
+    width: 100vw;
+    height: auto; /* Let height adjust in mobile view */
+  }
+
+  #mygraph {
+    width: 100vw;
+    overflow-x: auto;
+    overflow-y: auto;
+  }
+
+  .svg-container {
+    width: 800px;
   }
 }
 </style>

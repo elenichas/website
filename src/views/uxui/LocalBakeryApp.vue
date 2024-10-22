@@ -118,7 +118,7 @@
         designed simple, intuitive navigation to ensure users could quickly
         access these features.
       </p> -->
-      <p>
+      <p style="padding-top: 2%">
         <strong>High-Fidelity Prototypes</strong><br />
         I developed high-fidelity prototypes using the coffee shop’s existing
         brand identity. The color scheme and typography were carried over from
@@ -194,13 +194,14 @@
         section and add an item to their cart for delivery alongside their
         coffee order.
       </p>
-      <a
-        href="https://www.figma.com/proto/dSiLtVj2GKzRZYcfYoe8iW/KapihanApp?node-id=49-5572&t=qR7dRV7dwGhpgw8c-1"
-        target="_blank"
-        class="btn"
-      >
-        View the Interactive Prototype
-      </a>
+      <button class="custom-button">
+        <a
+          href="https://www.figma.com/proto/dSiLtVj2GKzRZYcfYoe8iW/KapihanApp?node-id=49-5572&t=qR7dRV7dwGhpgw8c-1"
+          class="button-text"
+        >
+          View the Interactive Prototype
+        </a>
+      </button>
     </section>
 
     <section>
@@ -244,7 +245,6 @@ export default {
 .style-guide {
   display: flex;
   justify-content: space-between;
-  background-color: #ffffff;
   color: rgb(0, 0, 0); /* Text color */
   padding: 20px;
 }
@@ -366,6 +366,7 @@ p {
   color: #eeece7;
   padding: 40px;
 }
+
 .persona2 {
   flex: 1;
   background-color: #eeece7;
@@ -373,9 +374,12 @@ p {
   padding: 40px;
 }
 
+.persona2:hover {
+  background-color: #2d3030;
+  color: #eeece7;
+}
 .persona h3 {
   font-size: 1.5rem;
-  color: #34495e;
   margin-bottom: 10px;
 }
 

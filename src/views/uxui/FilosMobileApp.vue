@@ -27,76 +27,72 @@
 
     <section>
       <h2>2. User Personas</h2>
-      <div class="personas-container">
-        <div class="persona persona1">
-          <h2>Alex Martinez</h2>
-          <ul>
-            <li><strong>Age:</strong> 29</li>
-            <li><strong>Occupation:</strong> Software Developer</li>
-            <li><strong>Location:</strong> London, UK</li>
-            <li>
-              <strong>Disability:</strong> Mobility impairment (uses a
-              wheelchair)
-            </li>
-            <li><strong>Tech Proficiency:</strong> High</li>
-          </ul>
-          <p>
-            <strong>Background</strong> <br />
-            Alex has been living with a mobility impairment since a car accident
-            five years ago. He is very independent and enjoys his work as a
-            remote software developer. However, he sometimes feels isolated as
-            it's difficult for him to participate in social activities due to
-            limited mobility and accessibility in public spaces.
-          </p>
-          <p>
-            <strong>Goals</strong><br />
-            Alex wants to find accessible activities, meet new people, and feel
-            more connected to his community. He prefers simple apps that are
-            intuitive, with features like calendars to track events and a way to
-            chat before committing to activities.
-          </p>
-          <p>
-            <strong>Frustrations</strong><br />
-            Alex often finds it hard to identify accessible activities or people
-            who understand his needs. Many apps lack the accessibility features
-            necessary for ease of use by people with mobility challenges.
-          </p>
-        </div>
+      <!-- Vuetify carousel for switching between personas -->
+      <v-carousel hide-delimiters>
+        <v-carousel-item v-for="persona in personas" :key="persona.name">
+          <div class="persona">
+            <h2>{{ persona.name }}</h2>
+            <v-list density="compact">
+              <v-list-item>
+                <v-list-item-content>
+                  <v-list-item-title
+                    ><strong>Age:</strong> {{ persona.age }}</v-list-item-title
+                  >
+                </v-list-item-content>
+              </v-list-item>
 
-        <div class="persona persona2">
-          <h2>Emma Thompson</h2>
-          <ul>
-            <li><strong>Age:</strong> 22</li>
-            <li>
-              <strong>Occupation:</strong> University Student (Occupational
-              Therapy)
-            </li>
-            <li><strong>Location:</strong> Manchester, UK</li>
-            <li><strong>Tech Proficiency:</strong> Medium</li>
-          </ul>
-          <p>
-            <strong>Background</strong> <br />
-            Emma is a final-year occupational therapy student. She is passionate
-            about making a difference in people’s lives, especially those with
-            disabilities. Emma is looking for ways to gain real-world experience
-            working with people with disabilities outside her coursework.
-          </p>
-          <p>
-            <strong>Goals</strong> <br />
-            Emma wants to volunteer in activities where she can apply her skills
-            while learning more about different disabilities. She is eager to
-            connect with people in her local community, make a positive impact,
-            and learn more about accessibility in real life.
-          </p>
-          <p>
-            <strong>Frustrations</strong><br />
-            Emma finds it difficult to find volunteer opportunities where she
-            can meet people with disabilities. She is also unsure how to
-            approach people in a meaningful, respectful way without it feeling
-            transactional.
-          </p>
-        </div>
-      </div>
+              <v-list-item>
+                <v-list-item-content>
+                  <v-list-item-title
+                    ><strong>Occupation:</strong>
+                    {{ persona.occupation }}</v-list-item-title
+                  >
+                </v-list-item-content>
+              </v-list-item>
+
+              <v-list-item>
+                <v-list-item-content>
+                  <v-list-item-title
+                    ><strong>Location:</strong>
+                    {{ persona.location }}</v-list-item-title
+                  >
+                </v-list-item-content>
+              </v-list-item>
+
+              <v-list-item v-if="persona.disability">
+                <v-list-item-content>
+                  <v-list-item-title
+                    ><strong>Disability:</strong>
+                    {{ persona.disability }}</v-list-item-title
+                  >
+                </v-list-item-content>
+              </v-list-item>
+
+              <v-list-item>
+                <v-list-item-content>
+                  <v-list-item-title
+                    ><strong>Tech Proficiency:</strong>
+                    {{ persona.tech }}</v-list-item-title
+                  >
+                </v-list-item-content>
+              </v-list-item>
+            </v-list>
+
+            <p>
+              <strong>Background</strong> <br />
+              {{ persona.background }}
+            </p>
+            <p>
+              <strong>Goals</strong><br />
+              {{ persona.goals }}
+            </p>
+            <p>
+              <strong>Frustrations</strong><br />
+              {{ persona.frustrations }}
+            </p>
+          </div>
+        </v-carousel-item>
+      </v-carousel>
     </section>
 
     <section>
@@ -124,17 +120,20 @@
           alt="wireframes image"
         />
       </div>
-      <div>
-        <img
-          class="image-full-width"
-          :src="prototypes"
-          alt="prototypes image"
-        />
+
+      <div class="figma-embed">
+        <iframe
+          style="border: 1px solid rgba(0, 0, 0, 0.1)"
+          width="100%"
+          height="450"
+          src="https://embed.figma.com/design/YQu3rgFADyaMk5HhHQM4Y8/Filos_App?node-id=22-403&embed-host=share"
+          allowfullscreen
+        ></iframe>
       </div>
     </section>
 
     <section>
-      <h2>6. Visual Design & Branding</h2>
+      <h2>5. Visual Design & Branding</h2>
       <div class="visual-design-container">
         <p class="visual-design-text">
           The Filos mobile app prototype is a project I designed to foster
@@ -149,58 +148,34 @@
           layout is consistent across screens, ensuring a seamless flow from
           sign-up to scheduling and accepting activities.
         </p>
-
-        <div class="style-guide">
-          <div class="typography-section">
-            <h2>Typography</h2>
-            <div class="typography">
-              <p class="large-text">Aa</p>
-              <p class="font-name">Inter</p>
-              <p class="alphabet">abcdefghijklmnopqrstuvwxyz</p>
-            </div>
+      </div>
+      <div class="style-guide">
+        <div class="typography-section">
+          <h2>Typography</h2>
+          <div class="typography">
+            <p class="large-text">Aa</p>
+            <p class="font-name">Inter</p>
+            <p class="alphabet">abcdefghijklmnopqrstuvwxyz</p>
           </div>
-          <div class="colors-section">
-            <h2>Colors</h2>
-            <div class="color-swatches">
-              <div class="color-swatch" :style="{ backgroundColor: '#a469cc' }">
-                <span>#a469cc</span>
-              </div>
-              <div class="color-swatch" :style="{ backgroundColor: '#511f88' }">
-                <span>#511f88</span>
-              </div>
-              <div class="color-swatch" :style="{ backgroundColor: '#d9d9d9' }">
-                <span>#d9d9d9</span>
-              </div>
-              <div class="color-swatch" :style="{ backgroundColor: '#000000' }">
-                <span>#000000</span>
-              </div>
+        </div>
+        <div class="colors-section">
+          <h2>Colors</h2>
+          <div class="color-swatches">
+            <div class="color-swatch" :style="{ backgroundColor: '#a469cc' }">
+              <span>#a469cc</span>
+            </div>
+            <div class="color-swatch" :style="{ backgroundColor: '#511f88' }">
+              <span>#511f88</span>
+            </div>
+            <div class="color-swatch" :style="{ backgroundColor: '#d9d9d9' }">
+              <span>#d9d9d9</span>
+            </div>
+            <div class="color-swatch" :style="{ backgroundColor: '#000000' }">
+              <span>#000000</span>
             </div>
           </div>
         </div>
       </div>
-
-      <div>
-        <img
-          class="image-full-width"
-          :src="responsive"
-          alt="responsive image"
-        />
-      </div>
-    </section>
-
-    <section>
-      <h2>7. Final Prototype & User Flow</h2>
-      <p>
-        The user opens the app and is greeted by the start screen featuring the
-        Filos logo. Then they can sign up and define their role in the app. They
-        fill in their details and submit the form. Once signed up, they arrive
-        at the main menu, which displays a list of current activities available
-        in their area. The user can tap on an activity, view the details, and
-        send a request to the user that posted the activity. While waiting for
-        confirmation, the user can also access the messaging section to chat
-        with other users directly and finalize the details of the activity. Once
-        agreed, the activity is scheduled in both users' calendars.
-      </p>
 
       <button class="custom-button">
         <a
@@ -215,7 +190,7 @@
     </section>
 
     <section>
-      <h2>8. Reflection & Next Steps</h2>
+      <h2>6. Reflection & Next Steps</h2>
       <p>
         Reflecting on the design of the Filos app, I realized how crucial it is
         to deeply understand the needs of the user base, particularly those with
@@ -244,18 +219,74 @@ export default {
     return {
       hero: require("@/images/filosHero.png"),
       wireframes: require("@/images/filosWireframes.png"),
-      prototypes: require("@/images/filosPrototypes.png"),
-      responsive: require("@/images/filosResponsive.png"),
+      personas: [
+        {
+          name: "Alex Martinez",
+          age: 29,
+          occupation: "Software Developer",
+          location: "London, UK",
+          disability: "Mobility impairment (uses a wheelchair)",
+          tech: "High",
+          background:
+            "Alex has been living with a mobility impairment since a car accident five years ago. He is very independent and enjoys his work as a remote software developer. However, he sometimes feels isolated as it's difficult for him to participate in social activities due to limited mobility and accessibility in public spaces.",
+          goals:
+            "Alex wants to find accessible activities, meet new people, and feel more connected to his community. He prefers simple apps that are intuitive, with features like calendars to track events and a way to chat before committing to activities.",
+          frustrations:
+            "Alex often finds it hard to identify accessible activities or people who understand his needs. Many apps lack the accessibility features necessary for ease of use by people with mobility challenges.",
+        },
+        {
+          name: "Emma Thompson",
+          age: 22,
+          occupation: "University Student (Occupational Therapy)",
+          location: "Manchester, UK",
+          tech: "Medium",
+          background:
+            "Emma is a final-year occupational therapy student. She is passionate about making a difference in people’s lives, especially those with disabilities. Emma is looking for ways to gain real-world experience working with people with disabilities outside her coursework.",
+          goals:
+            "Emma wants to volunteer in activities where she can apply her skills  while learning more about different disabilities. She is eager to connect with people in her local community, make a positive impact, and learn more about accessibility in real life.",
+          frustrations:
+            "Emma finds it difficult to find volunteer opportunities where she can meet people with disabilities. She is also unsure how to approach people in a meaningful, respectful way without it feeling transactional",
+        },
+      ],
     };
   },
 };
 </script>
 
 <style scoped>
+.v-window {
+  height: fit-content !important;
+}
+
 .hero-image {
   width: 100%;
 }
 
+.persona {
+  margin: 8%;
+  background: white;
+}
+
+.v-carousel-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.visual-design-container {
+  padding: 20px;
+}
+
+.visual-design-text {
+  margin-bottom: 20px;
+}
+
+/* Media query to handle small screens */
+@media (max-width: 768px) {
+  .persona {
+    padding: 20px;
+  }
+}
 .image-full-width {
   width: 100%;
 }
@@ -287,6 +318,7 @@ export default {
   color: #000;
   padding: 20px;
   width: 100%;
+  margin-bottom: 2%;
 }
 
 .typography-section {
@@ -396,16 +428,6 @@ p {
 .persona {
   flex: 1;
   padding: 40px;
-}
-
-.persona1 {
-  background-color: #2d3030;
-  color: #eeece7;
-}
-
-.persona2 {
-  background-color: #eeece7;
-  color: #2d3030;
 }
 
 @media (max-width: 768px) {

@@ -15,10 +15,10 @@ const vuetify = createVuetify({
   theme: {
     themes: {
       light: {
-        primary: "#ff0000", // Define your custom theme colors
-        secondary: "#ff0000",
-        accent: "#ff0000",
-        error: "#ff0000",
+        primary: "#000000", // Define your custom theme colors
+        secondary: "#000000",
+        accent: "#000000",
+        error: "#000000",
       },
     },
   },

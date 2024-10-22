@@ -30,10 +30,9 @@
     </section>
 
     <div>
-      <!-- <img :src="tall" alt="Background" class="tall" /> -->
-      <!-- Your other content here -->
+      <img :src="tall" alt="Background" class="tall" />
     </div>
-    <section height="40%">
+    <section>
       <v-carousel cycle hide-delimiters show-arrows="hover">
         <v-carousel-item
           v-for="(image, index) in images"
@@ -100,7 +99,7 @@
         </v-list>
       </p>
     </section>
-    <section height="40%">
+    <section>
       <v-carousel
         cycle
         hide-delimiters
@@ -130,7 +129,7 @@ export default {
   },
   data() {
     return {
-      //tall: require("@/images/hapi/iso.png"),
+      tall: require("@/images/hapi/iso.png"),
       hero: require("@/images/hapi/hapihero.jpg"),
       images: [
         { url: require("@/images/hapi/carousel0.png") },
