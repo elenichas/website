@@ -230,7 +230,8 @@ export default {
 <style scoped>
 .github-container {
   margin-top: 40px;
-  /* padding: 0 5%; */
+  width: 100%; /* Make sure it takes full width */
+  height: auto; /* Let the height adjust based on content */
 }
 
 #mygraph {
@@ -242,9 +243,11 @@ export default {
 
 .svg-container {
   width: 100%;
-  overflow: hidden;
-  padding-top: 8px;
+  height: auto; /* Make sure the height can grow based on content */
+  /* overflow: hidden; */
+  padding: 8px;
 }
+
 h2 {
   font-size: 2rem;
   color: #000000;
@@ -252,11 +255,26 @@ h2 {
 }
 
 @media (max-width: 768px) {
-  h1 {
-    font-size: 18px;
+  .github-container {
+    margin-top: 20px;
+    width: 100vw;
+    height: auto; /* Let height adjust in mobile view */
   }
-  h6 {
-    font-size: 12px;
+}
+
+@media (max-width: 480px) {
+  .github-container {
+    margin-top: 20px;
+    width: 100vw;
+    height: auto; /* Let height adjust in mobile view */
+  }
+}
+
+@media (max-width: 320px) {
+  .github-container {
+    margin-top: 20px;
+    width: 100vw;
+    height: auto; /* Let height adjust in mobile view */
   }
 }
 </style>
