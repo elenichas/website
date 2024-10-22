@@ -90,19 +90,19 @@ export default {
         {
           src: require("@/images/gallery/hapi.png"),
           alt: "Hapi Project",
-          title: "Hapi Thesis Project",
+          title: "Arch Thesis (Hapi)",
           route: "/design/hapi-project",
         },
         {
           src: require("@/images/gallery/thesis.png"),
           alt: "Thesis Project",
-          title: "Circket Master Thesis Project",
+          title: "Master Thesis (Cricket)",
           route: "/design/thesis-project",
         },
         {
           src: require("@/images/gallery/workshop.png"),
           alt: "Workshop Design",
-          title: "Digital Features Workshop",
+          title: "Digital Futures Workshop",
           route: "/design/workshop-design",
         },
       ],
@@ -190,7 +190,7 @@ export default {
 
 .image-title.list {
   font-size: 20px;
-  font-size: 7vw;
+  font-size: 6vw;
   font-weight: bold;
   text-align: left;
   cursor: pointer;
@@ -204,7 +204,7 @@ export default {
 
 .image-title.list:hover {
   font-size: 20px;
-  font-size: 7vw;
+  font-size: 6vw;
   font-weight: bold;
   text-align: left;
   cursor: pointer;
