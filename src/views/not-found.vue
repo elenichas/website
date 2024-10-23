@@ -4,7 +4,7 @@
     <div class="not-found-container2"><h1 class="not-found-text2">404</h1></div>
     <div class="not-found-container3">
       <h2 class="not-found-text3">
-        WE ARE SORRY, BUT THE PAGE YOU REQUESTED WAS NOT FOUND
+        Dear friend, get you url sorted and try again :)
       </h2>
     </div>
   </div>
