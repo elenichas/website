@@ -108,6 +108,12 @@ export default {
       ],
       uxuiImages: [
         {
+          src: require("@/images/gallery/moduleApp.png"),
+          alt: "Modular  App",
+          title: "Modular Design App",
+          route: "/uxui/modular-app",
+        },
+        {
           src: require("@/images/gallery/filos.png"),
           alt: "Filos Mobile App",
           title: "Filos Mobile App",
@@ -118,12 +124,6 @@ export default {
           alt: "Coffee shop App",
           title: "Coffee shop App",
           route: "/uxui/local-bakery-app",
-        },
-        {
-          src: require("@/images/gallery/moduleApp.png"),
-          alt: "Modular  App",
-          title: "Modular Design App",
-          route: "/uxui/modular-app",
         },
       ],
     };
