@@ -140,10 +140,13 @@ nav div:hover {
   left: 0;
   width: 100%;
   padding: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  background-color: rgba(255, 255, 255, 0.459);
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.459); */
   justify-content: flex-end;
-  background: linear-gradient(-90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+  -webkit-backdrop-filter: blur(8px); /* Safari 9+ */
+  backdrop-filter: blur(8px); /* Chrome and Opera */
+  box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.08);
+  /* background: linear-gradient(-90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
     linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
     linear-gradient(-90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
     linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
@@ -163,7 +166,7 @@ nav div:hover {
     ),
     linear-gradient(#aaa 1px, transparent 1px), #f2f2f2;
   background-size: 4px 4px, 4px 4px, 80px 80px, 80px 80px, 80px 80px, 80px 80px,
-    80px 80px, 80px 80px;
+    80px 80px, 80px 80px; */
   z-index: 100;
 }
 

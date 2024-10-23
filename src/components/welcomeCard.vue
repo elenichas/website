@@ -198,8 +198,7 @@ export default {
   animation: blinkCursor 0.7s steps(1) infinite;
   font-size: 3vw;
   color: #333;
-  padding: 4% 0;
-  height: 60px;
+  height: fit-content;
 }
 
 /* Cursor blinking animation */
