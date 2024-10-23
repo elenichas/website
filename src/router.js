@@ -9,7 +9,7 @@ import ThesisProject from "./views/architecture/ThesisProject.vue";
 import WorkshopDesign from "./views/architecture/WorkshopDesign.vue";
 import FilosMobileApp from "./views/uxui/FilosMobileApp.vue";
 import LocalBakeryApp from "./views/uxui/LocalBakeryApp.vue";
-import AnimalShelterWebsite from "./views/uxui/AnimalShelterWebsite.vue";
+import ModularApp from "./views/uxui/ModularApp.vue";
 import "./style.css";
 
 // Define your routes
@@ -60,8 +60,8 @@ const routes = [
     component: LocalBakeryApp,
   },
   {
-    path: "/uxui/configurator-app",
-    component: AnimalShelterWebsite,
+    path: "/uxui/modular-app",
+    component: ModularApp,
   },
 ];
 

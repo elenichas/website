@@ -120,10 +120,10 @@ export default {
           route: "/uxui/local-bakery-app",
         },
         {
-          src: require("@/images/gallery/wip.png"),
-          alt: "Building Configurator App",
-          title: "Building Configurator App",
-          route: "/uxui/configurator-app",
+          src: require("@/images/gallery/moduleApp.png"),
+          alt: "Modular  App",
+          title: "Modular Design App",
+          route: "/uxui/modular-app",
         },
       ],
     };
