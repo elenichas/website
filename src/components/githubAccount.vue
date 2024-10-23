@@ -50,7 +50,7 @@ export default {
             Authorization: `Bearer ${process.env.VUE_APP_GITHUB_TOKEN}`,
           },
         });
-        console.log("Rate Limit Info:", response.data);
+        // console.log("Rate Limit Info:", response.data);
       } catch (error) {
         console.error("Error checking rate limit:", error);
       }
@@ -67,7 +67,7 @@ export default {
           }
         );
         const repos = response.data;
-        console.log(repos);
+        // console.log(repos);
 
         const repoDataPromises = repos.map(async (repo) => {
           const commitsResponse = await axios.get(
@@ -98,7 +98,7 @@ export default {
 
     createGraph() {
       if (!this.$refs.graph) {
-        console.log("no graph!");
+        // console.log("no graph!");
         return; // Stop if the SVG element isn't rendered yet
       }
       const containerWidth = this.$refs.graph.parentElement
