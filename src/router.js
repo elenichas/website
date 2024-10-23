@@ -69,6 +69,10 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(), // Replaces `mode: 'history'` in Vue 3
   routes,
+  scrollBehavior(to, from, savedPosition) {
+    // Always scroll to top when navigating to a new route
+    return { top: 0 };
+  },
 });
 
 export default router;
