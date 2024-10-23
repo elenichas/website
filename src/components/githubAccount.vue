@@ -14,7 +14,7 @@
       <div class="svg-container">
         <svg ref="graph"></svg>
       </div>
-      <h6>Graph created with d3.js with data from the github API</h6>
+      <h6>Graph created with d3.js and data from the github API</h6>
     </div>
   </div>
 </template>
