@@ -250,4 +250,23 @@ export default {
   height: 15%;
   object-fit: cover;
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .welcome-card {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-card {
+    text-align: center;
+  }
+}
+
+@media (max-width: 320px) {
+  .welcome-card {
+    text-align: center;
+  }
+}
 </style>
