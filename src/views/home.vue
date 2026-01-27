@@ -13,7 +13,7 @@
 
       <skill-set></skill-set>
 
-      <GithubAccount> </GithubAccount>
+      <!-- <GithubAccount> </GithubAccount> -->
 
       <app-footer></app-footer>
     </div>
