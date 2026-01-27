@@ -13,7 +13,7 @@
     </div>
   </div>
   <skill-set></skill-set> -->
-  <GithubAccount> </GithubAccount>
+  <!-- <GithubAccount> </GithubAccount> -->
 </template>
 
 <script>
