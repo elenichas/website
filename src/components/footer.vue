@@ -1,43 +1,37 @@
 <template>
   <footer class="footer">
-    <button class="custom-button">
-      <a href="mailto:eleni.chasioti.19@alumni.ucl.ac.uk" class="button-text"
-        >Let's talk</a
-      >
-      <div class="button-icon">
-        <span class="mdi mdi-arrow-bottom-right"></span>
-      </div>
-    </button>
-    <div>
-      <div class="text-footer-copyright">
-        © 2024 Eleni Chasioti All Rights Reserved.
-      </div>
-      <div class="text-under-copyright">
-        Made with love and lots of esspreso.
-      </div>
-      <div class="text-under-copyright-small">
-        Last updated by Eleni on October, 2024
-      </div>
-    </div>
-
     <div class="footer-container">
-      <a
-        href="https://www.linkedin.com/in/eleni-chasioti-948486194/"
-        target="_blank"
-        class="social-icon"
-      >
-        <i class="fab fa-linkedin-in"></i>
-        <span class="mdi mdi-linkedin"></span>
-      </a>
-      <a
-        href="https://github.com/elenichas"
-        target="_blank"
-        class="social-icon"
-      >
-        <i class="fab fa-github"></i>
-
-        <span class="mdi mdi-github"></span>
-      </a>
+      <div class="footer-content">
+                <!-- CTA Section -->
+        <div class="footer-cta">
+          <h3 class="cta-title">Let's connect</h3>
+          <p class="cta-text">I'd love to discuss ideas, share insights, or explore future opportunities.</p>
+          <a href="mailto:eleni.chasioti@gmail.com" class="btn-primary footer-btn">
+            Get in Touch
+            <span class="mdi mdi-arrow-right"></span>
+          </a>
+        </div>
+        
+        <!-- Footer Info -->
+        <div class="footer-info">
+          <div class="footer-links">
+            <a href="https://www.linkedin.com/in/eleni-chasioti-948486194/" target="_blank" class="social-link">
+              <span class="mdi mdi-linkedin"></span>
+              LinkedIn
+            </a>
+            <a href="https://github.com/elenichas" target="_blank" class="social-link">
+              <span class="mdi mdi-github"></span>
+              GitHub
+            </a>
+          </div>
+          
+          <div class="footer-meta">
+            <p class="copyright">© 2024 Eleni Chasioti. All rights reserved.</p>
+            <p class="made-with">Made with ❤️ and lots of espresso</p>
+            <p class="last-updated">Last updated January 2026</p>
+          </div>
+        </div>
+      </div>
     </div>
   </footer>
 </template>
@@ -49,56 +43,147 @@ export default {
 </script>
 
 <style scoped>
-.custom-button {
-  margin-bottom: 24px;
-}
-
 .footer {
-  width: 100%;
-  margin-top: 32px;
-  color: var(--dl-color-theme-neutral-dark);
-  margin-top: auto; /* Pushes footer to the bottom */
-  padding-top: 8px;
+  background: var(--secondary-bg);
+  border-top: 1px solid var(--border-light);
+  margin-top: var(--space-4xl);
 }
 
 .footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-4xl) var(--space-lg) var(--space-2xl);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4xl);
+  align-items: start;
+}
+
+/* CTA Section */
+.footer-cta {
   display: flex;
-  gap: 20px;
-  padding-top: 1%;
+  flex-direction: column;
+  gap: var(--space-md);
 }
 
-.text-under-copyright {
-  opacity: 0.5;
-  letter-spacing: 0.2px;
-  text-transform: none;
-  font-family: Neue Montreal, sans-serif;
+.cta-title {
+  font-size: 2rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.01em;
 }
 
-.text-under-copyright-small {
-  opacity: 0.5;
-  letter-spacing: 0.2px;
-  text-transform: none;
-  font-family: Neue Montreal, sans-serif;
-  font-size: 12px;
+.cta-text {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.6;
 }
 
-.text-footer-copyright {
-  letter-spacing: 0.2px;
-  font-family: Neue Montreal, sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
+.footer-btn {
+  align-self: flex-start;
+  margin-top: var(--space-sm);
 }
 
-.social-icon {
-  color: rgb(0, 0, 0);
-  font-size: 24px;
-  transition: color 0.3s ease;
+/* Footer Info */
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  align-items: flex-end;
+}
+
+.footer-links {
+  display: flex;
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--text-secondary);
   text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: color var(--transition-fast);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
 }
 
-.social-icon:hover {
-  color: #a1a1a1;
-  /* Hover color, adjust as needed */
+.social-link:hover {
+  color: var(--text-primary);
+  background: var(--primary-bg);
+  border-color: var(--border-light);
+}
+
+.social-link .mdi {
+  font-size: 1.25rem;
+}
+
+.footer-meta {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.copyright {
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+  margin: 0;
+  font-weight: var(--font-weight-medium);
+}
+
+.made-with,
+.last-updated {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-container {
+    padding: var(--space-2xl) var(--space-md);
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+    text-align: center;
+  }
+  
+  .footer-info {
+    align-items: center;
+  }
+  
+  .footer-links {
+    justify-content: center;
+  }
+  
+  .footer-meta {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-container {
+    padding: var(--space-xl) var(--space-md);
+  }
+  
+  .footer-links {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  
+  .cta-title {
+    font-size: 1.5rem;
+  }
 }
 </style>

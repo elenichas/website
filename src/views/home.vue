@@ -1,23 +1,29 @@
 <template>
   <app-navbar></app-navbar>
 
-  <div class="main-container">
-    <div class="left-section">
-      <div class="welcome-avatar">
-        <img :src="avatarSrc" alt="Eleni Chasioti Avatar" class="avatar-img" />
-      </div>
+  <main class="page-layout">
+    <div class="container">
+      <section class="hero-section">
+        <div class="hero-content">
+          <div class="avatar-column">
+            <div class="avatar-wrapper">
+              <img :src="avatarSrc" alt="Eleni Chasioti" class="avatar" />
+            </div>
+          </div>
+          
+          <div class="content-column">
+            <welcome-card></welcome-card>
+          </div>
+        </div>
+      </section>
+      
+      <section class="skills-section">
+        <skill-set></skill-set>
+      </section>
     </div>
-
-    <div class="right-section">
-      <welcome-card></welcome-card>
-
-      <skill-set></skill-set>
-
-      <!-- <GithubAccount> </GithubAccount> -->
-
-      <app-footer></app-footer>
-    </div>
-  </div>
+    
+    <app-footer></app-footer>
+  </main>
 </template>
 
 <script>
@@ -62,73 +68,117 @@ export default {
 </script>
 
 <style scoped>
-.welcome-avatar {
-  flex: 0.5;
-  text-align: center;
-  justify-items: center;
-  padding-bottom: 5%;
-}
-
-.avatar-img {
-  width: 60%;
-
-  min-height: 120px;
-  min-width: 120px;
-  object-fit: cover;
-}
-.home-container {
-  width: 100%;
-  display: flex;
+/* Modern Home Page Layout */
+.page-layout {
   min-height: 100vh;
-  align-items: center;
+  display: flex;
   flex-direction: column;
 }
 
-.main-container {
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+  flex: 1;
+}
+
+.hero-section {
+  padding: var(--space-4xl) 0;
+}
+
+.hero-content {
   display: grid;
-  grid-template-columns: 1fr 3fr;
-  gap: 20px;
-  min-height: 100vh; /* Ensures full screen height */
-  padding: 12px;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--space-4xl);
+  align-items: center;
+  min-height: 60vh;
 }
 
-.left-section {
+.avatar-column {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
-.right-section {
-  padding: 20px 20px 20px 0px;
+.avatar-wrapper {
+  position: relative;
+}
+
+.avatar {
+  width: 280px;
+  height: 280px;
+  border-radius: var(--radius-xl);
+  object-fit: cover;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-lg);
+  transition: all var(--transition-normal);
+}
+
+.avatar:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.content-column {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Distributes content to keep footer at the bottom */
-  flex-grow: 1; /* Ensures the section grows to fill space */
+  justify-content: center;
+  padding-left: var(--space-lg);
+}
+
+.skills-section {
+  padding: var(--space-4xl) 0 var(--space-2xl) 0;
+  border-top: 1px solid var(--border-light);
+  margin-top: var(--space-2xl);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .main-container {
-    display: grid;
-    grid-template-columns: 1fr; /* Change to 1 column */
-    gap: 20px;
+  .container {
+    padding: 0 var(--space-md);
+  }
+  
+  .hero-section {
+    padding: var(--space-2xl) 0;
+  }
+  
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+    text-align: center;
+    min-height: auto;
+  }
+  
+  .content-column {
+    padding-left: 0;
+  }
+  
+  .avatar {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .skills-section {
+    padding: var(--space-2xl) 0;
   }
 }
 
 @media (max-width: 480px) {
-  .main-container {
-    display: grid;
-    grid-template-columns: 1fr; /* Change to 1 column */
-    gap: 10px;
+  .container {
+    padding: 0 var(--space-md);
   }
-}
-
-@media (max-width: 320px) {
-  .main-container {
-    display: grid;
-    grid-template-columns: 1fr; /* Change to 1 column */
-    gap: 10px;
+  
+  .hero-section {
+    padding: var(--space-xl) 0;
+  }
+  
+  .hero-content {
+    gap: var(--space-xl);
+  }
+  
+  .avatar {
+    width: 160px;
+    height: 160px;
   }
 }
 </style>
