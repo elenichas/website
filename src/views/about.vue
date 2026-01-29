@@ -1,19 +1,94 @@
 <template>
   <app-navbar></app-navbar>
-  <!-- <div class="about">
-    <div class="about-container">
-      <p>
-        I am a constantly evolving web developer passionate about designing
-        captivating web solutions with great attention to detail! I love working
-        on the intersection of design and development, creating intuitive user
-        experiences!
-      </p>
-     Use the download attribute to enable PDF download 
-      <a :href="cvLink" download class="download-btn"> download CV </a> 
+  
+  <main class="page-layout">
+    <div class="container">
+      <div class="about-content">
+        <header class="about-header">
+          <h1 class="about-title">Hey, I'm Eleni!</h1>
+          <p class="about-lead">Product designer and engineer with a story that started in architecture and found its home in digital product development.</p>
+        </header>
+
+        <div class="story-content">
+          <section class="story-section">
+            <h2>The Journey</h2>
+            <p>
+              My story begins in architecture, designing spaces, thinking about how people move through environments, 
+              and obsessing over every detail that makes a space feel just right. But somewhere along the way, I realized 
+              that the most exciting spaces weren't physical anymore; they were digital.
+            </p>
+            <p>
+              The transition from designing buildings to designing digital products wasn't as dramatic as you might think. 
+              Both require the same fundamental skills: understanding user needs, creating intuitive flows, and bringing 
+              complex systems to life. The tools changed, but the problem-solving mindset remained.
+            </p>
+          </section>
+
+          <section class="story-section">
+            <h2>What I Do Now</h2>
+            <p>
+              Today, as a <strong>Design Systems Analyst at Foster + Partners</strong>, I work at the intersection of design and engineering, creating 
+              the tools, systems, and experiences that help creative teams do their best work. I design and build everything 
+              from internal design tools to full web applications, always with one goal in mind: making complex workflows feel effortless.
+            </p>
+            <p>
+              My days are spent diving deep into user research, prototyping solutions, coordinating across teams, and then 
+              rolling up my sleeves to actually build the thing. React, TypeScript, Vue.js, whatever the project needs. 
+              I believe the best products come from designers who can code and developers who truly understand users.
+            </p>
+          </section>
+
+          <section class="story-section">
+            <h2>How I Think About Products</h2>
+            <p>
+              Every product tells a story, and I'm fascinated by the details that make that story compelling. How do you 
+              take something incredibly complex, like architectural design software or internal company tools, and make it 
+              feel intuitive? How do you build systems that scale across teams while maintaining consistency and quality?
+            </p>
+            <p>
+              During my four years at Bryden Wood, I evolved from front-end developer to senior developer, leading the 
+              creation of web-based configurators and design tools for the AEC industry. I learned that great products 
+              aren't just about beautiful interfaces, they're about understanding the real problems people face and 
+              crafting solutions that genuinely make their lives better.
+            </p>
+          </section>
+
+          <section class="story-section">
+            <h2>Beyond the Code</h2>
+            <p>
+              When I'm not building products, I love sharing knowledge. I've led workshops at The Bartlett School of Architecture, 
+              exploring how AI and algorithmic thinking can enhance creative processes. There's something magical about watching 
+              students discover new ways to approach problems, it reminds me why I love what I do.
+            </p>
+            <p>
+              I'm passionate about sustainable design, scalable systems, and the belief that technology should amplify human 
+              creativity rather than replace it. Whether it's a design system that helps teams work more efficiently or a 
+              tool that opens up new creative possibilities, I'm always asking: "How can this make someone's work more joyful?"
+            </p>
+          </section>
+
+          <section class="story-section">
+            <h2>Let's Connect</h2>
+            <p>
+              I'm always excited to discuss product design, emerging technologies, or the fascinating intersection of 
+              architecture and digital products. Whether you're curious about design systems, want to chat about a project, 
+              or just want to share ideas about where the industry is heading, I'd love to hear from you.
+            </p>
+          </section>
+        </div>
+
+        <div class="cta-section">
+          <a :href="cvLink" download class="btn-primary cv-download">
+            <span class="mdi mdi-download"></span>
+            Download Resume
+          </a>
+          <a href="mailto:eleni.chasioti@gmail.com" class="btn-secondary">
+            Get in Touch
+          </a>
+        </div>
+      </div>
     </div>
-  </div>
-  <skill-set></skill-set> -->
-  <!-- <GithubAccount> </GithubAccount> -->
+  </main>
 </template>
 
 <script>
@@ -44,56 +119,136 @@ export default {
 </script>
 
 <style scoped>
-.about-container {
-  text-align: center;
-  align-items: center;
-  padding: 4% 20%;
+/* Modern About Page Layout */
+.page-layout {
+  min-height: 100vh;
+  background: var(--primary-bg);
 }
 
-.about-image {
-  flex: 0.5;
-  text-align: center;
-}
-
-.about-avatar {
-  width: 250px;
-  border-radius: 50%;
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-lg);
 }
 
 .about-content {
-  flex: 1;
-  padding-left: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
 }
 
-h2 {
-  font-size: 2.5rem;
-  color: #000000;
-  margin-bottom: 20px;
+/* Header */
+.about-header {
+  text-align: center;
+  padding-bottom: var(--space-2xl);
+  border-bottom: 1px solid var(--border-light);
 }
 
-p {
-  font-size: 1.2rem;
-  color: #555;
-  margin-bottom: 20px;
+.about-title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+  letter-spacing: -0.02em;
 }
 
-.download-btn {
-  padding: 10px 20px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 25px;
-  font-size: 1em;
-  cursor: pointer;
-  margin-top: 15px;
-  transition: background-color 0.3s ease;
+.about-lead {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.download-btn i {
-  margin-right: 10px;
+/* Story Content */
+.story-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
 }
 
-.download-btn:hover {
-  background-color: #555;
+.story-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.story-section h2 {
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.story-section p {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.story-section p strong {
+  color: var(--text-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* CTA Section */
+.cta-section {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  align-items: center;
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--border-light);
+  flex-wrap: wrap;
+}
+
+.cv-download {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.cv-download .mdi {
+  font-size: 1.125rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: var(--space-lg) var(--space-md);
+  }
+  
+  .about-header {
+    text-align: left;
+  }
+  
+  .about-lead {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  .cta-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: var(--space-md) var(--space-sm);
+  }
+  
+  .story-section p {
+    font-size: 1rem;
+  }
 }
 </style>

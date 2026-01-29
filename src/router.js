@@ -19,14 +19,14 @@ const routes = [
     path: "/",
     component: Home,
   },
-  {
-    name: "Design",
-    path: "/design",
+    {
+    name: "Products",
+    path: "/products",
     component: Design,
   },
   {
-    name: "Development",
-    path: "/development",
+    name: "Craft", 
+    path: "/craft",
     component: Development,
   },
   {
@@ -39,29 +39,63 @@ const routes = [
     path: "/:pathMatch(.*)*", // This is the Vue 3 equivalent for catching all unmatched routes
     component: NotFound,
   },
+    // Legacy redirects for old URLs
   {
-    path: "/design/hapi-project",
+    path: "/design",
+    redirect: "/products",
+  },
+  {
+    path: "/development", 
+    redirect: "/craft",
+  },
+    {
+    path: "/products/hapi-project",
     component: HapiProject,
   },
   {
-    path: "/design/thesis-project",
+    path: "/products/thesis-project",
     component: ThesisProject,
   },
   {
-    path: "/design/workshop-design",
+    path: "/products/workshop-design",
     component: WorkshopDesign,
   },
   {
-    path: "/uxui/filos-mobile-app",
+    path: "/products/filos-mobile-app",
     component: FilosMobileApp,
   },
   {
-    path: "/uxui/local-bakery-app",
+    path: "/products/local-bakery-app",
     component: LocalBakeryApp,
   },
   {
-    path: "/uxui/modular-app",
+    path: "/products/modular-app",
     component: ModularApp,
+  },
+  // Legacy design routes
+  {
+    path: "/design/hapi-project",
+    redirect: "/products/hapi-project",
+  },
+  {
+    path: "/design/thesis-project",
+    redirect: "/products/thesis-project",
+  },
+  {
+    path: "/design/workshop-design",
+    redirect: "/products/workshop-design",
+  },
+  {
+    path: "/uxui/filos-mobile-app",
+    redirect: "/products/filos-mobile-app",
+  },
+  {
+    path: "/uxui/local-bakery-app",
+    redirect: "/products/local-bakery-app",
+  },
+  {
+    path: "/uxui/modular-app",
+    redirect: "/products/modular-app",
   },
 ];
 
