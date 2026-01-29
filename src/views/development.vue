@@ -24,7 +24,7 @@
     <!-- Right section (titles and image galleries) -->
     <div class="right-section">
       <!-- Development Section -->
-      <h2 :class="['gallery-title', view]">Development</h2>
+      <h2 :class="['gallery-title', view]">Technical Craft</h2>
       <div :class="['gallery-container', view]">
         <div
           class="gallery-item"
@@ -82,41 +82,40 @@ export default {
       mouseX: 0, // Mouse X position
       mouseY: 0, // Mouse Y position
       images: [
-        {
-          name: "Master Thesis",
-          stack: "C#, Rhino, Grasshopper",
+                {
+          name: "Computational Framework",
+          stack: "C#, Rhino, Grasshopper, Algorithm Design",
           gitlabLink:
             "https://github.com/elenichas/Cricket-Plugin-Master-thesis",
           src: require("@/images/development/cricket2.png"),
         },
         {
-          name: "View Analysis",
-          stack: "C#, Rhino, Grasshopper",
+          name: "View Analysis Engine", 
+          stack: "C#, Rhino, Grasshopper, Spatial Computing",
           gitlabLink: "https://github.com/elenichas/view-analysis-plugin",
           src: require("@/images/development/viewAnalysis.png"),
         },
         {
-          name: "Portfolio Website",
-          stack: "Vue.js, JavaScript, CSS, HTML, d3",
+          name: "Portfolio Platform",
+          stack: "Vue.js, JavaScript, D3.js, Modern CSS",
           gitlabLink: "https://github.com/elenichas/website",
           src: require("@/images/development/portfolio.png"),
         },
         {
-          name: "Expenses App",
-          stack:
-            "React, TypeScript, HTML, CSS, React Bootstrap, react-chartjs-2",
+          name: "Financial Management App",
+          stack: "React, TypeScript, Chart.js, Bootstrap",
           gitlabLink: "https://github.com/elenichas/expenses-app",
           src: require("@/images/development/reactApp.jpg"),
         },
         {
-          name: "Book Reviews App",
-          stack: "Express.js, Node.js, JavaScript",
+          name: "Book Reviews API",
+          stack: "Express.js, Node.js, RESTful APIs",
           gitlabLink: "https://github.com/elenichas/expressBookReviews",
           src: require("@/images/development/expressApp.png"),
         },
         {
-          name: "Book Search API",
-          stack: "Flask, Python, HTML, HTTP",
+          name: "Search Service",
+          stack: "Flask, Python, HTTP APIs, Backend",
           gitlabLink: "https://github.com/elenichas/book-search-python-flask",
           src: require("@/images/development/bookSearchApp.png"),
         },
