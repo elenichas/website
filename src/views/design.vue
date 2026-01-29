@@ -22,7 +22,7 @@
 
     <!-- Right section (titles and image galleries) -->
     <div class="right-section">
-      <h2 :class="['gallery-title', view]">UX/UI Design</h2>
+      <h2 :class="['gallery-title', view]">Product Design</h2>
       <div :class="['gallery-container', view]">
         <div
           class="gallery-item"
@@ -41,7 +41,7 @@
         </div>
       </div>
 
-      <h2 :class="['gallery-title', view]">Computational Design</h2>
+      <h2 :class="['gallery-title', view]">System Design</h2>
       <div :class="['gallery-container', view]">
         <div
           class="gallery-item"
@@ -87,43 +87,43 @@ export default {
       mouseX: 0, // Mouse X position
       mouseY: 0, // Mouse Y position
       architectureImages: [
-        {
+                {
           src: require("@/images/gallery/hapi.png"),
           alt: "Hapi Project",
-          title: "Arch Thesis (Hapi)",
-          route: "/design/hapi-project",
+          title: "Architectural System (Hapi)",
+          route: "/products/hapi-project",
         },
         {
           src: require("@/images/gallery/thesis.png"),
           alt: "Thesis Project",
-          title: "Master Thesis (Cricket)",
-          route: "/design/thesis-project",
+          title: "Computational Framework (Cricket)",
+          route: "/products/thesis-project",
         },
         {
           src: require("@/images/gallery/workshop.png"),
           alt: "Workshop Design",
-          title: "Digital Futures Workshop",
-          route: "/design/workshop-design",
+          title: "Digital Futures Workshop", 
+          route: "/products/workshop-design",
         },
       ],
       uxuiImages: [
-        {
+                {  
           src: require("@/images/gallery/moduleApp.png"),
-          alt: "Modular  App",
-          title: "Modular Design App",
-          route: "/uxui/modular-app",
+          alt: "Modular App",
+          title: "Modular Design System",
+          route: "/products/modular-app",
         },
         {
           src: require("@/images/gallery/filos.png"),
           alt: "Filos Mobile App",
-          title: "Filos Mobile App",
-          route: "/uxui/filos-mobile-app",
+          title: "Filos Mobile Experience",
+          route: "/products/filos-mobile-app",
         },
         {
           src: require("@/images/gallery/kapihan.png"),
-          alt: "Coffee shop App",
-          title: "Coffee shop App",
-          route: "/uxui/local-bakery-app",
+          alt: "Coffee Shop App",
+          title: "Local Bakery Platform",
+          route: "/products/local-bakery-app",
         },
       ],
     };
