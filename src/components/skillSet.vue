@@ -48,6 +48,7 @@ import GitHub from "@/images/skills/github.svg";
 import CSharp from "@/images/skills/csharp.svg";
 import Figma from "@/images/skills/figma.png";
 import AdobeXD from "@/images/skills/adobexd.png";
+import Photoshop from "@/images/skills/photoshop.png";
 import Three from "@/images/skills/three.png";
 import D3 from "@/images/skills/d3.svg";
 
@@ -55,10 +56,11 @@ export default {
   name: "Skillset",
   data() {
     return {
-      // Design & Prototyping Tools
+            // Design & Prototyping Tools
       designSkills: [
         { name: "Figma", src: Figma },
         { name: "Adobe XD", src: AdobeXD },
+        { name: "Photoshop", src: Photoshop },
       ],
             // Development & Engineering Tools  
       developmentSkills: [
@@ -171,7 +173,7 @@ export default {
 .skill-icon:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
-  border-color: var(--accent-color);
+  border-color: var(--text-primary);
 }
 
 .skill-icon img {

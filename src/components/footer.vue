@@ -2,10 +2,10 @@
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-content">
-        <!-- CTA Section -->
+                <!-- CTA Section -->
         <div class="footer-cta">
-          <h3 class="cta-title">Let's work together</h3>
-          <p class="cta-text">Have a project in mind? I'd love to hear about it.</p>
+          <h3 class="cta-title">Let's connect</h3>
+          <p class="cta-text">I'd love to discuss ideas, share insights, or explore future opportunities.</p>
           <a href="mailto:eleni.chasioti@gmail.com" class="btn-primary footer-btn">
             Get in Touch
             <span class="mdi mdi-arrow-right"></span>
