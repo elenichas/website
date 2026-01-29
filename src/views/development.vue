@@ -1,70 +1,49 @@
 <template>
-  <!-- Navbar Component -->
   <app-navbar></app-navbar>
 
-  <div class="main-container">
-    <!-- Left section (view switch button) -->
-    <div class="left-section">
-      <div class="view-toggle">
-        <button
-          @click="toggleView('grid')"
-          :class="{ active: view === 'grid' }"
-        >
-          Grid
-        </button>
-        <button
-          @click="toggleView('list')"
-          :class="{ active: view === 'list' }"
-        >
-          List
-        </button>
-      </div>
-    </div>
-
-    <!-- Right section (titles and image galleries) -->
-    <div class="right-section">
-      <!-- Development Section -->
-      <h2 :class="['gallery-title', view]">Development</h2>
-      <div :class="['gallery-container', view]">
-        <div
-          class="gallery-item"
-          v-for="(image, index) in images"
-          :key="index"
-          @mouseover="hoverImage = image.src"
-          @mouseleave="hoverImage = ''"
-          @mousemove="updateMousePosition($event)"
-        >
-          <div v-if="view === 'grid'" class="image-wrapper">
-            <img :src="image.src" :alt="image.alt" />
-            <p :class="['image-title', view]">
-              {{ image.name }} <br />
-              <a :href="image.gitlabLink" target="_blank" class="onImage"
-                >View on GitLab</a
-              >
-            </p>
-
-            <!-- <p :class="['image-title', view]">Stack: {{ image.stack }}</p> -->
-          </div>
-          <!-- For list view, display only name -->
-          <p v-if="view === 'list'" class="image-title list">
-            <!-- {{ image.name }} -->
-            <a :href="image.gitlabLink" target="_blank" class="gallery-link">
-              {{ image.name }}</a
-            >
-          </p>
+  <main class="page-layout">
+    <div class="container">
+      <!-- Page Header -->
+      <header class="page-header">
+        <div class="header-content">
+          <h1 class="page-title">Craft</h1>
+          <p class="page-subtitle">Technical projects and engineering solutions</p>
         </div>
-      </div>
+      </header>
 
-      <!-- Hover Image Overlay for List View, positioned based on mouse -->
-      <div
-        v-if="view === 'list' && hoverImage"
-        class="hover-image-overlay"
-        :style="{ top: mouseY + 'px', left: mouseX + 'px' }"
-      >
-        <img :src="hoverImage" alt="Preview Image" />
-      </div>
+      <!-- Technical Projects Section -->
+      <section class="projects-section">
+        <div class="section-header">
+          <h2 class="section-title">Technical Craft</h2>
+          <p class="section-description">Open source projects and engineering experiments</p>
+        </div>
+        
+        <div class="projects-grid">
+          <article 
+            v-for="(project, index) in images" 
+            :key="index"
+            class="project-card"
+          >
+            <a :href="project.gitlabLink" target="_blank" class="project-link">
+              <div class="project-image">
+                <img :src="project.src" :alt="project.name" />
+                <div class="project-overlay">
+                  <span class="view-project">
+                    <span class="mdi mdi-github"></span>
+                    View on GitHub
+                  </span>
+                </div>
+              </div>
+              <div class="project-info">
+                <h3 class="project-title">{{ project.name }}</h3>
+                <p class="project-stack">{{ project.stack }}</p>
+              </div>
+            </a>
+          </article>
+        </div>
+      </section>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -77,231 +56,225 @@ export default {
   },
   data() {
     return {
-      view: "list", // Default view is grid
-      hoverImage: "",
-      mouseX: 0, // Mouse X position
-      mouseY: 0, // Mouse Y position
       images: [
         {
-          name: "Master Thesis",
-          stack: "C#, Rhino, Grasshopper",
+          name: "Computational Framework",
+          stack: "C#, Rhino, Grasshopper, Algorithm Design",
           gitlabLink:
             "https://github.com/elenichas/Cricket-Plugin-Master-thesis",
           src: require("@/images/development/cricket2.png"),
         },
         {
-          name: "View Analysis",
-          stack: "C#, Rhino, Grasshopper",
+          name: "View Analysis Engine", 
+          stack: "C#, Rhino, Grasshopper, Spatial Computing",
           gitlabLink: "https://github.com/elenichas/view-analysis-plugin",
           src: require("@/images/development/viewAnalysis.png"),
         },
         {
-          name: "Portfolio Website",
-          stack: "Vue.js, JavaScript, CSS, HTML, d3",
+          name: "Portfolio Platform",
+          stack: "Vue.js, JavaScript, D3.js, Modern CSS",
           gitlabLink: "https://github.com/elenichas/website",
           src: require("@/images/development/portfolio.png"),
         },
         {
-          name: "Expenses App",
-          stack:
-            "React, TypeScript, HTML, CSS, React Bootstrap, react-chartjs-2",
+          name: "Financial Management App",
+          stack: "React, TypeScript, Chart.js, Bootstrap",
           gitlabLink: "https://github.com/elenichas/expenses-app",
           src: require("@/images/development/reactApp.jpg"),
         },
         {
-          name: "Book Reviews App",
-          stack: "Express.js, Node.js, JavaScript",
+          name: "Book Reviews API",
+          stack: "Express.js, Node.js, RESTful APIs",
           gitlabLink: "https://github.com/elenichas/expressBookReviews",
           src: require("@/images/development/expressApp.png"),
         },
         {
-          name: "Book Search API",
-          stack: "Flask, Python, HTML, HTTP",
+          name: "Search Service",
+          stack: "Flask, Python, HTTP APIs, Backend",
           gitlabLink: "https://github.com/elenichas/book-search-python-flask",
           src: require("@/images/development/bookSearchApp.png"),
         },
       ],
     };
   },
-  methods: {
-    toggleView(viewType) {
-      this.view = viewType;
-    },
-    updateMousePosition(event) {
-      this.mouseX = event.clientX + 100; // Offset the position slightly for better visibility
-      this.mouseY = event.clientY;
-    },
-  },
 };
 </script>
 
 <style scoped>
-.onImage {
-  color: #000000 !important;
-  letter-spacing: normal !important;
-  padding: 0 !important;
-  font-size: small;
+/* Modern Craft Page Layout */
+.page-layout {
+  min-height: 100vh;
+  background: var(--primary-bg);
 }
 
-.main-container {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  gap: 20px;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-lg);
 }
 
-.left-section {
-  padding: 20px;
+/* Page Header */
+.page-header {
+  margin-bottom: var(--space-2xl);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--border-light);
 }
 
-.right-section {
-  padding: 20px;
+.header-content {
+  max-width: 800px;
 }
 
-/* Styling for the grid view (with images) */
-.gallery-container.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+.page-title {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+  letter-spacing: -0.02em;
 }
 
-/* List view styling */
-.gallery-container.list {
-  display: block;
-}
-
-.gallery-item {
-  width: 100%;
-}
-
-/* Grid mode styling */
-.gallery-title.grid {
-  font-size: 8vw;
-  font-weight: 700;
-  margin-bottom: 20px;
-  text-align: left;
-  padding-left: 32px;
-}
-
-/* Hide images in list view */
-.image-wrapper.grid img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* For grid view, show title on hover */
-.image-title.grid {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 18px;
-  font-weight: bold;
-  color: #000000;
-  background-color: #ababab62;
-  text-transform: uppercase;
-  padding: 5px 10px;
-  transition: opacity 0.3s ease;
-  text-align: left;
-}
-
-.image-wrapper.grid:hover .image-title.grid {
-  opacity: 1;
-}
-
-.gallery-title.list {
-  font-size: 8vw;
-  font-weight: 700;
-  margin-bottom: 24px;
-  text-align: left;
-}
-
-/* For list view, show only text items */
-.image-title.list {
-  font-size: 24px;
-  font-size: 6vw;
-  font-weight: bold;
-  text-align: left;
-  color: #ababab;
-  text-transform: uppercase;
+.page-subtitle {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
   margin: 0;
-  cursor: crosshair;
-  letter-spacing: 0.2rem;
-  padding: 0.4rem;
+  line-height: 1.6;
 }
 
-a {
-  color: #ababab;
-  text-transform: uppercase;
+/* Section Headers */
+.projects-section {
+  margin-bottom: var(--space-3xl);
+}
+
+.section-header {
+  margin-bottom: var(--space-xl);
+}
+
+.section-title {
+  font-size: 1.75rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+  letter-spacing: -0.01em;
+}
+
+.section-description {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
   margin: 0;
-  cursor: crosshair;
-  letter-spacing: 0.2rem;
-  padding: 0.4rem;
 }
 
-/* Hover effect for text in list view */
-.image-title.list:hover {
-  color: #000000;
+/* Projects Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-xl);
 }
 
-.view-toggle button {
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
-
-.view-toggle button.active {
-  font-weight: bold;
-  border-bottom: 2px solid black;
-}
-
-/* Hover image overlay for list view */
-.hover-image-overlay {
-  position: fixed;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
+/* Project Cards */
+.project-card {
+  background: var(--primary-bg);
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  pointer-events: none;
-  z-index: 1000;
-  transform: translate(-50%, -50%);
+  border: 1px solid var(--border-light);
+  transition: all var(--transition-normal);
 }
 
-.hover-image-overlay img {
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--text-primary);
+}
+
+.project-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Project Images */
+.project-image {
+  position: relative;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  background: var(--secondary-bg);
+}
+
+.project-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 50%;
+  transition: transform var(--transition-normal);
 }
 
-/* Adjust for small screens */
-@media (max-width: 768px) {
-  .gallery-container.grid {
-    grid-template-columns: 1fr;
-  }
+.project-card:hover .project-image img {
+  transform: scale(1.05);
 }
+
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+.view-project {
+  color: white;
+  font-weight: var(--font-weight-semibold);
+  padding: var(--space-sm) var(--space-lg);
+  border: 2px solid white;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.view-project:hover {
+  background: white;
+  color: var(--text-primary);
+}
+
+/* Project Info */
+.project-info {
+  padding: var(--space-lg);
+}
+
+.project-title {
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+  line-height: 1.3;
+}
+
+.project-stack {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.4;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
-  .main-container {
-    display: grid;
-    grid-template-columns: 1fr; /* Change to 1 column */
-    gap: 20px;
+  .container {
+    padding: var(--space-xl) var(--space-md);
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 480px) {
-  .main-container {
-    display: grid;
-    grid-template-columns: 1fr; /* Change to 1 column */
-    gap: 10px;
-  }
-}
-
-@media (max-width: 320px) {
-  .main-container {
-    display: grid;
-    grid-template-columns: 1fr; /* Change to 1 column */
-    gap: 10px;
+  .container {
+    padding: var(--space-lg) var(--space-sm);
   }
 }
 </style>

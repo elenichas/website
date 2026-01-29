@@ -1,17 +1,24 @@
 <template>
   <div class="welcome-card">
     <div class="welcome-text">
-      <h1 class="name">I am Eleni Chasioti</h1>
-      <h2>
+            <h1 class="name">Eleni Chasioti</h1>
+      <h2 class="job-title-container">
         <span class="job-title">{{ animatedTitle }}</span>
       </h2>
+      <p class="description">
+        I design and engineer digital products that solve real problems for real people. 
+        From concept to code, I bridge the gap between user needs and technical solutions.
+      </p>
 
-      <button class="custom-button">
-        <a :href="cvLink" download class="button-text">Download CV</a>
-        <div class="button-icon">
-          <span class="mdi mdi-arrow-bottom-right"></span>
-        </div>
-      </button>
+      <div class="cta-buttons">
+        <a :href="cvLink" download class="btn-primary">
+          Download Resume
+          <span class="mdi mdi-download"></span>
+        </a>
+        <a href="mailto:eleni.chasioti@gmail.com" class="btn-secondary">
+          Get in Touch
+        </a>
+      </div>
     </div>
   </div>
 </template>
@@ -26,13 +33,13 @@ export default {
     return {
       cvLink,
       avatarSrc: require("@/images/eleniBig.png"), // Path to your avatar image
-      titles: [
-        "an Architect",
-        "a Computational Designer",
-        "a Software Developer",
+            titles: [
+        "Product Engineer",
+        "Product Designer", 
+        "Front-end Developer",
       ], // Titles to rotate through
       currentTitleIndex: 0, // Index to track the current title
-      animatedTitle: "...", // Variable for displaying the current animated text
+      animatedTitle: "Product Engineer", // Variable for displaying the current animated text
       isErasing: false, // Flag to track whether text is being erased
       typeSpeed: 150, // Typing speed in ms
       eraseSpeed: 100, // Erasing speed in ms
@@ -62,10 +69,11 @@ export default {
               setTimeout(type, this.eraseSpeed);
             }, this.delayBetweenTitles);
           }
-        } else {
+                        } else {
           if (charIndex > 0) {
-            // Erase characters one by one
-            this.animatedTitle = fullTitle.substring(0, charIndex - 1);
+            // Erase characters one by one, but never make it completely empty
+            const newText = fullTitle.substring(0, charIndex - 1);
+            this.animatedTitle = newText || '\u00A0'; // Use non-breaking space if empty
             charIndex--;
             setTimeout(type, this.eraseSpeed);
           } else {
@@ -74,7 +82,9 @@ export default {
               (this.currentTitleIndex + 1) % this.titles.length;
             fullTitle = this.titles[this.currentTitleIndex];
             isTyping = true; // Start typing again
-            setTimeout(type, this.typeSpeed);
+            charIndex = 0; // Reset character index
+            // Add a small delay before starting the next title
+            setTimeout(type, 300);
           }
         }
       };
@@ -86,169 +96,66 @@ export default {
 </script>
 
 <style scoped>
-.custom-button {
-  margin-top: 20px;
-  display: flex;
-  align-items: center;
-  padding: 8px 6px 8px 24px;
-  border: 2px solid black;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s, color 0.3;
-  transform: translate3d(0, 0, 0);
-  will-change: transform;
-}
-
-.button-text {
-  font-size: 14px;
-  margin-right: 15px;
-  color: black;
-}
-
-.button-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 32px;
-  height: 32px;
-  background-color: rgb(0, 0, 0);
-  color: white;
-  border-radius: 50%;
-}
-
-.icon {
-  width: 16px;
-  height: 16px;
-}
-
-.custom-button:hover {
-  background-color: black;
-  color: white;
-  transform: translate3d(2px, -2px, 4px);
-  transform-style: preserve-3d;
-}
-
-.custom-button:hover .button-text {
-  color: white;
-}
-
-.download-btn {
-  padding: 10px 20px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 25px 0 0 25px;
-  font-size: 1em;
-  cursor: pointer;
-  margin: 2px;
-  transition: background-color 0.3s ease;
-}
-
-.contact-btn {
-  padding: 10px 20px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 0 25px 25px 0;
-  font-size: 1em;
-  cursor: pointer;
-  margin: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.download-btn i {
-  margin-right: 10px;
-}
-
-.download-btn:hover {
-  background-color: #555;
-}
-
 .welcome-card {
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+  gap: var(--space-lg);
 }
 
 .welcome-text {
-  flex: 1;
-  padding-right: 20px;
-}
-
-.welcome-text p {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
 }
 
 .name {
-  font-size: 4vw;
-  font-weight: bold;
-  color: #000000;
-  /* Customize your color */
-  margin-bottom: 10px;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.job-title-container {
+  margin: 0;
+  min-height: 3rem; /* Ensure consistent height */
+  display: flex;
+  align-items: center;
 }
 
 .job-title {
-  color: #000;
-  font-weight: bold;
-  border-right: 2px solid black;
-  /* Cursor effect */
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+  border-right: 2px solid var(--text-primary);
+  padding-right: var(--space-sm);
+  animation: blinkCursor 1s infinite;
   display: inline-block;
-  padding-right: 5px;
-  animation: blinkCursor 0.7s steps(1) infinite;
-  font-size: 3vw;
-  color: #333;
-  height: fit-content;
+  min-height: 1.2em; /* Maintain consistent height */
+  min-width: 0.5em; /* Prevent complete collapse */
 }
 
-/* Cursor blinking animation */
 @keyframes blinkCursor {
-  0% {
-    border-right-color: black;
+  0%, 50% {
+    border-right-color: var(--text-primary);
   }
-
-  50% {
+  51%, 100% {
     border-right-color: transparent;
-  }
-
-  100% {
-    border-right-color: black;
   }
 }
 
 .description {
-  padding: 10px;
-  font-size: 1rem;
-  color: #555;
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 600px;
 }
 
-.about-me-btn {
-  padding: 10px 20px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 25px;
-  font-size: 1em;
-  cursor: pointer;
-  margin-top: 15px;
-  transition: background-color 0.3s ease;
-}
-
-.about-me-btn:hover {
-  background-color: #555;
-}
-
-.welcome-avatar {
-  flex: 0.5;
-  text-align: center;
-  justify-items: center;
-  padding-bottom: 5%;
-}
-
-.avatar-img {
-  width: 15%;
-  height: 15%;
-  object-fit: cover;
+.cta-buttons {
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 /* Responsive Design */
@@ -256,17 +163,21 @@ export default {
   .welcome-card {
     text-align: center;
   }
-}
-
-@media (max-width: 480px) {
-  .welcome-card {
-    text-align: center;
+  
+  .cta-buttons {
+    justify-content: center;
   }
 }
 
-@media (max-width: 320px) {
-  .welcome-card {
-    text-align: center;
+@media (max-width: 480px) {
+  .cta-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    justify-content: center;
   }
 }
 </style>
