@@ -1,208 +1,376 @@
 <template>
   <app-navbar></app-navbar>
-  <div class="ux-case-study">
-    <div>
-      <img class="hero-image" :src="hero" alt="hero image" />
-    </div>
-    <div>
-      <h1 class="title">Filos Mobile APP Case Study</h1>
-      <h4>Role: UX Designer</h4>
-      <h4>Duration: 2023, 1 month</h4>
-      <h4>Google UX Design Course</h4>
-    </div>
-
-    <section>
-      <h2>1. Problem Statement & Research</h2>
-      <p>
-        <strong>Problem Statement</strong> <br />
-        Many people with disabilities face barriers to social interaction and
-        participating in activities with others. Meanwhile, non-disabled people
-        or students working in the field of disabilities often lack
-        opportunities to connect meaningfully with people with disabilities and
-        understand their daily experiences. The app I designed addresses this
-        gap by providing a platform where people with and without disabilities
-        can connect, propose or join activities, and help each other.
-      </p>
-    </section>
-
-    <section>
-      <h2>2. User Personas</h2>
-      <!-- Vuetify carousel for switching between personas -->
-      <v-carousel hide-delimiters>
-        <v-carousel-item v-for="persona in personas" :key="persona.name">
-          <div class="persona">
-            <h2>{{ persona.name }}</h2>
-            <v-list density="compact">
-              <v-list-item>
-                <v-list-item-content>
-                  <v-list-item-title
-                    ><strong>Age:</strong> {{ persona.age }}</v-list-item-title
-                  >
-                </v-list-item-content>
-              </v-list-item>
-
-              <v-list-item>
-                <v-list-item-content>
-                  <v-list-item-title
-                    ><strong>Occupation:</strong>
-                    {{ persona.occupation }}</v-list-item-title
-                  >
-                </v-list-item-content>
-              </v-list-item>
-
-              <v-list-item>
-                <v-list-item-content>
-                  <v-list-item-title
-                    ><strong>Location:</strong>
-                    {{ persona.location }}</v-list-item-title
-                  >
-                </v-list-item-content>
-              </v-list-item>
-
-              <v-list-item v-if="persona.disability">
-                <v-list-item-content>
-                  <v-list-item-title
-                    ><strong>Disability:</strong>
-                    {{ persona.disability }}</v-list-item-title
-                  >
-                </v-list-item-content>
-              </v-list-item>
-
-              <v-list-item>
-                <v-list-item-content>
-                  <v-list-item-title
-                    ><strong>Tech Proficiency:</strong>
-                    {{ persona.tech }}</v-list-item-title
-                  >
-                </v-list-item-content>
-              </v-list-item>
-            </v-list>
-
-            <p>
-              <strong>Background</strong> <br />
-              {{ persona.background }}
-            </p>
-            <p>
-              <strong>Goals</strong><br />
-              {{ persona.goals }}
-            </p>
-            <p>
-              <strong>Frustrations</strong><br />
-              {{ persona.frustrations }}
-            </p>
-          </div>
-        </v-carousel-item>
-      </v-carousel>
-    </section>
-
-    <section>
-      <h2>3. Ideation & Brainstorming</h2>
-      <p>
-        During the ideation phase, I explored various ways to structure the app.
-        I started with a brainstorming session where I identified key functions
-        such as creating or joining an activity, scheduling, and chatting. I
-        sketched out ideas, considering different approaches for interaction
-        design, including whether to use an activity feed, a map-based
-        interface, or a calendar-first approach. I used a prioritization matrix
-        to decide which features would be most valuable for the minimum viable
-        product (MVP). High-priority features included: Creating and joining
-        activities Viewing activities in a calendar A proximity-based system to
-        find people nearby Simple chat functionality.
-      </p>
-    </section>
-
-    <section>
-      <h2>4. Wireframing & Prototyping</h2>
-      <div>
-        <img
-          class="image-full-width"
-          :src="wireframes"
-          alt="wireframes image"
-        />
+  <div class="case-study">
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <img class="hero-image" :src="hero" alt="Filos App Hero" />
+      <div class="hero-overlay">
+        <span class="project-tag">Google UX Design Course</span>
       </div>
+    </div>
 
-      <div class="figma-embed">
+    <!-- Project Header -->
+    <div class="project-header">
+      <h1 class="project-title">Filos</h1>
+      <p class="project-subtitle">
+        Connecting people with and without disabilities through shared activities and meaningful interactions
+      </p>
+      <div class="project-meta">
+        <div class="meta-item">
+          <span class="meta-label">Role</span>
+          <span class="meta-value">UX/UI Designer</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Duration</span>
+          <span class="meta-value">1 Month (2023)</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Type</span>
+          <span class="meta-value">Course Project</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Overview Section -->
+    <section class="overview-section">
+      <div class="section-grid">
+        <div class="overview-card">
+          <h3>🎯 Challenge</h3>
+          <p>
+            People with disabilities face barriers to social participation, while those working in disability services lack opportunities for meaningful connections.
+          </p>
+        </div>
+        <div class="overview-card">
+          <h3>💡 Solution</h3>
+          <p>
+            A platform enabling people with and without disabilities to connect, propose activities, and build genuine relationships through shared experiences.
+          </p>
+        </div>
+        <div class="overview-card">
+          <h3>🎓 Learning Focus</h3>
+          <p>
+            Practiced inclusive design principles, accessibility standards, and creating interfaces that serve diverse user needs.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Research & Insights -->
+    <section class="research-section">
+      <h2 class="section-title">Problem Space</h2>
+      <div class="insights-container">
+        <div class="insight-card" v-for="(insight, index) in insights" :key="index">
+          <div class="insight-icon">{{ insight.icon }}</div>
+          <h4>{{ insight.title }}</h4>
+          <p>{{ insight.description }}</p>
+        </div>
+      </div>
+      
+      <!-- Placeholder for research visuals -->
+      <!-- <div class="image-placeholder">
+        <p class="placeholder-text">
+          📸 Add image: Research findings or user interview insights
+        </p>
+      </div> -->
+    </section>
+
+    <!-- User Personas -->
+    <section class="personas-section">
+      <h2 class="section-title">Meet the Users</h2>
+      <div class="personas-grid">
+        <!-- Persona 1 -->
+        <div class="persona-card" @mouseenter="activePersona = 1" @mouseleave="activePersona = null">
+          <div class="persona-header">
+            <div class="persona-avatar">
+              <div class="avatar-placeholder">
+                <span>AM</span>
+              </div>
+              <p class="avatar-suggestion">💡 Add: Stock photo of person using wheelchair</p>
+            </div>
+            <div class="persona-info">
+              <h3>Alex Martinez</h3>
+              <p class="persona-title">Software Developer, 29</p>
+            </div>
+          </div>
+          <div class="persona-details" :class="{ active: activePersona === 1 }">
+            <div class="detail-group">
+              <span class="detail-icon">🎯</span>
+              <div>
+                <strong>Goal</strong>
+                <p>Find accessible activities and connect with understanding community members</p>
+              </div>
+            </div>
+            <div class="detail-group">
+              <span class="detail-icon">😤</span>
+              <div>
+                <strong>Pain Point</strong>
+                <p>Difficulty finding accessible activities and people who understand mobility challenges</p>
+              </div>
+            </div>
+            <div class="detail-group">
+              <span class="detail-icon">♿</span>
+              <div>
+                <strong>Context</strong>
+                <p>Uses wheelchair, works remotely, sometimes feels isolated</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Persona 2 -->
+        <div class="persona-card" @mouseenter="activePersona = 2" @mouseleave="activePersona = null">
+          <div class="persona-header">
+            <div class="persona-avatar">
+              <div class="avatar-placeholder">
+                <span>ET</span>
+              </div>
+              <p class="avatar-suggestion">💡 Add: Stock photo of university student</p>
+            </div>
+            <div class="persona-info">
+              <h3>Emma Thompson</h3>
+              <p class="persona-title">OT Student, 22</p>
+            </div>
+          </div>
+          <div class="persona-details" :class="{ active: activePersona === 2 }">
+            <div class="detail-group">
+              <span class="detail-icon">🎯</span>
+              <div>
+                <strong>Goal</strong>
+                <p>Volunteer and gain real-world experience with people with disabilities</p>
+              </div>
+            </div>
+            <div class="detail-group">
+              <span class="detail-icon">😤</span>
+              <div>
+                <strong>Pain Point</strong>
+                <p>Hard to find meaningful volunteer opportunities and connect respectfully</p>
+              </div>
+            </div>
+            <div class="detail-group">
+              <span class="detail-icon">📚</span>
+              <div>
+                <strong>Context</strong>
+                <p>Studying occupational therapy, passionate about making a difference</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design Process -->
+    <section class="process-section">
+      <h2 class="section-title">Design Process</h2>
+      <div class="process-steps">
+        <div class="process-step" v-for="(step, index) in processSteps" :key="index">
+          <div class="step-number">{{ index + 1 }}</div>
+          <h4>{{ step.title }}</h4>
+          <p>{{ step.description }}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wireframes -->
+    <section class="wireframes-section">
+      <h2 class="section-title">Wireframes & User Flow</h2>
+      <div class="wireframe-container">
+        <img :src="wireframes" alt="Low-fidelity wireframes" class="wireframe-image" />
+      </div>
+      
+      <!-- Figma Embed -->
+      <div class="figma-embed-container">
         <iframe
-          style="border: 1px solid rgba(0, 0, 0, 0.1)"
-          width="100%"
-          height="450"
+          class="figma-iframe"
           src="https://embed.figma.com/design/YQu3rgFADyaMk5HhHQM4Y8/Filos_App?node-id=22-403&embed-host=share"
           allowfullscreen
         ></iframe>
       </div>
     </section>
 
-    <section>
-      <h2>5. Visual Design & Branding</h2>
-      <div class="visual-design-container">
-        <p class="visual-design-text">
-          The Filos mobile app prototype is a project I designed to foster
-          connections between people with disabilities and their communities. I
-          focused on creating a visual identity that emphasizes inclusivity and
-          support, with the app name Filos representing friendship and
-          assistance. I chose a calming purple gradient as the primary color
-          scheme to evoke trust and approachability. The logo and typography are
-          clean and modern, reinforcing the app’s focus on accessibility and
-          ease of use. I designed the interface to be user-friendly, with large,
-          intuitive buttons and icons that meet accessibility standards. The
-          layout is consistent across screens, ensuring a seamless flow from
-          sign-up to scheduling and accepting activities.
-        </p>
-      </div>
-      <div class="style-guide">
-        <div class="typography-section">
-          <h2>Typography</h2>
-          <div class="typography">
-            <p class="large-text">Aa</p>
-            <p class="font-name">Inter</p>
-            <p class="alphabet">abcdefghijklmnopqrstuvwxyz</p>
-          </div>
+    <!-- Visual Design -->
+    <section class="design-section">
+      <h2 class="section-title">Visual Identity</h2>
+      <div class="design-content">
+        <div class="design-story">
+          <p>
+            I created a visual identity emphasizing inclusivity and trust. The name "Filos" means friendship,
+            and the calming purple gradient evokes approachability. Every design choice prioritizes accessibility
+            with large buttons, high contrast, and clear navigation.
+          </p>
         </div>
-        <div class="colors-section">
-          <h2>Colors</h2>
-          <div class="color-swatches">
-            <div class="color-swatch" :style="{ backgroundColor: '#a469cc' }">
-              <span>#a469cc</span>
+        
+        <div class="style-guide-modern">
+                    <!-- Colors -->
+          <div class="style-section">
+            <h3>Color Palette</h3>
+            <div class="color-palette">
+              <div class="color-item">
+                <div class="color-circle" style="background: #a469cc"></div>
+                <span class="color-code">#a469cc</span>
+                <span class="color-name">Lavender</span>
+              </div>
+              <div class="color-item">
+                <div class="color-circle" style="background: #511f88"></div>
+                <span class="color-code">#511f88</span>
+                <span class="color-name">Deep Purple</span>
+              </div>
+              <div class="color-item">
+                <div class="color-circle" style="background: #d9d9d9"></div>
+                <span class="color-code">#d9d9d9</span>
+                <span class="color-name">Light Gray</span>
+              </div>
+              <div class="color-item">
+                <div class="color-circle" style="background: #000000"></div>
+                <span class="color-code">#000000</span>
+                <span class="color-name">Black</span>
+              </div>
             </div>
-            <div class="color-swatch" :style="{ backgroundColor: '#511f88' }">
-              <span>#511f88</span>
+
+            <h4>Key Components</h4>
+            <div class="components-showcase">
+              <div class="component-sample">
+                <span class="component-label">Primary Button</span>
+                <button class="sample-button primary" style="background: #511f88;">Join Activity</button>
+              </div>
+              <div class="component-sample">
+                <span class="component-label">Secondary Button</span>
+                <button class="sample-button secondary" style="border-color: #a469cc; color: #a469cc;">Learn More</button>
+              </div>
+              <div class="component-sample">
+                <span class="component-label">Input Field</span>
+                <input class="sample-input" type="text" placeholder="Search activities..." style="--brand-primary: #511f88;" />
+              </div>
             </div>
-            <div class="color-swatch" :style="{ backgroundColor: '#d9d9d9' }">
-              <span>#d9d9d9</span>
-            </div>
-            <div class="color-swatch" :style="{ backgroundColor: '#000000' }">
-              <span>#000000</span>
+          </div>
+
+                    <!-- Typography -->
+          <div class="style-section">
+            <h3>Typography</h3>
+            <div class="typography-showcase">
+              <div class="type-sample">
+                <span class="type-label">Header</span>
+                <p class="type-display header" style="font-family: 'Inter', sans-serif; color: #511f88;">Connect & Grow Together</p>
+                <span class="type-meta">Inter Bold · 32px</span>
+              </div>
+              <div class="type-sample">
+                <span class="type-label">Subtitle</span>
+                <p class="type-display subtitle" style="font-family: 'Inter', sans-serif; color: #a469cc;">Building inclusive communities</p>
+                <span class="type-meta">Inter Medium · 21px</span>
+              </div>
+              <div class="type-sample">
+                <span class="type-label">Body Text</span>
+                <p class="type-display body" style="font-family: 'Inter', sans-serif; color: #666;">Join activities, meet new people, and create meaningful connections in an accessible and welcoming environment designed for everyone.</p>
+                <span class="type-meta">Inter Regular · 16px</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <button class="custom-button">
-        <a
-          href="https://www.figma.com/proto/dSiLtVj2GKzRZYcfYoe8iW/KapihanApp?node-id=49-5572&t=qR7dRV7dwGhpgw8c-1"
-          class="button-text"
-          >Interactive Prototype</a
-        >
-        <div class="button-icon">
-          <span class="mdi mdi-arrow-bottom-right"></span>
-        </div>
-      </button>
+      <!-- Placeholder for additional design visuals -->
+      <!-- <div class="image-placeholder">
+        <p class="placeholder-text">
+          📸 Add image: UI component library or design system showcase
+        </p>
+      </div> -->
     </section>
 
-    <section>
-      <h2>6. Reflection & Next Steps</h2>
-      <p>
-        Reflecting on the design of the Filos app, I realized how crucial it is
-        to deeply understand the needs of the user base, particularly those with
-        varying abilities. Ensuring accessibility at every touchpoint — from
-        visual design to functionality — was a key learning experience. In the
-        future, I would focus on further user testing with diverse groups to
-        refine the user experience and ensure the app is fully inclusive. My
-        next steps would include enhancing the app's accessibility features,
-        such as voice commands and screen readers, and exploring real-time
-        feedback systems to continuously improve usability based on direct user
-        input.
-      </p>
+    <!-- Key Features -->
+    <section class="prototype-section">
+      <h2 class="section-title">Key Features</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <span class="feature-icon">👥</span>
+          <h4>Connect</h4>
+          <p>Find people nearby and build meaningful connections</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">📅</span>
+          <h4>Activities</h4>
+          <p>Create or join accessible events and activities</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">💬</span>
+          <h4>Chat</h4>
+          <p>Simple messaging to coordinate and connect</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">♿</span>
+          <h4>Accessibility</h4>
+          <p>Designed with WCAG standards and inclusive design</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Prototype CTA -->
+    <section class="cta-section">
+      <div class="cta-content">
+        <h2>Try the Interactive Prototype</h2>
+        <p>Experience the full user flow in Figma</p>
+        <a
+          :href="figmaSrc"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="cta-button"
+        >
+          <span>View Prototype</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Learnings & Reflection -->
+    <section class="reflection-section">
+      <h2 class="section-title">Key Learnings</h2>
+      <div class="learnings-grid">
+        <div class="learning-card">
+          <h4>♿ Accessibility First</h4>
+          <p>
+            Learned to prioritize accessibility from the start—not as an afterthought but as a core design principle for all users.
+          </p>
+        </div>
+        <div class="learning-card">
+          <h4>🤝 Inclusive Design</h4>
+          <p>
+            Practiced designing for diverse abilities and understanding how design choices impact different user groups.
+          </p>
+        </div>
+        <div class="learning-card">
+          <h4>🎨 Empathy in Design</h4>
+          <p>
+            Developed deeper empathy by considering barriers users face and designing solutions that truly serve their needs.
+          </p>
+        </div>
+        <div class="learning-card">
+          <h4>✅ WCAG Standards</h4>
+          <p>
+            Gained hands-on experience applying accessibility guidelines and understanding their practical impact.
+          </p>
+        </div>
+      </div>
+
+      <div class="next-steps">
+        <h3>If I Were to Continue...</h3>
+        <ul>
+          <li>Conduct usability testing with users who have various disabilities</li>
+          <li>Implement voice commands and screen reader optimization</li>
+          <li>Add real-time feedback system for continuous improvement</li>
+          <li>Explore additional accessibility features like haptic feedback</li>
+        </ul>
+      </div>
     </section>
   </div>
 </template>
@@ -219,33 +387,45 @@ export default {
     return {
       hero: require("@/images/filosHero.png"),
       wireframes: require("@/images/filosWireframes.png"),
-      personas: [
+      figmaSrc:
+        "https://www.figma.com/proto/YQu3rgFADyaMk5HhHQM4Y8/Filos_App?node-id=0-1&t=XXX",
+      activePersona: null,
+      insights: [
         {
-          name: "Alex Martinez",
-          age: 29,
-          occupation: "Software Developer",
-          location: "London, UK",
-          disability: "Mobility impairment (uses a wheelchair)",
-          tech: "High",
-          background:
-            "Alex has been living with a mobility impairment since a car accident five years ago. He is very independent and enjoys his work as a remote software developer. However, he sometimes feels isolated as it's difficult for him to participate in social activities due to limited mobility and accessibility in public spaces.",
-          goals:
-            "Alex wants to find accessible activities, meet new people, and feel more connected to his community. He prefers simple apps that are intuitive, with features like calendars to track events and a way to chat before committing to activities.",
-          frustrations:
-            "Alex often finds it hard to identify accessible activities or people who understand his needs. Many apps lack the accessibility features necessary for ease of use by people with mobility challenges.",
+          icon: "🚫",
+          title: "Social Barriers",
+          description:
+            "People with disabilities often face physical and social barriers to participation",
         },
         {
-          name: "Emma Thompson",
-          age: 22,
-          occupation: "University Student (Occupational Therapy)",
-          location: "Manchester, UK",
-          tech: "Medium",
-          background:
-            "Emma is a final-year occupational therapy student. She is passionate about making a difference in people’s lives, especially those with disabilities. Emma is looking for ways to gain real-world experience working with people with disabilities outside her coursework.",
-          goals:
-            "Emma wants to volunteer in activities where she can apply her skills  while learning more about different disabilities. She is eager to connect with people in her local community, make a positive impact, and learn more about accessibility in real life.",
-          frustrations:
-            "Emma finds it difficult to find volunteer opportunities where she can meet people with disabilities. She is also unsure how to approach people in a meaningful, respectful way without it feeling transactional",
+          icon: "🤝",
+          title: "Connection Gap",
+          description:
+            "Disability professionals lack opportunities for meaningful real-world connections",
+        },
+        {
+          icon: "❓",
+          title: "Awareness Need",
+          description:
+            "Limited understanding of daily experiences creates empathy gaps",
+        },
+      ],
+      processSteps: [
+        {
+          title: "Research",
+          description: "Identified accessibility needs and connection barriers",
+        },
+        {
+          title: "Define",
+          description: "Created diverse personas and mapped user journeys",
+        },
+        {
+          title: "Ideate",
+          description: "Brainstormed accessible activity and connection features",
+        },
+        {
+          title: "Prototype",
+          description: "Built inclusive wireframes and high-fidelity mockups",
         },
       ],
     };
@@ -253,210 +433,61 @@ export default {
 };
 </script>
 
+<style src="@/styles/case-study-common.css"></style>
 <style scoped>
-.v-window {
-  height: fit-content !important;
+/* FilosMobileApp - Accessibility Theme Colors: Purple */
+
+/* Insight cards hover - brand color */
+.insight-card:hover {
+  border-color: #511f88;
 }
 
-.hero-image {
-  width: 100%;
+/* Avatar gradient - brand colors */
+.avatar-placeholder {
+  background: linear-gradient(135deg, #511f88, #a469cc);
 }
 
-.persona {
-  margin: 8%;
-  background: white;
+/* Detail group strong - brand color */
+.detail-group strong {
+  color: #511f88;
 }
 
-.v-carousel-item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* Process step number - brand color */
+.step-number {
+  background: #511f88;
+  box-shadow: 0 4px 15px rgba(81, 31, 136, 0.3);
 }
 
-.visual-design-container {
-  padding: 20px;
+/* Type display - brand color */
+.type-display {
+  color: #511f88;
 }
 
-.visual-design-text {
-  margin-bottom: 20px;
+/* CTA Section - brand gradient */
+.cta-section {
+  background: linear-gradient(135deg, #511f88 0%, #6e3199 100%);
 }
 
-/* Media query to handle small screens */
-@media (max-width: 768px) {
-  .persona {
-    padding: 20px;
-  }
-}
-.image-full-width {
-  width: 100%;
+.cta-button {
+  background: #a469cc;
 }
 
-.visual-design-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px; /* Adds space between the two children */
-  padding-bottom: 20px;
+.cta-button:hover {
+  background: #b57dd9;
+  box-shadow: 0 8px 20px rgba(164, 105, 204, 0.4);
 }
 
-/* Media query to stack the children on smaller screens */
-@media (max-width: 1000px) {
-  .visual-design-container {
-    flex-direction: column; /* Stack the children vertically */
-    gap: 20px; /* Adds space between the two children */
-  }
+/* Learning card - brand color border */
+.learning-card {
+  border-left: 4px solid #511f88;
 }
 
-.visual-design-text {
-  width: 100%;
-  margin-bottom: 20px;
+.learning-card:hover {
+  border-left-color: #a469cc;
 }
 
-.style-guide {
-  display: flex;
-  justify-content: space-between;
-  background-color: #ffffff;
-  color: #000;
-  padding: 20px;
-  width: 100%;
-  margin-bottom: 2%;
-}
-
-.typography-section {
-  flex: 1;
-}
-
-.typography {
-  margin-top: 20px;
-}
-
-.large-text {
-  font-size: 100px;
-  font-family: "Inter";
-  color: #000;
-}
-
-.font-name {
-  font-size: 18px;
-  margin-top: 10px;
-}
-
-.alphabet {
-  font-size: 24px;
-  color: rgba(47, 47, 47, 0.7);
-}
-
-.colors-section {
-  flex: 1;
-}
-
-.color-swatches {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.color-swatch {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 14px;
-  color: white;
-  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
-}
-
-.btn {
-  padding: 10px 20px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 25px;
-  font-size: 1em;
-  cursor: pointer;
-  margin-top: 15px;
-  transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-  background-color: #555;
-}
-
-.ux-case-study {
-  margin: 0 auto;
-  padding: 0 4%;
-}
-
-.title {
-  font-size: 2.5rem;
-  color: #333;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-
-h4 {
-  margin: 0.5rem 0;
-}
-
-section {
-  margin-bottom: 40px;
-}
-
-ul {
-  padding: 8px;
-}
-
-h2 {
-  font-size: 1.75rem;
-  padding-bottom: 5px;
-  margin-bottom: 15px;
-}
-
-p {
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-bottom: 15px;
-}
-
-.personas-container {
-  display: flex;
-  margin-bottom: 40px;
-}
-
-.persona {
-  flex: 1;
-  padding: 40px;
-}
-
-@media (max-width: 768px) {
-  .ux-case-study {
-    padding: 15px;
-  }
-
-  .title {
-    font-size: 2rem;
-  }
-
-  h2 {
-    font-size: 1.5rem;
-  }
-
-  p {
-    font-size: 0.95rem;
-  }
-
-  .personas-container {
-    flex-direction: column;
-  }
-
-  .visual-design-text {
-    width: 100%;
-  }
-
-  .style-guide {
-    flex-direction: column;
-  }
+/* Next steps arrow - brand color */
+.next-steps li::before {
+  color: #511f88;
 }
 </style>
