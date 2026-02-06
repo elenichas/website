@@ -1,173 +1,161 @@
 <template>
   <app-navbar></app-navbar>
-  <div class="ux-case-study">
-    <div>
-      <img style="width: 100%" :src="hero" alt="hero image" />
-    </div>
-    <div>
-      <h1 class="title">Coffee Shop Case Study</h1>
-      <h4>Role UX Designer</h4>
-      <h4>Duration 2023,1 month</h4>
-      <h4>Google UX Design Course</h4>
+  <div class="case-study">
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <img class="hero-image" :src="hero" alt="Brew & Crumb App Hero" />
+      <div class="hero-overlay">
+        <span class="project-tag">Google UX Design Course</span>
+      </div>
     </div>
 
-    <section>
-      <h2>1. Problem Statement</h2>
-
-      <p>
-        The local Filipino coffee shop in my neighborhood is very popular with
-        working people, but they experience long queues in the morning, which
-        leads to delays. I designed this app to allow customers to preorder or
-        get their coffee and pastries delivered, helping reduce wait times and
-        expand the business. I observed the morning rush at the coffee shop and
-        interviewed several customers and staff to understand the impact of long
-        queues. I also analyzed existing apps in the food service industry that
-        offer preordering and delivery to identify best practices and areas for
-        improvement. The shop already has a strong brand identity, which I
-        incorporated into the app design for consistency.
+    <!-- Project Header -->
+    <div class="project-header">
+      <h1 class="project-title">Brew & Crumb</h1>
+      <p class="project-subtitle">
+        A mobile ordering solution to reduce wait times at a local coffee shop
       </p>
-    </section>
+      <div class="project-meta">
+        <div class="meta-item">
+          <span class="meta-label">Role</span>
+          <span class="meta-value">UX/UI Designer</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Duration</span>
+          <span class="meta-value">1 Month (2023)</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Type</span>
+          <span class="meta-value">Course Project</span>
+        </div>
+      </div>
+    </div>
 
-    <section>
-      <h2>2. User Personas</h2>
-      <div class="personas-container">
-        <div class="persona1">
-          <h2>James Anderson</h2>
-          <ul>
-            <li><strong>Age:</strong> 34</li>
-            <li><strong>Occupation:</strong> Marketing Manager</li>
-            <li><strong>Location:</strong> Nearby office complex</li>
-            <li><strong>Tech Proficiency:</strong> High</li>
-          </ul>
+    <!-- Overview Section -->
+    <section class="overview-section">
+      <div class="section-grid">
+        <div class="overview-card">
+          <h3>🎯 Challenge</h3>
           <p>
-            <strong>Background</strong> <br />
-            James works in a fast-paced office nearby and grabs coffee and a
-            pastry from the shop every morning. Due to his busy schedule,
-            waiting in long lines is a hassle, and he often ends up late for
-            work meetings.
-          </p>
-          <p>
-            <strong>Goals</strong> <br />
-            James wants to quickly place an order in advance and pick it up on
-            his way to work without waiting in line. He also enjoys trying
-            different pastries and would love the ability to easily view daily
-            specials through the app.
-          </p>
-          <p>
-            <strong>Frustrations</strong><br />
-            The long queues in the morning make it difficult for James to get
-            his coffee quickly, and he often misses out on popular items that
-            sell out before he reaches the counter.
+            Long morning queues at a popular local coffee shop cause delays for
+            busy professionals and lost revenue opportunities.
           </p>
         </div>
-
-        <div class="persona2">
-          <h2>Maria Lopez</h2>
-          <ul>
-            <li><strong>Age:</strong> 27</li>
-            <li><strong>Occupation:</strong> Freelance Graphic Designer</li>
-            <li><strong>Location:</strong> Lives locally</li>
-            <li><strong>Tech Proficiency:</strong> Medium</li>
-          </ul>
+        <div class="overview-card">
+          <h3>💡 Solution</h3>
           <p>
-            <strong>Background</strong><br />
-            Maria works from home and loves supporting local businesses. She
-            frequently orders coffee and pastries for delivery to enjoy during
-            her workday. Maria is also a fan of the coffee shop’s merchandise,
-            which she often buys for herself or as gifts.
+            A mobile app enabling preorders, delivery tracking, and merchandise
+            shopping to streamline operations and enhance customer experience.
           </p>
+        </div>
+        <div class="overview-card">
+          <h3>🎓 Learning Focus</h3>
           <p>
-            <strong>Goals</strong> <br />Maria wants an easy way to order
-            delivery or preorder for pickup when she’s out running errands. She
-            also wants to browse and purchase merchandise through the app,
-            taking advantage of exclusive online offers.
-          </p>
-          <p>
-            <strong>Frustrations</strong><br />
-            Delivery times can be unpredictable, and Maria wishes she could
-            track her orders through the app. She also finds it inconvenient to
-            go to the shop to buy merchandise in person.
+            Practiced user research, persona development, wireframing, and
+            high-fidelity prototyping through the Google UX Design curriculum.
           </p>
         </div>
       </div>
     </section>
 
-    <section>
-      <h2>3. Ideation & Brainstorming</h2>
-      <p>
-        I brainstormed several solutions to streamline the coffee shop’s morning
-        rush. My main ideas were allowing users to preorder their coffee and
-        pastries for quick pickup and providing a delivery option. I also wanted
-        to integrate the shop’s merchandise, allowing customers to purchase
-        directly through the app. The MVP includes preorder functionality,
-        delivery tracking, and a shop for purchasing merchandise. Other
-        potential features, like loyalty rewards or mobile payments, were
-        deprioritized for future iterations to focus on the core user needs.
-      </p>
-    </section>
-
-    <section>
-      <h2>4. Wireframing & Prototyping</h2>
-      <div>
-        <img style="width: 100%" :src="wireframes" alt="hero image" />
+    <!-- Research & Insights -->
+    <section class="research-section">
+      <h2 class="section-title">Research & Insights</h2>
+      <div class="insights-container">
+        <div class="insight-card" v-for="(insight, index) in insights" :key="index">
+          <div class="insight-icon">{{ insight.icon }}</div>
+          <h4>{{ insight.title }}</h4>
+          <p>{{ insight.description }}</p>
+        </div>
       </div>
-      <!-- <p>
-        <strong>Low-Fidelity Wireframes</strong><br />
-        I started by sketching the core user flow: selecting items for preorder
-        or delivery, making the payment, and receiving an order confirmation. I
-        designed simple, intuitive navigation to ensure users could quickly
-        access these features.
-      </p> -->
-      <p style="padding-top: 2%">
-        <strong>High-Fidelity Prototypes</strong><br />
-        I developed high-fidelity prototypes using the coffee shop’s existing
-        brand identity. The color scheme and typography were carried over from
-        the shop’s branding, and I designed visually appealing product displays
-        for their pastries and merchandise. The app also featured a clean order
-        summary page and a tracking system for deliveries.
-      </p>
-      <div>
-        <img style="width: 100%" :src="prototypes" alt="hero image" />
-      </div>
-    </section>
-
-    <section>
-      <h2>6. Visual Design & Branding</h2>
-      <div style="display: flex">
-        <p style="padding: 24px">
-          The app’s visual design reflects the shop’s existing brand identity,
-          which includes warm, earthy tones and playful typography. I ensured
-          that the app maintained consistency with the physical store’s
-          ambiance, using the same logo, colors, and typography to create a
-          cohesive experience for customers.The goal was to make the app feel
-          personal and welcoming, much like the coffee shop itself. I used
-          imagery of the shop’s best-selling pastries and coffee to entice users
-          and evoke the cozy, friendly atmosphere that customers love.
+      
+      <!-- Placeholder for research photos -->
+      <!-- <div class="image-placeholder">
+        <p class="placeholder-text">
+          📸 Add image: Photos from coffee shop observation or interview notes
         </p>
-        <div class="style-guide">
-          <div class="typography-section">
-            <h2>Typography</h2>
-            <div class="typography">
-              <p class="large-text">Aa</p>
-              <p class="font-name">Sansation</p>
-              <p class="font-name">Inter</p>
-              <p class="alphabet">abcdefghijklmnopqrstuvwxyz</p>
+      </div> -->
+    </section>
+
+    <!-- User Personas -->
+    <section class="personas-section">
+      <h2 class="section-title">Meet the Users</h2>
+      <div class="personas-grid">
+        <!-- Persona 1 -->
+        <div class="persona-card" @mouseenter="activePersona = 1" @mouseleave="activePersona = null">
+          <div class="persona-header">
+            <div class="persona-avatar">
+              <!-- Placeholder for persona photo -->
+              <div class="avatar-placeholder">
+                <span>JA</span>
+              </div>
+              <p class="avatar-suggestion">💡 Add: Stock photo of professional man</p>
+            </div>
+            <div class="persona-info">
+              <h3>James Anderson</h3>
+              <p class="persona-title">Marketing Manager, 34</p>
             </div>
           </div>
-          <div class="colors-section">
-            <h2>Colors</h2>
-            <div class="color-swatches">
-              <div class="color-swatch" :style="{ backgroundColor: '#00320b' }">
-                <span>#00320b</span>
+          <div class="persona-details" :class="{ active: activePersona === 1 }">
+            <div class="detail-group">
+              <span class="detail-icon">🎯</span>
+              <div>
+                <strong>Goal</strong>
+                <p>Skip the line and get coffee on the way to work</p>
               </div>
-              <div class="color-swatch" :style="{ backgroundColor: '#d9d9d9' }">
-                <span>#d9d9d9</span>
+            </div>
+            <div class="detail-group">
+              <span class="detail-icon">😤</span>
+              <div>
+                <strong>Pain Point</strong>
+                <p>Long queues make him late for meetings</p>
               </div>
-              <div class="color-swatch" :style="{ backgroundColor: '#d7a246' }">
-                <span>#d7a246</span>
+            </div>
+            <div class="detail-group">
+              <span class="detail-icon">📱</span>
+              <div>
+                <strong>Tech Savvy</strong>
+                <p>High - Uses multiple apps daily</p>
               </div>
-              <div class="color-swatch" :style="{ backgroundColor: '#000000' }">
-                <span>#000000</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Persona 2 -->
+        <div class="persona-card" @mouseenter="activePersona = 2" @mouseleave="activePersona = null">
+          <div class="persona-header">
+            <div class="persona-avatar">
+              <!-- Placeholder for persona photo -->
+              <div class="avatar-placeholder">
+                <span>ML</span>
+              </div>
+              <p class="avatar-suggestion">💡 Add: Stock photo of creative woman</p>
+            </div>
+            <div class="persona-info">
+              <h3>Maria Lopez</h3>
+              <p class="persona-title">Freelance Designer, 27</p>
+            </div>
+          </div>
+          <div class="persona-details" :class="{ active: activePersona === 2 }">
+            <div class="detail-group">
+              <span class="detail-icon">🎯</span>
+              <div>
+                <strong>Goal</strong>
+                <p>Order delivery while working from home</p>
+              </div>
+            </div>
+            <div class="detail-group">
+              <span class="detail-icon">😤</span>
+              <div>
+                <strong>Pain Point</strong>
+                <p>Can't track delivery status or buy merchandise online</p>
+              </div>
+            </div>
+            <div class="detail-group">
+              <span class="detail-icon">📱</span>
+              <div>
+                <strong>Tech Savvy</strong>
+                <p>Medium - Comfortable with apps</p>
               </div>
             </div>
           </div>
@@ -175,47 +163,226 @@
       </div>
     </section>
 
-    <section>
-      <h2>7. Final Prototype & User Flow</h2>
-
-      <p>
-        <strong>Interactive Flow</strong> <br />
-        The final prototype allows users to quickly browse the menu, select
-        items for preorder or delivery, and track their order status. Customers
-        can also explore the shop’s merchandise, place orders, and receive
-        notifications when their items are ready for pickup or out for delivery.
-      </p>
-      <p>
-        <strong>Example User Flow</strong> <br />
-        A customer opens the app, selects their favorite coffee and a pastry for
-        pickup, chooses a time for pickup, and pays online. They receive a
-        notification when their order is ready, allowing them to skip the line
-        and collect their order quickly. They can also browse the merchandise
-        section and add an item to their cart for delivery alongside their
-        coffee order.
-      </p>
-      <button class="custom-button">
-        <a
-          href="https://www.figma.com/proto/dSiLtVj2GKzRZYcfYoe8iW/KapihanApp?node-id=49-5572&t=qR7dRV7dwGhpgw8c-1"
-          class="button-text"
-        >
-          View the Interactive Prototype
-        </a>
-      </button>
+    <!-- Design Process -->
+    <section class="process-section">
+      <h2 class="section-title">Design Process</h2>
+      <div class="process-steps">
+        <div class="process-step" v-for="(step, index) in processSteps" :key="index">
+          <div class="step-number">{{ index + 1 }}</div>
+          <h4>{{ step.title }}</h4>
+          <p>{{ step.description }}</p>
+        </div>
+      </div>
     </section>
 
-    <section>
-      <h2>8. Reflection & Next Steps</h2>
-      <p>
-        This project helped me understand how digital solutions can streamline
-        small business operations and enhance the customer experience. Designing
-        the app around the coffee shop’s existing brand identity allowed me to
-        create a consistent, familiar user experience that reflects the shop’s
-        values. In the future, I would like to implement a loyalty program to
-        encourage repeat customers and integrate mobile payments to speed up the
-        checkout process. Additionally, adding real-time delivery tracking and
-        order customization options would further enhance the user experience.
-      </p>
+    <!-- Wireframes -->
+    <section class="wireframes-section">
+      <h2 class="section-title">From Sketches to Screens</h2>
+      <div class="wireframe-container">
+        <img :src="wireframes" alt="Low-fidelity wireframes" class="wireframe-image" />
+      </div>
+      
+      <!-- Placeholder for additional wireframe images -->
+      <!-- <div class="image-placeholder">
+        <p class="placeholder-text">
+          📸 Add image: Paper sketches or early concept drawings
+        </p>
+      </div> -->
+    </section>
+
+    <!-- Visual Design -->
+    <section class="design-section">
+      <h2 class="section-title">Visual Identity</h2>
+      <div class="design-content">
+        <div class="design-story">
+          <p>
+            I developed a warm, inviting visual language that reflects the
+            cozy atmosphere of a neighborhood coffee shop. The earthy tones and
+            clean typography create an approachable yet modern aesthetic.
+          </p>
+        </div>
+        
+        <div class="style-guide-modern">
+                    <!-- Colors -->
+          <div class="style-section">
+            <h3>Color Palette</h3>
+            <div class="color-palette">
+              <div class="color-item">
+                <div class="color-circle" style="background: #00320b"></div>
+                <span class="color-code">#00320b</span>
+                <span class="color-name">Deep Forest</span>
+              </div>
+              <div class="color-item">
+                <div class="color-circle" style="background: #d7a246"></div>
+                <span class="color-code">#d7a246</span>
+                <span class="color-name">Golden Cream</span>
+              </div>
+              <div class="color-item">
+                <div class="color-circle" style="background: #d9d9d9"></div>
+                <span class="color-code">#d9d9d9</span>
+                <span class="color-name">Soft Latte</span>
+              </div>
+              <div class="color-item">
+                <div class="color-circle" style="background: #000000"></div>
+                <span class="color-code">#000000</span>
+                <span class="color-name">Espresso</span>
+              </div>
+            </div>
+
+            <h4>Key Components</h4>
+            <div class="components-showcase">
+              <div class="component-sample">
+                <span class="component-label">Primary Button</span>
+                <button class="sample-button primary" style="background: #00320b;">Order Now</button>
+              </div>
+              <div class="component-sample">
+                <span class="component-label">Secondary Button</span>
+                <button class="sample-button secondary" style="border-color: #d7a246; color: #d7a246;">View Menu</button>
+              </div>
+              <div class="component-sample">
+                <span class="component-label">Input Field</span>
+                <input class="sample-input" type="text" placeholder="Search menu..." style="--brand-primary: #00320b;" />
+              </div>
+            </div>
+          </div>
+
+                    <!-- Typography -->
+          <div class="style-section">
+            <h3>Typography</h3>
+            <div class="typography-showcase">
+              <div class="type-sample">
+                <span class="type-label">Header</span>
+                <p class="type-display header" style="font-family: 'Sansation', sans-serif; color: #00320b;">Fresh Coffee Daily</p>
+                <span class="type-meta">Sansation Bold · 32px</span>
+              </div>
+              <div class="type-sample">
+                <span class="type-label">Subtitle</span>
+                <p class="type-display subtitle" style="font-family: 'Inter', sans-serif; color: #d7a246;">Order ahead and skip the line</p>
+                <span class="type-meta">Inter Medium · 21px</span>
+              </div>
+              <div class="type-sample">
+                <span class="type-label">Body Text</span>
+                <p class="type-display body" style="font-family: 'Inter', sans-serif; color: #666;">Browse our menu of artisan coffee, fresh pastries, and local merchandise. Your order will be ready when you arrive.</p>
+                <span class="type-meta">Inter Regular · 16px</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- High-Fidelity Prototypes -->
+    <section class="prototype-section">
+      <h2 class="section-title">High-Fidelity Screens</h2>
+      <div class="prototype-showcase">
+        <img :src="prototypes" alt="High-fidelity prototype screens" class="prototype-image" />
+      </div>
+
+      <!-- Key Features Highlight -->
+      <div class="features-grid">
+        <div class="feature-card">
+          <span class="feature-icon">🛒</span>
+          <h4>Quick Ordering</h4>
+          <p>Browse menu and add items with just a few taps</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">📅</span>
+          <h4>Schedule Pickup</h4>
+          <p>Choose exact pickup time to avoid waiting</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">🚚</span>
+          <h4>Delivery Tracking</h4>
+          <p>Real-time updates on order status</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">🎁</span>
+          <h4>Shop Merch</h4>
+          <p>Browse and purchase shop merchandise</p>
+        </div>
+      </div>
+
+      <!-- Placeholder for user flow diagram -->
+      <!-- <div class="image-placeholder">
+        <p class="placeholder-text">
+          📸 Add image: User flow diagram showing the ordering journey
+        </p>
+      </div> -->
+    </section>
+
+    <!-- Interactive Prototype CTA -->
+    <section class="cta-section">
+      <div class="cta-content">
+        <h2>Try the Interactive Prototype</h2>
+        <p>Experience the full user flow in Figma</p>
+        <a
+          :href="figmaSrc"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="cta-button"
+        >
+          <span>View Prototype</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Learnings & Reflection -->
+    <section class="reflection-section">
+      <h2 class="section-title">Key Learnings</h2>
+      <div class="learnings-grid">
+        <div class="learning-card">
+          <h4>🔍 User Research</h4>
+          <p>
+            Practiced conducting user interviews and observations to identify
+            real pain points in the customer journey.
+          </p>
+        </div>
+        <div class="learning-card">
+          <h4>🎨 Visual Design</h4>
+          <p>
+            Learned to work within an existing brand identity while creating
+            a modern digital experience.
+          </p>
+        </div>
+        <div class="learning-card">
+          <h4>🔄 Iteration</h4>
+          <p>
+            Developed skills in moving from low-fidelity wireframes to
+            polished high-fidelity prototypes.
+          </p>
+        </div>
+        <div class="learning-card">
+          <h4>📱 Mobile-First</h4>
+          <p>
+            Practiced designing for mobile constraints while maintaining
+            usability and visual appeal.
+          </p>
+        </div>
+      </div>
+
+      <div class="next-steps">
+        <h3>If I Were to Continue...</h3>
+        <ul>
+          <li>Add loyalty rewards program integration</li>
+          <li>Implement order customization features</li>
+          <li>Create a tablet interface for in-store ordering</li>
+          <li>Conduct usability testing with real users</li>
+        </ul>
+      </div>
     </section>
   </div>
 </template>
@@ -228,7 +395,6 @@ export default {
   components: {
     AppNavbar,
   },
-  props: {},
   data() {
     return {
       hero: require("@/images/kapihanHero.png"),
@@ -236,172 +402,105 @@ export default {
       prototypes: require("@/images/kapihanPrototypes.png"),
       figmaSrc:
         "https://www.figma.com/proto/dSiLtVj2GKzRZYcfYoe8iW/KapihanApp?node-id=49-5572&t=qR7dRV7dwGhpgw8c-1",
+      activePersona: null,
+      insights: [
+        {
+          icon: "⏰",
+          title: "Peak Hours Problem",
+          description:
+            "85% of daily traffic occurs between 7-9 AM, creating bottlenecks",
+        },
+        {
+          icon: "💼",
+          title: "Professional Clientele",
+          description:
+            "Most customers are office workers with tight schedules",
+        },
+        {
+          icon: "📊",
+          title: "Competitive Analysis",
+          description:
+            "Studied Starbucks, Dunkin', and local competitors' ordering systems",
+        },
+      ],
+      processSteps: [
+        {
+          title: "Research",
+          description: "Observed shop operations and interviewed customers",
+        },
+        {
+          title: "Define",
+          description: "Created personas and mapped user journeys",
+        },
+        {
+          title: "Ideate",
+          description: "Brainstormed solutions for preordering and delivery",
+        },
+        {
+          title: "Prototype",
+          description: "Built wireframes and high-fidelity mockups",
+        },
+      ],
     };
   },
 };
 </script>
 
+<style src="@/styles/case-study-common.css"></style>
 <style scoped>
-.style-guide {
-  display: flex;
-  justify-content: space-between;
-  color: rgb(0, 0, 0); /* Text color */
-  padding: 20px;
+/* LocalBakeryApp - Coffee Shop Theme Colors: Green & Gold */
+
+/* Insight cards hover - brand color */
+.insight-card:hover {
+  border-color: #00320b;
 }
 
-.typography-section {
-  flex: 1;
+/* Avatar gradient - brand colors */
+.avatar-placeholder {
+  background: linear-gradient(135deg, #00320b, #d7a246);
 }
 
-.typography {
-  margin-top: 20px;
+/* Detail group strong - brand color */
+.detail-group strong {
+  color: #00320b;
 }
 
-.large-text {
-  font-size: 100px; /* Adjust for scale */
-  font-family: "Inter";
-  color: #00320b; /* Color from design */
+/* Process step number - brand color */
+.step-number {
+  background: #00320b;
+  box-shadow: 0 4px 15px rgba(0, 50, 11, 0.3);
 }
 
-.font-name {
-  font-size: 18px;
-  margin-top: 10px;
+/* Type display - brand color */
+.type-display {
+  color: #00320b;
 }
 
-.alphabet {
-  font-size: 24px;
-  color: rgba(47, 47, 47, 0.7); /* Light opacity for alphabet text */
+/* CTA Section - brand gradient */
+.cta-section {
+  background: linear-gradient(135deg, #00320b 0%, #004d14 100%);
 }
 
-.colors-section {
-  flex: 1;
+.cta-button {
+  background: #d7a246;
 }
 
-.color-swatches {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  margin-top: 20px;
+.cta-button:hover {
+  background: #c89235;
+  box-shadow: 0 8px 20px rgba(215, 162, 70, 0.4);
 }
 
-.color-swatch {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 14px;
-  color: white;
-  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+/* Learning card - brand color border */
+.learning-card {
+  border-left: 4px solid #00320b;
 }
 
-.color-swatch span {
-  top: 120%;
-}
-.btn {
-  padding: 10px 20px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 25px;
-  font-size: 1em;
-  cursor: pointer;
-  margin-top: 15px;
-  transition: background-color 0.3s ease;
+.learning-card:hover {
+  border-left-color: #d7a246;
 }
 
-.btn i {
-  margin-right: 10px;
-}
-
-.btn:hover {
-  background-color: #555;
-}
-
-.ux-case-study {
-  margin: 0 auto;
-  padding: 0 4%;
-}
-
-.title {
-  font-size: 2.5rem;
-  color: #333;
-  /* text-align: center; */
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-h4 {
-  margin: 0.5rem 0;
-}
-
-section {
-  margin-bottom: 40px;
-}
-ul {
-  padding: 8px;
-}
-h2 {
-  font-size: 1.75rem;
-
-  padding-bottom: 5px;
-  margin-bottom: 15px;
-}
-
-p {
-  font-size: 1rem;
-
-  line-height: 1.6;
-  margin-bottom: 15px;
-}
-
-.personas-container {
-  display: flex;
-  margin-bottom: 40px;
-}
-
-.persona1 {
-  flex: 1;
-  background-color: #2d3030;
-  color: #eeece7;
-  padding: 40px;
-}
-
-.persona2 {
-  flex: 1;
-  background-color: #eeece7;
-  color: #2d3030;
-  padding: 40px;
-}
-
-.persona2:hover {
-  background-color: #2d3030;
-  color: #eeece7;
-}
-.persona h3 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-
-@media (max-width: 768px) {
-  .ux-case-study {
-    padding: 15px;
-  }
-
-  .title {
-    font-size: 2rem;
-  }
-
-  h2 {
-    font-size: 1.5rem;
-  }
-
-  p {
-    font-size: 0.95rem;
-  }
-
-  .personas-container {
-    flex-direction: column;
-  }
+/* Next steps arrow - brand color */
+.next-steps li::before {
+  color: #00320b;
 }
 </style>
