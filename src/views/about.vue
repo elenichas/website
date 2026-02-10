@@ -1,78 +1,84 @@
 <template>
   <app-navbar></app-navbar>
-  
+
   <main class="page-layout">
     <div class="container">
       <div class="about-content">
         <header class="about-header">
           <h1 class="about-title">Hey, I'm Eleni!</h1>
-          <p class="about-lead">Product designer and engineer with a story that started in architecture and found its home in digital product development.</p>
+          <p class="about-lead">Product designer and engineer bridging architecture, design systems, and digital product
+            development.</p>
         </header>
 
         <div class="story-content">
           <section class="story-section">
             <h2>The Journey</h2>
             <p>
-              My story begins in architecture, designing spaces, thinking about how people move through environments, 
-              and obsessing over every detail that makes a space feel just right. But somewhere along the way, I realized 
-              that the most exciting spaces weren't physical anymore; they were digital.
-            </p>
-            <p>
-              The transition from designing buildings to designing digital products wasn't as dramatic as you might think. 
-              Both require the same fundamental skills: understanding user needs, creating intuitive flows, and bringing 
-              complex systems to life. The tools changed, but the problem-solving mindset remained.
+              I started in architecture, designing spaces and thinking about how people interact with environments.
+              The transition to digital products felt natural! Both require understanding user needs, creating intuitive
+              flows, and bringing complex systems to life. The tools changed, but the problem-solving mindset remained.
             </p>
           </section>
 
           <section class="story-section">
             <h2>What I Do Now</h2>
             <p>
-              Today, as a <strong>Design Systems Analyst at Foster + Partners</strong>, I work at the intersection of design and engineering, creating 
-              the tools, systems, and experiences that help creative teams do their best work. I design and build everything 
-              from internal design tools to full web applications, always with one goal in mind: making complex workflows feel effortless.
+              As a <strong>Design Systems Analyst at Foster + Partners</strong>, I work at the intersection of design
+              and engineering,
+              creating tools and systems that help creative teams do their best work. From design systems to full web
+              applications,
+              I design and build solutions that make complex workflows feel effortless.
             </p>
             <p>
-              My days are spent diving deep into user research, prototyping solutions, coordinating across teams, and then 
-              rolling up my sleeves to actually build the thing. React, TypeScript, Vue.js, whatever the project needs. 
               I believe the best products come from designers who can code and developers who truly understand users.
+              My approach combines user research, prototyping, and hands-on development with React, TypeScript, and
+              Vue.js.
             </p>
           </section>
 
           <section class="story-section">
-            <h2>How I Think About Products</h2>
+            <h2>UXDX USA 2054</h2>
             <p>
-              Every product tells a story, and I'm fascinated by the details that make that story compelling. How do you 
-              take something incredibly complex, like architectural design software or internal company tools, and make it 
-              feel intuitive? How do you build systems that scale across teams while maintaining consistency and quality?
+              Last year, I attended <strong>UXDX USA 2025</strong> in New York, an incredible conference bringing
+              together designers,
+              developers, and product managers. It was inspiring to connect with industry leaders, explore emerging
+              trends in
+              product development, and share ideas about the future of design systems and collaborative workflows.
             </p>
             <p>
-              During my four years at Bryden Wood, I evolved from front-end developer to senior developer, leading the 
-              creation of web-based configurators and design tools for the AEC industry. I learned that great products 
-              aren't just about beautiful interfaces, they're about understanding the real problems people face and 
-              crafting solutions that genuinely make their lives better.
+              The conference reinforced my belief that the best products emerge when design and engineering work
+              seamlessly
+              together,something I strive for in every project.
             </p>
           </section>
 
+          <!-- Conference Gallery -->
+          <section class="gallery-section">
+            <div class="masonry-gallery">
+              <div v-for="(item, index) in conferenceImages" :key="index"
+                :class="['gallery-item', `size-${item.size}`]">
+                <img :src="item.src" :alt="`UXDX Conference ${index + 1}`" />
+              </div>
+            </div>
+          </section>
+
           <section class="story-section">
-            <h2>Beyond the Code</h2>
+            <h2>Beyond the Work</h2>
             <p>
-              When I'm not building products, I love sharing knowledge. I've led workshops at The Bartlett School of Architecture, 
-              exploring how AI and algorithmic thinking can enhance creative processes. There's something magical about watching 
-              students discover new ways to approach problems, it reminds me why I love what I do.
-            </p>
-            <p>
-              I'm passionate about sustainable design, scalable systems, and the belief that technology should amplify human 
-              creativity rather than replace it. Whether it's a design system that helps teams work more efficiently or a 
-              tool that opens up new creative possibilities, I'm always asking: "How can this make someone's work more joyful?"
+              I've led workshops at The Bartlett School of Architecture, exploring how AI and algorithmic thinking can
+              enhance
+              creative processes. I'm passionate about sustainable design, scalable systems, and the belief that
+              technology
+              should amplify human creativity rather than replace it.
             </p>
           </section>
 
           <section class="story-section">
             <h2>Let's Connect</h2>
             <p>
-              I'm always excited to discuss product design, emerging technologies, or the fascinating intersection of 
-              architecture and digital products. Whether you're curious about design systems, want to chat about a project, 
-              or just want to share ideas about where the industry is heading, I'd love to hear from you.
+              I'm always excited to discuss product design, design systems, or the intersection of architecture and
+              digital products.
+              Let's chat!
             </p>
           </section>
         </div>
@@ -100,7 +106,7 @@ import GithubAccount from "../components/githubAccount.vue";
 const imageSrc = require("@/images/avatar.png"); // Use require if it's in the assets folder
 
 // Use a direct path for the CV as it's located in the public folder
-const cvLink = "/cv/Eleni_Chasioti_CV.pdf"; // This points to the public folder
+const cvLink = "/cv/EleniChasiotiCV2026.pdf"; // This points to the public folder
 
 export default {
   name: "About",
@@ -113,6 +119,24 @@ export default {
     return {
       imageSrc,
       cvLink,
+      conferenceImages: [
+        { src: require('@/images/about/Image (3).jpg'), size: 'large' },
+        { src: require('@/images/about/Image (4).jpg'), size: 'medium' },
+        { src: require('@/images/about/Image (5).jpg'), size: 'small' },
+        { src: require('@/images/about/Image (6).jpg'), size: 'medium' },
+        { src: require('@/images/about/Image (7).jpg'), size: 'large' },
+        { src: require('@/images/about/Image (8).jpg'), size: 'small' },
+        { src: require('@/images/about/Image (9).jpg'), size: 'medium' },
+        { src: require('@/images/about/Image (10).jpg'), size: 'small' },
+        { src: require('@/images/about/Image (11).jpg'), size: 'large' },
+        { src: require('@/images/about/Image (12).jpg'), size: 'medium' },
+        { src: require('@/images/about/Image (13).jpg'), size: 'small' },
+        { src: require('@/images/about/Image (14).jpg'), size: 'medium' },
+        { src: require('@/images/about/Image (15).jpg'), size: 'large' },
+        { src: require('@/images/about/Image (16).jpg'), size: 'small' },
+        { src: require('@/images/about/Image (17).jpg'), size: 'medium' },
+        { src: require('@/images/about/Image (18).jpg'), size: 'small' },
+      ],
     };
   },
 };
@@ -221,21 +245,21 @@ export default {
   .container {
     padding: var(--space-lg) var(--space-md);
   }
-  
+
   .about-header {
     text-align: left;
   }
-  
+
   .about-lead {
     margin-left: 0;
     margin-right: 0;
   }
-  
+
   .cta-section {
     flex-direction: column;
     align-items: stretch;
   }
-  
+
   .btn-primary,
   .btn-secondary {
     justify-content: center;
@@ -246,9 +270,73 @@ export default {
   .container {
     padding: var(--space-md) var(--space-sm);
   }
-  
+
   .story-section p {
     font-size: 1rem;
+  }
+}
+
+/* Masonry Gallery */
+.gallery-section {
+  margin: var(--space-xl) 0;
+}
+
+.masonry-gallery {
+  column-count: 3;
+  column-gap: var(--space-md);
+}
+
+.gallery-item {
+  break-inside: avoid;
+  margin-bottom: var(--space-md);
+  background: #f5f5f5;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Varying tile sizes */
+.gallery-item.size-small {
+  height: auto;
+}
+
+.gallery-item.size-medium {
+  height: auto;
+}
+
+.gallery-item.size-large {
+  height: auto;
+}
+
+.gallery-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Responsive Masonry */
+@media (max-width: 1024px) {
+  .masonry-gallery {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .masonry-gallery {
+    column-count: 1;
   }
 }
 </style>

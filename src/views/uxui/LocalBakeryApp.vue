@@ -62,8 +62,7 @@
     <section class="research-section">
       <h2 class="section-title">Research & Insights</h2>
       <div class="insights-container">
-        <div class="insight-card" v-for="(insight, index) in insights" :key="index">
-          <div class="insight-icon">{{ insight.icon }}</div>
+                        <div class="insight-card" v-for="(insight, index) in insights" :key="index">
           <h4>{{ insight.title }}</h4>
           <p>{{ insight.description }}</p>
         </div>
@@ -89,7 +88,7 @@
               <div class="avatar-placeholder">
                 <span>JA</span>
               </div>
-              <p class="avatar-suggestion">💡 Add: Stock photo of professional man</p>
+              <p class="avatar-suggestion">Note: Add stock photo of professional man</p>
             </div>
             <div class="persona-info">
               <h3>James Anderson</h3>
@@ -98,21 +97,21 @@
           </div>
           <div class="persona-details" :class="{ active: activePersona === 1 }">
             <div class="detail-group">
-              <span class="detail-icon">🎯</span>
+                            <span class="detail-icon"><Target :size="20" /></span>
               <div>
                 <strong>Goal</strong>
                 <p>Skip the line and get coffee on the way to work</p>
               </div>
             </div>
             <div class="detail-group">
-              <span class="detail-icon">😤</span>
+                            <span class="detail-icon"><AlertCircle :size="20" /></span>
               <div>
                 <strong>Pain Point</strong>
                 <p>Long queues make him late for meetings</p>
               </div>
             </div>
             <div class="detail-group">
-              <span class="detail-icon">📱</span>
+                            <span class="detail-icon"><Smartphone :size="20" /></span>
               <div>
                 <strong>Tech Savvy</strong>
                 <p>High - Uses multiple apps daily</p>
@@ -129,7 +128,7 @@
               <div class="avatar-placeholder">
                 <span>ML</span>
               </div>
-              <p class="avatar-suggestion">💡 Add: Stock photo of creative woman</p>
+              <p class="avatar-suggestion">Note: Add stock photo of creative woman</p>
             </div>
             <div class="persona-info">
               <h3>Maria Lopez</h3>
@@ -138,21 +137,21 @@
           </div>
           <div class="persona-details" :class="{ active: activePersona === 2 }">
             <div class="detail-group">
-              <span class="detail-icon">🎯</span>
+                            <span class="detail-icon"><Target :size="20" /></span>
               <div>
                 <strong>Goal</strong>
                 <p>Order delivery while working from home</p>
               </div>
             </div>
             <div class="detail-group">
-              <span class="detail-icon">😤</span>
+                            <span class="detail-icon"><AlertCircle :size="20" /></span>
               <div>
                 <strong>Pain Point</strong>
                 <p>Can't track delivery status or buy merchandise online</p>
               </div>
             </div>
             <div class="detail-group">
-              <span class="detail-icon">📱</span>
+                            <span class="detail-icon"><Smartphone :size="20" /></span>
               <div>
                 <strong>Tech Savvy</strong>
                 <p>Medium - Comfortable with apps</p>
@@ -281,22 +280,22 @@
       <!-- Key Features Highlight -->
       <div class="features-grid">
         <div class="feature-card">
-          <span class="feature-icon">🛒</span>
+          <span class="feature-icon"><ShoppingCart :size="32" /></span>
           <h4>Quick Ordering</h4>
           <p>Browse menu and add items with just a few taps</p>
         </div>
         <div class="feature-card">
-          <span class="feature-icon">📅</span>
+          <span class="feature-icon"><Calendar :size="32" /></span>
           <h4>Schedule Pickup</h4>
           <p>Choose exact pickup time to avoid waiting</p>
         </div>
         <div class="feature-card">
-          <span class="feature-icon">🚚</span>
+          <span class="feature-icon"><Truck :size="32" /></span>
           <h4>Delivery Tracking</h4>
           <p>Real-time updates on order status</p>
         </div>
         <div class="feature-card">
-          <span class="feature-icon">🎁</span>
+          <span class="feature-icon"><Gift :size="32" /></span>
           <h4>Shop Merch</h4>
           <p>Browse and purchase shop merchandise</p>
         </div>
@@ -345,28 +344,28 @@
       <h2 class="section-title">Key Learnings</h2>
       <div class="learnings-grid">
         <div class="learning-card">
-          <h4>🔍 User Research</h4>
+          <h4>User Research</h4>
           <p>
             Practiced conducting user interviews and observations to identify
             real pain points in the customer journey.
           </p>
         </div>
         <div class="learning-card">
-          <h4>🎨 Visual Design</h4>
+          <h4>Visual Design</h4>
           <p>
             Learned to work within an existing brand identity while creating
             a modern digital experience.
           </p>
         </div>
         <div class="learning-card">
-          <h4>🔄 Iteration</h4>
+          <h4>Iteration</h4>
           <p>
             Developed skills in moving from low-fidelity wireframes to
             polished high-fidelity prototypes.
           </p>
         </div>
         <div class="learning-card">
-          <h4>📱 Mobile-First</h4>
+          <h4>Mobile-First</h4>
           <p>
             Practiced designing for mobile constraints while maintaining
             usability and visual appeal.
@@ -389,11 +388,19 @@
 
 <script>
 import AppNavbar from "@/components/navbar";
+import { Target, AlertCircle, Smartphone, ShoppingCart, Calendar, Truck, Gift } from 'lucide-vue-next';
 
 export default {
   name: "LocalBakeryApp",
-  components: {
+      components: {
     AppNavbar,
+    Target,
+    AlertCircle,
+    Smartphone,
+    ShoppingCart,
+    Calendar,
+    Truck,
+    Gift,
   },
   data() {
     return {
@@ -403,21 +410,18 @@ export default {
       figmaSrc:
         "https://www.figma.com/proto/dSiLtVj2GKzRZYcfYoe8iW/KapihanApp?node-id=49-5572&t=qR7dRV7dwGhpgw8c-1",
       activePersona: null,
-      insights: [
+                  insights: [
         {
-          icon: "⏰",
           title: "Peak Hours Problem",
           description:
             "85% of daily traffic occurs between 7-9 AM, creating bottlenecks",
         },
         {
-          icon: "💼",
           title: "Professional Clientele",
           description:
             "Most customers are office workers with tight schedules",
         },
         {
-          icon: "📊",
           title: "Competitive Analysis",
           description:
             "Studied Starbucks, Dunkin', and local competitors' ordering systems",
@@ -502,5 +506,33 @@ export default {
 /* Next steps arrow - brand color */
 .next-steps li::before {
   color: #00320b;
+}
+
+/* Lucide icon styling */
+.feature-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00320b;
+}
+
+.inline-icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+
+.detail-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00320b;
+}
+
+.insight-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d7a246;
 }
 </style>
