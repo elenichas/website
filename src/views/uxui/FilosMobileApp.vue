@@ -58,9 +58,8 @@
     <!-- Research & Insights -->
     <section class="research-section">
       <h2 class="section-title">Problem Space</h2>
-      <div class="insights-container">
+            <div class="insights-container">
         <div class="insight-card" v-for="(insight, index) in insights" :key="index">
-          <div class="insight-icon">{{ insight.icon }}</div>
           <h4>{{ insight.title }}</h4>
           <p>{{ insight.description }}</p>
         </div>
@@ -85,7 +84,7 @@
               <div class="avatar-placeholder">
                 <span>AM</span>
               </div>
-              <p class="avatar-suggestion">💡 Add: Stock photo of person using wheelchair</p>
+              <p class="avatar-suggestion">Note: Add stock photo of person using wheelchair</p>
             </div>
             <div class="persona-info">
               <h3>Alex Martinez</h3>
@@ -94,21 +93,21 @@
           </div>
           <div class="persona-details" :class="{ active: activePersona === 1 }">
             <div class="detail-group">
-              <span class="detail-icon">🎯</span>
+                            <span class="detail-icon"><Target :size="20" /></span>
               <div>
                 <strong>Goal</strong>
                 <p>Find accessible activities and connect with understanding community members</p>
               </div>
             </div>
             <div class="detail-group">
-              <span class="detail-icon">😤</span>
+                            <span class="detail-icon"><AlertCircle :size="20" /></span>
               <div>
                 <strong>Pain Point</strong>
                 <p>Difficulty finding accessible activities and people who understand mobility challenges</p>
               </div>
             </div>
             <div class="detail-group">
-              <span class="detail-icon">♿</span>
+                            <span class="detail-icon"><Accessibility :size="20" /></span>
               <div>
                 <strong>Context</strong>
                 <p>Uses wheelchair, works remotely, sometimes feels isolated</p>
@@ -124,7 +123,7 @@
               <div class="avatar-placeholder">
                 <span>ET</span>
               </div>
-              <p class="avatar-suggestion">💡 Add: Stock photo of university student</p>
+              <p class="avatar-suggestion">Note: Add stock photo of university student</p>
             </div>
             <div class="persona-info">
               <h3>Emma Thompson</h3>
@@ -133,21 +132,21 @@
           </div>
           <div class="persona-details" :class="{ active: activePersona === 2 }">
             <div class="detail-group">
-              <span class="detail-icon">🎯</span>
+                            <span class="detail-icon"><Target :size="20" /></span>
               <div>
                 <strong>Goal</strong>
                 <p>Volunteer and gain real-world experience with people with disabilities</p>
               </div>
             </div>
             <div class="detail-group">
-              <span class="detail-icon">😤</span>
+                            <span class="detail-icon"><AlertCircle :size="20" /></span>
               <div>
                 <strong>Pain Point</strong>
                 <p>Hard to find meaningful volunteer opportunities and connect respectfully</p>
               </div>
             </div>
             <div class="detail-group">
-              <span class="detail-icon">📚</span>
+                            <span class="detail-icon"><Book :size="20" /></span>
               <div>
                 <strong>Context</strong>
                 <p>Studying occupational therapy, passionate about making a difference</p>
@@ -280,22 +279,22 @@
       <h2 class="section-title">Key Features</h2>
       <div class="features-grid">
         <div class="feature-card">
-          <span class="feature-icon">👥</span>
+          <span class="feature-icon"><Users :size="32" /></span>
           <h4>Connect</h4>
           <p>Find people nearby and build meaningful connections</p>
         </div>
         <div class="feature-card">
-          <span class="feature-icon">📅</span>
+          <span class="feature-icon"><Calendar :size="32" /></span>
           <h4>Activities</h4>
           <p>Create or join accessible events and activities</p>
         </div>
         <div class="feature-card">
-          <span class="feature-icon">💬</span>
+          <span class="feature-icon"><MessageCircle :size="32" /></span>
           <h4>Chat</h4>
           <p>Simple messaging to coordinate and connect</p>
         </div>
         <div class="feature-card">
-          <span class="feature-icon">♿</span>
+          <span class="feature-icon"><Accessibility :size="32" /></span>
           <h4>Accessibility</h4>
           <p>Designed with WCAG standards and inclusive design</p>
         </div>
@@ -337,25 +336,25 @@
       <h2 class="section-title">Key Learnings</h2>
       <div class="learnings-grid">
         <div class="learning-card">
-          <h4>♿ Accessibility First</h4>
+          <h4>Accessibility First</h4>
           <p>
             Learned to prioritize accessibility from the start—not as an afterthought but as a core design principle for all users.
           </p>
         </div>
         <div class="learning-card">
-          <h4>🤝 Inclusive Design</h4>
+          <h4>Inclusive Design</h4>
           <p>
             Practiced designing for diverse abilities and understanding how design choices impact different user groups.
           </p>
         </div>
         <div class="learning-card">
-          <h4>🎨 Empathy in Design</h4>
+          <h4>Empathy in Design</h4>
           <p>
             Developed deeper empathy by considering barriers users face and designing solutions that truly serve their needs.
           </p>
         </div>
         <div class="learning-card">
-          <h4>✅ WCAG Standards</h4>
+          <h4>WCAG Standards</h4>
           <p>
             Gained hands-on experience applying accessibility guidelines and understanding their practical impact.
           </p>
@@ -377,11 +376,19 @@
 
 <script>
 import AppNavbar from "@/components/navbar";
+import { Target, AlertCircle, Accessibility, Book, Users, Calendar, MessageCircle } from 'lucide-vue-next';
 
 export default {
   name: "FilosMobileApp",
-  components: {
+      components: {
     AppNavbar,
+    Target,
+    AlertCircle,
+    Accessibility,
+    Book,
+    Users,
+    Calendar,
+    MessageCircle,
   },
   data() {
     return {
@@ -390,21 +397,18 @@ export default {
       figmaSrc:
         "https://www.figma.com/proto/YQu3rgFADyaMk5HhHQM4Y8/Filos_App?node-id=0-1&t=XXX",
       activePersona: null,
-      insights: [
+                  insights: [
         {
-          icon: "🚫",
           title: "Social Barriers",
           description:
             "People with disabilities often face physical and social barriers to participation",
         },
         {
-          icon: "🤝",
           title: "Connection Gap",
           description:
             "Disability professionals lack opportunities for meaningful real-world connections",
         },
         {
-          icon: "❓",
           title: "Awareness Need",
           description:
             "Limited understanding of daily experiences creates empathy gaps",
@@ -489,5 +493,33 @@ export default {
 /* Next steps arrow - brand color */
 .next-steps li::before {
   color: #511f88;
+}
+
+/* Lucide icon styling */
+.feature-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #511f88;
+}
+
+.inline-icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+
+.detail-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #511f88;
+}
+
+.insight-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #a469cc;
 }
 </style>
