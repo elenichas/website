@@ -60,32 +60,32 @@
       <h2 class="section-title">Key Workflow Features</h2>
       <div class="features-grid">
         <div class="feature-card">
-          <span class="feature-icon">🔐</span>
+          <span class="feature-icon"><Lock :size="32" /></span>
           <h4>Project Management</h4>
           <p>Login and load existing projects or create new modular designs</p>
         </div>
         <div class="feature-card">
-          <span class="feature-icon">🧩</span>
+          <span class="feature-icon"><Puzzle :size="32" /></span>
           <h4>Module Library</h4>
           <p>Browse and add modules from organized type-based galleries</p>
         </div>
         <div class="feature-card">
-          <span class="feature-icon">🔗</span>
+          <span class="feature-icon"><Link :size="32" /></span>
           <h4>Node Design</h4>
           <p>Visual drag-and-drop interface to connect and organize modules</p>
         </div>
         <div class="feature-card">
-          <span class="feature-icon">📊</span>
+          <span class="feature-icon"><BarChart3 :size="32" /></span>
           <h4>Data Inspection</h4>
           <p>Edit parameters and settings through intuitive sliders</p>
         </div>
         <div class="feature-card">
-          <span class="feature-icon">📈</span>
+          <span class="feature-icon"><TrendingUp :size="32" /></span>
           <h4>Performance Analytics</h4>
           <p>Evaluate structures based on cost, energy, and other metrics</p>
         </div>
         <div class="feature-card">
-          <span class="feature-icon">💾</span>
+          <span class="feature-icon"><Save :size="32" /></span>
           <h4>Save & Navigate</h4>
           <p>Clear feedback and progress tracking throughout the design</p>
         </div>
@@ -209,25 +209,25 @@
       <h2 class="section-title">Key Learnings & Next Steps</h2>
       <div class="learnings-grid">
         <div class="learning-card">
-          <h4>🔗 Complex Workflows</h4>
+          <h4>Complex Workflows</h4>
           <p>
             Practiced designing node-based interfaces and understanding how to visualize complex relationships between components.
           </p>
         </div>
         <div class="learning-card">
-          <h4>⚡ Rapid Prototyping</h4>
+          <h4>Rapid Prototyping</h4>
           <p>
             Leveraged Material Design to quickly explore concepts while maintaining consistency and professional quality.
           </p>
         </div>
         <div class="learning-card">
-          <h4>📊 Data Visualization</h4>
+          <h4>Data Visualization</h4>
           <p>
             Explored ways to present performance analytics and metrics in an accessible, actionable format.
           </p>
         </div>
         <div class="learning-card">
-          <h4>🎨 System Thinking</h4>
+          <h4>System Thinking</h4>
           <p>
             Developed understanding of designing for modular systems and maintaining flexibility in complex applications.
           </p>
@@ -249,11 +249,20 @@
 
 <script>
 import AppNavbar from "@/components/navbar";
+import { Lock, Puzzle, Link, BarChart3, TrendingUp, Save, Zap, Palette } from 'lucide-vue-next';
 
 export default {
   name: "ModularApp",
-  components: {
+    components: {
     AppNavbar,
+    Lock,
+    Puzzle,
+    Link,
+    BarChart3,
+    TrendingUp,
+    Save,
+    Zap,
+    Palette,
   },
   props: {},
   data() {
@@ -316,5 +325,19 @@ export default {
 /* Wireframes section background */
 .wireframes-section {
   background: #fafafa;
+}
+
+/* Lucide icon styling */
+.feature-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #485E92;
+}
+
+.inline-icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.5rem;
 }
 </style>

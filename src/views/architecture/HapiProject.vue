@@ -38,19 +38,19 @@
     <section class="overview-section">
       <div class="section-grid">
         <div class="overview-card">
-          <h3>🏙️ Urban Challenge</h3>
+          <h3><Building2 :size="24" class="inline-icon" /> Urban Challenge</h3>
           <p>
             Addressing the growing housing shortage in urban centers with sustainable, affordable, and adaptable living spaces.
           </p>
         </div>
         <div class="overview-card">
-          <h3>🏗️ Approach</h3>
+          <h3><Construction :size="24" class="inline-icon" /> Approach</h3>
           <p>
             Large-scale modular structure using 3D-printed elements, assembled on-site and elevated to designated floors.
           </p>
         </div>
         <div class="overview-card">
-          <h3>🤖 Innovation</h3>
+          <h3><Bot :size="24" class="inline-icon" /> Innovation</h3>
           <p>
             Algorithmic design with smart sensors and robotic systems for monitoring and optimizing energy efficiency.
           </p>
@@ -103,22 +103,22 @@
       <h2 class="section-title">Design Process & Outcomes</h2>
       <div class="outcomes-grid">
         <div class="outcome-card">
-          <div class="outcome-icon">🏗️</div>
+
           <h4>Innovative Aggregations</h4>
           <p>Modular voxels enabled flexible and scalable housing solutions adaptable to various urban contexts.</p>
         </div>
         <div class="outcome-card">
-          <div class="outcome-icon">📐</div>
+
           <h4>Efficiency & Livability</h4>
           <p>Shortest path and density studies ensured functional and livable environments for diverse communities.</p>
         </div>
         <div class="outcome-card">
-          <div class="outcome-icon">🔧</div>
+
           <h4>Customization & Adaptation</h4>
           <p>The modular approach allowed for diverse configurations adaptable to various contexts and family needs.</p>
         </div>
         <div class="outcome-card">
-          <div class="outcome-icon">⚙️</div>
+
           <h4>Advanced Fabrication</h4>
           <p>Modular components were analyzed into rulings for fabrication with hotwire cutting techniques.</p>
         </div>
@@ -127,7 +127,7 @@
 
     <!-- Renders Gallery -->
     <section class="renders-section">
-      <h2 class="section-title">Visual Renders</h2>
+      <h2 class="section-title">Illustrations</h2>
       <div class="carousel-container">
         <v-carousel
           cycle
@@ -151,12 +151,18 @@
 
 <script>
 import AppNavbar from "@/components/navbar";
+import { Building2, Construction, Bot, Wrench, Settings } from 'lucide-vue-next';
 const videoSrc = "/vids/habitatVideo.webm";
 
 export default {
   name: "WorkshopDesign",
-  components: {
+    components: {
     AppNavbar,
+    Building2,
+    Construction,
+    Bot,
+    Wrench,
+    Settings,
   },
   data() {
     return {
@@ -484,7 +490,21 @@ export default {
   }
 
   .meta-item {
-    align-items: flex-start;
+        align-items: flex-start;
   }
+}
+
+/* Lucide icon styling */
+.inline-icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+
+.outcome-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2a2a2a;
 }
 </style>
