@@ -25,7 +25,7 @@
 
 <script>
 // Use a direct path for the CV as it's located in the public folder
-const cvLink = "/cv/Eleni_Chasioti_CV.pdf"; // This points to the public folder
+const cvLink = "/cv/EleniChasiotiCV2026.pdf"; // This points to the public folder
 
 export default {
   name: "WelcomeCard",

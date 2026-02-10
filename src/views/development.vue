@@ -71,7 +71,7 @@ export default {
           src: require("@/images/development/viewAnalysis.png"),
         },
         {
-          name: "Portfolio Platform",
+          name: "Portfolio Website",
           stack: "Vue.js, JavaScript, D3.js, Modern CSS",
           gitlabLink: "https://github.com/elenichas/website",
           src: require("@/images/development/portfolio.png"),

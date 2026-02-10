@@ -102,22 +102,22 @@
       <h2 class="section-title">Design Outcomes</h2>
       <div class="outcomes-grid">
         <div class="outcome-card">
-          <div class="outcome-icon">🏛️</div>
+          <div class="outcome-icon"><Building2 :size="40" /></div>
           <h4>Innovative Aggregations</h4>
           <p>Modular voxels enabled flexible and scalable housing solutions adaptable to various contexts.</p>
         </div>
         <div class="outcome-card">
-          <div class="outcome-icon">📍</div>
+          <div class="outcome-icon"><MapPin :size="40" /></div>
           <h4>Efficiency & Livability</h4>
           <p>Shortest path and density studies ensured functional and livable environments with optimal circulation.</p>
         </div>
         <div class="outcome-card">
-          <div class="outcome-icon">🔧</div>
+          <div class="outcome-icon"><Wrench :size="40" /></div>
           <h4>Customization & Adaptation</h4>
           <p>The modular approach allowed for diverse configurations adaptable to various contexts and needs.</p>
         </div>
         <div class="outcome-card">
-          <div class="outcome-icon">⚙️</div>
+          <div class="outcome-icon"><Settings :size="40" /></div>
           <h4>Advanced Fabrication</h4>
           <p>Modular components analyzed into rulings for fabrication with hotwire cutting techniques.</p>
         </div>
@@ -139,12 +139,17 @@
 
 <script>
 import AppNavbar from "@/components/navbar";
+import { Building2, MapPin, Wrench, Settings } from 'lucide-vue-next';
 const videoSrc = "/vids/habitatVideo.webm";
 
 export default {
   name: "WorkshopDesign",
-  components: {
+    components: {
     AppNavbar,
+    Building2,
+    MapPin,
+    Wrench,
+    Settings,
   },
   data() {
     return {
@@ -440,5 +445,13 @@ export default {
   .outcomes-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* Lucide icon styling */
+.outcome-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2a2a2a;
 }
 </style>

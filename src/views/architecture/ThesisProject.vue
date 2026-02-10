@@ -95,21 +95,21 @@
         <div class="algorithm-text">
           <div class="contributions-list">
             <div class="contribution-item">
-              <div class="contribution-icon">📊</div>
+              <div class="contribution-icon"><BarChart3 :size="32" /></div>
               <div>
                 <h4>Procedural Content Generation</h4>
                 <p>Leveraging the WFC algorithm to automate the creation of building designs, significantly reducing design time and cost.</p>
               </div>
             </div>
             <div class="contribution-item">
-              <div class="contribution-icon">🧩</div>
+              <div class="contribution-icon"><Puzzle :size="32" /></div>
               <div>
                 <h4>Custom Architectural Tilesets</h4>
                 <p>Developed a system for encoding 3D architectural elements, allowing for highly flexible design outcomes suited to various project needs.</p>
               </div>
             </div>
             <div class="contribution-item">
-              <div class="contribution-icon">⚙️</div>
+              <div class="contribution-icon"><Settings :size="32" /></div>
               <div>
                 <h4>Real-Time Design Feedback</h4>
                 <p>The computational framework allows designers to see real-time variations, fostering a more dynamic, exploratory design process.</p>
@@ -138,27 +138,27 @@
       <div class="technical-content">
         <div class="implementation-grid">
           <div class="implementation-card">
-            <h4>🎯 Tileset Encoding</h4>
+            <h4>Tileset Encoding</h4>
             <p>Architectural elements encoded into digital tilesets with unique geometry-based identifiers.</p>
           </div>
           <div class="implementation-card">
-            <h4>📐 Voxel Segmentation</h4>
+            <h4>Voxel Segmentation</h4>
             <p>Voxel grid breaks input models into individual 3D tiles for processing.</p>
           </div>
           <div class="implementation-card">
-            <h4>⚡ Non-Backtracking</h4>
+            <h4>Non-Backtracking</h4>
             <p>Algorithm restarts quickly on contradictions for improved computational speed.</p>
           </div>
           <div class="implementation-card">
-            <h4>🕹️ User Parameters</h4>
+            <h4>User Parameters</h4>
             <p>Define constraints for density, facade direction, and gradient control.</p>
           </div>
           <div class="implementation-card">
-            <h4>🔄 Flexible Output</h4>
+            <h4>Flexible Output</h4>
             <p>Generate varied sizes while maintaining architectural constraints.</p>
           </div>
           <div class="implementation-card">
-            <h4>🛠️ Platform</h4>
+            <h4>Platform</h4>
             <p>Rhinoceros 3D + Grasshopper with custom WFC components.</p>
           </div>
         </div>
@@ -202,15 +202,15 @@
       <div class="reflection-content">
         <div class="reflection-grid">
           <div class="reflection-card">
-            <h4>✅ Achievements</h4>
+            <h4>Achievements</h4>
             <p>Demonstrated procedural generation's potential to simplify tasks and offer real-time feedback, empowering creative exploration while maintaining constraint control.</p>
           </div>
           <div class="reflection-card">
-            <h4>🔮 Future Enhancements</h4>
+            <h4>Future Enhancements</h4>
             <p>Machine learning integration could make the system adaptive, learning from designs to optimize for sustainability and aesthetics. Extension to irregular grids would expand applicability.</p>
           </div>
           <div class="reflection-card">
-            <h4>🎯 Next Steps</h4>
+            <h4>Next Steps</h4>
             <p>Refining the interface for accessibility across technical expertise levels, making this a valuable tool in architectural design's future.</p>
           </div>
         </div>
@@ -221,11 +221,24 @@
 
 <script>
 import AppNavbar from "@/components/navbar";
+import { BarChart3, Puzzle, Settings, Target, Grid3x3, Zap, Gamepad2, RefreshCw, Wrench, CheckCircle, Sparkles, Navigation } from 'lucide-vue-next';
 
 export default {
   name: "ThesisProject",
-  components: {
+    components: {
     AppNavbar,
+    BarChart3,
+    Puzzle,
+    Settings,
+    Target,
+    Grid3x3,
+    Zap,
+    Gamepad2,
+    RefreshCw,
+    Wrench,
+    CheckCircle,
+    Sparkles,
+    Navigation,
   },
   data() {
     return {
@@ -706,7 +719,21 @@ export default {
 
   .section-grid,
   .reflection-grid {
-    grid-template-columns: 1fr;
+        grid-template-columns: 1fr;
   }
+}
+
+/* Lucide icon styling */
+.contribution-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1a1a1a;
+}
+
+.inline-icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.5rem;
 }
 </style>
