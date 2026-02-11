@@ -17,13 +17,9 @@
           <h2 class="section-title">Product Design</h2>
           <p class="section-description">User-centered digital products and experiences</p>
         </div>
-        
+
         <div class="projects-grid">
-          <article 
-            v-for="(project, index) in uxuiImages" 
-            :key="index"
-            class="project-card"
-          >
+          <article v-for="(project, index) in uxuiImages" :key="index" class="project-card">
             <router-link :to="project.route" class="project-link">
               <div class="project-image">
                 <img :src="project.src" :alt="project.alt" />
@@ -46,13 +42,9 @@
           <h2 class="section-title">System Design</h2>
           <p class="section-description">Complex systems and computational frameworks</p>
         </div>
-        
+
         <div class="projects-grid">
-          <article 
-            v-for="(project, index) in architectureImages" 
-            :key="index"
-            class="project-card"
-          >
+          <article v-for="(project, index) in architectureImages" :key="index" class="project-card">
             <router-link :to="project.route" class="project-link">
               <div class="project-image">
                 <img :src="project.src" :alt="project.alt" />
@@ -98,16 +90,22 @@ export default {
         {
           src: require("@/images/gallery/workshop.png"),
           alt: "Workshop Design",
-          title: "Digital Futures Workshop", 
+          title: "Digital Futures Workshop",
           route: "/products/workshop-design",
         },
       ],
       uxuiImages: [
-        {  
-          src: require("@/images/gallery/moduleApp.png"),
-          alt: "Modular App",
-          title: "Modular Design System",
-          route: "/products/modular-app",
+        // {
+        //   src: require("@/images/gallery/moduleApp.png"),
+        //   alt: "Modular App",
+        //   title: "Modular Design System",
+        //   route: "/products/modular-app",
+        // },
+                {
+          src: require("@/images/gallery/moonPixel.png"),
+          alt: "Moon Habitat Configurator",
+          title: "Moon Habitat Configurator",
+          route: "/products/moon-pixel-app",
         },
         {
           src: require("@/images/gallery/filos.png"),
@@ -291,7 +289,7 @@ export default {
   .container {
     padding: var(--space-xl) var(--space-md);
   }
-  
+
   .projects-grid {
     grid-template-columns: 1fr;
   }
