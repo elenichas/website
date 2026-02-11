@@ -76,7 +76,7 @@ export default {
 </script>
 
 <style scoped>
-/* Modern Navbar Styles */
+/* Minimal Editorial Navbar */
 .modern-navbar {
   position: sticky;
   top: 0;
@@ -84,13 +84,13 @@ export default {
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border-light);
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .navbar-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--space-lg);
+  padding: 0 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -106,50 +106,50 @@ export default {
 .brand-link {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: 0.75rem;
   text-decoration: none;
-  color: var(--text-primary);
+  color: #000;
 }
 
 .brand-initial {
   width: 40px;
   height: 40px;
-  background: var(--text-primary);
+  background: #000;
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-lg);
-  font-weight: var(--font-weight-bold);
+  border-radius: 8px;
+  font-weight: 600;
   font-size: 1.25rem;
 }
 
 .brand-name {
-  font-weight: var(--font-weight-semibold);
+  font-weight: 600;
   font-size: 1.125rem;
-  color: var(--text-primary);
+  color: #000;
 }
 
 /* Desktop Navigation */
 .desktop-nav {
   display: flex;
   align-items: center;
-  gap: var(--space-xl);
+  gap: 2rem;
 }
 
 .nav-link {
-  font-weight: var(--font-weight-medium);
+  font-weight: 500;
   font-size: 0.9375rem;
-  color: var(--text-secondary);
+  color: #666;
   text-decoration: none;
-  padding: var(--space-sm) 0;
+  padding: 0.5rem 0;
   position: relative;
-  transition: color var(--transition-fast);
+  transition: color 0.3s ease;
 }
 
 .nav-link:hover,
 .nav-link.active {
-  color: var(--text-primary);
+  color: #000;
 }
 
 .nav-link.active::after {
@@ -159,14 +159,8 @@ export default {
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--text-primary);
-  border-radius: var(--radius-full);
-}
-
-/* CTA Button */
-.nav-cta {
-  display: flex;
-  align-items: center;
+  background: #000;
+  border-radius: 2px;
 }
 
 /* Mobile Menu Button */
@@ -177,15 +171,15 @@ export default {
   background: none;
   border: none;
   cursor: pointer;
-  padding: var(--space-sm);
+  padding: 0.5rem;
 }
 
 .hamburger-line {
   width: 24px;
   height: 2px;
-  background: var(--text-primary);
-  border-radius: var(--radius-full);
-  transition: all var(--transition-normal);
+  background: #000;
+  border-radius: 2px;
+  transition: all 0.3s ease;
 }
 
 .hamburger-line.open:nth-child(1) {
@@ -209,11 +203,11 @@ export default {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border-light);
+  border-bottom: 1px solid #e0e0e0;
   transform: translateY(-100%);
   opacity: 0;
   visibility: hidden;
-  transition: all var(--transition-normal);
+  transition: all 0.3s ease;
 }
 
 .mobile-menu.open {
@@ -225,27 +219,27 @@ export default {
 .mobile-nav {
   display: flex;
   flex-direction: column;
-  padding: var(--space-xl) var(--space-lg);
-  gap: var(--space-lg);
+  padding: 2rem;
+  gap: 1.5rem;
 }
 
 .mobile-nav-link {
-  font-weight: var(--font-weight-medium);
+  font-weight: 500;
   font-size: 1.125rem;
-  color: var(--text-primary);
+  color: #000;
   text-decoration: none;
-  padding: var(--space-sm) 0;
+  padding: 0.5rem 0;
 }
 
 .mobile-cta {
-  margin-top: var(--space-md);
+  margin-top: 1rem;
   align-self: flex-start;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
   .navbar-container {
-    padding: 0 var(--space-md);
+    padding: 0 1.5rem;
   }
   
   .desktop-nav,
@@ -265,7 +259,7 @@ export default {
 @media (max-width: 480px) {
   .navbar-container {
     height: 70px;
-    padding: 0 var(--space-md);
+    padding: 0 1.5rem;
   }
 }
 </style>

@@ -82,7 +82,7 @@
       <p class="section-label">Learning</p>
       <h2 class="section-heading">Practicing inclusive design</h2>
       <p class="body-text">
-        Through this course project, I learned to prioritize accessibility from the start—not as an afterthought but as a core design principle. I practiced designing for diverse abilities, understanding how design choices impact different user groups, and developed deeper empathy by considering the barriers users face.
+        Through this course project, I learned to prioritize accessibility from the start not as an afterthought but as a core design principle. I practiced designing for diverse abilities, understanding how design choices impact different user groups, and developed deeper empathy by considering the barriers users face.
       </p>
       <p class="body-text">
         I gained hands-on experience applying WCAG accessibility guidelines and understanding their practical impact on real people's lives.
@@ -115,6 +115,7 @@ export default {
 .case-study {
   background: #fff;
   color: #000;
+  padding-bottom: 5rem;
 }
 
 /* Hero */
@@ -289,5 +290,202 @@ export default {
   .split-media {
     max-width: 100%;
   }
+}
+
+.body-text {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: #333;
+  margin: 0 0 1.5rem;
+}
+
+/* Simple List */
+.simple-list {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+}
+
+.simple-list li {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: 1rem;
+  padding-left: 0;
+}
+
+.simple-list li strong {
+  color: #000;
+  font-weight: 600;
+}
+
+/* Images */
+.image-figure {
+  margin: 3rem 0;
+  max-width: 100%;
+}
+
+.content-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+}
+
+/* Videos */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.video-figure {
+  margin: 0;
+}
+
+.video-caption {
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.content-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #000;
+  border-radius: 8px;
+}
+
+.content-video::-webkit-media-controls {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.content-video:hover::-webkit-media-controls {
+  opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .project-header,
+  .content-section {
+    padding: 0 1.5rem;
+  }
+  
+  .project-title {
+    font-size: 2rem;
+  }
+  
+  .section-heading {
+    font-size: 1.5rem;
+  }
+  
+  .subsection-heading {
+    font-size: 1.25rem;
+  }
+  
+  .large-text {
+    font-size: 1.125rem;
+  }
+  
+  .split-section {
+    flex-direction: column;
+    padding: 3rem 1.5rem;
+  }
+  
+  .split-content,
+  .split-media {
+    max-width: 100%;
+  }
+  
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Split Sections - Asymmetric Layout */
+.split-section {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 5rem auto;
+  padding: 4rem 2rem;
+}
+
+.split-section-left .split-content {
+  order: 1;
+}
+
+.split-section-left .split-media {
+  order: 2;
+}
+
+.split-section-right .split-content {
+  order: 2;
+}
+
+.split-section-right .split-media {
+  order: 1;
+}
+
+.split-content {
+  flex: 1;
+  max-width: 500px;
+}
+
+.split-media {
+  flex: 1;
+  max-width: 600px;
+}
+
+/* Media Containers with Colored Backgrounds */
+.media-container-blue {
+  background: #E8F0FF;
+  padding: 3rem;
+  border-radius: 24px;
+}
+
+.media-container-green {
+  background: #DFF5D4;
+  padding: 3rem;
+  border-radius: 24px;
+}
+
+.media-container-purple {
+  background: #F0E8FF;
+  padding: 3rem;
+  border-radius: 24px;
+}
+
+.media-container-yellow {
+  background: #FFF9E0;
+  padding: 3rem;
+  border-radius: 24px;
+}
+
+.split-image,
+.split-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.split-video {
+  background: #000;
+}
+
+.split-video::-webkit-media-controls {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.split-video:hover::-webkit-media-controls {
+  opacity: 1;
 }
 </style>

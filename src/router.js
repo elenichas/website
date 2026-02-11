@@ -66,7 +66,7 @@ const routes = [
     component: FilosMobileApp,
   },
   {
-    path: "/products/local-bakery-app",
+    path: "/products/brew-crumb",
     component: LocalBakeryApp,
   },
     {
@@ -74,7 +74,7 @@ const routes = [
     component: ModularApp,
   },
   {
-    path: "/products/moon-pixel-app",
+    path: "/products/lunar-app",
     component: MoonPixelApp,
   },
   // Legacy design routes
@@ -95,16 +95,16 @@ const routes = [
     redirect: "/products/filos-mobile-app",
   },
   {
-    path: "/uxui/local-bakery-app",
-    redirect: "/products/local-bakery-app",
+    path: "/uxui/brew-crumb",
+    redirect: "/products/brew-crumb",
   },
     {
     path: "/uxui/modular-app",
     redirect: "/products/modular-app",
   },
   {
-    path: "/uxui/moon-pixel-app",
-    redirect: "/products/moon-pixel-app",
+    path: "/uxui/lunar-app",
+    redirect: "/products/lunar-app",
   },
 ];
 

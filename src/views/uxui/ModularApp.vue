@@ -62,7 +62,7 @@
         Through this exercise, I practiced designing node-based interfaces and understanding how to visualize complex relationships between components. I explored ways to present performance analytics and metrics in an accessible, actionable format.
       </p>
       <p class="body-text">
-        The project helped develop my understanding of designing for modular systems and maintaining flexibility in complex applications—from project management and module libraries to data inspection and performance evaluation.
+        The project helped develop my understanding of designing for modular systems and maintaining flexibility in complex applications from project management and module libraries to data inspection and performance evaluation.
       </p>
     </section>
   </div>

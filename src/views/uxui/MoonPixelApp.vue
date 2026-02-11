@@ -44,12 +44,12 @@
         The system combines terrain analysis, modular unit cataloging, network-based connections, and optimization algorithms to adapt designs to spatial constraints. Key elements include:
       </p>
       <ul class="simple-list">
-        <li><strong>Terrain Analysis</strong> — Systematic analysis of solar terrain conditions to inform site selection and orientation</li>
-        <li><strong>Module Catalog</strong> — Library of modular units with different functions and spatial configurations</li>
-        <li><strong>Network System</strong> — Connection framework linking modules through pathways and infrastructure</li>
-        <li><strong>Optimization Engine</strong> — Algorithms to optimize layouts and adapt designs to spatial constraints</li>
-        <li><strong>3D Visualization</strong> — Interactive 3D environment for exploring and configuring habitat designs</li>
-        <li><strong>Parametric Control</strong> — Design automation through configurable parameters and rules</li>
+        <li><strong>Terrain Analysis</strong>  Systematic analysis of solar terrain conditions to inform site selection and orientation</li>
+        <li><strong>Module Catalog</strong>  Library of modular units with different functions and spatial configurations</li>
+        <li><strong>Network System</strong>  Connection framework linking modules through pathways and infrastructure</li>
+        <li><strong>Optimization Engine</strong>  Algorithms to optimize layouts and adapt designs to spatial constraints</li>
+        <li><strong>3D Visualization</strong>  Interactive 3D environment for exploring and configuring habitat designs</li>
+        <li><strong>Parametric Control</strong>  Design automation through configurable parameters and rules</li>
       </ul>
     </section>
 
@@ -108,26 +108,21 @@
 
     <!-- Video Demos -->
     <section class="content-section">
-      <figure class="video-figure">
-        <figcaption class="video-caption">Configuration Demo</figcaption>
-        <video :src="demo" autoplay muted loop playsinline class="content-video">
-          Your browser does not support the video tag.
-        </video>
-      </figure>
+      <div class="video-grid">
+        <figure class="video-figure">
+          <figcaption class="video-caption">Configuration Demo</figcaption>
+          <video :src="demo" autoplay muted loop playsinline class="content-video">
+            Your browser does not support the video tag.
+          </video>
+        </figure>
 
-      <figure class="video-figure">
-        <figcaption class="video-caption">Optimization Process</figcaption>
-        <video :src="optimization" autoplay muted loop playsinline class="content-video">
-          Your browser does not support the video tag.
-        </video>
-      </figure>
-
-      <figure class="video-figure">
-        <figcaption class="video-caption">Solution Variations</figcaption>
-        <video :src="solutions" autoplay muted loop playsinline class="content-video">
-          Your browser does not support the video tag.
-        </video>
-      </figure>
+        <figure class="video-figure">
+          <figcaption class="video-caption">Solution Variations</figcaption>
+          <video :src="solutions" autoplay muted loop playsinline class="content-video">
+            Your browser does not support the video tag.
+          </video>
+        </figure>
+      </div>
     </section>
 
     <!-- Design Explorations - Split -->
@@ -156,9 +151,6 @@
       <h2 class="section-heading">Bridging design automation and extreme environments</h2>
       <p class="body-text">
         This proof-of-concept from professional experience demonstrated how parametric design systems can handle complex spatial problems in extreme environments, making design automation applicable beyond traditional contexts.
-      </p>
-      <p class="body-text">
-        Working as part of both the design and development team, with a focus on the 3D environment, I developed a comprehensive understanding of modular design principles—from unit typology to network connectivity and optimization strategies. The project showcased the potential of computational design in space architecture while bridging interdisciplinary collaboration between spatial design thinking and technical implementation.
       </p>
     </section>
   </div>
@@ -197,6 +189,7 @@ export default {
 .case-study {
   background: #fff;
   color: #000;
+  padding-bottom: 5rem;
 }
 
 /* Hero */
@@ -339,8 +332,15 @@ export default {
 }
 
 /* Videos */
-.video-figure {
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
   margin: 3rem 0;
+}
+
+.video-figure {
+  margin: 0;
 }
 
 .video-caption {
@@ -398,6 +398,10 @@ export default {
   .split-content,
   .split-media {
     max-width: 100%;
+  }
+  
+  .video-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -484,3 +488,4 @@ export default {
   opacity: 1;
 }
 </style>
+

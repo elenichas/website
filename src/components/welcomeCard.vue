@@ -95,49 +95,134 @@ export default {
 };
 </script>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <style scoped>
 .welcome-card {
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
+  gap: 2rem;
 }
 
 .welcome-text {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  gap: 1.5rem;
 }
 
 .name {
   font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: var(--font-weight-bold);
-  color: var(--text-primary);
+  font-weight: 600;
+  color: #000;
   line-height: 1.1;
   letter-spacing: -0.02em;
 }
 
 .job-title-container {
   margin: 0;
-  min-height: 3rem; /* Ensure consistent height */
+  min-height: 3rem;
   display: flex;
   align-items: center;
 }
 
 .job-title {
   font-size: clamp(1.5rem, 4vw, 2.5rem);
-  font-weight: var(--font-weight-medium);
-  color: var(--text-secondary);
-  border-right: 2px solid var(--text-primary);
-  padding-right: var(--space-sm);
+  font-weight: 400;
+  color: #333;
+  border-right: 2px solid #000;
+  padding-right: 0.5rem;
   animation: blinkCursor 1s infinite;
   display: inline-block;
-  min-height: 1.2em; /* Maintain consistent height */
-  min-width: 0.5em; /* Prevent complete collapse */
+  min-height: 1.2em;
+  min-width: 0.5em;
 }
 
 @keyframes blinkCursor {
   0%, 50% {
-    border-right-color: var(--text-primary);
+    border-right-color: #000;
   }
   51%, 100% {
     border-right-color: transparent;
@@ -146,16 +231,50 @@ export default {
 
 .description {
   font-size: 1.125rem;
-  color: var(--text-secondary);
+  color: #333;
   line-height: 1.6;
   max-width: 600px;
 }
 
 .cta-buttons {
   display: flex;
-  gap: var(--space-md);
+  gap: 1rem;
   align-items: center;
   flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 0.875rem 1.75rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background: #1a1a1a;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #333;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #1a1a1a;
+  border: 2px solid #1a1a1a;
+}
+
+.btn-secondary:hover {
+  background: #1a1a1a;
+  color: white;
 }
 
 /* Responsive Design */

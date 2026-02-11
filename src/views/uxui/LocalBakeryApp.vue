@@ -50,7 +50,7 @@
       <p class="section-label">Process</p>
       <h2 class="section-heading">From research to prototype</h2>
       <p class="body-text">
-        I observed shop operations during peak hours and interviewed customers to understand their pain points. Through persona development and user journey mapping, I identified key opportunities for digital intervention—primarily the need for time-saving ordering and delivery tracking features.
+        I observed shop operations during peak hours and interviewed customers to understand their pain points. Through persona development and user journey mapping, I identified key opportunities for digital intervention primarily the need for time-saving ordering and delivery tracking features.
       </p>
     </section>
 
@@ -68,6 +68,76 @@
       </div>
     </section>
 
+    <!-- Visual Design Details -->
+    <section class="content-section">
+      <p class="section-label">Visual Language</p>
+      <h2 class="section-heading">Design system</h2>
+      
+      <div class="style-guide">
+        <!-- Color Palette -->
+        <div class="style-block">
+          <h4 class="style-heading">Color Palette</h4>
+          <div class="color-palette">
+            <div class="color-item">
+              <div class="color-swatch" style="background: #00320b"></div>
+              <div class="color-info">
+                <span class="color-name">Deep Forest</span>
+                <span class="color-code">#00320b</span>
+              </div>
+            </div>
+            <div class="color-item">
+              <div class="color-swatch" style="background: #d7a246"></div>
+              <div class="color-info">
+                <span class="color-name">Golden Cream</span>
+                <span class="color-code">#d7a246</span>
+              </div>
+            </div>
+            <div class="color-item">
+              <div class="color-swatch" style="background: #f5f5f5"></div>
+              <div class="color-info">
+                <span class="color-name">Light Background</span>
+                <span class="color-code">#f5f5f5</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Typography -->
+        <div class="style-block">
+          <h4 class="style-heading">Typography</h4>
+          <div class="typography-samples">
+            <div class="type-sample">
+              <div class="sample-text" style="font-size: 2rem; font-weight: 700; color: #00320b; font-family: 'Sansation', sans-serif;">Fresh Coffee Daily</div>
+              <div class="sample-meta">Sansation Bold · 32px</div>
+            </div>
+            <div class="type-sample">
+              <div class="sample-text" style="font-size: 1.25rem; font-weight: 500; color: #d7a246;">Order ahead and skip the line</div>
+              <div class="sample-meta">Inter Medium · 20px</div>
+            </div>
+            <div class="type-sample">
+              <div class="sample-text" style="font-size: 1rem; color: #666;">Browse our menu of artisan coffee, fresh pastries, and local merchandise.</div>
+              <div class="sample-meta">Inter Regular · 16px</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- UI Components -->
+        <div class="style-block">
+          <h4 class="style-heading">Key Components</h4>
+          <div class="components-showcase">
+            <div class="component-example">
+              <span class="component-label">Primary Button</span>
+              <button class="sample-button primary" style="background: #00320b; color: white; border: none; padding: 0.875rem 1.75rem; border-radius: 2rem; font-weight: 600;">Order Now</button>
+            </div>
+            <div class="component-example">
+              <span class="component-label">Secondary Button</span>
+              <button class="sample-button secondary" style="background: transparent; color: #d7a246; border: 2px solid #d7a246; padding: 0.875rem 1.75rem; border-radius: 2rem; font-weight: 600;">View Menu</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Reflection -->
     <section class="content-section">
       <p class="section-label">Learning</p>
@@ -79,6 +149,7 @@
         This project reinforced the importance of mobile-first design—balancing constraints with usability and visual appeal.
       </p>
     </section>
+
   </div>
 </template>
 
@@ -107,6 +178,7 @@ export default {
 .case-study {
   background: #fff;
   color: #000;
+  padding-bottom: 5rem;
 }
 
 /* Hero */
@@ -272,5 +344,114 @@ export default {
   .split-media {
     max-width: 100%;
   }
+}
+
+/* Style Guide */
+.style-guide {
+  margin-top: 3rem;
+}
+
+.style-block {
+  margin-bottom: 3rem;
+}
+
+.style-heading {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 1.5rem;
+}
+
+/* Color Palette */
+.color-palette {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+}
+
+.color-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.color-swatch {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  flex-shrink: 0;
+}
+
+.color-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.color-name {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #000;
+}
+
+.color-code {
+  font-size: 0.8125rem;
+  color: #666;
+  font-family: monospace;
+}
+
+/* Typography Samples */
+.typography-samples {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.type-sample {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sample-text {
+  line-height: 1.4;
+}
+
+.sample-meta {
+  font-size: 0.8125rem;
+  color: #999;
+}
+
+/* Components Showcase */
+.components-showcase {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.component-example {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.component-label {
+  font-size: 0.8125rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.sample-button {
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.sample-button:hover {
+  transform: translateY(-2px);
 }
 </style>
