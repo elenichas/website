@@ -3,238 +3,174 @@
   <div class="case-study">
     <!-- Hero Section -->
     <div class="hero-section">
-      <img class="hero-image" :src="hero" alt="Moon Pixel App Hero" />
-      <div class="hero-overlay">
-        <span class="project-tag">System Design</span>
-      </div>
+      <img class="hero-image" :src="hero" alt="Moon Habitat Configurator" />
     </div>
 
     <!-- Project Header -->
     <div class="project-header">
+      <p class="project-label">Proof of Concept</p>
       <h1 class="project-title">Moon Habitat Configurator</h1>
-      <p class="project-subtitle">
-        A parametric design system for configuring modular lunar habitats through optimization algorithms and spatial analysis
+      <p class="project-intro">
+        A parametric design system for configuring modular lunar habitats through optimization algorithms and spatial analysis.
       </p>
       <div class="project-meta">
-        <div class="meta-item">
-          <span class="meta-label">Role</span>
-          <span class="meta-value">Design & Development</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-label">Type</span>
-          <span class="meta-value">Proof of Concept</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-label">Focus</span>
-          <span class="meta-value">3D Environment & Systems</span>
-        </div>
+        <span class="meta-item">Design & Development</span>
+        <span class="meta-divider">·</span>
+        <span class="meta-item">Group Project</span>
+        <span class="meta-divider">·</span>
+        <span class="meta-item">3D Environment & Systems</span>
       </div>
     </div>
 
     <!-- Overview Section -->
-    <section class="overview-section">
-      <div class="section-grid">
-        <div class="overview-card">
-          <h3>🎯 Concept</h3>
-          <p>
-            Exploring how system design and configuration for design automation can be applied to extreme environments like the lunar surface, combining research and modular thinking principles.
-          </p>
-        </div>
-        <div class="overview-card">
-          <h3>💡 Approach</h3>
-          <p>
-            Systematic terrain analysis, modular unit cataloging, network-based connections, and optimization algorithms to adapt designs to spatial constraints of the moon.
-          </p>
-        </div>
-        <div class="overview-card">
-          <h3>🚀 Outcome</h3>
-          <p>
-            A functional proof-of-concept demonstrating parametric design automation in an experimental context, showcasing the potential of computational design in space architecture.
-          </p>
-        </div>
+    <section class="split-section split-section-left">
+      <div class="split-content">
+        <p class="section-label">Background</p>
+        <h2 class="section-heading">Designing for extreme environments</h2>
+        <p class="body-text">
+          This project explores how system design and configuration for design automation can be applied to extreme environments like the lunar surface, combining research and modular thinking principles.
+        </p>
+      </div>
+      <div class="split-media media-container-blue">
+        <img :src="picture1" alt="Lunar habitat visualization" class="split-image" />
       </div>
     </section>
 
-    <!-- Key Features -->
-    <section class="features-section">
-      <h2 class="section-title">System Components</h2>
-      <div class="features-grid">
-        <div class="feature-card">
-          <span class="feature-icon"><Moon :size="32" /></span>
-          <h4>Terrain Analysis</h4>
-          <p>Systematic analysis of solar terrain conditions to inform site selection and orientation</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-icon"><Box :size="32" /></span>
-          <h4>Module Catalog</h4>
-          <p>Library of modular units with different functions and spatial configurations</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-icon"><Network :size="32" /></span>
-          <h4>Network System</h4>
-          <p>Connection framework linking modules through pathways and infrastructure</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-icon"><Zap :size="32" /></span>
-          <h4>Optimization Engine</h4>
-          <p>Algorithms to optimize layouts and adapt designs to spatial constraints</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-icon"><Layers :size="32" /></span>
-          <h4>3D Visualization</h4>
-          <p>Interactive 3D environment for exploring and configuring habitat designs</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-icon"><Settings :size="32" /></span>
-          <h4>Parametric Control</h4>
-          <p>Design automation through configurable parameters and rules</p>
-        </div>
-      </div>
+    <!-- System Components -->
+    <section class="content-section">
+      <p class="section-label">Approach</p>
+      <h2 class="section-heading">A modular system for extreme environments</h2>
+      <p class="body-text">
+        The system combines terrain analysis, modular unit cataloging, network-based connections, and optimization algorithms to adapt designs to spatial constraints. Key elements include:
+      </p>
+      <ul class="simple-list">
+        <li><strong>Terrain Analysis</strong> — Systematic analysis of solar terrain conditions to inform site selection and orientation</li>
+        <li><strong>Module Catalog</strong> — Library of modular units with different functions and spatial configurations</li>
+        <li><strong>Network System</strong> — Connection framework linking modules through pathways and infrastructure</li>
+        <li><strong>Optimization Engine</strong> — Algorithms to optimize layouts and adapt designs to spatial constraints</li>
+        <li><strong>3D Visualization</strong> — Interactive 3D environment for exploring and configuring habitat designs</li>
+        <li><strong>Parametric Control</strong> — Design automation through configurable parameters and rules</li>
+      </ul>
     </section>
 
     <!-- System Architecture -->
-    <section class="wireframes-section">
-      <h2 class="section-title">System Architecture</h2>
-      
-      <div class="content-block">
-        <h3>Configurator Workflow</h3>
-        <p>The system follows a systematic approach from terrain analysis to final configuration, allowing for iterative design exploration and optimization.</p>
-        <div class="project-image-container">
-          <img :src="configuratorDiagram" alt="Configurator System Diagram" class="project-image" />
-        </div>
-      </div>
+    <section class="content-section">
+      <p class="section-label">System Architecture</p>
+      <h2 class="section-heading">From terrain to habitat</h2>
+      <p class="body-text">
+        The system follows a systematic approach from terrain analysis to final configuration, allowing for iterative design exploration and optimization.
+      </p>
+      <figure class="image-figure">
+        <img :src="configuratorDiagram" alt="Configurator System Diagram" class="content-image" />
+      </figure>
+    </section>
 
-      <div class="content-block">
-        <h3>Module Typologies</h3>
-        <p>A catalog of specialized units designed for different functions within the lunar habitat, each optimized for specific spatial and functional requirements.</p>
-        <div class="project-image-container">
-          <img :src="moduleTypologies" alt="Module Typologies" class="project-image" />
-        </div>
+    <!-- Module Typologies - Split Layout -->
+    <section class="split-section split-section-right">
+      <div class="split-media media-container">
+        <img :src="moduleTypologies" alt="Module Typologies" class="split-image" />
       </div>
-
-      <div class="content-block">
-        <h3>Room Organization</h3>
-        <p>Spatial diagrams showing how different functional spaces are organized and connected within the modular system.</p>
-        <div class="project-image-container">
-          <img :src="roomsDiagram" alt="Rooms Diagram" class="project-image" />
-        </div>
+      <div class="split-content">
+        <p class="section-label">Catalog</p>
+        <h3 class="section-heading">Module typologies</h3>
+        <p class="body-text">
+          A catalog of specialized units designed for different functions within the lunar habitat, each optimized for specific spatial and functional requirements.
+        </p>
       </div>
     </section>
 
-    <!-- Interactive Demonstrations -->
-    <section class="design-section">
-      <h2 class="section-title">Interactive System</h2>
-      <div class="design-content">
-        <div class="design-story">
-          <p>
-            The 3D environment allows for real-time configuration and visualization of lunar habitat layouts. Users can explore different module arrangements, optimize connections, and analyze spatial relationships in an interactive setting.
-          </p>
-        </div>
+    <!-- Room Organization -->
+    <section class="content-section">
+      <h3 class="subsection-heading">Room organization</h3>
+      <p class="body-text">
+        Spatial diagrams showing how different functional spaces are organized and connected within the modular system.
+      </p>
+      <figure class="image-figure">
+        <img :src="roomsDiagram" alt="Rooms Diagram" class="content-image" />
+      </figure>
+    </section>
 
-        <div class="video-grid">
-          <div class="video-container">
-            <h4>3D Viewer & Navigation</h4>
-            <video :src="viewer3D" controls class="demo-video">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-
-          <div class="video-container">
-            <h4>Configuration Demo</h4>
-            <video :src="demo" controls class="demo-video">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-
-          <div class="video-container">
-            <h4>Optimization Process</h4>
-            <video :src="optimization" controls class="demo-video">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-
-          <div class="video-container">
-            <h4>Solution Variations</h4>
-            <video :src="solutions" controls class="demo-video">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </div>
-
-        <div class="additional-images">
-          <h3>Design Explorations</h3>
-          <div class="image-grid">
-            <div class="grid-image-container">
-              <img :src="picture1" alt="Design Exploration 1" class="grid-image" />
-            </div>
-            <div class="grid-image-container">
-              <img :src="picture2" alt="Design Exploration 2" class="grid-image" />
-            </div>
-            <div class="grid-image-container">
-              <img :src="picture3" alt="Design Exploration 3" class="grid-image" />
-            </div>
-          </div>
-        </div>
+    <!-- Interactive System -->
+    <section class="split-section split-section-left">
+      <div class="split-content">
+        <p class="section-label">Interactive System</p>
+        <h2 class="section-heading">Real-time configuration and visualization</h2>
+        <p class="body-text">
+          The 3D environment allows for real-time configuration and visualization of lunar habitat layouts. Users can explore different module arrangements, optimize connections, and analyze spatial relationships in an interactive setting.
+        </p>
+      </div>
+      <div class="split-media media-container-purple">
+        <video :src="viewer3D" autoplay muted loop playsinline class="split-video">
+          Your browser does not support the video tag.
+        </video>
       </div>
     </section>
 
-    <!-- Learnings & Reflection -->
-    <section class="reflection-section">
-      <h2 class="section-title">Key Insights & Impact</h2>
-      <div class="learnings-grid">
-        <div class="learning-card">
-          <h4>Design Automation at Scale</h4>
-          <p>
-            Demonstrated how parametric design systems can handle complex spatial problems in extreme environments, making design automation applicable beyond traditional contexts.
-          </p>
-        </div>
-        <div class="learning-card">
-          <h4>Modular System Thinking</h4>
-          <p>
-            Developed a comprehensive understanding of modular design principles, from unit typology to network connectivity and optimization strategies.
-          </p>
-        </div>
-        <div class="learning-card">
-          <h4>3D Environment Development</h4>
-          <p>
-            Contributed to creating an interactive 3D visualization system that makes complex computational processes accessible and explorable.
-          </p>
-        </div>
-        <div class="learning-card">
-          <h4>Interdisciplinary Collaboration</h4>
-          <p>
-            Bridged design and development roles in a group setting, integrating spatial design thinking with computational implementation.
-          </p>
-        </div>
-      </div>
+    <!-- Video Demos -->
+    <section class="content-section">
+      <figure class="video-figure">
+        <figcaption class="video-caption">Configuration Demo</figcaption>
+        <video :src="demo" autoplay muted loop playsinline class="content-video">
+          Your browser does not support the video tag.
+        </video>
+      </figure>
 
-      <div class="next-steps">
-        <h3>Project Context</h3>
-        <ul>
-          <li>Proof-of-concept from professional experience</li>
-          <li>Group project spanning design and development disciplines</li>
-          <li>Focus area: 3D environment and interactive system design</li>
-          <li>Demonstrates research-driven approach to computational design</li>
-        </ul>
+      <figure class="video-figure">
+        <figcaption class="video-caption">Optimization Process</figcaption>
+        <video :src="optimization" autoplay muted loop playsinline class="content-video">
+          Your browser does not support the video tag.
+        </video>
+      </figure>
+
+      <figure class="video-figure">
+        <figcaption class="video-caption">Solution Variations</figcaption>
+        <video :src="solutions" autoplay muted loop playsinline class="content-video">
+          Your browser does not support the video tag.
+        </video>
+      </figure>
+    </section>
+
+    <!-- Design Explorations - Split -->
+    <section class="split-section split-section-right">
+      <div class="split-media media-container">
+        <img :src="picture2" alt="Design Exploration" class="split-image" />
       </div>
+      <div class="split-content">
+        <p class="section-label">Exploration</p>
+        <h3 class="section-heading">Design explorations</h3>
+        <p class="body-text">
+          Multiple design iterations exploring different spatial configurations and optimization strategies for the lunar habitat system.
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <figure class="image-figure">
+        <img :src="picture3" alt="Design Exploration" class="content-image" />
+      </figure>
+    </section>
+
+    <!-- Reflection -->
+    <section class="content-section">
+      <p class="section-label">Impact</p>
+      <h2 class="section-heading">Bridging design automation and extreme environments</h2>
+      <p class="body-text">
+        This proof-of-concept from professional experience demonstrated how parametric design systems can handle complex spatial problems in extreme environments, making design automation applicable beyond traditional contexts.
+      </p>
+      <p class="body-text">
+        Working as part of both the design and development team, with a focus on the 3D environment, I developed a comprehensive understanding of modular design principles—from unit typology to network connectivity and optimization strategies. The project showcased the potential of computational design in space architecture while bridging interdisciplinary collaboration between spatial design thinking and technical implementation.
+      </p>
     </section>
   </div>
 </template>
 
 <script>
 import AppNavbar from "@/components/navbar";
-import { Moon, Box, Network, Zap, Layers, Settings } from 'lucide-vue-next';
 
 export default {
   name: "MoonPixelApp",
   components: {
     AppNavbar,
-    Moon,
-    Box,
-    Network,
-    Zap,
-    Layers,
-    Settings,
   },
   props: {},
   data() {
@@ -255,197 +191,296 @@ export default {
 };
 </script>
 
-<style src="@/styles/case-study-common.css"></style>
 <style scoped>
-/* MoonPixelApp - Custom Theme Colors */
+/* Minimal Editorial Design */
 
-/* Feature cards with border */
-.feature-card {
-  border: 2px solid #e0e0e0;
+.case-study {
+  background: #fff;
+  color: #000;
 }
 
-.feature-card:hover {
-  border-color: #6C63FF;
-}
-
-/* Benefit icon - brand color */
-.benefit-icon {
-  color: #6C63FF;
-}
-
-/* Color circles with border for light colors */
-.color-circle {
-  border: 2px solid #e0e0e0;
-}
-
-/* Type display - brand color */
-.type-display {
-  color: #1a1a2e;
-}
-
-/* Learning card - brand color border */
-.learning-card {
-  border-left: 4px solid #6C63FF;
-}
-
-.learning-card:hover {
-  border-left-color: #FF6584;
-}
-
-/* Next steps arrow - brand color */
-.next-steps li::before {
-  color: #6C63FF;
-}
-
-/* Wireframes section background */
-.wireframes-section {
-  background: #fafafa;
-}
-
-/* Lucide icon styling */
-.feature-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #6C63FF;
-}
-
-.inline-icon {
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 0.5rem;
-}
-
-/* Image placeholder */
-.image-placeholder {
-  background: #f5f5f5;
-  border: 2px dashed #ddd;
-  border-radius: 8px;
-  padding: 4rem 2rem;
-  text-align: center;
-  margin: 2rem 0;
-}
-
-.placeholder-text {
-  color: #999;
-  font-size: 1.1rem;
-  margin: 0;
-}
-
-/* Content blocks for system architecture */
-.content-block {
-  margin-bottom: 3rem;
-}
-
-.content-block h3 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #1a1a2e;
-  margin-bottom: 0.75rem;
-}
-
-.content-block p {
-  font-size: 1rem;
-  color: #666;
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-}
-
-.project-image-container {
+/* Hero */
+.hero-section {
   width: 100%;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  margin-bottom: 1rem;
+  margin-bottom: 4rem;
 }
 
-.project-image {
+.hero-image {
   width: 100%;
   height: auto;
   display: block;
 }
 
-/* Video Grid */
-.video-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+/* Project Header */
+.project-header {
+  max-width: 760px;
+  margin: 0 auto 5rem;
+  padding: 0 2rem;
+}
+
+.project-label {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #666;
+  margin: 0 0 0.75rem;
+  font-weight: 500;
+}
+
+.project-title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0 0 1.5rem;
+  color: #000;
+}
+
+.project-intro {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: #333;
+  margin: 0 0 2rem;
+}
+
+.project-meta {
+  font-size: 0.9375rem;
+  color: #666;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.meta-divider {
+  color: #ccc;
+}
+
+/* Content Sections */
+.content-section {
+  max-width: 760px;
+  margin: 0 auto 5rem;
+  padding: 0 2rem;
+}
+
+.section-label {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #666;
+  margin: 0 0 0.5rem;
+  font-weight: 500;
+}
+
+.section-heading {
+  font-size: 2rem;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0;
+  line-height: 1.3;
+  margin: 0 0 1.5rem;
+  color: #000;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+.subsection-heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin: 3rem 0 1rem;
+  color: #000;
+}
+
+.large-text {
+  font-size: 1.375rem;
+  line-height: 1.6;
+  color: #333;
+  margin: 0 0 2rem;
+}
+
+.body-text {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: #333;
+  margin: 0 0 1.5rem;
+}
+
+/* Simple List */
+.simple-list {
+  list-style: none;
+  padding: 0;
   margin: 2rem 0;
 }
 
-.video-container {
-  background: #fff;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+.simple-list li {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: 1rem;
+  padding-left: 0;
 }
 
-.video-container h4 {
-  font-size: 1rem;
+.simple-list li strong {
+  color: #000;
   font-weight: 600;
-  color: #1a1a2e;
-  padding: 1rem;
-  margin: 0;
-  background: #f8f8f8;
-  border-bottom: 1px solid #e0e0e0;
 }
 
-.demo-video {
+/* Images */
+.image-figure {
+  margin: 3rem 0;
+  max-width: 100%;
+}
+
+.content-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+}
+
+/* Videos */
+.video-figure {
+  margin: 3rem 0;
+}
+
+.video-caption {
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.content-video {
   width: 100%;
   height: auto;
   display: block;
   background: #000;
-}
-
-/* Additional Images Section */
-.additional-images {
-  margin-top: 3rem;
-}
-
-.additional-images h3 {
-  font-size: 1.75rem;
-  font-weight: 600;
-  color: #1a1a2e;
-  margin-bottom: 1.5rem;
-}
-
-.image-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-}
-
-.grid-image-container {
   border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.grid-image-container:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+.content-video::-webkit-media-controls {
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
-.grid-image {
+.content-video:hover::-webkit-media-controls {
+  opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .project-header,
+  .content-section {
+    padding: 0 1.5rem;
+  }
+  
+  .project-title {
+    font-size: 2rem;
+  }
+  
+  .section-heading {
+    font-size: 1.5rem;
+  }
+  
+  .subsection-heading {
+    font-size: 1.25rem;
+  }
+  
+  .large-text {
+    font-size: 1.125rem;
+  }
+  
+  .split-section {
+    flex-direction: column;
+    padding: 3rem 1.5rem;
+  }
+  
+  .split-content,
+  .split-media {
+    max-width: 100%;
+  }
+}
+
+/* Split Sections - Asymmetric Layout */
+.split-section {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 5rem auto;
+  padding: 4rem 2rem;
+}
+
+.split-section-left .split-content {
+  order: 1;
+}
+
+.split-section-left .split-media {
+  order: 2;
+}
+
+.split-section-right .split-content {
+  order: 2;
+}
+
+.split-section-right .split-media {
+  order: 1;
+}
+
+.split-content {
+  flex: 1;
+  max-width: 500px;
+}
+
+.split-media {
+  flex: 1;
+  max-width: 600px;
+}
+
+/* Media Containers with Colored Backgrounds */
+.media-container-blue {
+  background: #E8F0FF;
+  padding: 3rem;
+  border-radius: 24px;
+}
+
+.media-container-green {
+  background: #DFF5D4;
+  padding: 3rem;
+  border-radius: 24px;
+}
+
+.media-container-purple {
+  background: #F0E8FF;
+  padding: 3rem;
+  border-radius: 24px;
+}
+
+.media-container-yellow {
+  background: #FFF9E0;
+  padding: 3rem;
+  border-radius: 24px;
+}
+
+.split-image,
+.split-video {
   width: 100%;
   height: auto;
   display: block;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .video-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .image-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .content-block h3 {
-    font-size: 1.25rem;
-  }
+.split-video {
+  background: #000;
+}
+
+.split-video::-webkit-media-controls {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.split-video:hover::-webkit-media-controls {
+  opacity: 1;
 }
 </style>

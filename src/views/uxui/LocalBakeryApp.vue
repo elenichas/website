@@ -3,536 +3,274 @@
   <div class="case-study">
     <!-- Hero Section -->
     <div class="hero-section">
-      <img class="hero-image" :src="hero" alt="Brew & Crumb App Hero" />
-      <div class="hero-overlay">
-        <span class="project-tag">Google UX Design Course</span>
-      </div>
+      <img class="hero-image" :src="hero" alt="Brew & Crumb App" />
     </div>
 
     <!-- Project Header -->
     <div class="project-header">
+      <p class="project-label">Google UX Design Course</p>
       <h1 class="project-title">Brew & Crumb</h1>
-      <p class="project-subtitle">
-        A mobile ordering solution to reduce wait times at a local coffee shop
+      <p class="project-intro">
+        A mobile ordering solution to reduce wait times at a local coffee shop.
       </p>
       <div class="project-meta">
-        <div class="meta-item">
-          <span class="meta-label">Role</span>
-          <span class="meta-value">UX/UI Designer</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-label">Duration</span>
-          <span class="meta-value">1 Month (2023)</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-label">Type</span>
-          <span class="meta-value">Course Project</span>
-        </div>
+        <span class="meta-item">UX/UI Designer</span>
+        <span class="meta-divider">·</span>
+        <span class="meta-item">1 Month (2023)</span>
+        <span class="meta-divider">·</span>
+        <span class="meta-item">Course Project</span>
       </div>
     </div>
 
-    <!-- Overview Section -->
-    <section class="overview-section">
-      <div class="section-grid">
-        <div class="overview-card">
-          <h3>🎯 Challenge</h3>
-          <p>
-            Long morning queues at a popular local coffee shop cause delays for
-            busy professionals and lost revenue opportunities.
-          </p>
-        </div>
-        <div class="overview-card">
-          <h3>💡 Solution</h3>
-          <p>
-            A mobile app enabling preorders, delivery tracking, and merchandise
-            shopping to streamline operations and enhance customer experience.
-          </p>
-        </div>
-        <div class="overview-card">
-          <h3>🎓 Learning Focus</h3>
-          <p>
-            Practiced user research, persona development, wireframing, and
-            high-fidelity prototyping through the Google UX Design curriculum.
-          </p>
-        </div>
-      </div>
+    <!-- Challenge -->
+    <section class="content-section">
+      <p class="section-label">Challenge</p>
+      <h2 class="section-heading">Solving the morning rush</h2>
+      <p class="body-text">
+        Long morning queues at a popular local coffee shop were causing delays for busy professionals and creating lost revenue opportunities. Most customers are office workers with tight schedules, and 85% of daily traffic occurs between 7-9 AM, creating significant bottlenecks.
+      </p>
     </section>
 
-    <!-- Research & Insights -->
-    <section class="research-section">
-      <h2 class="section-title">Research & Insights</h2>
-      <div class="insights-container">
-                        <div class="insight-card" v-for="(insight, index) in insights" :key="index">
-          <h4>{{ insight.title }}</h4>
-          <p>{{ insight.description }}</p>
-        </div>
-      </div>
-      
-      <!-- Placeholder for research photos -->
-      <!-- <div class="image-placeholder">
-        <p class="placeholder-text">
-          📸 Add image: Photos from coffee shop observation or interview notes
+    <!-- Solution -->
+    <section class="split-section split-section-left">
+      <div class="split-content">
+        <p class="section-label">Solution</p>
+        <h2 class="section-heading">Order ahead, skip the line</h2>
+        <p class="body-text">
+          A mobile app enabling preorders, delivery tracking, and merchandise shopping to streamline operations and enhance customer experience. Customers can browse the menu, schedule pickup times, and track their orders in real-time.
         </p>
-      </div> -->
-    </section>
-
-    <!-- User Personas -->
-    <section class="personas-section">
-      <h2 class="section-title">Meet the Users</h2>
-      <div class="personas-grid">
-        <!-- Persona 1 -->
-        <div class="persona-card" @mouseenter="activePersona = 1" @mouseleave="activePersona = null">
-          <div class="persona-header">
-            <div class="persona-avatar">
-              <!-- Placeholder for persona photo -->
-              <div class="avatar-placeholder">
-                <span>JA</span>
-              </div>
-              <p class="avatar-suggestion">Note: Add stock photo of professional man</p>
-            </div>
-            <div class="persona-info">
-              <h3>James Anderson</h3>
-              <p class="persona-title">Marketing Manager, 34</p>
-            </div>
-          </div>
-          <div class="persona-details" :class="{ active: activePersona === 1 }">
-            <div class="detail-group">
-                            <span class="detail-icon"><Target :size="20" /></span>
-              <div>
-                <strong>Goal</strong>
-                <p>Skip the line and get coffee on the way to work</p>
-              </div>
-            </div>
-            <div class="detail-group">
-                            <span class="detail-icon"><AlertCircle :size="20" /></span>
-              <div>
-                <strong>Pain Point</strong>
-                <p>Long queues make him late for meetings</p>
-              </div>
-            </div>
-            <div class="detail-group">
-                            <span class="detail-icon"><Smartphone :size="20" /></span>
-              <div>
-                <strong>Tech Savvy</strong>
-                <p>High - Uses multiple apps daily</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Persona 2 -->
-        <div class="persona-card" @mouseenter="activePersona = 2" @mouseleave="activePersona = null">
-          <div class="persona-header">
-            <div class="persona-avatar">
-              <!-- Placeholder for persona photo -->
-              <div class="avatar-placeholder">
-                <span>ML</span>
-              </div>
-              <p class="avatar-suggestion">Note: Add stock photo of creative woman</p>
-            </div>
-            <div class="persona-info">
-              <h3>Maria Lopez</h3>
-              <p class="persona-title">Freelance Designer, 27</p>
-            </div>
-          </div>
-          <div class="persona-details" :class="{ active: activePersona === 2 }">
-            <div class="detail-group">
-                            <span class="detail-icon"><Target :size="20" /></span>
-              <div>
-                <strong>Goal</strong>
-                <p>Order delivery while working from home</p>
-              </div>
-            </div>
-            <div class="detail-group">
-                            <span class="detail-icon"><AlertCircle :size="20" /></span>
-              <div>
-                <strong>Pain Point</strong>
-                <p>Can't track delivery status or buy merchandise online</p>
-              </div>
-            </div>
-            <div class="detail-group">
-                            <span class="detail-icon"><Smartphone :size="20" /></span>
-              <div>
-                <strong>Tech Savvy</strong>
-                <p>Medium - Comfortable with apps</p>
-              </div>
-            </div>
-          </div>
-        </div>
+      </div>
+      <div class="split-media media-container-green">
+        <img :src="wireframes" alt="Brew & Crumb wireframes" class="split-image" />
       </div>
     </section>
 
     <!-- Design Process -->
-    <section class="process-section">
-      <h2 class="section-title">Design Process</h2>
-      <div class="process-steps">
-        <div class="process-step" v-for="(step, index) in processSteps" :key="index">
-          <div class="step-number">{{ index + 1 }}</div>
-          <h4>{{ step.title }}</h4>
-          <p>{{ step.description }}</p>
-        </div>
-      </div>
+    <section class="content-section">
+      <p class="section-label">Process</p>
+      <h2 class="section-heading">From research to prototype</h2>
+      <p class="body-text">
+        I observed shop operations during peak hours and interviewed customers to understand their pain points. Through persona development and user journey mapping, I identified key opportunities for digital intervention—primarily the need for time-saving ordering and delivery tracking features.
+      </p>
     </section>
 
-    <!-- Wireframes -->
-    <section class="wireframes-section">
-      <h2 class="section-title">From Sketches to Screens</h2>
-      <div class="wireframe-container">
-        <img :src="wireframes" alt="Low-fidelity wireframes" class="wireframe-image" />
+    <!-- Prototypes -->
+    <section class="split-section split-section-right">
+      <div class="split-media media-container-yellow">
+        <img :src="prototypes" alt="High-fidelity screens" class="split-image" />
       </div>
-      
-      <!-- Placeholder for additional wireframe images -->
-      <!-- <div class="image-placeholder">
-        <p class="placeholder-text">
-          📸 Add image: Paper sketches or early concept drawings
+      <div class="split-content">
+        <p class="section-label">Design</p>
+        <h3 class="section-heading">Warm and inviting</h3>
+        <p class="body-text">
+          I developed a warm, inviting visual language that reflects the cozy atmosphere of a neighborhood coffee shop. The earthy tones and clean typography create an approachable yet modern aesthetic.
         </p>
-      </div> -->
-    </section>
-
-    <!-- Visual Design -->
-    <section class="design-section">
-      <h2 class="section-title">Visual Identity</h2>
-      <div class="design-content">
-        <div class="design-story">
-          <p>
-            I developed a warm, inviting visual language that reflects the
-            cozy atmosphere of a neighborhood coffee shop. The earthy tones and
-            clean typography create an approachable yet modern aesthetic.
-          </p>
-        </div>
-        
-        <div class="style-guide-modern">
-                    <!-- Colors -->
-          <div class="style-section">
-            <h3>Color Palette</h3>
-            <div class="color-palette">
-              <div class="color-item">
-                <div class="color-circle" style="background: #00320b"></div>
-                <span class="color-code">#00320b</span>
-                <span class="color-name">Deep Forest</span>
-              </div>
-              <div class="color-item">
-                <div class="color-circle" style="background: #d7a246"></div>
-                <span class="color-code">#d7a246</span>
-                <span class="color-name">Golden Cream</span>
-              </div>
-              <div class="color-item">
-                <div class="color-circle" style="background: #d9d9d9"></div>
-                <span class="color-code">#d9d9d9</span>
-                <span class="color-name">Soft Latte</span>
-              </div>
-              <div class="color-item">
-                <div class="color-circle" style="background: #000000"></div>
-                <span class="color-code">#000000</span>
-                <span class="color-name">Espresso</span>
-              </div>
-            </div>
-
-            <h4>Key Components</h4>
-            <div class="components-showcase">
-              <div class="component-sample">
-                <span class="component-label">Primary Button</span>
-                <button class="sample-button primary" style="background: #00320b;">Order Now</button>
-              </div>
-              <div class="component-sample">
-                <span class="component-label">Secondary Button</span>
-                <button class="sample-button secondary" style="border-color: #d7a246; color: #d7a246;">View Menu</button>
-              </div>
-              <div class="component-sample">
-                <span class="component-label">Input Field</span>
-                <input class="sample-input" type="text" placeholder="Search menu..." style="--brand-primary: #00320b;" />
-              </div>
-            </div>
-          </div>
-
-                    <!-- Typography -->
-          <div class="style-section">
-            <h3>Typography</h3>
-            <div class="typography-showcase">
-              <div class="type-sample">
-                <span class="type-label">Header</span>
-                <p class="type-display header" style="font-family: 'Sansation', sans-serif; color: #00320b;">Fresh Coffee Daily</p>
-                <span class="type-meta">Sansation Bold · 32px</span>
-              </div>
-              <div class="type-sample">
-                <span class="type-label">Subtitle</span>
-                <p class="type-display subtitle" style="font-family: 'Inter', sans-serif; color: #d7a246;">Order ahead and skip the line</p>
-                <span class="type-meta">Inter Medium · 21px</span>
-              </div>
-              <div class="type-sample">
-                <span class="type-label">Body Text</span>
-                <p class="type-display body" style="font-family: 'Inter', sans-serif; color: #666;">Browse our menu of artisan coffee, fresh pastries, and local merchandise. Your order will be ready when you arrive.</p>
-                <span class="type-meta">Inter Regular · 16px</span>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
-    <!-- High-Fidelity Prototypes -->
-    <section class="prototype-section">
-      <h2 class="section-title">High-Fidelity Screens</h2>
-      <div class="prototype-showcase">
-        <img :src="prototypes" alt="High-fidelity prototype screens" class="prototype-image" />
-      </div>
-
-      <!-- Key Features Highlight -->
-      <div class="features-grid">
-        <div class="feature-card">
-          <span class="feature-icon"><ShoppingCart :size="32" /></span>
-          <h4>Quick Ordering</h4>
-          <p>Browse menu and add items with just a few taps</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-icon"><Calendar :size="32" /></span>
-          <h4>Schedule Pickup</h4>
-          <p>Choose exact pickup time to avoid waiting</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-icon"><Truck :size="32" /></span>
-          <h4>Delivery Tracking</h4>
-          <p>Real-time updates on order status</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-icon"><Gift :size="32" /></span>
-          <h4>Shop Merch</h4>
-          <p>Browse and purchase shop merchandise</p>
-        </div>
-      </div>
-
-      <!-- Placeholder for user flow diagram -->
-      <!-- <div class="image-placeholder">
-        <p class="placeholder-text">
-          📸 Add image: User flow diagram showing the ordering journey
-        </p>
-      </div> -->
-    </section>
-
-    <!-- Interactive Prototype CTA -->
-    <section class="cta-section">
-      <div class="cta-content">
-        <h2>Try the Interactive Prototype</h2>
-        <p>Experience the full user flow in Figma</p>
-        <a
-          :href="figmaSrc"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="cta-button"
-        >
-          <span>View Prototype</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <line x1="7" y1="17" x2="17" y2="7"></line>
-            <polyline points="7 7 17 7 17 17"></polyline>
-          </svg>
-        </a>
-      </div>
-    </section>
-
-    <!-- Learnings & Reflection -->
-    <section class="reflection-section">
-      <h2 class="section-title">Key Learnings</h2>
-      <div class="learnings-grid">
-        <div class="learning-card">
-          <h4>User Research</h4>
-          <p>
-            Practiced conducting user interviews and observations to identify
-            real pain points in the customer journey.
-          </p>
-        </div>
-        <div class="learning-card">
-          <h4>Visual Design</h4>
-          <p>
-            Learned to work within an existing brand identity while creating
-            a modern digital experience.
-          </p>
-        </div>
-        <div class="learning-card">
-          <h4>Iteration</h4>
-          <p>
-            Developed skills in moving from low-fidelity wireframes to
-            polished high-fidelity prototypes.
-          </p>
-        </div>
-        <div class="learning-card">
-          <h4>Mobile-First</h4>
-          <p>
-            Practiced designing for mobile constraints while maintaining
-            usability and visual appeal.
-          </p>
-        </div>
-      </div>
-
-      <div class="next-steps">
-        <h3>If I Were to Continue...</h3>
-        <ul>
-          <li>Add loyalty rewards program integration</li>
-          <li>Implement order customization features</li>
-          <li>Create a tablet interface for in-store ordering</li>
-          <li>Conduct usability testing with real users</li>
-        </ul>
-      </div>
+    <!-- Reflection -->
+    <section class="content-section">
+      <p class="section-label">Learning</p>
+      <h2 class="section-heading">Course project insights</h2>
+      <p class="body-text">
+        Through the Google UX Design curriculum, I practiced conducting user research, persona development, wireframing, and high-fidelity prototyping. I learned to work within an existing brand identity while creating a modern digital experience, and developed skills in moving from low-fidelity wireframes to polished prototypes.
+      </p>
+      <p class="body-text">
+        This project reinforced the importance of mobile-first design—balancing constraints with usability and visual appeal.
+      </p>
     </section>
   </div>
 </template>
 
 <script>
 import AppNavbar from "@/components/navbar";
-import { Target, AlertCircle, Smartphone, ShoppingCart, Calendar, Truck, Gift } from 'lucide-vue-next';
 
 export default {
   name: "LocalBakeryApp",
-      components: {
+  components: {
     AppNavbar,
-    Target,
-    AlertCircle,
-    Smartphone,
-    ShoppingCart,
-    Calendar,
-    Truck,
-    Gift,
   },
   data() {
     return {
       hero: require("@/images/kapihanHero.png"),
       wireframes: require("@/images/kapihanWireframes.png"),
       prototypes: require("@/images/kapihanPrototypes.png"),
-      figmaSrc:
-        "https://www.figma.com/proto/dSiLtVj2GKzRZYcfYoe8iW/KapihanApp?node-id=49-5572&t=qR7dRV7dwGhpgw8c-1",
-      activePersona: null,
-                  insights: [
-        {
-          title: "Peak Hours Problem",
-          description:
-            "85% of daily traffic occurs between 7-9 AM, creating bottlenecks",
-        },
-        {
-          title: "Professional Clientele",
-          description:
-            "Most customers are office workers with tight schedules",
-        },
-        {
-          title: "Competitive Analysis",
-          description:
-            "Studied Starbucks, Dunkin', and local competitors' ordering systems",
-        },
-      ],
-      processSteps: [
-        {
-          title: "Research",
-          description: "Observed shop operations and interviewed customers",
-        },
-        {
-          title: "Define",
-          description: "Created personas and mapped user journeys",
-        },
-        {
-          title: "Ideate",
-          description: "Brainstormed solutions for preordering and delivery",
-        },
-        {
-          title: "Prototype",
-          description: "Built wireframes and high-fidelity mockups",
-        },
-      ],
+      figmaSrc: "https://www.figma.com/proto/dSiLtVj2GKzRZYcfYoe8iW/KapihanApp?node-id=49-5572&t=qR7dRV7dwGhpgw8c-1",
     };
   },
 };
 </script>
 
-<style src="@/styles/case-study-common.css"></style>
 <style scoped>
-/* LocalBakeryApp - Coffee Shop Theme Colors: Green & Gold */
+/* Minimal Editorial Design */
 
-/* Insight cards hover - brand color */
-.insight-card:hover {
-  border-color: #00320b;
+.case-study {
+  background: #fff;
+  color: #000;
 }
 
-/* Avatar gradient - brand colors */
-.avatar-placeholder {
-  background: linear-gradient(135deg, #00320b, #d7a246);
+/* Hero */
+.hero-section {
+  width: 100%;
+  margin-bottom: 4rem;
 }
 
-/* Detail group strong - brand color */
-.detail-group strong {
-  color: #00320b;
+.hero-image {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
-/* Process step number - brand color */
-.step-number {
-  background: #00320b;
-  box-shadow: 0 4px 15px rgba(0, 50, 11, 0.3);
+/* Project Header */
+.project-header {
+  max-width: 760px;
+  margin: 0 auto 5rem;
+  padding: 0 2rem;
 }
 
-/* Type display - brand color */
-.type-display {
-  color: #00320b;
+.project-label {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #666;
+  margin: 0 0 0.75rem;
+  font-weight: 500;
 }
 
-/* CTA Section - brand gradient */
-.cta-section {
-  background: linear-gradient(135deg, #00320b 0%, #004d14 100%);
+.project-title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0 0 1.5rem;
+  color: #000;
 }
 
-.cta-button {
-  background: #d7a246;
+.project-intro {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: #333;
+  margin: 0 0 2rem;
 }
 
-.cta-button:hover {
-  background: #c89235;
-  box-shadow: 0 8px 20px rgba(215, 162, 70, 0.4);
+.project-meta {
+  font-size: 0.9375rem;
+  color: #666;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
-/* Learning card - brand color border */
-.learning-card {
-  border-left: 4px solid #00320b;
+.meta-divider {
+  color: #ccc;
 }
 
-.learning-card:hover {
-  border-left-color: #d7a246;
+/* Content Sections */
+.content-section {
+  max-width: 760px;
+  margin: 0 auto 5rem;
+  padding: 0 2rem;
 }
 
-/* Next steps arrow - brand color */
-.next-steps li::before {
-  color: #00320b;
+.section-label {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #666;
+  margin: 0 0 0.5rem;
+  font-weight: 500;
 }
 
-/* Lucide icon styling */
-.feature-icon {
+.section-heading {
+  font-size: 2rem;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0;
+  line-height: 1.3;
+  margin: 0 0 1.5rem;
+  color: #000;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+.body-text {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: #333;
+  margin: 0 0 1.5rem;
+}
+
+/* Split Sections */
+.split-section {
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: #00320b;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 5rem auto;
+  padding: 4rem 2rem;
 }
 
-.inline-icon {
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 0.5rem;
+.split-section-left .split-content {
+  order: 1;
 }
 
-.detail-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #00320b;
+.split-section-left .split-media {
+  order: 2;
 }
 
-.insight-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #d7a246;
+.split-section-right .split-content {
+  order: 2;
+}
+
+.split-section-right .split-media {
+  order: 1;
+}
+
+.split-content {
+  flex: 1;
+  max-width: 500px;
+}
+
+.split-media {
+  flex: 1;
+  max-width: 600px;
+}
+
+/* Media Containers */
+.media-container-green {
+  background: #DFF5D4;
+  padding: 3rem;
+  border-radius: 24px;
+}
+
+.media-container-yellow {
+  background: #FFF9E0;
+  padding: 3rem;
+  border-radius: 24px;
+}
+
+.split-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .project-header,
+  .content-section {
+    padding: 0 1.5rem;
+  }
+  
+  .split-section {
+    flex-direction: column;
+    padding: 3rem 1.5rem;
+  }
+  
+  .split-content,
+  .split-media {
+    max-width: 100%;
+  }
 }
 </style>
