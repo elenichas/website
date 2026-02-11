@@ -13,11 +13,6 @@
 
       <!-- Technical Projects Section -->
       <section class="projects-section">
-        <div class="section-header">
-          <h2 class="section-title">Technical Craft</h2>
-          <p class="section-description">Open source projects and engineering experiments</p>
-        </div>
-        
         <div class="projects-grid">
           <article 
             v-for="(project, index) in images" 

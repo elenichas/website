@@ -1,155 +1,97 @@
 <template>
   <app-navbar></app-navbar>
-  <div class="architecture-study">
+  <div class="case-study">
     <!-- Hero Section -->
     <div class="hero-section">
-      <img class="hero-image" :src="hero" alt="Workshop Hero" />
-      <div class="hero-overlay">
-        <span class="project-tag">Workshop 2020</span>
-      </div>
+      <img class="hero-image" :src="hero" alt="Digital Futures Workshop" />
     </div>
 
     <!-- Project Header -->
     <div class="project-header">
+      <p class="project-label">Workshop 2020</p>
       <h1 class="project-title">Architectural Geometry & Habitat</h1>
-      <h2 class="project-subtitle">
-        Digital Futures Workshop
-      </h2>
+      <h2 class="project-subtitle">Digital Futures Workshop</h2>
+      <p class="project-intro">
+        Exploring modular voxel-based housing systems with optimization algorithms and robotic fabrication techniques.
+      </p>
       <div class="project-meta">
-        <div class="meta-item">
-          <span class="meta-label">Role</span>
-          <span class="meta-value">Computational Designer</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-label">Year</span>
-          <span class="meta-value">2020</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-label">Team</span>
-          <span class="meta-value">Peter Bus, Jackson Bi, Sandro Sanin, Eleni Chasioti</span>
-        </div>
+        <span class="meta-item">Computational Designer</span>
+        <span class="meta-divider">·</span>
+        <span class="meta-item">2020</span>
+        <span class="meta-divider">·</span>
+        <span class="meta-item">Peter Bus, Jackson Bi, Sandro Sanin, Eleni Chasioti</span>
       </div>
     </div>
 
-    <!-- Overview Section -->
-    <section class="overview-section">
-      <div class="section-grid">
-        <div class="overview-card">
-          <h3>🏛️ Modularity</h3>
-          <p>
-            Voxel-based system for designing flexible housing units with varied sizes and configurations.
-          </p>
-        </div>
-        <div class="overview-card">
-          <h3>🔍 Optimization</h3>
-          <p>
-            Shortest path diagrams and density studies ensuring efficient circulation and livable environments.
-          </p>
-        </div>
-        <div class="overview-card">
-          <h3>🤖 Fabrication</h3>
-          <p>
-            Robotic fabrication techniques for constructing complex modular geometries.
-          </p>
-        </div>
-      </div>
+    <!-- Research -->
+    <section class="content-section">
+      <p class="section-label">Research & Precedents</p>
+      <h2 class="section-heading">Modular housing explorations</h2>
+      <p class="body-text">
+        The workshop began with a study of existing architectural models like Alvenaria Social Housing and Habitat 67. These served as precedents showing modularity and geometric experimentation. A voxel-based system was used to design different housing units, allowing flexibility in size and configuration.
+      </p>
+      <p class="body-text">
+        Various ways of aggregating these voxels were explored to create efficient and livable structures with plenty of light and air. The team optimized circulation within the habitat using shortest path diagrams and density studies to ensure logical and efficient pathways.
+      </p>
     </section>
 
-    <!-- Research Section -->
-    <section class="research-section">
-      <h2 class="section-title">Research & Precedents</h2>
-      <div class="research-content">
-        <p class="research-text">
-          The workshop began with a study of existing architectural models like Alvenaria Social Housing and Habitat 67. 
-          These served as precedents showing modularity and geometric experimentation. A voxel-based system was used to 
-          design different housing units, allowing flexibility in size and configuration. Various ways of aggregating 
-          these voxels were explored to create efficient and livable structures with plenty of light and air.
-        </p>
-        <p class="research-text">
-          The team optimized circulation within the habitat using shortest path diagrams and density studies to ensure 
-          logical and efficient pathways. Different graph-based methods for grouping voxels were tested to create diverse 
-          and flexible configurations. The team developed geometric variations for elements like balconies, facades, and 
-          rooftops, culminating in exploded diagrams showing how the units could be assembled. Finally, robotic fabrication 
-          techniques were explored for constructing these complex geometries.
+    <!-- Process -->
+    <section class="split-section split-section-left">
+      <div class="split-content">
+        <p class="section-label">Design Process</p>
+        <h2 class="section-heading">From voxels to assembled units</h2>
+        <p class="body-text">
+          Different graph-based methods for grouping voxels were tested to create diverse and flexible configurations. The team developed geometric variations for elements like balconies, facades, and rooftops, culminating in exploded diagrams showing how the units could be assembled.
         </p>
       </div>
-    </section>
-
-    <!-- Process Gallery -->
-    <section class="gallery-section">
-      <h2 class="section-title">Design Process Gallery</h2>
-      <div class="carousel-container">
-        <v-carousel
-          cycle
-          hide-delimiters
-          interval="4000"
-          show-arrows="hover"
-          height="auto"
-        >
-          <v-carousel-item
-            v-for="(image, index) in images"
-            :key="index"
-            :src="image.url"
-            :alt="'Process Image ' + (index + 1)"
-            cover
-          ></v-carousel-item>
-        </v-carousel>
-      </div>
-    </section>
-
-    <!-- Results Section -->
-    <section class="results-section">
-      <h2 class="section-title">Design Outcomes</h2>
-      <div class="outcomes-grid">
-        <div class="outcome-card">
-          <div class="outcome-icon"><Building2 :size="40" /></div>
-          <h4>Innovative Aggregations</h4>
-          <p>Modular voxels enabled flexible and scalable housing solutions adaptable to various contexts.</p>
-        </div>
-        <div class="outcome-card">
-          <div class="outcome-icon"><MapPin :size="40" /></div>
-          <h4>Efficiency & Livability</h4>
-          <p>Shortest path and density studies ensured functional and livable environments with optimal circulation.</p>
-        </div>
-        <div class="outcome-card">
-          <div class="outcome-icon"><Wrench :size="40" /></div>
-          <h4>Customization & Adaptation</h4>
-          <p>The modular approach allowed for diverse configurations adaptable to various contexts and needs.</p>
-        </div>
-        <div class="outcome-card">
-          <div class="outcome-icon"><Settings :size="40" /></div>
-          <h4>Advanced Fabrication</h4>
-          <p>Modular components analyzed into rulings for fabrication with hotwire cutting techniques.</p>
+      <div class="split-media media-container-purple">
+        <div class="carousel-wrapper">
+          <v-carousel cycle hide-delimiters interval="4000" show-arrows="hover" height="400">
+            <v-carousel-item
+              v-for="(image, index) in images"
+              :key="index"
+              :src="image.url"
+              :alt="'Process step ' + (index + 1)"
+              cover
+            ></v-carousel-item>
+          </v-carousel>
         </div>
       </div>
     </section>
 
-    <!-- Video Section -->
-    <section class="video-section">
-      <h2 class="section-title">Final Assembly</h2>
-      <div class="video-container">
-        <video controls class="video-player">
+    <!-- Fabrication -->
+    <section class="content-section">
+      <p class="section-label">Innovation</p>
+      <h2 class="section-heading">Robotic fabrication techniques</h2>
+      <p class="body-text">
+        Robotic fabrication techniques were explored for constructing these complex geometries. Modular components were analyzed into rulings for fabrication with hotwire cutting techniques. The modular approach enabled flexible and scalable housing solutions adaptable to various urban contexts.
+      </p>
+      <p class="body-text">
+        Shortest path and density studies ensured functional and livable environments with optimal circulation, demonstrating how computational design can address real-world spatial challenges.
+      </p>
+    </section>
+
+    <!-- Video -->
+    <section class="content-section">
+      <p class="section-label">Final Assembly</p>
+      <h2 class="section-heading">Physical prototype</h2>
+      <figure class="video-figure">
+        <video controls class="content-video">
           <source src="/vids/habitatVideo.webm" type="video/webm" />
           Your browser does not support the video tag.
         </video>
-      </div>
+      </figure>
     </section>
   </div>
 </template>
 
 <script>
 import AppNavbar from "@/components/navbar";
-import { Building2, MapPin, Wrench, Settings } from 'lucide-vue-next';
-const videoSrc = "/vids/habitatVideo.webm";
 
 export default {
   name: "WorkshopDesign",
-    components: {
+  components: {
     AppNavbar,
-    Building2,
-    MapPin,
-    Wrench,
-    Settings,
   },
   data() {
     return {
@@ -170,20 +112,17 @@ export default {
 </script>
 
 <style scoped>
-/* Architecture Study - Workshop Design */
-/* Uses same design system as HapiProject and ThesisProject */
+/* Minimal Editorial Design */
 
-.architecture-study {
-  max-width: 87.5rem;
-  margin: 0 auto;
-  padding: 0;
+.case-study {
+  background: #fff;
+  color: #000;
 }
 
-/* Hero Section */
+/* Hero */
 .hero-section {
-  position: relative;
   width: 100%;
-  margin-bottom: clamp(2rem, 4vw, 2.5rem);
+  margin-bottom: 4rem;
 }
 
 .hero-image {
@@ -192,266 +131,165 @@ export default {
   display: block;
 }
 
-.hero-overlay {
-  position: absolute;
-  top: 1.25rem;
-  right: 1.25rem;
-}
-
-.project-tag {
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(0.625rem);
-  color: white;
-  padding: 0.625rem 1.25rem;
-  border-radius: 1.25rem;
-  font-size: clamp(0.85rem, 1.7vw, 0.95rem);
-  font-weight: 600;
-  letter-spacing: 0.03125rem;
-  text-transform: uppercase;
-  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.2);
-}
-
 /* Project Header */
 .project-header {
-  padding: 0 5%;
-  margin-bottom: clamp(2.5rem, 5vw, 3.75rem);
-  text-align: left;
+  max-width: 760px;
+  margin: 0 auto 5rem;
+  padding: 0 2rem;
 }
 
-.project-title {
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 800;
-  margin-bottom: 0.5rem;
-  color: #1a1a1a;
-  line-height: 1.1;
-  letter-spacing: -0.03125rem;
-}
-
-.project-subtitle {
-  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-  color: #555;
-  margin-bottom: 2rem;
-  font-weight: 400;
-  line-height: 1.3;
-}
-
-.project-meta {
-  display: flex;
-  gap: clamp(2rem, 4vw, 4rem);
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  padding-top: 1.5rem;
-  border-top: 0.0625rem solid #e0e0e0;
-  max-width: 50rem;
-}
-
-.meta-item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  align-items: flex-start;
-}
-
-.meta-label {
-  font-size: clamp(0.75rem, 1.5vw, 0.8rem);
+.project-label {
+  font-size: 0.875rem;
   text-transform: uppercase;
-  letter-spacing: 0.09375rem;
-  color: #999;
-  font-weight: 600;
-}
-
-.meta-value {
-  font-size: clamp(0.95rem, 1.9vw, 1.05rem);
-  color: #333;
+  letter-spacing: 0.1em;
+  color: #666;
+  margin: 0 0 0.75rem;
   font-weight: 500;
 }
 
-/* Overview Section */
-.overview-section {
-  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-  padding: clamp(3rem, 6vw, 4rem) 5%;
-  margin-bottom: clamp(3rem, 6vw, 4rem);
-}
-
-.section-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(18.75rem, 100%), 1fr));
-  gap: clamp(1.5rem, 3vw, 2rem);
-  max-width: 75rem;
-  margin: 0 auto;
-}
-
-.overview-card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(0.625rem);
-  padding: clamp(1.75rem, 3.5vw, 2.25rem);
-  border-radius: 1rem;
-  border: 0.0625rem solid rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
-}
-
-.overview-card:hover {
-  background: rgba(255, 255, 255, 0.08);
-  transform: translateY(-0.3125rem);
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.overview-card h3 {
-  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
-  margin-bottom: 1rem;
-  color: #ffffff;
+.project-title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0 0 0.75rem;
+  color: #000;
 }
 
-.overview-card p {
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.7;
-  font-size: clamp(0.9rem, 1.8vw, 1rem);
+.project-subtitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #555;
+  margin: 0 0 1.5rem;
+  line-height: 1.3;
 }
 
-/* Section Titles */
-.section-title {
-  font-size: clamp(2rem, 4.5vw, 2.75rem);
-  font-weight: 700;
-  margin-bottom: clamp(2rem, 4vw, 3rem);
-  color: #1a1a1a;
-  text-align: center;
-  line-height: 1.2;
-}
-
-/* Research Section */
-.research-section {
-  padding: clamp(3rem, 6vw, 4rem) 5%;
-  margin-bottom: clamp(2rem, 4vw, 3rem);
-  background: #fafafa;
-}
-
-.research-content {
-  max-width: 56.25rem;
-  margin: 0 auto;
-}
-
-.research-text {
-  font-size: clamp(1rem, 2vw, 1.125rem);
-  line-height: 1.8;
-  color: #444;
-  text-align: justify;
-  margin-bottom: 1.5rem;
-}
-
-/* Gallery Section */
-.gallery-section {
-  padding: clamp(3rem, 6vw, 4rem) 5%;
-  margin-bottom: clamp(2rem, 4vw, 3rem);
-  background: #f5f5f5;
-}
-
-.carousel-container {
-  max-width: 75rem;
-  margin: 0 auto;
-  border-radius: 1rem;
-  overflow: hidden;
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
-}
-
-.carousel-container :deep(.v-carousel) {
-  border-radius: 1rem;
-}
-
-.carousel-container :deep(.v-carousel-item) {
-  background: #2a2a2a;
-}
-
-/* Results Section */
-.results-section {
-  padding: clamp(3rem, 6vw, 4rem) 5%;
-  margin-bottom: clamp(2rem, 4vw, 3rem);
-}
-
-.outcomes-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(16.25rem, 100%), 1fr));
-  gap: clamp(1.5rem, 3vw, 2rem);
-  max-width: 75rem;
-  margin: 0 auto;
-}
-
-.outcome-card {
-  background: white;
-  padding: clamp(1.75rem, 3.5vw, 2.25rem);
-  border-radius: 1rem;
-  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-  border-left: 0.25rem solid #2a2a2a;
-}
-
-.outcome-card:hover {
-  transform: translateY(-0.3125rem);
-  box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.12);
-  border-left-color: #666;
-}
-
-.outcome-icon {
-  font-size: clamp(2.5rem, 5vw, 3rem);
-  margin-bottom: 1rem;
-}
-
-.outcome-card h4 {
-  font-size: clamp(1.1rem, 2.2vw, 1.25rem);
-  margin-bottom: 0.75rem;
-  color: #1a1a1a;
-  font-weight: 600;
-}
-
-.outcome-card p {
-  color: #666;
+.project-intro {
+  font-size: 1.25rem;
   line-height: 1.6;
-  font-size: clamp(0.9rem, 1.8vw, 1rem);
+  color: #333;
+  margin: 0 0 2rem;
 }
 
-/* Video Section */
-.video-section {
-  padding: clamp(3rem, 6vw, 4rem) 5%;
-  margin-bottom: 0;
-  background: #1a1a1a;
+.project-meta {
+  font-size: 0.9375rem;
+  color: #666;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
-.video-section .section-title {
-  color: #ffffff;
+.meta-divider {
+  color: #ccc;
 }
 
-.video-container {
-  max-width: 75rem;
-  margin: 0 auto;
-  border-radius: 1rem;
-  overflow: hidden;
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.5);
+/* Content Sections */
+.content-section {
+  max-width: 760px;
+  margin: 0 auto 5rem;
+  padding: 0 2rem;
 }
 
-.video-player {
+.section-label {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #666;
+  margin: 0 0 0.5rem;
+  font-weight: 500;
+}
+
+.section-heading {
+  font-size: 2rem;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0;
+  line-height: 1.3;
+  margin: 0 0 1.5rem;
+  color: #000;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+.body-text {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: #333;
+  margin: 0 0 1.5rem;
+}
+
+/* Video */
+.video-figure {
+  margin: 3rem 0;
+}
+
+.content-video {
   width: 100%;
+  height: auto;
   display: block;
   background: #000;
+  border-radius: 8px;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 48rem) {
-  .project-meta {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .section-grid,
-  .outcomes-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Lucide icon styling */
-.outcome-icon {
+/* Split Sections */
+.split-section {
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: #2a2a2a;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 5rem auto;
+  padding: 4rem 2rem;
+}
+
+.split-section-left .split-content {
+  order: 1;
+}
+
+.split-section-left .split-media {
+  order: 2;
+}
+
+.split-content {
+  flex: 1;
+  max-width: 500px;
+}
+
+.split-media {
+  flex: 1;
+  max-width: 600px;
+}
+
+/* Media Containers */
+.media-container-purple {
+  background: #F0E8FF;
+  padding: 3rem;
+  border-radius: 24px;
+}
+
+.carousel-wrapper {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.carousel-wrapper :deep(.v-carousel) {
+  border-radius: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .project-header,
+  .content-section {
+    padding: 0 1.5rem;
+  }
+  
+  .split-section {
+    flex-direction: column;
+    padding: 3rem 1.5rem;
+  }
+  
+  .split-content,
+  .split-media {
+    max-width: 100%;
+  }
 }
 </style>

@@ -68,30 +68,30 @@ export default {
 </script>
 
 <style scoped>
-/* Modern Home Page Layout */
+/* Minimal Editorial Home Page */
 .page-layout {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: #fff;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--space-lg);
+  padding: 0 2rem;
   flex: 1;
 }
 
 .hero-section {
-  padding: var(--space-4xl) 0;
+  padding: 6rem 0;
 }
 
 .hero-content {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: var(--space-4xl);
+  gap: 5rem;
   align-items: center;
-  min-height: 60vh;
 }
 
 .avatar-column {
@@ -107,50 +107,40 @@ export default {
 .avatar {
   width: 280px;
   height: 280px;
-  border-radius: var(--radius-xl);
+  border-radius: 8px;
   object-fit: cover;
-  border: 1px solid var(--border-light);
-  box-shadow: var(--shadow-lg);
-  transition: all var(--transition-normal);
+  display: block;
+  transition: transform 0.3s ease;
 }
 
 .avatar:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  transform: scale(1.02);
 }
 
 .content-column {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: var(--space-lg);
 }
 
 .skills-section {
-  padding: var(--space-4xl) 0 var(--space-2xl) 0;
-  border-top: 1px solid var(--border-light);
-  margin-top: var(--space-2xl);
+  padding: 5rem 0;
+  margin-top: 3rem;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
   .container {
-    padding: 0 var(--space-md);
+    padding: 0 1.5rem;
   }
   
   .hero-section {
-    padding: var(--space-2xl) 0;
+    padding: 4rem 0;
   }
   
   .hero-content {
     grid-template-columns: 1fr;
-    gap: var(--space-2xl);
-    text-align: center;
-    min-height: auto;
-  }
-  
-  .content-column {
-    padding-left: 0;
+    gap: 3rem;
   }
   
   .avatar {
@@ -159,21 +149,21 @@ export default {
   }
   
   .skills-section {
-    padding: var(--space-2xl) 0;
+    padding: 3rem 0;
   }
 }
 
 @media (max-width: 480px) {
   .container {
-    padding: 0 var(--space-md);
+    padding: 0 1.5rem;
   }
   
   .hero-section {
-    padding: var(--space-xl) 0;
+    padding: 3rem 0;
   }
   
   .hero-content {
-    gap: var(--space-xl);
+    gap: 2rem;
   }
   
   .avatar {

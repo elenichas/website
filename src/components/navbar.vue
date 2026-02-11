@@ -24,14 +24,7 @@
           About
         </router-link>
       </nav>
-
-      <!-- CTA Button -->
-      <div class="nav-cta">
-        <a href="mailto:eleni.chasioti@gmail.com" class="btn-primary">
-          Let's Talk
-        </a>
-      </div>
-
+      
       <!-- Mobile Menu Button -->
       <button class="mobile-menu-btn" @click="toggleMobileMenu" aria-label="Toggle menu">
         <span class="hamburger-line" :class="{ open: isMobileMenuOpen }"></span>

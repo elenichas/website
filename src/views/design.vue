@@ -13,11 +13,6 @@
 
       <!-- Product Design Section -->
       <section class="projects-section">
-        <div class="section-header">
-          <h2 class="section-title">Product Design</h2>
-          <p class="section-description">User-centered digital products and experiences</p>
-        </div>
-
         <div class="projects-grid">
           <article v-for="(project, index) in uxuiImages" :key="index" class="project-card">
             <router-link :to="project.route" class="project-link">
