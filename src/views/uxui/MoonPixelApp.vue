@@ -107,17 +107,17 @@
     </section>
 
     <!-- Video Demos -->
-    <section class="content-section">
+    <section class="content-section-wide">
       <div class="video-grid">
         <figure class="video-figure">
-          <figcaption class="video-caption">Configuration Demo</figcaption>
+          <!-- <figcaption class="video-caption">Configuration Demo</figcaption> -->
           <video :src="demo" autoplay muted loop playsinline class="content-video">
             Your browser does not support the video tag.
           </video>
         </figure>
 
         <figure class="video-figure">
-          <figcaption class="video-caption">Solution Variations</figcaption>
+          <!-- <figcaption class="video-caption">Solution Variations</figcaption> -->
           <video :src="solutions" autoplay muted loop playsinline class="content-video">
             Your browser does not support the video tag.
           </video>
@@ -255,6 +255,12 @@ export default {
   padding: 0 2rem;
 }
 
+.content-section-wide {
+  max-width: 1200px;
+  margin: 0 auto 5rem;
+  padding: 0 2rem;
+}
+
 .section-label {
   font-size: 0.875rem;
   text-transform: uppercase;
@@ -370,7 +376,8 @@ export default {
 /* Responsive */
 @media (max-width: 768px) {
   .project-header,
-  .content-section {
+  .content-section,
+  .content-section-wide {
     padding: 0 1.5rem;
   }
   
