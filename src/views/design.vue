@@ -13,17 +13,8 @@
 
       <!-- Product Design Section -->
       <section class="projects-section">
-        <div class="section-header">
-          <h2 class="section-title">Product Design</h2>
-          <p class="section-description">User-centered digital products and experiences</p>
-        </div>
-        
         <div class="projects-grid">
-          <article 
-            v-for="(project, index) in uxuiImages" 
-            :key="index"
-            class="project-card"
-          >
+          <article v-for="(project, index) in uxuiImages" :key="index" class="project-card">
             <router-link :to="project.route" class="project-link">
               <div class="project-image">
                 <img :src="project.src" :alt="project.alt" />
@@ -31,9 +22,9 @@
                   <span class="view-project">View Project</span>
                 </div>
               </div>
-              <div class="project-info">
+                            <div class="project-info">
                 <h3 class="project-title">{{ project.title }}</h3>
-                <p class="project-type">Product Design</p>
+                <p class="project-type">{{ project.type }}</p>
               </div>
             </router-link>
           </article>
@@ -46,13 +37,9 @@
           <h2 class="section-title">System Design</h2>
           <p class="section-description">Complex systems and computational frameworks</p>
         </div>
-        
+
         <div class="projects-grid">
-          <article 
-            v-for="(project, index) in architectureImages" 
-            :key="index"
-            class="project-card"
-          >
+          <article v-for="(project, index) in architectureImages" :key="index" class="project-card">
             <router-link :to="project.route" class="project-link">
               <div class="project-image">
                 <img :src="project.src" :alt="project.alt" />
@@ -60,9 +47,9 @@
                   <span class="view-project">View Project</span>
                 </div>
               </div>
-              <div class="project-info">
+                            <div class="project-info">
                 <h3 class="project-title">{{ project.title }}</h3>
-                <p class="project-type">System Design</p>
+                <p class="project-type">{{ project.type }}</p>
               </div>
             </router-link>
           </article>
@@ -82,44 +69,51 @@ export default {
   },
   data() {
     return {
-      architectureImages: [
+            architectureImages: [
         {
           src: require("@/images/gallery/hapi.png"),
           alt: "Hapi Project",
-          title: "Architectural System (Hapi)",
+          title: "Architectural System",
+          type: "Parametric Modular Design",
           route: "/products/hapi-project",
         },
         {
           src: require("@/images/gallery/thesis.png"),
           alt: "Thesis Project",
-          title: "Computational Framework (Cricket)",
+          title: "Computational Framework",
+          type: "Rule-Based Design",
           route: "/products/thesis-project",
         },
         {
           src: require("@/images/gallery/workshop.png"),
           alt: "Workshop Design",
-          title: "Digital Futures Workshop", 
+          title: "Digital Futures Workshop",
+          type: "Prefabrication and Automation Design",
           route: "/products/workshop-design",
         },
       ],
-      uxuiImages: [
-        {  
-          src: require("@/images/gallery/moduleApp.png"),
-          alt: "Modular App",
-          title: "Modular Design System",
-          route: "/products/modular-app",
+            uxuiImages: [
+
+        {
+          src: require("@/images/gallery/moonPixel.png"),
+          alt: "Lunar Habitat Configurator",
+          title: "Lunar Habitat Configurator",
+          type: "Design Automation",
+          route: "/products/lunar-app",
         },
         {
           src: require("@/images/gallery/filos.png"),
           alt: "Filos Mobile App",
           title: "Filos Mobile Experience",
+          type: "Accessible Experience",
           route: "/products/filos-mobile-app",
         },
         {
           src: require("@/images/gallery/kapihan.png"),
           alt: "Coffee Shop App",
-          title: "Local Bakery Platform",
-          route: "/products/local-bakery-app",
+          title: "Brew & Cramb Mobile App",
+          type: "Product Design",
+          route: "/products/brew-crumb",
         },
       ],
     };
@@ -128,64 +122,67 @@ export default {
 </script>
 
 <style scoped>
-/* Modern Products Page Layout */
+/* Minimal Editorial Products Page */
 .page-layout {
   min-height: 100vh;
-  background: var(--primary-bg);
+  background: #fff;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: var(--space-xl) var(--space-lg);
+  padding: 5rem 2rem;
 }
 
 /* Page Header */
 .page-header {
-  margin-bottom: var(--space-2xl);
-  padding-bottom: var(--space-lg);
-  border-bottom: 1px solid var(--border-light);
+  margin-bottom: 5rem;
+  text-align: center;
 }
 
 .header-content {
-  max-width: 800px;
+  max-width: 760px;
+  margin: 0 auto;
 }
 
 .page-title {
   font-size: clamp(2rem, 4vw, 2.75rem);
-  font-weight: var(--font-weight-bold);
-  color: var(--text-primary);
-  margin-bottom: var(--space-xs);
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 0.75rem;
   letter-spacing: -0.02em;
 }
 
 .page-subtitle {
   font-size: 1.125rem;
-  color: var(--text-secondary);
+  color: #333;
   margin: 0;
   line-height: 1.6;
 }
 
 /* Section Headers */
 .projects-section {
-  margin-bottom: var(--space-3xl);
+  margin-bottom: 5rem;
 }
 
 .section-header {
-  margin-bottom: var(--space-xl);
+  margin-bottom: 3rem;
+  text-align: center;
 }
 
 .section-title {
   font-size: 1.75rem;
-  font-weight: var(--font-weight-semibold);
-  color: var(--text-primary);
-  margin-bottom: var(--space-xs);
-  letter-spacing: -0.01em;
+  font-weight: 400;
+  font-style: italic;
+  color: #000;
+  margin-bottom: 0.5rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  line-height: 1.3;
 }
 
 .section-description {
   font-size: 0.9375rem;
-  color: var(--text-muted);
+  color: #666;
   margin: 0;
 }
 
@@ -193,22 +190,19 @@ export default {
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: var(--space-xl);
+  gap: 3rem;
 }
 
 /* Project Cards */
 .project-card {
-  background: var(--primary-bg);
-  border-radius: var(--radius-lg);
+  background: #fff;
+  border-radius: 4px;
   overflow: hidden;
-  border: 1px solid var(--border-light);
-  transition: all var(--transition-normal);
+  transition: transform 0.3s ease;
 }
 
 .project-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--text-primary);
 }
 
 .project-link {
@@ -222,14 +216,14 @@ export default {
   position: relative;
   aspect-ratio: 16/10;
   overflow: hidden;
-  background: var(--secondary-bg);
+  background: #f5f5f5;
 }
 
 .project-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform var(--transition-normal);
+  transition: transform 0.3s ease;
 }
 
 .project-card:hover .project-image img {
@@ -244,7 +238,7 @@ export default {
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: opacity var(--transition-normal);
+  transition: opacity 0.3s ease;
 }
 
 .project-card:hover .project-overlay {
@@ -253,34 +247,34 @@ export default {
 
 .view-project {
   color: white;
-  font-weight: var(--font-weight-semibold);
-  padding: var(--space-sm) var(--space-lg);
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
   border: 2px solid white;
-  border-radius: var(--radius-md);
-  transition: all var(--transition-fast);
+  border-radius: 2rem;
+  transition: all 0.3s ease;
 }
 
 .view-project:hover {
   background: white;
-  color: var(--text-primary);
+  color: #000;
 }
 
 /* Project Info */
 .project-info {
-  padding: var(--space-lg);
+  padding: 1.5rem;
 }
 
 .project-title {
   font-size: 1.25rem;
-  font-weight: var(--font-weight-semibold);
-  color: var(--text-primary);
-  margin-bottom: var(--space-xs);
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 0.5rem;
   line-height: 1.3;
 }
 
 .project-type {
   font-size: 0.875rem;
-  color: var(--text-muted);
+  color: #666;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin: 0;
@@ -289,9 +283,9 @@ export default {
 /* Responsive Design */
 @media (max-width: 768px) {
   .container {
-    padding: var(--space-xl) var(--space-md);
+    padding: 4rem 1.5rem;
   }
-  
+
   .projects-grid {
     grid-template-columns: 1fr;
   }
@@ -299,7 +293,7 @@ export default {
 
 @media (max-width: 480px) {
   .container {
-    padding: var(--space-lg) var(--space-sm);
+    padding: 3rem 1.5rem;
   }
 }
 </style>

@@ -10,6 +10,7 @@ import WorkshopDesign from "./views/architecture/WorkshopDesign.vue";
 import FilosMobileApp from "./views/uxui/FilosMobileApp.vue";
 import LocalBakeryApp from "./views/uxui/LocalBakeryApp.vue";
 import ModularApp from "./views/uxui/ModularApp.vue";
+import MoonPixelApp from "./views/uxui/MoonPixelApp.vue";
 import "./style.css";
 
 // Define your routes
@@ -65,12 +66,16 @@ const routes = [
     component: FilosMobileApp,
   },
   {
-    path: "/products/local-bakery-app",
+    path: "/products/brew-crumb",
     component: LocalBakeryApp,
   },
-  {
+    {
     path: "/products/modular-app",
     component: ModularApp,
+  },
+  {
+    path: "/products/lunar-app",
+    component: MoonPixelApp,
   },
   // Legacy design routes
   {
@@ -90,12 +95,16 @@ const routes = [
     redirect: "/products/filos-mobile-app",
   },
   {
-    path: "/uxui/local-bakery-app",
-    redirect: "/products/local-bakery-app",
+    path: "/uxui/brew-crumb",
+    redirect: "/products/brew-crumb",
   },
-  {
+    {
     path: "/uxui/modular-app",
     redirect: "/products/modular-app",
+  },
+  {
+    path: "/uxui/lunar-app",
+    redirect: "/products/lunar-app",
   },
 ];
 

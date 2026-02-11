@@ -4,12 +4,6 @@
   <main class="page-layout">
     <div class="container">
       <div class="about-content">
-        <header class="about-header">
-          <h1 class="about-title">Hey, I'm Eleni!</h1>
-          <p class="about-lead">Product designer and engineer bridging architecture, design systems, and digital product
-            development.</p>
-        </header>
-
         <div class="story-content">
           <section class="story-section">
             <h2>The Journey</h2>
@@ -29,26 +23,16 @@
               applications,
               I design and build solutions that make complex workflows feel effortless.
             </p>
-            <p>
-              I believe the best products come from designers who can code and developers who truly understand users.
-              My approach combines user research, prototyping, and hands-on development with React, TypeScript, and
-              Vue.js.
-            </p>
           </section>
 
           <section class="story-section">
-            <h2>UXDX USA 2054</h2>
+            <h2>UXDX USA 2025</h2>
             <p>
               Last year, I attended <strong>UXDX USA 2025</strong> in New York, an incredible conference bringing
               together designers,
               developers, and product managers. It was inspiring to connect with industry leaders, explore emerging
               trends in
               product development, and share ideas about the future of design systems and collaborative workflows.
-            </p>
-            <p>
-              The conference reinforced my belief that the best products emerge when design and engineering work
-              seamlessly
-              together,something I strive for in every project.
             </p>
           </section>
 
@@ -60,26 +44,6 @@
                 <img :src="item.src" :alt="`UXDX Conference ${index + 1}`" />
               </div>
             </div>
-          </section>
-
-          <section class="story-section">
-            <h2>Beyond the Work</h2>
-            <p>
-              I've led workshops at The Bartlett School of Architecture, exploring how AI and algorithmic thinking can
-              enhance
-              creative processes. I'm passionate about sustainable design, scalable systems, and the belief that
-              technology
-              should amplify human creativity rather than replace it.
-            </p>
-          </section>
-
-          <section class="story-section">
-            <h2>Let's Connect</h2>
-            <p>
-              I'm always excited to discuss product design, design systems, or the intersection of architecture and
-              digital products.
-              Let's chat!
-            </p>
           </section>
         </div>
 
@@ -143,97 +107,152 @@ export default {
 </script>
 
 <style scoped>
-/* Modern About Page Layout */
+/* Minimal Editorial About Page */
 .page-layout {
   min-height: 100vh;
-  background: var(--primary-bg);
+  background: #fff;
 }
 
 .container {
-  max-width: 800px;
+  max-width: 760px;
   margin: 0 auto;
-  padding: var(--space-xl) var(--space-lg);
+  padding: 5rem 2rem;
 }
 
 .about-content {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2xl);
+  gap: 4rem;
 }
 
 /* Header */
 .about-header {
   text-align: center;
-  padding-bottom: var(--space-2xl);
-  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 3rem;
 }
 
 .about-title {
   font-size: clamp(2.5rem, 5vw, 3.5rem);
-  font-weight: var(--font-weight-bold);
-  color: var(--text-primary);
-  margin-bottom: var(--space-md);
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 1.5rem;
   letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
 .about-lead {
   font-size: 1.25rem;
-  color: var(--text-secondary);
+  color: #333;
   line-height: 1.6;
   margin: 0;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 /* Story Content */
 .story-content {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2xl);
+  gap: 3rem;
 }
 
 .story-section {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  gap: 1rem;
 }
 
 .story-section h2 {
   font-size: 1.5rem;
-  font-weight: var(--font-weight-semibold);
-  color: var(--text-primary);
+  font-weight: 400;
+  font-style: italic;
+  color: #000;
   margin: 0;
-  letter-spacing: -0.01em;
+  font-family: Georgia, 'Times New Roman', serif;
+  line-height: 1.3;
 }
 
 .story-section p {
   font-size: 1.0625rem;
   line-height: 1.7;
-  color: var(--text-secondary);
+  color: #333;
   margin: 0;
 }
 
 .story-section p strong {
-  color: var(--text-primary);
-  font-weight: var(--font-weight-semibold);
+  color: #000;
+  font-weight: 600;
+}
+
+/* Gallery Section */
+.gallery-section {
+  margin: 2rem 0;
+}
+
+.masonry-gallery {
+  column-count: 3;
+  column-gap: 1rem;
+}
+
+.gallery-item {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.gallery-item:hover {
+  transform: scale(1.02);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* CTA Section */
 .cta-section {
   display: flex;
-  gap: var(--space-md);
+  gap: 1rem;
   justify-content: center;
   align-items: center;
-  padding-top: var(--space-xl);
-  border-top: 1px solid var(--border-light);
+  padding-top: 3rem;
   flex-wrap: wrap;
 }
 
-.cv-download {
-  display: flex;
+.btn-primary,
+.btn-secondary {
+  padding: 0.875rem 1.75rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
   align-items: center;
-  gap: var(--space-xs);
+  gap: 0.5rem;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background: #1a1a1a;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #333;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #1a1a1a;
+  border: 2px solid #1a1a1a;
+}
+
+.btn-secondary:hover {
+  background: #1a1a1a;
+  color: white;
 }
 
 .cv-download .mdi {
@@ -241,18 +260,24 @@ export default {
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+  .masonry-gallery {
+    column-count: 2;
+  }
+}
+
 @media (max-width: 768px) {
   .container {
-    padding: var(--space-lg) var(--space-md);
+    padding: 4rem 1.5rem;
   }
 
   .about-header {
     text-align: left;
+    padding-bottom: 2rem;
   }
 
-  .about-lead {
-    margin-left: 0;
-    margin-right: 0;
+  .masonry-gallery {
+    column-count: 1;
   }
 
   .cta-section {
@@ -268,75 +293,11 @@ export default {
 
 @media (max-width: 480px) {
   .container {
-    padding: var(--space-md) var(--space-sm);
+    padding: 3rem 1.5rem;
   }
 
   .story-section p {
     font-size: 1rem;
-  }
-}
-
-/* Masonry Gallery */
-.gallery-section {
-  margin: var(--space-xl) 0;
-}
-
-.masonry-gallery {
-  column-count: 3;
-  column-gap: var(--space-md);
-}
-
-.gallery-item {
-  break-inside: avoid;
-  margin-bottom: var(--space-md);
-  background: #f5f5f5;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  position: relative;
-}
-
-/* Varying tile sizes */
-.gallery-item.size-small {
-  height: auto;
-}
-
-.gallery-item.size-medium {
-  height: auto;
-}
-
-.gallery-item.size-large {
-  height: auto;
-}
-
-.gallery-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  z-index: 10;
-}
-
-.gallery-item img {
-  width: 100%;
-  height: auto;
-  display: block;
-  transition: transform 0.3s ease;
-}
-
-.gallery-item:hover img {
-  transform: scale(1.05);
-}
-
-/* Responsive Masonry */
-@media (max-width: 1024px) {
-  .masonry-gallery {
-    column-count: 2;
-  }
-}
-
-@media (max-width: 768px) {
-  .masonry-gallery {
-    column-count: 1;
   }
 }
 </style>

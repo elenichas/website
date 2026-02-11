@@ -56,28 +56,18 @@ export default {
   name: "Skillset",
   data() {
     return {
-            // Design & Prototyping Tools
       designSkills: [
         { name: "Figma", src: Figma },
         { name: "Adobe XD", src: AdobeXD },
         { name: "Photoshop", src: Photoshop },
       ],
-            // Development & Engineering Tools  
       developmentSkills: [
-        // { name: "JavaScript", src: JavaScript },
         { name: "Vue.js", src: VueJS },
         { name: "React", src: ReactJS },
-          { name: "C#", src: CSharp },
+        { name: "C#", src: CSharp },
         { name: "HTML5", src: HTML5 },
         { name: "CSS3", src: CSS3 },
-        // { name: "Node.js", src: NodeJS },
-      
-        // { name: "MongoDB", src: MongoDB },
         { name: "Three.js", src: Three },
-        // { name: "D3.js", src: D3 },
-        // { name: "Git", src: Git },
-        // { name: "GitHub", src: GitHub },
-        // { name: "VS Code", src: VSCode },
       ],
     };
   },
@@ -91,26 +81,26 @@ export default {
 
 .skills-header {
   text-align: center;
-  margin-bottom: var(--space-4xl);
+  margin-bottom: 4rem;
 }
 
 .skills-title {
   font-size: clamp(1.75rem, 4vw, 2.5rem);
-  font-weight: var(--font-weight-semibold);
-  color: var(--text-primary);
-  margin-bottom: var(--space-sm);
-  letter-spacing: -0.01em;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
 }
 
 .skills-subtitle {
   font-size: 1.125rem;
-  color: var(--text-secondary);
+  color: #333;
   margin: 0;
-  font-weight: var(--font-weight-normal);
+  font-weight: 400;
 }
 
 .skills-category {
-  margin-bottom: var(--space-4xl);
+  margin-bottom: 4rem;
 }
 
 .skills-category:last-child {
@@ -119,61 +109,46 @@ export default {
 
 .category-title {
   font-size: 1.25rem;
-  font-weight: var(--font-weight-semibold);
-  color: var(--text-primary);
+  font-weight: 600;
+  color: #000;
   text-align: center;
-  margin-bottom: var(--space-xl);
-  position: relative;
-}
-
-.category-title::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 2px;
-  background: var(--accent-color);
-  border-radius: var(--radius-full);
+  margin-bottom: 2rem;
 }
 
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: var(--space-xl);
+  gap: 2rem;
   justify-items: center;
   max-width: 800px;
   margin: 0 auto;
-  padding: 0 var(--space-md);
+  padding: 0 1rem;
 }
 
 .skill-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-sm);
+  gap: 0.5rem;
   text-align: center;
 }
 
 .skill-icon {
   width: 70px;
   height: 70px;
-  background: var(--primary-bg);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-md);
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-sm);
-  transition: all var(--transition-normal);
-  box-shadow: var(--shadow-sm);
+  padding: 0.75rem;
+  transition: all 0.3s ease;
 }
 
 .skill-icon:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--text-primary);
+  border-color: #000;
 }
 
 .skill-icon img {
@@ -181,7 +156,7 @@ export default {
   height: 40px;
   object-fit: contain;
   filter: grayscale(20%);
-  transition: filter var(--transition-fast);
+  transition: filter 0.3s ease;
 }
 
 .skill-icon:hover img {
@@ -190,20 +165,20 @@ export default {
 
 .skill-name {
   font-size: 0.875rem;
-  font-weight: var(--font-weight-medium);
-  color: var(--text-secondary);
-  transition: color var(--transition-fast);
+  font-weight: 500;
+  color: #666;
+  transition: color 0.3s ease;
 }
 
 .skill-item:hover .skill-name {
-  color: var(--text-primary);
+  color: #000;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
   .skills-grid {
     grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    gap: var(--space-lg);
+    gap: 1.5rem;
     max-width: 100%;
   }
   
@@ -225,7 +200,7 @@ export default {
 @media (max-width: 480px) {
   .skills-grid {
     grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-    gap: var(--space-md);
+    gap: 1rem;
   }
   
   .skill-icon {
