@@ -34,7 +34,7 @@
       <!-- System Design Section -->
       <section class="projects-section">
         <div class="section-header">
-          <h2 class="section-title">System Design</h2>
+          <h2 class="page-title">System Design</h2>
           <p class="section-description">Complex systems and computational frameworks</p>
         </div>
 
@@ -92,8 +92,7 @@ export default {
           route: "/products/workshop-design",
         },
       ],
-            uxuiImages: [
-
+                  uxuiImages: [
         {
           src: require("@/images/gallery/moonPixel.png"),
           alt: "Lunar Habitat Configurator",
@@ -102,18 +101,40 @@ export default {
           route: "/products/lunar-app",
         },
         {
+          src: require("@/images/gallery/industrial.png"),
+          alt: "Industrial Facility Configurator",
+          title: "Industrial Facility Configurator",
+          type: "Configuration System",
+          route: "/products/industrial-configurator",
+        },
+          {
+          src: require("@/images/gallery/language.png"),
+          alt: "Language Learning App",
+          title: "LingoLeap Learning Platform",
+          type: "Educational Experience",
+          route: "/products/language-learning-app",
+        },
+        {
           src: require("@/images/gallery/filos.png"),
           alt: "Filos Mobile App",
           title: "Filos Mobile Experience",
           type: "Accessible Experience",
           route: "/products/filos-mobile-app",
         },
+   
         {
           src: require("@/images/gallery/kapihan.png"),
           alt: "Coffee Shop App",
           title: "Brew & Cramb Mobile App",
           type: "Product Design",
           route: "/products/brew-crumb",
+        },
+        {
+          src: require("@/images/gallery/coach.png"),
+          alt: "Coach Bags Verification App",
+          title: "Coach Authenticity Verifier",
+          type: "Authentication System",
+          route: "/products/coach-verification-app",
         },
       ],
     };
@@ -146,6 +167,7 @@ export default {
 }
 
 .page-title {
+  font-family: Georgia, 'Times New Roman', serif;
   font-size: clamp(2rem, 4vw, 2.75rem);
   font-weight: 600;
   color: #000;
@@ -154,6 +176,7 @@ export default {
 }
 
 .page-subtitle {
+  font-family: Georgia, 'Times New Roman', serif;
   font-size: 1.125rem;
   color: #333;
   margin: 0;

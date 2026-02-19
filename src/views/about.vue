@@ -66,9 +66,8 @@ import AppNavbar from "../components/navbar";
 import SkillSet from "../components/skillSet.vue";
 import GithubAccount from "../components/githubAccount.vue";
 
-// Use require if the image is inside the src/assets directory
-const imageSrc = require("@/images/avatar.png"); // Use require if it's in the assets folder
-
+ 
+ 
 // Use a direct path for the CV as it's located in the public folder
 const cvLink = "/cv/EleniChasiotiCV2026.pdf"; // This points to the public folder
 

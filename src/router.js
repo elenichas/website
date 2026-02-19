@@ -11,6 +11,9 @@ import FilosMobileApp from "./views/uxui/FilosMobileApp.vue";
 import LocalBakeryApp from "./views/uxui/LocalBakeryApp.vue";
 import ModularApp from "./views/uxui/ModularApp.vue";
 import MoonPixelApp from "./views/uxui/MoonPixelApp.vue";
+import IndustrialConfigurator from "./views/uxui/IndustrialConfigurator.vue";
+import LanguageLearningApp from "./views/uxui/LanguageLearningApp.vue";
+import CoachVerificationApp from "./views/uxui/CoachVerificationApp.vue";
 import "./style.css";
 
 // Define your routes
@@ -73,9 +76,21 @@ const routes = [
     path: "/products/modular-app",
     component: ModularApp,
   },
-  {
+    {
     path: "/products/lunar-app",
     component: MoonPixelApp,
+  },
+  {
+    path: "/products/industrial-configurator",
+    component: IndustrialConfigurator,
+  },
+  {
+    path: "/products/language-learning-app",
+    component: LanguageLearningApp,
+  },
+  {
+    path: "/products/coach-verification-app",
+    component: CoachVerificationApp,
   },
   // Legacy design routes
   {
