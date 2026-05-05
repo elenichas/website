@@ -53,12 +53,12 @@
       <p class="section-label">Features</p>
       <h2 class="section-heading">Learning that adapts to you</h2>
       <ul class="simple-list">
-        <li><strong>Adaptive Learning Path</strong> — System adjusts difficulty and content based on your progress and learning style</li>
-        <li><strong>Real-World Scenarios</strong> — Practice conversations for travel, business, or daily life situations</li>
-        <li><strong>AI Conversation Partner</strong> — Voice-based practice with instant feedback on pronunciation and grammar</li>
-        <li><strong>Gamified Progress</strong> — Streaks, achievements, and challenges keep motivation high</li>
-        <li><strong>Community Practice</strong> — Connect with native speakers for language exchange</li>
-        <li><strong>Offline Mode</strong> — Download lessons for learning anywhere, anytime</li>
+        <li><strong>Adaptive Learning Path</strong>  System adjusts difficulty and content based on your progress and learning style</li>
+        <li><strong>Real-World Scenarios</strong>  Practice conversations for travel, business, or daily life situations</li>
+        <li><strong>AI Conversation Partner</strong>  Voice-based practice with instant feedback on pronunciation and grammar</li>
+        <li><strong>Gamified Progress</strong>  Streaks, achievements, and challenges keep motivation high</li>
+        <li><strong>Community Practice</strong>  Connect with native speakers for language exchange</li>
+        <li><strong>Offline Mode</strong>  Download lessons for learning anywhere, anytime</li>
       </ul>
     </section>
 

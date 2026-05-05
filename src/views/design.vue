@@ -130,9 +130,9 @@ export default {
           route: "/products/brew-crumb",
         },
         {
-          src: require("@/images/gallery/coach.png"),
+          src: require("@/images/gallery/coachHero.jpg"),
           alt: "Coach Bags Verification App",
-          title: "Coach Authenticity Verifier",
+          title: "Vintage Coach App",
           type: "Authentication System",
           route: "/products/coach-verification-app",
         },
