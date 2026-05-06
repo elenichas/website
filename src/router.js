@@ -1,17 +1,22 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "./views/home.vue";
-import Design from "./views/design.vue";
-import Development from "./views/development.vue";
-import About from "./views/about.vue";
-import NotFound from "./views/not-found.vue";
-import HapiProject from "./views/architecture/HapiProject.vue";
-import ThesisProject from "./views/architecture/ThesisProject.vue";
-import WorkshopDesign from "./views/architecture/WorkshopDesign.vue";
-import FilosMobileApp from "./views/uxui/FilosMobileApp.vue";
-import LocalBakeryApp from "./views/uxui/LocalBakeryApp.vue";
-import ModularApp from "./views/uxui/ModularApp.vue";
-import MoonPixelApp from "./views/uxui/MoonPixelApp.vue";
 import "./style.css";
+
+// Lazy-loaded route components (code-split per page)
+const Home = () => import(/* webpackChunkName: "home" */ "./views/home.vue");
+const Design = () => import(/* webpackChunkName: "products" */ "./views/design.vue");
+const Development = () => import(/* webpackChunkName: "craft" */ "./views/development.vue");
+const About = () => import(/* webpackChunkName: "about" */ "./views/about.vue");
+const NotFound = () => import(/* webpackChunkName: "not-found" */ "./views/not-found.vue");
+const HapiProject = () => import(/* webpackChunkName: "hapi" */ "./views/architecture/HapiProject.vue");
+const ThesisProject = () => import(/* webpackChunkName: "thesis" */ "./views/architecture/ThesisProject.vue");
+const WorkshopDesign = () => import(/* webpackChunkName: "workshop" */ "./views/architecture/WorkshopDesign.vue");
+const FilosMobileApp = () => import(/* webpackChunkName: "filos" */ "./views/uxui/FilosMobileApp.vue");
+const LocalBakeryApp = () => import(/* webpackChunkName: "bakery" */ "./views/uxui/LocalBakeryApp.vue");
+const ModularApp = () => import(/* webpackChunkName: "modular" */ "./views/uxui/ModularApp.vue");
+const MoonPixelApp = () => import(/* webpackChunkName: "moon" */ "./views/uxui/MoonPixelApp.vue");
+const IndustrialConfigurator = () => import(/* webpackChunkName: "industrial" */ "./views/uxui/IndustrialConfigurator.vue");
+const LanguageLearningApp = () => import(/* webpackChunkName: "language" */ "./views/uxui/LanguageLearningApp.vue");
+const CoachVerificationApp = () => import(/* webpackChunkName: "coach" */ "./views/uxui/CoachVerificationApp.vue");
 
 // Define your routes
 const routes = [
@@ -73,9 +78,21 @@ const routes = [
     path: "/products/modular-app",
     component: ModularApp,
   },
-  {
+    {
     path: "/products/lunar-app",
     component: MoonPixelApp,
+  },
+  {
+    path: "/products/industrial-configurator",
+    component: IndustrialConfigurator,
+  },
+  {
+    path: "/products/language-learning-app",
+    component: LanguageLearningApp,
+  },
+  {
+    path: "/products/coach-verification-app",
+    component: CoachVerificationApp,
   },
   // Legacy design routes
   {
