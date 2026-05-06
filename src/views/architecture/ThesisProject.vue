@@ -152,7 +152,6 @@ export default {
       segmentation: require("@/images/cricket/segmentation.jpg"),
       models1: require("@/images/cricket/modelspercentages.jpg"),
       models2: require("@/images/cricket/modelsrendered.jpg"),
-      wfc: require("@/images/cricket/wfctiles.jpg"),
       wfcdiagram: require("@/images/cricket/diagram.jpg"),
     };
   },

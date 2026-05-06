@@ -99,13 +99,13 @@
       </div>
       <div class="split-media media-container-purple">
         <div class="carousel-wrapper">
-          <v-carousel cycle hide-delimiters interval="6000" show-arrows="hover" height="400" class="wireframe-carousel">
+                    <v-carousel cycle hide-delimiters interval="6000" show-arrows="hover" height="400" class="wireframe-carousel">
             <v-carousel-item
               v-for="(wireframe, index) in wireframes"
               :key="index"
-              :src="wireframe.url"
-              :alt="'Wireframe ' + (index + 1)"
-            ></v-carousel-item>
+            >
+              <img :src="wireframe.url" :alt="'Wireframe ' + (index + 1)" class="carousel-img" />
+            </v-carousel-item>
           </v-carousel>
         </div>
       </div>
@@ -492,12 +492,11 @@ export default {
   aspect-ratio: 16 / 10;
 }
 
-.wireframe-carousel :deep(.v-img) {
-  object-fit: contain !important;
-}
-
-.wireframe-carousel :deep(.v-img__img) {
-  object-fit: contain !important;
+.carousel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 /* ===== SPLIT SECTIONS ===== */

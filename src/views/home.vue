@@ -327,7 +327,7 @@ export default {
 /* ===== FEATURED SECTION ===== */
 .featured-section {
   padding: var(--space-12) 0;
-  border-top: 1px solid var(--color-border);
+ 
 }
 
 .featured-header {
@@ -481,7 +481,7 @@ export default {
 
 /* ===== TECH STACK ===== */
 .stack-section {
-  padding: var(--space-12) 0;
+  padding: var(--space-8) 0;
   border-top: 1px solid var(--color-border);
 }
 

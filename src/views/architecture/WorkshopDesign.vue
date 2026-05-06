@@ -57,14 +57,13 @@
       </div>
       <div class="split-media media-container-purple">
         <div class="carousel-wrapper">
-          <v-carousel cycle hide-delimiters interval="4000" show-arrows="hover" height="400">
+                    <v-carousel cycle hide-delimiters interval="4000" show-arrows="hover" height="400">
             <v-carousel-item
               v-for="(image, index) in images"
               :key="index"
-              :src="image.url"
-              :alt="'Process step ' + (index + 1)"
-              cover
-            ></v-carousel-item>
+            >
+              <img :src="image.url" :alt="'Process step ' + (index + 1)" class="carousel-img" />
+            </v-carousel-item>
           </v-carousel>
         </div>
       </div>
@@ -335,6 +334,13 @@ export default {
 
 .carousel-wrapper :deep(.v-carousel) {
   border-radius: var(--radius-sm);
+}
+
+.carousel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* ===== RESPONSIVE ===== */

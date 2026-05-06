@@ -32,8 +32,7 @@ export default {
   name: "WelcomeCard",
   data() {
     return {
-      cvLink,
-      avatarSrc: require("@/images/eleniBig.png"), // Path to your avatar image
+            cvLink,
             titles: [
         "Product Engineer",
         "Product Designer", 

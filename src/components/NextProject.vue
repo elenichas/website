@@ -47,7 +47,7 @@ export default {
 
 .next-project-inner {
   padding-top: var(--space-12);
-  border-top: 1px solid var(--color-border);
+ 
 }
 
 .next-label {

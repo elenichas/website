@@ -3,7 +3,7 @@
   <div class="case-study">
     <!-- Cinematic Header -->
     <header class="case-header">
-      <h1 class="case-title anim-reveal" style="--delay: 0s;">Hapi</h1>
+      <h1 class="case-title anim-reveal" style="--delay: 0s;">Hapi - Thesis Project</h1>
     </header>
 
     <!-- Hero Image -->
@@ -64,14 +64,13 @@
       </div>
       <div class="split-media media-container-blue">
         <div class="carousel-wrapper">
-          <v-carousel cycle hide-delimiters show-arrows="hover" height="400">
+                    <v-carousel cycle hide-delimiters show-arrows="hover" height="400">
             <v-carousel-item
               v-for="(image, index) in images"
               :key="index"
-              :src="image.url"
-              :alt="'Technical Study ' + (index + 1)"
-              cover
-            ></v-carousel-item>
+            >
+              <img :src="image.url" :alt="'Technical Study ' + (index + 1)" class="carousel-img" />
+            </v-carousel-item>
           </v-carousel>
         </div>
       </div>
@@ -93,14 +92,13 @@
     <section class="split-section split-section-right">
       <div class="split-media media-container-green">
         <div class="carousel-wrapper">
-          <v-carousel cycle hide-delimiters interval="4000" show-arrows="hover" height="450">
+                    <v-carousel cycle hide-delimiters interval="4000" show-arrows="hover" height="450">
             <v-carousel-item
               v-for="(image, index) in renders"
               :key="index"
-              :src="image.url"
-              :alt="'Architectural illustration ' + (index + 1)"
-              cover
-            ></v-carousel-item>
+            >
+              <img :src="image.url" :alt="'Architectural illustration ' + (index + 1)" class="carousel-img" />
+            </v-carousel-item>
           </v-carousel>
         </div>
       </div>
@@ -370,6 +368,13 @@ export default {
 
 .carousel-wrapper :deep(.v-carousel) {
   border-radius: var(--radius-sm);
+}
+
+.carousel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* ===== RESPONSIVE ===== */
