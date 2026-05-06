@@ -98,7 +98,15 @@
       </figure>
     </section>
 
-    <!-- Reflection -->
+        <!-- Reflection -->
+    <section class="content-section">
+      <p class="section-label">My Role</p>
+      <h2 class="section-heading">Sole researcher & developer</h2>
+      <p class="body-text">
+        Individual master's thesis. I developed the theoretical framework, designed the tileset encoding system, implemented the WFC algorithm adaptation in C# for Grasshopper, and conducted all design experiments and evaluations.
+      </p>
+    </section>
+
     <section class="content-section">
       <p class="section-label">Impact</p>
       <h2 class="section-heading">Future directions</h2>
@@ -109,16 +117,20 @@
         Extension to irregular grids would expand applicability, while refining the interface for accessibility across technical expertise levels could make this a valuable tool in architectural design's future.
       </p>
     </section>
+
+    <case-study-footer currentRoute="/products/thesis-project" />
   </div>
 </template>
 
 <script>
 import AppNavbar from "@/components/navbar";
+import CaseStudyFooter from "@/components/CaseStudyFooter.vue";
 
 export default {
   name: "ThesisProject",
   components: {
     AppNavbar,
+    CaseStudyFooter,
   },
   data() {
     return {

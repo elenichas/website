@@ -193,6 +193,15 @@
       </div>
     </section>
 
+        <!-- My Role -->
+    <section class="content-section">
+      <p class="section-label">My Role</p>
+      <h2 class="section-heading">Lead Product Designer</h2>
+      <p class="body-text">
+        I owned the end-to-end UX process: user research with engineering teams, information architecture for the modular catalog, wireframing, high-fidelity UI design, and design system documentation. I worked closely with front-end developers on implementation and iterated based on user testing sessions with facility engineers.
+      </p>
+    </section>
+
     <!-- Impact -->
     <section class="content-section">
       <p class="section-label">Impact</p>
@@ -204,16 +213,31 @@
         The visual representation of complex networks and connections between industrial units provides unprecedented clarity in facility planning, enabling teams to identify potential issues early and optimize designs before construction begins.
       </p>
     </section>
+
+    <case-study-footer currentRoute="/products/industrial-configurator" />
   </div>
 </template>
 
 <script>
 import AppNavbar from "@/components/navbar";
+import CaseStudyFooter from "@/components/CaseStudyFooter.vue";
+import { useHead } from "@vueuse/head";
 
 export default {
   name: "IndustrialConfigurator",
   components: {
     AppNavbar,
+    CaseStudyFooter,
+  },
+  setup() {
+    useHead({
+      title: "Industrial Facility Configurator — Eleni Chasioti",
+      meta: [
+        { name: "description", content: "Case study: A web-based configurator for industrial facility design with modular components, network systems, and rule-based validation." },
+        { property: "og:title", content: "Industrial Facility Configurator — Eleni Chasioti" },
+        { property: "og:description", content: "Systematizing industrial facility design through modular components and intelligent spatial rules." },
+      ],
+    });
   },
   data() {
     return {

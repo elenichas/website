@@ -231,6 +231,14 @@
 
     <!-- Reflection -->
     <section class="content-section">
+      <p class="section-label">My Role</p>
+      <h2 class="section-heading">Sole designer & developer</h2>
+      <p class="body-text">
+        End-to-end ownership of product design, UI implementation, content creation, and internationalization architecture. Built with Next.js 16, React 19, TypeScript, and Tailwind CSS v4.
+      </p>
+    </section>
+
+    <section class="content-section">
       <p class="section-label">Reflection</p>
       <h2 class="section-heading">Designing for script-based language learning</h2>
       <p class="body-text">
@@ -243,16 +251,31 @@
         Because this is a living project tied to my own language studies, it continues to evolve. Each new lesson with my teacher becomes potential content for the app, keeping both the learning and the development process closely connected.
       </p>
     </section>
+
+    <case-study-footer currentRoute="/products/language-learning-app" />
   </div>
 </template>
 
 <script>
 import AppNavbar from "@/components/navbar";
+import CaseStudyFooter from "@/components/CaseStudyFooter.vue";
+import { useHead } from "@vueuse/head";
 
 export default {
   name: "LanguageLearningApp",
   components: {
     AppNavbar,
+    CaseStudyFooter,
+  },
+  setup() {
+    useHead({
+      title: "Arabiya Language App — Eleni Chasioti",
+      meta: [
+        { name: "description", content: "Case study: An immersive web app for learning Egyptian Arabic with interactive lessons, quizzes, and bilingual support." },
+        { property: "og:title", content: "Arabiya Language App — Eleni Chasioti" },
+        { property: "og:description", content: "Interactive language learning with RTL text support, study modes, and multi-language UI." },
+      ],
+    });
   },
   data() {
     return {

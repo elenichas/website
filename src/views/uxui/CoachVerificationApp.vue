@@ -111,29 +111,48 @@
       </div>
     </section>
 
+    <!-- My Role -->
+    <section class="content-section">
+      <p class="section-label">My Role</p>
+      <h2 class="section-heading">End-to-end ownership</h2>
+      <p class="body-text">
+        Sole designer and developer. I conducted the primary research (cataloging 70 original Coach publications), designed the information architecture, created the UI in Figma, and built the full application in Next.js with static generation for all 778 product pages.
+      </p>
+    </section>
+
     <!-- Technical + Reflection -->
     <section class="content-section">
-      <!-- <p class="section-label">Technology</p>
-      <h2 class="section-heading">Built for performance and scale</h2>
-      <p class="body-text">
-        Next.js 16 with App Router and static generation for all 778 bag pages &mdash; no runtime database queries. Tailwind CSS 4 for styling, Framer Motion for the color grid animations. Data compiled from 70 original Coach catalogs with images stored in Supabase.
-      </p> -->
-      <p class="section-label" style="margin-top: 2.5rem;">Reflection</p>
+      <p class="section-label">Reflection</p>
       <h2 class="section-heading">Turning research into a usable product</h2>
       <p class="body-text">
         This project started as personal curiosity and grew into a comprehensive reference tool. The biggest challenge was data accuracy &mdash; cross-referencing 70 catalogs to build a reliable dataset. Designing the serial number decoder taught me how to present complex, multi-format parsing logic in a way that feels simple while remaining transparent about what the system checks and why.
       </p>
     </section>
+
+    <case-study-footer currentRoute="/products/coach-verification-app" />
   </div>
 </template>
 
 <script>
 import AppNavbar from "@/components/navbar";
+import CaseStudyFooter from "@/components/CaseStudyFooter.vue";
+import { useHead } from "@vueuse/head";
 
 export default {
   name: "CoachVerificationApp",
   components: {
     AppNavbar,
+    CaseStudyFooter,
+  },
+  setup() {
+    useHead({
+      title: "Vintage Coach Catalog — Eleni Chasioti",
+      meta: [
+        { name: "description", content: "Case study: A digital reference cataloging 778 vintage Coach styles with serial number authentication. Designed and built by Eleni Chasioti." },
+        { property: "og:title", content: "Vintage Coach Catalog — Eleni Chasioti" },
+        { property: "og:description", content: "The definitive digital reference for vintage Coach leather goods with built-in serial number authentication." },
+      ],
+    });
   },
   data() {
     return {

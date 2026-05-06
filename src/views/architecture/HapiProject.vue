@@ -78,7 +78,7 @@
       </p>
     </section>
 
-    <!-- Renders -->
+        <!-- Renders -->
     <section class="split-section split-section-right">
       <div class="split-media media-container-green">
         <div class="carousel-wrapper">
@@ -101,16 +101,20 @@
         </p>
       </div>
     </section>
+
+    <case-study-footer currentRoute="/products/hapi-project" />
   </div>
 </template>
 
 <script>
 import AppNavbar from "@/components/navbar";
+import CaseStudyFooter from "@/components/CaseStudyFooter.vue";
 
 export default {
   name: "HapiProject",
   components: {
     AppNavbar,
+    CaseStudyFooter,
   },
   data() {
     return {

@@ -138,32 +138,33 @@ export default {
 
 /* At a Glance */
 .at-a-glance {
-  padding-bottom: 3rem;
+  padding-bottom: 2.5rem;
   border-bottom: 1px solid #eee;
 }
 
 .glance-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .glance-item {
   display: flex;
   flex-direction: column;
-  gap: 0.375rem;
+  gap: 0.25rem;
   text-align: center;
 }
 
 .glance-value {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: #000;
   letter-spacing: -0.01em;
+  line-height: 1.3;
 }
 
 .glance-label {
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   color: #666;
   line-height: 1.4;
 }
@@ -311,7 +312,11 @@ export default {
 
 @media (max-width: 768px) {
   .container {
-    padding: 4rem 1.5rem;
+    padding: 3rem 1.5rem;
+  }
+
+  .about-content {
+    gap: 2.5rem;
   }
 
   .about-header {
@@ -319,9 +324,89 @@ export default {
     padding-bottom: 2rem;
   }
 
+  .at-a-glance {
+    padding-bottom: 2rem;
+  }
+
+  .glance-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .glance-value {
+    font-size: 1rem;
+  }
+
+  .glance-label {
+    font-size: 0.6875rem;
+  }
+
+  .story-content {
+    gap: 2rem;
+  }
+
+  .masonry-gallery {
+    column-count: 2;
+  }
+
+  .cta-section {
+    flex-direction: column;
+    align-items: stretch;
+    padding-top: 2rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    justify-content: center;
+    font-size: 0.875rem;
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 2rem 1.25rem;
+  }
+
+  .about-content {
+    gap: 2rem;
+  }
+
+  .at-a-glance {
+    padding-bottom: 1.5rem;
+  }
+
   .glance-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .glance-item {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.5rem;
+    text-align: left;
+  }
+
+  .glance-value {
+    font-size: 1rem;
+    min-width: fit-content;
+  }
+
+  .glance-label {
+    font-size: 0.75rem;
+  }
+
+  .story-content {
     gap: 1.5rem;
+  }
+
+  .story-section h2 {
+    font-size: 1.25rem;
+  }
+
+  .story-section p {
+    font-size: 0.9375rem;
   }
 
   .masonry-gallery {
@@ -329,23 +414,13 @@ export default {
   }
 
   .cta-section {
-    flex-direction: column;
-    align-items: stretch;
+    padding-top: 1.5rem;
   }
 
   .btn-primary,
   .btn-secondary {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 3rem 1.5rem;
-  }
-
-  .story-section p {
-    font-size: 1rem;
+    font-size: 0.8125rem;
+    padding: 0.625rem 1.25rem;
   }
 }
 </style>

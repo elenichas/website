@@ -25,10 +25,9 @@
             </a>
           </div>
           
-          <div class="footer-meta">
-            <p class="copyright">© 2024 Eleni Chasioti. All rights reserved.</p>
-            <p class="made-with">Made with ❤️ and lots of espresso</p>
-            <p class="last-updated">Last updated May 2026</p>
+                    <div class="footer-meta">
+            <p class="copyright">&copy; {{ currentYear }} Eleni Chasioti. All rights reserved.</p>
+            <p class="made-with">Made with Vue.js and lots of espresso</p>
           </div>
         </div>
       </div>
@@ -39,6 +38,11 @@
 <script>
 export default {
   name: "FooterComponent",
+  computed: {
+    currentYear() {
+      return new Date().getFullYear();
+    },
+  },
 };
 </script>
 

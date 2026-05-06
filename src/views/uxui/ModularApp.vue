@@ -145,21 +145,24 @@
       <p class="body-text">
         Through the Google UX Design curriculum, I practiced conducting user research, persona development, wireframing, and high-fidelity prototyping. I learned to work within an existing brand identity while creating a modern digital experience, and developed skills in moving from low-fidelity wireframes to polished prototypes.
       </p>
-      <p class="body-text">
-        This project reinforced the importance of mobile-first design—balancing constraints with usability and visual appeal.
+            <p class="body-text">
+        This project reinforced the importance of mobile-first design&mdash;balancing constraints with usability and visual appeal.
       </p>
     </section>
 
+    <case-study-footer currentRoute="/products/modular-app" />
   </div>
 </template>
 
 <script>
 import AppNavbar from "@/components/navbar";
+import CaseStudyFooter from "@/components/CaseStudyFooter.vue";
 
 export default {
   name: "LocalBakeryApp",
   components: {
     AppNavbar,
+    CaseStudyFooter,
   },
   data() {
     return {

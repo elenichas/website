@@ -5,8 +5,9 @@
       <h2 class="job-title-container">
         <span class="job-title">{{ animatedTitle }}</span>
       </h2>
-      <p class="description">
-        I design and engineer digital products that solve real problems for real people. 
+            <p class="description">
+        From 3D configurators to mobile apps, I design and build 
+        complex digital products at the intersection of spatial computing and user experience.
         From concept to code, I bridge the gap between user needs and technical solutions.
       </p>
 
@@ -287,35 +288,41 @@ export default {
   }
 
   .welcome-text {
-    gap: 1rem;
+    gap: 0.75rem;
+    align-items: center;
   }
-  
-  .cta-buttons {
+
+  .job-title-container {
+    min-height: 2.25rem;
     justify-content: center;
   }
 
   .description {
-    font-size: 1rem;
+    font-size: 0.9375rem;
+    max-width: 100%;
+  }
+
+  .cta-buttons {
+    justify-content: center;
   }
 }
 
 @media (max-width: 480px) {
   .welcome-card {
-    gap: 1rem;
+    gap: 0.5rem;
   }
 
   .welcome-text {
-    gap: 0.625rem;
+    gap: 0.5rem;
   }
 
   .job-title-container {
-    min-height: 2rem;
+    min-height: 1.75rem;
   }
 
   .description {
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     line-height: 1.5;
-    margin: 0;
   }
 
   .cta-buttons {
@@ -324,11 +331,11 @@ export default {
     gap: 0.5rem;
     margin-top: 0.25rem;
   }
-  
+
   .btn-primary,
   .btn-secondary {
-    padding: 0.5rem 1rem;
-    font-size: 0.8125rem;
+    padding: 0.5rem 0.875rem;
+    font-size: 0.75rem;
   }
 }
 </style>

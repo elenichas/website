@@ -11,18 +11,19 @@
         </div>
       </header>
 
-      <!-- Product Design Section -->
+            <!-- Product Design Section -->
       <section class="projects-section">
         <div class="projects-grid">
           <article v-for="(project, index) in uxuiImages" :key="index" class="project-card">
             <router-link :to="project.route" class="project-link">
               <div class="project-image">
-                <img :src="project.src" :alt="project.alt" />
+                <img :src="project.src" :alt="project.alt" loading="lazy" />
                 <div class="project-overlay">
                   <span class="view-project">View Project</span>
                 </div>
+                <span v-if="project.context" class="project-context">{{ project.context }}</span>
               </div>
-                            <div class="project-info">
+              <div class="project-info">
                 <h3 class="project-title">{{ project.title }}</h3>
                 <p class="project-type">{{ project.type }}</p>
               </div>
@@ -39,15 +40,15 @@
         </div>
 
         <div class="projects-grid">
-          <article v-for="(project, index) in architectureImages" :key="index" class="project-card">
+                    <article v-for="(project, index) in architectureImages" :key="index" class="project-card">
             <router-link :to="project.route" class="project-link">
               <div class="project-image">
-                <img :src="project.src" :alt="project.alt" />
+                <img :src="project.src" :alt="project.alt" loading="lazy" />
                 <div class="project-overlay">
                   <span class="view-project">View Project</span>
                 </div>
               </div>
-                            <div class="project-info">
+              <div class="project-info">
                 <h3 class="project-title">{{ project.title }}</h3>
                 <p class="project-type">{{ project.type }}</p>
               </div>
@@ -96,26 +97,37 @@ export default {
           route: "/products/workshop-design",
         },
       ],
-                  uxuiImages: [
+                        uxuiImages: [
         {
-          src: require("@/images/gallery/moonPixel.png"),
-          alt: "Lunar Habitat 3D Configurator",
-          title: "Lunar Habitat 3D Configurator",
-          type: "Design Automation",
-          route: "/products/lunar-app",
+          src: require("@/images/gallery/coachHero.jpg"),
+          alt: "Coach Bags Verification App",
+          title: "Vintage Coach Catalog",
+          type: "Authentication System",
+          context: "Personal",
+          route: "/products/coach-verification-app",
         },
         {
           src: require("@/images/gallery/industrial.png"),
           alt: "Industrial Facility 3D Configurator",
-          title: "Industrial Facility 3D Configurator",
+          title: "Industrial Facility Configurator",
           type: "Configuration System",
+          context: "Professional",
           route: "/products/industrial-configurator",
         },
-          {
-                    src: require("@/images/gallery/language.jpg"),
+        {
+          src: require("@/images/gallery/moonPixel.png"),
+          alt: "Lunar Habitat 3D Configurator",
+          title: "Moon Habitat Configurator",
+          type: "Design Automation",
+          context: "Professional",
+          route: "/products/lunar-app",
+        },
+        {
+          src: require("@/images/gallery/language.jpg"),
           alt: "Arabiya Language Learning App",
-          title: "Arabiya Mobile App",
-          type: "Language Learning Web App",
+          title: "Arabiya Language App",
+          type: "Educational Web App",
+          context: "Personal",
           route: "/products/language-learning-app",
         },
         {
@@ -123,22 +135,16 @@ export default {
           alt: "Filos Mobile App",
           title: "Filos Mobile Experience",
           type: "Accessible Experience",
+          context: "Course",
           route: "/products/filos-mobile-app",
         },
-   
         {
           src: require("@/images/gallery/kapihan.png"),
           alt: "Coffee Shop App",
-          title: "Brew & Cramb Mobile App",
+          title: "Brew & Crumb Mobile App",
           type: "Product Design",
+          context: "Course",
           route: "/products/brew-crumb",
-        },
-        {
-          src: require("@/images/gallery/coachHero.jpg"),
-          alt: "Coach Bags Verification App",
-          title: "Vintage Coach App",
-          type: "Authentication System",
-          route: "/products/coach-verification-app",
         },
       ],
     };
@@ -216,8 +222,8 @@ export default {
 /* Projects Grid */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: 2.5rem;
 }
 
 /* Project Cards */
@@ -307,20 +313,101 @@ export default {
   margin: 0;
 }
 
+/* Project Context Badge */
+.project-context {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #333;
+  z-index: 1;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .container {
-    padding: 4rem 1.5rem;
+    padding: 3rem 1.25rem;
+  }
+
+  .page-header {
+    margin-bottom: 3rem;
+  }
+
+  .projects-section {
+    margin-bottom: 3rem;
+  }
+
+  .section-header {
+    margin-bottom: 2rem;
   }
 
   .projects-grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .project-info {
+    padding: 1rem;
+  }
+
+  .project-title {
+    font-size: 1.125rem;
+  }
+
+  .project-type {
+    font-size: 0.75rem;
   }
 }
 
 @media (max-width: 480px) {
   .container {
-    padding: 3rem 1.5rem;
+    padding: 2rem 1rem;
+  }
+
+  .page-header {
+    margin-bottom: 2rem;
+  }
+
+  .page-subtitle {
+    font-size: 0.9375rem;
+  }
+
+  .projects-section {
+    margin-bottom: 2.5rem;
+  }
+
+  .projects-grid {
+    gap: 1.5rem;
+  }
+
+  .project-info {
+    padding: 0.875rem;
+  }
+
+  .project-title {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .project-type {
+    font-size: 0.6875rem;
+  }
+
+  .view-project {
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
+  }
+
+  .project-context {
+    font-size: 0.5625rem;
+    padding: 0.2rem 0.5rem;
   }
 }
 </style>

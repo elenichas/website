@@ -1,4 +1,5 @@
 import { createApp } from "vue"; // Use Vue 3's createApp
+import { createHead } from "@vueuse/head";
 
 // Vuetify
 import { createVuetify } from "vuetify";
@@ -40,6 +41,10 @@ const vuetify = createVuetify({
 
 // Create Vue app instance
 const app = createApp(App);
+
+// Use head for meta tags
+const head = createHead();
+app.use(head);
 
 // Use Vuetify
 app.use(vuetify);

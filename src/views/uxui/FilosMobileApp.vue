@@ -77,7 +77,7 @@
       </p>
     </section>
 
-        <!-- Reflection -->
+            <!-- Reflection -->
     <section class="content-section">
       <p class="section-label">Learning</p>
       <h2 class="section-heading">Practicing inclusive design</h2>
@@ -88,16 +88,20 @@
         I gained hands-on experience applying WCAG accessibility guidelines and understanding their practical impact on real people's lives.
       </p>
     </section>
+
+    <case-study-footer currentRoute="/products/filos-mobile-app" />
   </div>
 </template>
 
 <script>
 import AppNavbar from "@/components/navbar";
+import CaseStudyFooter from "@/components/CaseStudyFooter.vue";
 
 export default {
   name: "FilosMobileApp",
   components: {
     AppNavbar,
+    CaseStudyFooter,
   },
     data() {
     return {

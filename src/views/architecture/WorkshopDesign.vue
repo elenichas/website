@@ -71,7 +71,7 @@
       </p>
     </section>
 
-    <!-- Video -->
+        <!-- Video -->
     <section class="content-section">
       <p class="section-label">Final Assembly</p>
       <h2 class="section-heading">Physical prototype</h2>
@@ -82,16 +82,20 @@
         </video>
       </figure>
     </section>
+
+    <case-study-footer currentRoute="/products/workshop-design" />
   </div>
 </template>
 
 <script>
 import AppNavbar from "@/components/navbar";
+import CaseStudyFooter from "@/components/CaseStudyFooter.vue";
 
 export default {
   name: "WorkshopDesign",
   components: {
     AppNavbar,
+    CaseStudyFooter,
   },
   data() {
     return {

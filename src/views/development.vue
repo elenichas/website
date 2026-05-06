@@ -6,8 +6,8 @@
       <!-- Page Header -->
       <header class="page-header">
         <div class="header-content">
-          <h1 class="page-title">Craft</h1>
-          <p class="page-subtitle">Technical projects and engineering solutions</p>
+                    <h1 class="page-title">Engineering</h1>
+          <p class="page-subtitle">Technical projects, tools, and open-source contributions</p>
         </div>
       </header>
 
@@ -16,8 +16,8 @@
         <div class="projects-grid">
           <article v-for="(project, index) in images" :key="index" class="project-card">
             <a :href="project.gitlabLink" target="_blank" class="project-link">
-              <div class="project-image">
-                <img :src="project.src" :alt="project.name" />
+                            <div class="project-image">
+                <img :src="project.src" :alt="project.name" loading="lazy" />
                 <div class="project-overlay">
                   <span class="view-project">
                     <span class="mdi mdi-github"></span>
@@ -164,8 +164,8 @@ export default {
 /* Projects Grid */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: 2.5rem;
 }
 
 /* Project Cards */
@@ -260,17 +260,64 @@ export default {
 /* Responsive Design */
 @media (max-width: 768px) {
   .container {
-    padding: 4rem 1.5rem;
+    padding: 3rem 1.25rem;
+  }
+
+  .page-header {
+    margin-bottom: 3rem;
+  }
+
+  .projects-section {
+    margin-bottom: 3rem;
   }
 
   .projects-grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .project-info {
+    padding: 1rem;
+  }
+
+  .project-title {
+    font-size: 1.125rem;
   }
 }
 
 @media (max-width: 480px) {
   .container {
-    padding: 3rem 1.5rem;
+    padding: 2rem 1rem;
+  }
+
+  .page-header {
+    margin-bottom: 2rem;
+  }
+
+  .page-subtitle {
+    font-size: 0.9375rem;
+  }
+
+  .projects-grid {
+    gap: 1.5rem;
+  }
+
+  .project-info {
+    padding: 0.875rem;
+  }
+
+  .project-title {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .project-stack {
+    font-size: 0.75rem;
+  }
+
+  .view-project {
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
   }
 }
 </style>

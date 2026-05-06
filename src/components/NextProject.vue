@@ -112,6 +112,7 @@ export default {
 @media (max-width: 768px) {
   .next-project {
     padding: 0 1.5rem 2rem;
+    margin-top: 3rem;
   }
 
   .next-project-inner {
@@ -124,6 +125,34 @@ export default {
 
   .next-title {
     font-size: 1.125rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .next-project {
+    padding: 0 1.25rem 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .next-project-inner {
+    padding-top: 1.5rem;
+  }
+
+  .next-link {
+    padding: 1rem 1.25rem;
+  }
+
+  .next-title {
+    font-size: 1rem;
+  }
+
+  .next-type {
+    font-size: 0.75rem;
+  }
+
+  .next-arrow svg {
+    width: 20px;
+    height: 20px;
   }
 }
 </style>

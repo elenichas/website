@@ -145,7 +145,15 @@
       </figure>
     </section>
 
-    <!-- Reflection -->
+        <!-- Reflection -->
+    <section class="content-section">
+      <p class="section-label">My Role</p>
+      <h2 class="section-heading">Design system architecture & 3D interface</h2>
+      <p class="body-text">
+        Within the team, I led the product design for the configurator interface, designed the module catalog system, and developed the interactive 3D viewer. I collaborated with algorithm engineers on the optimization pipeline and spatial analysis components.
+      </p>
+    </section>
+
     <section class="content-section">
       <p class="section-label">Impact</p>
       <h2 class="section-heading">Bridging design automation and extreme environments</h2>
@@ -153,16 +161,31 @@
         This proof-of-concept from professional experience demonstrated how parametric design systems can handle complex spatial problems in extreme environments, making design automation applicable beyond traditional contexts.
       </p>
     </section>
+
+    <case-study-footer currentRoute="/products/lunar-app" />
   </div>
 </template>
 
 <script>
 import AppNavbar from "@/components/navbar";
+import CaseStudyFooter from "@/components/CaseStudyFooter.vue";
+import { useHead } from "@vueuse/head";
 
 export default {
   name: "MoonPixelApp",
   components: {
     AppNavbar,
+    CaseStudyFooter,
+  },
+  setup() {
+    useHead({
+      title: "Moon Habitat Configurator — Eleni Chasioti",
+      meta: [
+        { name: "description", content: "Case study: A parametric design system for configuring modular lunar habitats through optimization algorithms and 3D visualization." },
+        { property: "og:title", content: "Moon Habitat Configurator — Eleni Chasioti" },
+        { property: "og:description", content: "Parametric design automation for extreme environments with 3D configuration and spatial analysis." },
+      ],
+    });
   },
   props: {},
   data() {

@@ -17,8 +17,8 @@
         <router-link to="/products" class="nav-link" active-class="active">
           Products
         </router-link>
-        <router-link to="/craft" class="nav-link" active-class="active">
-          Craft
+                <router-link to="/craft" class="nav-link" active-class="active">
+          Engineering
         </router-link>
         <router-link to="/about" class="nav-link" active-class="active">
           About
@@ -42,8 +42,8 @@
         <router-link to="/products" class="mobile-nav-link" @click="closeMobileMenu">
           Products
         </router-link>
-        <router-link to="/craft" class="mobile-nav-link" @click="closeMobileMenu">
-          Craft
+                <router-link to="/craft" class="mobile-nav-link" @click="closeMobileMenu">
+          Engineering
         </router-link>
         <router-link to="/about" class="mobile-nav-link" @click="closeMobileMenu">
           About
