@@ -41,23 +41,23 @@ export default {
 <style scoped>
 .next-project {
   max-width: 760px;
-  margin: 4rem auto 0;
-  padding: 0 2rem 3rem;
-  border-top: 1px solid #eee;
+  margin: var(--space-16) auto 0;
+  padding: 0 var(--space-8) var(--space-12);
 }
 
 .next-project-inner {
-  padding-top: 3rem;
+  padding-top: var(--space-12);
+  border-top: 1px solid var(--color-border);
 }
 
 .next-label {
-  font-size: 0.8125rem;
+  font-size: 0.6875rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #999;
-  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+  font-weight: var(--weight-semibold);
   display: block;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
 }
 
 .next-link {
@@ -66,14 +66,14 @@ export default {
   justify-content: space-between;
   text-decoration: none;
   color: inherit;
-  padding: 1.5rem 2rem;
-  border-radius: 12px;
-  border: 1px solid #e0e0e0;
-  transition: all 0.3s ease;
+  padding: var(--space-5) var(--space-6);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-strong);
+  transition: all var(--duration-normal) var(--ease-out);
 }
 
 .next-link:hover {
-  border-color: #000;
+  border-color: var(--color-text);
   transform: translateX(4px);
 }
 
@@ -84,43 +84,45 @@ export default {
 }
 
 .next-title {
-  font-size: 1.375rem;
-  font-weight: 600;
-  color: #000;
+  font-size: 1.25rem;
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
   margin: 0;
   line-height: 1.3;
+  letter-spacing: -0.01em;
 }
 
 .next-type {
-  font-size: 0.875rem;
-  color: #666;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
   margin: 0;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.06em;
+  font-weight: var(--weight-medium);
 }
 
 .next-arrow {
-  color: #666;
-  transition: transform 0.3s ease, color 0.3s ease;
+  color: var(--color-text-muted);
+  transition: transform var(--duration-normal) var(--ease-out), color var(--duration-normal) var(--ease-out);
 }
 
 .next-link:hover .next-arrow {
-  color: #000;
+  color: var(--color-text);
   transform: translateX(4px);
 }
 
 @media (max-width: 768px) {
   .next-project {
-    padding: 0 1.5rem 2rem;
-    margin-top: 3rem;
+    padding: 0 var(--space-5) var(--space-8);
+    margin-top: var(--space-12);
   }
 
   .next-project-inner {
-    padding-top: 2rem;
+    padding-top: var(--space-8);
   }
 
   .next-link {
-    padding: 1.25rem 1.5rem;
+    padding: var(--space-4) var(--space-5);
   }
 
   .next-title {
@@ -130,16 +132,17 @@ export default {
 
 @media (max-width: 480px) {
   .next-project {
-    padding: 0 1.25rem 1.5rem;
-    margin-top: 2rem;
+    padding: 0 var(--space-4) var(--space-6);
+    margin-top: var(--space-8);
   }
 
   .next-project-inner {
-    padding-top: 1.5rem;
+    padding-top: var(--space-6);
   }
 
   .next-link {
-    padding: 1rem 1.25rem;
+    padding: var(--space-4);
+    border-radius: var(--radius-sm);
   }
 
   .next-title {
@@ -147,7 +150,7 @@ export default {
   }
 
   .next-type {
-    font-size: 0.75rem;
+    font-size: 0.625rem;
   }
 
   .next-arrow svg {

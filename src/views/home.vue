@@ -5,73 +5,66 @@
     <div class="container">
       <section class="hero-section">
         <div class="hero-content">
-          <div class="avatar-column">
+          <div class="avatar-column anim-fade-in" style="--delay: 0.1s;">
             <div class="avatar-wrapper">
               <img :src="avatarSrc" alt="Eleni Chasioti" class="avatar" />
             </div>
           </div>
           
-          <div class="content-column">
+          <div class="content-column anim-fade-in" style="--delay: 0.3s;">
             <welcome-card></welcome-card>
           </div>
         </div>
       </section>
 
-            <!-- Featured Projects -->
+      <!-- Featured Projects -->
       <section class="featured-section">
-        <div class="featured-header">
+        <div class="featured-header scroll-reveal">
           <h2 class="featured-title">Featured Work</h2>
+          <span class="featured-line"></span>
         </div>
 
-        <!-- Primary Featured -->
-        <router-link to="/products/coach-verification-app" class="featured-card">
-          <div class="featured-image">
-            <img :src="featuredProjects[0].image" :alt="featuredProjects[0].name" />
-            <div class="featured-overlay">
-              <span class="featured-view">View Project</span>
-            </div>
-          </div>
-          <div class="featured-info">
-            <div class="featured-meta">
-              <span class="featured-label">{{ featuredProjects[0].labels[0] }}</span>
-              <span class="featured-divider">&middot;</span>
-              <span class="featured-label">{{ featuredProjects[0].labels[1] }}</span>
-            </div>
-            <h3 class="featured-name">{{ featuredProjects[0].name }}</h3>
-            <p class="featured-description">{{ featuredProjects[0].description }}</p>
-          </div>
-        </router-link>
-
-        <!-- Secondary Featured Grid -->
-        <div class="featured-grid">
+                <!-- Project Cards -->
+        <div class="projects-grid">
           <router-link 
-            v-for="(project, index) in featuredProjects.slice(1)" 
+            v-for="(project, index) in featuredProjects" 
             :key="index" 
             :to="project.route" 
-            class="featured-grid-card"
+            class="project-card scroll-reveal"
+            :class="{ 'project-card--hero': index === 0 }"
+            :style="{ '--delay': (index * 0.12) + 's' }"
           >
-            <div class="grid-card-image">
+            <div class="project-card__image">
               <img :src="project.image" :alt="project.name" loading="lazy" />
-              <div class="featured-overlay">
-                <span class="featured-view">View Project</span>
+              <div class="project-card__overlay">
+                <span class="project-card__cta">View Project</span>
               </div>
             </div>
-            <div class="grid-card-info">
-              <span class="grid-card-label">{{ project.labels[0] }}</span>
-              <h3 class="grid-card-name">{{ project.name }}</h3>
-              <p class="grid-card-description">{{ project.description }}</p>
+            <div class="project-card__body">
+              <div class="project-card__meta">
+                <span>{{ project.labels[0] }}</span>
+                <span class="project-card__dot">&middot;</span>
+                <span>{{ project.labels[1] }}</span>
+              </div>
+              <h3 class="project-card__title">{{ project.name }}</h3>
+              <p class="project-card__desc">{{ project.description }}</p>
             </div>
           </router-link>
         </div>
       </section>
 
       <!-- Compact Tech Stack -->
-      <section class="stack-section">
+      <section class="stack-section scroll-reveal">
         <div class="stack-header">
           <h2 class="stack-title">Technical Stack</h2>
         </div>
         <div class="stack-grid">
-          <div v-for="(skill, index) in allSkills" :key="index" class="stack-item">
+          <div 
+            v-for="(skill, index) in allSkills" 
+            :key="index" 
+            class="stack-item"
+            :style="{ '--i': index }"
+          >
             <div class="stack-icon">
               <img :src="skill.src" :alt="skill.name" />
             </div>
@@ -111,13 +104,36 @@ export default {
   },
   setup() {
     useHead({
-      title: "Eleni Chasioti — Product Designer & Engineer",
+      title: "Eleni Chasioti, Product Designer & Engineer",
       meta: [
-        { name: "description", content: "Portfolio of Eleni Chasioti — Product Designer & Engineer at Foster + Partners. Designing and building complex digital products at the intersection of spatial computing and user experience." },
-        { property: "og:title", content: "Eleni Chasioti — Product Designer & Engineer" },
-        { property: "og:description", content: "From lunar habitat configurators to authentication systems — designing and building complex digital products." },
+        { name: "description", content: "Portfolio of Eleni Chasioti, Product Designer & Engineer at Foster + Partners. Designing and building complex digital products at the intersection of spatial computing and user experience." },
+        { property: "og:title", content: "Eleni Chasioti, Product Designer & Engineer" },
+        { property: "og:description", content: "From lunar habitat configurators to authentication systems , designing and building complex digital products." },
       ],
     });
+  },
+  mounted() {
+    this.initScrollReveal();
+  },
+  methods: {
+    initScrollReveal() {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+      );
+      this.$nextTick(() => {
+        document.querySelectorAll('.scroll-reveal').forEach((el) => {
+          observer.observe(el);
+        });
+      });
+    },
   },
     data() {
     return {
@@ -126,7 +142,7 @@ export default {
         {
           name: "Vintage Coach Catalog",
           labels: ["Reference Platform", "Authentication System"],
-          description: "The definitive digital reference for vintage Coach leather goods — cataloging 778 styles, 104 colors, and 70 catalogs spanning 1975 to 2002, with a built-in serial number decoder for authentication.",
+          description: "The definitive digital reference for vintage Coach leather goods, cataloging 778 styles, 104 colors, and 70 catalogs spanning 1975 to 2002, with a built-in serial number decoder for authentication.",
           image: require("@/images/gallery/coachHero.jpg"),
           route: "/products/coach-verification-app",
         },
@@ -162,30 +178,111 @@ export default {
 </script>
 
 <style scoped>
-/* Minimal Editorial Home Page */
+/* ===== HOME PAGE - Editorial Cinematic ===== */
+
+/* === ENTRANCE ANIMATIONS === */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes lineGrow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes stackSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Hero entrance - plays on load */
+.anim-fade-in {
+  opacity: 0;
+  animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: var(--delay, 0s);
+}
+
+/* Scroll-triggered reveal - hidden until intersection */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--delay, 0s);
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stack items stagger when parent reveals */
+.scroll-reveal.revealed .stack-item {
+  animation: stackSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: calc(var(--i, 0) * 0.06s);
+}
+
+.stack-item {
+  opacity: 0;
+}
+
+/* Featured line grows on reveal */
+.featured-line {
+  display: block;
+  flex: 1;
+  height: 1px;
+  background: var(--color-border-strong);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+}
+
+.scroll-reveal.revealed .featured-line {
+  transform: scaleX(1);
+}
+
+/* === BASE === */
 .page-layout {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #fff;
+  background: var(--color-bg);
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 var(--space-8);
   flex: 1;
 }
 
 /* ===== HERO ===== */
 .hero-section {
-  padding: 5rem 0 4rem;
+  padding: var(--space-20) 0 var(--space-16);
 }
 
 .hero-content {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 4rem;
+  gap: var(--space-16);
   align-items: center;
 }
 
@@ -199,13 +296,22 @@ export default {
   position: relative;
 }
 
+.avatar-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  pointer-events: none;
+}
+
 .avatar {
-  width: 240px;
-  height: 240px;
-  border-radius: 8px;
+  width: 220px;
+  height: 220px;
+  border-radius: var(--radius-md);
   object-fit: cover;
   display: block;
-  transition: transform 0.3s ease;
+  transition: transform var(--duration-slow) var(--ease-out);
 }
 
 .avatar:hover {
@@ -220,215 +326,182 @@ export default {
 
 /* ===== FEATURED SECTION ===== */
 .featured-section {
-  padding: 3rem 0;
-  border-top: 1px solid #eee;
+  padding: var(--space-12) 0;
+  border-top: 1px solid var(--color-border);
 }
 
 .featured-header {
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-8);
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
 }
 
 .featured-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #000;
-  letter-spacing: -0.02em;
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: var(--weight-normal);
+  font-style: italic;
+  color: var(--color-text);
+  letter-spacing: -0.01em;
 }
 
-/* Primary Featured Card */
-.featured-card {
+/* ===== PROJECT CARDS GRID ===== */
+.projects-grid {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 2.5rem;
-  align-items: center;
+  grid-template-columns: 1fr;
+  gap: var(--space-10);
+}
+
+/* The hero card spans full width - image top, text below */
+.project-card {
   text-decoration: none;
   color: inherit;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: transform 0.3s ease;
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.featured-card:hover {
+.project-card:hover {
   transform: translateY(-4px);
 }
 
-.featured-image {
-  position: relative;
-  aspect-ratio: 16/10;
-  overflow: hidden;
-  border-radius: 8px;
-  background: #f5f5f5;
+/* First card is full-width hero */
+.project-card--hero .project-card__image {
+  aspect-ratio: 2.2 / 1;
 }
 
-.featured-image img {
+/* Make 2nd and 3rd cards sit side by side */
+.projects-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.project-card--hero {
+  grid-column: 1 / -1;
+}
+
+/* Image container */
+.project-card__image {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--color-accent-soft);
+}
+
+.project-card__image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.featured-card:hover .featured-image img {
-  transform: scale(1.03);
+.project-card:hover .project-card__image img {
+  transform: scale(1.04);
 }
 
-.featured-overlay {
+/* Overlay */
+.project-card__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.featured-card:hover .featured-overlay {
+.project-card:hover .project-card__overlay {
   opacity: 1;
 }
 
-.featured-view {
+.project-card__cta {
   color: white;
-  font-weight: 600;
-  padding: 0.6rem 1.25rem;
-  border: 2px solid white;
-  border-radius: 2rem;
-  font-size: 0.875rem;
-  transition: all 0.3s ease;
+  font-weight: var(--weight-medium);
+  padding: 0.5rem 1.125rem;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: background 0.2s, color 0.2s;
 }
 
-.featured-view:hover {
+.project-card__cta:hover {
   background: white;
-  color: #000;
+  color: var(--color-text);
 }
 
-.featured-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.625rem;
+/* Text body */
+.project-card__body {
+  padding: var(--space-4) 0 0;
 }
 
-.featured-meta {
+.project-card__meta {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.75rem;
-  color: #666;
+  gap: 0.4rem;
+  font-size: 0.625rem;
+  color: var(--color-text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-weight: 500;
+  letter-spacing: 0.08em;
+  font-weight: var(--weight-semibold);
+  margin-bottom: 0.375rem;
 }
 
-.featured-divider {
-  color: #ccc;
+.project-card__dot {
+  color: var(--color-border-strong);
 }
 
-.featured-name {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #000;
+.project-card__title {
+  font-size: 1.25rem;
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
   letter-spacing: -0.02em;
-  line-height: 1.2;
-  margin: 0;
+  line-height: 1.25;
+  margin: 0 0 0.375rem;
 }
 
-.featured-description {
-  font-size: 0.9375rem;
-  color: #333;
+.project-card--hero .project-card__title {
+  font-size: 1.5rem;
+}
+
+.project-card__desc {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
   line-height: 1.6;
   margin: 0;
 }
 
-/* Secondary Featured Grid */
-.featured-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  margin-top: 2.5rem;
-}
-
-.featured-grid-card {
-  text-decoration: none;
-  color: inherit;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
-
-.featured-grid-card:hover {
-  transform: translateY(-4px);
-}
-
-.grid-card-image {
-  position: relative;
-  aspect-ratio: 16/10;
-  overflow: hidden;
-  border-radius: 8px;
-  background: #f5f5f5;
-}
-
-.grid-card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.featured-grid-card:hover .grid-card-image img {
-  transform: scale(1.03);
-}
-
-.featured-grid-card:hover .featured-overlay {
-  opacity: 1;
-}
-
-.grid-card-info {
-  padding: 1rem 0;
-}
-
-.grid-card-label {
-  font-size: 0.6875rem;
-  color: #666;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-weight: 500;
-}
-
-.grid-card-name {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: #000;
-  margin: 0.25rem 0;
-  line-height: 1.3;
-}
-
-.grid-card-description {
-  font-size: 0.8125rem;
-  color: #555;
-  line-height: 1.5;
-  margin: 0;
+.project-card--hero .project-card__desc {
+  font-size: 0.9375rem;
+  max-width: 680px;
 }
 
 /* ===== TECH STACK ===== */
 .stack-section {
-  padding: 3rem 0;
-  border-top: 1px solid #eee;
+  padding: var(--space-12) 0;
+  border-top: 1px solid var(--color-border);
 }
 
 .stack-header {
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-6);
 }
 
 .stack-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #000;
-  letter-spacing: -0.02em;
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: var(--weight-normal);
+  font-style: italic;
+  color: var(--color-text);
+  letter-spacing: -0.01em;
 }
 
 .stack-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.5rem;
   align-items: center;
 }
 
@@ -436,20 +509,21 @@ export default {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.4rem 0.875rem;
-  border: 1px solid #e0e0e0;
-  border-radius: 2rem;
-  transition: all 0.3s ease;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .stack-item:hover {
-  border-color: #000;
+  border-color: var(--color-text);
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 .stack-icon {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -457,102 +531,108 @@ export default {
 }
 
 .stack-icon img {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   object-fit: contain;
 }
 
 .stack-name {
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: #333;
+  font-size: 0.75rem;
+  font-weight: var(--weight-medium);
+  color: var(--color-text-secondary);
   white-space: nowrap;
+  letter-spacing: 0.01em;
 }
 
 .stack-item:hover .stack-name {
-  color: #000;
+  color: var(--color-text);
 }
 
-/* ===== TABLET (max-width: 1024px) ===== */
+/* ===== TABLET ===== */
 @media (max-width: 1024px) {
   .hero-content {
-    gap: 3rem;
+    gap: var(--space-10);
   }
 
   .avatar {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
   }
 
-  .featured-card {
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+  .projects-grid {
+    gap: var(--space-8);
   }
 }
 
-/* ===== MOBILE (max-width: 768px) ===== */
+/* ===== MOBILE ===== */
 @media (max-width: 768px) {
   .container {
-    padding: 0 1.25rem;
+    padding: 0 var(--space-5);
   }
 
   .hero-section {
-    padding: 2.5rem 0 2rem;
+    padding: var(--space-10) 0 var(--space-8);
   }
 
   .hero-content {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: var(--space-6);
     text-align: center;
   }
 
   .avatar {
-    width: 140px;
-    height: 140px;
+    width: 130px;
+    height: 130px;
     margin: 0 auto;
   }
 
+  .avatar-wrapper::after {
+    inset: -4px;
+  }
+
   .featured-section {
-    padding: 2rem 0;
+    padding: var(--space-8) 0;
   }
 
   .featured-header {
-    margin-bottom: 1.25rem;
+    margin-bottom: var(--space-5);
   }
 
   .featured-title {
+    font-size: 1.375rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .project-card--hero {
+    grid-column: 1;
+  }
+
+  .project-card--hero .project-card__image {
+    aspect-ratio: 16 / 10;
+  }
+
+  .project-card--hero .project-card__title {
     font-size: 1.25rem;
   }
 
-  .featured-card {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+  .project-card__title {
+    font-size: 1.125rem;
   }
 
-  .featured-name {
-    font-size: 1.25rem;
-  }
-
-  .featured-description {
-    font-size: 0.875rem;
-  }
-
-  .featured-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-  }
-
-  .grid-card-name {
-    font-size: 1rem;
+  .project-card__desc {
+    font-size: 0.8125rem;
   }
 
   .stack-section {
-    padding: 2rem 0 2.5rem;
+    padding: var(--space-8) 0 var(--space-10);
   }
 
   .stack-title {
-    font-size: 1.25rem;
+    font-size: 1.375rem;
   }
 
   .stack-grid {
@@ -563,88 +643,49 @@ export default {
     padding: 0.35rem 0.75rem;
   }
 
-  .stack-icon {
-    width: 18px;
-    height: 18px;
-  }
-
-  .stack-icon img {
-    width: 16px;
-    height: 16px;
-  }
-
   .stack-name {
-    font-size: 0.75rem;
+    font-size: 0.6875rem;
   }
 }
 
-/* ===== SMALL PHONE (max-width: 480px) ===== */
+/* ===== SMALL PHONE ===== */
 @media (max-width: 480px) {
   .container {
-    padding: 0 1rem;
+    padding: 0 var(--space-4);
   }
 
   .hero-section {
-    padding: 2rem 0 1.5rem;
+    padding: var(--space-8) 0 var(--space-6);
   }
 
   .avatar {
-    width: 110px;
-    height: 110px;
+    width: 100px;
+    height: 100px;
   }
 
   .featured-section {
-    padding: 1.5rem 0;
+    padding: var(--space-6) 0;
   }
 
-  .featured-header {
-    margin-bottom: 1rem;
+  .projects-grid {
+    gap: var(--space-5);
   }
 
-  .featured-card {
-    gap: 0.75rem;
+  .project-card__title {
+    font-size: 1rem;
   }
 
-  .featured-info {
-    gap: 0.375rem;
-  }
-
-  .featured-name {
-    font-size: 1.125rem;
-  }
-
-  .featured-description {
-    font-size: 0.8125rem;
+  .project-card__desc {
+    font-size: 0.75rem;
     line-height: 1.5;
   }
 
-  .featured-meta {
-    font-size: 0.625rem;
-  }
-
-  .featured-grid {
-    gap: 1.25rem;
-    margin-top: 1.25rem;
-  }
-
-  .grid-card-info {
-    padding: 0.75rem 0;
-  }
-
-  .grid-card-name {
-    font-size: 0.9375rem;
-  }
-
-  .grid-card-description {
-    font-size: 0.75rem;
+  .project-card__meta {
+    font-size: 0.5625rem;
   }
 
   .stack-section {
-    padding: 1.5rem 0 2rem;
-  }
-
-  .stack-header {
-    margin-bottom: 0.75rem;
+    padding: var(--space-6) 0 var(--space-8);
   }
 
   .stack-grid {
@@ -656,17 +697,17 @@ export default {
   }
 
   .stack-icon {
-    width: 16px;
-    height: 16px;
-  }
-
-  .stack-icon img {
     width: 14px;
     height: 14px;
   }
 
+  .stack-icon img {
+    width: 12px;
+    height: 12px;
+  }
+
   .stack-name {
-    font-size: 0.6875rem;
+    font-size: 0.625rem;
   }
 }
 </style>

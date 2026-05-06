@@ -1,24 +1,36 @@
 <template>
   <app-navbar></app-navbar>
   <div class="case-study">
-    <!-- Hero Section -->
-    <div class="hero-section">
+    <!-- Cinematic Header -->
+    <header class="case-header">
+      <h1 class="case-title anim-reveal" style="--delay: 0s;">Vintage Coach Catalog</h1>
+    </header>
+
+    <!-- Hero Image -->
+    <div class="case-hero anim-reveal" style="--delay: 0.15s;">
       <img class="hero-image" :src="hero" alt="Vintage Coach Catalog" />
     </div>
 
-    <!-- Project Header -->
-    <div class="project-header">
-      <p class="project-label">Reference Platform</p>
-      <h1 class="project-title">Vintage Coach Catalog</h1>
-      <p class="project-intro">
-        The definitive digital reference for vintage Coach leather goods &mdash; cataloging 778 styles, 104 colors, and 70 catalogs spanning 1975 to 2002, with a built-in serial number decoder for authentication.
-      </p>
-      <div class="project-meta">
-        <span class="meta-item">Design &amp; Development</span>
-        <span class="meta-divider">&middot;</span>
-        <span class="meta-item">Personal Project</span>
-        <span class="meta-divider">&middot;</span>
-        <span class="meta-item">Next.js &amp; Data Systems</span>
+    <!-- Project Info - split layout -->
+    <div class="case-info anim-reveal" style="--delay: 0.3s;">
+      <div class="info-meta">
+        <div class="meta-block">
+          <span class="meta-label">Type</span>
+          <span class="meta-value">Personal Project</span>
+        </div>
+        <div class="meta-block">
+          <span class="meta-label">Role</span>
+          <span class="meta-value">Design &amp; Development</span>
+        </div>
+        <div class="meta-block">
+          <span class="meta-label">Stack</span>
+          <span class="meta-value">Next.js, Data Systems</span>
+        </div>
+      </div>
+      <div class="info-description">
+        <p class="info-text">
+          The definitive digital reference for vintage Coach leather goods, cataloging 778 styles, 104 colors, and 70 catalogs spanning 1975 to 2002, with a built-in serial number decoder for authentication.
+        </p>
       </div>
     </div>
 
@@ -27,7 +39,7 @@
       <p class="section-label">Challenge</p>
       <h2 class="section-heading">Scattered knowledge, no single source of truth</h2>
       <p class="body-text">
-        Vintage Coach collectors and resellers rely on fragmented information spread across forums, social media groups, and personal knowledge. Authentication is hard &mdash; serial number formats changed across three distinct eras, and understanding what a legitimate serial looks like for a specific bag requires cross-referencing multiple data points that didn&rsquo;t exist in one place.
+        Vintage Coach collectors and resellers rely on fragmented information spread across forums, social media groups, and personal knowledge. Authentication is hard. Serial number formats changed across three distinct eras, and understanding what a legitimate serial looks like for a specific bag requires cross-referencing multiple data points that didn&rsquo;t exist in one place.
       </p>
       <p class="section-label" style="margin-top: 2.5rem;">Solution</p>
       <h2 class="section-heading">A comprehensive digital catalog and authentication tool</h2>
@@ -42,7 +54,7 @@
         <p class="section-label">Catalog</p>
         <h2 class="section-heading">778 styles, fully searchable</h2>
         <p class="body-text">
-          The main catalog offers filtering by category, decade, and color with progressive loading. Each bag links to a rich detail page with full specs &mdash; dimensions, volume, strap length, production years, and available colorways.
+          The main catalog offers filtering by category, decade, and color with progressive loading. Each bag links to a rich detail page with full specs, including dimensions, volume, strap length, production years, and available colorways.
         </p>
       </div>
       <div class="showcase-screens showcase-screens-2 media-container-yellow">
@@ -51,7 +63,7 @@
       </div>
     </section>
 
-    <!-- Tablet view — landscape image, full width -->
+    <!-- Tablet view - landscape image, full width -->
     <section class="tablet-section">
       <div class="tablet-text">
         <p class="section-label">Responsive</p>
@@ -65,13 +77,13 @@
       </div>
     </section>
 
-    <!-- App Demo Video — phone recording with text -->
+    <!-- App Demo Video - phone recording with text -->
     <section class="showcase-section">
       <div class="showcase-text">
         <p class="section-label">Live Demo</p>
         <h2 class="section-heading">Browsing the catalog in action</h2>
         <p class="body-text">
-          A walkthrough of the app experience &mdash; searching, filtering, viewing product details, and decoding serial numbers in real time.
+          A walkthrough of the app experience, from searching and filtering to viewing product details and decoding serial numbers in real time.
         </p>
       </div>
       <div class="video-phone-container">
@@ -89,7 +101,7 @@
         <p class="section-label">Color System</p>
         <h2 class="section-heading">104 leather colors, visually organized</h2>
         <p class="body-text">
-          Every official Coach leather color from 1981 to 1999 across seven collections &mdash; sorted by visual family using HSL color science. Selecting a color expands an inline panel showing every bag offered in that colorway, filterable by year and decade.
+          Every official Coach leather color from 1981 to 1999 across seven collections, sorted by visual family using HSL color science. Selecting a color expands an inline panel showing every bag offered in that colorway, filterable by year and decade.
         </p>
       </div>
     </section>
@@ -101,7 +113,7 @@
         <p class="section-label">Authentication</p>
         <h2 class="section-heading">Decoding serial numbers across three eras</h2>
         <p class="body-text">
-          The decoder parses all Coach serial formats &mdash; pre-1994 numeric-only, 1994&ndash;2006 letter-digit-letter + 4-digit style, and 2006&ndash;2020 expanded format. It extracts manufacturing month, year, plant code, cross-references the style against the database, and flags mismatches or known counterfeit patterns.
+          The decoder parses all Coach serial formats: pre-1994 numeric-only, 1994&ndash;2006 letter-digit-letter + 4-digit style, and 2006&ndash;2020 expanded format. It extracts manufacturing month, year, plant code, cross-references the style against the database, and flags mismatches or known counterfeit patterns.
         </p>
       </div>
       <div class="showcase-screens showcase-screens-3 media-container-purple">
@@ -125,7 +137,7 @@
       <p class="section-label">Reflection</p>
       <h2 class="section-heading">Turning research into a usable product</h2>
       <p class="body-text">
-        This project started as personal curiosity and grew into a comprehensive reference tool. The biggest challenge was data accuracy &mdash; cross-referencing 70 catalogs to build a reliable dataset. Designing the serial number decoder taught me how to present complex, multi-format parsing logic in a way that feels simple while remaining transparent about what the system checks and why.
+        This project started as personal curiosity and grew into a comprehensive reference tool. The biggest challenge was data accuracy, cross-referencing 70 catalogs to build a reliable dataset. Designing the serial number decoder taught me how to present complex, multi-format parsing logic in a way that feels simple while remaining transparent about what the system checks and why.
       </p>
     </section>
 
@@ -172,113 +184,167 @@ export default {
 </script>
 
 <style scoped>
-/* Minimal Editorial Design */
+/* ===== CASE STUDY - Editorial Reveal ===== */
 
-.case-study {
-  background: #fff;
-  color: #000;
-  padding-bottom: 3rem;
+/* Reveal Animation */
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Hero */
-.hero-section {
-  width: 100%;
-  margin-bottom: 2.5rem;
+.anim-reveal {
+  opacity: 0;
+  animation: revealUp 0.8s var(--ease-out) forwards;
+  animation-delay: var(--delay, 0s);
+}
+
+/* Base */
+.case-study {
+  background: var(--color-bg);
+  color: var(--color-text);
+  padding-bottom: var(--space-12);
+}
+
+/* ===== CINEMATIC HEADER ===== */
+.case-header {
+  padding: var(--space-16) var(--space-8) 0;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.case-title {
+  font-family: var(--font-serif);
+  font-size: clamp(3.5rem, 10vw, 8rem);
+  font-weight: var(--weight-normal);
+  font-style: italic;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+  margin: 0;
+  white-space: nowrap;
+  /* push the baseline down so the text "sits" on the hero */
+  margin-bottom: -0.15em;
+}
+
+/* ===== HERO ===== */
+.case-hero {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto var(--space-12);
+  padding: 0 var(--space-8);
 }
 
 .hero-image {
   width: 100%;
   height: auto;
   display: block;
+  border-radius: var(--radius-sm);
 }
 
-/* Project Header */
-.project-header {
-  max-width: 760px;
-  margin: 0 auto 3rem;
-  padding: 0 2rem;
+/* ===== PROJECT INFO - split ===== */
+.case-info {
+  max-width: 1100px;
+  margin: 0 auto var(--space-16);
+  padding: 0 var(--space-8);
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--space-12);
+  align-items: start;
 }
 
-.project-label {
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #666;
-  margin: 0 0 0.75rem;
-  font-weight: 500;
-}
-
-.project-title {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  margin: 0 0 1.5rem;
-  color: #000;
-}
-
-.project-intro {
-  font-size: 1.25rem;
-  line-height: 1.6;
-  color: #333;
-  margin: 0 0 2rem;
-}
-
-.project-meta {
-  font-size: 0.9375rem;
-  color: #666;
+.info-meta {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  flex-direction: column;
+  gap: var(--space-6);
 }
 
-.meta-divider {
-  color: #ccc;
+.meta-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 
-/* Content Sections */
+.meta-label {
+  font-size: 0.625rem;
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+}
+
+.meta-value {
+  font-size: 0.9375rem;
+  font-weight: var(--weight-medium);
+  color: var(--color-text);
+  line-height: 1.4;
+}
+
+.info-description {
+  padding-top: 0.25rem;
+}
+
+.info-text {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: var(--weight-normal);
+  font-style: italic;
+  line-height: 1.35;
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+/* ===== CONTENT SECTIONS ===== */
 .content-section {
   max-width: 760px;
-  margin: 0 auto 3rem;
-  padding: 0 2rem;
+  margin: 0 auto var(--space-12);
+  padding: 0 var(--space-8);
 }
 
 .content-section-wide {
   max-width: 1200px;
-  margin: 0 auto 3rem;
-  padding: 0 2rem;
+  margin: 0 auto var(--space-12);
+  padding: 0 var(--space-8);
 }
 
 .section-label {
-  font-size: 0.875rem;
+  font-size: 0.625rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #666;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
   margin: 0 0 0.5rem;
-  font-weight: 500;
+  font-weight: var(--weight-semibold);
 }
 
 .section-heading {
-  font-size: 2rem;
-  font-weight: 400;
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: var(--weight-normal);
   font-style: italic;
-  letter-spacing: 0;
+  letter-spacing: -0.01em;
   line-height: 1.3;
-  margin: 0 0 1rem;
-  color: #000;
-  font-family: Georgia, 'Times New Roman', serif;
+  margin: 0 0 var(--space-4);
+  color: var(--color-text);
 }
 
 .body-text {
-  font-size: 1.0625rem;
-  line-height: 1.7;
-  color: #333;
-  margin: 0 0 1rem;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-4);
 }
 
-/* Images */
+/* ===== IMAGES ===== */
 .image-figure {
-  margin: 3rem 0;
+  margin: var(--space-12) 0;
   max-width: 100%;
 }
 
@@ -286,36 +352,35 @@ export default {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
 }
 
-/* Tablet Section — landscape image */
+/* ===== TABLET SECTION ===== */
 .tablet-section {
   max-width: 1000px;
-  margin: 3rem auto;
-  padding: 0 2rem;
+  margin: var(--space-12) auto;
+  padding: 0 var(--space-8);
 }
 
 .tablet-text {
   max-width: 600px;
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-8);
 }
 
 .tablet-frame {
-  background: #f5f5f5;
-  border-radius: 16px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  background: var(--color-accent-soft);
+  border-radius: var(--radius-sm);
+  padding: var(--space-5);
 }
 
 .tablet-image {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 8px;
+  border-radius: 2px;
 }
 
-/* Video — phone recording */
+/* ===== VIDEO ===== */
 .video-phone-container {
   flex: none;
   display: flex;
@@ -327,27 +392,27 @@ export default {
   width: auto;
   max-width: 100%;
   display: block;
-  border-radius: 24px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
 }
 
 .video-phone::-webkit-media-controls {
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity var(--duration-normal);
 }
 
 .video-phone:hover::-webkit-media-controls {
   opacity: 1;
 }
 
-/* Showcase Sections — text + grouped screens */
+/* ===== SHOWCASE SECTIONS ===== */
 .showcase-section {
   display: flex;
   align-items: center;
-  gap: 3rem;
+  gap: var(--space-10);
   max-width: 1400px;
-  margin: 3rem auto;
-  padding: 0 2rem;
+  margin: var(--space-12) auto;
+  padding: 0 var(--space-8);
 }
 
 .showcase-section-reverse {
@@ -363,9 +428,9 @@ export default {
   flex: 1;
   display: flex;
   align-items: flex-start;
-  gap: 1.5rem;
-  padding: 2rem;
-  border-radius: 24px;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  border-radius: var(--radius-sm);
 }
 
 .showcase-screens-2 {
@@ -376,42 +441,43 @@ export default {
   justify-content: center;
 }
 
-.showcase-single {
-  justify-content: center;
-}
-
 .screen-image {
   flex: 1;
   min-width: 0;
   max-width: 280px;
   height: auto;
   display: block;
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  box-shadow: var(--shadow-sm);
 }
 
-/* Media Containers with Colored Backgrounds */
+/* Media Containers */
 .media-container-blue {
-  background: #E8F0FF;
+  background: rgba(232, 240, 255, 0.5) !important;
 }
 
 .media-container-green {
-  background: #DFF5D4;
+  background: rgba(223, 245, 212, 0.45) !important;
 }
 
 .media-container-purple {
-  background: #F0E8FF;
+  background: rgba(240, 232, 255, 0.45) !important;
 }
 
 .media-container-yellow {
-  background: #FFF9E0;
+  background: rgba(255, 249, 224, 0.5) !important;
 }
 
-/* Responsive */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
+  .case-info {
+    grid-template-columns: 200px 1fr;
+    gap: var(--space-8);
+  }
+
   .showcase-section {
     flex-direction: column;
-    gap: 2rem;
+    gap: var(--space-6);
   }
 
   .showcase-section-reverse {
@@ -432,7 +498,6 @@ export default {
   }
 
   .video-phone-container {
-    flex: none;
     width: 100%;
     max-width: 300px;
   }
@@ -445,14 +510,41 @@ export default {
 }
 
 @media (max-width: 768px) {
-  .project-header,
-  .content-section,
-  .content-section-wide {
-    padding: 0 1.5rem;
+  .case-header {
+    padding: var(--space-10) var(--space-5) 0;
   }
 
-  .project-title {
-    font-size: 2rem;
+  .case-title {
+
+    font-size: clamp(2.5rem, 14vw, 5rem);
+    margin-bottom: -0.1em;
+  }
+
+  .case-hero {
+    padding: 0 var(--space-5);
+    margin-bottom: var(--space-8);
+  }
+
+  .case-info {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    padding: 0 var(--space-5);
+    margin-bottom: var(--space-12);
+  }
+
+  .info-meta {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-6);
+  }
+
+  .info-text {
+    font-size: 1.375rem;
+  }
+
+  .content-section,
+  .content-section-wide {
+    padding: 0 var(--space-5);
   }
 
   .section-heading {
@@ -460,12 +552,12 @@ export default {
   }
 
   .showcase-section {
-    padding: 0 1.5rem;
+    padding: 0 var(--space-5);
   }
 
   .showcase-screens {
-    padding: 1.5rem;
-    gap: 1rem;
+    padding: var(--space-4);
+    gap: var(--space-3);
   }
 
   .screen-image {
@@ -481,11 +573,23 @@ export default {
     height: auto;
     width: 100%;
     max-height: 420px;
-    border-radius: 16px;
   }
 }
 
 @media (max-width: 480px) {
+  .case-title {
+
+    font-size: clamp(2.5rem, 13vw, 4rem);
+  }
+
+  .info-meta {
+    gap: var(--space-4);
+  }
+
+  .info-text {
+    font-size: 1.125rem;
+  }
+
   .showcase-screens-3 {
     flex-wrap: wrap;
   }

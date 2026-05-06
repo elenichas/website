@@ -27,7 +27,7 @@
             <h2>The Journey</h2>
             <p>
               I started in architecture, designing spaces and thinking about how people interact with environments.
-              The transition to digital products felt natural &mdash; both require understanding user needs, creating intuitive
+              The transition to digital products felt natural. Both require understanding user needs, creating intuitive
               flows, and bringing complex systems to life. The tools changed, but the problem-solving mindset remained.
             </p>
           </section>
@@ -118,34 +118,35 @@ export default {
 </script>
 
 <style scoped>
-/* Minimal Editorial About Page */
+/* ===== ABOUT PAGE - Editorial Glass ===== */
 .page-layout {
   min-height: 100vh;
-  background: #fff;
+  background: var(--color-bg);
 }
 
 .container {
   max-width: 760px;
   margin: 0 auto;
-  padding: 5rem 2rem;
+  padding: var(--space-20) var(--space-8);
 }
 
 .about-content {
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: var(--space-16);
 }
 
-/* At a Glance */
+/* At a Glance - subtle elevated card */
 .at-a-glance {
-  padding-bottom: 2.5rem;
-  border-bottom: 1px solid #eee;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  padding: var(--space-8);
 }
 
 .glance-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: var(--space-6);
 }
 
 .glance-item {
@@ -157,91 +158,71 @@ export default {
 
 .glance-value {
   font-size: 1.25rem;
-  font-weight: 600;
-  color: #000;
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
   letter-spacing: -0.01em;
   line-height: 1.3;
 }
 
 .glance-label {
-  font-size: 0.75rem;
-  color: #666;
+  font-size: 0.6875rem;
+  color: var(--color-text-muted);
   line-height: 1.4;
-}
-
-/* Header */
-.about-header {
-  text-align: center;
-  padding-bottom: 3rem;
-}
-
-.about-title {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  font-weight: 600;
-  color: #000;
-  margin-bottom: 1.5rem;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-}
-
-.about-lead {
-  font-size: 1.25rem;
-  color: #333;
-  line-height: 1.6;
-  margin: 0;
+  letter-spacing: 0.02em;
 }
 
 /* Story Content */
 .story-content {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: var(--space-12);
 }
 
 .story-section {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--space-4);
 }
 
 .story-section h2 {
-  font-size: 1.5rem;
-  font-weight: 400;
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: var(--weight-normal);
   font-style: italic;
-  color: #000;
+  color: var(--color-text);
   margin: 0;
-  font-family: Georgia, 'Times New Roman', serif;
   line-height: 1.3;
+  letter-spacing: -0.01em;
 }
 
 .story-section p {
-  font-size: 1.0625rem;
-  line-height: 1.7;
-  color: #333;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-text-secondary);
   margin: 0;
 }
 
 .story-section p strong {
-  color: #000;
-  font-weight: 600;
+  color: var(--color-text);
+  font-weight: var(--weight-semibold);
 }
 
 /* Gallery Section */
 .gallery-section {
-  margin: 2rem 0;
+  margin: var(--space-4) 0;
 }
 
 .masonry-gallery {
   column-count: 3;
-  column-gap: 1rem;
+  column-gap: var(--space-3);
 }
 
 .gallery-item {
   break-inside: avoid;
-  margin-bottom: 1rem;
-  border-radius: 4px;
+  margin-bottom: var(--space-3);
+  border-radius: var(--radius-md);
   overflow: hidden;
-  transition: transform 0.3s ease;
+  transition: transform var(--duration-normal) var(--ease-out);
   cursor: pointer;
 }
 
@@ -258,52 +239,15 @@ export default {
 /* CTA Section */
 .cta-section {
   display: flex;
-  gap: 1rem;
+  gap: var(--space-4);
   justify-content: center;
   align-items: center;
-  padding-top: 3rem;
+  padding-top: var(--space-12);
+  border-top: 1px solid var(--color-border);
   flex-wrap: wrap;
 }
 
-.btn-primary,
-.btn-secondary {
-  padding: 0.875rem 1.75rem;
-  border-radius: 2rem;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 1rem;
-}
-
-.btn-primary {
-  background: #1a1a1a;
-  color: white;
-}
-
-.btn-primary:hover {
-  background: #333;
-  transform: translateY(-2px);
-}
-
-.btn-secondary {
-  background: transparent;
-  color: #1a1a1a;
-  border: 2px solid #1a1a1a;
-}
-
-.btn-secondary:hover {
-  background: #1a1a1a;
-  color: white;
-}
-
-.cv-download .mdi {
-  font-size: 1.125rem;
-}
-
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 1024px) {
   .masonry-gallery {
     column-count: 2;
@@ -312,25 +256,19 @@ export default {
 
 @media (max-width: 768px) {
   .container {
-    padding: 3rem 1.5rem;
+    padding: var(--space-10) var(--space-5);
   }
 
   .about-content {
-    gap: 2.5rem;
-  }
-
-  .about-header {
-    text-align: left;
-    padding-bottom: 2rem;
+    gap: var(--space-10);
   }
 
   .at-a-glance {
-    padding-bottom: 2rem;
+    padding: var(--space-6);
   }
 
   .glance-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+    gap: var(--space-4);
   }
 
   .glance-value {
@@ -338,11 +276,11 @@ export default {
   }
 
   .glance-label {
-    font-size: 0.6875rem;
+    font-size: 0.625rem;
   }
 
   .story-content {
-    gap: 2rem;
+    gap: var(--space-8);
   }
 
   .masonry-gallery {
@@ -352,33 +290,32 @@ export default {
   .cta-section {
     flex-direction: column;
     align-items: stretch;
-    padding-top: 2rem;
+    padding-top: var(--space-8);
   }
 
-  .btn-primary,
-  .btn-secondary {
+  .cta-section .btn-primary,
+  .cta-section .btn-secondary {
     justify-content: center;
-    font-size: 0.875rem;
-    padding: 0.75rem 1.5rem;
   }
 }
 
 @media (max-width: 480px) {
   .container {
-    padding: 2rem 1.25rem;
+    padding: var(--space-8) var(--space-4);
   }
 
   .about-content {
-    gap: 2rem;
+    gap: var(--space-8);
   }
 
   .at-a-glance {
-    padding-bottom: 1.5rem;
+    padding: var(--space-5);
+    border-radius: var(--radius-lg);
   }
 
   .glance-grid {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: var(--space-4);
   }
 
   .glance-item {
@@ -389,20 +326,15 @@ export default {
   }
 
   .glance-value {
-    font-size: 1rem;
     min-width: fit-content;
   }
 
-  .glance-label {
-    font-size: 0.75rem;
-  }
-
   .story-content {
-    gap: 1.5rem;
+    gap: var(--space-6);
   }
 
   .story-section h2 {
-    font-size: 1.25rem;
+    font-size: 1.375rem;
   }
 
   .story-section p {
@@ -414,13 +346,7 @@ export default {
   }
 
   .cta-section {
-    padding-top: 1.5rem;
-  }
-
-  .btn-primary,
-  .btn-secondary {
-    font-size: 0.8125rem;
-    padding: 0.625rem 1.25rem;
+    padding-top: var(--space-6);
   }
 }
 </style>

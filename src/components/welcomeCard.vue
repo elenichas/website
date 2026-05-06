@@ -185,45 +185,49 @@ export default {
 .welcome-card {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .welcome-text {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .name {
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 600;
-  color: #000;
-  line-height: 1.1;
+  font-family: var(--font-serif);
+  font-size: clamp(2.75rem, 6vw, 4.5rem);
+  font-weight: var(--weight-normal);
+  font-style: italic;
+  color: var(--color-text);
+  line-height: 1.05;
   letter-spacing: -0.02em;
 }
 
 .job-title-container {
   margin: 0;
-  min-height: 3rem;
+  min-height: 2.5rem;
   display: flex;
   align-items: center;
 }
 
 .job-title {
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
-  font-weight: 400;
-  color: #333;
-  border-right: 2px solid #000;
-  padding-right: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: clamp(1.125rem, 3vw, 1.5rem);
+  font-weight: var(--weight-normal);
+  color: var(--color-text-secondary);
+  border-right: 1.5px solid var(--color-text);
+  padding-right: 0.375rem;
   animation: blinkCursor 1s infinite;
   display: inline-block;
   min-height: 1.2em;
   min-width: 0.5em;
+  letter-spacing: -0.01em;
 }
 
 @keyframes blinkCursor {
   0%, 50% {
-    border-right-color: #000;
+    border-right-color: var(--color-text);
   }
   51%, 100% {
     border-right-color: transparent;
@@ -231,10 +235,10 @@ export default {
 }
 
 .description {
-  font-size: 1.125rem;
-  color: #333;
-  line-height: 1.6;
-  max-width: 600px;
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  max-width: 540px;
 }
 
 .cta-buttons {
@@ -242,46 +246,12 @@ export default {
   gap: 0.75rem;
   align-items: center;
   flex-wrap: wrap;
+  margin-top: var(--space-2);
 }
 
-.btn-primary,
-.btn-secondary {
-  padding: 0.6rem 1.25rem;
-  border-radius: 2rem;
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.875rem;
-  backdrop-filter: blur(12px);
-}
+/* Buttons use global .btn-primary / .btn-secondary from style.css */
 
-.btn-primary {
-  background: rgba(26, 26, 26, 0.85);
-  color: white;
-  border: 1px solid rgba(26, 26, 26, 0.9);
-}
-
-.btn-primary:hover {
-  background: rgba(26, 26, 26, 0.95);
-  transform: translateY(-2px);
-}
-
-.btn-secondary {
-  background: rgba(255, 255, 255, 0.6);
-  color: #1a1a1a;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-}
-
-.btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.9);
-  border-color: rgba(0, 0, 0, 0.3);
-  transform: translateY(-2px);
-}
-
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 768px) {
   .welcome-card {
     text-align: center;
@@ -293,7 +263,7 @@ export default {
   }
 
   .job-title-container {
-    min-height: 2.25rem;
+    min-height: 2rem;
     justify-content: center;
   }
 
@@ -309,33 +279,25 @@ export default {
 
 @media (max-width: 480px) {
   .welcome-card {
-    gap: 0.5rem;
+    gap: 0.75rem;
   }
 
   .welcome-text {
-    gap: 0.5rem;
+    gap: 0.625rem;
   }
 
   .job-title-container {
-    min-height: 1.75rem;
+    min-height: 1.5rem;
   }
 
   .description {
     font-size: 0.8125rem;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   .cta-buttons {
-    flex-direction: row;
-    justify-content: center;
     gap: 0.5rem;
-    margin-top: 0.25rem;
-  }
-
-  .btn-primary,
-  .btn-secondary {
-    padding: 0.5rem 0.875rem;
-    font-size: 0.75rem;
+    margin-top: var(--space-1);
   }
 }
 </style>
