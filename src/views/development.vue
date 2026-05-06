@@ -32,18 +32,22 @@
             </a>
           </article>
         </div>
-      </section>
+            </section>
     </div>
+
+    <app-footer></app-footer>
   </main>
 </template>
 
 <script>
 import AppNavbar from "../components/navbar";
+import AppFooter from "../components/footer";
 
 export default {
   name: "ImageGallery",
   components: {
     AppNavbar,
+    AppFooter,
   },
   data() {
     return {

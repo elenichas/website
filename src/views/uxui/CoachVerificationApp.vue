@@ -158,13 +158,13 @@ export default {
 .case-study {
   background: #fff;
   color: #000;
-  padding-bottom: 5rem;
+  padding-bottom: 3rem;
 }
 
 /* Hero */
 .hero-section {
   width: 100%;
-  margin-bottom: 4rem;
+  margin-bottom: 2.5rem;
 }
 
 .hero-image {
@@ -176,7 +176,7 @@ export default {
 /* Project Header */
 .project-header {
   max-width: 760px;
-  margin: 0 auto 5rem;
+  margin: 0 auto 3rem;
   padding: 0 2rem;
 }
 
@@ -220,13 +220,13 @@ export default {
 /* Content Sections */
 .content-section {
   max-width: 760px;
-  margin: 0 auto 5rem;
+  margin: 0 auto 3rem;
   padding: 0 2rem;
 }
 
 .content-section-wide {
   max-width: 1200px;
-  margin: 0 auto 5rem;
+  margin: 0 auto 3rem;
   padding: 0 2rem;
 }
 
@@ -245,7 +245,7 @@ export default {
   font-style: italic;
   letter-spacing: 0;
   line-height: 1.3;
-  margin: 0 0 1.5rem;
+  margin: 0 0 1rem;
   color: #000;
   font-family: Georgia, 'Times New Roman', serif;
 }
@@ -254,7 +254,7 @@ export default {
   font-size: 1.0625rem;
   line-height: 1.7;
   color: #333;
-  margin: 0 0 1.5rem;
+  margin: 0 0 1rem;
 }
 
 /* Images */
@@ -273,7 +273,7 @@ export default {
 /* Tablet Section — landscape image */
 .tablet-section {
   max-width: 1000px;
-  margin: 5rem auto;
+  margin: 3rem auto;
   padding: 0 2rem;
 }
 
@@ -299,11 +299,14 @@ export default {
 /* Video — phone recording */
 .video-phone-container {
   flex: none;
+  display: flex;
+  justify-content: center;
 }
 
 .video-phone {
   height: 520px;
   width: auto;
+  max-width: 100%;
   display: block;
   border-radius: 24px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
@@ -324,7 +327,7 @@ export default {
   align-items: center;
   gap: 3rem;
   max-width: 1400px;
-  margin: 5rem auto;
+  margin: 3rem auto;
   padding: 0 2rem;
 }
 
@@ -342,7 +345,7 @@ export default {
   display: flex;
   align-items: flex-start;
   gap: 1.5rem;
-  padding: 2.5rem;
+  padding: 2rem;
   border-radius: 24px;
 }
 
@@ -411,7 +414,14 @@ export default {
 
   .video-phone-container {
     flex: none;
-    max-width: 260px;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .video-phone {
+    height: auto;
+    width: 100%;
+    max-height: 480px;
   }
 }
 
@@ -441,6 +451,18 @@ export default {
 
   .screen-image {
     max-width: 160px;
+  }
+
+  .video-phone-container {
+    width: 100%;
+    max-width: 260px;
+  }
+
+  .video-phone {
+    height: auto;
+    width: 100%;
+    max-height: 420px;
+    border-radius: 16px;
   }
 }
 

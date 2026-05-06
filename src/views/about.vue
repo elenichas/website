@@ -1,15 +1,33 @@
 <template>
   <app-navbar></app-navbar>
 
-  <main class="page-layout">
+    <main class="page-layout">
     <div class="container">
       <div class="about-content">
+        <!-- At a Glance -->
+        <section class="at-a-glance">
+          <div class="glance-grid">
+            <div class="glance-item">
+              <span class="glance-value">5+</span>
+              <span class="glance-label">Years in Design & Engineering</span>
+            </div>
+            <div class="glance-item">
+              <span class="glance-value">Foster + Partners</span>
+              <span class="glance-label">Design Systems Analyst</span>
+            </div>
+            <div class="glance-item">
+              <span class="glance-value">MSc</span>
+              <span class="glance-label">Architectural Computation, UCL</span>
+            </div>
+          </div>
+        </section>
+
         <div class="story-content">
           <section class="story-section">
             <h2>The Journey</h2>
             <p>
               I started in architecture, designing spaces and thinking about how people interact with environments.
-              The transition to digital products felt natural! Both require understanding user needs, creating intuitive
+              The transition to digital products felt natural &mdash; both require understanding user needs, creating intuitive
               flows, and bringing complex systems to life. The tools changed, but the problem-solving mindset remained.
             </p>
           </section>
@@ -18,10 +36,8 @@
             <h2>What I Do Now</h2>
             <p>
               As a <strong>Design Systems Analyst at Foster + Partners</strong>, I work at the intersection of design
-              and engineering,
-              creating tools and systems that help creative teams do their best work. From design systems to full web
-              applications,
-              I design and build solutions that make complex workflows feel effortless.
+              and engineering, creating tools and systems that help creative teams do their best work. From design systems
+              to full web applications, I design and build solutions that make complex workflows feel effortless.
             </p>
           </section>
 
@@ -29,10 +45,9 @@
             <h2>UXDX USA 2025</h2>
             <p>
               Last year, I attended <strong>UXDX USA 2025</strong> in New York, an incredible conference bringing
-              together designers,
-              developers, and product managers. It was inspiring to connect with industry leaders, explore emerging
-              trends in
-              product development, and share ideas about the future of design systems and collaborative workflows.
+              together designers, developers, and product managers. It was inspiring to connect with industry leaders,
+              explore emerging trends in product development, and share ideas about the future of design systems and
+              collaborative workflows.
             </p>
           </section>
 
@@ -41,7 +56,7 @@
             <div class="masonry-gallery">
               <div v-for="(item, index) in conferenceImages" :key="index"
                 :class="['gallery-item', `size-${item.size}`]">
-                <img :src="item.src" :alt="`UXDX Conference ${index + 1}`" />
+                <img :src="item.src" :alt="`UXDX Conference ${index + 1}`" loading="lazy" />
               </div>
             </div>
           </section>
@@ -58,29 +73,26 @@
         </div>
       </div>
     </div>
+
+    <app-footer></app-footer>
   </main>
 </template>
 
 <script>
 import AppNavbar from "../components/navbar";
-import SkillSet from "../components/skillSet.vue";
-import GithubAccount from "../components/githubAccount.vue";
+import AppFooter from "../components/footer";
 
- 
- 
 // Use a direct path for the CV as it's located in the public folder
-const cvLink = "/cv/EleniChasiotiCV2026.pdf"; // This points to the public folder
+const cvLink = "/cv/EleniChasiotiCV2026.pdf";
 
 export default {
   name: "About",
   components: {
     AppNavbar,
-    SkillSet,
-    GithubAccount,
+    AppFooter,
   },
   data() {
     return {
-      imageSrc,
       cvLink,
       conferenceImages: [
         { src: require('@/images/about/Image (3).jpg'), size: 'large' },
@@ -122,6 +134,38 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 4rem;
+}
+
+/* At a Glance */
+.at-a-glance {
+  padding-bottom: 3rem;
+  border-bottom: 1px solid #eee;
+}
+
+.glance-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.glance-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  text-align: center;
+}
+
+.glance-value {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #000;
+  letter-spacing: -0.01em;
+}
+
+.glance-label {
+  font-size: 0.8125rem;
+  color: #666;
+  line-height: 1.4;
 }
 
 /* Header */
@@ -273,6 +317,11 @@ export default {
   .about-header {
     text-align: left;
     padding-bottom: 2rem;
+  }
+
+  .glance-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .masonry-gallery {

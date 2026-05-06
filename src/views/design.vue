@@ -54,18 +54,22 @@
             </router-link>
           </article>
         </div>
-      </section>
+            </section>
     </div>
+
+    <app-footer></app-footer>
   </main>
 </template>
 
 <script>
 import AppNavbar from "../components/navbar";
+import AppFooter from "../components/footer";
 
 export default {
   name: "Design",
   components: {
     AppNavbar,
+    AppFooter,
   },
   data() {
     return {
@@ -95,23 +99,23 @@ export default {
                   uxuiImages: [
         {
           src: require("@/images/gallery/moonPixel.png"),
-          alt: "Lunar Habitat Configurator",
-          title: "Lunar Habitat Configurator",
+          alt: "Lunar Habitat 3D Configurator",
+          title: "Lunar Habitat 3D Configurator",
           type: "Design Automation",
           route: "/products/lunar-app",
         },
         {
           src: require("@/images/gallery/industrial.png"),
-          alt: "Industrial Facility Configurator",
-          title: "Industrial Facility Configurator",
+          alt: "Industrial Facility 3D Configurator",
+          title: "Industrial Facility 3D Configurator",
           type: "Configuration System",
           route: "/products/industrial-configurator",
         },
           {
-          src: require("@/images/gallery/language.png"),
-          alt: "Language Learning App",
-          title: "LingoLeap Learning Platform",
-          type: "Educational Experience",
+                    src: require("@/images/gallery/language.jpg"),
+          alt: "Arabiya Language Learning App",
+          title: "Arabiya Mobile App",
+          type: "Language Learning Web App",
           route: "/products/language-learning-app",
         },
         {

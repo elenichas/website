@@ -28,7 +28,7 @@
           <div class="footer-meta">
             <p class="copyright">© 2024 Eleni Chasioti. All rights reserved.</p>
             <p class="made-with">Made with ❤️ and lots of espresso</p>
-            <p class="last-updated">Last updated January 2026</p>
+            <p class="last-updated">Last updated May 2026</p>
           </div>
         </div>
       </div>
@@ -149,18 +149,40 @@ export default {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .footer {
+    margin-top: var(--space-xl);
+  }
+
   .footer-container {
-    padding: var(--space-2xl) var(--space-md);
+    padding: var(--space-lg) var(--space-md) var(--space-md);
   }
   
   .footer-content {
     grid-template-columns: 1fr;
-    gap: var(--space-2xl);
+    gap: var(--space-md);
     text-align: center;
   }
   
+  .footer-cta {
+    gap: var(--space-xs);
+  }
+
+  .cta-title {
+    font-size: 1.25rem;
+  }
+
+  .cta-text {
+    font-size: 0.875rem;
+  }
+
+  .footer-btn {
+    align-self: center;
+    margin-top: var(--space-xs);
+  }
+
   .footer-info {
     align-items: center;
+    gap: var(--space-sm);
   }
   
   .footer-links {
@@ -169,21 +191,53 @@ export default {
   
   .footer-meta {
     text-align: center;
+    gap: 0.125rem;
   }
 }
 
 @media (max-width: 480px) {
+  .footer {
+    margin-top: var(--space-lg);
+  }
+
   .footer-container {
-    padding: var(--space-xl) var(--space-md);
+    padding: var(--space-md) var(--space-sm) var(--space-sm);
+  }
+
+  .footer-content {
+    gap: var(--space-sm);
+  }
+
+  .cta-title {
+    font-size: 1.125rem;
+  }
+
+  .cta-text {
+    font-size: 0.8125rem;
+    line-height: 1.4;
   }
   
   .footer-links {
-    flex-direction: column;
-    gap: var(--space-md);
+    flex-direction: row;
+    gap: var(--space-sm);
   }
-  
-  .cta-title {
-    font-size: 1.5rem;
+
+  .social-link {
+    font-size: 0.8125rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .social-link .mdi {
+    font-size: 1rem;
+  }
+
+  .copyright {
+    font-size: 0.75rem;
+  }
+
+  .made-with,
+  .last-updated {
+    font-size: 0.6875rem;
   }
 }
 </style>

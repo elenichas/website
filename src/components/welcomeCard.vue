@@ -238,43 +238,46 @@ export default {
 
 .cta-buttons {
   display: flex;
-  gap: 1rem;
+  gap: 0.75rem;
   align-items: center;
   flex-wrap: wrap;
 }
 
 .btn-primary,
 .btn-secondary {
-  padding: 0.875rem 1.75rem;
+  padding: 0.6rem 1.25rem;
   border-radius: 2rem;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
   transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 1rem;
+  gap: 0.4rem;
+  font-size: 0.875rem;
+  backdrop-filter: blur(12px);
 }
 
 .btn-primary {
-  background: #1a1a1a;
+  background: rgba(26, 26, 26, 0.85);
   color: white;
+  border: 1px solid rgba(26, 26, 26, 0.9);
 }
 
 .btn-primary:hover {
-  background: #333;
+  background: rgba(26, 26, 26, 0.95);
   transform: translateY(-2px);
 }
 
 .btn-secondary {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.6);
   color: #1a1a1a;
-  border: 2px solid #1a1a1a;
+  border: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 .btn-secondary:hover {
-  background: #1a1a1a;
-  color: white;
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
 }
 
 /* Responsive Design */
@@ -282,21 +285,50 @@ export default {
   .welcome-card {
     text-align: center;
   }
+
+  .welcome-text {
+    gap: 1rem;
+  }
   
   .cta-buttons {
     justify-content: center;
+  }
+
+  .description {
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 480px) {
+  .welcome-card {
+    gap: 1rem;
+  }
+
+  .welcome-text {
+    gap: 0.625rem;
+  }
+
+  .job-title-container {
+    min-height: 2rem;
+  }
+
+  .description {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
   .cta-buttons {
-    flex-direction: column;
-    align-items: stretch;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
   }
   
   .btn-primary,
   .btn-secondary {
-    justify-content: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
   }
 }
 </style>

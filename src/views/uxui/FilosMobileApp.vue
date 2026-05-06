@@ -115,13 +115,13 @@ export default {
 .case-study {
   background: #fff;
   color: #000;
-  padding-bottom: 5rem;
+  padding-bottom: 3rem;
 }
 
 /* Hero */
 .hero-section {
   width: 100%;
-  margin-bottom: 4rem;
+  margin-bottom: 2.5rem;
 }
 
 .hero-image {
@@ -133,7 +133,7 @@ export default {
 /* Project Header */
 .project-header {
   max-width: 760px;
-  margin: 0 auto 5rem;
+  margin: 0 auto 3rem;
   padding: 0 2rem;
 }
 
@@ -177,7 +177,7 @@ export default {
 /* Content Sections */
 .content-section {
   max-width: 760px;
-  margin: 0 auto 5rem;
+  margin: 0 auto 3rem;
   padding: 0 2rem;
 }
 
@@ -196,7 +196,7 @@ export default {
   font-style: italic;
   letter-spacing: 0;
   line-height: 1.3;
-  margin: 0 0 1.5rem;
+  margin: 0 0 1rem;
   color: #000;
   font-family: Georgia, 'Times New Roman', serif;
 }
@@ -205,7 +205,7 @@ export default {
   font-size: 1.0625rem;
   line-height: 1.7;
   color: #333;
-  margin: 0 0 1.5rem;
+  margin: 0 0 1rem;
 }
 
 /* Figma Embed */
@@ -227,10 +227,10 @@ export default {
 .split-section {
   display: flex;
   align-items: center;
-  gap: 4rem;
+  gap: 3rem;
   max-width: 1200px;
-  margin: 5rem auto;
-  padding: 4rem 2rem;
+  margin: 3rem auto;
+  padding: 2rem;
 }
 
 .split-section-left .split-content {
@@ -262,7 +262,7 @@ export default {
 /* Media Containers */
 .media-container-purple {
   background: #F0E8FF;
-  padding: 3rem;
+  padding: 2rem;
   border-radius: 24px;
 }
 
@@ -283,7 +283,8 @@ export default {
   
   .split-section {
     flex-direction: column;
-    padding: 3rem 1.5rem;
+    padding: 2rem 1.5rem;
+    margin: 2rem auto;
   }
   
   .split-content,
@@ -296,21 +297,21 @@ export default {
   font-size: 1.0625rem;
   line-height: 1.7;
   color: #333;
-  margin: 0 0 1.5rem;
+  margin: 0 0 1rem;
 }
 
 /* Simple List */
 .simple-list {
   list-style: none;
   padding: 0;
-  margin: 2rem 0;
+  margin: 1.25rem 0;
 }
 
 .simple-list li {
   font-size: 1.0625rem;
   line-height: 1.7;
   color: #333;
-  margin-bottom: 1rem;
+  margin-bottom: 0.625rem;
   padding-left: 0;
 }
 
@@ -321,7 +322,7 @@ export default {
 
 /* Images */
 .image-figure {
-  margin: 3rem 0;
+  margin: 2rem 0;
   max-width: 100%;
 }
 
@@ -336,8 +337,8 @@ export default {
 .video-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  margin: 3rem 0;
+  gap: 1.5rem;
+  margin: 2rem 0;
 }
 
 .video-figure {
@@ -391,9 +392,10 @@ export default {
     font-size: 1.125rem;
   }
   
-  .split-section {
+    .split-section {
     flex-direction: column;
-    padding: 3rem 1.5rem;
+    padding: 2rem 1.5rem;
+    margin: 2rem auto;
   }
   
   .split-content,
@@ -410,10 +412,10 @@ export default {
 .split-section {
   display: flex;
   align-items: center;
-  gap: 4rem;
+  gap: 3rem;
   max-width: 1200px;
-  margin: 5rem auto;
-  padding: 4rem 2rem;
+  margin: 3rem auto;
+  padding: 2rem;
 }
 
 .split-section-left .split-content {
@@ -445,25 +447,25 @@ export default {
 /* Media Containers with Colored Backgrounds */
 .media-container-blue {
   background: #E8F0FF;
-  padding: 3rem;
+  padding: 2rem;
   border-radius: 24px;
 }
 
 .media-container-green {
   background: #DFF5D4;
-  padding: 3rem;
+  padding: 2rem;
   border-radius: 24px;
 }
 
 .media-container-purple {
   background: #F0E8FF;
-  padding: 3rem;
+  padding: 2rem;
   border-radius: 24px;
 }
 
 .media-container-yellow {
   background: #FFF9E0;
-  padding: 3rem;
+  padding: 2rem;
   border-radius: 24px;
 }
 
