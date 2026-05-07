@@ -22,7 +22,6 @@ This project is a Vue.js application that uses D3.js to visualize data from a Gi
 - **Three.js**: 3D graphics library
 - **Axios**: HTTP client for making API requests
 - **GitHub API**: To fetch repository data
-- **Lottie**: For animated components
 
 ## Installation
 

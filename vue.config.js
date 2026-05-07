@@ -12,6 +12,15 @@ module.exports = {
     },
   },
   chainWebpack: (config) => {
+    // Inline images smaller than 8KB as base64, skip larger ones
+    config.module
+      .rule('images')
+      .set('parser', {
+        dataUrlCondition: {
+          maxSize: 8 * 1024, // 8KB
+        },
+      });
+
     config.plugin("copy").tap((args) => {
       const UNESCAPED_GLOB_SYMBOLS_RE = /(\\?)([()*?[\]{|}]|^!|[!+@](?=\())/g;
       const publicDir = path
@@ -27,5 +36,13 @@ module.exports = {
         );
       return args;
     });
+  },
+  // Performance hints to warn about large assets
+  configureWebpack: {
+    performance: {
+      maxAssetSize: 512000, // 512KB warning threshold
+      maxEntrypointSize: 512000,
+      hints: 'warning',
+    },
   },
 };

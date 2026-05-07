@@ -25,10 +25,9 @@
             </a>
           </div>
           
-          <div class="footer-meta">
-            <p class="copyright">© 2024 Eleni Chasioti. All rights reserved.</p>
-            <p class="made-with">Made with ❤️ and lots of espresso</p>
-            <p class="last-updated">Last updated January 2026</p>
+                    <div class="footer-meta">
+            <p class="copyright">&copy; {{ currentYear }} Eleni Chasioti. All rights reserved.</p>
+            <p class="made-with">Made with Vue.js and lots of espresso</p>
           </div>
         </div>
       </div>
@@ -39,26 +38,31 @@
 <script>
 export default {
   name: "FooterComponent",
+  computed: {
+    currentYear() {
+      return new Date().getFullYear();
+    },
+  },
 };
 </script>
 
 <style scoped>
+/* ===== FOOTER ===== */
 .footer {
-  background: var(--secondary-bg);
-  border-top: 1px solid var(--border-light);
-  margin-top: var(--space-4xl);
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--space-24);
 }
 
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: var(--space-4xl) var(--space-lg) var(--space-2xl);
+  padding: var(--space-16) var(--space-8) var(--space-10);
 }
 
 .footer-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-4xl);
+  gap: var(--space-16);
   align-items: start;
 }
 
@@ -66,124 +70,160 @@ export default {
 .footer-cta {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  gap: var(--space-4);
 }
 
 .cta-title {
-  font-size: 2rem;
-  font-weight: var(--font-weight-semibold);
-  color: var(--text-primary);
+  font-family: var(--font-serif);
+  font-size: 2.25rem;
+  font-weight: var(--weight-normal);
+  font-style: italic;
+  color: var(--color-text);
   margin: 0;
   letter-spacing: -0.01em;
+  line-height: 1.2;
 }
 
 .cta-text {
-  font-size: 1.125rem;
-  color: var(--text-secondary);
+  font-size: 1rem;
+  color: var(--color-text-secondary);
   margin: 0;
   line-height: 1.6;
 }
 
 .footer-btn {
   align-self: flex-start;
-  margin-top: var(--space-sm);
+  margin-top: var(--space-2);
 }
 
 /* Footer Info */
 .footer-info {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xl);
+  gap: var(--space-8);
   align-items: flex-end;
 }
 
 .footer-links {
   display: flex;
-  gap: var(--space-lg);
+  gap: var(--space-3);
   align-items: center;
 }
 
 .social-link {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
-  color: var(--text-secondary);
+  gap: var(--space-2);
+  color: var(--color-text-secondary);
   text-decoration: none;
-  font-weight: var(--font-weight-medium);
-  transition: color var(--transition-fast);
-  padding: var(--space-sm) var(--space-md);
-  border-radius: var(--radius-md);
-  border: 1px solid transparent;
+  font-weight: var(--weight-medium);
+  font-size: 0.8125rem;
+  transition: all var(--duration-normal) var(--ease-out);
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-strong);
 }
 
 .social-link:hover {
-  color: var(--text-primary);
-  background: var(--primary-bg);
-  border-color: var(--border-light);
+  color: var(--color-text);
+  border-color: var(--color-text);
+  transform: translateY(-1px);
 }
 
 .social-link .mdi {
-  font-size: 1.25rem;
+  font-size: 1.125rem;
 }
 
 .footer-meta {
   text-align: right;
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
+  gap: var(--space-1);
 }
 
 .copyright {
-  font-size: 0.9375rem;
-  color: var(--text-primary);
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
   margin: 0;
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--weight-medium);
 }
 
-.made-with,
-.last-updated {
-  font-size: 0.875rem;
-  color: var(--text-muted);
+.made-with {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
   margin: 0;
 }
 
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 768px) {
-  .footer-container {
-    padding: var(--space-2xl) var(--space-md);
+  .footer {
+    margin-top: var(--space-16);
   }
-  
+
+  .footer-container {
+    padding: var(--space-10) var(--space-5) var(--space-8);
+  }
+
   .footer-content {
     grid-template-columns: 1fr;
-    gap: var(--space-2xl);
+    gap: var(--space-10);
     text-align: center;
   }
-  
-  .footer-info {
+
+  .footer-cta {
     align-items: center;
   }
-  
+
+  .cta-title {
+    font-size: 1.75rem;
+  }
+
+  .footer-btn {
+    align-self: center;
+  }
+
+  .footer-info {
+    align-items: center;
+    gap: var(--space-4);
+  }
+
   .footer-links {
     justify-content: center;
   }
-  
+
   .footer-meta {
     text-align: center;
   }
 }
 
 @media (max-width: 480px) {
+  .footer {
+    margin-top: var(--space-12);
+  }
+
   .footer-container {
-    padding: var(--space-xl) var(--space-md);
+    padding: var(--space-8) var(--space-4) var(--space-6);
   }
-  
-  .footer-links {
-    flex-direction: column;
-    gap: var(--space-md);
-  }
-  
+
   .cta-title {
     font-size: 1.5rem;
+  }
+
+  .cta-text {
+    font-size: 0.875rem;
+  }
+
+  .social-link {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.7rem;
+  }
+
+  .copyright {
+    font-size: 0.75rem;
+  }
+
+  .made-with {
+    font-size: 0.6875rem;
   }
 }
 </style>
