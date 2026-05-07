@@ -9,7 +9,6 @@ import ThesisProject from "./views/architecture/ThesisProject.vue";
 import WorkshopDesign from "./views/architecture/WorkshopDesign.vue";
 import FilosMobileApp from "./views/uxui/FilosMobileApp.vue";
 import LocalBakeryApp from "./views/uxui/LocalBakeryApp.vue";
-import ModularApp from "./views/uxui/ModularApp.vue";
 import MoonPixelApp from "./views/uxui/MoonPixelApp.vue";
 import "./style.css";
 
@@ -68,10 +67,6 @@ const routes = [
   {
     path: "/products/brew-crumb",
     component: LocalBakeryApp,
-  },
-    {
-    path: "/products/modular-app",
-    component: ModularApp,
   },
   {
     path: "/products/lunar-app",

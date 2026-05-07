@@ -64,10 +64,9 @@
 <script>
 import AppNavbar from "../components/navbar";
 import SkillSet from "../components/skillSet.vue";
-import GithubAccount from "../components/githubAccount.vue";
 
 // Use require if the image is inside the src/assets directory
-const imageSrc = require("@/images/avatar.png"); // Use require if it's in the assets folder
+//const imageSrc = require("@/images/avatar.webp"); // Use require if it's in the assets folder
 
 // Use a direct path for the CV as it's located in the public folder
 const cvLink = "/cv/EleniChasiotiCV2026.pdf"; // This points to the public folder
@@ -76,30 +75,28 @@ export default {
   name: "About",
   components: {
     AppNavbar,
-    SkillSet,
-    GithubAccount,
+    SkillSet
   },
   data() {
     return {
-      imageSrc,
+      ////imageSrc,
       cvLink,
       conferenceImages: [
-        { src: require('@/images/about/Image (3).jpg'), size: 'large' },
-        { src: require('@/images/about/Image (4).jpg'), size: 'medium' },
-        { src: require('@/images/about/Image (5).jpg'), size: 'small' },
-        { src: require('@/images/about/Image (6).jpg'), size: 'medium' },
-        { src: require('@/images/about/Image (7).jpg'), size: 'large' },
-        { src: require('@/images/about/Image (8).jpg'), size: 'small' },
-        { src: require('@/images/about/Image (9).jpg'), size: 'medium' },
-        { src: require('@/images/about/Image (10).jpg'), size: 'small' },
-        { src: require('@/images/about/Image (11).jpg'), size: 'large' },
-        { src: require('@/images/about/Image (12).jpg'), size: 'medium' },
-        { src: require('@/images/about/Image (13).jpg'), size: 'small' },
-        { src: require('@/images/about/Image (14).jpg'), size: 'medium' },
-        { src: require('@/images/about/Image (15).jpg'), size: 'large' },
-        { src: require('@/images/about/Image (16).jpg'), size: 'small' },
-        { src: require('@/images/about/Image (17).jpg'), size: 'medium' },
-        { src: require('@/images/about/Image (18).jpg'), size: 'small' },
+        { src: require('@/images/about/Image (3).webp'), size: 'large' },
+        { src: require('@/images/about/Image (4).webp'), size: 'medium' },
+        { src: require('@/images/about/Image (5).webp'), size: 'small' },
+        { src: require('@/images/about/Image (6).webp'), size: 'medium' },
+        { src: require('@/images/about/Image (7).webp'), size: 'large' },
+        { src: require('@/images/about/Image (8).webp'), size: 'small' },
+        { src: require('@/images/about/Image (9).webp'), size: 'medium' },
+        { src: require('@/images/about/Image (10).webp'), size: 'small' },
+        { src: require('@/images/about/Image (11).webp'), size: 'large' },
+        { src: require('@/images/about/Image (12).webp'), size: 'medium' },
+        { src: require('@/images/about/Image (13).webp'), size: 'small' },
+        { src: require('@/images/about/Image (14).webp'), size: 'medium' },
+        { src: require('@/images/about/Image (15).webp'), size: 'large' },
+        { src: require('@/images/about/Image (17).webp'), size: 'medium' },
+        { src: require('@/images/about/Image (18).webp'), size: 'small' },
       ],
     };
   },

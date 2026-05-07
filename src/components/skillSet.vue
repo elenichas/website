@@ -50,7 +50,6 @@ import Figma from "@/images/skills/figma.png";
 import AdobeXD from "@/images/skills/adobexd.png";
 import Photoshop from "@/images/skills/photoshop.png";
 import Three from "@/images/skills/three.png";
-import D3 from "@/images/skills/d3.svg";
 
 export default {
   name: "Skillset",

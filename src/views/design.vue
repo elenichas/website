@@ -71,21 +71,21 @@ export default {
     return {
             architectureImages: [
         {
-          src: require("@/images/gallery/hapi.png"),
+          src: require("@/images/gallery/hapi.webp"),
           alt: "Hapi Project",
           title: "Architectural System",
           type: "Parametric Modular Design",
           route: "/products/hapi-project",
         },
         {
-          src: require("@/images/gallery/thesis.png"),
+          src: require("@/images/gallery/thesis.webp"),
           alt: "Thesis Project",
           title: "Computational Framework",
           type: "Rule-Based Design",
           route: "/products/thesis-project",
         },
         {
-          src: require("@/images/gallery/workshop.png"),
+          src: require("@/images/gallery/workshop.webp"),
           alt: "Workshop Design",
           title: "Digital Futures Workshop",
           type: "Prefabrication and Automation Design",
@@ -95,21 +95,21 @@ export default {
             uxuiImages: [
 
         {
-          src: require("@/images/gallery/moonPixel.png"),
+          src: require("@/images/gallery/moonPixel.webp"),
           alt: "Lunar Habitat Configurator",
           title: "Lunar Habitat Configurator",
           type: "Design Automation",
           route: "/products/lunar-app",
         },
         {
-          src: require("@/images/gallery/filos.png"),
+          src: require("@/images/gallery/filos.webp"),
           alt: "Filos Mobile App",
           title: "Filos Mobile Experience",
           type: "Accessible Experience",
           route: "/products/filos-mobile-app",
         },
         {
-          src: require("@/images/gallery/kapihan.png"),
+          src: require("@/images/gallery/kapihan.webp"),
           alt: "Coffee Shop App",
           title: "Brew & Cramb Mobile App",
           type: "Product Design",

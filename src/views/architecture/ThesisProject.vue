@@ -122,13 +122,13 @@ export default {
   },
   data() {
     return {
-      hero: require("@/images/thesis/hero.jpg"),
-      grasshopper: require("@/images/cricket/apendix3.jpg"),
-      segmentation: require("@/images/cricket/segmentation.jpg"),
-      models1: require("@/images/cricket/modelspercentages.jpg"),
-      models2: require("@/images/cricket/modelsrendered.jpg"),
-      wfc: require("@/images/cricket/wfctiles.jpg"),
-      wfcdiagram: require("@/images/cricket/diagram.jpg"),
+      hero: require("@/images/thesis/hero.webp"),
+      grasshopper: require("@/images/cricket/apendix3.webp"),
+      segmentation: require("@/images/cricket/segmentation.webp"),
+      models1: require("@/images/cricket/modelspercentages.webp"),
+      models2: require("@/images/cricket/modelsrendered.webp"),
+      wfc: require("@/images/cricket/wfctiles.webp"),
+      wfcdiagram: require("@/images/cricket/diagram.webp"),
     };
   },
 };

@@ -1,6 +1,4 @@
 import { createApp } from "vue"; // Use Vue 3's createApp
-
-// Vuetify
 import { createVuetify } from "vuetify";
 import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
@@ -10,10 +8,6 @@ import "vuetify/styles";
 
 import App from "./App.vue";
 import router from "./router"; //router setup for Vue 3
-import Vue3Lottie from "vue3-lottie";
-// import "@fortawesome/fontawesome-free/css/all.css";
-// import "@fortawesome/fontawesome-free/js/all.js";
-// import vuetify from "./plugins/vuetify"; // Import your Vuetify setup
 
 const vuetify = createVuetify({
   components,
@@ -46,9 +40,6 @@ app.use(vuetify);
 
 // Use Vue Router
 app.use(router);
-
-// Use Lottie for vue3
-app.use(Vue3Lottie);
 
 // Mount the app
 app.mount("#app");

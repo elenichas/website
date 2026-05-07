@@ -32,7 +32,7 @@ export default {
   data() {
     return {
       cvLink,
-      avatarSrc: require("@/images/eleniBig.png"), // Path to your avatar image
+      avatarSrc: require("@/images/eleniBig.webp"), // Path to your avatar image
             titles: [
         "Product Engineer",
         "Product Designer", 
