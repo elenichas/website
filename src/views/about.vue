@@ -22,6 +22,15 @@
           </div>
         </section>
 
+        <div class="cta-section">
+          <a :href="cvLink" download class="btn-primary cv-download">
+            <span class="mdi mdi-download"></span>
+            Download Resume
+          </a>
+          <a href="mailto:eleni.chasioti@gmail.com" class="btn-secondary">
+            Get in Touch
+          </a>
+        </div>
         <div class="story-content">
           <section class="story-section">
             <h2>The Journey</h2>
@@ -51,25 +60,16 @@
             </p>
           </section>
 
-          <!-- Conference Gallery -->
+                    <!-- Conference Gallery -->
           <section class="gallery-section">
-            <div class="masonry-gallery">
+            <div ref="masonryGallery" class="masonry-gallery">
               <div v-for="(item, index) in conferenceImages" :key="index"
-                :class="['gallery-item', `size-${item.size}`]">
+                :class="['gallery-item', `size-${item.size}`]"
+                :style="{ '--i': index }">
                 <img :src="item.src" :alt="`UXDX Conference ${index + 1}`" loading="lazy" />
               </div>
             </div>
           </section>
-        </div>
-
-        <div class="cta-section">
-          <a :href="cvLink" download class="btn-primary cv-download">
-            <span class="mdi mdi-download"></span>
-            Download Resume
-          </a>
-          <a href="mailto:eleni.chasioti@gmail.com" class="btn-secondary">
-            Get in Touch
-          </a>
         </div>
       </div>
     </div>
@@ -91,26 +91,51 @@ export default {
     AppNavbar,
     AppFooter,
   },
+  mounted() {
+    this.initGalleryReveal();
+  },
+  methods: {
+    initGalleryReveal() {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -30px 0px' }
+      );
+            this.$nextTick(() => {
+        const gallery = this.$refs.masonryGallery;
+        if (gallery) {
+          gallery.querySelectorAll('.gallery-item').forEach((el) => {
+            observer.observe(el);
+          });
+        }
+      });
+    },
+  },
   data() {
     return {
       cvLink,
       conferenceImages: [
-        { src: require('@/images/about/Image (3).jpg'), size: 'large' },
-        { src: require('@/images/about/Image (4).jpg'), size: 'medium' },
-        { src: require('@/images/about/Image (5).jpg'), size: 'small' },
-        { src: require('@/images/about/Image (6).jpg'), size: 'medium' },
-        { src: require('@/images/about/Image (7).jpg'), size: 'large' },
-        { src: require('@/images/about/Image (8).jpg'), size: 'small' },
-        { src: require('@/images/about/Image (9).jpg'), size: 'medium' },
-        { src: require('@/images/about/Image (10).jpg'), size: 'small' },
-        { src: require('@/images/about/Image (11).jpg'), size: 'large' },
-        { src: require('@/images/about/Image (12).jpg'), size: 'medium' },
-        { src: require('@/images/about/Image (13).jpg'), size: 'small' },
-        { src: require('@/images/about/Image (14).jpg'), size: 'medium' },
-        { src: require('@/images/about/Image (15).jpg'), size: 'large' },
-        { src: require('@/images/about/Image (16).jpg'), size: 'small' },
-        { src: require('@/images/about/Image (17).jpg'), size: 'medium' },
-        { src: require('@/images/about/Image (18).jpg'), size: 'small' },
+        { src: require('@/images/about/Image (3).webp'), size: 'large' },
+        { src: require('@/images/about/Image (4).webp'), size: 'medium' },
+        { src: require('@/images/about/Image (5).webp'), size: 'small' },
+        { src: require('@/images/about/Image (6).webp'), size: 'medium' },
+        { src: require('@/images/about/Image (7).webp'), size: 'large' },
+        { src: require('@/images/about/Image (8).webp'), size: 'small' },
+        { src: require('@/images/about/Image (9).webp'), size: 'medium' },
+        { src: require('@/images/about/Image (10).webp'), size: 'small' },
+        { src: require('@/images/about/Image (11).webp'), size: 'large' },
+        { src: require('@/images/about/Image (12).webp'), size: 'medium' },
+        { src: require('@/images/about/Image (13).webp'), size: 'small' },
+        { src: require('@/images/about/Image (14).webp'), size: 'medium' },
+        { src: require('@/images/about/Image (15).webp'), size: 'large' },
+        { src: require('@/images/about/Image (17).webp'), size: 'medium' },
+        { src: require('@/images/about/Image (18).webp'), size: 'small' },
       ],
     };
   },
@@ -217,23 +242,94 @@ export default {
   column-gap: var(--space-3);
 }
 
+/* Gallery item entrance animation */
+@keyframes galleryFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 .gallery-item {
   break-inside: avoid;
   margin-bottom: var(--space-3);
   border-radius: var(--radius-md);
   overflow: hidden;
-  transition: transform var(--duration-normal) var(--ease-out);
   cursor: pointer;
+  position: relative;
+
+  /* Hidden before reveal */
+  opacity: 0;
+  transform: translateY(28px) scale(0.97);
+
+  /* Hover transitions (applied after reveal) */
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Staggered entrance on scroll */
+.gallery-item.revealed {
+  animation: galleryFadeIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: calc(var(--i, 0) * 0.07s);
+}
+
+/* Hover: lift + shadow + image zoom */
 .gallery-item:hover {
-  transform: scale(1.02);
+  transform: translateY(-5px) scale(1.015);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 .gallery-item img {
   width: 100%;
   height: auto;
   display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.06);
+  filter: brightness(1.04) contrast(1.02);
+}
+
+/* Subtle overlay shimmer on hover */
+.gallery-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.04) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  border-radius: var(--radius-md);
+}
+
+.gallery-item:hover::after {
+  opacity: 1;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .gallery-item {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .gallery-item.revealed {
+    animation: none;
+  }
+  .gallery-item img {
+    transition: none;
+  }
 }
 
 /* CTA Section */
@@ -242,8 +338,6 @@ export default {
   gap: var(--space-4);
   justify-content: center;
   align-items: center;
-  padding-top: var(--space-12);
-  border-top: 1px solid var(--color-border);
   flex-wrap: wrap;
 }
 

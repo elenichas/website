@@ -117,8 +117,8 @@ export default {
   },
     data() {
     return {
-      hero: require("@/images/filosHero.png"),
-      wireframes: require("@/images/filosWireframes.png"),
+      hero: require("@/images/filosHero.webp"),
+      wireframes: require("@/images/filosWireframes.webp"),
       figmaSrc: "https://www.figma.com/proto/YQu3rgFADyaMk5HhHQM4Y8/Filos_App?node-id=0-1&t=XXX",
     };
   },

@@ -74,11 +74,7 @@ const routes = [
     path: "/products/brew-crumb",
     component: LocalBakeryApp,
   },
-    {
-    path: "/products/modular-app",
-    component: ModularApp,
-  },
-    {
+  {
     path: "/products/lunar-app",
     component: MoonPixelApp,
   },

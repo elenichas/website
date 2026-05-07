@@ -127,18 +127,18 @@ export default {
   },
   data() {
     return {
-      tall: require("@/images/hapi/iso.png"),
-      hero: require("@/images/hapi/hapihero.jpg"),
+      tall: require("@/images/hapi/iso.webp"),
+      hero: require("@/images/hapi/hapihero.webp"),
       images: [
-        { url: require("@/images/hapi/carousel0.png") },
-        { url: require("@/images/hapi/carousel1.png") },
-        { url: require("@/images/hapi/carousel2.png") },
+        { url: require("@/images/hapi/carousel0.webp") },
+        { url: require("@/images/hapi/carousel1.webp") },
+        { url: require("@/images/hapi/carousel2.webp") },
       ],
       renders: [
-        { url: require("@/images/hapi/render1.jpg") },
-        { url: require("@/images/hapi/render2.jpg") },
-        { url: require("@/images/hapi/render3.jpg") },
-        { url: require("@/images/hapi/render4.jpg") },
+        { url: require("@/images/hapi/render1.webp") },
+        { url: require("@/images/hapi/render2.webp") },
+        { url: require("@/images/hapi/render3.webp") },
+        { url: require("@/images/hapi/render4.webp") },
       ],
     };
   },

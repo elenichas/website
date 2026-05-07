@@ -202,16 +202,16 @@ export default {
   props: {},
   data() {
     return {
-      hero: require("@/images/moonpixel/hero.jpg"),
-      configuratorDiagram: require("@/images/moonpixel/ConfiguratorDiagram.jpg"),
-      moduleTypologies: require("@/images/moonpixel/ModuleTypologies.jpg"),
-      roomsDiagram: require("@/images/moonpixel/RoomsDiagram.jpg"),
+      hero: require("@/images/moonpixel/hero.webp"),
+      configuratorDiagram: require("@/images/moonpixel/ConfiguratorDiagram.webp"),
+      moduleTypologies: require("@/images/moonpixel/ModuleTypologies.webp"),
+      roomsDiagram: require("@/images/moonpixel/RoomsDiagram.webp"),
       viewer3D: require("@/images/moonpixel/3DViewerVideo.mp4"),
             demo: require("@/images/moonpixel/demoVideo.mp4"),
       solutions: require("@/images/moonpixel/SolutionsVideo.mp4"),
-      picture1: require("@/images/moonpixel/Picture1.png"),
-      picture2: require("@/images/moonpixel/Picture2.png"),
-      picture3: require("@/images/moonpixel/Picture3.png"),
+      picture1: require("@/images/moonpixel/Picture1.webp"),
+      picture2: require("@/images/moonpixel/Picture2.webp"),
+      picture3: require("@/images/moonpixel/Picture3.webp"),
     };
   },
 };

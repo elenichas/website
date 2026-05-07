@@ -291,13 +291,13 @@ export default {
   },
   data() {
     return {
-      hero: require("@/images/language/LandingPage.jpg"),
-      dialectSelect: require("@/images/language/2SelectDialect.jpg"),
-      lessonHub: require("@/images/language/3SelectLesson.jpg"),
-      alphabetStudy: require("@/images/language/AlphabetStudyMode.jpg"),
-      alphabetQuiz: require("@/images/language/AlphabetQuizMode.jpg"),
-      diacriticsStudy: require("@/images/language/DiacriticsLessonStudyMode.jpg"),
-      phrasesStudy: require("@/images/language/PhrasesStudyMode.jpg"),
+      hero: require("@/images/language/LandingPage.webp"),
+      dialectSelect: require("@/images/language/2SelectDialect.webp"),
+      lessonHub: require("@/images/language/3SelectLesson.webp"),
+      alphabetStudy: require("@/images/language/AlphabetStudyMode.webp"),
+      alphabetQuiz: require("@/images/language/AlphabetQuizMode.webp"),
+      diacriticsStudy: require("@/images/language/DiacriticsLessonStudyMode.webp"),
+      phrasesStudy: require("@/images/language/PhrasesStudyMode.webp"),
     };
   },
 };

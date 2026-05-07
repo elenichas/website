@@ -17,14 +17,13 @@
         </div>
       </section>
 
-      <!-- Featured Projects -->
+            <!-- Featured Projects -->
       <section class="featured-section">
         <div class="featured-header scroll-reveal">
-          <h2 class="featured-title">Featured Work</h2>
-          <span class="featured-line"></span>
+          <h2 class="featured-title">Featured Projects</h2>
         </div>
 
-                <!-- Project Cards -->
+        <!-- Project Cards -->
         <div class="projects-grid">
           <router-link 
             v-for="(project, index) in featuredProjects" 
@@ -137,7 +136,7 @@ export default {
   },
     data() {
     return {
-      avatarSrc: require("@/images/eleniBig.png"),
+      avatarSrc: require("@/images/eleniBig.webp"),
       featuredProjects: [
         {
           name: "Vintage Coach Catalog",
@@ -150,7 +149,7 @@ export default {
           name: "Moon Habitat Configurator",
           labels: ["Design Automation", "3D Systems"],
           description: "A parametric design system for configuring modular lunar habitats through optimization algorithms and spatial analysis.",
-          image: require("@/images/gallery/moonPixel.png"),
+          image: require("@/images/gallery/moonPixel.webp"),
           route: "/products/lunar-app",
         },
         {
@@ -244,21 +243,6 @@ export default {
   opacity: 0;
 }
 
-/* Featured line grows on reveal */
-.featured-line {
-  display: block;
-  flex: 1;
-  height: 1px;
-  background: var(--color-border-strong);
-  transform-origin: left;
-  transform: scaleX(0);
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
-}
-
-.scroll-reveal.revealed .featured-line {
-  transform: scaleX(1);
-}
-
 /* === BASE === */
 .page-layout {
   min-height: 100vh;
@@ -331,19 +315,22 @@ export default {
 }
 
 .featured-header {
-  margin-bottom: var(--space-8);
-  display: flex;
-  align-items: baseline;
-  gap: var(--space-4);
+  position: relative;
+  z-index: 2;
+  text-align: left;
+  pointer-events: none;
 }
 
 .featured-title {
   font-family: var(--font-serif);
-  font-size: 1.75rem;
+  font-size: clamp(3.5rem, 8vw, 7rem);
   font-weight: var(--weight-normal);
   font-style: italic;
   color: var(--color-text);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  margin: 0 0 -0.15em;
+  pointer-events: auto;
 }
 
 /* ===== PROJECT CARDS GRID ===== */
@@ -377,6 +364,11 @@ export default {
 
 .project-card--hero {
   grid-column: 1 / -1;
+}
+
+.project-card--hero .project-card__image {
+  position: relative;
+  z-index: 1;
 }
 
 /* Image container */
@@ -463,20 +455,11 @@ export default {
   margin: 0 0 0.375rem;
 }
 
-.project-card--hero .project-card__title {
-  font-size: 1.5rem;
-}
-
 .project-card__desc {
   font-size: 0.875rem;
   color: var(--color-text-secondary);
   line-height: 1.6;
   margin: 0;
-}
-
-.project-card--hero .project-card__desc {
-  font-size: 0.9375rem;
-  max-width: 680px;
 }
 
 /* ===== TECH STACK ===== */
@@ -508,7 +491,9 @@ export default {
 .stack-item {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
+  flex: 1 1 auto;
   padding: 0.375rem 0.75rem;
   border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-sm);
@@ -594,12 +579,9 @@ export default {
     padding: var(--space-8) 0;
   }
 
-  .featured-header {
-    margin-bottom: var(--space-5);
-  }
-
-  .featured-title {
-    font-size: 1.375rem;
+      .featured-title {
+    font-size: clamp(2.5rem, 12vw, 4.5rem);
+    margin-bottom: -0.12em;
   }
 
   .projects-grid {
@@ -615,11 +597,7 @@ export default {
     aspect-ratio: 16 / 10;
   }
 
-  .project-card--hero .project-card__title {
-    font-size: 1.25rem;
-  }
-
-  .project-card__title {
+    .project-card__title {
     font-size: 1.125rem;
   }
 
@@ -661,6 +639,11 @@ export default {
   .avatar {
     width: 100px;
     height: 100px;
+  }
+
+      .featured-title {
+    font-size: clamp(2rem, 11vw, 3.5rem);
+    margin-bottom: -0.1em;
   }
 
   .featured-section {

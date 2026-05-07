@@ -4,7 +4,7 @@
       <!-- Logo/Brand -->
       <div class="brand">
         <router-link to="/" class="brand-link">
-          <span class="brand-initial">E</span>
+          <span class="brand-initial">E C</span>
           <span class="brand-name">Eleni Chasioti</span>
         </router-link>
       </div>

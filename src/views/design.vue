@@ -76,21 +76,21 @@ export default {
     return {
             architectureImages: [
         {
-          src: require("@/images/gallery/hapi.png"),
+          src: require("@/images/gallery/hapi.webp"),
           alt: "Hapi Project",
           title: "Architectural System",
           type: "Parametric Modular Design",
           route: "/products/hapi-project",
         },
         {
-          src: require("@/images/gallery/thesis.png"),
+          src: require("@/images/gallery/thesis.webp"),
           alt: "Thesis Project",
           title: "Computational Framework",
           type: "Rule-Based Design",
           route: "/products/thesis-project",
         },
         {
-          src: require("@/images/gallery/workshop.png"),
+          src: require("@/images/gallery/workshop.webp"),
           alt: "Workshop Design",
           title: "Digital Futures Workshop",
           type: "Prefabrication and Automation Design",
@@ -115,7 +115,7 @@ export default {
           route: "/products/industrial-configurator",
         },
         {
-          src: require("@/images/gallery/moonPixel.png"),
+          src: require("@/images/gallery/moonPixel.webp"),
           alt: "Lunar Habitat 3D Configurator",
           title: "Moon Habitat Configurator",
           type: "Design Automation",
@@ -131,7 +131,7 @@ export default {
           route: "/products/language-learning-app",
         },
         {
-          src: require("@/images/gallery/filos.png"),
+          src: require("@/images/gallery/filos.webp"),
           alt: "Filos Mobile App",
           title: "Filos Mobile Experience",
           type: "Accessible Experience",
@@ -139,7 +139,7 @@ export default {
           route: "/products/filos-mobile-app",
         },
         {
-          src: require("@/images/gallery/kapihan.png"),
+          src: require("@/images/gallery/kapihan.webp"),
           alt: "Coffee Shop App",
           title: "Brew & Crumb Mobile App",
           type: "Product Design",

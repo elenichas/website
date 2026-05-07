@@ -109,16 +109,16 @@ export default {
   },
   data() {
     return {
-      hero: require("@/images/habitat/hero.jpg"),
+      hero: require("@/images/habitat/hero.webp"),
       images: [
-        { url: require("@/images/habitat/voxelunits.png") },
-        { url: require("@/images/habitat/unitypes.png") },
-        { url: require("@/images/habitat/siteviewAggregations.png") },
-        { url: require("@/images/habitat/pathAnddensity.png") },
-        { url: require("@/images/habitat/elements.png") },
-        { url: require("@/images/habitat/exploded.png") },
-        { url: require("@/images/habitat/aggregations2.png") },
-        { url: require("@/images/habitat/assembledunits.png") },
+        { url: require("@/images/habitat/voxelunits.webp") },
+        { url: require("@/images/habitat/unitypes.webp") },
+        { url: require("@/images/habitat/siteviewAggregations.webp") },
+        { url: require("@/images/habitat/pathAnddensity.webp") },
+        { url: require("@/images/habitat/elements.webp") },
+        { url: require("@/images/habitat/exploded.webp") },
+        { url: require("@/images/habitat/aggregations2.webp") },
+        { url: require("@/images/habitat/assembledunits.webp") },
       ],
     };
   },

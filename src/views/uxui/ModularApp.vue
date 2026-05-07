@@ -178,9 +178,9 @@ export default {
   },
   data() {
     return {
-      hero: require("@/images/kapihanHero.png"),
-      wireframes: require("@/images/kapihanWireframes.png"),
-      prototypes: require("@/images/kapihanPrototypes.png"),
+      hero: require("@/images/kapihanHero.webp"),
+      wireframes: require("@/images/kapihanWireframes.webp"),
+      prototypes: require("@/images/kapihanPrototypes.webp"),
       figmaSrc: "https://www.figma.com/proto/dSiLtVj2GKzRZYcfYoe8iW/KapihanApp?node-id=49-5572&t=qR7dRV7dwGhpgw8c-1",
     };
   },
