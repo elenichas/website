@@ -122,16 +122,7 @@
         <img :src="authFail" alt="Failed authentication" class="screen-image" />
       </div>
     </section>
-
-    <!-- My Role -->
-    <section class="content-section">
-      <p class="section-label">My Role</p>
-      <h2 class="section-heading">End-to-end ownership</h2>
-      <p class="body-text">
-        Sole designer and developer. I conducted the primary research (cataloging 70 original Coach publications), designed the information architecture, created the UI in Figma, and built the full application in Next.js with static generation for all 778 product pages.
-      </p>
-    </section>
-
+ 
     <!-- Technical + Reflection -->
     <section class="content-section">
       <p class="section-label">Reflection</p>

@@ -83,8 +83,8 @@
 
         <!-- Video -->
     <section class="content-section">
-      <p class="section-label">Final Assembly</p>
-      <h2 class="section-heading">Physical prototype</h2>
+      <!-- <p class="section-label">Final Assembly</p>
+      <h2 class="section-heading">Physical prototype</h2> -->
       <figure class="video-figure">
         <video controls class="content-video">
           <source src="/vids/habitatVideo.webm" type="video/webm" />

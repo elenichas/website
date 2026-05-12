@@ -126,8 +126,15 @@ const router = createRouter({
   history: createWebHistory(), // Replaces `mode: 'history'` in Vue 3
   routes,
   scrollBehavior(to, from, savedPosition) {
-    // Always scroll to top when navigating to a new route
-    return { top: 0 };
+    if (to.path.startsWith("/products/")) {
+      return new Promise((resolve) => {
+        requestAnimationFrame(() => {
+          resolve({ left: 0, top: 0, behavior: "auto" });
+        });
+      });
+    }
+
+    return { left: 0, top: 0, behavior: "auto" };
   },
 });
 
