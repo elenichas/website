@@ -8,11 +8,24 @@ export default {
   data() {
     return {
       caseStudyObserver: null,
+      productLinkClickHandler: null,
     };
   },
   mounted() {
+    this.productLinkClickHandler = (event) => {
+      const link = event.target.closest?.("a[href*='/products/']");
+      if (link) {
+        window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      }
+    };
+    document.addEventListener("click", this.productLinkClickHandler, true);
+
     this.$router.afterEach(() => {
-      this.$nextTick(this.prepareEditorialSections);
+      this.forceTopScroll();
+      this.$nextTick(() => {
+        this.forceTopScroll();
+        this.prepareEditorialSections();
+      });
     });
     this.prepareEditorialSections();
   },
@@ -20,8 +33,30 @@ export default {
     if (this.caseStudyObserver) {
       this.caseStudyObserver.disconnect();
     }
+    if (this.productLinkClickHandler) {
+      document.removeEventListener("click", this.productLinkClickHandler, true);
+    }
+  },
+  watch: {
+    $route() {
+      this.forceTopScroll();
+    },
   },
   methods: {
+    forceTopScroll() {
+      const scrollTop = () => {
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      };
+
+      scrollTop();
+      this.$nextTick(() => {
+        scrollTop();
+        requestAnimationFrame(scrollTop);
+        setTimeout(scrollTop, 80);
+      });
+    },
     prepareEditorialSections() {
       if (this.caseStudyObserver) {
         this.caseStudyObserver.disconnect();
