@@ -12,7 +12,7 @@
     </div>
 
     <!-- Project Info - split layout -->
-    <div class="case-info anim-reveal" style="--delay: 0.3s;">
+    <div class="case-info">
       <div class="info-meta">
         <div class="meta-block">
           <span class="meta-label">Type</span>
@@ -44,16 +44,16 @@
     </section>
 
     <!-- Solution -->
-    <section class="split-section split-section-left">
-      <div class="split-content">
+    <section class="content-section-wide bakery-showcase bakery-showcase-left">
+      <div class="showcase-copy">
         <p class="section-label">Solution</p>
         <h2 class="section-heading">Order ahead, skip the line</h2>
         <p class="body-text">
           A mobile app enabling preorders, delivery tracking, and merchandise shopping to streamline operations and enhance customer experience. Customers can browse the menu, schedule pickup times, and track their orders in real-time.
         </p>
       </div>
-      <div class="split-media media-container-green">
-        <img :src="wireframes" alt="Brew & Crumb wireframes" class="split-image" />
+      <div class="showcase-media media-container-green">
+        <img :src="wireframes" alt="Brew & Crumb wireframes" class="showcase-image" />
       </div>
     </section>
 
@@ -67,21 +67,21 @@
     </section>
 
     <!-- Prototypes -->
-    <section class="split-section split-section-right">
-      <div class="split-media media-container-yellow">
-        <img :src="prototypes" alt="High-fidelity screens" class="split-image" />
-      </div>
-      <div class="split-content">
+    <section class="content-section-wide bakery-showcase bakery-showcase-right animate-on-scroll reveal-from-left">
+      <div class="showcase-copy">
         <p class="section-label">Design</p>
         <h3 class="section-heading">Warm and inviting</h3>
         <p class="body-text">
           I developed a warm, inviting visual language that reflects the cozy atmosphere of a neighborhood coffee shop. The earthy tones and clean typography create an approachable yet modern aesthetic.
         </p>
       </div>
+      <div class="showcase-media media-container-yellow">
+        <img :src="prototypes" alt="High-fidelity screens" class="showcase-image" />
+      </div>
     </section>
 
     <!-- Visual Design Details -->
-    <section class="content-section">
+    <section class="content-section visual-language-section">
       <p class="section-label">Visual Language</p>
       <h2 class="section-heading">Design system</h2>
       
@@ -204,7 +204,7 @@ export default {
 
 .anim-reveal {
   opacity: 0;
-  animation: revealUp 0.8s var(--ease-out) forwards;
+  animation: revealUp 1.25s var(--ease-out) forwards;
   animation-delay: var(--delay, 0s);
 }
 
@@ -234,6 +234,8 @@ export default {
   margin: 0;
   white-space: nowrap;
   margin-bottom: -0.15em;
+  max-width: 100%;
+  overflow-wrap: normal;
 }
 
 /* ===== HERO ===== */
@@ -394,6 +396,90 @@ export default {
   display: block;
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-sm);
+}
+
+/* Full-width product image showcases */
+.case-study .bakery-showcase {
+  max-width: 1240px;
+  margin: var(--space-12) auto;
+  padding: 0 var(--space-8);
+  display: grid;
+  gap: var(--space-5);
+  place-items: stretch;
+}
+
+.case-study .bakery-showcase .showcase-copy {
+  max-width: 520px;
+}
+
+.case-study .bakery-showcase-left .showcase-copy {
+  justify-self: start;
+}
+
+.case-study .bakery-showcase-right .showcase-copy {
+  justify-self: end;
+  text-align: right;
+}
+
+.case-study .bakery-showcase-right .body-text {
+  margin-left: auto;
+}
+
+.showcase-media {
+  width: 100%;
+  padding: var(--space-4);
+  border-radius: var(--radius-sm);
+}
+
+.showcase-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+}
+
+.case-study .visual-language-section {
+  max-width: 960px;
+  text-align: left;
+  place-items: start;
+}
+
+.case-study .visual-language-section .section-heading,
+.case-study .visual-language-section .section-label {
+  text-align: left;
+}
+
+.case-study .visual-language-section .style-guide {
+  display: grid;
+  justify-items: start;
+}
+
+.case-study .visual-language-section .style-block {
+  width: min(100%, 760px);
+}
+
+.case-study .visual-language-section .style-heading {
+  text-align: left;
+}
+
+.case-study .visual-language-section .color-palette {
+  justify-content: start;
+}
+
+.case-study .visual-language-section .color-item,
+.case-study .visual-language-section .type-sample,
+.case-study .visual-language-section .component-example {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.case-study .visual-language-section .color-info {
+  align-items: flex-start;
+}
+
+.case-study .visual-language-section .components-showcase {
+  justify-content: flex-start;
 }
 
 /* Style Guide */
@@ -566,11 +652,45 @@ export default {
   .split-section {
     padding: 0 var(--space-5);
   }
+
+  .case-study .bakery-showcase {
+    padding: 0 var(--space-5);
+    margin: var(--space-10) auto;
+  }
+
+  .case-study .bakery-showcase-right .showcase-copy,
+  .case-study .visual-language-section,
+  .case-study .visual-language-section .section-heading,
+  .case-study .visual-language-section .section-label,
+  .case-study .visual-language-section .style-heading {
+    text-align: left;
+  }
+
+  .case-study .bakery-showcase-right .showcase-copy,
+  .case-study .visual-language-section .style-guide,
+  .case-study .visual-language-section .style-block {
+    justify-self: stretch;
+    justify-items: stretch;
+  }
+
+  .case-study .visual-language-section .color-palette,
+  .case-study .visual-language-section .components-showcase {
+    justify-content: start;
+  }
+
+  .case-study .visual-language-section .color-item,
+  .case-study .visual-language-section .type-sample,
+  .case-study .visual-language-section .component-example,
+  .case-study .visual-language-section .color-info {
+    align-items: flex-start;
+    text-align: left;
+  }
 }
 
 @media (max-width: 480px) {
   .case-title {
     font-size: clamp(2.5rem, 13vw, 4rem);
+    white-space: normal;
   }
 
   .info-meta {

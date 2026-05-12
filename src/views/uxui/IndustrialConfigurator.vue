@@ -20,7 +20,7 @@
         </div>
         <div class="meta-block">
           <span class="meta-label">Role</span>
-          <span class="meta-value">Product Design &amp; System Architecture</span>
+          <span class="meta-value">UX/UI Designer, Front End Developer</span>
         </div>
         <div class="meta-block">
           <span class="meta-label">Stack</span>
@@ -47,12 +47,7 @@
     </section>
 
     <!-- System Diagram Video -->
-    <section class="content-section">
-      <p class="section-label">System Architecture</p>
-      <h2 class="section-heading">Understanding the system</h2>
-      <p class="body-text">
-        The diagram illustrates the comprehensive architecture of the configurator system, showing how modular components, network connections, and validation rules work together to create a cohesive facility design platform.
-      </p>
+    <section class="content-section-wide industrial-media-story industrial-video-only">
       <figure class="image-figure">
         <video :src="diagramVideo" autoplay muted loop playsinline class="content-video">
           Your browser does not support the video tag.
@@ -140,7 +135,7 @@
     </section>
 
     <!-- Add Model -->
-    <section class="content-section">
+    <section class="content-section-wide industrial-media-story">
       <p class="section-label">Component Selection</p>
       <h2 class="section-heading">Modular catalog integration</h2>
       <p class="body-text">
@@ -180,28 +175,19 @@
     </section>
 
     <!-- Catalog Comparison -->
-    <section class="content-section">
+    <section class="content-section-wide catalog-system-section">
       <p class="section-label">Catalog System</p>
       <h2 class="section-heading">Component comparison and selection</h2>
       <p class="body-text">
         The catalog interface enables side-by-side comparison of modular components, facilitating informed decisions based on technical specifications, spatial requirements, and compatibility.
       </p>
-      <figure class="image-figure">
-        <img :src="modelCatalogCompare" alt="Catalog Comparison" class="content-image" />
-      </figure>
-    </section>
-
-    <!-- Catalog Detailed View -->
-    <section class="split-section split-section-right">
-      <div class="split-media media-container-purple">
-        <img :src="modelCatalogDetailed" alt="Detailed Catalog View" class="split-image" />
-      </div>
-      <div class="split-content">
-        <p class="section-label">Detail View</p>
-        <h3 class="section-heading">Comprehensive component information</h3>
-        <p class="body-text">
-          Detailed catalog views provide complete technical documentation, 3D visualizations, and connection specifications for each modular unit.
-        </p>
+      <div class="catalog-image-grid">
+        <figure class="catalog-figure">
+          <img :src="modelCatalogCompare" alt="Catalog Comparison" class="content-image" />
+        </figure>
+        <figure class="catalog-figure">
+          <img :src="modelCatalogDetailed" alt="Detailed Catalog View" class="content-image" />
+        </figure>
       </div>
     </section>
 
@@ -300,7 +286,7 @@ export default {
 .case-study {
   background: var(--color-bg);
   color: var(--color-text);
-  padding-bottom: var(--space-12);
+  padding-bottom: var(--space-10);
 }
 
 /* ===== CINEMATIC HEADER ===== */
@@ -313,15 +299,15 @@ export default {
 
 .case-title {
   font-family: var(--font-serif);
-  font-size: clamp(3.5rem, 10vw, 8rem);
+  font-size: clamp(3rem, 8vw, 6.5rem);
   font-weight: var(--weight-normal);
   font-style: italic;
-  line-height: 0.95;
-  letter-spacing: -0.03em;
+  line-height: 1;
+  letter-spacing: 0;
   color: var(--color-text);
   margin: 0;
-  white-space: nowrap;
-  margin-bottom: -0.15em;
+  white-space: normal;
+  margin-bottom: -0.08em;
 }
 
 /* ===== HERO ===== */
@@ -329,7 +315,7 @@ export default {
   position: relative;
   z-index: 1;
   max-width: 1100px;
-  margin: 0 auto var(--space-12);
+  margin: 0 auto var(--space-8);
   padding: 0 var(--space-8);
 }
 
@@ -343,11 +329,11 @@ export default {
 /* ===== PROJECT INFO - split ===== */
 .case-info {
   max-width: 1100px;
-  margin: 0 auto var(--space-16);
+  margin: 0 auto var(--space-12);
   padding: 0 var(--space-8);
   display: grid;
   grid-template-columns: 280px 1fr;
-  gap: var(--space-12);
+  gap: var(--space-8);
   align-items: start;
 }
 
@@ -384,25 +370,25 @@ export default {
 
 .info-text {
   font-family: var(--font-serif);
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
   font-weight: var(--weight-normal);
   font-style: italic;
-  line-height: 1.35;
+  line-height: 1.32;
   color: var(--color-text);
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   margin: 0;
 }
 
 /* ===== CONTENT SECTIONS ===== */
 .content-section {
-  max-width: 760px;
-  margin: 0 auto var(--space-12);
+  max-width: 860px;
+  margin: 0 auto var(--space-10);
   padding: 0 var(--space-8);
 }
 
 .content-section-wide {
-  max-width: 1200px;
-  margin: 0 auto var(--space-12);
+  max-width: 1280px;
+  margin: 0 auto var(--space-10);
   padding: 0 var(--space-8);
 }
 
@@ -417,18 +403,18 @@ export default {
 
 .section-heading {
   font-family: var(--font-serif);
-  font-size: 1.75rem;
+  font-size: clamp(1.55rem, 2.4vw, 2rem);
   font-weight: var(--weight-normal);
   font-style: italic;
-  letter-spacing: -0.01em;
-  line-height: 1.3;
+  letter-spacing: 0;
+  line-height: 1.22;
   margin: 0 0 var(--space-4);
   color: var(--color-text);
 }
 
 .body-text {
   font-size: 1rem;
-  line-height: 1.75;
+  line-height: 1.68;
   color: var(--color-text-secondary);
   margin: 0 0 var(--space-4);
 }
@@ -448,6 +434,12 @@ export default {
   padding-left: 0;
 }
 
+.case-study .simple-list li,
+.case-study .simple-list li:last-child {
+  border-top: 0;
+  border-bottom: 0;
+}
+
 .simple-list li strong {
   color: var(--color-text);
   font-weight: var(--weight-semibold);
@@ -455,7 +447,7 @@ export default {
 
 /* ===== IMAGES ===== */
 .image-figure {
-  margin: var(--space-8) 0;
+  margin: var(--space-6) 0;
   max-width: 100%;
 }
 
@@ -474,10 +466,74 @@ export default {
   border-radius: var(--radius-sm);
 }
 
+.industrial-media-story {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.34fr) minmax(0, 0.66fr);
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.industrial-media-story .image-figure {
+  grid-column: 2;
+  grid-row: 1 / span 3;
+  margin: 0;
+}
+
+.industrial-media-story .section-label,
+.industrial-media-story .section-heading,
+.industrial-media-story .body-text {
+  grid-column: 1;
+}
+
+.industrial-video-only {
+  display: block;
+}
+
+.industrial-video-only .image-figure {
+  width: 100%;
+  aspect-ratio: auto;
+  margin: 0;
+}
+
+.industrial-video-only .content-video {
+  width: 100%;
+  height: auto;
+}
+
+.catalog-system-section {
+  max-width: 1280px;
+}
+
+.catalog-system-section .section-label,
+.catalog-system-section .section-heading,
+.catalog-system-section .body-text {
+  max-width: 760px;
+}
+
+.catalog-image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+}
+
+.catalog-figure {
+  aspect-ratio: 16 / 10;
+  margin: 0;
+  overflow: hidden;
+}
+
+.catalog-figure .content-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 /* Carousel Wrapper */
 .carousel-wrapper {
   overflow: hidden;
   aspect-ratio: 16 / 10;
+  width: 100%;
 }
 
 .carousel-wrapper :deep(.v-carousel) {
@@ -503,9 +559,9 @@ export default {
 .split-section {
   display: flex;
   align-items: center;
-  gap: var(--space-10);
+  gap: var(--space-8);
   max-width: 1200px;
-  margin: var(--space-12) auto;
+  margin: var(--space-10) auto;
   padding: 0 var(--space-8);
 }
 
@@ -532,7 +588,13 @@ export default {
 
 .split-media {
   flex: 1;
-  max-width: 600px;
+  max-width: 680px;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 /* Media Containers */
@@ -562,10 +624,23 @@ export default {
 
 .split-image {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: contain;
   display: block;
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-sm);
+}
+
+.industrial-media-story .image-figure {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.industrial-media-story .content-image,
+.industrial-media-story .content-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 /* ===== RESPONSIVE ===== */
@@ -621,6 +696,7 @@ export default {
   .content-section,
   .content-section-wide {
     padding: 0 var(--space-5);
+    margin-bottom: var(--space-10);
   }
 
   .section-heading {
@@ -629,6 +705,28 @@ export default {
 
   .split-section {
     padding: 0 var(--space-5);
+    margin: var(--space-10) auto;
+  }
+
+  .industrial-media-story {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  .industrial-media-story .image-figure,
+  .industrial-media-story .section-label,
+  .industrial-media-story .section-heading,
+  .industrial-media-story .body-text {
+    grid-column: 1;
+  }
+
+  .industrial-media-story .image-figure {
+    grid-row: auto;
+  }
+
+  .catalog-image-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3);
   }
 }
 

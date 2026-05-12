@@ -256,9 +256,7 @@
       <p class="body-text">
         This project taught me how to handle bidirectional text (RTL Arabic alongside LTR English/Greek), design quiz systems that provide encouraging feedback without being punitive, and build progressive learning pathways that respect the complexity of a new writing system.
       </p>
-      <p class="body-text">
-        The two-phase study-then-practice model proved effective: users can reference material at any time and return to quizzes without losing progress. Supporting multiple UI languages also reinforced the importance of building internationalization into the architecture from the start rather than retrofitting it later.
-      </p>
+ 
       <p class="body-text">
         Because this is a living project tied to my own language studies, it continues to evolve. Each new lesson with my teacher becomes potential content for the app, keeping both the learning and the development process closely connected.
       </p>
@@ -472,6 +470,12 @@ export default {
 .simple-list li strong {
   color: var(--color-text);
   font-weight: var(--weight-semibold);
+}
+
+.case-study .simple-list li,
+.case-study .simple-list li:last-child {
+  border-top: 0;
+  border-bottom: 0;
 }
 
 /* ===== IMAGES ===== */
