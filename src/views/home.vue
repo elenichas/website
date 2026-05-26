@@ -279,6 +279,12 @@ export default {
 .page-layout :deep(.footer) {
   position: relative;
   z-index: 2;
+  margin-top: 0;
+}
+
+.page-layout :deep(.footer-container) {
+  padding-top: clamp(2rem, 4vw, 4rem);
+  padding-bottom: clamp(2rem, 4vw, 3.5rem);
 }
 
 .section-eyebrow,
@@ -411,15 +417,10 @@ export default {
   object-fit: cover;
   display: block;
   filter: saturate(0.9) contrast(1.02);
-  transition: transform var(--duration-slow) var(--ease-out);
 }
 
 .avatar-caption {
   display: none;
-}
-
-.avatar-wrapper:hover .avatar {
-  transform: scale(1.035);
 }
 
 .hero-monogram {
@@ -429,8 +430,9 @@ export default {
 .home-marquee {
   display: flex;
   gap: clamp(1.5rem, 4vw, 3rem);
-  width: 100%;
-  margin: 0 0 var(--space-12);
+  width: auto;
+  margin: 0 calc(50% - 50vw + 7px) var(--space-12);
+  padding: 0 clamp(1rem, 4vw, 4rem);
   overflow: hidden;
   border-top: 1px solid rgba(17, 17, 17, 0.1);
   border-bottom: 1px solid rgba(17, 17, 17, 0.1);
@@ -496,12 +498,13 @@ export default {
 }
 
 .projects-stack {
+  --stack-runway: clamp(260px, 24vh, 320px);
   position: relative;
   z-index: 2;
   width: 100%;
   max-width: none;
-  margin: 0 auto;
-  padding-bottom: clamp(1220px, 150vh, 1760px);
+  margin: 0 auto calc(var(--stack-runway) * -1);
+  padding-bottom: var(--stack-runway);
 }
 
 .project-card-frame {
@@ -518,7 +521,7 @@ export default {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(340px, 0.85fr);
   min-height: clamp(560px, 72vh, 760px);
-  margin-bottom: clamp(460px, 82vh, 980px);
+  margin-bottom: clamp(260px, 40vh, 520px);
   overflow: hidden;
   color: #111111;
   text-decoration: none;
@@ -533,7 +536,7 @@ export default {
 }
 
 .project-card-frame:last-child .project-card {
-  margin-bottom: clamp(460px, 82vh, 980px);
+  margin-bottom: clamp(260px, 40vh, 520px);
 }
 
 .project-card:hover,
@@ -645,7 +648,7 @@ export default {
 .stack-section {
   position: relative;
   z-index: 20;
-  margin: calc(clamp(1340px, 166vh, 1900px) * -1) calc(50% - 50vw + 7px) 0;
+  margin: calc(clamp(340px, 32vh, 480px) * -1) calc(50% - 50vw + 7px) 0;
   padding: 0;
   border: 0;
   background: transparent;
@@ -788,6 +791,7 @@ export default {
 
   .projects-stack {
     gap: var(--space-6);
+    padding-bottom: 0;
   }
 
   .project-card {
@@ -823,7 +827,7 @@ export default {
   }
 
   .stack-section {
-    margin-top: calc(clamp(240px, 36vh, 420px) * -1);
+    margin-top: 0;
     padding: 0;
   }
 }

@@ -347,26 +347,30 @@ export default {
 /* Page Header */
 .page-header {
   margin-bottom: var(--space-16);
-  text-align: center;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-8);
 }
 
 .header-content {
-  max-width: 760px;
-  margin: 0 auto;
+  max-width: 900px;
 }
 
 .page-title {
-  font-family: var(--font-serif);
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  font-weight: var(--weight-normal);
-  font-style: italic;
+  font-family: var(--font-sans);
+  font-size: clamp(4rem, 9vw, 8rem);
+  font-weight: var(--weight-bold);
+  font-style: normal;
   color: var(--color-text);
   margin-bottom: 0.5rem;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
+  line-height: 0.95;
+  text-transform: uppercase;
 }
 
 .page-subtitle {
-  font-size: 1rem;
+  max-width: 34rem;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
   color: var(--color-text-secondary);
   margin: 0;
   line-height: 1.6;
@@ -379,7 +383,9 @@ export default {
 
 .section-header {
   margin-bottom: var(--space-10);
-  text-align: center;
+  text-align: left;
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-8);
 }
 
 .section-description {
@@ -1427,7 +1433,7 @@ export default {
   border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: var(--radius-sm);
   font-size: 0.75rem;
-  letter-spacing: 0.03em;
+  letter-spacing: 0;
   text-transform: uppercase;
   transition: all var(--duration-fast) var(--ease-out);
 }
@@ -1738,6 +1744,11 @@ export default {
 
   .page-header {
     margin-bottom: var(--space-10);
+    padding-bottom: var(--space-6);
+  }
+
+  .page-title {
+    font-size: clamp(3rem, 14vw, 5rem);
   }
 
   .projects-section {

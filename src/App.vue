@@ -109,11 +109,35 @@ export default {
         ...page.querySelectorAll(".case-info, .case-study > section, .case-hero"),
       ];
 
-      sections.forEach((section, index) => {
-        const shouldReveal = section.classList.contains("animate-on-scroll");
+      let sectionNumber = 0;
 
-        section.classList.toggle("editorial-reveal", shouldReveal);
-        section.style.setProperty("--reveal-delay", shouldReveal ? "0ms" : "0ms");
+      sections.forEach((section, index) => {
+        section.classList.add("editorial-reveal");
+        section.style.setProperty("--reveal-delay", `${Math.min(index * 70, 280)}ms`);
+
+        const isNumberedSection =
+          section.classList.contains("content-section") ||
+          section.classList.contains("content-section-wide") ||
+          section.classList.contains("split-section") ||
+          section.classList.contains("showcase-section") ||
+          section.classList.contains("tablet-section");
+
+        if (isNumberedSection) {
+          sectionNumber += 1;
+          const label = section.querySelector(".section-label");
+          label?.querySelector(".section-number")?.remove();
+
+          if (label) {
+            const number = document.createElement("span");
+            number.className = "section-number";
+            number.textContent = String(sectionNumber).padStart(2, "0");
+            label.prepend(number);
+          }
+        }
+
+        if (section.classList.contains("case-hero")) {
+          section.classList.add("reveal-media");
+        }
 
         if (section.classList.contains("content-section")) {
           const hasFigure = section.querySelector(".image-figure, .video-figure");
@@ -136,10 +160,12 @@ export default {
 
         if (section.classList.contains("split-section-left")) {
           section.classList.add("layout-text-media");
+          section.classList.add("reveal-from-left");
         }
 
         if (section.classList.contains("split-section-right")) {
           section.classList.add("layout-media-text");
+          section.classList.add("reveal-from-right");
         }
       });
 
@@ -169,7 +195,6 @@ export default {
       );
 
       sections
-        .filter((section) => section.classList.contains("editorial-reveal"))
         .forEach((section) => this.caseStudyObserver.observe(section));
     },
   },

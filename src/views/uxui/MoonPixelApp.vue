@@ -481,15 +481,6 @@ export default {
   border-radius: var(--radius-sm);
 }
 
-.content-video::-webkit-media-controls {
-  opacity: 0;
-  transition: opacity var(--duration-normal);
-}
-
-.content-video:hover::-webkit-media-controls {
-  opacity: 1;
-}
-
 /* ===== SPLIT SECTIONS ===== */
 .split-section {
   display: flex;
@@ -568,15 +559,6 @@ export default {
 
 .split-video {
   background: #000;
-}
-
-.split-video::-webkit-media-controls {
-  opacity: 0;
-  transition: opacity var(--duration-normal);
-}
-
-.split-video:hover::-webkit-media-controls {
-  opacity: 1;
 }
 
 /* ===== RESPONSIVE ===== */

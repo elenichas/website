@@ -495,14 +495,8 @@ export default {
 }
 
 .sample-button {
-  cursor: pointer;
   font-family: inherit;
   font-size: 0.9375rem;
-  transition: all 0.3s ease;
-}
-
-.sample-button:hover {
-  transform: translateY(-2px);
 }
 
 /* ===== RESPONSIVE ===== */

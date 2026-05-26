@@ -4,6 +4,14 @@
     <main class="page-layout">
     <div class="container">
       <div class="about-content">
+        <header class="page-header">
+          <p class="section-label">About</p>
+          <h1 class="page-title">Eleni Chasioti</h1>
+          <p class="page-subtitle">
+            Product designer and engineer building precise, human-centered tools for spatial systems and digital workflows.
+          </p>
+        </header>
+
         <!-- At a Glance -->
         <section class="at-a-glance">
           <div class="glance-grid">
@@ -161,11 +169,35 @@ export default {
   gap: var(--space-16);
 }
 
+.page-header {
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-8);
+}
+
+.page-title {
+  font-family: var(--font-sans);
+  font-size: clamp(4rem, 9vw, 8rem);
+  font-weight: var(--weight-bold);
+  font-style: normal;
+  color: var(--color-text);
+  line-height: 0.95;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.page-subtitle {
+  max-width: 38rem;
+  margin-top: var(--space-5);
+  color: var(--color-text-secondary);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  line-height: 1.6;
+}
+
 /* At a Glance - subtle elevated card */
 .at-a-glance {
-  border: 1px solid var(--color-border-strong);
-  border-radius: var(--radius-md);
-  padding: var(--space-8);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-8) 0;
 }
 
 .glance-grid {
@@ -210,14 +242,14 @@ export default {
 }
 
 .story-section h2 {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 1.75rem;
-  font-weight: var(--weight-normal);
-  font-style: italic;
+  font-weight: var(--weight-semibold);
+  font-style: normal;
   color: var(--color-text);
   margin: 0;
   line-height: 1.3;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 .story-section p {
@@ -357,8 +389,16 @@ export default {
     gap: var(--space-10);
   }
 
+  .page-header {
+    padding-bottom: var(--space-6);
+  }
+
+  .page-title {
+    font-size: clamp(3rem, 14vw, 5rem);
+  }
+
   .at-a-glance {
-    padding: var(--space-6);
+    padding: var(--space-6) 0;
   }
 
   .glance-grid {
@@ -403,8 +443,7 @@ export default {
   }
 
   .at-a-glance {
-    padding: var(--space-5);
-    border-radius: var(--radius-lg);
+    padding: var(--space-5) 0;
   }
 
   .glance-grid {

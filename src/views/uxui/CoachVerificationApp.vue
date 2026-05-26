@@ -387,15 +387,6 @@ export default {
   box-shadow: var(--shadow-lg);
 }
 
-.video-phone::-webkit-media-controls {
-  opacity: 0;
-  transition: opacity var(--duration-normal);
-}
-
-.video-phone:hover::-webkit-media-controls {
-  opacity: 1;
-}
-
 /* ===== SHOWCASE SECTIONS ===== */
 .showcase-section {
   display: flex;
