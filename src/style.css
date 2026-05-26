@@ -442,6 +442,15 @@ a:hover {
   letter-spacing: 0;
 }
 
+.case-study.case-study .section-label {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  width: auto;
+  max-width: max-content;
+  white-space: nowrap;
+}
+
 .case-study.case-study .editorial-reveal {
   opacity: 0;
   transform: translateY(2.5rem) scale(0.985);
@@ -494,9 +503,9 @@ a:hover {
 }
 
 .case-study.case-study .section-number {
-  display: inline-block;
-  min-width: 2rem;
-  margin-right: 0.75rem;
+  display: inline-flex;
+  flex: 0 0 auto;
+  min-width: 1.45rem;
   color: rgba(17, 17, 17, 0.22);
   font-size: 0.75rem;
   font-weight: var(--weight-semibold);

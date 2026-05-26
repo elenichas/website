@@ -65,7 +65,9 @@
         </p>
       </div>
       <div class="split-media media-container-blue">
-        <img :src="selectFacility" alt="Facility Selection Interface" class="split-image" />
+        <video :src="diagramVideo" autoplay muted loop playsinline class="split-image">
+          Your browser does not support the video tag.
+        </video>
       </div>
     </section>
 
@@ -483,6 +485,11 @@ export default {
 .industrial-media-story .section-heading,
 .industrial-media-story .body-text {
   grid-column: 1;
+}
+
+.industrial-media-story .section-label {
+  justify-self: start;
+  align-self: end;
 }
 
 .industrial-video-only {

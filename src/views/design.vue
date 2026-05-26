@@ -18,186 +18,31 @@
             <router-link :to="project.route" class="project-link">
               <div class="project-image">
                 <div
-                  v-if="project.animation === 'coach-catalog'"
-                  class="coach-card-animation"
+                  class="poster-animation"
+                  :class="`poster-${project.animation}`"
                   role="img"
                   :aria-label="project.alt"
                 >
-                  <div class="coach-browser">
-                    <div class="coach-browser-top">
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                    </div>
-                    <div class="coach-toolbar">
-                      <div class="coach-search">
-                        <span class="coach-search-dot"></span>
-                        <span class="coach-search-line"></span>
-                      </div>
-                      <div class="coach-filter-pill"></div>
-                    </div>
-                    <div class="coach-content">
-                      <div class="coach-catalog-grid">
-                        <div class="coach-bag-card coach-bag-card-primary">
-                          <span class="coach-bag-shape"></span>
-                          <span class="coach-card-line"></span>
-                          <span class="coach-card-line short"></span>
-                        </div>
-                        <div class="coach-bag-card">
-                          <span class="coach-bag-shape small"></span>
-                          <span class="coach-card-line"></span>
-                          <span class="coach-card-line short"></span>
-                        </div>
-                        <div class="coach-bag-card">
-                          <span class="coach-bag-shape tall"></span>
-                          <span class="coach-card-line"></span>
-                          <span class="coach-card-line short"></span>
-                        </div>
-                        <div class="coach-bag-card">
-                          <span class="coach-bag-shape wide"></span>
-                          <span class="coach-card-line"></span>
-                          <span class="coach-card-line short"></span>
-                        </div>
-                      </div>
-                      <div class="coach-side-panel">
-                        <div class="coach-swatches">
-                          <span></span>
-                          <span></span>
-                          <span></span>
-                          <span></span>
-                        </div>
-                        <div class="coach-serial-card">
-                          <span class="coach-serial-label">SERIAL</span>
-                          <span class="coach-serial-number">A5B-9966</span>
-                          <span class="coach-verify-line"></span>
-                          <span class="coach-verify-line short"></span>
-                          <span class="coach-status">MATCH</span>
-                        </div>
-                      </div>
-                    </div>
+                  <div class="poster-topline">
+                    <span>{{ String(index + 1).padStart(2, '0') }}</span>
+                    <span>{{ project.type }}</span>
+                  </div>
+                  <h3 class="poster-title">{{ project.posterTitle || project.title }}</h3>
+                  <div class="poster-stage" aria-hidden="true">
+                    <span class="poster-shape shape-a"></span>
+                    <span class="poster-shape shape-b"></span>
+                    <span class="poster-shape shape-c"></span>
+                    <span class="poster-shape shape-d"></span>
+                    <span class="poster-shape shape-e"></span>
+                    <span class="poster-line line-a"></span>
+                    <span class="poster-line line-b"></span>
+                    <span class="poster-line line-c"></span>
+                  </div>
+                  <div class="poster-footer">
+                    <span>{{ project.posterMark }}</span>
+                    <span>{{ project.posterYear }}</span>
                   </div>
                 </div>
-                <div
-                  v-else-if="project.animation === 'industrial-configurator'"
-                  class="product-card-animation industrial-card-animation"
-                  role="img"
-                  :aria-label="project.alt"
-                >
-                  <div class="industrial-workspace">
-                    <div class="industrial-canvas">
-                      <span class="industrial-zone zone-a"></span>
-                      <span class="industrial-zone zone-b"></span>
-                      <span class="industrial-zone zone-c"></span>
-                      <span class="industrial-unit unit-a"></span>
-                      <span class="industrial-unit unit-b"></span>
-                      <span class="industrial-unit unit-c"></span>
-                      <span class="industrial-unit unit-d"></span>
-                      <span class="industrial-network network-a"></span>
-                      <span class="industrial-network network-b"></span>
-                      <span class="industrial-network network-c"></span>
-                      <span class="industrial-check check-a"></span>
-                      <span class="industrial-check check-b"></span>
-                    </div>
-                    <div class="industrial-panel">
-                      <span class="panel-title-line"></span>
-                      <span class="panel-item active"></span>
-                      <span class="panel-item"></span>
-                      <span class="panel-item"></span>
-                      <span class="panel-button"></span>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  v-else-if="project.animation === 'moon-configurator'"
-                  class="product-card-animation moon-card-animation"
-                  role="img"
-                  :aria-label="project.alt"
-                >
-                  <div class="moon-orbit-grid">
-                    <span class="moon-terrain"></span>
-                    <span class="moon-module module-core"></span>
-                    <span class="moon-module module-lab"></span>
-                    <span class="moon-module module-life"></span>
-                    <span class="moon-module module-power"></span>
-                    <span class="moon-link link-a"></span>
-                    <span class="moon-link link-b"></span>
-                    <span class="moon-link link-c"></span>
-                    <span class="moon-scan"></span>
-                  </div>
-                  <div class="moon-side-panel">
-                    <span class="moon-panel-line"></span>
-                    <span class="moon-panel-line short"></span>
-                    <span class="moon-panel-chip active"></span>
-                    <span class="moon-panel-chip"></span>
-                  </div>
-                </div>
-                <div
-                  v-else-if="project.animation === 'language-learning'"
-                  class="product-card-animation language-card-animation"
-                  role="img"
-                  :aria-label="project.alt"
-                >
-                  <div class="language-browser">
-                    <div class="language-lesson-card">
-                      <span class="arabic-word">عربية</span>
-                      <span class="language-rule"></span>
-                      <span class="language-rule short"></span>
-                    </div>
-                    <div class="language-options">
-                      <span class="language-option correct">ب</span>
-                      <span class="language-option">ت</span>
-                      <span class="language-option">ث</span>
-                    </div>
-                    <div class="language-progress">
-                      <span></span>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  v-else-if="project.animation === 'filos-mobile'"
-                  class="product-card-animation mobile-card-animation filos-card-animation"
-                  role="img"
-                  :aria-label="project.alt"
-                >
-                  <div class="phone-shell">
-                    <div class="phone-notch"></div>
-                    <div class="filos-map">
-                      <span class="filos-route"></span>
-                      <span class="filos-person person-a"></span>
-                      <span class="filos-person person-b"></span>
-                    </div>
-                    <div class="filos-activity-card">
-                      <span class="activity-icon"></span>
-                      <span class="activity-line"></span>
-                      <span class="activity-line short"></span>
-                      <span class="activity-cta"></span>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  v-else-if="project.animation === 'bakery-mobile'"
-                  class="product-card-animation mobile-card-animation bakery-card-animation"
-                  role="img"
-                  :aria-label="project.alt"
-                >
-                  <div class="phone-shell">
-                    <div class="phone-notch"></div>
-                    <div class="bakery-hero">
-                      <span class="coffee-cup"></span>
-                      <span class="steam steam-a"></span>
-                      <span class="steam steam-b"></span>
-                    </div>
-                    <div class="bakery-order-card">
-                      <span class="order-line"></span>
-                      <span class="order-line short"></span>
-                      <div class="order-progress">
-                        <span></span>
-                      </div>
-                      <span class="pickup-pill"></span>
-                    </div>
-                  </div>
-                </div>
-                <img v-else :src="project.src" :alt="project.alt" loading="lazy" />
                 <div class="project-overlay">
                   <span class="view-project">View Project</span>
                 </div>
@@ -219,10 +64,35 @@
         </div>
 
         <div class="projects-grid">
-                    <article v-for="(project, index) in architectureImages" :key="index" class="project-card">
+          <article v-for="(project, index) in architectureImages" :key="index" class="project-card">
             <router-link :to="project.route" class="project-link">
               <div class="project-image">
-                <img :src="project.src" :alt="project.alt" loading="lazy" />
+                <div
+                  class="poster-animation"
+                  :class="`poster-${project.animation}`"
+                  role="img"
+                  :aria-label="project.alt"
+                >
+                  <div class="poster-topline">
+                    <span>{{ String(index + 7).padStart(2, '0') }}</span>
+                    <span>{{ project.type }}</span>
+                  </div>
+                  <h3 class="poster-title">{{ project.posterTitle || project.title }}</h3>
+                  <div class="poster-stage" aria-hidden="true">
+                    <span class="poster-shape shape-a"></span>
+                    <span class="poster-shape shape-b"></span>
+                    <span class="poster-shape shape-c"></span>
+                    <span class="poster-shape shape-d"></span>
+                    <span class="poster-shape shape-e"></span>
+                    <span class="poster-line line-a"></span>
+                    <span class="poster-line line-b"></span>
+                    <span class="poster-line line-c"></span>
+                  </div>
+                  <div class="poster-footer">
+                    <span>{{ project.posterMark }}</span>
+                    <span>{{ project.posterYear }}</span>
+                  </div>
+                </div>
                 <div class="project-overlay">
                   <span class="view-project">View Project</span>
                 </div>
@@ -253,76 +123,97 @@ export default {
   },
   data() {
     return {
-            architectureImages: [
+      architectureImages: [
         {
-          src: require("@/images/gallery/hapi.webp"),
           alt: "Hapi Project",
           title: "Architectural System",
           type: "Parametric Modular Design",
+          animation: "hapi-system",
+          posterTitle: "Hapi",
+          posterMark: "MODULAR LOGIC",
+          posterYear: "2026",
           route: "/products/hapi-project",
         },
         {
-          src: require("@/images/gallery/thesis.webp"),
           alt: "Thesis Project",
           title: "Computational Framework",
           type: "Rule-Based Design",
+          animation: "thesis-framework",
+          posterTitle: "Rules",
+          posterMark: "GROWTH SYSTEM",
+          posterYear: "MSc",
           route: "/products/thesis-project",
         },
         {
-          src: require("@/images/gallery/workshop.webp"),
           alt: "Workshop Design",
           title: "Digital Futures Workshop",
           type: "Prefabrication and Automation Design",
+          animation: "workshop-futures",
+          posterTitle: "Future",
+          posterMark: "FABRICATION",
+          posterYear: "2030",
           route: "/products/workshop-design",
         },
       ],
-                        uxuiImages: [
+      uxuiImages: [
         {
-          src: require("@/images/gallery/coachHero.jpg"),
           alt: "Coach Bags Verification App",
           title: "Vintage Coach Catalog",
           type: "Authentication System",
           animation: "coach-catalog",
+          posterTitle: "Coach",
+          posterMark: "SERIAL MATCH",
+          posterYear: "1975-02",
           route: "/products/coach-verification-app",
         },
         {
-          src: require("@/images/gallery/industrial.png"),
           alt: "Industrial Facility 3D Configurator",
           title: "Industrial Facility Configurator",
           type: "Configuration System",
           animation: "industrial-configurator",
+          posterTitle: "Plant",
+          posterMark: "VALIDATION",
+          posterYear: "3D",
           route: "/products/industrial-configurator",
         },
         {
-          src: require("@/images/gallery/moonPixel.webp"),
           alt: "Lunar Habitat 3D Configurator",
           title: "Moon Habitat Configurator",
           type: "Design Automation",
           animation: "moon-configurator",
+          posterTitle: "Lunar",
+          posterMark: "HABITAT GRID",
+          posterYear: "MOON",
           route: "/products/lunar-app",
         },
         {
-          src: require("@/images/gallery/language.jpg"),
           alt: "Arabiya Language Learning App",
           title: "Arabiya Language App",
           type: "Educational Web App",
           animation: "language-learning",
+          posterTitle: "Arabic",
+          posterMark: "LESSON MODE",
+          posterYear: "ع",
           route: "/products/language-learning-app",
         },
         {
-          src: require("@/images/gallery/filos.webp"),
           alt: "Filos Mobile App",
           title: "Filos Mobile Experience",
           type: "Accessible Experience",
           animation: "filos-mobile",
+          posterTitle: "Filos",
+          posterMark: "ROUTE + CARE",
+          posterYear: "MOBILE",
           route: "/products/filos-mobile-app",
         },
         {
-          src: require("@/images/gallery/kapihan.webp"),
           alt: "Coffee Shop App",
           title: "Brew & Crumb Mobile App",
           type: "Product Design",
           animation: "bakery-mobile",
+          posterTitle: "Brew",
+          posterMark: "PICKUP READY",
+          posterYear: "CAFE",
           route: "/products/brew-crumb",
         },
       ],
@@ -435,6 +326,397 @@ export default {
 
 .project-card:hover .project-image img {
   transform: scale(1.04);
+}
+
+.poster-animation {
+  --poster-bg: #f3f2ea;
+  --poster-ink: #111111;
+  --poster-muted: rgba(17, 17, 17, 0.48);
+  --poster-red: #e54832;
+  --poster-blue: #24539a;
+  --poster-green: #2d7148;
+  --poster-yellow: #dfa030;
+  --poster-pink: #e7a0ae;
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: clamp(1rem, 2.4vw, 1.35rem);
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(17, 17, 17, 0.035) 1px, transparent 1px),
+    linear-gradient(rgba(17, 17, 17, 0.035) 1px, transparent 1px),
+    var(--poster-bg);
+  background-size: 34px 34px, 34px 34px, auto;
+  color: var(--poster-ink);
+  isolation: isolate;
+}
+
+.poster-animation::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  pointer-events: none;
+  z-index: 4;
+}
+
+.poster-animation::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 38%;
+  background: linear-gradient(180deg, transparent, rgba(17, 17, 17, 0.05));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.poster-topline,
+.poster-footer {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  color: var(--poster-muted);
+  font-size: clamp(0.5rem, 1.1vw, 0.64rem);
+  font-weight: var(--weight-semibold);
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.poster-topline span:last-child,
+.poster-footer span:first-child {
+  max-width: 12rem;
+  text-align: right;
+}
+
+.poster-title {
+  position: absolute;
+  z-index: 3;
+  top: 18%;
+  left: clamp(1rem, 2.4vw, 1.35rem);
+  right: clamp(1rem, 2.4vw, 1.35rem);
+  color: var(--poster-ink);
+  font-family: var(--font-sans);
+  font-size: clamp(2.75rem, 7.3vw, 5.6rem);
+  font-weight: var(--weight-bold);
+  line-height: 0.84;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  word-break: break-word;
+}
+
+.poster-stage {
+  position: absolute;
+  inset: 24% 7% 13%;
+  z-index: 2;
+  transform-origin: center;
+  transition: transform 700ms var(--ease-out);
+}
+
+.poster-card:hover .poster-stage,
+.project-card:hover .poster-stage {
+  transform: translateY(-0.25rem) scale(1.02);
+}
+
+.poster-shape,
+.poster-line {
+  position: absolute;
+  display: block;
+}
+
+.poster-shape {
+  background: var(--poster-red);
+  border: 0.28rem solid var(--poster-ink);
+  animation: posterFloat 6.4s var(--ease-in-out) infinite;
+}
+
+.poster-line {
+  height: 0.34rem;
+  border-radius: 999px;
+  background: var(--poster-ink);
+  transform-origin: left center;
+  animation: posterLineSweep 5.6s var(--ease-in-out) infinite;
+}
+
+.poster-coach-catalog {
+  --poster-red: #bd6f38;
+  --poster-blue: #18362d;
+  --poster-green: #6c4a31;
+  --poster-yellow: #d8a55a;
+}
+
+.poster-coach-catalog .poster-title {
+  top: 12%;
+}
+
+.poster-coach-catalog .shape-a,
+.poster-coach-catalog .shape-b,
+.poster-coach-catalog .shape-c,
+.poster-coach-catalog .shape-d {
+  width: 22%;
+  height: 30%;
+  border-radius: 0.6rem 0.6rem 1rem 1rem;
+  background: var(--poster-yellow);
+}
+
+.poster-coach-catalog .shape-a { left: 4%; top: 42%; animation-delay: 0s; }
+.poster-coach-catalog .shape-b { left: 30%; top: 52%; background: var(--poster-red); animation-delay: 0.3s; }
+.poster-coach-catalog .shape-c { right: 24%; top: 38%; background: var(--poster-green); animation-delay: 0.6s; }
+.poster-coach-catalog .shape-d { right: 0; top: 56%; background: #111; animation-delay: 0.9s; }
+.poster-coach-catalog .shape-e {
+  right: 3%;
+  bottom: 2%;
+  width: 35%;
+  height: 20%;
+  border-radius: var(--radius-sm);
+  background: #fff;
+  border-color: var(--poster-ink);
+}
+.poster-coach-catalog .line-a { right: 9%; bottom: 16%; width: 22%; }
+.poster-coach-catalog .line-b { right: 9%; bottom: 10%; width: 15%; animation-delay: 0.3s; }
+
+.poster-industrial-configurator .shape-a {
+  left: 3%;
+  top: 40%;
+  width: 58%;
+  height: 24%;
+  border-radius: 999px;
+  background: var(--poster-ink);
+}
+.poster-industrial-configurator .shape-b {
+  right: 4%;
+  top: 36%;
+  width: 42%;
+  height: 36%;
+  transform: rotate(-18deg);
+  background: transparent;
+}
+.poster-industrial-configurator .shape-c,
+.poster-industrial-configurator .shape-d,
+.poster-industrial-configurator .shape-e {
+  width: 14%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border-width: 0.22rem;
+}
+.poster-industrial-configurator .shape-c { left: 18%; top: 28%; background: var(--poster-blue); }
+.poster-industrial-configurator .shape-d { left: 45%; top: 52%; background: var(--poster-yellow); animation-delay: 0.4s; }
+.poster-industrial-configurator .shape-e { right: 13%; top: 24%; background: var(--poster-red); animation-delay: 0.8s; }
+.poster-industrial-configurator .line-a { left: 16%; top: 49%; width: 62%; transform: rotate(18deg); }
+.poster-industrial-configurator .line-b { left: 24%; top: 61%; width: 45%; transform: rotate(-12deg); animation-delay: 0.4s; }
+
+.poster-moon-configurator {
+  --poster-bg: #eeece3;
+  --poster-red: #f05a28;
+  --poster-blue: #3f94ce;
+  --poster-yellow: #f2bd42;
+}
+.poster-moon-configurator .shape-a {
+  left: -12%;
+  bottom: 0;
+  width: 82%;
+  height: 55%;
+  border-radius: 50% 50% 0 0;
+  background: var(--poster-yellow);
+}
+.poster-moon-configurator .shape-b,
+.poster-moon-configurator .shape-c,
+.poster-moon-configurator .shape-d,
+.poster-moon-configurator .shape-e {
+  width: 18%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+.poster-moon-configurator .shape-b { left: 36%; top: 38%; background: var(--poster-blue); }
+.poster-moon-configurator .shape-c { right: 19%; top: 31%; background: var(--poster-red); animation-delay: 0.4s; }
+.poster-moon-configurator .shape-d { right: 5%; top: 54%; background: #fff; animation-delay: 0.8s; }
+.poster-moon-configurator .shape-e { left: 58%; bottom: 2%; background: var(--poster-ink); animation-delay: 1.1s; }
+.poster-moon-configurator .line-a { left: 44%; top: 48%; width: 42%; transform: rotate(22deg); }
+.poster-moon-configurator .line-b { left: 52%; top: 58%; width: 33%; transform: rotate(-16deg); animation-delay: 0.4s; }
+
+.poster-language-learning .poster-title {
+  font-size: clamp(2.25rem, 6.6vw, 4.8rem);
+}
+.poster-language-learning .shape-a {
+  left: 3%;
+  bottom: 11%;
+  width: 78%;
+  height: 35%;
+  border-radius: 0.8rem;
+  background: var(--poster-ink);
+}
+.poster-language-learning .shape-b,
+.poster-language-learning .shape-c,
+.poster-language-learning .shape-d {
+  width: 21%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border-width: 0;
+}
+.poster-language-learning .shape-b { right: 8%; top: 43%; background: var(--poster-yellow); }
+.poster-language-learning .shape-c { left: 13%; bottom: 20%; background: var(--poster-red); animation-delay: 0.4s; }
+.poster-language-learning .shape-d { left: 39%; bottom: 20%; background: var(--poster-blue); animation-delay: 0.7s; }
+.poster-language-learning .shape-e {
+  right: 5%;
+  bottom: 12%;
+  width: 22%;
+  height: 35%;
+  border-radius: var(--radius-sm);
+  background: var(--poster-yellow);
+}
+.poster-language-learning .line-a { left: 12%; bottom: 31%; width: 42%; background: #fff; }
+.poster-language-learning .line-b { left: 12%; bottom: 24%; width: 28%; background: #fff; animation-delay: 0.5s; }
+
+.poster-filos-mobile .shape-a,
+.poster-bakery-mobile .shape-a {
+  left: 34%;
+  top: 28%;
+  width: 32%;
+  height: 58%;
+  border-radius: 1.6rem;
+  background: #f8f8f2;
+}
+.poster-filos-mobile .shape-b,
+.poster-filos-mobile .shape-c,
+.poster-filos-mobile .shape-d {
+  border-width: 0;
+  border-radius: 50%;
+}
+.poster-filos-mobile .shape-b { left: 18%; top: 43%; width: 26%; aspect-ratio: 1; background: var(--poster-blue); }
+.poster-filos-mobile .shape-c { right: 18%; top: 43%; width: 26%; aspect-ratio: 1; background: var(--poster-pink); animation-delay: 0.45s; }
+.poster-filos-mobile .shape-d { left: 42%; bottom: 17%; width: 16%; aspect-ratio: 1; background: var(--poster-green); animation-delay: 0.9s; }
+.poster-filos-mobile .line-a { left: 28%; top: 56%; width: 45%; transform: rotate(-18deg); }
+.poster-filos-mobile .line-b { left: 35%; top: 65%; width: 31%; transform: rotate(22deg); animation-delay: 0.4s; }
+
+.poster-bakery-mobile {
+  --poster-red: #d6472f;
+  --poster-green: #315f3b;
+  --poster-yellow: #e3a63c;
+  --poster-pink: #f0b5bf;
+}
+.poster-bakery-mobile .shape-b,
+.poster-bakery-mobile .shape-c,
+.poster-bakery-mobile .shape-d,
+.poster-bakery-mobile .shape-e {
+  border-width: 0;
+  border-radius: 999px 999px 0.6rem 0.6rem;
+}
+.poster-bakery-mobile .shape-b { left: 21%; bottom: 15%; width: 28%; height: 36%; background: var(--poster-red); }
+.poster-bakery-mobile .shape-c { left: 43%; bottom: 15%; width: 28%; height: 47%; background: var(--poster-yellow); animation-delay: 0.35s; }
+.poster-bakery-mobile .shape-d { right: 16%; bottom: 15%; width: 24%; height: 30%; background: var(--poster-pink); animation-delay: 0.7s; }
+.poster-bakery-mobile .shape-e { left: 28%; bottom: 11%; width: 50%; height: 16%; background: var(--poster-ink); }
+.poster-bakery-mobile .line-a { left: 40%; top: 41%; width: 20%; transform: rotate(90deg); }
+
+.poster-hapi-system .shape-a,
+.poster-hapi-system .shape-b,
+.poster-hapi-system .shape-c,
+.poster-hapi-system .shape-d,
+.poster-hapi-system .shape-e {
+  width: 28%;
+  height: 28%;
+  border-radius: var(--radius-sm);
+}
+.poster-hapi-system .shape-a { left: 9%; top: 33%; background: var(--poster-red); }
+.poster-hapi-system .shape-b { left: 35%; top: 33%; background: var(--poster-blue); animation-delay: 0.25s; }
+.poster-hapi-system .shape-c { left: 61%; top: 33%; background: var(--poster-yellow); animation-delay: 0.5s; }
+.poster-hapi-system .shape-d { left: 22%; bottom: 10%; background: var(--poster-green); animation-delay: 0.75s; }
+.poster-hapi-system .shape-e { left: 48%; bottom: 10%; background: #fff; animation-delay: 1s; }
+
+.poster-thesis-framework .shape-a {
+  left: 11%;
+  top: 29%;
+  width: 78%;
+  height: 58%;
+  border-radius: 50%;
+  background: transparent;
+}
+.poster-thesis-framework .shape-b,
+.poster-thesis-framework .shape-c,
+.poster-thesis-framework .shape-d {
+  border-width: 0;
+  border-radius: 50%;
+  mix-blend-mode: multiply;
+  opacity: 0.9;
+}
+.poster-thesis-framework .shape-b { left: 19%; top: 36%; width: 42%; aspect-ratio: 1; background: rgba(63, 148, 206, 0.78); }
+.poster-thesis-framework .shape-c { right: 15%; top: 38%; width: 42%; aspect-ratio: 1; background: rgba(229, 72, 50, 0.78); animation-delay: 0.5s; }
+.poster-thesis-framework .shape-d { left: 31%; bottom: 10%; width: 42%; aspect-ratio: 1; background: rgba(223, 160, 48, 0.78); animation-delay: 1s; }
+.poster-thesis-framework .line-a { left: 10%; top: 51%; width: 80%; }
+.poster-thesis-framework .line-b { left: 20%; top: 67%; width: 60%; animation-delay: 0.4s; }
+
+.poster-workshop-futures .shape-a {
+  left: 5%;
+  top: 33%;
+  width: 90%;
+  height: 22%;
+  border-radius: 999px;
+  background: var(--poster-ink);
+}
+.poster-workshop-futures .shape-b {
+  left: 5%;
+  top: 58%;
+  width: 90%;
+  height: 22%;
+  border-radius: 999px;
+  background: var(--poster-ink);
+  animation-delay: 0.35s;
+}
+.poster-workshop-futures .shape-c {
+  left: 13%;
+  top: 35%;
+  width: 27%;
+  height: 18%;
+  border-radius: 999px;
+  background: var(--poster-blue);
+  border-width: 0;
+}
+.poster-workshop-futures .shape-d {
+  right: 13%;
+  top: 60%;
+  width: 27%;
+  height: 18%;
+  border-radius: 999px;
+  background: var(--poster-red);
+  border-width: 0;
+  animation-delay: 0.5s;
+}
+.poster-workshop-futures .shape-e {
+  left: 5%;
+  bottom: 4%;
+  width: 38%;
+  height: 18%;
+  background: var(--poster-yellow);
+}
+.poster-workshop-futures .line-a { left: 14%; top: 46%; width: 72%; background: #fff; }
+.poster-workshop-futures .line-b { left: 14%; top: 71%; width: 72%; background: #fff; animation-delay: 0.3s; }
+
+.project-card:hover .poster-shape {
+  animation-play-state: paused;
+}
+
+@keyframes posterFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-0.45rem) rotate(1.5deg);
+  }
+}
+
+@keyframes posterLineSweep {
+  0%,
+  100% {
+    transform: scaleX(0.72);
+    opacity: 0.58;
+  }
+  50% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
 }
 
 .coach-card-animation,
