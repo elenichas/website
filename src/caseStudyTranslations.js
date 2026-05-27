@@ -196,13 +196,13 @@ const routeTranslations = {
     "Unit Catalog": "Unit Catalog",
     "A structured library of power plant units with technical properties, dimensions, and connection requirements": "Structured library από power plant units με τεχνικά properties, διαστάσεις και connection requirements",
     "Network Representation": "Network Representation",
-    "Visual mapping των δικτύων, διαδρομών και dependencies μεταξύ components",
+    "Visual mapping of utility networks, pathways, and dependencies between facility components": "Visual mapping των δικτύων, διαδρομών και dependencies μεταξύ components",
     "Rule-Based Validation": "Rule-Based Validation",
-    "Automated checks για μη έγκυρες τοποθετήσεις, missing connections και spatial conflicts",
+    "Automated checks that flag invalid placements, missing connections, and spatial conflicts": "Automated checks για μη έγκυρες τοποθετήσεις, missing connections και spatial conflicts",
     "Node-Based Interface": "Node-Based Interface",
-    "Relationship model που δείχνει πώς τα components συνδέονται και εξαρτώνται μεταξύ τους",
+    "A relationship model for defining how components connect and depend on one another": "Relationship model που δείχνει πώς τα components συνδέονται και εξαρτώνται μεταξύ τους",
     "Training Tool": "Training Tool",
-    "Πιο καθαρός τρόπος για να κατανοούν οι ομάδες facility logic, unit behavior και design constraints",
+    "A clearer way for teams to understand facility logic, unit behavior, and design constraints": "Πιο καθαρός τρόπος για να κατανοούν οι ομάδες facility logic, unit behavior και design constraints",
     "Consistent Data Structure": "Consistent Data Structure",
     "Shared data patterns that make components easier to compare, configure, and reuse": "Shared data patterns που κάνουν τα components πιο εύκολα στη σύγκριση, τη διαμόρφωση και την επαναχρησιμοποίηση",
     "From wireframes to implementation": "Από wireframes σε implementation",
@@ -245,105 +245,105 @@ const routeTranslations = {
     "Course Project": "Course Project",
     "1 Month (2023)": "1 Month (2023)",
     "A course project exploring how a mobile app could help people with disabilities and volunteers connect through shared activities, with early input from a special needs teacher and students.":
-      "Course project που εξερευνά πώς ένα mobile app θα μπορούσε να βοηθήσει άτομα με disabilities και volunteers να συνδεθούν μέσα από shared activities, με πρώιμο input από special needs teacher και students.",
-    "Breaking down barriers to connection": "Μειώνοντας τα barriers στη σύνδεση",
+      "Course project που εξερευνά πώς ένα mobile app θα μπορούσε να βοηθήσει άτομα με αναπηρίες και εθελοντές να συνδεθούν μέσα από κοινές δραστηριότητες, με πρώιμη συμβολή από special needs teacher και μαθητές.",
+    "Breaking down barriers to connection": "Μειώνοντας τα εμπόδια στη σύνδεση",
     "People with disabilities can face physical, sensory, and social barriers to participation, while people who want to support or volunteer often do not know how to build meaningful connections respectfully. The project explored how a digital service could reduce uncertainty, support trust, and make shared activities easier to arrange.":
-      "Άτομα με disabilities μπορεί να αντιμετωπίζουν physical, sensory και social barriers στη συμμετοχή, ενώ όσοι θέλουν να βοηθήσουν συχνά δεν ξέρουν πώς να χτίσουν meaningful connections με σεβασμό. Το project εξερεύνησε πώς ένα digital service μπορεί να μειώσει την αβεβαιότητα, να στηρίξει trust και να κάνει shared activities πιο εύκολες.",
-    "A platform for shared experiences": "Platform για shared experiences",
+      "Άτομα με αναπηρίες μπορεί να αντιμετωπίζουν σωματικά, αισθητηριακά και κοινωνικά εμπόδια στη συμμετοχή, ενώ όσοι θέλουν να βοηθήσουν συχνά δεν ξέρουν πώς να χτίσουν ουσιαστικές συνδέσεις με σεβασμό. Το project εξερεύνησε πώς ένα digital service μπορεί να μειώσει την αβεβαιότητα, να στηρίξει την εμπιστοσύνη και να κάνει τις κοινές δραστηριότητες πιο εύκολες.",
+    "A platform for shared experiences": "Platform για κοινές εμπειρίες",
     "Filos proposes a mobile experience where people can create profiles, share access needs and preferences, propose activities, and connect around everyday experiences. The name means \"friendship\" in Greek.":
-      "Το Filos προτείνει ένα mobile experience όπου οι άνθρωποι δημιουργούν profiles, μοιράζονται access needs και preferences, προτείνουν activities και συνδέονται γύρω από everyday experiences. Το όνομα σημαίνει friendship στα ελληνικά.",
-    "Users": "Users",
-    "Designing for diverse needs": "Designing for diverse needs",
+      "Το Filos προτείνει ένα mobile experience όπου οι άνθρωποι δημιουργούν profiles, μοιράζονται ανάγκες πρόσβασης και προτιμήσεις, προτείνουν δραστηριότητες και συνδέονται γύρω από καθημερινές εμπειρίες. Το όνομα σημαίνει φιλία στα ελληνικά.",
+    "Users": "Χρήστες",
+    "Designing for diverse needs": "Design για διαφορετικές ανάγκες",
     "Understanding the people who would use Filos was essential. As part of the course project, I consulted my sister, a special needs teacher, and had a couple of early feedback sessions with her students. The concept considered a range of access needs, including wheelchair access, blindness, and autism.":
-      "Ήταν σημαντικό να καταλάβω τους ανθρώπους που θα χρησιμοποιούσαν το Filos. Για το course project συμβουλεύτηκα την αδερφή μου, special needs teacher, και είχα πρώιμο feedback με μαθητές της. Το concept έλαβε υπόψη διαφορετικά access needs, όπως wheelchair access, blindness και autism.",
-    "Use Scenarios": "Use Scenarios",
-    "Two perspectives behind the concept": "Δύο perspectives πίσω από το concept",
+      "Ήταν σημαντικό να καταλάβω τους ανθρώπους που θα χρησιμοποιούσαν το Filos. Για το course project συμβουλεύτηκα την αδερφή μου, special needs teacher, και είχα πρώιμο feedback με μαθητές της. Το concept έλαβε υπόψη διαφορετικές ανάγκες πρόσβασης, όπως πρόσβαση με αμαξίδιο, τύφλωση και αυτισμό.",
+    "Use Scenarios": "Σενάρια χρήσης",
+    "Two perspectives behind the concept": "Δύο οπτικές πίσω από το concept",
     "Instead of fictional character portraits, the project can be read through two practical situations: someone with special-education experience helping shape safe support, and someone with access needs looking for a respectful way to join everyday activities.":
-      "Αντί για fictional personas, το project διαβάζεται μέσα από δύο πρακτικές καταστάσεις: κάποιον με special-education experience που βοηθά να οριστεί safe support, και κάποιον με access needs που ψάχνει respectful τρόπο να συμμετέχει σε everyday activities.",
-    "Special-education perspective": "Special-education perspective",
-    "The advisor who checks whether support is realistic": "Ο advisor που ελέγχει αν το support είναι realistic",
+      "Αντί για fictional personas, το project διαβάζεται μέσα από δύο πρακτικές καταστάσεις: κάποιον με εμπειρία στην ειδική αγωγή που βοηθά να οριστεί ασφαλής υποστήριξη, και κάποιον με ανάγκες πρόσβασης που ψάχνει έναν σεβαστικό τρόπο να συμμετέχει σε καθημερινές δραστηριότητες.",
+    "Special-education perspective": "Οπτική ειδικής αγωγής",
+    "The advisor who checks whether support is realistic": "Το άτομο που ελέγχει αν η υποστήριξη είναι ρεαλιστική",
     "A special-education professional or student could use Filos to review profiles, clarify access needs, and help volunteers understand what makes an activity safe, respectful, and manageable before a meeting is arranged.":
-      "Ένας special-education professional ή student θα μπορούσε να χρησιμοποιήσει το Filos για να δει profiles, να ξεκαθαρίσει access needs και να βοηθήσει volunteers να καταλάβουν τι κάνει μια activity safe, respectful και manageable.",
-    "Participant perspective": "Participant perspective",
-    "The person choosing connection on their own terms": "Το άτομο που επιλέγει connection με τους δικούς του όρους",
+      "Ένας επαγγελματίας ή σπουδαστής ειδικής αγωγής θα μπορούσε να χρησιμοποιήσει το Filos για να δει profiles, να ξεκαθαρίσει ανάγκες πρόσβασης και να βοηθήσει εθελοντές να καταλάβουν τι κάνει μια δραστηριότητα ασφαλή, σεβαστική και διαχειρίσιμη.",
+    "Participant perspective": "Οπτική συμμετέχοντα",
+    "The person choosing connection on their own terms": "Το άτομο που επιλέγει σύνδεση με τους δικούς του όρους",
     "A person with a disability could use the app to express preferences, find activities that fit their needs, and decide what information to share before connecting with a volunteer around a simple shared plan.":
-      "Ένα άτομο με disability θα μπορούσε να χρησιμοποιήσει το app για να εκφράσει preferences, να βρει activities που ταιριάζουν στις ανάγκες του και να αποφασίσει τι πληροφορία θέλει να μοιραστεί πριν συνδεθεί με volunteer.",
+      "Ένα άτομο με αναπηρία θα μπορούσε να χρησιμοποιήσει το app για να εκφράσει προτιμήσεις, να βρει δραστηριότητες που ταιριάζουν στις ανάγκες του και να αποφασίσει τι πληροφορία θέλει να μοιραστεί πριν συνδεθεί με εθελοντή.",
     "Design Priorities": "Design Priorities",
-    "Making support feel respectful and easy to arrange": "Support που νιώθει respectful και εύκολο να οργανωθεί",
-    "Access needs first": "Access needs first",
+    "Making support feel respectful and easy to arrange": "Υποστήριξη με σεβασμό και εύκολη οργάνωση",
+    "Access needs first": "Πρώτα οι ανάγκες πρόσβασης",
     "Profiles make practical needs visible early, so activities can be planned around mobility, sensory comfort, communication preferences, or other support requirements.":
-      "Τα profiles κάνουν practical needs ορατά από νωρίς, ώστε οι activities να οργανώνονται γύρω από mobility, sensory comfort, communication preferences ή άλλα support requirements.",
+      "Τα profiles κάνουν τις πρακτικές ανάγκες ορατές από νωρίς, ώστε οι δραστηριότητες να οργανώνονται γύρω από κινητικότητα, αισθητηριακή άνεση, προτιμήσεις επικοινωνίας ή άλλες ανάγκες υποστήριξης.",
     "Trust before matching": "Trust before matching",
     "The experience focuses on clear expectations, simple choices, and gentle onboarding instead of pushing people quickly into conversations.":
-      "Η εμπειρία εστιάζει σε clear expectations, simple choices και gentle onboarding, αντί να σπρώχνει γρήγορα τους ανθρώπους σε conversations.",
-    "Shared activities": "Shared activities",
+      "Η εμπειρία εστιάζει σε καθαρές προσδοκίες, απλές επιλογές και ήπιο onboarding, αντί να σπρώχνει γρήγορα τους ανθρώπους σε συζητήσεις.",
+    "Shared activities": "Κοινές δραστηριότητες",
     "Connection is framed around everyday experiences, helping volunteers and participants start from mutual interests rather than abstract offers of help.":
-      "Το connection χτίζεται γύρω από everyday experiences, βοηθώντας volunteers και participants να ξεκινούν από mutual interests αντί για γενικές προσφορές βοήθειας.",
-    "Screens": "Screens",
+      "Η σύνδεση χτίζεται γύρω από καθημερινές εμπειρίες, βοηθώντας εθελοντές και συμμετέχοντες να ξεκινούν από κοινά ενδιαφέροντα αντί για γενικές προσφορές βοήθειας.",
+    "Screens": "Οθόνες",
     "Key prototype flows": "Key prototype flows",
     "The prototype explores onboarding, profile setup, activity discovery, and connection moments as a lightweight service journey rather than a single matching screen.":
-      "Το prototype εξερευνά onboarding, profile setup, activity discovery και connection moments ως lightweight service journey, όχι ως ένα απλό matching screen.",
+      "Το prototype εξερευνά onboarding, profile setup, ανακάλυψη δραστηριοτήτων και σημεία σύνδεσης ως lightweight service journey, όχι ως ένα απλό matching screen.",
     "Interactive prototype": "Interactive prototype",
     "Designing for accessibility and trust": "Designing for accessibility and trust",
     "I created a visual identity emphasizing inclusivity and trust. The interface uses large controls, clear navigation, high-contrast elements, and simple flows so the concept could be discussed through an accessibility lens from the beginning.":
-      "Δημιούργησα visual identity με έμφαση σε inclusivity και trust. Το interface χρησιμοποιεί large controls, clear navigation, high contrast και simple flows, ώστε το concept να συζητηθεί εξαρχής μέσα από accessibility lens.",
+      "Δημιούργησα visual identity με έμφαση στη συμπερίληψη και την εμπιστοσύνη. Το interface χρησιμοποιεί μεγάλα controls, καθαρή πλοήγηση, υψηλή αντίθεση και απλές ροές, ώστε το concept να συζητηθεί εξαρχής μέσα από accessibility lens.",
     "Responsive System": "Responsive System",
-    "A calmer interface across screen sizes": "Calmer interface σε διαφορετικά screen sizes",
+    "A calmer interface across screen sizes": "Πιο ήρεμο interface σε διαφορετικά μεγέθη οθόνης",
     "The responsive layouts keep the same emphasis on legibility, clear hierarchy, and accessible actions, so the concept can be understood across different devices and presentation formats.":
-      "Τα responsive layouts κρατούν την έμφαση σε legibility, clear hierarchy και accessible actions, ώστε το concept να διαβάζεται σωστά σε διαφορετικά devices και presentation formats.",
+      "Τα responsive layouts κρατούν την έμφαση σε αναγνωσιμότητα, καθαρή ιεραρχία και accessible actions, ώστε το concept να διαβάζεται σωστά σε διαφορετικές συσκευές και presentation formats.",
     "Practicing inclusive design": "Practicing inclusive design",
     "Through this course project, I learned to treat accessibility as a starting point rather than a final checklist. The concept is still early, but it came from genuine interest and direct conversations that helped me think more carefully about safety, trust, autonomy, and different access needs.":
-      "Μέσα από αυτό το course project έμαθα να βλέπω το accessibility ως starting point, όχι ως checklist στο τέλος. Το concept είναι ακόμα early, αλλά βασίστηκε σε πραγματικό ενδιαφέρον και conversations που με βοήθησαν να σκεφτώ πιο προσεκτικά safety, trust, autonomy και διαφορετικά access needs.",
+      "Μέσα από αυτό το course project έμαθα να βλέπω το accessibility ως αφετηρία, όχι ως checklist στο τέλος. Το concept είναι ακόμα πρώιμο, αλλά βασίστηκε σε πραγματικό ενδιαφέρον και συζητήσεις που με βοήθησαν να σκεφτώ πιο προσεκτικά την ασφάλεια, την εμπιστοσύνη, την αυτονομία και τις διαφορετικές ανάγκες πρόσβασης.",
     "I gained hands-on experience applying WCAG accessibility guidelines and understanding their practical impact on real people's lives.":
-      "Απέκτησα hands-on εμπειρία με WCAG accessibility guidelines και καλύτερη κατανόηση του πρακτικού τους impact σε πραγματικές ζωές.",
+      "Απέκτησα hands-on εμπειρία με WCAG accessibility guidelines και καλύτερη κατανόηση του πρακτικού τους αντίκτυπου σε πραγματικές ζωές.",
   },
   "/products/brew-crumb": {
     "A course project for a real high-traffic cafe near my office, exploring how mobile ordering could reduce morning wait times.":
-      "Course project για ένα πραγματικό busy cafe κοντά στο γραφείο μου, που εξερευνά πώς το mobile ordering μπορεί να μειώσει το morning waiting time.",
-    "Solving the morning rush": "Λύνοντας το morning rush",
+      "Course project για ένα πραγματικό cafe με πολλή κίνηση κοντά στο γραφείο μου, που εξερευνά πώς το mobile ordering μπορεί να μειώσει την πρωινή αναμονή.",
+    "Solving the morning rush": "Λύνοντας την πρωινή κίνηση",
     "The cafe had heavy morning traffic from nearby office workers, creating long queues during the commute window. For the course project, I used this real setting as the basis for a mobile ordering concept focused on speed, clarity, and pickup confidence.":
-      "Το cafe είχε έντονη πρωινή κίνηση από nearby office workers, με μεγάλες ουρές στο commute window. Για το course project χρησιμοποίησα αυτό το πραγματικό setting ως βάση για mobile ordering concept με έμφαση σε speed, clarity και pickup confidence.",
-    "Order ahead, skip the line": "Order ahead, skip the line",
+      "Το cafe είχε έντονη πρωινή κίνηση από εργαζόμενους σε κοντινά γραφεία, με μεγάλες ουρές την ώρα της μετακίνησης προς τη δουλειά. Για το course project χρησιμοποίησα αυτό το πραγματικό setting ως βάση για mobile ordering concept με έμφαση στην ταχύτητα, την καθαρότητα και τη σιγουριά στο pickup.",
+    "Order ahead, skip the line": "Παραγγελία νωρίτερα, χωρίς ουρά",
     "A mobile app concept enabling preorders, pickup scheduling, and order status updates. Customers can browse the menu, choose a pickup time, and understand when their order is ready without waiting in the full queue.":
-      "Mobile app concept για preorders, pickup scheduling και order status updates. Οι customers μπορούν να δουν το menu, να επιλέξουν pickup time και να ξέρουν πότε είναι έτοιμη η παραγγελία χωρίς να περιμένουν στην ουρά.",
+      "Mobile app concept για preorders, pickup scheduling και order status updates. Οι πελάτες μπορούν να δουν το menu, να επιλέξουν ώρα pickup και να ξέρουν πότε είναι έτοιμη η παραγγελία χωρίς να περιμένουν στην ουρά.",
     "Process": "Process",
     "From research to prototype": "From research to prototype",
     "I observed the cafe during busy morning periods and translated the patterns into course deliverables: personas, journey maps, wireframes, and a high-fidelity prototype. The main opportunity was reducing uncertainty around ordering time, queue length, and pickup readiness.":
-      "Παρατήρησα το cafe σε busy morning periods και μετέτρεψα τα patterns σε course deliverables: personas, journey maps, wireframes και high-fidelity prototype. Η βασική ευκαιρία ήταν να μειωθεί η αβεβαιότητα γύρω από ordering time, queue length και pickup readiness.",
+      "Παρατήρησα το cafe σε ώρες έντονης πρωινής κίνησης και μετέτρεψα τα patterns σε course deliverables: personas, journey maps, wireframes και high-fidelity prototype. Η βασική ευκαιρία ήταν να μειωθεί η αβεβαιότητα γύρω από τον χρόνο παραγγελίας, το μήκος της ουράς και την ετοιμότητα για pickup.",
     "Design": "Design",
     "Warm and inviting": "Warm and inviting",
     "I developed a warm, inviting visual language that reflects the cozy atmosphere of a neighborhood coffee shop. The earthy tones and clean typography create an approachable yet modern aesthetic.":
-      "Ανέπτυξα ένα warm και inviting visual language που θυμίζει την cozy ατμόσφαιρα ενός neighborhood coffee shop. Οι earthy tones και το clean typography δημιουργούν approachable αλλά modern αισθητική.",
+      "Ανέπτυξα ένα ζεστό και φιλόξενο visual language που θυμίζει την cozy ατμόσφαιρα ενός neighborhood coffee shop. Οι γήινοι τόνοι και το clean typography δημιουργούν approachable αλλά modern αισθητική.",
     "Design system": "Design system",
     "Course project insights": "Course project insights",
     "Through the Google UX Design curriculum, I practiced research synthesis, persona development, wireframing, and high-fidelity prototyping. Because the project was based on a real cafe but completed as a course exercise, I focused on showing a realistic service concept without overstating production impact.":
-      "Μέσα από το Google UX Design curriculum, εξασκήθηκα σε research synthesis, persona development, wireframing και high-fidelity prototyping. Επειδή το project βασίστηκε σε πραγματικό cafe αλλά ήταν course exercise, εστίασα σε ένα realistic service concept χωρίς να υπερβάλλω για production impact.",
+      "Μέσα από το Google UX Design curriculum, εξασκήθηκα σε research synthesis, persona development, wireframing και high-fidelity prototyping. Επειδή το project βασίστηκε σε πραγματικό cafe αλλά ήταν άσκηση μαθήματος, εστίασα σε ένα realistic service concept χωρίς να υπερβάλλω για production impact.",
     "This project reinforced the importance of mobile-first design, balancing constraints with usability and visual appeal.":
       "Το project ενίσχυσε τη σημασία του mobile-first design και της ισορροπίας ανάμεσα σε constraints, usability και visual appeal.",
   },
   "/products/hapi-project": {
     "Architectural Thesis": "Architectural Thesis",
     "Housing & Automated Production Infrastructure, an architectural thesis exploring modular 3D-printed housing and automated assembly for dense future cities.":
-      "Architectural thesis για modular 3D-printed housing και automated assembly σε dense future cities.",
+      "Architectural thesis για modular 3D-printed housing και automated assembly σε πυκνές πόλεις του μέλλοντος.",
     "Research & Concept": "Research & Concept",
-    "Addressing urban housing challenges": "Urban housing challenges",
+    "Addressing urban housing challenges": "Προκλήσεις αστικής κατοίκησης",
     "Hapi explored how people might coexist in future megacities where housing demand, construction speed, and adaptability become increasingly urgent. The thesis proposed a modular housing system that could support variation without losing the efficiency of a repeatable construction logic.":
-      "Το Hapi εξερεύνησε πώς μπορεί να λειτουργήσει η κατοίκηση σε future megacities, όπου housing demand, construction speed και adaptability γίνονται όλο και πιο πιεστικά. Η thesis πρότεινε ένα modular housing system που υποστηρίζει variation χωρίς να χάνει την efficiency μιας repeatable construction logic.",
+      "Το Hapi εξερεύνησε πώς μπορεί να λειτουργήσει η κατοίκηση σε μελλοντικές megacities, όπου η ζήτηση για κατοικία, η ταχύτητα κατασκευής και η προσαρμοστικότητα γίνονται όλο και πιο πιεστικά. Η thesis πρότεινε ένα modular housing system που υποστηρίζει ποικιλία χωρίς να χάνει την αποδοτικότητα μιας repeatable construction logic.",
     "The project proposes a large-scale structure composed of 3D-printed elements that are assembled on-site and elevated to their designated floors. Each home is generated through an algorithmic process, allowing different unit sizes and configurations to fit within a shared structural system.":
-      "Το project προτείνει large-scale structure από 3D-printed elements που assembled on-site και ανεβαίνουν στους αντίστοιχους ορόφους. Κάθε home παράγεται με algorithmic process, ώστε διαφορετικά unit sizes και configurations να χωρούν σε κοινό structural system.",
+      "Το project προτείνει large-scale structure από 3D-printed elements που συναρμολογούνται on-site και ανεβαίνουν στους αντίστοιχους ορόφους. Κάθε κατοικία παράγεται με algorithmic process, ώστε διαφορετικά μεγέθη units και configurations να χωρούν σε κοινό structural system.",
     "Technical Studies": "Technical Studies",
     "Modular design and fabrication": "Modular design and fabrication",
     "The modular approach enabled flexible housing configurations within a scalable urban framework. Shortest path and density studies helped evaluate circulation, access, and livability across different aggregation options.":
-      "Το modular approach επέτρεψε flexible housing configurations μέσα σε scalable urban framework. Shortest path και density studies βοήθησαν στην αξιολόγηση circulation, access και livability σε διαφορετικά aggregation options.",
+      "Το modular approach επέτρεψε ευέλικτες housing configurations μέσα σε scalable urban framework. Shortest path και density studies βοήθησαν στην αξιολόγηση της κυκλοφορίας, της πρόσβασης και της ποιότητας κατοίκησης σε διαφορετικά aggregation options.",
     "Smart systems and algorithmic design": "Smart systems και algorithmic design",
     "The system supports cohabitation through units that can connect, expand, or adapt over time. Smart sensors and robotic systems were explored as part of the broader infrastructure, connecting the architectural concept to automated production and building management.":
-      "Το system υποστηρίζει cohabitation μέσα από units που μπορούν να connect, expand ή adapt με τον χρόνο. Smart sensors και robotic systems εξερευνήθηκαν ως μέρος της broader infrastructure, συνδέοντας το architectural concept με automated production και building management.",
+      "Το σύστημα υποστηρίζει cohabitation μέσα από units που μπορούν να συνδέονται, να επεκτείνονται ή να προσαρμόζονται με τον χρόνο. Smart sensors και robotic systems εξερευνήθηκαν ως μέρος της ευρύτερης υποδομής, συνδέοντας το architectural concept με automated production και building management.",
     "Modular components were analyzed into rulings for fabrication with hotwire cutting techniques, demonstrating advanced fabrication approaches for architectural-scale 3D printing.":
-      "Τα modular components αναλύθηκαν σε rulings για fabrication με hotwire cutting techniques, δείχνοντας advanced fabrication approaches για architectural-scale 3D printing.",
+      "Τα modular components αναλύθηκαν σε rulings για fabrication με hotwire cutting techniques, δείχνοντας advanced fabrication approaches για 3D printing σε αρχιτεκτονική κλίμακα.",
     "Visualization": "Visualization",
-    "Living in the modular city": "Living in the modular city",
+    "Living in the modular city": "Κατοίκηση στη modular πόλη",
     "Architectural illustrations showcase the potential of modular, algorithmically-designed housing systems to create diverse, adaptable living environments in dense urban contexts.":
-      "Τα architectural illustrations δείχνουν πώς modular, algorithmically-designed housing systems μπορούν να δημιουργήσουν diverse και adaptable living environments σε dense urban contexts.",
+      "Τα architectural illustrations δείχνουν πώς modular, algorithmically-designed housing systems μπορούν να δημιουργήσουν ποικίλα και προσαρμόσιμα living environments σε πυκνά αστικά περιβάλλοντα.",
   },
   "/products/thesis-project": {
     "Master's Thesis": "Master's Thesis",
@@ -354,31 +354,31 @@ const routeTranslations = {
     "Research": "Research",
     "Bridging game design and architecture": "Game design και architecture",
     "This project explores the intersection between architectural computation and procedural content generation. The thesis adapts the Wave Function Collapse algorithm, often used in game design, into a framework for generating early-stage architectural massing studies from encoded tilesets.":
-      "Το project εξερευνά το intersection ανάμεσα σε architectural computation και procedural content generation. Η thesis προσαρμόζει τον Wave Function Collapse algorithm, γνωστό από game design, σε framework για early-stage architectural massing studies από encoded tilesets.",
+      "Το project εξερευνά τη σύνδεση ανάμεσα σε architectural computation και procedural content generation. Η thesis προσαρμόζει τον Wave Function Collapse algorithm, γνωστό από game design, σε framework για early-stage architectural massing studies από encoded tilesets.",
     "The goal was to automate repetitive massing exploration without removing designer control. Architects can encode key elements into tile rules, then use the system to generate many valid design variations while maintaining constraints around density, direction, and adjacency.":
-      "Στόχος ήταν να αυτοματοποιηθεί repetitive massing exploration χωρίς να χάνεται designer control. Οι architects μπορούν να encode key elements σε tile rules και να παράγουν valid design variations με constraints γύρω από density, direction και adjacency.",
+      "Στόχος ήταν να αυτοματοποιηθεί το repetitive massing exploration χωρίς να χάνεται ο έλεγχος του designer. Οι architects μπορούν να κωδικοποιούν key elements σε tile rules και να παράγουν valid design variations με constraints γύρω από density, direction και adjacency.",
     "Algorithm": "Algorithm",
     "Wave Function Collapse": "Wave Function Collapse",
     "WFC uses a constraint-solving approach, placing tiles only where their rules and relationships are valid. I adapted the logic from a two-dimensional image-generation technique into a three-dimensional architectural workflow, where each tile carries geometric and spatial meaning.":
-      "Το WFC χρησιμοποιεί constraint-solving approach, τοποθετώντας tiles μόνο όπου τα rules και relationships είναι valid. Προσάρμοσα τη λογική από 2D image-generation technique σε 3D architectural workflow, όπου κάθε tile έχει geometric και spatial meaning.",
+      "Το WFC χρησιμοποιεί constraint-solving approach, τοποθετώντας tiles μόνο όπου τα rules και relationships είναι valid. Προσάρμοσα τη λογική από 2D image-generation technique σε 3D architectural workflow, όπου κάθε tile έχει γεωμετρική και χωρική σημασία.",
     "Technical Implementation": "Technical Implementation",
     "Platform and approach": "Platform and approach",
     "Built in Rhinoceros 3D with Grasshopper, the plugin uses custom WFC components. Architectural elements are encoded into digital tilesets with unique geometry-based identifiers. A voxel grid breaks input models into individual 3D tiles for processing, and the non-backtracking algorithm restarts quickly on contradictions for improved computational speed.":
-      "Built in Rhinoceros 3D με Grasshopper, το plugin χρησιμοποιεί custom WFC components. Architectural elements encoded σε digital tilesets με geometry-based identifiers. Ένα voxel grid σπάει τα input models σε 3D tiles, ενώ ο non-backtracking algorithm κάνει γρήγορο restart σε contradictions.",
+      "Χτισμένο σε Rhinoceros 3D με Grasshopper, το plugin χρησιμοποιεί custom WFC components. Τα architectural elements κωδικοποιούνται σε digital tilesets με geometry-based identifiers. Ένα voxel grid σπάει τα input models σε 3D tiles, ενώ ο non-backtracking algorithm κάνει γρήγορο restart σε contradictions.",
     "Users can define constraints for density, facade direction, and gradient control, while the system generates varied sizes while maintaining architectural constraints.":
-      "Οι users ορίζουν constraints για density, facade direction και gradient control, ενώ το system παράγει variations που κρατούν τα architectural constraints.",
+      "Οι χρήστες ορίζουν constraints για density, facade direction και gradient control, ενώ το σύστημα παράγει variations που κρατούν τα architectural constraints.",
     "Results": "Results",
     "Flexible design variations": "Flexible design variations",
     "Architectural elements are divided into tiles for flexible manipulation and combination into new forms. The WFC algorithm ensures all generated designs adhere to predefined architectural constraints and rules.":
-      "Τα architectural elements χωρίζονται σε tiles για flexible manipulation και νέους συνδυασμούς. Ο WFC algorithm διασφαλίζει ότι τα generated designs ακολουθούν predefined architectural constraints και rules.",
+      "Τα architectural elements χωρίζονται σε tiles για flexible manipulation και νέους συνδυασμούς. Ο WFC algorithm διασφαλίζει ότι τα generated designs ακολουθούν predefined architectural constraints και κανόνες.",
     "Sole researcher & developer": "Sole researcher & developer",
     "This was my individual master's thesis. I developed the theoretical framework, designed the tileset encoding system, implemented the WFC algorithm adaptation in C# for Grasshopper, and conducted the design experiments and evaluations.":
       "Αυτή ήταν η ατομική μου master's thesis. Ανέπτυξα το theoretical framework, σχεδίασα το tileset encoding system, υλοποίησα το WFC adaptation σε C# για Grasshopper και έκανα τα design experiments και evaluations.",
     "Future directions": "Future directions",
     "This research demonstrated procedural generation's potential to simplify tasks and offer real-time feedback, empowering creative exploration while maintaining constraint control. Machine learning integration could make the system adaptive, learning from designs to optimize for sustainability and aesthetics.":
-      "Η research έδειξε τη δυναμική του procedural generation να απλοποιεί tasks και να προσφέρει real-time feedback, ενισχύοντας creative exploration με constraint control. Machine learning integration θα μπορούσε να κάνει το system adaptive και να optimize για sustainability και aesthetics.",
+      "Η research έδειξε τη δυναμική του procedural generation να απλοποιεί εργασίες και να προσφέρει real-time feedback, ενισχύοντας creative exploration με constraint control. Machine learning integration θα μπορούσε να κάνει το σύστημα adaptive και να κάνει optimize για sustainability και aesthetics.",
     "Extension to irregular grids would expand applicability, while refining the interface for accessibility across technical expertise levels could make this a valuable tool in architectural design's future.":
-      "Η επέκταση σε irregular grids θα άνοιγε το applicability, ενώ ένα πιο accessible interface για διαφορετικά technical expertise levels θα μπορούσε να κάνει το tool χρήσιμο για το μέλλον του architectural design.",
+      "Η επέκταση σε irregular grids θα άνοιγε τη χρήση του, ενώ ένα πιο accessible interface για διαφορετικά επίπεδα τεχνικής εμπειρίας θα μπορούσε να κάνει το εργαλείο χρήσιμο για το μέλλον του architectural design.",
   },
   "/products/workshop-design": {
     "Workshop": "Workshop",
@@ -388,17 +388,17 @@ const routeTranslations = {
     "Research & Precedents": "Research & Precedents",
     "Modular housing explorations": "Modular housing explorations",
     "The workshop began with a study of architectural precedents such as Alvenaria Social Housing and Habitat 67. These references helped frame modularity, aggregation, and geometric experimentation. The team then developed a voxel-based system for generating housing units with flexible size and configuration.":
-      "Το workshop ξεκίνησε με μελέτη architectural precedents όπως Alvenaria Social Housing και Habitat 67. Αυτά τα references βοήθησαν να οριστούν modularity, aggregation και geometric experimentation. Η ομάδα ανέπτυξε voxel-based system για housing units με flexible size και configuration.",
+      "Το workshop ξεκίνησε με μελέτη architectural precedents όπως Alvenaria Social Housing και Habitat 67. Αυτά τα references βοήθησαν να οριστούν modularity, aggregation και geometric experimentation. Η ομάδα ανέπτυξε voxel-based system για housing units με ευέλικτο μέγεθος και configuration.",
     "We explored different ways of aggregating voxels to create efficient, livable structures with access to light, air, and circulation. Shortest path diagrams and density studies helped evaluate how people could move through the habitat and where the system became too dense or disconnected.":
-      "Εξερευνήσαμε διαφορετικούς τρόπους aggregation των voxels για efficient και livable structures με access σε light, air και circulation. Shortest path diagrams και density studies βοήθησαν να αξιολογηθεί η κίνηση μέσα στο habitat και πού το system γινόταν υπερβολικά dense ή disconnected.",
-    "From voxels to assembled units": "From voxels to assembled units",
+      "Εξερευνήσαμε διαφορετικούς τρόπους aggregation των voxels για αποδοτικές και βιώσιμες structures με πρόσβαση σε φως, αέρα και κυκλοφορία. Shortest path diagrams και density studies βοήθησαν να αξιολογηθεί η κίνηση μέσα στο habitat και πού το σύστημα γινόταν υπερβολικά πυκνό ή αποσυνδεδεμένο.",
+    "From voxels to assembled units": "Από voxels σε συναρμολογημένα units",
     "Different graph-based methods for grouping voxels were tested to create diverse configurations. I contributed to the computational design process, visual studies, and assembly logic, helping translate abstract aggregation rules into units, facade variations, balconies, rooftops, and exploded diagrams.":
-      "Δοκιμάστηκαν διαφορετικές graph-based methods για grouping voxels και δημιουργία diverse configurations. Συνέβαλα στο computational design process, visual studies και assembly logic, μεταφράζοντας abstract aggregation rules σε units, facade variations, balconies, rooftops και exploded diagrams.",
+      "Δοκιμάστηκαν διαφορετικές graph-based methods για grouping voxels και δημιουργία διαφορετικών configurations. Συνέβαλα στο computational design process, visual studies και assembly logic, μεταφράζοντας abstract aggregation rules σε units, facade variations, balconies, rooftops και exploded diagrams.",
     "Robotic fabrication techniques": "Robotic fabrication techniques",
     "Robotic fabrication techniques were explored for constructing these complex geometries. Modular components were analyzed into rulings for fabrication with hotwire cutting techniques. The modular approach enabled flexible and scalable housing solutions adaptable to various urban contexts.":
-      "Εξερευνήθηκαν robotic fabrication techniques για την κατασκευή αυτών των complex geometries. Τα modular components αναλύθηκαν σε rulings για hotwire cutting fabrication. Το modular approach υποστήριξε flexible και scalable housing solutions για διαφορετικά urban contexts.",
+      "Εξερευνήθηκαν robotic fabrication techniques για την κατασκευή αυτών των σύνθετων γεωμετριών. Τα modular components αναλύθηκαν σε rulings για hotwire cutting fabrication. Το modular approach υποστήριξε ευέλικτες και scalable housing solutions για διαφορετικά urban contexts.",
     "Shortest path and density studies ensured functional and livable environments with optimal circulation, demonstrating how computational design can address real-world spatial challenges.":
-      "Shortest path και density studies βοήθησαν στη δημιουργία functional και livable environments με optimal circulation, δείχνοντας πώς το computational design μπορεί να αντιμετωπίσει real-world spatial challenges.",
+      "Shortest path και density studies βοήθησαν στη δημιουργία λειτουργικών και κατοικήσιμων environments με optimal circulation, δείχνοντας πώς το computational design μπορεί να αντιμετωπίσει πραγματικές χωρικές προκλήσεις.",
   },
 };
 

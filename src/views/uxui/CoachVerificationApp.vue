@@ -49,7 +49,7 @@
     </section>
 
     <!-- Catalog screens: 2 side by side -->
-    <section class="showcase-section">
+    <section class="showcase-section catalog-showcase">
       <div class="showcase-text">
         <p class="section-label">Catalog</p>
         <h2 class="section-heading">778 styles, fully searchable</h2>
@@ -57,7 +57,7 @@
           The main catalog offers filtering by category, decade, and color with progressive loading. Each bag links to a detail page with dimensions, volume, strap length, production years, and available colorways, making the dataset easier to browse than a static reference list.
         </p>
       </div>
-      <div class="showcase-screens showcase-screens-2 media-container-yellow">
+      <div class="showcase-screens showcase-screens-2">
         <img :src="catalogFilter" alt="Catalog grid with filters" class="screen-image" />
         <img :src="itemPreview" alt="Bag detail page" class="screen-image" />
       </div>
@@ -78,7 +78,7 @@
     </section>
 
     <!-- App Demo Video - phone recording with text -->
-    <section class="showcase-section">
+    <section class="showcase-section live-demo-section">
       <div class="showcase-text">
         <p class="section-label">Live Demo</p>
         <h2 class="section-heading">Browsing the catalog in action</h2>
@@ -387,6 +387,32 @@ export default {
   box-shadow: var(--shadow-lg);
 }
 
+.live-demo-section {
+  align-items: center;
+}
+
+.live-demo-section .video-phone-container {
+  flex: 1 1 0;
+  width: 100%;
+  max-width: min(52rem, 100%);
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: visible;
+}
+
+.live-demo-section .video-phone {
+  width: 100% !important;
+  height: auto !important;
+  max-height: min(78vh, 48rem);
+  object-fit: contain;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
 /* ===== SHOWCASE SECTIONS ===== */
 .showcase-section {
   display: flex;
@@ -421,6 +447,26 @@ export default {
 
 .showcase-screens-3 {
   justify-content: center;
+}
+
+.catalog-showcase,
+.catalog-showcase .showcase-screens {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0;
+  box-shadow: none !important;
+}
+
+.catalog-showcase .screen-image {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.case-study.case-study .catalog-showcase .screen-image {
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
 .screen-image {
@@ -489,6 +535,18 @@ export default {
     width: 100%;
     max-height: 480px;
   }
+
+  .live-demo-section {
+    align-items: stretch;
+  }
+
+  .live-demo-section .video-phone-container {
+    max-width: 100%;
+  }
+
+  .live-demo-section .video-phone {
+    max-height: 72vh;
+  }
 }
 
 @media (max-width: 768px) {
@@ -555,6 +613,21 @@ export default {
     height: auto;
     width: 100%;
     max-height: 420px;
+  }
+
+  .live-demo-section .video-phone-container {
+    align-items: center;
+    justify-content: center;
+    height: min(74vh, 44rem);
+    max-width: none;
+  }
+
+  .live-demo-section .video-phone {
+    width: 100%;
+    height: 100% !important;
+    max-height: none;
+    object-fit: cover;
+    object-position: center;
   }
 }
 

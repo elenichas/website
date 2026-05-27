@@ -295,14 +295,24 @@ export default {
   top: 100%;
   left: 0;
   right: 0;
-  background: var(--glass-bg-strong);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border-bottom: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(28px) saturate(165%);
+  -webkit-backdrop-filter: blur(28px) saturate(165%);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.1);
+  box-shadow: 0 1.5rem 4rem rgba(17, 17, 17, 0.08);
   transform: translateY(-100%);
   opacity: 0;
   visibility: hidden;
   transition: all var(--duration-normal) var(--ease-out);
+  overflow: hidden;
+}
+
+.mobile-menu::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.78));
 }
 
 .mobile-menu.open {
@@ -312,6 +322,8 @@ export default {
 }
 
 .mobile-nav {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   padding: var(--space-8);
