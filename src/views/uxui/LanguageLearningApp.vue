@@ -223,10 +223,6 @@
               <span class="component-label">Primary Button</span>
               <button class="sample-button primary" style="background: #d4a44a; color: #2a1f0e; border: none; padding: 0.875rem 1.75rem; border-radius: 0.75rem; font-weight: 600;">Start Practice</button>
             </div>
-            <div class="component-example">
-              <span class="component-label">Glass Card</span>
-              <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); padding: 1rem 1.5rem; border-radius: 1rem; backdrop-filter: blur(12px); color: #f5f0e8; font-size: 0.9rem;">Glassmorphic Element</div>
-            </div>
           </div>
         </div>
       </div>

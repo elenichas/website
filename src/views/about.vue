@@ -11,15 +11,6 @@
         </p>
       </div>
 
-      <div class="about-hero__media about-reveal" aria-label="Conference and design moments">
-        <img class="hero-photo hero-photo--primary" :src="conferenceImages[0].src" alt="Eleni at UXDX USA 2025" />
-        <img class="hero-photo hero-photo--secondary" :src="conferenceImages[4].src" alt="UXDX conference moment" />
-        <div class="hero-note">
-          <span>Design systems</span>
-          <span>Spatial tools</span>
-          <span>Front-end craft</span>
-        </div>
-      </div>
     </section>
 
     <div class="about-marquee" aria-hidden="true">
@@ -36,7 +27,7 @@
       </div>
       <div class="glance-item">
         <span class="glance-value">Foster + Partners</span>
-        <span class="glance-label">Design Systems Analyst</span>
+        <span class="glance-label">Associate Design Systems Analyst</span>
       </div>
       <div class="glance-item">
         <span class="glance-value">MSc</span>
@@ -77,7 +68,7 @@
           <div>
             <h3>What I Do Now</h3>
             <p>
-              As a <strong>Design Systems Analyst at Foster + Partners</strong>, I work at the intersection of design
+              As an <strong>Associate Design Systems Analyst at Foster + Partners</strong>, I work at the intersection of design
               and engineering, creating tools and systems that help creative teams do their best work. From design systems
               to full web applications, I design and build solutions that make complex workflows feel effortless.
             </p>
@@ -235,8 +226,7 @@ export default {
 
 .about-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
-  gap: clamp(2rem, 6vw, 7rem);
+  grid-template-columns: minmax(0, 1fr);
   align-items: end;
   max-width: 1500px;
   margin: 0 auto;

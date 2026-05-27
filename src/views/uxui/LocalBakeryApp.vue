@@ -309,9 +309,29 @@ export default {
 
 /* ===== CONTENT SECTIONS ===== */
 .content-section {
-  max-width: 760px;
+  max-width: 1240px;
   margin: 0 auto var(--space-12);
   padding: 0 var(--space-8);
+  text-align: left;
+}
+
+.case-study .content-section.layout-text-only {
+  display: grid;
+  place-items: start;
+  text-align: left;
+}
+
+.content-section .section-label,
+.content-section .section-heading,
+.content-section .body-text {
+  text-align: left;
+}
+
+.content-section .body-text,
+.case-study .content-section.layout-text-only .body-text {
+  max-width: 760px;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .section-label {
@@ -417,12 +437,12 @@ export default {
 }
 
 .case-study .bakery-showcase-right .showcase-copy {
-  justify-self: end;
-  text-align: right;
+  justify-self: start;
+  text-align: left;
 }
 
 .case-study .bakery-showcase-right .body-text {
-  margin-left: auto;
+  margin-left: 0;
 }
 
 .showcase-media {

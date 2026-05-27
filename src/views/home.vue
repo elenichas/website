@@ -160,7 +160,7 @@ export default {
           name: "Vintage Coach Catalog",
           labels: ["Reference Platform", "Authentication System"],
           services: ["Catalog Architecture", "Serial Decoder", "Image Reference System", "Authentication UX", "Research Database"],
-          description: "The definitive digital reference for vintage Coach leather goods, cataloging 778 styles, 104 colors, and 70 catalogs spanning 1975 to 2002, with a built-in serial number decoder for authentication.",
+          description: "A personal data product for vintage Coach leather goods, turning catalog data into a searchable reference with 778 styles, 104 colors, and a serial number decoder.",
           image: require("@/images/gallery/coachHero.jpg"),
           route: "/products/coach-verification-app",
         },
@@ -168,7 +168,7 @@ export default {
           name: "Moon Habitat Configurator",
           labels: ["Design Automation", "3D Systems"],
           services: ["Parametric Logic", "3D Interaction", "Spatial Analysis", "System Prototyping", "Design Automation"],
-          description: "A parametric design system for configuring modular lunar habitats through optimization algorithms and spatial analysis.",
+          description: "A professional proof of concept applying real design automation methods to a hypothetical lunar habitat configurator.",
           image: require("@/images/gallery/moonPixel.webp"),
           route: "/products/lunar-app",
         },
@@ -176,7 +176,7 @@ export default {
           name: "Arabiya Language App",
           labels: ["Educational Technology", "Full-Stack"],
           services: ["Lesson Design", "Bilingual UI", "Interactive Quizzes", "Progress States", "Full-Stack Build"],
-          description: "An immersive web app for learning Egyptian Arabic with interactive lessons, quizzes, and full bilingual support.",
+          description: "A personal learning app for Egyptian Arabic, built around real lessons and interactive study and practice flows.",
           image: require("@/images/gallery/language.jpg"),
           route: "/products/language-learning-app",
         },
@@ -402,7 +402,7 @@ export default {
   aspect-ratio: 4 / 5;
   overflow: hidden;
   border-radius: 2px;
-  background: #111111;
+  background: transparent;
   box-shadow: none;
   transform: none;
 }
@@ -729,7 +729,7 @@ export default {
   }
 
   .hero-section {
-    padding: var(--space-6) 0 var(--space-8);
+    padding: var(--space-5) 0 var(--space-6);
   }
 
   .hero-shell {
@@ -738,9 +738,9 @@ export default {
 
   .hero-content {
     grid-template-columns: 1fr;
-    gap: var(--space-6);
+    gap: var(--space-5);
     min-height: auto;
-    padding: var(--space-8) var(--space-6);
+    padding: var(--space-7) var(--space-6) var(--space-5);
   }
 
   .content-column {
@@ -769,28 +769,43 @@ export default {
   }
 
   .avatar-column {
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   .avatar-wrapper {
-    width: min(42vw, 180px);
+    width: min(38vw, 150px);
+  }
+
+  .home-marquee {
+    margin: 0 calc(var(--space-5) * -1) var(--space-10);
   }
 
   .featured-section {
     margin: 0 calc(var(--space-5) * -1);
-    padding: var(--space-12) 0;
+    padding: var(--space-10) 0;
   }
 
   .featured-header {
     padding: 0 var(--space-5);
+    margin-bottom: var(--space-6);
+  }
+
+  .featured-bg-title {
+    top: 0.1rem;
+    left: var(--space-5);
+    max-width: calc(100vw - (var(--space-5) * 2));
+    overflow: hidden;
+    font-size: clamp(5.5rem, 27vw, 8rem);
+    line-height: 0.82;
   }
 
   .featured-title {
-    font-size: clamp(2.6rem, 13vw, 5rem);
+    font-size: clamp(2.7rem, 12vw, 4.75rem);
   }
 
   .projects-stack {
     gap: var(--space-6);
+    margin: 0;
     padding-bottom: 0;
   }
 
@@ -801,6 +816,17 @@ export default {
     min-height: 0;
     margin-bottom: var(--space-6);
     border-radius: 18px;
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .project-card.revealed {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .project-card-frame:last-child .project-card {
@@ -808,8 +834,14 @@ export default {
   }
 
   .project-card__body {
-    min-height: 360px;
+    min-height: 0;
+    gap: var(--space-6);
     padding: var(--space-6);
+  }
+
+  .project-card__details {
+    gap: var(--space-4);
+    align-items: start;
   }
 
   .project-card__title {
@@ -822,12 +854,13 @@ export default {
   }
 
   .project-card__image {
-    min-height: 320px;
+    min-height: 280px;
+    aspect-ratio: 4 / 3;
     border-radius: 0 0 18px 18px;
   }
 
   .stack-section {
-    margin-top: 0;
+    margin: 0 calc(var(--space-5) * -1);
     padding: 0;
   }
 }
@@ -842,7 +875,7 @@ export default {
   }
 
   .hero-content {
-    padding: var(--space-6) var(--space-5);
+    padding: var(--space-6) var(--space-5) var(--space-4);
   }
 
   .hero-kicker {
@@ -854,7 +887,7 @@ export default {
   }
 
   .content-column :deep(.description) {
-    font-size: 0.8rem;
+    font-size: 0.86rem;
     line-height: 1.55;
   }
 
@@ -865,7 +898,7 @@ export default {
   }
 
   .avatar-wrapper {
-    width: min(46vw, 160px);
+    width: min(40vw, 145px);
   }
 
   .project-card {
@@ -876,8 +909,13 @@ export default {
     margin: 0 calc(var(--space-4) * -1);
   }
 
+  .home-marquee,
+  .stack-section {
+    margin-left: calc(var(--space-4) * -1);
+    margin-right: calc(var(--space-4) * -1);
+  }
+
   .project-card__body {
-    min-height: 340px;
     padding: var(--space-5);
   }
 
@@ -887,7 +925,7 @@ export default {
   }
 
   .project-card__image {
-    min-height: 260px;
+    min-height: 240px;
     aspect-ratio: 4 / 3;
   }
 
