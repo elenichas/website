@@ -29,8 +29,7 @@
       </div>
       <div class="info-description">
         <p class="info-text">
-          A parametric design system for configuring modular lunar habitats through optimization algorithms and spatial
-          analysis.
+          A professional proof of concept for a conference, applying real design automation methods to a hypothetical lunar habitat scenario.
         </p>
       </div>
     </div>
@@ -39,10 +38,9 @@
     <section class="split-section split-section-left">
       <div class="split-content">
         <p class="section-label">Background</p>
-        <h2 class="section-heading">Designing for extreme environments</h2>
+        <h2 class="section-heading">A speculative scenario with real methodology</h2>
         <p class="body-text">
-          This project explores how system design and configuration for design automation can be applied to extreme
-          environments like the lunar surface, combining research and modular thinking principles.
+          This was a team exploration into how the same methods used for real-world design automation could be applied to an extreme environment. The lunar setting made the project playful and speculative, but the underlying workflow was grounded in modular systems, spatial constraints, and configuration logic.
         </p>
       </div>
       <div class="split-media media-container-blue">
@@ -56,7 +54,7 @@
       <h2 class="section-heading">A modular system for extreme environments</h2>
       <p class="body-text">
         The system combines terrain analysis, modular unit cataloging, network-based connections, and optimization
-        algorithms to adapt designs to spatial constraints. Key elements include:
+        algorithms to adapt habitat layouts to spatial constraints. Key elements include:
       </p>
       <ul class="simple-list">
         <li><strong>Terrain Analysis</strong> Systematic analysis of solar terrain conditions to inform site selection
@@ -118,9 +116,7 @@
         <p class="section-label">Interactive System</p>
         <h2 class="section-heading">Real-time configuration and visualization</h2>
         <p class="body-text">
-          The 3D environment allows for real-time configuration and visualization of lunar habitat layouts. Users can
-          explore different module arrangements, optimize connections, and analyze spatial relationships in an
-          interactive setting.
+          The 3D environment lets users explore habitat layouts as configurable systems. Module choices, connections, and spatial relationships can be tested visually, making the automation logic easier to understand than through diagrams alone.
         </p>
       </div>
       <div class="split-media media-container-purple">
@@ -181,8 +177,7 @@
       <h2 class="section-heading">Design system architecture & 3D interface</h2>
       <p class="body-text">
         Within the team, I led the product design for the configurator interface, designed the module catalog system,
-        and developed the interactive 3D viewer. I collaborated with algorithm engineers on the optimization pipeline
-        and spatial analysis components.
+        and developed the interactive 3D viewer. I collaborated with algorithm engineers to connect the interface to the optimization and spatial analysis logic behind the concept.
       </p>
     </section>
 
@@ -190,8 +185,7 @@
       <p class="section-label">Impact</p>
       <h2 class="section-heading">Bridging design automation and extreme environments</h2>
       <p class="body-text">
-        This proof-of-concept from professional experience demonstrated how parametric design systems can handle complex
-        spatial problems in extreme environments, making design automation applicable beyond traditional contexts.
+        The project helped communicate design automation methods through a vivid scenario. It showed how catalogs, rules, optimization, and 3D interaction can work together as a product experience, even when the context is hypothetical.
       </p>
     </section>
 
@@ -214,9 +208,9 @@ export default {
     useHead({
       title: "Moon Habitat Configurator — Eleni Chasioti",
       meta: [
-        { name: "description", content: "Case study: A parametric design system for configuring modular lunar habitats through optimization algorithms and 3D visualization." },
+        { name: "description", content: "Case study: A professional proof of concept applying design automation methods to a hypothetical lunar habitat configurator." },
         { property: "og:title", content: "Moon Habitat Configurator — Eleni Chasioti" },
-        { property: "og:description", content: "Parametric design automation for extreme environments with 3D configuration and spatial analysis." },
+        { property: "og:description", content: "A conference proof of concept showing how catalogs, rules, optimization, and 3D interaction can support design automation." },
       ],
     });
   },

@@ -24,12 +24,12 @@
         </div>
         <div class="meta-block">
           <span class="meta-label">Stack</span>
-          <span class="meta-value">Design Automation</span>
+          <span class="meta-value">Power Plant Design Automation</span>
         </div>
       </div>
       <div class="info-description">
         <p class="info-text">
-          A comprehensive web-based platform for a major international client that systematizes the design of industrial facilities through modular components, complex network systems, and intelligent spatial rules.
+          A consultancy project for a major engineering client, turning power plant design knowledge into a structured unit catalog, configurator app, automated layout logic, and validation workflow.
         </p>
       </div>
     </div>
@@ -37,12 +37,12 @@
     <!-- Problem Space -->
     <section class="content-section">
       <p class="section-label">Challenge</p>
-      <h2 class="section-heading">Systematizing complex industrial design</h2>
+      <h2 class="section-heading">Turning expert workflows into a structured design system</h2>
       <p class="body-text">
-        Designing industrial facilities involves coordinating modular building units, intricate utility networks, and complex spatial relationships. Each facility requires careful consideration of connections between units, compliance with spatial constraints, and validation of technical requirements.
+        Power plant design relies on specialist knowledge spread across unit specifications, engineering constraints, spatial rules, and network dependencies. The client needed a clearer way to structure that knowledge so teams could configure facilities more consistently and understand the consequences of each design decision.
       </p>
       <p class="body-text">
-        The client needed a system that could catalog modular components, enforce logical and spatial placement rules, and represent the complex networks required to connect industrial units for fully functional facilities.
+        The challenge was not only interface design. It was helping the team translate a complex consultancy workflow into consistent data, reusable components, automated checks, and a tool that could also support training and communication.
       </p>
     </section>
 
@@ -59,9 +59,9 @@
     <section class="split-section split-section-left">
       <div class="split-content">
         <p class="section-label">Solution</p>
-        <h2 class="section-heading">Intelligent facility configuration</h2>
-        <p class="body-text">
-          A sophisticated web platform that combines a modular component catalog, network visualization, rule-based validation, and spatial planning to enable systematic design of industrial facilities.
+      <h2 class="section-heading">A configurator for units, rules, and design validation</h2>
+      <p class="body-text">
+          The platform combines a structured unit catalog, configuration interface, network visualization, rule-based validation, and alert system. Users can select plant units, review properties and connection requirements, test layout logic, and understand where a design needs attention.
         </p>
       </div>
       <div class="split-media media-container-blue">
@@ -76,12 +76,12 @@
       <p class="section-label">System Capabilities</p>
       <h2 class="section-heading">Modular design automation</h2>
       <ul class="simple-list">
-        <li><strong>Modular Component Catalog</strong>  Comprehensive library of industrial units with technical specifications and connection requirements</li>
-        <li><strong>Network System Representation</strong>  Visual mapping of utility networks, pathways, and connections between facility components</li>
-        <li><strong>Rule-Based Validation</strong>  Logical and spatial rules ensure proper unit placement and valid facility configurations</li>
-        <li><strong>Node-Based Interface</strong>  Intuitive node system for defining relationships and connections between components</li>
-        <li><strong>Spatial Constraint Checking</strong>  Automated validation of spatial requirements and clearances</li>
-        <li><strong>Component Properties</strong>  Detailed view of technical specifications, dimensions, and connection points for each unit</li>
+        <li><strong>Unit Catalog</strong>  A structured library of power plant units with technical properties, dimensions, and connection requirements</li>
+        <li><strong>Network Representation</strong>  Visual mapping of utility networks, pathways, and dependencies between facility components</li>
+        <li><strong>Rule-Based Validation</strong>  Automated checks that flag invalid placements, missing connections, and spatial conflicts</li>
+        <li><strong>Node-Based Interface</strong>  A relationship model for defining how components connect and depend on one another</li>
+        <li><strong>Training Tool</strong>  A clearer way for teams to understand facility logic, unit behavior, and design constraints</li>
+        <li><strong>Consistent Data Structure</strong>  Shared data patterns that make components easier to compare, configure, and reuse</li>
       </ul>
     </section>
 
@@ -91,7 +91,7 @@
         <p class="section-label">Design Process</p>
         <h2 class="section-heading">From wireframes to implementation</h2>
         <p class="body-text">
-          The design process began with comprehensive wireframing to map out the complex interactions between facility selection, component cataloging, network visualization, and rule validation.
+          The design process began by mapping the existing engineering workflow into product flows: selecting a facility type, choosing units from a catalog, reviewing properties, defining network relationships, and surfacing validation alerts when rules were broken.
         </p>
       </div>
       <div class="split-media media-container-purple">
@@ -117,7 +117,7 @@
         <p class="section-label">Component Details</p>
         <h3 class="section-heading">Comprehensive specifications</h3>
         <p class="body-text">
-          Each modular component includes detailed technical specifications, dimensions, connection points, and compatibility information for systematic facility design.
+          Each unit includes the information needed to make configuration decisions: dimensions, technical properties, connection points, compatibility rules, and requirements that affect downstream validation.
         </p>
       </div>
     </section>
@@ -128,7 +128,7 @@
         <p class="section-label">Network System</p>
         <h2 class="section-heading">Node-based connectivity</h2>
         <p class="body-text">
-          The node-based interface allows users to define complex relationships and connections between facility components, representing the intricate networks required for industrial operations.
+          The node-based interface makes hidden dependencies visible. Users can see how facility components relate to one another, where connections are required, and how a change in one unit affects the wider plant system.
         </p>
       </div>
       <div class="split-media media-container-green">
@@ -141,7 +141,7 @@
       <p class="section-label">Component Selection</p>
       <h2 class="section-heading">Modular catalog integration</h2>
       <p class="body-text">
-        The modular catalog provides a systematic approach to selecting and adding industrial units to the facility design, with filtering and search capabilities for efficient component discovery.
+        The catalog gives teams a consistent way to select and add industrial units, compare component properties, and move from scattered technical references toward a shared design language.
       </p>
       <figure class="image-figure">
         <img :src="addModel" alt="Add Model Interface" class="content-image" />
@@ -157,7 +157,7 @@
         <p class="section-label">Validation</p>
         <h3 class="section-heading">Intelligent rule checking</h3>
         <p class="body-text">
-          The system continuously validates configurations against logical and spatial rules, ensuring all placements meet technical requirements and facility standards.
+          The system checks configurations against logical and spatial rules and raises alerts when a design breaks technical requirements, helping teams catch issues earlier in the process.
         </p>
       </div>
     </section>
@@ -168,7 +168,7 @@
         <p class="section-label">Component Management</p>
         <h2 class="section-heading">Property visualization</h2>
         <p class="body-text">
-          Quick access to component properties enables efficient review and modification of facility elements, maintaining design integrity throughout the configuration process.
+          Quick access to unit properties helps users understand what they are placing, why it matters, and whether the configuration remains valid as the design changes.
         </p>
       </div>
       <div class="split-media media-container-blue">
@@ -181,7 +181,7 @@
       <p class="section-label">Catalog System</p>
       <h2 class="section-heading">Component comparison and selection</h2>
       <p class="body-text">
-        The catalog interface enables side-by-side comparison of modular components, facilitating informed decisions based on technical specifications, spatial requirements, and compatibility.
+        The catalog interface supports side-by-side comparison so teams can evaluate units by technical specifications, spatial requirements, and compatibility instead of relying on disconnected documents.
       </p>
       <div class="catalog-image-grid">
         <figure class="catalog-figure">
@@ -198,7 +198,7 @@
       <p class="section-label">My Role</p>
       <h2 class="section-heading">Lead Product Designer</h2>
       <p class="body-text">
-        I owned the end-to-end UX process: user research with engineering teams, information architecture for the modular catalog, wireframing, high-fidelity UI design, and design system documentation. I worked closely with front-end developers on implementation and iterated based on user testing sessions with facility engineers.
+        I led the product design work within the consultancy team: workflow mapping, information architecture for the unit catalog, wireframing, high-fidelity UI design, and design system documentation. I worked closely with engineers and developers to translate domain logic into usable screens and validation patterns.
       </p>
     </section>
 
@@ -207,10 +207,10 @@
       <p class="section-label">Impact</p>
       <h2 class="section-heading">Systematizing industrial facility design</h2>
       <p class="body-text">
-        The configurator transforms the industrial facility design process from a manual, time-intensive workflow into a systematic, rule-based approach. By cataloging modular components and encoding design expertise into spatial and logical rules, the system ensures consistency and validity across all facility configurations.
+        The configurator helped move the design process from manual interpretation toward structured automation. By cataloging units, standardizing data, and encoding validation rules, the tool created a more consistent foundation for facility configuration.
       </p>
       <p class="body-text">
-        The visual representation of complex networks and connections between industrial units provides unprecedented clarity in facility planning, enabling teams to identify potential issues early and optimize designs before construction begins.
+        It also acted as a training and communication tool: teams could see how units connect, where rules apply, and why alerts were triggered, making complex plant logic easier to review and explain.
       </p>
     </section>
 
@@ -233,9 +233,9 @@ export default {
     useHead({
       title: "Industrial Facility Configurator — Eleni Chasioti",
       meta: [
-        { name: "description", content: "Case study: A web-based configurator for industrial facility design with modular components, network systems, and rule-based validation." },
+        { name: "description", content: "Case study: A consultancy product for power plant design automation, with a unit catalog, configurator, data structure, and validation alerts." },
         { property: "og:title", content: "Industrial Facility Configurator — Eleni Chasioti" },
-        { property: "og:description", content: "Systematizing industrial facility design through modular components and intelligent spatial rules." },
+        { property: "og:description", content: "Systematizing power plant design through structured unit data, configuration workflows, and rule-based validation." },
       ],
     });
   },

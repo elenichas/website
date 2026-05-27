@@ -29,7 +29,7 @@
       </div>
       <div class="info-description">
         <p class="info-text">
-          An immersive web app for English and Greek speakers to learn Egyptian Arabic through interactive lessons covering the alphabet, vowel diacritics, and everyday phrases.
+          A personal learning app for Egyptian Arabic, built around my own lessons and designed to turn new material into interactive study and practice flows.
         </p>
       </div>
     </div>
@@ -39,10 +39,10 @@
       <p class="section-label">Background</p>
       <h2 class="section-heading">A personal learning tool</h2>
       <p class="body-text">
-        I created Arabiya as a way to support my own journey learning Arabic. Rather than relying solely on generic apps, I wanted a tool tailored to the material I cover in my actual lessons with my teacher. The app is an ongoing project, and I plan to continue adding lessons based on real session content as I progress through the language.
+        I created Arabiya to support my own journey learning Arabic with a teacher. Rather than relying only on generic apps, I wanted a tool that could turn the material from real lessons into structured study screens, quizzes, and repeatable practice.
       </p>
       <p class="body-text">
-        I’m also currently working on a dual-language version where Greek, my native language, is fully supported as the interface language, making the app accessible to Greek speakers who want to learn Arabic as well.
+        Because I am Greek and learning Arabic through English, the app is also an experiment in making the learning path understandable across languages. I plan to keep adding material as the lessons progress.
       </p>
     </section>
 
@@ -77,7 +77,7 @@
       <p class="section-label">Features</p>
       <h2 class="section-heading">Structured lessons with immediate practice</h2>
       <ul class="simple-list">
-        <li><strong>Multi-Language Interface</strong> Full English and Greek UI localization, allowing non-English speakers to learn Arabic in their native language</li>
+        <li><strong>Dual-Language Direction</strong> English-first interface with Greek support planned as the content and learning material expand</li>
         <li><strong>Dialect Selection</strong> Focus on Egyptian Arabic with a framework designed to support Syrian, Lebanese, Gulf, Moroccan, and Iraqi dialects</li>
         <li><strong>Alphabet Mastery</strong> Complete 28-letter reference with all four positional forms (isolated, initial, medial, final) plus letter connection rules</li>
         <li><strong>Vowels &amp; Diacritics</strong> Dedicated lesson for Fatha, Kasra, Damma, and Sukun with explanations of why diacritics matter in Arabic</li>
@@ -237,7 +237,7 @@
       <p class="section-label">Technology</p>
       <h2 class="section-heading">Modern web stack</h2>
       <p class="body-text">
-        Built with Next.js 16 and React 19 using TypeScript for type safety. The UI leverages Tailwind CSS v4 with custom glassmorphic components, Radix UI primitives for accessibility, and Lucide icons. A custom internationalization system supports full English and Greek translations. Deployed on Vercel with analytics integration.
+        Built with Next.js, React, and TypeScript. The UI uses Tailwind CSS with custom components, Radix UI primitives for accessibility, and Lucide icons. The architecture leaves room for bilingual content as the app grows.
       </p>
     </section>
 
@@ -246,7 +246,7 @@
       <p class="section-label">My Role</p>
       <h2 class="section-heading">Sole designer & developer</h2>
       <p class="body-text">
-        End-to-end ownership of product design, UI implementation, content creation, and internationalization architecture. Built with Next.js 16, React 19, TypeScript, and Tailwind CSS v4.
+        End-to-end ownership of product design, UI implementation, lesson structure, quiz logic, and content modeling. The project is intentionally personal, but it uses the same product thinking I would apply to a larger learning platform.
       </p>
     </section>
 
@@ -281,9 +281,9 @@ export default {
     useHead({
       title: "Arabiya Language App — Eleni Chasioti",
       meta: [
-        { name: "description", content: "Case study: An immersive web app for learning Egyptian Arabic with interactive lessons, quizzes, and bilingual support." },
+        { name: "description", content: "Case study: A personal Egyptian Arabic learning app built around real lessons, interactive study flows, quizzes, and content modeling." },
         { property: "og:title", content: "Arabiya Language App — Eleni Chasioti" },
-        { property: "og:description", content: "Interactive language learning with RTL text support, study modes, and multi-language UI." },
+        { property: "og:description", content: "A personal learning tool that turns Arabic lesson material into structured study screens and practice flows." },
       ],
     });
   },

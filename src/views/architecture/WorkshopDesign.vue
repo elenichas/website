@@ -29,7 +29,7 @@
       </div>
       <div class="info-description">
         <p class="info-text">
-          Exploring modular voxel-based housing systems with optimization algorithms and robotic fabrication techniques. Digital Futures Workshop 2020.
+          A Digital Futures Workshop project exploring voxel-based housing systems, aggregation logic, and robotic fabrication techniques.
         </p>
       </div>
     </div>
@@ -39,10 +39,10 @@
       <p class="section-label">Research & Precedents</p>
       <h2 class="section-heading">Modular housing explorations</h2>
       <p class="body-text">
-        The workshop began with a study of existing architectural models like Alvenaria Social Housing and Habitat 67. These served as precedents showing modularity and geometric experimentation. A voxel-based system was used to design different housing units, allowing flexibility in size and configuration.
+        The workshop began with a study of architectural precedents such as Alvenaria Social Housing and Habitat 67. These references helped frame modularity, aggregation, and geometric experimentation. The team then developed a voxel-based system for generating housing units with flexible size and configuration.
       </p>
       <p class="body-text">
-        Various ways of aggregating these voxels were explored to create efficient and livable structures with plenty of light and air. The team optimized circulation within the habitat using shortest path diagrams and density studies to ensure logical and efficient pathways.
+        We explored different ways of aggregating voxels to create efficient, livable structures with access to light, air, and circulation. Shortest path diagrams and density studies helped evaluate how people could move through the habitat and where the system became too dense or disconnected.
       </p>
     </section>
 
@@ -52,7 +52,7 @@
         <p class="section-label">Design Process</p>
         <h2 class="section-heading">From voxels to assembled units</h2>
         <p class="body-text">
-          Different graph-based methods for grouping voxels were tested to create diverse and flexible configurations. The team developed geometric variations for elements like balconies, facades, and rooftops, culminating in exploded diagrams showing how the units could be assembled.
+          Different graph-based methods for grouping voxels were tested to create diverse configurations. I contributed to the computational design process, visual studies, and assembly logic, helping translate abstract aggregation rules into units, facade variations, balconies, rooftops, and exploded diagrams.
         </p>
       </div>
       <div class="split-media media-container-purple">

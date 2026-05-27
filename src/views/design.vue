@@ -7,7 +7,7 @@
       <header class="page-header">
         <div class="header-content">
           <h1 class="page-title">Products</h1>
-          <p class="page-subtitle">Digital experiences designed to solve real problems</p>
+          <p class="page-subtitle">Product systems, configurators, and learning tools designed around real workflows</p>
         </div>
       </header>
 
@@ -126,17 +126,17 @@ export default {
       architectureImages: [
         {
           alt: "Hapi Project",
-          title: "Architectural System",
+          title: "Hapi Modular Housing System",
           type: "Parametric Modular Design",
           animation: "hapi-system",
           posterTitle: "Hapi",
           posterMark: "MODULAR LOGIC",
-          posterYear: "2026",
+          posterYear: "2019",
           route: "/products/hapi-project",
         },
         {
           alt: "Thesis Project",
-          title: "Computational Framework",
+          title: "Cricket WFC Plugin",
           type: "Rule-Based Design",
           animation: "thesis-framework",
           posterTitle: "Rules",
@@ -198,8 +198,8 @@ export default {
         },
         {
           alt: "Filos Mobile App",
-          title: "Filos Mobile Experience",
-          type: "Accessible Experience",
+          title: "Filos Inclusive Activity App",
+          type: "Inclusive Mobile Concept",
           animation: "filos-mobile",
           posterTitle: "Filos",
           posterMark: "ROUTE + CARE",
@@ -209,7 +209,7 @@ export default {
         {
           alt: "Coffee Shop App",
           title: "Brew & Crumb Mobile App",
-          type: "Product Design",
+          type: "Mobile Ordering Concept",
           animation: "bakery-mobile",
           posterTitle: "Brew",
           posterMark: "PICKUP READY",

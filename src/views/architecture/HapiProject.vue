@@ -3,7 +3,7 @@
   <div class="case-study">
     <!-- Cinematic Header -->
     <header class="case-header">
-      <h1 class="case-title anim-reveal" style="--delay: 0s;">Hapi - Thesis Project</h1>
+      <h1 class="case-title anim-reveal" style="--delay: 0s;">Hapi Modular Housing</h1>
     </header>
 
     <!-- Hero Image -->
@@ -29,7 +29,7 @@
       </div>
       <div class="info-description">
         <p class="info-text">
-          Housing &amp; Automated Production Infrastructure, exploring digital possibilities for coexistence in future mega cities through modular, 3D-printed housing.
+          Housing &amp; Automated Production Infrastructure, an architectural thesis exploring modular 3D-printed housing and automated assembly for dense future cities.
         </p>
       </div>
     </div>
@@ -39,10 +39,10 @@
       <p class="section-label">Research & Concept</p>
       <h2 class="section-heading">Addressing urban housing challenges</h2>
       <p class="body-text">
-        The Hapi project delves into the digital possibilities of how people may coexist in future mega cities. It tackles the growing housing shortage in urban centers and emphasizes the need for sustainable, affordable, and adaptable living spaces.
+        Hapi explored how people might coexist in future megacities where housing demand, construction speed, and adaptability become increasingly urgent. The thesis proposed a modular housing system that could support variation without losing the efficiency of a repeatable construction logic.
       </p>
       <p class="body-text">
-        The project proposes a large-scale, modular structure composed of 3D-printed elements, which are assembled on-site and then elevated to their designated floors. Each home is designed using a unique algorithmic process, tailored to accommodate various family sizes.
+        The project proposes a large-scale structure composed of 3D-printed elements that are assembled on-site and elevated to their designated floors. Each home is generated through an algorithmic process, allowing different unit sizes and configurations to fit within a shared structural system.
       </p>
     </section>
 
@@ -59,7 +59,7 @@
         <p class="section-label">Technical Studies</p>
         <h2 class="section-heading">Modular design and fabrication</h2>
         <p class="body-text">
-          The modular approach enabled flexible and scalable housing solutions adaptable to various urban contexts. Shortest path and density studies ensured functional and livable environments for diverse communities.
+          The modular approach enabled flexible housing configurations within a scalable urban framework. Shortest path and density studies helped evaluate circulation, access, and livability across different aggregation options.
         </p>
       </div>
       <div class="split-media media-container-blue">
@@ -81,7 +81,7 @@
       <p class="section-label">Innovation</p>
       <h2 class="section-heading">Smart systems and algorithmic design</h2>
       <p class="body-text">
-        The project offers flexible solutions for cohabitation, with options for the connection or expansion of housing units. The homes are equipped with smart sensors and robotic systems to monitor internal conditions, optimizing energy use and promoting efficiency.
+        The system supports cohabitation through units that can connect, expand, or adapt over time. Smart sensors and robotic systems were explored as part of the broader infrastructure, connecting the architectural concept to automated production and building management.
       </p>
       <p class="body-text">
         Modular components were analyzed into rulings for fabrication with hotwire cutting techniques, demonstrating advanced fabrication approaches for architectural-scale 3D printing.
