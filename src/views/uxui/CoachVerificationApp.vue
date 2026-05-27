@@ -160,9 +160,9 @@ export default {
   data() {
     return {
       hero: require("@/images/coach/hero.webp"),
-      catalogFilter: require("@/images/coach/coachcatalogfilter.webp"),
-      itemPreview: require("@/images/coach/coachitemPreview.webp"),
-      tabletPreview: require("@/images/coach/coachItemPreviewInTablet.webp"),
+      catalogFilter: require("@/images/coach/coachcatalogfilter-phone.svg"),
+      itemPreview: require("@/images/coach/coachitemPreview-phone.svg"),
+      tabletPreview: require("@/images/coach/coachItemPreviewInTablet-mockup.svg"),
       colorFamily: require("@/images/coach/colorFamilycoach.webp"),
       colorFilters: require("@/images/coach/colorfilterscoach.webp"),
       authInfo: require("@/images/coach/authenticationInfocaoch.webp"),

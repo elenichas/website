@@ -4,48 +4,43 @@
   <main class="page-layout about-page">
     <section class="about-hero">
       <div class="about-hero__copy about-reveal">
-        <p class="section-eyebrow">About</p>
+        <p class="section-eyebrow">{{ $t("about.eyebrow") }}</p>
         <h1 class="page-title">Eleni Chasioti</h1>
-        <p class="page-subtitle">
-          Product designer and engineer building precise, human-centered tools for spatial systems and digital workflows.
-        </p>
+        <p class="page-subtitle">{{ $t("about.subtitle") }}</p>
       </div>
 
     </section>
 
     <div class="about-marquee" aria-hidden="true">
-      <span>ARCHITECTURE TO PRODUCT</span>
-      <span>UX SYSTEMS</span>
-      <span>COMPUTATIONAL DESIGN</span>
-      <span>PRODUCT ENGINEERING</span>
+      <span v-for="item in $t('about.marquee')" :key="item">{{ item }}</span>
     </div>
 
     <section class="about-glance about-reveal">
       <div class="glance-item">
         <span class="glance-value">5+</span>
-        <span class="glance-label">Years in Design & Engineering</span>
+        <span class="glance-label">{{ $t("about.glanceYears") }}</span>
       </div>
       <div class="glance-item">
         <span class="glance-value">Foster + Partners</span>
-        <span class="glance-label">Associate Design Systems Analyst</span>
+        <span class="glance-label">{{ $t("about.glanceRole") }}</span>
       </div>
       <div class="glance-item">
         <span class="glance-value">MSc</span>
-        <span class="glance-label">Architectural Computation, UCL</span>
+        <span class="glance-label">{{ $t("about.glanceEducation") }}</span>
       </div>
     </section>
 
     <section class="about-story">
       <aside class="story-sticky about-reveal">
-        <p class="section-eyebrow">Profile</p>
-        <h2>Designing where systems meet people.</h2>
+        <p class="section-eyebrow">{{ $t("about.profile") }}</p>
+        <h2>{{ $t("about.profileHeading") }}</h2>
         <div class="cta-section">
           <a :href="cvLink" download class="btn-primary cv-download">
             <span class="mdi mdi-download"></span>
-            Download Resume
+            {{ $t("common.downloadResume") }}
           </a>
           <a href="mailto:eleni.chasioti@gmail.com" class="btn-secondary">
-            Get in Touch
+            {{ $t("common.getInTouch") }}
           </a>
         </div>
       </aside>
@@ -54,37 +49,24 @@
         <article class="story-section about-reveal">
           <p class="story-index">01</p>
           <div>
-            <h3>The Journey</h3>
-            <p>
-              I started in architecture, designing spaces and thinking about how people interact with environments.
-              The transition to digital products felt natural. Both require understanding user needs, creating intuitive
-              flows, and bringing complex systems to life. The tools changed, but the problem-solving mindset remained.
-            </p>
+            <h3>{{ $t("about.journeyTitle") }}</h3>
+            <p>{{ $t("about.journeyText") }}</p>
           </div>
         </article>
 
         <article class="story-section about-reveal">
           <p class="story-index">02</p>
           <div>
-            <h3>What I Do Now</h3>
-            <p>
-              As an <strong>Associate Design Systems Analyst at Foster + Partners</strong>, I work at the intersection of design
-              and engineering, creating tools and systems that help creative teams do their best work. From design systems
-              to full web applications, I design and build solutions that make complex workflows feel effortless.
-            </p>
+            <h3>{{ $t("about.nowTitle") }}</h3>
+            <p>{{ $t("about.nowText") }}</p>
           </div>
         </article>
 
         <article class="story-section about-reveal">
           <p class="story-index">03</p>
           <div>
-            <h3>UXDX USA 2025</h3>
-            <p>
-              Last year, I attended <strong>UXDX USA 2025</strong> in New York, an incredible conference bringing
-              together designers, developers, and product managers. It was inspiring to connect with industry leaders,
-              explore emerging trends in product development, and share ideas about the future of design systems and
-              collaborative workflows.
-            </p>
+            <h3>{{ $t("about.conferenceTitle") }}</h3>
+            <p>{{ $t("about.conferenceText") }}</p>
           </div>
         </article>
       </div>
@@ -92,8 +74,8 @@
 
     <section class="gallery-section">
       <div class="gallery-header about-reveal">
-        <p class="section-eyebrow">Field Notes</p>
-        <h2>UXDX USA 2025</h2>
+        <p class="section-eyebrow">{{ $t("about.fieldNotes") }}</p>
+        <h2>{{ $t("about.conferenceTitle") }}</h2>
       </div>
 
       <div ref="masonryGallery" class="masonry-gallery">
@@ -103,7 +85,7 @@
           :class="['gallery-item', `size-${item.size}`]"
           :style="{ '--i': index }"
         >
-          <img :src="item.src" :alt="`UXDX Conference ${index + 1}`" loading="lazy" />
+          <img :src="item.src" :alt="`${$t('about.galleryAlt')} ${index + 1}`" loading="lazy" />
         </figure>
       </div>
     </section>

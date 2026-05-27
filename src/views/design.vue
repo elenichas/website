@@ -6,8 +6,8 @@
       <!-- Page Header -->
       <header class="page-header">
         <div class="header-content">
-          <h1 class="page-title">Products</h1>
-          <p class="page-subtitle">Product systems, configurators, and learning tools designed around real workflows</p>
+          <h1 class="page-title">{{ $t("products.title") }}</h1>
+          <p class="page-subtitle">{{ $t("products.subtitle") }}</p>
         </div>
       </header>
 
@@ -44,7 +44,7 @@
                   </div>
                 </div>
                 <div class="project-overlay">
-                  <span class="view-project">View Project</span>
+                  <span class="view-project">{{ $t("common.viewProject") }}</span>
                 </div>
               </div>
               <div class="project-info">
@@ -59,8 +59,8 @@
       <!-- System Design Section -->
       <section class="projects-section">
         <div class="section-header">
-          <h2 class="page-title">System Design</h2>
-          <p class="section-description">Complex systems and computational frameworks</p>
+          <h2 class="page-title">{{ $t("products.systemDesign") }}</h2>
+          <p class="section-description">{{ $t("products.systemDescription") }}</p>
         </div>
 
         <div class="projects-grid">
@@ -94,7 +94,7 @@
                   </div>
                 </div>
                 <div class="project-overlay">
-                  <span class="view-project">View Project</span>
+                  <span class="view-project">{{ $t("common.viewProject") }}</span>
                 </div>
               </div>
               <div class="project-info">
@@ -121,103 +121,64 @@ export default {
     AppNavbar,
     AppFooter,
   },
-  data() {
-    return {
-      architectureImages: [
+  computed: {
+    architectureImages() {
+      const items = this.$t("products.items");
+
+      return [
         {
-          alt: "Hapi Project",
-          title: "Hapi Modular Housing System",
-          type: "Parametric Modular Design",
+          ...items.hapi,
           animation: "hapi-system",
-          posterTitle: "Hapi",
-          posterMark: "MODULAR LOGIC",
-          posterYear: "2019",
           route: "/products/hapi-project",
         },
         {
-          alt: "Thesis Project",
-          title: "Cricket WFC Plugin",
-          type: "Rule-Based Design",
+          ...items.thesis,
           animation: "thesis-framework",
-          posterTitle: "Rules",
-          posterMark: "GROWTH SYSTEM",
-          posterYear: "MSc",
           route: "/products/thesis-project",
         },
         {
-          alt: "Workshop Design",
-          title: "Digital Futures Workshop",
-          type: "Prefabrication and Automation Design",
+          ...items.workshop,
           animation: "workshop-futures",
-          posterTitle: "Future",
-          posterMark: "FABRICATION",
-          posterYear: "2030",
           route: "/products/workshop-design",
         },
-      ],
-      uxuiImages: [
+      ];
+    },
+    uxuiImages() {
+      const items = this.$t("products.items");
+
+      return [
         {
-          alt: "Coach Bags Verification App",
-          title: "Vintage Coach Catalog",
-          type: "Authentication System",
+          ...items.coach,
           animation: "coach-catalog",
-          posterTitle: "Coach",
-          posterMark: "SERIAL MATCH",
-          posterYear: "1975-02",
           route: "/products/coach-verification-app",
         },
         {
-          alt: "Industrial Facility 3D Configurator",
-          title: "Industrial Facility Configurator",
-          type: "Configuration System",
+          ...items.industrial,
           animation: "industrial-configurator",
-          posterTitle: "Plant",
-          posterMark: "VALIDATION",
-          posterYear: "3D",
           route: "/products/industrial-configurator",
         },
         {
-          alt: "Lunar Habitat 3D Configurator",
-          title: "Moon Habitat Configurator",
-          type: "Design Automation",
+          ...items.moon,
           animation: "moon-configurator",
-          posterTitle: "Lunar",
-          posterMark: "HABITAT GRID",
-          posterYear: "MOON",
           route: "/products/lunar-app",
         },
         {
-          alt: "Arabiya Language Learning App",
-          title: "Arabiya Language App",
-          type: "Educational Web App",
+          ...items.language,
           animation: "language-learning",
-          posterTitle: "Arabic",
-          posterMark: "LESSON MODE",
-          posterYear: "ع",
           route: "/products/language-learning-app",
         },
         {
-          alt: "Filos Mobile App",
-          title: "Filos Inclusive Activity App",
-          type: "Inclusive Mobile Concept",
+          ...items.filos,
           animation: "filos-mobile",
-          posterTitle: "Filos",
-          posterMark: "ROUTE + CARE",
-          posterYear: "MOBILE",
           route: "/products/filos-mobile-app",
         },
         {
-          alt: "Coffee Shop App",
-          title: "Brew & Crumb Mobile App",
-          type: "Mobile Ordering Concept",
+          ...items.bakery,
           animation: "bakery-mobile",
-          posterTitle: "Brew",
-          posterMark: "PICKUP READY",
-          posterYear: "CAFE",
           route: "/products/brew-crumb",
         },
-      ],
-    };
+      ];
+    },
   },
 };
 </script>

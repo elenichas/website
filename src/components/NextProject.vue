@@ -1,7 +1,7 @@
 <template>
   <section class="next-project">
     <div class="next-project-inner">
-      <span class="next-label">Next Project</span>
+      <span class="next-label">{{ $t("common.nextProject") }}</span>
       <router-link :to="route" class="next-link">
         <div class="next-info">
           <h3 class="next-title">{{ title }}</h3>

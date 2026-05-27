@@ -4,10 +4,10 @@
       <div class="footer-content">
                 <!-- CTA Section -->
         <div class="footer-cta">
-          <h3 class="cta-title">Let's connect</h3>
-          <p class="cta-text">I'd love to discuss ideas, share insights, or explore future opportunities.</p>
+          <h3 class="cta-title">{{ $t("footer.title") }}</h3>
+          <p class="cta-text">{{ $t("footer.text") }}</p>
           <a href="mailto:eleni.chasioti@gmail.com" class="btn-primary footer-btn">
-            Get in Touch
+            {{ $t("common.getInTouch") }}
             <span class="mdi mdi-arrow-right"></span>
           </a>
         </div>
@@ -26,8 +26,8 @@
           </div>
           
                     <div class="footer-meta">
-            <p class="copyright">&copy; {{ currentYear }} Eleni Chasioti. All rights reserved.</p>
-            <p class="made-with">Made with Vue.js and lots of espresso</p>
+            <p class="copyright">&copy; {{ currentYear }} Eleni Chasioti. {{ $t("common.allRightsReserved") }}</p>
+            <p class="made-with">{{ $t("footer.madeWith") }}</p>
           </div>
         </div>
       </div>

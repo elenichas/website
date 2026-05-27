@@ -12,7 +12,7 @@
 
           <div class="hero-content">
             <div class="content-column anim-fade-in" style="--delay: 0.12s;">
-              <p class="hero-kicker">Product design, code, and spatial systems</p>
+              <p class="hero-kicker">{{ $t("home.kicker") }}</p>
               <welcome-card></welcome-card>
             </div>
 
@@ -20,7 +20,7 @@
               <div class="avatar-wrapper">
                 <img :src="avatarSrc" alt="Eleni Chasioti" class="avatar" />
                 <div class="avatar-caption">
-                  <span>Portfolio</span>
+                  <span>{{ $t("common.portfolio") }}</span>
                   <span>2026</span>
                 </div>
               </div>
@@ -30,17 +30,14 @@
       </section>
 
       <div class="home-marquee" aria-hidden="true">
-        <span>PRODUCT ENGINEERING</span>
-        <span>UX SYSTEMS</span>
-        <span>SPATIAL COMPUTING</span>
-        <span>FRONT-END DEVELOPMENT</span>
+        <span v-for="item in $t('home.marquee')" :key="item">{{ item }}</span>
       </div>
 
       <section class="featured-section">
-        <div class="featured-bg-title" aria-hidden="true">WORK</div>
+        <div class="featured-bg-title" aria-hidden="true">{{ $t("home.work") }}</div>
         <div class="featured-header scroll-reveal">
-          <p class="section-eyebrow">Selected work</p>
-          <h2 class="featured-title">Featured Projects</h2>
+          <p class="section-eyebrow">{{ $t("home.selectedWork") }}</p>
+          <h2 class="featured-title">{{ $t("home.featuredProjects") }}</h2>
         </div>
 
         <div class="projects-stack" aria-label="Featured projects">
@@ -71,7 +68,7 @@
               <div class="project-card__image">
                 <img :src="project.image" :alt="project.name" loading="lazy" />
                 <div class="project-card__overlay">
-                  <span class="project-card__cta">View Project</span>
+                  <span class="project-card__cta">{{ $t("common.viewProject") }}</span>
                 </div>
               </div>
             </router-link>
@@ -82,9 +79,9 @@
       <section class="stack-section scroll-reveal">
         <div class="stack-marquee" aria-label="Technical stack">
           <div class="stack-marquee__track">
-            <span class="stack-marquee__title">Technical Stack</span>
+            <span class="stack-marquee__title">{{ $t("home.technicalStack") }}</span>
             <span v-for="skill in allSkills" :key="`stack-a-${skill.name}`">{{ skill.name }}</span>
-            <span class="stack-marquee__title" aria-hidden="true">Technical Stack</span>
+            <span class="stack-marquee__title" aria-hidden="true">{{ $t("home.technicalStack") }}</span>
             <span v-for="skill in allSkills" :key="`stack-b-${skill.name}`" aria-hidden="true">{{ skill.name }}</span>
           </div>
         </div>
@@ -152,35 +149,32 @@ export default {
       });
     },
   },
-    data() {
-    return {
-      avatarSrc: require("@/images/eleniBig.webp"),
-      featuredProjects: [
+  computed: {
+    featuredProjects() {
+      const projectCopy = this.$t("home.projects");
+
+      return [
         {
-          name: "Vintage Coach Catalog",
-          labels: ["Reference Platform", "Authentication System"],
-          services: ["Catalog Architecture", "Serial Decoder", "Image Reference System", "Authentication UX", "Research Database"],
-          description: "A personal data product for vintage Coach leather goods, turning catalog data into a searchable reference with 778 styles, 104 colors, and a serial number decoder.",
+          ...projectCopy.coach,
           image: require("@/images/gallery/coachHero.jpg"),
           route: "/products/coach-verification-app",
         },
         {
-          name: "Moon Habitat Configurator",
-          labels: ["Design Automation", "3D Systems"],
-          services: ["Parametric Logic", "3D Interaction", "Spatial Analysis", "System Prototyping", "Design Automation"],
-          description: "A professional proof of concept applying real design automation methods to a hypothetical lunar habitat configurator.",
+          ...projectCopy.moon,
           image: require("@/images/gallery/moonPixel.webp"),
           route: "/products/lunar-app",
         },
         {
-          name: "Arabiya Language App",
-          labels: ["Educational Technology", "Full-Stack"],
-          services: ["Lesson Design", "Bilingual UI", "Interactive Quizzes", "Progress States", "Full-Stack Build"],
-          description: "A personal learning app for Egyptian Arabic, built around real lessons and interactive study and practice flows.",
+          ...projectCopy.language,
           image: require("@/images/gallery/language.jpg"),
           route: "/products/language-learning-app",
         },
-      ],
+      ];
+    },
+  },
+    data() {
+    return {
+      avatarSrc: require("@/images/eleniBig.webp"),
       allSkills: [
         { name: "Figma", src: Figma },
         { name: "Adobe XD", src: AdobeXD },
