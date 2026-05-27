@@ -29,7 +29,7 @@
       </div>
       <div class="info-description">
         <p class="info-text">
-          A mobile ordering solution to reduce wait times at a local coffee shop.
+          A course project for a real high-traffic cafe near my office, exploring how mobile ordering could reduce morning wait times.
         </p>
       </div>
     </div>
@@ -39,7 +39,7 @@
       <p class="section-label">Challenge</p>
       <h2 class="section-heading">Solving the morning rush</h2>
       <p class="body-text">
-        Long morning queues at a popular local coffee shop were causing delays for busy professionals and creating lost revenue opportunities. Most customers are office workers with tight schedules, and 85% of daily traffic occurs between 7-9 AM, creating significant bottlenecks.
+        The cafe had heavy morning traffic from nearby office workers, creating long queues during the commute window. For the course project, I used this real setting as the basis for a mobile ordering concept focused on speed, clarity, and pickup confidence.
       </p>
     </section>
 
@@ -49,7 +49,7 @@
         <p class="section-label">Solution</p>
         <h2 class="section-heading">Order ahead, skip the line</h2>
         <p class="body-text">
-          A mobile app enabling preorders, delivery tracking, and merchandise shopping to streamline operations and enhance customer experience. Customers can browse the menu, schedule pickup times, and track their orders in real-time.
+          A mobile app concept enabling preorders, pickup scheduling, and order status updates. Customers can browse the menu, choose a pickup time, and understand when their order is ready without waiting in the full queue.
         </p>
       </div>
       <div class="showcase-media media-container-green">
@@ -62,7 +62,7 @@
       <p class="section-label">Process</p>
       <h2 class="section-heading">From research to prototype</h2>
       <p class="body-text">
-        I observed shop operations during peak hours and interviewed customers to understand their pain points. Through persona development and user journey mapping, I identified key opportunities for digital intervention primarily the need for time-saving ordering and delivery tracking features.
+        I observed the cafe during busy morning periods and translated the patterns into course deliverables: personas, journey maps, wireframes, and a high-fidelity prototype. The main opportunity was reducing uncertainty around ordering time, queue length, and pickup readiness.
       </p>
     </section>
 
@@ -155,7 +155,7 @@
       <p class="section-label">Learning</p>
       <h2 class="section-heading">Course project insights</h2>
       <p class="body-text">
-        Through the Google UX Design curriculum, I practiced conducting user research, persona development, wireframing, and high-fidelity prototyping. I learned to work within an existing brand identity while creating a modern digital experience, and developed skills in moving from low-fidelity wireframes to polished prototypes.
+        Through the Google UX Design curriculum, I practiced research synthesis, persona development, wireframing, and high-fidelity prototyping. Because the project was based on a real cafe but completed as a course exercise, I focused on showing a realistic service concept without overstating production impact.
       </p>
       <p class="body-text">
         This project reinforced the importance of mobile-first design, balancing constraints with usability and visual appeal.
@@ -581,14 +581,8 @@ export default {
 }
 
 .sample-button {
-  cursor: pointer;
   font-family: inherit;
   font-size: 0.9375rem;
-  transition: all 0.3s ease;
-}
-
-.sample-button:hover {
-  transform: translateY(-2px);
 }
 
 /* ===== RESPONSIVE ===== */

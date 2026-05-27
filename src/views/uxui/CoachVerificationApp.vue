@@ -20,7 +20,7 @@
         </div>
         <div class="meta-block">
           <span class="meta-label">Role</span>
-          <span class="meta-value">Design &amp; Development</span>
+          <span class="meta-value">UX/UI Designer, Front End Developer</span>
         </div>
         <div class="meta-block">
           <span class="meta-label">Stack</span>
@@ -29,7 +29,7 @@
       </div>
       <div class="info-description">
         <p class="info-text">
-          The definitive digital reference for vintage Coach leather goods, cataloging 778 styles, 104 colors, and 70 catalogs spanning 1975 to 2002, with a built-in serial number decoder for authentication.
+          A personal data product for vintage Coach leather goods, turning catalog data into a searchable reference with 778 styles, 104 colors, and a serial number decoder for authentication research.
         </p>
       </div>
     </div>
@@ -37,14 +37,14 @@
     <!-- Challenge + Solution -->
     <section class="content-section">
       <p class="section-label">Challenge</p>
-      <h2 class="section-heading">Scattered knowledge, no single source of truth</h2>
+      <h2 class="section-heading">Scattered knowledge, hard-to-check authenticity</h2>
       <p class="body-text">
         Vintage Coach collectors and resellers rely on fragmented information spread across forums, social media groups, and personal knowledge. Authentication is hard. Serial number formats changed across three distinct eras, and understanding what a legitimate serial looks like for a specific bag requires cross-referencing multiple data points that didn&rsquo;t exist in one place.
       </p>
       <p class="section-label" style="margin-top: 2.5rem;">Solution</p>
       <h2 class="section-heading">A comprehensive digital catalog and authentication tool</h2>
       <p class="body-text">
-        I built a web application that consolidates the entire vintage Coach product line into a searchable, filterable catalog with detailed product pages, a color encyclopedia, and an interactive serial number decoder.
+        I built a web application that structures publicly available catalog data into a searchable, filterable reference with detailed product pages, a color encyclopedia, and an interactive serial number decoder. The app is currently private, with plans to share it publicly.
       </p>
     </section>
 
@@ -54,7 +54,7 @@
         <p class="section-label">Catalog</p>
         <h2 class="section-heading">778 styles, fully searchable</h2>
         <p class="body-text">
-          The main catalog offers filtering by category, decade, and color with progressive loading. Each bag links to a rich detail page with full specs, including dimensions, volume, strap length, production years, and available colorways.
+          The main catalog offers filtering by category, decade, and color with progressive loading. Each bag links to a detail page with dimensions, volume, strap length, production years, and available colorways, making the dataset easier to browse than a static reference list.
         </p>
       </div>
       <div class="showcase-screens showcase-screens-2 media-container-yellow">
@@ -101,7 +101,7 @@
         <p class="section-label">Color System</p>
         <h2 class="section-heading">104 leather colors, visually organized</h2>
         <p class="body-text">
-          Every official Coach leather color from 1981 to 1999 across seven collections, sorted by visual family using HSL color science. Selecting a color expands an inline panel showing every bag offered in that colorway, filterable by year and decade.
+          The color system organizes 104 leather colors from 1981 to 1999 across seven collections. Colors are grouped by visual family using HSL values, and each color expands to show the bags offered in that colorway, filterable by year and decade.
         </p>
       </div>
     </section>
@@ -128,7 +128,7 @@
       <p class="section-label">Reflection</p>
       <h2 class="section-heading">Turning research into a usable product</h2>
       <p class="body-text">
-        This project started as personal curiosity and grew into a comprehensive reference tool. The biggest challenge was data accuracy, cross-referencing 70 catalogs to build a reliable dataset. Designing the serial number decoder taught me how to present complex, multi-format parsing logic in a way that feels simple while remaining transparent about what the system checks and why.
+        This project sits at the intersection of my interests in sustainability, fashion, and data. The biggest challenge was turning scraped and publicly available reference material into a structured dataset that could support useful interactions. Designing the decoder taught me how to present complex, multi-format parsing logic in a way that feels simple while remaining transparent about what the system checks and why.
       </p>
     </section>
 
@@ -151,9 +151,9 @@ export default {
     useHead({
       title: "Vintage Coach Catalog — Eleni Chasioti",
       meta: [
-        { name: "description", content: "Case study: A digital reference cataloging 778 vintage Coach styles with serial number authentication. Designed and built by Eleni Chasioti." },
+        { name: "description", content: "Case study: A personal data product cataloging 778 vintage Coach styles with search, filtering, color organization, and serial number decoding." },
         { property: "og:title", content: "Vintage Coach Catalog — Eleni Chasioti" },
-        { property: "og:description", content: "The definitive digital reference for vintage Coach leather goods with built-in serial number authentication." },
+        { property: "og:description", content: "A searchable vintage Coach reference and authentication research tool built from structured catalog data." },
       ],
     });
   },
@@ -385,15 +385,6 @@ export default {
   display: block;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
-}
-
-.video-phone::-webkit-media-controls {
-  opacity: 0;
-  transition: opacity var(--duration-normal);
-}
-
-.video-phone:hover::-webkit-media-controls {
-  opacity: 1;
 }
 
 /* ===== SHOWCASE SECTIONS ===== */

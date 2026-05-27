@@ -142,12 +142,6 @@ export default {
   align-items: center;
   justify-content: center;
   padding: 0.75rem;
-  transition: all 0.3s ease;
-}
-
-.skill-icon:hover {
-  transform: translateY(-4px);
-  border-color: #000;
 }
 
 .skill-icon img {
@@ -155,22 +149,12 @@ export default {
   height: 40px;
   object-fit: contain;
   filter: grayscale(20%);
-  transition: filter 0.3s ease;
-}
-
-.skill-icon:hover img {
-  filter: grayscale(0%);
 }
 
 .skill-name {
   font-size: 0.875rem;
   font-weight: 500;
   color: #666;
-  transition: color 0.3s ease;
-}
-
-.skill-item:hover .skill-name {
-  color: #000;
 }
 
 /* Responsive Design */

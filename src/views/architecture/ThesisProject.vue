@@ -29,7 +29,7 @@
       </div>
       <div class="info-description">
         <p class="info-text">
-          A computational framework for building massing design using the Wave Function Collapse algorithm, applying gameplay with encoded architectural tilesets.
+          A Grasshopper plugin and computational framework that uses Wave Function Collapse to generate architectural massing options from encoded 3D tiles.
         </p>
       </div>
     </div>
@@ -50,10 +50,10 @@
       <p class="section-label">Research</p>
       <h2 class="section-heading">Bridging game design and architecture</h2>
       <p class="body-text">
-        This project explores the intersection between architectural computation and procedural content generation, drawing inspiration from game design techniques to revolutionize early-stage architectural massing. The thesis presents a framework for automating the generation of complex building designs using architectural tilesets and the Wave Function Collapse (WFC) algorithm.
+        This project explores the intersection between architectural computation and procedural content generation. The thesis adapts the Wave Function Collapse algorithm, often used in game design, into a framework for generating early-stage architectural massing studies from encoded tilesets.
       </p>
       <p class="body-text">
-        Through a user-friendly computational model, the work offers a practical solution for automating repetitive design tasks while empowering architects to experiment with a variety of design outcomes. The system enables architects to generate massing designs quickly and efficiently by encoding key architectural elements into tilesets, which can be rearranged to create endless design variations.
+        The goal was to automate repetitive massing exploration without removing designer control. Architects can encode key elements into tile rules, then use the system to generate many valid design variations while maintaining constraints around density, direction, and adjacency.
       </p>
     </section>
 
@@ -63,7 +63,7 @@
         <p class="section-label">Algorithm</p>
         <h2 class="section-heading">Wave Function Collapse</h2>
         <p class="body-text">
-          The WFC uses a constraint-solving approach, ensuring that all tiles are placed according to specific design rules and relationships. Originally a pixel-based image generation tool, it's been adapted here for three-dimensional architectural design, maintaining architectural integrity while automating generation.
+          WFC uses a constraint-solving approach, placing tiles only where their rules and relationships are valid. I adapted the logic from a two-dimensional image-generation technique into a three-dimensional architectural workflow, where each tile carries geometric and spatial meaning.
         </p>
       </div>
       <div class="split-media media-container-blue">
@@ -80,7 +80,7 @@
       <p class="section-label">Technical Implementation</p>
       <h2 class="section-heading">Platform and approach</h2>
       <p class="body-text">
-        Built in Rhinoceros 3D with Grasshopper, the plugin uses custom WFC components. Architectural elements are encoded into digital tilesets with unique geometry-based identifiers. A voxel grid breaks input models into individual 3D tiles for processing. The non-backtracking algorithm restarts quickly on contradictions for improved computational speed.
+        Built in Rhinoceros 3D with Grasshopper, the plugin uses custom WFC components. Architectural elements are encoded into digital tilesets with unique geometry-based identifiers. A voxel grid breaks input models into individual 3D tiles for processing, and the non-backtracking algorithm restarts quickly on contradictions for improved computational speed.
       </p>
       <p class="body-text">
         Users can define constraints for density, facade direction, and gradient control, while the system generates varied sizes while maintaining architectural constraints.
@@ -116,7 +116,7 @@
       <p class="section-label">My Role</p>
       <h2 class="section-heading">Sole researcher & developer</h2>
       <p class="body-text">
-        Individual master's thesis. I developed the theoretical framework, designed the tileset encoding system, implemented the WFC algorithm adaptation in C# for Grasshopper, and conducted all design experiments and evaluations.
+        This was my individual master's thesis. I developed the theoretical framework, designed the tileset encoding system, implemented the WFC algorithm adaptation in C# for Grasshopper, and conducted the design experiments and evaluations.
       </p>
     </section>
 

@@ -29,7 +29,7 @@
       </div>
       <div class="info-description">
         <p class="info-text">
-          Connecting people with and without disabilities through shared activities and meaningful interactions.
+          A course project exploring how a mobile app could help people with disabilities and volunteers connect through shared activities, with early input from a special needs teacher and students.
         </p>
       </div>
     </div>
@@ -39,7 +39,7 @@
       <p class="section-label">Challenge</p>
       <h2 class="section-heading">Breaking down barriers to connection</h2>
       <p class="body-text">
-        People with disabilities face physical and social barriers to participation, while those working in disability services lack opportunities for meaningful real-world connections. There's a gap in understanding daily experiences that creates empathy divides.
+        People with disabilities can face physical, sensory, and social barriers to participation, while people who want to support or volunteer often do not know how to build meaningful connections respectfully. The project explored how a digital service could reduce uncertainty, support trust, and make shared activities easier to arrange.
       </p>
     </section>
 
@@ -49,7 +49,7 @@
         <p class="section-label">Solution</p>
         <h2 class="section-heading">A platform for shared experiences</h2>
         <p class="body-text">
-          Filos enables people with and without disabilities to connect, propose activities, and build genuine relationships through shared experiences. The name means "friendship" in Greek.
+          Filos proposes a mobile experience where people can create profiles, share access needs and preferences, propose activities, and connect around everyday experiences. The name means "friendship" in Greek.
         </p>
       </div>
       <div class="split-media media-container-purple">
@@ -62,7 +62,7 @@
       <p class="section-label">Users</p>
       <h2 class="section-heading">Designing for diverse needs</h2>
       <p class="body-text">
-        Understanding the people who would use Filos was essential. I created personas representing both people with disabilities seeking connections and those in disability services looking for meaningful volunteer opportunities.
+        Understanding the people who would use Filos was essential. As part of the course project, I consulted my sister, a special needs teacher, and had a couple of early feedback sessions with her students. The concept considered a range of access needs, including wheelchair access, blindness, and autism.
       </p>
     </section>
 
@@ -85,7 +85,7 @@
       <p class="section-label">Visual Identity</p>
       <h2 class="section-heading">Designing for accessibility and trust</h2>
       <p class="body-text">
-        I created a visual identity emphasizing inclusivity and trust. The calming purple palette evokes approachability, while every design choice prioritizes accessibility with large buttons, high contrast, and clear navigation.
+        I created a visual identity emphasizing inclusivity and trust. The interface uses large controls, clear navigation, high-contrast elements, and simple flows so the concept could be discussed through an accessibility lens from the beginning.
       </p>
     </section>
 
@@ -94,7 +94,7 @@
       <p class="section-label">Learning</p>
       <h2 class="section-heading">Practicing inclusive design</h2>
       <p class="body-text">
-        Through this course project, I learned to prioritize accessibility from the start not as an afterthought but as a core design principle. I practiced designing for diverse abilities, understanding how design choices impact different user groups, and developed deeper empathy by considering the barriers users face.
+        Through this course project, I learned to treat accessibility as a starting point rather than a final checklist. The concept is still early, but it came from genuine interest and direct conversations that helped me think more carefully about safety, trust, autonomy, and different access needs.
       </p>
       <p class="body-text">
         I gained hands-on experience applying WCAG accessibility guidelines and understanding their practical impact on real people's lives.
