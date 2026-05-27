@@ -4,7 +4,10 @@
       <!-- Logo/Brand -->
       <div class="brand">
         <router-link to="/" class="brand-link">
-          <span class="brand-initial">E C</span>
+          <span class="brand-initial" aria-label="EC monogram">
+            <span class="monogram-letter monogram-letter-e">E</span>
+            <span class="monogram-letter monogram-letter-c">C</span>
+          </span>
           <span class="brand-name">Eleni Chasioti</span>
         </router-link>
       </div>
@@ -107,18 +110,44 @@ export default {
 }
 
 .brand-initial {
-  width: 36px;
-  height: 36px;
-  background: var(--color-text);
-  color: #fff;
-  display: flex;
+  position: relative;
+  width: 38px;
+  height: 38px;
+  color: var(--color-text);
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-sm);
-  font-weight: var(--weight-semibold);
-  font-size: 1.125rem;
+  border: 0;
   font-family: var(--font-serif);
   font-style: italic;
+  background: transparent;
+  transition:
+    color var(--duration-normal) var(--ease-out),
+    transform var(--duration-normal) var(--ease-out);
+}
+
+.brand-link:hover .brand-initial {
+  transform: translateY(-1px);
+  color: rgba(17, 17, 17, 0.72);
+}
+
+.monogram-letter {
+  position: relative;
+  font-size: 1.5rem;
+  font-weight: var(--weight-normal);
+  line-height: 0.9;
+  letter-spacing: 0;
+}
+
+.monogram-letter-e {
+  transform: translateX(2px) rotate(-5deg);
+  z-index: 2;
+}
+
+.monogram-letter-c {
+  margin-left: -0.2rem;
+  transform: translateY(0.05rem) rotate(5deg);
+  z-index: 1;
 }
 
 .brand-name {
@@ -261,6 +290,15 @@ export default {
   .navbar-container {
     height: 60px;
     padding: 0 var(--space-4);
+  }
+
+  .brand-initial {
+    width: 34px;
+    height: 34px;
+  }
+
+  .monogram-letter {
+    font-size: 1.34rem;
   }
 }
 </style>
