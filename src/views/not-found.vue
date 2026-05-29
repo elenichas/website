@@ -1,10 +1,10 @@
 <template>
   <div class="not-found-container1">
-    <h3>OOPS! PAGE NOT FOUND</h3>
+    <h3>{{ $t("notFound.title") }}</h3>
     <div class="not-found-container2"><h1 class="not-found-text2">404</h1></div>
     <div class="not-found-container3">
       <h2 class="not-found-text3">
-        Dear friend, get you url sorted and try again :)
+        {{ $t("notFound.message") }}
       </h2>
     </div>
   </div>

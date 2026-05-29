@@ -11,6 +11,7 @@ import "@mdi/font/css/materialdesignicons.css";
 
 import App from "./App.vue";
 import router from "./router"; //router setup for Vue 3
+import i18n from "./i18n";
 
 const vuetify = createVuetify({
   components,
@@ -38,6 +39,9 @@ const app = createApp(App);
 // Use head for meta tags
 const head = createHead();
 app.use(head);
+
+// Use local translations
+app.use(i18n);
 
 // Use Vuetify
 app.use(vuetify);

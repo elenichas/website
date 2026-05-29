@@ -87,5 +87,27 @@ export default {
       ],
     };
   },
+  watch: {
+    "$i18n.locale"() {
+      this.projects = this.projects.map((project, index) => {
+        const [title, type] = this.$t("caseStudy.nextProjects")[index];
+        return {
+          ...project,
+          title,
+          type,
+        };
+      });
+    },
+  },
+  created() {
+    this.projects = this.projects.map((project, index) => {
+      const [title, type] = this.$t("caseStudy.nextProjects")[index];
+      return {
+        ...project,
+        title,
+        type,
+      };
+    });
+  },
 };
 </script>

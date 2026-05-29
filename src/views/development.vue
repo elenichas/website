@@ -6,8 +6,8 @@
       <!-- Page Header -->
       <header class="page-header">
         <div class="header-content">
-                    <h1 class="page-title">Engineering</h1>
-          <p class="page-subtitle">Technical projects, tools, and open-source contributions</p>
+                    <h1 class="page-title">{{ $t("engineering.title") }}</h1>
+          <p class="page-subtitle">{{ $t("engineering.subtitle") }}</p>
         </div>
       </header>
 
@@ -46,7 +46,7 @@
                 <div class="project-overlay">
                   <span class="view-project">
                     <span class="mdi mdi-github"></span>
-                    View on GitHub
+                    {{ $t("common.viewOnGithub") }}
                   </span>
                 </div>
               </div>
@@ -74,73 +74,45 @@ export default {
     AppNavbar,
     AppFooter,
   },
-  data() {
-    return {
-      images: [
+  computed: {
+    images() {
+      const items = this.$t("engineering.items");
+
+      return [
  
         {
-          name: "Map Explorations",
-          stack: "Data Visualization, Mapping, Creative Coding",
+          ...items.maps,
           gitlabLink: "https://github.com/elenichas/30DayMapChallenge",
           animation: "map",
-          posterTitle: "Maps",
-          posterType: "Data Visualization",
-          posterMark: "30 DAY CHALLENGE",
-          posterYear: "GEO",
         },
         {
-          name: "Financial Management App",
-          stack: "React, TypeScript, Chart.js, Bootstrap",
+          ...items.finance,
           gitlabLink: "https://github.com/elenichas/expenses-app",
           animation: "finance",
-          posterTitle: "Ledger",
-          posterType: "React Interface",
-          posterMark: "CHART STATES",
-          posterYear: "TS",
         },
         {
-          name: "Book Reviews API",
-          stack: "Express.js, Node.js, RESTful APIs",
+          ...items.api,
           gitlabLink: "https://github.com/elenichas/expressBookReviews",
           animation: "api",
-          posterTitle: "Books",
-          posterType: "REST API",
-          posterMark: "EXPRESS ROUTES",
-          posterYear: "JS",
         },
         {
-          name: "Search Service",
-          stack: "Flask, Python, HTTP APIs, Backend",
+          ...items.search,
           gitlabLink: "https://github.com/elenichas/book-search-python-flask",
           animation: "search",
-          posterTitle: "Search",
-          posterType: "Backend Service",
-          posterMark: "QUERY ENGINE",
-          posterYear: "PY",
         },
                {
-          name: "Computational Framework",
-          stack: "C#, Rhino, Grasshopper, Algorithm Design",
+          ...items.framework,
           gitlabLink:
             "https://github.com/elenichas/Cricket-Plugin-Master-thesis",
           animation: "framework",
-          posterTitle: "Cricket",
-          posterType: "Algorithm Design",
-          posterMark: "PARAMETRIC GRAPH",
-          posterYear: "C#",
         },
         {
-          name: "View Analysis Engine",
-          stack: "C#, Rhino, Grasshopper, Spatial Computing",
+          ...items.view,
           gitlabLink: "https://github.com/elenichas/view-analysis-plugin",
           animation: "view",
-          posterTitle: "Views",
-          posterType: "Spatial Computing",
-          posterMark: "SIGHTLINES",
-          posterYear: "3D",
         },
-      ],
-    };
+      ];
+    },
   },
 };
 </script>
@@ -245,7 +217,7 @@ export default {
   aspect-ratio: 16/10;
   overflow: hidden;
   background: var(--color-accent-soft);
-  border-radius: var(--radius-sm);
+  border-radius: 0;
 }
 
 .project-image img {
@@ -274,13 +246,11 @@ export default {
   grid-template-rows: auto 1fr auto;
   padding: clamp(1rem, 2.4vw, 1.35rem);
   overflow: hidden;
-  background:
-    linear-gradient(90deg, rgba(17, 17, 17, 0.035) 1px, transparent 1px),
-    linear-gradient(rgba(17, 17, 17, 0.035) 1px, transparent 1px),
-    var(--poster-bg);
-  background-size: 34px 34px, 34px 34px, auto;
+  background: var(--poster-bg);
+  background-size: auto;
   color: var(--poster-ink);
   isolation: isolate;
+  border-radius: 0;
 }
 
 .engineering-poster::before {
@@ -673,7 +643,7 @@ export default {
   }
 
   .project-image {
-    border-radius: var(--radius-sm);
+    border-radius: 0;
   }
 
   .project-info {

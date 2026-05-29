@@ -72,7 +72,7 @@
     </section>
 
     <!-- Implementation -->
-    <section class="content-section">
+    <section class="content-section implementation-section">
       <figure class="image-figure">
         <img :src="grasshopper" alt="Grasshopper Implementation" class="content-image" />
       </figure>
@@ -88,7 +88,7 @@
     </section>
 
     <!-- Results -->
-    <section class="split-section split-section-right">
+    <section class="split-section split-section-right results-section">
       <div class="split-media media-container-green">
         <img :src="segmentation" alt="Tileset Segmentation" class="split-image" />
       </div>
@@ -460,6 +460,14 @@ export default {
 
   .split-section {
     padding: 0 var(--space-5);
+  }
+
+  .implementation-section {
+    margin-bottom: var(--space-4) !important;
+  }
+
+  .results-section {
+    margin-top: 0 !important;
   }
 }
 

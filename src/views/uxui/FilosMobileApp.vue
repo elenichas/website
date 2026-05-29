@@ -224,7 +224,7 @@ export default {
   },
     data() {
     return {
-      hero: require("@/images/filosHero.webp"),
+      hero: require("@/images/filosHeroProfessional.png"),
       wireframes: require("@/images/filosWireframes.webp"),
       prototypes: require("@/images/filosPrototypes.webp"),
       responsive: require("@/images/filosResponsive.webp"),

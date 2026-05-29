@@ -5,19 +5,15 @@
       <h2 class="job-title-container">
         <span class="job-title">{{ animatedTitle }}</span>
       </h2>
-            <p class="description">
-        From 3D configurators to mobile apps, I design and build 
-        complex digital products at the intersection of spatial computing and user experience.
-        From concept to code, I bridge the gap between user needs and technical solutions.
-      </p>
+            <p class="description">{{ $t("home.description") }}</p>
 
       <div class="cta-buttons">
         <a :href="cvLink" download class="btn-primary">
-          Download Resume
+          {{ $t("common.downloadResume") }}
           <span class="mdi mdi-download"></span>
         </a>
         <a href="mailto:eleni.chasioti@gmail.com" class="btn-secondary">
-          Get in Touch
+          {{ $t("common.getInTouch") }}
         </a>
       </div>
     </div>
@@ -33,40 +29,50 @@ export default {
   data() {
     return {
             cvLink,
-            titles: [
-        "Product Engineer",
-        "Product Designer", 
-        "Front-end Developer",
-      ], // Titles to rotate through
       currentTitleIndex: 0, // Index to track the current title
-      animatedTitle: "Product Engineer", // Variable for displaying the current animated text
+      animatedTitle: this.$t("home.roleTitles")[0], // Variable for displaying the current animated text
       isErasing: false, // Flag to track whether text is being erased
       typeSpeed: 150, // Typing speed in ms
       eraseSpeed: 100, // Erasing speed in ms
       delayBetweenTitles: 2000, // Delay before erasing and switching to the next title
+      typingTimer: null,
     };
   },
   mounted() {
     this.startTypingAnimation();
   },
+  beforeUnmount() {
+    clearTimeout(this.typingTimer);
+  },
+  watch: {
+    "$i18n.locale"() {
+      clearTimeout(this.typingTimer);
+      this.currentTitleIndex = 0;
+      this.animatedTitle = this.$t("home.roleTitles")[0];
+      this.startTypingAnimation();
+    },
+  },
   methods: {
     startTypingAnimation() {
-      let fullTitle = this.titles[this.currentTitleIndex]; // Get the current title
+      const titles = this.$t("home.roleTitles");
+      let fullTitle = titles[this.currentTitleIndex]; // Get the current title
       let charIndex = 0;
       let isTyping = true; // Start with typing
 
       const type = () => {
+        const latestTitles = this.$t("home.roleTitles");
+        fullTitle = latestTitles[this.currentTitleIndex];
         if (isTyping) {
           if (charIndex < fullTitle.length) {
             // Add characters one by one
             this.animatedTitle = fullTitle.substring(0, charIndex + 1);
             charIndex++;
-            setTimeout(type, this.typeSpeed);
+            this.typingTimer = setTimeout(type, this.typeSpeed);
           } else {
             // Finished typing, pause before erasing
-            setTimeout(() => {
+            this.typingTimer = setTimeout(() => {
               isTyping = false; // Switch to erasing
-              setTimeout(type, this.eraseSpeed);
+              this.typingTimer = setTimeout(type, this.eraseSpeed);
             }, this.delayBetweenTitles);
           }
                         } else {
@@ -75,16 +81,16 @@ export default {
             const newText = fullTitle.substring(0, charIndex - 1);
             this.animatedTitle = newText || '\u00A0'; // Use non-breaking space if empty
             charIndex--;
-            setTimeout(type, this.eraseSpeed);
+            this.typingTimer = setTimeout(type, this.eraseSpeed);
           } else {
             // Finished erasing, switch to the next title
             this.currentTitleIndex =
-              (this.currentTitleIndex + 1) % this.titles.length;
-            fullTitle = this.titles[this.currentTitleIndex];
+              (this.currentTitleIndex + 1) % titles.length;
+            fullTitle = latestTitles[this.currentTitleIndex];
             isTyping = true; // Start typing again
             charIndex = 0; // Reset character index
             // Add a small delay before starting the next title
-            setTimeout(type, 300);
+            this.typingTimer = setTimeout(type, 300);
           }
         }
       };

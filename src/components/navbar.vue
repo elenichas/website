@@ -15,18 +15,32 @@
       <!-- Desktop Navigation -->
       <nav class="desktop-nav">
         <router-link to="/" class="nav-link" exact-active-class="active">
-          Home
+          {{ $t("nav.home") }}
         </router-link>
         <router-link to="/products" class="nav-link" active-class="active">
-          Products
+          {{ $t("nav.products") }}
         </router-link>
                 <router-link to="/craft" class="nav-link" active-class="active">
-          Engineering
+          {{ $t("nav.engineering") }}
         </router-link>
         <router-link to="/about" class="nav-link" active-class="active">
-          About
+          {{ $t("nav.about") }}
         </router-link>
       </nav>
+
+      <div class="language-switcher" :aria-label="$t('nav.languageLabel')">
+        <button
+          v-for="(locale, key) in $locales"
+          :key="key"
+          class="language-option"
+          :class="{ active: $i18n.locale === key }"
+          :aria-label="key === 'en' ? $t('nav.switchToEnglish') : $t('nav.switchToGreek')"
+          :aria-pressed="$i18n.locale === key"
+          @click="changeLanguage(key)"
+        >
+          {{ locale.shortLabel }}
+        </button>
+      </div>
       
       <!-- Mobile Menu Button -->
       <button class="mobile-menu-btn" @click="toggleMobileMenu" aria-label="Toggle menu">
@@ -40,19 +54,32 @@
     <div class="mobile-menu" :class="{ open: isMobileMenuOpen }">
       <nav class="mobile-nav">
         <router-link to="/" class="mobile-nav-link" @click="closeMobileMenu">
-          Home
+          {{ $t("nav.home") }}
         </router-link>
         <router-link to="/products" class="mobile-nav-link" @click="closeMobileMenu">
-          Products
+          {{ $t("nav.products") }}
         </router-link>
                 <router-link to="/craft" class="mobile-nav-link" @click="closeMobileMenu">
-          Engineering
+          {{ $t("nav.engineering") }}
         </router-link>
         <router-link to="/about" class="mobile-nav-link" @click="closeMobileMenu">
-          About
+          {{ $t("nav.about") }}
         </router-link>
+        <div class="language-switcher language-switcher-mobile" :aria-label="$t('nav.languageLabel')">
+          <button
+            v-for="(locale, key) in $locales"
+            :key="key"
+            class="language-option"
+            :class="{ active: $i18n.locale === key }"
+            :aria-label="key === 'en' ? $t('nav.switchToEnglish') : $t('nav.switchToGreek')"
+            :aria-pressed="$i18n.locale === key"
+            @click="changeLanguage(key)"
+          >
+            {{ locale.shortLabel }}
+          </button>
+        </div>
         <a href="mailto:eleni.chasioti@gmail.com" class="btn-primary mobile-cta" @click="closeMobileMenu">
-          Let's Talk
+          {{ $t("nav.letsTalk") }}
         </a>
       </nav>
     </div>
@@ -73,6 +100,10 @@ export default {
     },
     closeMobileMenu() {
       this.isMobileMenuOpen = false;
+    },
+    changeLanguage(locale) {
+      this.$setLocale(locale);
+      this.closeMobileMenu();
     },
   },
 };
@@ -164,6 +195,41 @@ export default {
   gap: 2.5rem;
 }
 
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+}
+
+.language-option {
+  min-width: 2.1rem;
+  height: 1.8rem;
+  border: 0;
+  border-radius: calc(var(--radius-sm) - 2px);
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  font-size: 0.72rem;
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0;
+  transition:
+    background var(--duration-normal) var(--ease-out),
+    color var(--duration-normal) var(--ease-out);
+}
+
+.language-option:hover,
+.language-option.active {
+  background: var(--color-text);
+  color: #ffffff;
+}
+
+.language-switcher-mobile {
+  align-self: flex-start;
+}
+
 .nav-link {
   font-weight: var(--weight-medium);
   font-size: 0.8125rem;
@@ -229,14 +295,24 @@ export default {
   top: 100%;
   left: 0;
   right: 0;
-  background: var(--glass-bg-strong);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border-bottom: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(28px) saturate(165%);
+  -webkit-backdrop-filter: blur(28px) saturate(165%);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.1);
+  box-shadow: 0 1.5rem 4rem rgba(17, 17, 17, 0.08);
   transform: translateY(-100%);
   opacity: 0;
   visibility: hidden;
   transition: all var(--duration-normal) var(--ease-out);
+  overflow: hidden;
+}
+
+.mobile-menu::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.78));
 }
 
 .mobile-menu.open {
@@ -246,6 +322,8 @@ export default {
 }
 
 .mobile-nav {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   padding: var(--space-8);
@@ -274,6 +352,10 @@ export default {
   }
 
   .desktop-nav {
+    display: none;
+  }
+
+  .navbar-container > .language-switcher {
     display: none;
   }
 

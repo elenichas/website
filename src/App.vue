@@ -3,6 +3,8 @@
 </template>
 
 <script>
+import { translateCaseStudy } from "./caseStudyTranslations";
+
 export default {
   name: "App",
   data() {
@@ -41,6 +43,11 @@ export default {
     $route() {
       this.forceTopScroll();
     },
+    "$i18n.locale"() {
+      this.$nextTick(() => {
+        this.prepareEditorialSections();
+      });
+    },
   },
   methods: {
     forceTopScroll() {
@@ -65,6 +72,8 @@ export default {
       const page = document.querySelector(".case-study");
       if (!page) return;
 
+      translateCaseStudy(page, window.location.pathname, this.$i18n.locale);
+
       if (window.location.pathname.includes("/workshop-design")) {
         page.querySelectorAll("video").forEach((video) => {
           video.autoplay = true;
@@ -77,7 +86,19 @@ export default {
         });
       }
 
-      const roleByPath = {
+      const greekRoles = {
+        "/products/brew-crumb": "UX/UI Designer",
+        "/products/lunar-app": "UX/UI Designer, Front End Developer",
+        "/products/industrial-configurator": "UX/UI Designer, Front End Developer",
+        "/products/hapi-project": "Φοιτήτρια πανεπιστημίου",
+        "/products/workshop-design": "Computational Designer",
+        "/products/thesis-project": "Φοιτήτρια πανεπιστημίου",
+        "/products/filos-mobile-app": "UX/UI Designer",
+        "/products/language-learning-app": "UX/UI Designer, Front End Developer",
+        "/products/coach-verification-app": "UX/UI Designer, Front End Developer",
+      };
+
+      const englishRoles = {
         "/products/brew-crumb": "UX/UI Designer",
         "/products/lunar-app": "UX/UI Designer, Front End Developer",
         "/products/industrial-configurator": "UX/UI Designer, Front End Developer",
@@ -89,18 +110,41 @@ export default {
         "/products/coach-verification-app": "UX/UI Designer, Front End Developer",
       };
 
+      const roleByPath = this.$i18n.locale === "el" ? greekRoles : englishRoles;
       const role = roleByPath[window.location.pathname];
+      const metaLabelTranslations = {
+        Type: this.$t("caseStudy.type"),
+        Τύπος: this.$t("caseStudy.type"),
+        Team: this.$t("caseStudy.team"),
+        Ομάδα: this.$t("caseStudy.team"),
+        Year: this.$t("caseStudy.year"),
+        Έτος: this.$t("caseStudy.year"),
+        Stack: this.$t("caseStudy.stack"),
+        Duration: this.$t("caseStudy.duration"),
+        Διάρκεια: this.$t("caseStudy.duration"),
+      };
+
+      page.querySelectorAll(".meta-label").forEach((label) => {
+        const translated = metaLabelTranslations[label.textContent.trim()];
+        if (translated) {
+          label.textContent = translated;
+        }
+      });
+
       if (role) {
         const metaBlocks = [...page.querySelectorAll(".meta-block")];
         const roleBlock =
-          metaBlocks.find((block) => block.querySelector(".meta-label")?.textContent.trim() === "Role") ||
+          metaBlocks.find((block) => {
+            const label = block.querySelector(".meta-label")?.textContent.trim();
+            return label === "Role" || label === "Ρόλος";
+          }) ||
           metaBlocks[0];
 
         if (roleBlock) {
           const label = roleBlock.querySelector(".meta-label");
           const value = roleBlock.querySelector(".meta-value");
 
-          if (label) label.textContent = "Role";
+          if (label) label.textContent = this.$t("caseStudy.role");
           if (value) value.textContent = role;
         }
       }

@@ -732,8 +732,13 @@ export default {
   }
 
   .catalog-image-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-3);
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  .catalog-figure {
+    width: 100%;
+    aspect-ratio: 16 / 10;
   }
 }
 

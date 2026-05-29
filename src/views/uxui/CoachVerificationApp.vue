@@ -49,7 +49,7 @@
     </section>
 
     <!-- Catalog screens: 2 side by side -->
-    <section class="showcase-section">
+    <section class="showcase-section catalog-showcase">
       <div class="showcase-text">
         <p class="section-label">Catalog</p>
         <h2 class="section-heading">778 styles, fully searchable</h2>
@@ -57,7 +57,7 @@
           The main catalog offers filtering by category, decade, and color with progressive loading. Each bag links to a detail page with dimensions, volume, strap length, production years, and available colorways, making the dataset easier to browse than a static reference list.
         </p>
       </div>
-      <div class="showcase-screens showcase-screens-2 media-container-yellow">
+      <div class="showcase-screens showcase-screens-2">
         <img :src="catalogFilter" alt="Catalog grid with filters" class="screen-image" />
         <img :src="itemPreview" alt="Bag detail page" class="screen-image" />
       </div>
@@ -78,7 +78,7 @@
     </section>
 
     <!-- App Demo Video - phone recording with text -->
-    <section class="showcase-section">
+    <section class="showcase-section live-demo-section">
       <div class="showcase-text">
         <p class="section-label">Live Demo</p>
         <h2 class="section-heading">Browsing the catalog in action</h2>
@@ -160,9 +160,9 @@ export default {
   data() {
     return {
       hero: require("@/images/coach/hero.webp"),
-      catalogFilter: require("@/images/coach/coachcatalogfilter.webp"),
-      itemPreview: require("@/images/coach/coachitemPreview.webp"),
-      tabletPreview: require("@/images/coach/coachItemPreviewInTablet.webp"),
+      catalogFilter: require("@/images/coach/coachcatalogfilter-phone.svg"),
+      itemPreview: require("@/images/coach/coachitemPreview-phone.svg"),
+      tabletPreview: require("@/images/coach/coachItemPreviewInTablet-mockup.svg"),
       colorFamily: require("@/images/coach/colorFamilycoach.webp"),
       colorFilters: require("@/images/coach/colorfilterscoach.webp"),
       authInfo: require("@/images/coach/authenticationInfocaoch.webp"),
@@ -387,6 +387,32 @@ export default {
   box-shadow: var(--shadow-lg);
 }
 
+.live-demo-section {
+  align-items: center;
+}
+
+.live-demo-section .video-phone-container {
+  flex: 1 1 0;
+  width: 100%;
+  max-width: min(52rem, 100%);
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: visible;
+}
+
+.live-demo-section .video-phone {
+  width: 100% !important;
+  height: auto !important;
+  max-height: min(78vh, 48rem);
+  object-fit: contain;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
 /* ===== SHOWCASE SECTIONS ===== */
 .showcase-section {
   display: flex;
@@ -421,6 +447,26 @@ export default {
 
 .showcase-screens-3 {
   justify-content: center;
+}
+
+.catalog-showcase,
+.catalog-showcase .showcase-screens {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0;
+  box-shadow: none !important;
+}
+
+.catalog-showcase .screen-image {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.case-study.case-study .catalog-showcase .screen-image {
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
 .screen-image {
@@ -489,39 +535,67 @@ export default {
     width: 100%;
     max-height: 480px;
   }
+
+  .live-demo-section {
+    align-items: stretch;
+  }
+
+  .live-demo-section .video-phone-container {
+    max-width: 100%;
+  }
+
+  .live-demo-section .video-phone {
+    max-height: 72vh;
+  }
 }
 
 @media (max-width: 768px) {
+  .case-study {
+    overflow-x: hidden;
+  }
+
+  .case-study.case-study .editorial-reveal,
+  .case-study.case-study .editorial-reveal.reveal-from-left,
+  .case-study.case-study .editorial-reveal.reveal-from-right,
+  .case-study.case-study .editorial-reveal.reveal-media {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+    transition: none;
+  }
+
   .case-header {
-    padding: var(--space-10) var(--space-5) 0;
+    padding: var(--space-8) var(--space-5) 0;
   }
 
   .case-title {
-
-    font-size: clamp(2.5rem, 14vw, 5rem);
-    margin-bottom: -0.1em;
+    font-size: clamp(2.35rem, 13vw, 4.25rem);
+    line-height: 0.98;
+    margin-bottom: 0;
+    white-space: normal;
   }
 
   .case-hero {
     padding: 0 var(--space-5);
-    margin-bottom: var(--space-8);
+    margin-bottom: var(--space-6);
   }
 
   .case-info {
     grid-template-columns: 1fr;
-    gap: var(--space-6);
+    gap: var(--space-5);
     padding: 0 var(--space-5);
-    margin-bottom: var(--space-12);
+    margin-bottom: var(--space-10);
   }
 
   .info-meta {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: var(--space-6);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
   }
 
   .info-text {
-    font-size: 1.375rem;
+    font-size: 1.25rem;
+    line-height: 1.28;
   }
 
   .content-section,
@@ -534,16 +608,92 @@ export default {
   }
 
   .showcase-section {
+    gap: var(--space-5);
+    margin: var(--space-10) auto;
     padding: 0 var(--space-5);
   }
 
+  .case-study.case-study .content-section,
+  .case-study.case-study .content-section-wide,
+  .case-study.case-study .showcase-section,
+  .case-study.case-study .tablet-section {
+    margin-bottom: var(--space-10);
+  }
+
+  .case-study.case-study > section + section {
+    padding-top: 0;
+  }
+
   .showcase-screens {
-    padding: var(--space-4);
+    align-items: center;
+    justify-content: flex-start;
     gap: var(--space-3);
+    margin-left: calc(var(--space-5) * -1);
+    margin-right: calc(var(--space-5) * -1);
+    padding: var(--space-4) var(--space-5) var(--space-5);
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-padding-inline: var(--space-5);
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .case-study.case-study .showcase-screens {
+    min-height: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .showcase-screens::-webkit-scrollbar {
+    height: 4px;
   }
 
   .screen-image {
-    max-width: 160px;
+    flex: 0 0 auto;
+    width: min(68vw, 260px);
+    max-width: none;
+    max-height: min(62vh, 34rem);
+    object-fit: contain;
+    scroll-snap-align: center;
+  }
+
+  .case-study.case-study .screen-image,
+  .case-study.case-study .showcase-screens-3 .screen-image {
+    flex: 0 0 auto;
+    width: min(68vw, 260px);
+    max-width: none;
+  }
+
+  .showcase-screens {
+    flex-direction: column;
+  }
+
+  .catalog-showcase .showcase-screens,
+  .showcase-section-reverse .showcase-screens {
+    flex-direction: column;
+    margin-left: 0;
+    margin-right: 0;
+    padding: var(--space-3) 0 0;
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+
+  .catalog-showcase .screen-image,
+  .showcase-section-reverse .screen-image {
+    width: min(100%, 320px);
+  }
+
+  .tablet-section {
+    margin: var(--space-10) auto;
+    padding: 0 var(--space-5);
+  }
+
+  .tablet-text {
+    margin-bottom: var(--space-5);
+  }
+
+  .tablet-frame {
+    padding: var(--space-3);
   }
 
   .video-phone-container {
@@ -556,12 +706,31 @@ export default {
     width: 100%;
     max-height: 420px;
   }
+
+  .live-demo-section .video-phone-container {
+    align-items: center;
+    justify-content: center;
+    width: min(72vw, 260px);
+    max-width: 260px;
+    aspect-ratio: 9 / 18;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-md);
+  }
+
+  .live-demo-section .video-phone {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: none;
+    object-fit: cover;
+    object-position: center;
+  }
 }
 
 @media (max-width: 480px) {
   .case-title {
-
-    font-size: clamp(2.5rem, 13vw, 4rem);
+    font-size: clamp(2.35rem, 12vw, 3.5rem);
   }
 
   .info-meta {
@@ -573,12 +742,12 @@ export default {
   }
 
   .showcase-screens-3 {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
   }
 
   .screen-image {
-    max-width: 45%;
-    flex: 0 0 45%;
+    width: min(72vw, 250px);
+    flex: 0 0 auto;
   }
 }
 </style>
