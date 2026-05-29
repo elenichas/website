@@ -275,7 +275,7 @@ export default {
   aspect-ratio: 16/10;
   overflow: hidden;
   background: var(--color-accent-soft);
-  border-radius: var(--radius-sm);
+  border-radius: 0;
 }
 
 .project-image img {
@@ -304,13 +304,11 @@ export default {
   grid-template-rows: auto 1fr auto;
   padding: clamp(1rem, 2.4vw, 1.35rem);
   overflow: hidden;
-  background:
-    linear-gradient(90deg, rgba(17, 17, 17, 0.035) 1px, transparent 1px),
-    linear-gradient(rgba(17, 17, 17, 0.035) 1px, transparent 1px),
-    var(--poster-bg);
-  background-size: 34px 34px, 34px 34px, auto;
+  background: var(--poster-bg);
+  background-size: auto;
   color: var(--poster-ink);
   isolation: isolate;
+  border-radius: 0;
 }
 
 .poster-animation::before {
@@ -2042,7 +2040,7 @@ export default {
   }
 
   .project-image {
-    border-radius: var(--radius-sm);
+    border-radius: 0;
   }
 
   .project-info {

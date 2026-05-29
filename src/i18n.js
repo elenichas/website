@@ -213,7 +213,7 @@ const messages = {
       glanceRole: "Associate Design Systems Analyst",
       glanceEducation: "Architectural Computation, UCL",
       profile: "Profile",
-      profileHeading: "Designing where systems meet people.",
+      profileHeading: "Human interfaces for complex systems.",
       journeyTitle: "The Journey",
       journeyText:
         "I started in architecture, designing spaces and thinking about how people interact with environments. The transition to digital products felt natural. Both require understanding user needs, creating intuitive flows, and bringing complex systems to life. The tools changed, but the problem-solving mindset remained.",
@@ -223,7 +223,7 @@ const messages = {
       conferenceTitle: "UXDX USA 2025",
       conferenceText:
         "Last year, I attended UXDX USA 2025 in New York, an incredible conference bringing together designers, developers, and product managers. It was inspiring to connect with industry leaders, explore emerging trends in product development, and share ideas about the future of design systems and collaborative workflows.",
-      fieldNotes: "Field Notes",
+      fieldNotes: "Moments",
       galleryAlt: "UXDX Conference",
     },
     notFound: {
@@ -452,7 +452,7 @@ const messages = {
       glanceRole: "Associate Design Systems Analyst",
       glanceEducation: "Architectural Computation, UCL",
       profile: "Προφίλ",
-      profileHeading: "Designing where systems meet people.",
+      profileHeading: "Human interfaces for complex systems.",
       journeyTitle: "Η διαδρομή",
       journeyText:
         "Ξεκίνησα από την αρχιτεκτονική, σχεδιάζοντας χώρους και παρατηρώντας πώς οι άνθρωποι κινούνται και αποφασίζουν μέσα σε ένα περιβάλλον. Η μετάβαση στα digital products ήρθε φυσικά: και εκεί χρειάζεται να καταλάβεις τις ανάγκες των χρηστών, να χτίσεις καθαρές ροές και να κάνεις σύνθετα συστήματα πιο κατανοητά. Τα εργαλεία άλλαξαν, αλλά ο τρόπος σκέψης έμεινε ο ίδιος.",
@@ -462,7 +462,7 @@ const messages = {
       conferenceTitle: "UXDX USA 2025",
       conferenceText:
         "Πέρυσι συμμετείχα στο UXDX USA 2025 στη Νέα Υόρκη, ένα συνέδριο που φέρνει κοντά designers, developers και product managers. Ήταν πολύτιμο να γνωρίσω ανθρώπους του χώρου, να δω από κοντά νέες κατευθύνσεις στο product development και να συζητήσω για το μέλλον των design systems και της συνεργατικής δουλειάς.",
-      fieldNotes: "Field Notes",
+      fieldNotes: "Moments",
       galleryAlt: "Συνέδριο UXDX",
     },
     notFound: {

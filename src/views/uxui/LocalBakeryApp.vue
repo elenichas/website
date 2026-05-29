@@ -43,6 +43,70 @@
       </p>
     </section>
 
+    <!-- Perspectives -->
+    <section class="content-section-wide bakery-perspectives-section">
+      <div class="section-intro">
+        <p class="section-label">Perspectives</p>
+        <h2 class="section-heading">Two sides of the morning rush</h2>
+        <p class="body-text">
+          The concept was shaped around a simple service exchange: customers need confidence that ordering ahead will actually save time, while cafe staff need orders to arrive clearly without disrupting the counter workflow.
+        </p>
+      </div>
+      <div class="perspective-grid">
+        <article class="perspective-card perspective-card-customer">
+          <div class="perspective-visual" aria-hidden="true">
+            <div class="perspective-phone">
+              <div class="order-card order-card-primary">
+                <span class="order-dot"></span>
+                <span class="order-line line-wide"></span>
+                <span class="order-line line-short"></span>
+              </div>
+              <div class="pickup-chip">8:35</div>
+              <div class="status-bar">
+                <span></span>
+              </div>
+              <div class="coffee-button">Order</div>
+            </div>
+          </div>
+          <div class="perspective-copy">
+            <p class="perspective-role">Customer perspective</p>
+            <h3>The commuter trying to avoid the queue</h3>
+            <p>
+              A regular customer wants to choose a drink quickly, set a pickup time, and trust that the order will be ready when they arrive. The app needs to make timing, price, and confirmation feel immediate.
+            </p>
+          </div>
+        </article>
+
+        <article class="perspective-card perspective-card-staff">
+          <div class="perspective-visual" aria-hidden="true">
+            <div class="perspective-counter">
+              <div class="ticket ticket-one">
+                <span></span>
+                <span></span>
+              </div>
+              <div class="ticket ticket-two">
+                <span></span>
+                <span></span>
+              </div>
+              <div class="ticket ticket-three">
+                <span></span>
+                <span></span>
+              </div>
+              <div class="counter-rail"></div>
+              <div class="ready-chip">Ready</div>
+            </div>
+          </div>
+          <div class="perspective-copy">
+            <p class="perspective-role">Cafe staff perspective</p>
+            <h3>The team keeping orders moving</h3>
+            <p>
+              Staff need preorder details to be easy to scan while they handle walk-in customers. Clear pickup times, item summaries, and ready states help the cafe prepare orders without adding extra confusion.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <!-- Solution -->
     <section class="content-section-wide bakery-showcase bakery-showcase-left">
       <div class="showcase-copy">
@@ -178,7 +242,7 @@ export default {
   },
   data() {
     return {
-      hero: require("@/images/kapihanHero.webp"),
+      hero: require("@/images/kapihanHeroProfessional.png"),
       wireframes: require("@/images/kapihanWireframes.webp"),
       prototypes: require("@/images/kapihanPrototypes.webp"),
       figmaSrc: "https://www.figma.com/proto/dSiLtVj2GKzRZYcfYoe8iW/KapihanApp?node-id=49-5572&t=qR7dRV7dwGhpgw8c-1",
@@ -359,6 +423,291 @@ export default {
   line-height: 1.75;
   color: var(--color-text-secondary);
   margin: 0 0 var(--space-4);
+}
+
+.bakery-perspectives-section {
+  max-width: 1240px;
+  margin: var(--space-12) auto;
+  padding: 0 var(--space-8);
+}
+
+.bakery-perspectives-section .section-intro {
+  max-width: 760px;
+  margin-bottom: var(--space-6);
+}
+
+.perspective-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5);
+  width: 100%;
+}
+
+.perspective-card {
+  width: 100%;
+  min-width: 0;
+  min-height: 540px;
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.58);
+  display: grid;
+  grid-template-rows: minmax(260px, 1fr) auto;
+  gap: var(--space-5);
+  overflow: hidden;
+}
+
+.perspective-visual {
+  min-height: 280px;
+  border-radius: var(--radius-sm);
+  background:
+    linear-gradient(135deg, rgba(255, 249, 224, 0.9), rgba(255, 255, 255, 0.74)),
+    radial-gradient(circle at 18% 20%, rgba(215, 162, 70, 0.18), transparent 34%);
+  display: grid;
+  place-items: center;
+}
+
+.perspective-card-staff .perspective-visual {
+  background:
+    linear-gradient(135deg, rgba(237, 247, 232, 0.92), rgba(255, 255, 255, 0.75)),
+    radial-gradient(circle at 82% 22%, rgba(0, 50, 11, 0.14), transparent 38%);
+}
+
+.perspective-phone,
+.perspective-counter {
+  position: relative;
+  width: min(78%, 320px);
+  aspect-ratio: 0.78;
+  border: 1px solid rgba(0, 50, 11, 0.14);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 24px 60px rgba(30, 24, 16, 0.12);
+  animation: bakeryFloat 6s ease-in-out infinite;
+}
+
+.order-card,
+.ticket {
+  position: absolute;
+  border-radius: var(--radius-sm);
+  background: #fff;
+  box-shadow: 0 12px 28px rgba(30, 24, 16, 0.1);
+}
+
+.order-card-primary {
+  left: 14%;
+  right: 14%;
+  top: 18%;
+  height: 28%;
+  padding: 1rem;
+}
+
+.order-dot {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #d7a246;
+  box-shadow: 0 0 0 10px rgba(215, 162, 70, 0.12);
+}
+
+.order-line {
+  position: absolute;
+  left: 4.5rem;
+  height: 9px;
+  border-radius: 999px;
+  background: rgba(0, 50, 11, 0.18);
+  animation: bakeryPulse 3.8s ease-in-out infinite;
+}
+
+.line-wide {
+  top: 1.3rem;
+  width: 42%;
+}
+
+.line-short {
+  top: 2.35rem;
+  width: 28%;
+  animation-delay: 0.45s;
+}
+
+.pickup-chip,
+.coffee-button,
+.ready-chip {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  font-weight: var(--weight-semibold);
+  box-shadow: 0 10px 26px rgba(30, 24, 16, 0.12);
+}
+
+.pickup-chip {
+  right: 13%;
+  top: 50%;
+  min-width: 72px;
+  padding: 0.55rem 0.75rem;
+  background: #fff;
+  color: #00320b;
+  animation: bakeryPulse 3.8s ease-in-out infinite;
+}
+
+.status-bar {
+  position: absolute;
+  left: 14%;
+  right: 14%;
+  bottom: 28%;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(0, 50, 11, 0.12);
+  overflow: hidden;
+}
+
+.status-bar span {
+  display: block;
+  width: 64%;
+  height: 100%;
+  border-radius: inherit;
+  background: #00320b;
+  animation: bakeryProgress 4.4s ease-in-out infinite;
+}
+
+.coffee-button {
+  left: 22%;
+  right: 22%;
+  bottom: 12%;
+  padding: 0.65rem 1rem;
+  background: #00320b;
+  color: #fff;
+  font-size: 0.8rem;
+}
+
+.perspective-counter {
+  border-radius: var(--radius-sm);
+}
+
+.ticket {
+  left: 13%;
+  width: 58%;
+  min-height: 56px;
+  padding: 0.8rem;
+  animation: bakeryTicket 4.8s ease-in-out infinite;
+}
+
+.ticket span {
+  display: block;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(0, 50, 11, 0.18);
+}
+
+.ticket span + span {
+  width: 56%;
+  margin-top: 0.55rem;
+  background: rgba(215, 162, 70, 0.42);
+}
+
+.ticket-one {
+  top: 18%;
+}
+
+.ticket-two {
+  top: 38%;
+  animation-delay: 0.35s;
+}
+
+.ticket-three {
+  top: 58%;
+  animation-delay: 0.7s;
+}
+
+.counter-rail {
+  position: absolute;
+  top: 12%;
+  right: 18%;
+  bottom: 18%;
+  width: 4px;
+  border-radius: 999px;
+  background: rgba(0, 50, 11, 0.16);
+}
+
+.ready-chip {
+  right: 8%;
+  bottom: 12%;
+  min-width: 76px;
+  padding: 0.55rem 0.8rem;
+  background: #00320b;
+  color: #fff;
+  font-size: 0.78rem;
+  animation: bakeryPulse 3.6s ease-in-out infinite;
+}
+
+.perspective-copy {
+  max-width: 500px;
+}
+
+.perspective-role {
+  margin: 0 0 var(--space-2);
+  color: var(--color-text-muted);
+  font-size: 0.7rem;
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.perspective-copy h3 {
+  margin: 0 0 var(--space-3);
+  color: var(--color-text);
+  font-size: 1.25rem;
+  font-weight: var(--weight-semibold);
+  line-height: 1.25;
+}
+
+.perspective-copy p:last-child {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+@keyframes bakeryFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes bakeryPulse {
+  0%, 100% {
+    opacity: 0.72;
+    transform: scaleX(0.92);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes bakeryProgress {
+  0%, 100% {
+    width: 42%;
+  }
+  50% {
+    width: 82%;
+  }
+}
+
+@keyframes bakeryTicket {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px);
+  }
 }
 
 /* ===== SPLIT SECTIONS ===== */
@@ -659,6 +1008,30 @@ export default {
     padding: 0 var(--space-5);
   }
 
+  .bakery-perspectives-section {
+    padding: 0 var(--space-5);
+    margin: var(--space-10) auto;
+  }
+
+  .perspective-grid {
+    grid-template-columns: 1fr;
+    justify-items: stretch;
+  }
+
+  .perspective-card {
+    min-height: 0;
+    grid-template-rows: auto auto;
+  }
+
+  .perspective-visual {
+    min-height: 260px;
+  }
+
+  .perspective-phone,
+  .perspective-counter {
+    width: min(78%, 280px);
+  }
+
   .section-heading {
     font-size: 1.5rem;
   }
@@ -713,6 +1086,18 @@ export default {
 
   .info-text {
     font-size: 1.125rem;
+  }
+
+  .perspective-card {
+    padding: var(--space-4);
+  }
+
+  .perspective-visual {
+    min-height: 240px;
+  }
+
+  .perspective-copy h3 {
+    font-size: 1.1rem;
   }
 }
 </style>
