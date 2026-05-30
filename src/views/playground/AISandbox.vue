@@ -71,37 +71,37 @@
           <header class="chat-header">
             <div>
               <p class="assistant-name">Launch Review Assistant</p>
-              <p class="assistant-state">{{ permissionSummary }}</p>
+              <p class="assistant-state">{{ initiativeSummary }}</p>
             </div>
             <div class="header-status">
+              <span class="status-pill" :class="{ 'access-active': state.access > 0 }"><ShieldCheck :size="12" /> {{ accessLabel }}</span>
               <span v-if="state.memory === 0" class="status-pill"><ShieldCheck :size="12" /> Memory off</span>
               <span v-if="state.memory === 1" class="status-pill"><Clock3 :size="12" /> This chat only</span>
               <span v-if="state.memory === 2" class="status-pill memory-active"><Brain :size="12" /> Saved preferences</span>
             </div>
           </header>
 
-          <div class="workspace" :class="{ instrumented: state.transparency === 2 || state.memory > 0 }">
+          <div class="workspace" :class="{ instrumented: state.transparency === 2 || state.memory > 0 || state.access > 0 }">
             <section class="conversation">
-              <transition name="lift">
-                <div v-if="state.capability === 'text'" class="product-alert">
-                  <CircleAlert :size="15" />
-                  <span><strong>Text-only input.</strong> The assistant can review your brief, but it cannot inspect the cover image.</span>
-                </div>
-              </transition>
+              <div v-if="state.access === 0" class="product-alert">
+                <ShieldCheck :size="15" />
+                <span><strong>Chat only.</strong> The assistant can use your messages and attachments, but it cannot inspect project files.</span>
+              </div>
 
-              <transition name="lift">
-                <div v-if="state.uncertainty === 1" class="review-notice">
-                  <CircleAlert :size="14" />
-                  <span><strong>Review recommended.</strong> Two checklist items still need your confirmation.</span>
-                </div>
-              </transition>
+              <div v-if="state.capability === 'text'" class="product-alert">
+                <CircleAlert :size="15" />
+                <span><strong>Text-only input.</strong> The assistant can review your brief, but it cannot inspect the cover image.</span>
+              </div>
 
-              <transition name="lift">
-                <div v-if="state.uncertainty === 2" class="review-notice cautious">
-                  <CircleAlert :size="14" />
-                  <span><strong>Confirmation needed.</strong> Check the project claim and final mobile crop before publishing.</span>
-                </div>
-              </transition>
+              <div v-if="state.uncertainty === 1" class="review-notice">
+                <CircleAlert :size="14" />
+                <span><strong>Review recommended.</strong> Two checklist items still need your confirmation.</span>
+              </div>
+
+              <div v-if="state.uncertainty === 2" class="review-notice cautious">
+                <CircleAlert :size="14" />
+                <span><strong>Confirmation needed.</strong> Check the project claim and final mobile crop before publishing.</span>
+              </div>
 
               <div class="message-row user-row">
                 <div class="user-bubble">
@@ -198,35 +198,54 @@
                 </div>
               </div>
 
-              <transition name="lift">
-                <article v-if="state.permission === 1 && !actionAdded" class="action-card suggestion-card">
-                  <div class="action-icon"><ListPlus :size="16" /></div>
-                  <div>
-                    <p class="card-kicker">Suggested next step</p>
-                    <h3>Add a mobile QA task to the checklist?</h3>
-                    <button class="primary-button" type="button" @click="addQaTask">Add task</button>
-                  </div>
-                </article>
-              </transition>
+              <article v-if="state.initiative === 1 && !actionAdded" class="action-card suggestion-card">
+                <div class="action-icon"><ListPlus :size="16" /></div>
+                <div>
+                  <p class="card-kicker">Suggested next step</p>
+                  <h3>Add a mobile QA task to the checklist?</h3>
+                  <button class="primary-button" type="button" @click="addQaTask">Add task</button>
+                </div>
+              </article>
 
-              <transition name="lift">
-                <article v-if="state.permission === 2 && !actionAdded" class="action-card approval-card">
-                  <div class="action-icon"><ShieldAlert :size="16" /></div>
-                  <div>
-                    <p class="card-kicker">Approval required</p>
-                    <h3>Create two QA tasks from this review?</h3>
-                    <p>The assistant will add tasks to your launch checklist. Nothing is published automatically.</p>
-                    <div class="approval-actions">
-                      <button class="primary-button" type="button" @click="addQaTask">Approve task creation</button>
-                      <button type="button" @click="planOpen = !planOpen">{{ planOpen ? "Hide plan" : "Review plan" }}</button>
-                    </div>
-                    <ul v-if="planOpen" class="plan-list">
-                      <li>Check the mobile cover crop</li>
-                      <li>Verify the project claim against the brief</li>
-                    </ul>
+              <article v-if="state.initiative === 2 && !actionAdded" class="action-card suggestion-card">
+                <div class="action-icon"><Sparkles :size="16" /></div>
+                <div>
+                  <p class="card-kicker">Proactive observation</p>
+                  <h3>The mobile crop is still a launch risk.</h3>
+                  <p>I prepared a QA task so you can add it without writing one from scratch.</p>
+                  <button class="primary-button" type="button" @click="addQaTask">Add prepared task</button>
+                </div>
+              </article>
+
+              <article v-if="state.access === 2 && !writesApplied" class="action-card approval-card write-card">
+                <div class="action-icon"><ShieldAlert :size="16" /></div>
+                <div>
+                  <p class="card-kicker">Write approval required</p>
+                  <h3>Update launch metadata?</h3>
+                  <p>The assistant prepared a scoped edit. Nothing changes until you approve it.</p>
+                  <div class="file-scope">
+                    <span>src/content/craft.json</span>
+                    <span>public/social-preview.json</span>
                   </div>
-                </article>
-              </transition>
+                  <div class="approval-actions">
+                    <button class="primary-button" type="button" @click="applyWriteProposal">Approve changes</button>
+                    <button type="button" @click="writePlanOpen = !writePlanOpen">{{ writePlanOpen ? "Hide diff" : "Review diff" }}</button>
+                  </div>
+                  <ul v-if="writePlanOpen" class="plan-list diff-list">
+                    <li><strong>craft.json</strong> Add concise launch description</li>
+                    <li><strong>social-preview.json</strong> Confirm cover-image path</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article v-if="state.access === 2 && writesApplied" class="action-card applied-card">
+                <div class="action-icon"><Check :size="16" /></div>
+                <div>
+                  <p class="card-kicker">Write applied</p>
+                  <h3>Launch metadata updated.</h3>
+                  <button type="button" @click="undoWrite"><Undo2 :size="13" /> Undo write</button>
+                </div>
+              </article>
 
               <div class="composer">
                 <textarea
@@ -254,7 +273,18 @@
               <p class="composer-caption">Local simulation. Prompts are not sent to a model.</p>
             </section>
 
-            <aside v-if="state.transparency === 2 || state.memory > 0" class="inspector">
+            <aside v-if="state.transparency === 2 || state.memory > 0 || state.access > 0" class="inspector">
+              <section v-if="state.access > 0" class="inspector-section">
+                <p class="inspector-title"><FileSearch :size="13" /> Workspace access</p>
+                <p v-if="state.access === 1">Read-only access to the files used for this review.</p>
+                <p v-else>Can read project files and prepare scoped edits. Writes still require your approval.</p>
+                <div class="resource-list">
+                  <span><strong>Read</strong> src/content/craft.json</span>
+                  <span><strong>Read</strong> public/social-preview.json</span>
+                </div>
+                <small><LockKeyhole :size="11" /> {{ state.access === 1 ? "Cannot modify project files" : "No write is applied without approval" }}</small>
+              </section>
+
               <section v-if="state.memory === 2" class="inspector-section">
                 <p class="inspector-title"><Brain :size="13" /> Saved preferences</p>
                 <p>Used in future launch reviews. Remove anything that should not persist.</p>
@@ -269,7 +299,7 @@
 
               <section v-if="state.memory === 1" class="inspector-section">
                 <p class="inspector-title"><Clock3 :size="13" /> Session context</p>
-                <p>Uses this prompt and the attached cover image. Cleared when this chat ends.</p>
+                <p>{{ sessionContextCopy }}</p>
               </section>
 
               <section v-if="state.transparency === 2" class="inspector-section">
@@ -277,7 +307,8 @@
                 <dl>
                   <div><dt>Input</dt><dd>{{ selectedCapability.label }}</dd></div>
                   <div><dt>Memory</dt><dd>{{ memoryLabel }}</dd></div>
-                  <div><dt>Permission</dt><dd>{{ permissionLabel }}</dd></div>
+                  <div><dt>Initiative</dt><dd>{{ initiativeLabel }}</dd></div>
+                  <div><dt>Access</dt><dd>{{ accessLabel }}</dd></div>
                   <div><dt>Evidence</dt><dd>{{ evidenceItems.length }} items</dd></div>
                 </dl>
               </section>
@@ -310,8 +341,13 @@
         </article>
         <article>
           <span>03</span>
-          <h2>Actions need permission</h2>
-          <p>The assistant can answer, suggest a task, or wait for approval before changing the checklist.</p>
+          <h2>Access has boundaries</h2>
+          <p>The assistant can stay inside chat, read scoped files, or prepare writes that still require explicit approval.</p>
+        </article>
+        <article>
+          <span>04</span>
+          <h2>Initiative is separate</h2>
+          <p>A model can wait, suggest, or proactively surface work without receiving broader machine access.</p>
         </article>
       </div>
     </section>
@@ -349,7 +385,8 @@ import AppFooter from "../../components/footer.vue";
 const initialState = {
   capability: "image",
   uncertainty: 1,
-  permission: 1,
+  initiative: 1,
+  access: 1,
   memory: 1,
   transparency: 1,
 };
@@ -401,10 +438,16 @@ export default {
           descriptions: ["Keep the answer concise.", "Flag unresolved checklist items.", "Ask for confirmation before publishing."],
         },
         {
-          key: "permission",
-          label: "Permission level",
-          options: ["Answer only", "Suggest tasks", "Act with approval"],
-          descriptions: ["No workflow changes.", "Offer an optional checklist task.", "Require approval before adding tasks."],
+          key: "initiative",
+          label: "Initiative level",
+          options: ["Respond only", "Suggest next steps", "Proactive"],
+          descriptions: ["Wait for the user to ask.", "Offer an optional next step.", "Surface a prepared task when the assistant notices a risk."],
+        },
+        {
+          key: "access",
+          label: "Access scope",
+          options: ["Chat only", "Read workspace", "Propose writes"],
+          descriptions: ["Use messages and attachments only.", "Inspect scoped project files without changing them.", "Prepare scoped edits that still require approval."],
         },
         {
           key: "memory",
@@ -426,8 +469,11 @@ export default {
       feedback: null,
       responseVersion: 1,
       evidenceOpen: false,
-      planOpen: false,
+      writePlanOpen: false,
+      writesApplied: false,
       actionAdded: false,
+      lastUndoAction: null,
+      lastChangedKey: null,
       composerDraft: "",
       displayedPrompt: "Review this cover image and help me prepare the case study for launch.",
       savedPreferences: ["Concise editorial copy", "Product engineering roles"],
@@ -442,8 +488,8 @@ export default {
     supportsImages() {
       return this.state.capability === "image";
     },
-    permissionSummary() {
-      return ["Answers only", "Suggests optional tasks", "Waits for approval before adding tasks"][this.state.permission];
+    initiativeSummary() {
+      return ["Responds when asked", "Suggests optional next steps", "Proactively surfaces relevant work"][this.state.initiative];
     },
     postureLabel() {
       return ["Direct", "Review recommended", "Confirmation needed"][this.state.uncertainty];
@@ -475,21 +521,70 @@ export default {
           detail: this.state.memory === 2 ? "Preferences retained for future reviews" : "Temporary context from this chat",
         });
       }
+      if (this.state.access > 0) {
+        items.push({
+          title: "Workspace files",
+          detail: this.state.access === 1 ? "2 scoped files / read only" : "2 scoped files / write proposal available",
+        });
+      }
       return items;
     },
     memoryLabel() {
       return ["Off", "This chat", "Saved preferences"][this.state.memory];
     },
-    permissionLabel() {
-      return ["Answer only", "Suggest tasks", "Approval required"][this.state.permission];
+    initiativeLabel() {
+      return ["Respond only", "Suggest next steps", "Proactive"][this.state.initiative];
+    },
+    accessLabel() {
+      return ["Chat only", "Read workspace", "Propose writes"][this.state.access];
+    },
+    sessionContextCopy() {
+      return this.supportsImages && this.attachmentAttached
+        ? "Uses this prompt and the attached cover image. Cleared when this chat ends."
+        : "Uses this prompt and written brief only. Cleared when this chat ends.";
     },
     currentNote() {
-      if (this.state.transparency === 2) return "The inspector exposes the exact inputs, memory mode, permission level, and evidence count.";
-      if (this.state.memory === 2) return "Saved preferences appear as removable items because persistent memory needs user control.";
-      if (this.state.permission === 2) return "The assistant pauses before changing the checklist and describes the proposed action.";
-      if (this.state.uncertainty === 2) return "The response becomes more cautious and the interface asks for confirmation.";
-      if (!this.supportsImages) return "Image analysis disappears because the selected input mode cannot inspect a cover image.";
-      return "The assistant suggests one optional task and shows the evidence behind its review.";
+      if (this.lastChangedKey === "capability") {
+        return this.supportsImages
+          ? "Image input adds an attachment, visual-review result, and cover-image evidence."
+          : "Image analysis disappears because the selected input mode cannot inspect a cover image.";
+      }
+      if (this.lastChangedKey === "uncertainty") {
+        return [
+          "Direct mode removes the review warning and keeps the response concise.",
+          "Review mode flags the unresolved checklist items without blocking progress.",
+          "Confirmation mode makes the response cautious and asks the user to verify claims before publishing.",
+        ][this.state.uncertainty];
+      }
+      if (this.lastChangedKey === "initiative") {
+        return [
+          "Respond-only mode removes unsolicited next steps.",
+          "Suggestion mode offers one optional QA task after the response.",
+          "Proactive mode surfaces a prepared task when the assistant notices a launch risk.",
+        ][this.state.initiative];
+      }
+      if (this.lastChangedKey === "access") {
+        return [
+          "Chat-only mode removes project-file access. The assistant can still use messages and attachments.",
+          "Read access exposes the exact project files the assistant inspected without allowing changes.",
+          "Write access adds a scoped file proposal. The user must review and approve before anything changes.",
+        ][this.state.access];
+      }
+      if (this.lastChangedKey === "memory") {
+        return [
+          "Memory-off mode removes the context panel and excludes memory from the evidence list.",
+          "Session memory exposes temporary context that is cleared when this chat ends.",
+          "Saved preferences appear as removable items because persistent memory needs user control.",
+        ][this.state.memory];
+      }
+      if (this.lastChangedKey === "transparency") {
+        return [
+          "Quiet mode hides supporting evidence while leaving necessary access and memory controls visible.",
+          "Evidence mode adds a disclosure control for the sources behind the review.",
+          "Instrumented mode opens evidence and exposes the current input, memory, initiative, and access state.",
+        ][this.state.transparency];
+      }
+      return "The default assistant suggests an optional task, reads two scoped project files, and exposes evidence on demand.";
     },
   },
   beforeUnmount() {
@@ -505,8 +600,11 @@ export default {
       this.feedback = null;
       this.responseVersion = 1;
       this.evidenceOpen = false;
-      this.planOpen = false;
+      this.writePlanOpen = false;
+      this.writesApplied = false;
       this.actionAdded = false;
+      this.lastUndoAction = null;
+      this.lastChangedKey = null;
       this.composerDraft = "";
       this.displayedPrompt = "Review this cover image and help me prepare the case study for launch.";
       this.savedPreferences = ["Concise editorial copy", "Product engineering roles"];
@@ -515,12 +613,17 @@ export default {
     handleCapabilityChange() {
       this.attachmentAttached = this.supportsImages;
       this.evidenceOpen = false;
+      this.lastChangedKey = "capability";
     },
     handleControlChange(key) {
+      this.lastChangedKey = key;
       if (key === "transparency") this.evidenceOpen = this.state.transparency === 2;
-      if (key === "permission") {
+      if (key === "initiative") {
         this.actionAdded = false;
-        this.planOpen = false;
+      }
+      if (key === "access") {
+        this.writePlanOpen = false;
+        this.writesApplied = false;
       }
     },
     toggleChecklistItem(id) {
@@ -543,11 +646,26 @@ export default {
         this.checklist.push({ id: "qa", label: "Run a mobile QA pass", complete: false });
       }
       this.actionAdded = true;
-      this.showToast("QA task added to the checklist", true);
+      this.showToast("QA task added to the checklist", true, "task");
     },
     undoAction() {
+      if (this.lastUndoAction === "write") {
+        this.undoWrite();
+        return;
+      }
       this.checklist = this.checklist.filter((item) => item.id !== "qa");
       this.actionAdded = false;
+      this.lastUndoAction = null;
+      this.toast = { visible: false, message: "", undoable: false };
+    },
+    applyWriteProposal() {
+      this.writesApplied = true;
+      this.writePlanOpen = false;
+      this.showToast("Approved metadata edits applied", true, "write");
+    },
+    undoWrite() {
+      this.writesApplied = false;
+      this.lastUndoAction = null;
       this.toast = { visible: false, message: "", undoable: false };
     },
     sendPrompt() {
@@ -563,10 +681,12 @@ export default {
     removePreference(item) {
       this.savedPreferences = this.savedPreferences.filter((preference) => preference !== item);
     },
-    showToast(message, undoable) {
+    showToast(message, undoable, undoAction = null) {
       clearTimeout(this.toastTimer);
+      this.lastUndoAction = undoAction;
       this.toast = { visible: true, message, undoable };
       this.toastTimer = setTimeout(() => {
+        this.lastUndoAction = null;
         this.toast = { visible: false, message: "", undoable: false };
       }, 5000);
     },
@@ -609,7 +729,8 @@ input[type="range"] { accent-color: #111; width: 100%; }
 .assistant-name { font-size: .82rem; font-weight: 700; margin-bottom: .12rem; }
 .assistant-state { color: #817b71; font-size: .66rem; margin-bottom: 0; }
 .status-pill { align-items: center; background: #fff; border: 1px solid #ded9cf; color: #706a61; display: flex; font-size: .61rem; gap: .3rem; padding: .32rem .46rem; }
-.memory-active { background: #edf1eb; border-color: #c6d4c5; color: #45604d; }
+.memory-active, .access-active { background: #edf1eb; border-color: #c6d4c5; color: #45604d; }
+.header-status { display: flex; flex-wrap: wrap; gap: .35rem; justify-content: flex-end; }
 .workspace { display: grid; grid-template-columns: minmax(0, 1fr); min-height: 650px; }
 .workspace.instrumented { grid-template-columns: minmax(0, 1fr) minmax(215px, 28%); }
 .conversation { display: flex; flex-direction: column; padding: clamp(1rem, 2.7vw, 2rem); }
@@ -660,6 +781,12 @@ input[type="range"] { accent-color: #111; width: 100%; }
 .primary-button { background: #111; color: #fff; }
 .approval-actions { justify-content: flex-start; margin-top: .65rem; }
 .plan-list { color: #756f66; font-size: .64rem; line-height: 1.5; margin: .6rem 0 0; padding-left: 1rem; }
+.file-scope, .resource-list { display: grid; gap: .28rem; margin-top: .5rem; }
+.file-scope span, .resource-list span { background: #f3efe7; border: 1px solid #e2ddd3; color: #6d665d; font-family: monospace; font-size: .58rem; padding: .3rem .38rem; }
+.resource-list strong { color: #45604d; font-family: var(--font-sans); font-size: .53rem; letter-spacing: .08em; margin-right: .3rem; text-transform: uppercase; }
+.applied-card { border-color: #c6d4c5; }
+.applied-card .action-icon { color: #4d7b5d; }
+.applied-card button { align-items: center; display: flex; font-size: .63rem; gap: .28rem; padding: .35rem .45rem; }
 .composer { background: #fff; border: 1px solid #d6d1c7; margin-top: auto; padding: .62rem; }
 .composer textarea { border: 0; box-sizing: border-box; color: #403d38; font: inherit; font-size: .74rem; outline: 0; resize: none; width: 100%; }
 .composer-toolbar button { align-items: center; border: 0; color: #746f66; display: flex; font-size: .62rem; gap: .28rem; padding: .34rem; }
@@ -680,7 +807,7 @@ input[type="range"] { accent-color: #111; width: 100%; }
 .undo-toast { align-items: center; background: #111; bottom: 1.2rem; color: #fff; display: flex; font-size: .68rem; gap: .52rem; left: 50%; padding: .68rem .82rem; position: fixed; transform: translateX(-50%); z-index: 150; }
 .undo-toast button { align-items: center; border-color: #5d5d5d; color: #fff; display: flex; font-size: .62rem; gap: .28rem; margin-left: .2rem; padding: .3rem .4rem; }
 .principles { border-top: 1px solid #d6d1c7; margin-top: 6rem; padding-top: 1.2rem; }
-.principle-grid { display: grid; gap: 1rem; grid-template-columns: repeat(3, 1fr); margin-top: 2rem; }
+.principle-grid { display: grid; gap: 1rem; grid-template-columns: repeat(4, 1fr); margin-top: 2rem; }
 .principle-grid article { border-top: 3px solid #111; padding-top: 1rem; }
 .principle-grid span { color: #8d6b2f; font-size: .74rem; font-weight: 700; }
 .principle-grid h2 { font-size: clamp(1.5rem, 3vw, 2.6rem); letter-spacing: -.07em; line-height: .95; margin: 2rem 0 .8rem; text-transform: uppercase; }
@@ -688,7 +815,7 @@ input[type="range"] { accent-color: #111; width: 100%; }
 .lift-enter-active, .lift-leave-active, .toast-enter-active, .toast-leave-active { transition: opacity .3s ease, transform .3s ease; }
 .lift-enter-from, .lift-leave-to { opacity: 0; transform: translateY(8px); }
 .toast-enter-from, .toast-leave-to { opacity: 0; transform: translate(-50%, 8px); }
-@media (max-width: 1060px) { .sandbox-shell { grid-template-columns: 1fr; } .preview-wrap { order: -1; } }
+@media (max-width: 1060px) { .sandbox-shell { grid-template-columns: 1fr; } .preview-wrap { order: -1; } .principle-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 720px) { .sandbox-page { padding-inline: .8rem; } .preview-wrap { padding: .55rem; } .workspace.instrumented { grid-template-columns: 1fr; } .inspector { border-left: 0; border-top: 1px solid #e3ded5; } .principle-grid { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: .01ms !important; } }
 </style>
