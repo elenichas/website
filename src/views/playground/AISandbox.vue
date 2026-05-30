@@ -12,13 +12,16 @@
     </section>
 
     <section class="sandbox-shell" aria-label="AI interface sandbox">
-      <aside class="control-panel">
+      <aside class="control-panel" :class="{ 'mobile-open': mobileControlsOpen }">
         <div class="panel-heading">
           <div>
             <p class="eyebrow">Configuration</p>
             <h2>Product decisions</h2>
           </div>
-          <button class="text-button" type="button" @click="resetState">Reset</button>
+          <div class="panel-actions">
+            <button class="text-button" type="button" @click="resetState">Reset</button>
+            <button class="mobile-dock-close" type="button" @click="mobileControlsOpen = false">Hide</button>
+          </div>
         </div>
 
         <label class="control select-control">
@@ -61,7 +64,7 @@
         </p>
       </aside>
 
-      <section class="preview-wrap">
+      <section ref="previewWrap" class="preview-wrap">
         <div class="preview-topline">
           <p class="eyebrow">Simulated product / launch review</p>
           <span class="live-pill"><i></i> Local prototype</span>
@@ -316,6 +319,16 @@
           </div>
         </div>
       </section>
+
+      <button
+        v-if="!mobileControlsOpen"
+        class="mobile-control-toggle"
+        type="button"
+        aria-label="Open product decision controls"
+        @click="openMobileControls"
+      >
+        Tune interface
+      </button>
     </section>
 
     <transition name="toast">
@@ -474,6 +487,7 @@ export default {
       actionAdded: false,
       lastUndoAction: null,
       lastChangedKey: null,
+      mobileControlsOpen: false,
       composerDraft: "",
       displayedPrompt: "Review this cover image and help me prepare the case study for launch.",
       savedPreferences: ["Concise editorial copy", "Product engineering roles"],
@@ -610,6 +624,17 @@ export default {
       this.savedPreferences = ["Concise editorial copy", "Product engineering roles"];
       this.toast = { visible: false, message: "", undoable: false };
     },
+    openMobileControls() {
+      this.mobileControlsOpen = true;
+      this.$nextTick(() => {
+        const preview = this.$refs.previewWrap;
+        if (!preview) return;
+        const bounds = preview.getBoundingClientRect();
+        if (bounds.top > window.innerHeight * 0.4 || bounds.bottom < 160) {
+          preview.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+    },
     handleCapabilityChange() {
       this.attachmentAttached = this.supportsImages;
       this.evidenceOpen = false;
@@ -707,6 +732,8 @@ h1 em { font-family: var(--font-serif); font-weight: 400; text-transform: none; 
 .panel-heading, .preview-topline, .chat-header, .control-title, .range-labels, .composer-toolbar, .response-actions, .approval-actions { align-items: center; display: flex; justify-content: space-between; gap: .7rem; }
 h2, h3, p { margin-top: 0; }
 .panel-heading h2 { font-size: 1.08rem; margin: .4rem 0 0; }
+.panel-actions { align-items: center; display: flex; gap: .55rem; }
+.mobile-dock-close, .mobile-control-toggle { display: none; }
 button, select { background: transparent; border: 1px solid #d4cfc5; color: inherit; cursor: pointer; font: inherit; }
 button:disabled { cursor: not-allowed; opacity: .35; }
 .text-button { border: 0; color: #706b62; font-size: .7rem; text-decoration: underline; }
@@ -816,6 +843,65 @@ input[type="range"] { accent-color: #111; width: 100%; }
 .lift-enter-from, .lift-leave-to { opacity: 0; transform: translateY(8px); }
 .toast-enter-from, .toast-leave-to { opacity: 0; transform: translate(-50%, 8px); }
 @media (max-width: 1060px) { .sandbox-shell { grid-template-columns: 1fr; } .preview-wrap { order: -1; } .principle-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 720px) { .sandbox-page { padding-inline: .8rem; } .preview-wrap { padding: .55rem; } .workspace.instrumented { grid-template-columns: 1fr; } .inspector { border-left: 0; border-top: 1px solid #e3ded5; } .principle-grid { grid-template-columns: 1fr; } }
+@media (max-width: 720px) {
+  .sandbox-page { padding: 4rem .8rem 3rem; }
+  h1 { font-size: clamp(3.55rem, 15.5vw, 4.2rem); line-height: .82; margin: 1rem 0 1.4rem; }
+  .intro-copy { font-size: .96rem; line-height: 1.5; }
+  .sandbox-shell { gap: .75rem; margin-top: 3.3rem; }
+  .control-panel {
+    bottom: .55rem;
+    box-shadow: 0 10px 30px rgb(27 24 19 / 18%);
+    display: none;
+    gap: .25rem .72rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    left: .55rem;
+    max-height: min(52vh, 27rem);
+    overflow-y: auto;
+    padding: .76rem;
+    position: fixed;
+    right: .55rem;
+    z-index: 140;
+  }
+  .control-panel.mobile-open { display: grid; }
+  .panel-heading, .design-note { grid-column: 1 / -1; }
+  .mobile-dock-close { background: #111; border-color: #111; color: #fff; display: inline-flex; font-size: .62rem; padding: .3rem .42rem; }
+  .mobile-control-toggle { background: #111; border-color: #111; bottom: .7rem; color: #fff; display: block; font-size: .67rem; letter-spacing: .08em; padding: .68rem .82rem; position: fixed; right: .7rem; text-transform: uppercase; z-index: 135; }
+  .preview-wrap { order: initial; padding: .5rem; scroll-margin-top: 4rem; }
+  .panel-heading h2 { font-size: 1rem; }
+  .select-control { margin-top: 0; }
+  .control { min-width: 0; padding: .52rem 0; }
+  .control-title { align-items: flex-start; display: block; font-size: .66rem; margin-bottom: .32rem; }
+  .control-title strong { display: block; font-size: .52rem; margin-top: .14rem; max-width: none; overflow: hidden; text-align: left; text-overflow: ellipsis; white-space: nowrap; }
+  select { font-size: .66rem; padding: .42rem; }
+  .range-labels, .control-hint { display: none; }
+  .design-note { font-size: .82rem; margin-top: .28rem; padding: .62rem; }
+  .design-note span { font-size: .51rem; margin-bottom: .3rem; }
+  .preview-topline { flex-wrap: wrap; padding: .18rem .08rem .55rem; }
+  .app-frame, .workspace { min-height: 0; }
+  .chat-header { align-items: flex-start; flex-direction: column; gap: .5rem; padding: .72rem; }
+  .header-status { justify-content: flex-start; }
+  .workspace.instrumented { grid-template-columns: 1fr; }
+  .conversation { padding: .78rem; }
+  .product-alert, .review-notice { font-size: .65rem; line-height: 1.4; padding: .55rem .6rem; }
+  .message-row { gap: .42rem; margin-top: .85rem; }
+  .avatar { height: 1.55rem; width: 1.55rem; }
+  .user-bubble { font-size: .71rem; max-width: calc(100% - 1.8rem); padding: .68rem .72rem; }
+  .attachment-preview, .analysis-card { gap: .42rem; padding: .42rem; }
+  .assistant-message { font-size: .75rem; line-height: 1.5; }
+  .analysis-card { margin-top: .72rem; }
+  .task-widget { margin-top: .72rem; padding: .62rem; }
+  .task-widget li { line-height: 1.35; padding: .46rem 0; }
+  .response-actions { flex-wrap: wrap; }
+  .action-card { gap: .52rem; margin: .72rem 0 0; padding: .68rem; }
+  .action-card h3 { line-height: 1.35; }
+  .file-scope span, .resource-list span { overflow-wrap: anywhere; }
+  .composer { margin-top: .85rem; padding: .52rem; }
+  .inspector { border-left: 0; border-top: 1px solid #e3ded5; padding: .55rem; }
+  .inspector-section { margin-bottom: .48rem; padding: .62rem; }
+  .undo-toast { bottom: .75rem; box-sizing: border-box; max-width: calc(100vw - 1.5rem); width: max-content; }
+  .principles { margin-top: 4rem; }
+  .principle-grid { gap: .75rem; grid-template-columns: 1fr; margin-top: 1.35rem; }
+  .principle-grid h2 { font-size: 1.75rem; margin: 1.1rem 0 .55rem; }
+}
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: .01ms !important; } }
 </style>
