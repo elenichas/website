@@ -98,7 +98,8 @@
 </template>
 
 <script>
-import AppNavbar from "@/components/navbar";
+import { resolveAsset } from "@/assetUrl";
+import AppNavbar from "@/components/navbar.vue";
 import CaseStudyFooter from "@/components/CaseStudyFooter.vue";
 
 export default {
@@ -109,16 +110,16 @@ export default {
   },
   data() {
     return {
-      hero: require("@/images/habitat/hero.webp"),
+      hero: resolveAsset("@/images/habitat/hero.webp"),
       images: [
-        { url: require("@/images/habitat/voxelunits.webp") },
-        { url: require("@/images/habitat/unitypes.webp") },
-        { url: require("@/images/habitat/siteviewAggregations.webp") },
-        { url: require("@/images/habitat/pathAnddensity.webp") },
-        { url: require("@/images/habitat/elements.webp") },
-        { url: require("@/images/habitat/exploded.webp") },
-        { url: require("@/images/habitat/aggregations2.webp") },
-        { url: require("@/images/habitat/assembledunits.webp") },
+        { url: resolveAsset("@/images/habitat/voxelunits.webp") },
+        { url: resolveAsset("@/images/habitat/unitypes.webp") },
+        { url: resolveAsset("@/images/habitat/siteviewAggregations.webp") },
+        { url: resolveAsset("@/images/habitat/pathAnddensity.webp") },
+        { url: resolveAsset("@/images/habitat/elements.webp") },
+        { url: resolveAsset("@/images/habitat/exploded.webp") },
+        { url: resolveAsset("@/images/habitat/aggregations2.webp") },
+        { url: resolveAsset("@/images/habitat/assembledunits.webp") },
       ],
     };
   },

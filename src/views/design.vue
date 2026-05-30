@@ -6,12 +6,17 @@
       <!-- Page Header -->
       <header class="page-header">
         <div class="header-content">
-          <h1 class="page-title">{{ $t("products.title") }}</h1>
-          <p class="page-subtitle">{{ $t("products.subtitle") }}</p>
+          <h1 class="page-title">{{ $t("craft.title") }}</h1>
+          <p class="page-subtitle">{{ $t("craft.subtitle") }}</p>
         </div>
       </header>
 
-            <!-- Product Design Section -->
+      <div class="section-intro">
+        <p class="section-eyebrow">{{ $t("craft.productEyebrow") }}</p>
+        <h2 class="section-heading">{{ $t("craft.productTitle") }}</h2>
+      </div>
+
+      <!-- Product Design Section -->
       <section class="projects-section">
         <div class="projects-grid">
           <article v-for="(project, index) in uxuiImages" :key="index" class="project-card">
@@ -59,7 +64,8 @@
       <!-- System Design Section -->
       <section class="projects-section">
         <div class="section-header">
-          <h2 class="page-title">{{ $t("products.systemDesign") }}</h2>
+          <p class="section-eyebrow">{{ $t("craft.systemEyebrow") }}</p>
+          <h2 class="section-heading">{{ $t("products.systemDesign") }}</h2>
           <p class="section-description">{{ $t("products.systemDescription") }}</p>
         </div>
 
@@ -104,7 +110,9 @@
             </router-link>
           </article>
         </div>
-            </section>
+      </section>
+
+      <engineering-projects />
     </div>
 
     <app-footer></app-footer>
@@ -112,14 +120,16 @@
 </template>
 
 <script>
-import AppNavbar from "../components/navbar";
-import AppFooter from "../components/footer";
+import AppNavbar from "../components/navbar.vue";
+import AppFooter from "../components/footer.vue";
+import EngineeringProjects from "../components/EngineeringProjects.vue";
 
 export default {
   name: "Design",
   components: {
     AppNavbar,
     AppFooter,
+    EngineeringProjects,
   },
   computed: {
     architectureImages() {
@@ -233,11 +243,33 @@ export default {
   margin-bottom: var(--space-16);
 }
 
+.section-intro,
 .section-header {
   margin-bottom: var(--space-10);
   text-align: left;
   border-top: 1px solid var(--color-border);
   padding-top: var(--space-8);
+}
+
+.section-eyebrow {
+  margin: 0 0 0.5rem;
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.section-heading {
+  max-width: 46rem;
+  margin: 0 0 0.5rem;
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  font-weight: var(--weight-bold);
+  letter-spacing: -0.06em;
+  line-height: 0.98;
+  text-transform: uppercase;
 }
 
 .section-description {

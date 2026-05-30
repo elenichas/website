@@ -137,7 +137,8 @@
 </template>
 
 <script>
-import AppNavbar from "@/components/navbar";
+import { resolveAsset } from "@/assetUrl";
+import AppNavbar from "@/components/navbar.vue";
 import CaseStudyFooter from "@/components/CaseStudyFooter.vue";
 import { useHead } from "@vueuse/head";
 
@@ -159,16 +160,16 @@ export default {
   },
   data() {
     return {
-      hero: require("@/images/coach/hero.webp"),
-      catalogFilter: require("@/images/coach/coachcatalogfilter-phone.svg"),
-      itemPreview: require("@/images/coach/coachitemPreview-phone.svg"),
-      tabletPreview: require("@/images/coach/coachItemPreviewInTablet-mockup.svg"),
-      colorFamily: require("@/images/coach/colorFamilycoach.webp"),
-      colorFilters: require("@/images/coach/colorfilterscoach.webp"),
-      authInfo: require("@/images/coach/authenticationInfocaoch.webp"),
-      authSuccess: require("@/images/coach/authenticationsuccesscoach.webp"),
-      authFail: require("@/images/coach/authenticationfailcaoch.webp"),
-      appRecording: require("@/images/coach/Recording App.mp4"),
+      hero: resolveAsset("@/images/coach/hero.webp"),
+      catalogFilter: resolveAsset("@/images/coach/coachcatalogfilter-phone.svg"),
+      itemPreview: resolveAsset("@/images/coach/coachitemPreview-phone.svg"),
+      tabletPreview: resolveAsset("@/images/coach/coachItemPreviewInTablet-mockup.svg"),
+      colorFamily: resolveAsset("@/images/coach/colorFamilycoach.webp"),
+      colorFilters: resolveAsset("@/images/coach/colorfilterscoach.webp"),
+      authInfo: resolveAsset("@/images/coach/authenticationInfocaoch.webp"),
+      authSuccess: resolveAsset("@/images/coach/authenticationsuccesscoach.webp"),
+      authFail: resolveAsset("@/images/coach/authenticationfailcaoch.webp"),
+      appRecording: resolveAsset("@/images/coach/Recording App.mp4"),
     };
   },
 };

@@ -1,21 +1,14 @@
 <template>
-  <app-navbar></app-navbar>
+  <section class="projects-section">
+    <div class="section-header">
+      <p class="section-eyebrow">{{ $t("craft.engineeringEyebrow") }}</p>
+      <h2 class="section-title">{{ $t("engineering.title") }}</h2>
+      <p class="section-description">{{ $t("engineering.subtitle") }}</p>
+    </div>
 
-  <main class="page-layout">
-    <div class="container">
-      <!-- Page Header -->
-      <header class="page-header">
-        <div class="header-content">
-                    <h1 class="page-title">{{ $t("engineering.title") }}</h1>
-          <p class="page-subtitle">{{ $t("engineering.subtitle") }}</p>
-        </div>
-      </header>
-
-      <!-- Technical Projects Section -->
-      <section class="projects-section">
         <div class="projects-grid">
           <article v-for="(project, index) in images" :key="index" class="project-card">
-            <a :href="project.gitlabLink" target="_blank" class="project-link">
+            <a :href="project.gitlabLink" target="_blank" rel="noopener noreferrer" class="project-link">
               <div class="project-image">
                 <div
                   class="engineering-poster"
@@ -57,23 +50,12 @@
             </a>
           </article>
         </div>
-            </section>
-    </div>
-
-    <app-footer></app-footer>
-  </main>
+  </section>
 </template>
 
 <script>
-import AppNavbar from "../components/navbar.vue";
-import AppFooter from "../components/footer.vue";
-
 export default {
-  name: "ImageGallery",
-  components: {
-    AppNavbar,
-    AppFooter,
-  },
+  name: "EngineeringProjects",
   computed: {
     images() {
       const items = this.$t("engineering.items");
@@ -118,51 +100,7 @@ export default {
 </script>
 
 <style scoped>
-/* ===== ENGINEERING PAGE - Editorial Glass ===== */
-.page-layout {
-  min-height: 100vh;
-  background: var(--color-bg);
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: var(--space-20) var(--space-8);
-}
-
-/* Page Header */
-.page-header {
-  margin-bottom: var(--space-16);
-  text-align: left;
-  border-bottom: 1px solid var(--color-border);
-  padding-bottom: var(--space-8);
-}
-
-.header-content {
-  max-width: 900px;
-}
-
-.page-title {
-  font-family: var(--font-sans);
-  font-size: clamp(4rem, 9vw, 8rem);
-  font-weight: var(--weight-bold);
-  font-style: normal;
-  color: var(--color-text);
-  margin-bottom: 0.5rem;
-  letter-spacing: 0;
-  line-height: 0.95;
-  text-transform: uppercase;
-}
-
-.page-subtitle {
-  max-width: 34rem;
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
-  color: var(--color-text-secondary);
-  margin: 0;
-  line-height: 1.6;
-}
-
-/* Section */
+/* ===== ENGINEERING PROJECTS ===== */
 .projects-section {
   margin-bottom: var(--space-16);
 }
@@ -170,6 +108,15 @@ export default {
 .section-header {
   margin-bottom: var(--space-10);
   text-align: left;
+}
+
+.section-eyebrow {
+  margin: 0 0 0.5rem;
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .section-title {

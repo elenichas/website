@@ -106,8 +106,9 @@
 </template>
 
 <script>
-import AppNavbar from "../components/navbar";
-import AppFooter from "../components/footer";
+import { resolveAsset } from "@/assetUrl";
+import AppNavbar from "../components/navbar.vue";
+import AppFooter from "../components/footer.vue";
 
 // Use a direct path for the CV as it's located in the public folder
 const cvLink = "/cv/EleniChasiotiCV2026.pdf";
@@ -176,21 +177,21 @@ export default {
       currentSlide: 0,
       carouselTimer: null,
       conferenceImages: [
-        { src: require('@/images/about/Image (3).webp'), shape: 'tall' },
-        { src: require('@/images/about/Image (4).webp'), shape: 'tall' },
-        { src: require('@/images/about/Image (5).webp'), shape: 'wide' },
-        { src: require('@/images/about/Image (6).webp'), shape: 'tall' },
-        { src: require('@/images/about/Image (7).webp'), shape: 'square' },
-        { src: require('@/images/about/Image (8).webp'), shape: 'tall' },
-        { src: require('@/images/about/Image (9).webp'), shape: 'poster' },
-        { src: require('@/images/about/Image (10).webp'), shape: 'tall' },
-        { src: require('@/images/about/Image (11).webp'), shape: 'wide' },
-        { src: require('@/images/about/Image (12).webp'), shape: 'tall' },
-        { src: require('@/images/about/Image (13).webp'), shape: 'tall' },
-        { src: require('@/images/about/Image (14).webp'), shape: 'poster' },
-        { src: require('@/images/about/Image (15).webp'), shape: 'wide' },
-        { src: require('@/images/about/Image (17).webp'), shape: 'tall' },
-        { src: require('@/images/about/Image (18).webp'), shape: 'square' },
+        { src: resolveAsset('@/images/about/Image (3).webp'), shape: 'tall' },
+        { src: resolveAsset('@/images/about/Image (4).webp'), shape: 'tall' },
+        { src: resolveAsset('@/images/about/Image (5).webp'), shape: 'wide' },
+        { src: resolveAsset('@/images/about/Image (6).webp'), shape: 'tall' },
+        { src: resolveAsset('@/images/about/Image (7).webp'), shape: 'square' },
+        { src: resolveAsset('@/images/about/Image (8).webp'), shape: 'tall' },
+        { src: resolveAsset('@/images/about/Image (9).webp'), shape: 'poster' },
+        { src: resolveAsset('@/images/about/Image (10).webp'), shape: 'tall' },
+        { src: resolveAsset('@/images/about/Image (11).webp'), shape: 'wide' },
+        { src: resolveAsset('@/images/about/Image (12).webp'), shape: 'tall' },
+        { src: resolveAsset('@/images/about/Image (13).webp'), shape: 'tall' },
+        { src: resolveAsset('@/images/about/Image (14).webp'), shape: 'poster' },
+        { src: resolveAsset('@/images/about/Image (15).webp'), shape: 'wide' },
+        { src: resolveAsset('@/images/about/Image (17).webp'), shape: 'tall' },
+        { src: resolveAsset('@/images/about/Image (18).webp'), shape: 'square' },
       ],
     };
   },

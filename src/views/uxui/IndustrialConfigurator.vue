@@ -219,7 +219,8 @@
 </template>
 
 <script>
-import AppNavbar from "@/components/navbar";
+import { resolveAsset } from "@/assetUrl";
+import AppNavbar from "@/components/navbar.vue";
 import CaseStudyFooter from "@/components/CaseStudyFooter.vue";
 import { useHead } from "@vueuse/head";
 
@@ -241,23 +242,23 @@ export default {
   },
   data() {
     return {
-      hero: require("@/images/industrial/hero.webp"),
-      diagramVideo: require("@/images/industrial/00Diagram.mp4"),
+      hero: resolveAsset("@/images/industrial/hero.webp"),
+      diagramVideo: resolveAsset("@/images/industrial/00Diagram.mp4"),
       wireframes: [
-        { url: require("@/images/industrial/wireframe01.webp") },
-        { url: require("@/images/industrial/wireframe02.webp") },
-        { url: require("@/images/industrial/wireframe03.webp") },
-        { url: require("@/images/industrial/wireframe04.webp") },
-        { url: require("@/images/industrial/wireframe05.webp") },
+        { url: resolveAsset("@/images/industrial/wireframe01.webp") },
+        { url: resolveAsset("@/images/industrial/wireframe02.webp") },
+        { url: resolveAsset("@/images/industrial/wireframe03.webp") },
+        { url: resolveAsset("@/images/industrial/wireframe04.webp") },
+        { url: resolveAsset("@/images/industrial/wireframe05.webp") },
       ],
-      selectFacility: require("@/images/industrial/01SelectFacility.webp"),
-      modelPropertiesDetailed: require("@/images/industrial/02ModelPropertiesDetailed.webp"),
-      nodeUI: require("@/images/industrial/03NodeUI.webp"),
-      addModel: require("@/images/industrial/04AddModel.webp"),
-      checkRules: require("@/images/industrial/05CheckRules.webp"),
-      modelProperties: require("@/images/industrial/06ModelProperties.webp"),
-      modelCatalogCompare: require("@/images/industrial/07ModelCatalogCompare.webp"),
-      modelCatalogDetailed: require("@/images/industrial/08ModelCatalogDetailed.webp"),
+      selectFacility: resolveAsset("@/images/industrial/01SelectFacility.webp"),
+      modelPropertiesDetailed: resolveAsset("@/images/industrial/02ModelPropertiesDetailed.webp"),
+      nodeUI: resolveAsset("@/images/industrial/03NodeUI.webp"),
+      addModel: resolveAsset("@/images/industrial/04AddModel.webp"),
+      checkRules: resolveAsset("@/images/industrial/05CheckRules.webp"),
+      modelProperties: resolveAsset("@/images/industrial/06ModelProperties.webp"),
+      modelCatalogCompare: resolveAsset("@/images/industrial/07ModelCatalogCompare.webp"),
+      modelCatalogDetailed: resolveAsset("@/images/industrial/08ModelCatalogDetailed.webp"),
     };
   },
 };

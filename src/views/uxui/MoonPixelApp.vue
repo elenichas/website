@@ -194,7 +194,8 @@
 </template>
 
 <script>
-import AppNavbar from "@/components/navbar";
+import { resolveAsset } from "@/assetUrl";
+import AppNavbar from "@/components/navbar.vue";
 import CaseStudyFooter from "@/components/CaseStudyFooter.vue";
 import { useHead } from "@vueuse/head";
 
@@ -217,16 +218,16 @@ export default {
   props: {},
   data() {
     return {
-      hero: require("@/images/moonpixel/hero.webp"),
-      configuratorDiagram: require("@/images/moonpixel/ConfiguratorDiagram.webp"),
-      moduleTypologies: require("@/images/moonpixel/ModuleTypologies.webp"),
-      roomsDiagram: require("@/images/moonpixel/RoomsDiagram.webp"),
-      viewer3D: require("@/images/moonpixel/3DViewerVideo.mp4"),
-      demo: require("@/images/moonpixel/demoVideo.mp4"),
-      solutions: require("@/images/moonpixel/SolutionsVideo.mp4"),
-      picture1: require("@/images/moonpixel/Picture1.webp"),
-      picture2: require("@/images/moonpixel/Picture2.webp"),
-      picture3: require("@/images/moonpixel/Picture3.webp"),
+      hero: resolveAsset("@/images/moonpixel/hero.webp"),
+      configuratorDiagram: resolveAsset("@/images/moonpixel/ConfiguratorDiagram.webp"),
+      moduleTypologies: resolveAsset("@/images/moonpixel/ModuleTypologies.webp"),
+      roomsDiagram: resolveAsset("@/images/moonpixel/RoomsDiagram.webp"),
+      viewer3D: resolveAsset("@/images/moonpixel/3DViewerVideo.mp4"),
+      demo: resolveAsset("@/images/moonpixel/demoVideo.mp4"),
+      solutions: resolveAsset("@/images/moonpixel/SolutionsVideo.mp4"),
+      picture1: resolveAsset("@/images/moonpixel/Picture1.webp"),
+      picture2: resolveAsset("@/images/moonpixel/Picture2.webp"),
+      picture3: resolveAsset("@/images/moonpixel/Picture3.webp"),
     };
   },
 };

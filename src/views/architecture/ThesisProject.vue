@@ -136,7 +136,8 @@
 </template>
 
 <script>
-import AppNavbar from "@/components/navbar";
+import { resolveAsset } from "@/assetUrl";
+import AppNavbar from "@/components/navbar.vue";
 import CaseStudyFooter from "@/components/CaseStudyFooter.vue";
 
 export default {
@@ -147,13 +148,13 @@ export default {
   },
   data() {
     return {
-      hero: require("@/images/thesis/hero.webp"),
-      grasshopper: require("@/images/cricket/apendix3.webp"),
-      segmentation: require("@/images/cricket/segmentation.webp"),
-      models1: require("@/images/cricket/modelspercentages.webp"),
-      models2: require("@/images/cricket/modelsrendered.webp"),
-      wfc: require("@/images/cricket/wfctiles.webp"),
-      wfcdiagram: require("@/images/cricket/diagram.webp"),
+      hero: resolveAsset("@/images/thesis/hero.webp"),
+      grasshopper: resolveAsset("@/images/cricket/apendix3.webp"),
+      segmentation: resolveAsset("@/images/cricket/segmentation.webp"),
+      models1: resolveAsset("@/images/cricket/modelspercentages.webp"),
+      models2: resolveAsset("@/images/cricket/modelsrendered.webp"),
+      wfc: resolveAsset("@/images/cricket/wfctiles.webp"),
+      wfcdiagram: resolveAsset("@/images/cricket/diagram.webp"),
     };
   },
 };

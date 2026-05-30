@@ -17,11 +17,11 @@
         <router-link to="/" class="nav-link" exact-active-class="active">
           {{ $t("nav.home") }}
         </router-link>
-        <router-link to="/products" class="nav-link" active-class="active">
-          {{ $t("nav.products") }}
+        <router-link to="/craft" class="nav-link" active-class="active">
+          {{ $t("nav.craft") }}
         </router-link>
-                <router-link to="/craft" class="nav-link" active-class="active">
-          {{ $t("nav.engineering") }}
+        <router-link to="/playground" class="nav-link" active-class="active">
+          {{ $t("nav.playground") }}
         </router-link>
         <router-link to="/about" class="nav-link" active-class="active">
           {{ $t("nav.about") }}
@@ -56,11 +56,11 @@
         <router-link to="/" class="mobile-nav-link" @click="closeMobileMenu">
           {{ $t("nav.home") }}
         </router-link>
-        <router-link to="/products" class="mobile-nav-link" @click="closeMobileMenu">
-          {{ $t("nav.products") }}
+        <router-link to="/craft" class="mobile-nav-link" @click="closeMobileMenu">
+          {{ $t("nav.craft") }}
         </router-link>
-                <router-link to="/craft" class="mobile-nav-link" @click="closeMobileMenu">
-          {{ $t("nav.engineering") }}
+        <router-link to="/playground" class="mobile-nav-link" @click="closeMobileMenu">
+          {{ $t("nav.playground") }}
         </router-link>
         <router-link to="/about" class="mobile-nav-link" @click="closeMobileMenu">
           {{ $t("nav.about") }}

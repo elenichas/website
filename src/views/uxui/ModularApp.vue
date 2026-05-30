@@ -167,7 +167,8 @@
 </template>
 
 <script>
-import AppNavbar from "@/components/navbar";
+import { resolveAsset } from "@/assetUrl";
+import AppNavbar from "@/components/navbar.vue";
 import CaseStudyFooter from "@/components/CaseStudyFooter.vue";
 
 export default {
@@ -178,9 +179,9 @@ export default {
   },
   data() {
     return {
-      hero: require("@/images/kapihanHero.webp"),
-      wireframes: require("@/images/kapihanWireframes.webp"),
-      prototypes: require("@/images/kapihanPrototypes.webp"),
+      hero: resolveAsset("@/images/kapihanHero.webp"),
+      wireframes: resolveAsset("@/images/kapihanWireframes.webp"),
+      prototypes: resolveAsset("@/images/kapihanPrototypes.webp"),
       figmaSrc: "https://www.figma.com/proto/dSiLtVj2GKzRZYcfYoe8iW/KapihanApp?node-id=49-5572&t=qR7dRV7dwGhpgw8c-1",
     };
   },
