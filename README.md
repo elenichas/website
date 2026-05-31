@@ -11,7 +11,6 @@ This project is a Vue.js application that uses D3.js to visualize data from a Gi
 - Interactive 3D graphics with Three.js
 - Modern Material Design UI with Vuetify
 - Responsive and mobile-friendly design
-- Animated components with Lottie
 
 ## Technologies Used
 
