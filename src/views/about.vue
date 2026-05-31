@@ -106,8 +106,9 @@
 </template>
 
 <script>
-import AppNavbar from "../components/navbar";
-import AppFooter from "../components/footer";
+import { resolveAsset } from "@/assetUrl";
+import AppNavbar from "../components/navbar.vue";
+import AppFooter from "../components/footer.vue";
 
 // Use a direct path for the CV as it's located in the public folder
 const cvLink = "/cv/EleniChasiotiCV2026.pdf";
@@ -176,21 +177,21 @@ export default {
       currentSlide: 0,
       carouselTimer: null,
       conferenceImages: [
-        { src: require('@/images/about/Image (3).webp'), shape: 'tall' },
-        { src: require('@/images/about/Image (4).webp'), shape: 'tall' },
-        { src: require('@/images/about/Image (5).webp'), shape: 'wide' },
-        { src: require('@/images/about/Image (6).webp'), shape: 'tall' },
-        { src: require('@/images/about/Image (7).webp'), shape: 'square' },
-        { src: require('@/images/about/Image (8).webp'), shape: 'tall' },
-        { src: require('@/images/about/Image (9).webp'), shape: 'poster' },
-        { src: require('@/images/about/Image (10).webp'), shape: 'tall' },
-        { src: require('@/images/about/Image (11).webp'), shape: 'wide' },
-        { src: require('@/images/about/Image (12).webp'), shape: 'tall' },
-        { src: require('@/images/about/Image (13).webp'), shape: 'tall' },
-        { src: require('@/images/about/Image (14).webp'), shape: 'poster' },
-        { src: require('@/images/about/Image (15).webp'), shape: 'wide' },
-        { src: require('@/images/about/Image (17).webp'), shape: 'tall' },
-        { src: require('@/images/about/Image (18).webp'), shape: 'square' },
+        { src: resolveAsset('@/images/about/Image (3).webp'), shape: 'tall' },
+        { src: resolveAsset('@/images/about/Image (4).webp'), shape: 'tall' },
+        { src: resolveAsset('@/images/about/Image (5).webp'), shape: 'wide' },
+        { src: resolveAsset('@/images/about/Image (6).webp'), shape: 'tall' },
+        { src: resolveAsset('@/images/about/Image (7).webp'), shape: 'square' },
+        { src: resolveAsset('@/images/about/Image (8).webp'), shape: 'tall' },
+        { src: resolveAsset('@/images/about/Image (9).webp'), shape: 'poster' },
+        { src: resolveAsset('@/images/about/Image (10).webp'), shape: 'tall' },
+        { src: resolveAsset('@/images/about/Image (11).webp'), shape: 'wide' },
+        { src: resolveAsset('@/images/about/Image (12).webp'), shape: 'tall' },
+        { src: resolveAsset('@/images/about/Image (13).webp'), shape: 'tall' },
+        { src: resolveAsset('@/images/about/Image (14).webp'), shape: 'poster' },
+        { src: resolveAsset('@/images/about/Image (15).webp'), shape: 'wide' },
+        { src: resolveAsset('@/images/about/Image (17).webp'), shape: 'tall' },
+        { src: resolveAsset('@/images/about/Image (18).webp'), shape: 'square' },
       ],
     };
   },
@@ -258,12 +259,12 @@ export default {
   position: relative;
   z-index: 2;
   max-width: 980px;
-  padding: clamp(2.25rem, 5vw, 4.5rem) 0;
+  padding: clamp(1.25rem, 2.8vw, 2.4rem) 0;
 }
 
 .page-title {
   max-width: 8.8ch;
-  margin: var(--space-8) 0 0;
+  margin: var(--space-5) 0 0;
   color: #111111;
   font-family: var(--font-sans);
   font-size: clamp(4.6rem, 10vw, 10.6rem);
@@ -275,7 +276,7 @@ export default {
 
 .page-subtitle {
   max-width: 620px;
-  margin: var(--space-7) 0 0;
+  margin: clamp(1.5rem, 2.4vw, 2.25rem) 0 0;
   color: rgba(17, 17, 17, 0.74);
   font-size: clamp(1rem, 1.5vw, 1.25rem);
   font-weight: var(--weight-semibold);
@@ -286,7 +287,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
-  margin-top: var(--space-7);
+  margin-top: clamp(1.35rem, 2vw, 1.8rem);
 }
 
 .hero-actions .btn-primary,
@@ -330,9 +331,9 @@ export default {
 
 .glance-item {
   display: grid;
-  gap: 0.45rem;
-  min-height: 150px;
-  padding: clamp(1.1rem, 2.6vw, 2rem);
+  gap: 0.35rem;
+  min-height: 108px;
+  padding: clamp(0.9rem, 1.8vw, 1.35rem);
   border-right: 1px solid rgba(17, 17, 17, 0.1);
   align-content: end;
 }
@@ -343,7 +344,7 @@ export default {
 
 .glance-value {
   color: #111111;
-  font-size: clamp(1.25rem, 2.6vw, 2.8rem);
+  font-size: clamp(1.2rem, 2vw, 2.15rem);
   font-weight: 900;
   letter-spacing: 0;
   line-height: 0.95;
@@ -353,7 +354,7 @@ export default {
 .glance-label {
   max-width: 250px;
   color: rgba(17, 17, 17, 0.58);
-  font-size: 0.8rem;
+  font-size: 0.74rem;
   font-weight: var(--weight-semibold);
   line-height: 1.35;
   text-transform: uppercase;

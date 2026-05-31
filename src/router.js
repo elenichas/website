@@ -3,8 +3,8 @@ import "./style.css";
 
 // Lazy-loaded route components (code-split per page)
 const Home = () => import(/* webpackChunkName: "home" */ "./views/home.vue");
-const Design = () => import(/* webpackChunkName: "products" */ "./views/design.vue");
-const Development = () => import(/* webpackChunkName: "craft" */ "./views/development.vue");
+const Craft = () => import("./views/design.vue");
+const Playground = () => import("./views/playground/AISandbox.vue");
 const About = () => import(/* webpackChunkName: "about" */ "./views/about.vue");
 const NotFound = () => import(/* webpackChunkName: "not-found" */ "./views/not-found.vue");
 const HapiProject = () => import(/* webpackChunkName: "hapi" */ "./views/architecture/HapiProject.vue");
@@ -26,14 +26,19 @@ const routes = [
     component: Home,
   },
     {
-    name: "Products",
+    name: "Products Redirect",
     path: "/products",
-    component: Design,
+    redirect: "/craft",
   },
   {
     name: "Craft", 
     path: "/craft",
-    component: Development,
+    component: Craft,
+  },
+  {
+    name: "Playground",
+    path: "/playground",
+    component: Playground,
   },
   {
     name: "About",

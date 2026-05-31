@@ -213,7 +213,8 @@
 </template>
 
 <script>
-import AppNavbar from "@/components/navbar";
+import { resolveAsset } from "@/assetUrl";
+import AppNavbar from "@/components/navbar.vue";
 import CaseStudyFooter from "@/components/CaseStudyFooter.vue";
 
 export default {
@@ -224,10 +225,10 @@ export default {
   },
     data() {
     return {
-      hero: require("@/images/filosHeroProfessional.png"),
-      wireframes: require("@/images/filosWireframes.webp"),
-      prototypes: require("@/images/filosPrototypes.webp"),
-      responsive: require("@/images/filosResponsive.webp"),
+      hero: resolveAsset("@/images/filosHeroProfessional.png"),
+      wireframes: resolveAsset("@/images/filosWireframes.webp"),
+      prototypes: resolveAsset("@/images/filosPrototypes.webp"),
+      responsive: resolveAsset("@/images/filosResponsive.webp"),
       figmaSrc: "https://www.figma.com/proto/YQu3rgFADyaMk5HhHQM4Y8/Filos_App?node-id=0-1&t=XXX",
     };
   },

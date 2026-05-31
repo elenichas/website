@@ -116,7 +116,8 @@
 </template>
 
 <script>
-import AppNavbar from "@/components/navbar";
+import { resolveAsset } from "@/assetUrl";
+import AppNavbar from "@/components/navbar.vue";
 import CaseStudyFooter from "@/components/CaseStudyFooter.vue";
 
 export default {
@@ -127,18 +128,18 @@ export default {
   },
   data() {
     return {
-      tall: require("@/images/hapi/iso.webp"),
-      hero: require("@/images/hapi/hapihero.webp"),
+      tall: resolveAsset("@/images/hapi/iso.webp"),
+      hero: resolveAsset("@/images/hapi/hapihero.webp"),
       images: [
-        { url: require("@/images/hapi/carousel0.webp") },
-        { url: require("@/images/hapi/carousel1.webp") },
-        { url: require("@/images/hapi/carousel2.webp") },
+        { url: resolveAsset("@/images/hapi/carousel0.webp") },
+        { url: resolveAsset("@/images/hapi/carousel1.webp") },
+        { url: resolveAsset("@/images/hapi/carousel2.webp") },
       ],
       renders: [
-        { url: require("@/images/hapi/render1.webp") },
-        { url: require("@/images/hapi/render2.webp") },
-        { url: require("@/images/hapi/render3.webp") },
-        { url: require("@/images/hapi/render4.webp") },
+        { url: resolveAsset("@/images/hapi/render1.webp") },
+        { url: resolveAsset("@/images/hapi/render2.webp") },
+        { url: resolveAsset("@/images/hapi/render3.webp") },
+        { url: resolveAsset("@/images/hapi/render4.webp") },
       ],
     };
   },

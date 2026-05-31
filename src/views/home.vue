@@ -93,8 +93,9 @@
 </template>
 
 <script>
-import AppNavbar from "../components/navbar";
-import AppFooter from "../components/footer";
+import { resolveAsset } from "@/assetUrl";
+import AppNavbar from "../components/navbar.vue";
+import AppFooter from "../components/footer.vue";
 import WelcomeCard from "../components/welcomeCard.vue";
 import { useHead } from "@vueuse/head";
 
@@ -156,17 +157,17 @@ export default {
       return [
         {
           ...projectCopy.coach,
-          image: require("@/images/gallery/coachHero.jpg"),
+          image: resolveAsset("@/images/gallery/coachHero.jpg"),
           route: "/products/coach-verification-app",
         },
         {
           ...projectCopy.moon,
-          image: require("@/images/gallery/moonPixel.webp"),
+          image: resolveAsset("@/images/gallery/moonPixel.webp"),
           route: "/products/lunar-app",
         },
         {
           ...projectCopy.language,
-          image: require("@/images/gallery/language.jpg"),
+          image: resolveAsset("@/images/gallery/language.jpg"),
           route: "/products/language-learning-app",
         },
       ];
@@ -174,7 +175,7 @@ export default {
   },
     data() {
     return {
-      avatarSrc: require("@/images/eleniBig.webp"),
+      avatarSrc: resolveAsset("@/images/eleniBig.webp"),
       allSkills: [
         { name: "Figma", src: Figma },
         { name: "Adobe XD", src: AdobeXD },

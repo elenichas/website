@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "serve": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@vueuse/head": "^2.0.0",
@@ -15,10 +16,10 @@
   },
   "devDependencies": {
     "@mdi/font": "^7.4.47",
-    "@vue/babel-preset-app": "^5.0.8",
-    "@vue/cli-plugin-babel": "^5.0.4",
-    "@vue/cli-service": "^5.0.8",
-    "vue-template-compiler": "^2.6.7"
+    "@vitejs/plugin-vue": "^6.0.7",
+    "autoprefixer": "^10.5.0",
+    "postcss": "^8.5.15",
+    "vite": "^8.0.14"
   },
   "postcss": {
     "plugins": {

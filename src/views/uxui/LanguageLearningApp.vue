@@ -263,7 +263,8 @@
 </template>
 
 <script>
-import AppNavbar from "@/components/navbar";
+import { resolveAsset } from "@/assetUrl";
+import AppNavbar from "@/components/navbar.vue";
 import CaseStudyFooter from "@/components/CaseStudyFooter.vue";
 import { useHead } from "@vueuse/head";
 
@@ -285,13 +286,13 @@ export default {
   },
   data() {
     return {
-      hero: require("@/images/language/LandingPage.webp"),
-      dialectSelect: require("@/images/language/2SelectDialect.webp"),
-      lessonHub: require("@/images/language/3SelectLesson.webp"),
-      alphabetStudy: require("@/images/language/AlphabetStudyMode.webp"),
-      alphabetQuiz: require("@/images/language/AlphabetQuizMode.webp"),
-      diacriticsStudy: require("@/images/language/DiacriticsLessonStudyMode.webp"),
-      phrasesStudy: require("@/images/language/PhrasesStudyMode.webp"),
+      hero: resolveAsset("@/images/language/LandingPage.webp"),
+      dialectSelect: resolveAsset("@/images/language/2SelectDialect.webp"),
+      lessonHub: resolveAsset("@/images/language/3SelectLesson.webp"),
+      alphabetStudy: resolveAsset("@/images/language/AlphabetStudyMode.webp"),
+      alphabetQuiz: resolveAsset("@/images/language/AlphabetQuizMode.webp"),
+      diacriticsStudy: resolveAsset("@/images/language/DiacriticsLessonStudyMode.webp"),
+      phrasesStudy: resolveAsset("@/images/language/PhrasesStudyMode.webp"),
     };
   },
 };
