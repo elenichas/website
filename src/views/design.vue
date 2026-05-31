@@ -208,10 +208,10 @@ export default {
 
 /* Page Header */
 .page-header {
-  margin-bottom: var(--space-16);
+  margin-bottom: var(--space-8);
   text-align: left;
-  border-bottom: 1px solid var(--color-border);
-  padding-bottom: var(--space-8);
+  border-bottom: 0;
+  padding-bottom: 0;
 }
 
 .header-content {
@@ -249,6 +249,11 @@ export default {
   text-align: left;
   border-top: 1px solid var(--color-border);
   padding-top: var(--space-8);
+}
+
+.section-intro {
+  border-top: 0;
+  padding-top: 0;
 }
 
 .section-eyebrow {
@@ -2016,8 +2021,8 @@ export default {
   }
 
   .page-header {
-    margin-bottom: var(--space-10);
-    padding-bottom: var(--space-6);
+    margin-bottom: var(--space-6);
+    padding-bottom: 0;
   }
 
   .page-title {

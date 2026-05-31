@@ -4,7 +4,7 @@
   <main class="sandbox-page">
     <section class="sandbox-intro">
       <p class="eyebrow">AI UI Sandbox / 03</p>
-      <h1>Interfaces for<br /><em>uncertain systems.</em></h1>
+      <h1>UI for<br /><em>uncertain systems.</em></h1>
       <p class="intro-copy">
         A simulated launch-review assistant. Change one product decision at a time
         and watch the interface adapt.
@@ -20,6 +20,7 @@
           </div>
           <div class="panel-actions">
             <button class="text-button" type="button" @click="resetState">Reset</button>
+            <button v-if="!tourActive" class="text-button" type="button" @click="restartTour">Restart tour</button>
             <button class="mobile-dock-close" type="button" @click="mobileControlsOpen = false">Hide</button>
           </div>
         </div>
@@ -37,7 +38,7 @@
           <span class="control-hint">{{ selectedCapability.description }}</span>
         </label>
 
-        <label v-for="control in controls" :key="control.key" class="control">
+        <label v-for="control in primaryControls" :key="control.key" class="control">
           <span class="control-title">
             <span>{{ control.label }}</span>
             <strong>{{ control.options[state[control.key]] }}</strong>
@@ -58,6 +59,42 @@
           <span class="control-hint">{{ control.descriptions[state[control.key]] }}</span>
         </label>
 
+        <button
+          class="advanced-toggle"
+          type="button"
+          :aria-expanded="advancedControlsOpen"
+          @click="advancedControlsOpen = !advancedControlsOpen"
+        >
+          <span>
+            <strong>Advanced controls</strong>
+            <small>{{ memoryLabel }} memory / {{ transparencyLabel }} transparency</small>
+          </span>
+          <ChevronDown :size="14" :class="{ rotated: advancedControlsOpen }" />
+        </button>
+
+        <div v-if="advancedControlsOpen" class="advanced-controls">
+          <label v-for="control in advancedControls" :key="control.key" class="control">
+            <span class="control-title">
+              <span>{{ control.label }}</span>
+              <strong>{{ control.options[state[control.key]] }}</strong>
+            </span>
+            <input
+              v-model.number="state[control.key]"
+              type="range"
+              min="0"
+              max="2"
+              step="1"
+              :aria-label="control.label"
+              @input="handleControlChange(control.key)"
+            />
+            <span class="range-labels">
+              <span>{{ control.options[0] }}</span>
+              <span>{{ control.options[2] }}</span>
+            </span>
+            <span class="control-hint">{{ control.descriptions[state[control.key]] }}</span>
+          </label>
+        </div>
+
         <p class="design-note">
           <span>What changed</span>
           {{ currentNote }}
@@ -69,6 +106,35 @@
           <p class="eyebrow">Simulated product / launch review</p>
           <span class="live-pill"><i></i> Local prototype</span>
         </div>
+
+        <section v-if="tourActive" class="tour-card" aria-label="Guided demo">
+          <div class="tour-meta">
+            <p class="eyebrow">Guided demo</p>
+            <span>0{{ tourStep + 1 }} / 04</span>
+          </div>
+          <div class="tour-content">
+            <div>
+              <h2>{{ currentTourStep.title }}</h2>
+              <p>{{ currentTourStep.copy }}</p>
+            </div>
+            <div class="tour-actions">
+              <button
+                v-if="tourStep < 2"
+                class="primary-button"
+                type="button"
+                @click="advanceTour"
+              >
+                {{ currentTourStep.action }}
+              </button>
+              <button v-if="tourStep === 3" class="primary-button" type="button" @click="restartTour">
+                Restart demo
+              </button>
+              <button class="text-button" type="button" @click="tourActive = false">
+                Explore freely
+              </button>
+            </div>
+          </div>
+        </section>
 
         <div class="app-frame">
           <header class="chat-header">
@@ -220,7 +286,12 @@
                 </div>
               </article>
 
-              <article v-if="state.access === 2 && !writesApplied" class="action-card approval-card write-card">
+              <article
+                v-if="state.access === 2 && !writesApplied"
+                ref="writeProposal"
+                class="action-card approval-card write-card"
+                :class="{ 'tour-focus': tourActive && (tourStep === 1 || tourStep === 2) }"
+              >
                 <div class="action-icon"><ShieldAlert :size="16" /></div>
                 <div>
                   <p class="card-kicker">Write approval required</p>
@@ -241,7 +312,12 @@
                 </div>
               </article>
 
-              <article v-if="state.access === 2 && writesApplied" class="action-card applied-card">
+              <article
+                v-if="state.access === 2 && writesApplied"
+                ref="appliedWrite"
+                class="action-card applied-card"
+                :class="{ 'tour-focus': tourActive && tourStep === 3 }"
+              >
                 <div class="action-icon"><Check :size="16" /></div>
                 <div>
                   <p class="card-kicker">Write applied</p>
@@ -359,7 +435,7 @@
         </article>
         <article>
           <span>04</span>
-          <h2>Initiative is separate</h2>
+          <h2>Initiative stays scoped</h2>
           <p>A model can wait, suggest, or proactively surface work without receiving broader machine access.</p>
         </article>
       </div>
@@ -375,6 +451,7 @@ import {
   ArrowUp,
   Brain,
   Check,
+  ChevronDown,
   CircleAlert,
   Clock3,
   FileSearch,
@@ -419,6 +496,7 @@ export default {
     ArrowUp,
     Brain,
     Check,
+    ChevronDown,
     CircleAlert,
     Clock3,
     FileSearch,
@@ -488,11 +566,14 @@ export default {
       lastUndoAction: null,
       lastChangedKey: null,
       mobileControlsOpen: false,
+      advancedControlsOpen: false,
       composerDraft: "",
       displayedPrompt: "Review this cover image and help me prepare the case study for launch.",
       savedPreferences: ["Concise editorial copy", "Product engineering roles"],
       toast: { visible: false, message: "", undoable: false },
       toastTimer: null,
+      tourActive: true,
+      tourStep: 0,
     };
   },
   computed: {
@@ -549,8 +630,17 @@ export default {
     initiativeLabel() {
       return ["Respond only", "Suggest next steps", "Proactive"][this.state.initiative];
     },
+    primaryControls() {
+      return this.controls.filter((control) => !["memory", "transparency"].includes(control.key));
+    },
+    advancedControls() {
+      return this.controls.filter((control) => ["memory", "transparency"].includes(control.key));
+    },
     accessLabel() {
       return ["Chat only", "Read workspace", "Propose writes"][this.state.access];
+    },
+    transparencyLabel() {
+      return ["Quiet", "Evidence", "Instrumented"][this.state.transparency];
     },
     sessionContextCopy() {
       return this.supportsImages && this.attachmentAttached
@@ -600,6 +690,28 @@ export default {
       }
       return "The default assistant suggests an optional task, reads two scoped project files, and exposes evidence on demand.";
     },
+    currentTourStep() {
+      return [
+        {
+          title: "Review with boundaries",
+          copy: "The assistant can inspect two scoped files, but it cannot change them. Its uncertainty is visible before you act.",
+          action: "Next: prepare an edit",
+        },
+        {
+          title: "Prepare a scoped edit",
+          copy: "The assistant can draft changes, but nothing is written without your approval. Notice the exact file scope below.",
+          action: "Next: review the diff",
+        },
+        {
+          title: "Review before action",
+          copy: "The proposed changes are visible before execution. Approve the edit in the card below when you are ready.",
+        },
+        {
+          title: "Stay in control",
+          copy: "The write is applied, confirmed, and still reversible. Persistent context remains removable when you enable saved preferences.",
+        },
+      ][this.tourStep];
+    },
   },
   beforeUnmount() {
     clearTimeout(this.toastTimer);
@@ -623,6 +735,37 @@ export default {
       this.displayedPrompt = "Review this cover image and help me prepare the case study for launch.";
       this.savedPreferences = ["Concise editorial copy", "Product engineering roles"];
       this.toast = { visible: false, message: "", undoable: false };
+      this.advancedControlsOpen = false;
+      this.tourActive = true;
+      this.tourStep = 0;
+    },
+    restartTour() {
+      this.resetState();
+      this.scrollToTourTarget("previewWrap");
+    },
+    advanceTour() {
+      if (this.tourStep === 0) {
+        this.state.initiative = 2;
+        this.state.access = 2;
+        this.state.transparency = 2;
+        this.evidenceOpen = true;
+        this.lastChangedKey = "access";
+        this.tourStep = 1;
+        this.scrollToTourTarget("writeProposal");
+        return;
+      }
+      if (this.tourStep === 1) {
+        this.writePlanOpen = true;
+        this.tourStep = 2;
+        this.scrollToTourTarget("writeProposal");
+      }
+    },
+    scrollToTourTarget(refName) {
+      this.$nextTick(() => {
+        const target = this.$refs[refName];
+        if (!target) return;
+        target.scrollIntoView({ behavior: "smooth", block: "center" });
+      });
     },
     openMobileControls() {
       this.mobileControlsOpen = true;
@@ -686,6 +829,10 @@ export default {
     applyWriteProposal() {
       this.writesApplied = true;
       this.writePlanOpen = false;
+      if (this.tourActive && this.tourStep === 2) {
+        this.tourStep = 3;
+        this.scrollToTourTarget("appliedWrite");
+      }
       this.showToast("Approved metadata edits applied", true, "write");
     },
     undoWrite() {
@@ -720,13 +867,16 @@ export default {
 </script>
 
 <style scoped>
-.sandbox-page { background: #f4f1e9; color: #111; min-height: 100vh; padding: clamp(4rem, 9vw, 8rem) clamp(1rem, 5vw, 5rem); }
+.sandbox-page { background: #f4f1e9; color: #111; min-height: 100vh; padding: clamp(2rem, 3vw, 3.4rem) clamp(1rem, 5vw, 5rem); }
 .sandbox-intro, .sandbox-shell, .principles { margin: 0 auto; max-width: 1460px; }
+.sandbox-intro { align-items: end; display: grid; gap: .45rem 2rem; grid-template-columns: minmax(0, 1fr) minmax(21rem, 29rem); }
+.sandbox-intro > .eyebrow { grid-column: 1 / -1; }
 .eyebrow, .card-kicker { color: #706b62; font-size: .64rem; font-weight: 700; letter-spacing: .14em; margin: 0; text-transform: uppercase; }
-h1 { font-size: clamp(4rem, 10vw, 10rem); letter-spacing: -.09em; line-height: .82; margin: 1.25rem 0 2rem; text-transform: uppercase; }
-h1 em { font-family: var(--font-serif); font-weight: 400; text-transform: none; }
-.intro-copy { color: #5c5851; font-size: clamp(1rem, 1.7vw, 1.25rem); line-height: 1.55; max-width: 44rem; }
-.sandbox-shell { display: grid; gap: 1rem; grid-template-columns: minmax(280px, 330px) 1fr; margin-top: 5rem; }
+h1 { font-size: clamp(3.5rem, 5.25vw, 5.4rem); letter-spacing: -.09em; line-height: .82; margin: .45rem 0 0; text-transform: uppercase; }
+h1 br { display: none; }
+h1 em { font-family: var(--font-serif); font-weight: 400; margin-left: .12em; text-transform: none; }
+.intro-copy { color: #5c5851; font-size: clamp(.9rem, 1.25vw, 1.02rem); line-height: 1.45; margin-bottom: .28rem; max-width: 29rem; }
+.sandbox-shell { display: grid; gap: 1rem; grid-template-columns: minmax(270px, 305px) 1fr; margin-top: 1.1rem; }
 .control-panel, .preview-wrap { background: #fff; border: 1px solid #dcd7cd; }
 .control-panel { align-self: start; padding: 1.2rem; }
 .panel-heading, .preview-topline, .chat-header, .control-title, .range-labels, .composer-toolbar, .response-actions, .approval-actions { align-items: center; display: flex; justify-content: space-between; gap: .7rem; }
@@ -737,41 +887,58 @@ h2, h3, p { margin-top: 0; }
 button, select { background: transparent; border: 1px solid #d4cfc5; color: inherit; cursor: pointer; font: inherit; }
 button:disabled { cursor: not-allowed; opacity: .35; }
 .text-button { border: 0; color: #706b62; font-size: .7rem; text-decoration: underline; }
-.control { border-top: 1px solid #ebe7df; display: block; padding: 1rem 0; }
-.select-control { margin-top: 1.35rem; }
+.control { border-top: 1px solid #ebe7df; display: block; padding: .78rem 0; }
+.select-control { margin-top: 1rem; }
 .control-title { font-size: .74rem; margin-bottom: .6rem; }
 .control-title strong { font-size: .61rem; max-width: 9rem; text-align: right; text-transform: uppercase; }
 select { background: #fff; font-size: .72rem; padding: .58rem; width: 100%; }
 .control-hint { color: #918b81; display: block; font-size: .61rem; line-height: 1.4; margin-top: .5rem; }
 input[type="range"] { accent-color: #111; width: 100%; }
 .range-labels { color: #918b81; font-size: .57rem; margin-top: .3rem; }
-.design-note { background: #f4f1e9; color: #5c5851; font-family: var(--font-serif); font-size: .98rem; line-height: 1.35; margin: .9rem 0 0; padding: .9rem; }
+.advanced-toggle { align-items: center; border-color: #e1dcd3; display: flex; justify-content: space-between; padding: .65rem .7rem; text-align: left; width: 100%; }
+.advanced-toggle strong, .advanced-toggle small { display: block; }
+.advanced-toggle strong { font-size: .66rem; letter-spacing: .08em; text-transform: uppercase; }
+.advanced-toggle small { color: #918b81; font-size: .57rem; margin-top: .2rem; }
+.advanced-toggle svg { flex: 0 0 auto; transition: transform .2s ease; }
+.advanced-toggle svg.rotated { transform: rotate(180deg); }
+.advanced-controls { border-bottom: 1px solid #ebe7df; }
+.advanced-controls .control:last-child { padding-bottom: .72rem; }
+.design-note { background: #f4f1e9; color: #5c5851; font-family: var(--font-serif); font-size: .92rem; line-height: 1.35; margin: .7rem 0 0; padding: .78rem; }
 .design-note span { color: #111; display: block; font-family: var(--font-sans); font-size: .56rem; font-weight: 700; letter-spacing: .12em; margin-bottom: .45rem; text-transform: uppercase; }
 .preview-wrap { background: #e8e3d9; padding: 1rem; }
 .preview-topline { padding: .2rem .1rem .85rem; }
 .live-pill { align-items: center; display: flex; font-size: .63rem; gap: .38rem; }
 .live-pill i { background: #4d7b5d; border-radius: 50%; height: .42rem; width: .42rem; }
-.app-frame { background: #fbfaf7; border: 1px solid #d6d1c7; min-height: 710px; }
-.chat-header { border-bottom: 1px solid #e3ded5; padding: .85rem 1rem; }
+.tour-card { background: #fff; border: 1px solid #d6d1c7; display: grid; gap: .9rem; grid-template-columns: 7rem 1fr; margin-bottom: .55rem; padding: .62rem .75rem; position: sticky; top: 4.7rem; z-index: 20; }
+.tour-meta, .tour-content, .tour-actions { align-items: center; display: flex; gap: .7rem; justify-content: space-between; }
+.tour-meta { align-items: flex-start; border-right: 1px solid #ebe7df; display: flex; flex-direction: column; justify-content: space-between; padding-right: .75rem; }
+.tour-meta span { color: #8d6b2f; font-size: .61rem; font-weight: 700; letter-spacing: .12em; }
+.tour-content { padding-top: 0; }
+.tour-content h2 { font-size: .9rem; margin-bottom: .2rem; }
+.tour-content p { color: #706a61; font-size: .68rem; line-height: 1.45; margin-bottom: 0; max-width: 42rem; }
+.tour-actions { flex: 0 0 auto; }
+.tour-actions .text-button { white-space: nowrap; }
+.app-frame { background: #fbfaf7; border: 1px solid #d6d1c7; height: clamp(350px, calc(100vh - 365px), 535px); overflow: hidden; }
+.chat-header { border-bottom: 1px solid #e3ded5; padding: .68rem .82rem; }
 .assistant-name { font-size: .82rem; font-weight: 700; margin-bottom: .12rem; }
 .assistant-state { color: #817b71; font-size: .66rem; margin-bottom: 0; }
 .status-pill { align-items: center; background: #fff; border: 1px solid #ded9cf; color: #706a61; display: flex; font-size: .61rem; gap: .3rem; padding: .32rem .46rem; }
 .memory-active, .access-active { background: #edf1eb; border-color: #c6d4c5; color: #45604d; }
 .header-status { display: flex; flex-wrap: wrap; gap: .35rem; justify-content: flex-end; }
-.workspace { display: grid; grid-template-columns: minmax(0, 1fr); min-height: 650px; }
+.workspace { display: grid; grid-template-columns: minmax(0, 1fr); height: calc(100% - 55px); min-height: 0; }
 .workspace.instrumented { grid-template-columns: minmax(0, 1fr) minmax(215px, 28%); }
-.conversation { display: flex; flex-direction: column; padding: clamp(1rem, 2.7vw, 2rem); }
-.product-alert, .review-notice { align-items: center; background: #f5f2eb; border: 1px solid #ddd8ce; color: #625d55; display: flex; font-size: .68rem; gap: .5rem; margin-bottom: .65rem; padding: .62rem .7rem; }
+.conversation { display: flex; flex-direction: column; min-height: 0; overflow-y: auto; padding: clamp(.72rem, 1.45vw, 1rem); }
+.product-alert, .review-notice { align-items: center; background: #f5f2eb; border: 1px solid #ddd8ce; color: #625d55; display: flex; font-size: .66rem; gap: .45rem; margin-bottom: .45rem; padding: .48rem .58rem; }
 .review-notice { background: #faf4e5; border-color: #e6d7ae; color: #745d31; }
 .review-notice.cautious { background: #f9ece8; border-color: #dfc0b5; color: #7b4f44; }
-.message-row { display: flex; gap: .65rem; margin-top: 1.15rem; }
+.message-row { display: flex; gap: .58rem; margin-top: .7rem; }
 .user-row { justify-content: flex-end; }
 .avatar { align-items: center; display: flex; flex: 0 0 auto; font-size: .57rem; height: 1.8rem; justify-content: center; width: 1.8rem; }
 .user-avatar { background: #e2ddd4; color: #5d574f; }
 .assistant-avatar { background: #111; color: #fff; }
 .user-bubble { background: #e9e4dc; font-size: .76rem; line-height: 1.45; max-width: 27rem; padding: .8rem .9rem; }
 .user-bubble p { margin-bottom: 0; }
-.attachment-preview, .analysis-card { align-items: center; background: #fbfaf7; border: 1px solid #d8d2c7; display: flex; gap: .55rem; margin-bottom: .7rem; padding: .5rem; }
+.attachment-preview, .analysis-card { align-items: center; background: #fbfaf7; border: 1px solid #d8d2c7; display: flex; gap: .48rem; margin-bottom: .48rem; padding: .42rem; }
 .attachment-preview strong, .attachment-preview span, .analysis-card strong, .analysis-card span { display: block; font-size: .65rem; }
 .attachment-preview span, .analysis-card span { color: #898276; font-size: .59rem; margin-top: .12rem; }
 .attachment-preview button { border: 0; display: flex; margin-left: auto; padding: .2rem; }
@@ -779,27 +946,27 @@ input[type="range"] { accent-color: #111; width: 100%; }
 .assistant-message { color: #403d38; font-size: .79rem; line-height: 1.55; max-width: 42rem; width: 100%; }
 .response-meta { color: #8d6b2f; display: flex; font-size: .59rem; font-weight: 700; gap: .5rem; letter-spacing: .08em; margin-bottom: .5rem; text-transform: uppercase; }
 .inline-editor { border: 1px solid #d6d1c7; box-sizing: border-box; color: #403d38; font: inherit; line-height: 1.55; padding: .55rem; resize: vertical; width: 100%; }
-.analysis-card { background: #f7f8f5; border-color: #d7ded4; margin-top: .9rem; }
+.analysis-card { background: #f7f8f5; border-color: #d7ded4; margin-top: .58rem; }
 .analysis-card > svg { color: #4d7b5d; margin-left: auto; }
-.task-widget { background: #fff; border: 1px solid #ddd8ce; margin-top: .9rem; padding: .78rem; }
+.task-widget { background: #fff; border: 1px solid #ddd8ce; margin-top: .58rem; padding: .58rem; }
 .widget-heading div:first-child { display: flex; font-size: .65rem; justify-content: space-between; }
 .progress-track { background: #e8e4dc; height: 3px; margin: .52rem 0 .3rem; overflow: hidden; }
 .progress-track i { background: #4d7b5d; display: block; height: 100%; transition: width .3s ease; }
 .task-widget ul { list-style: none; margin: 0; padding: 0; }
-.task-widget li { align-items: center; border-top: 1px solid #eeeae3; display: flex; font-size: .67rem; gap: .52rem; padding: .5rem 0; }
+.task-widget li { align-items: center; border-top: 1px solid #eeeae3; display: flex; font-size: .65rem; gap: .48rem; padding: .35rem 0; }
 .task-widget li button { align-items: center; display: flex; height: .8rem; justify-content: center; padding: 0; width: .8rem; }
 .task-widget li button:has(svg) { background: #4d7b5d; border-color: #4d7b5d; color: #fff; }
-.evidence { border-top: 1px solid #e4dfd6; margin-top: .85rem; padding-top: .65rem; }
+.evidence { border-top: 1px solid #e4dfd6; margin-top: .52rem; padding-top: .46rem; }
 .evidence-toggle { align-items: center; border: 0; color: #746d63; display: flex; font-size: .64rem; gap: .38rem; padding: 0; }
 .evidence-list { display: grid; gap: .35rem; margin-top: .55rem; }
 .evidence-list article { background: #f5f2eb; border: 1px solid #e1dcd2; padding: .45rem; }
 .evidence-list strong, .evidence-list span { display: block; font-size: .61rem; }
 .evidence-list span { color: #817b71; margin-top: .12rem; }
-.response-actions { justify-content: flex-start; margin-top: .58rem; }
+.response-actions { justify-content: flex-start; margin-top: .34rem; }
 .response-actions span { flex: 1; }
 .response-actions button { align-items: center; border: 0; color: #817b71; display: flex; font-size: .6rem; gap: .28rem; padding: .3rem; }
 .response-actions button:hover, .response-actions button.active { background: #eeeae2; color: #111; }
-.action-card { background: #fff; border: 1px solid #d6d1c7; display: flex; gap: .7rem; margin: .9rem 0 0 2.45rem; padding: .8rem; }
+.action-card { background: #fff; border: 1px solid #d6d1c7; display: flex; gap: .6rem; margin: .55rem 0 0 2.38rem; padding: .58rem; }
 .approval-card { border-color: #d9c99c; }
 .action-icon { color: #8d6b2f; }
 .action-card h3 { font-size: .74rem; margin: .32rem 0; }
@@ -812,15 +979,16 @@ input[type="range"] { accent-color: #111; width: 100%; }
 .file-scope span, .resource-list span { background: #f3efe7; border: 1px solid #e2ddd3; color: #6d665d; font-family: monospace; font-size: .58rem; padding: .3rem .38rem; }
 .resource-list strong { color: #45604d; font-family: var(--font-sans); font-size: .53rem; letter-spacing: .08em; margin-right: .3rem; text-transform: uppercase; }
 .applied-card { border-color: #c6d4c5; }
+.tour-focus { box-shadow: 0 0 0 3px rgb(141 107 47 / 16%); }
 .applied-card .action-icon { color: #4d7b5d; }
 .applied-card button { align-items: center; display: flex; font-size: .63rem; gap: .28rem; padding: .35rem .45rem; }
-.composer { background: #fff; border: 1px solid #d6d1c7; margin-top: auto; padding: .62rem; }
+.composer { background: #fff; border: 1px solid #d6d1c7; bottom: 0; margin-top: .58rem; padding: .5rem; position: sticky; z-index: 3; }
 .composer textarea { border: 0; box-sizing: border-box; color: #403d38; font: inherit; font-size: .74rem; outline: 0; resize: none; width: 100%; }
 .composer-toolbar button { align-items: center; border: 0; color: #746f66; display: flex; font-size: .62rem; gap: .28rem; padding: .34rem; }
 .composer-toolbar span { color: #847e74; font-size: .6rem; margin-left: auto; }
 .composer-toolbar .send-button { background: #111; color: #fff; height: 1.8rem; justify-content: center; width: 1.8rem; }
 .composer-caption { color: #9a948a; font-size: .57rem; margin: .36rem 0 0; text-align: center; }
-.inspector { background: #f7f5f0; border-left: 1px solid #e3ded5; padding: .7rem; }
+.inspector { background: #f7f5f0; border-left: 1px solid #e3ded5; overflow-y: auto; padding: .7rem; }
 .inspector-section { background: #fff; border: 1px solid #e0dbd2; margin-bottom: .6rem; padding: .7rem; }
 .inspector-title { align-items: center; display: flex; font-size: .63rem; font-weight: 700; gap: .35rem; letter-spacing: .07em; margin-bottom: .5rem; text-transform: uppercase; }
 .inspector-section > p:not(.inspector-title) { color: #817b71; font-size: .62rem; line-height: 1.45; }
@@ -833,7 +1001,7 @@ input[type="range"] { accent-color: #111; width: 100%; }
 .inspector dd { color: #756f66; margin: 0; text-align: right; }
 .undo-toast { align-items: center; background: #111; bottom: 1.2rem; color: #fff; display: flex; font-size: .68rem; gap: .52rem; left: 50%; padding: .68rem .82rem; position: fixed; transform: translateX(-50%); z-index: 150; }
 .undo-toast button { align-items: center; border-color: #5d5d5d; color: #fff; display: flex; font-size: .62rem; gap: .28rem; margin-left: .2rem; padding: .3rem .4rem; }
-.principles { border-top: 1px solid #d6d1c7; margin-top: 6rem; padding-top: 1.2rem; }
+.principles { border-top: 1px solid #d6d1c7; margin-top: 4.5rem; padding-top: 1.2rem; }
 .principle-grid { display: grid; gap: 1rem; grid-template-columns: repeat(4, 1fr); margin-top: 2rem; }
 .principle-grid article { border-top: 3px solid #111; padding-top: 1rem; }
 .principle-grid span { color: #8d6b2f; font-size: .74rem; font-weight: 700; }
@@ -844,10 +1012,13 @@ input[type="range"] { accent-color: #111; width: 100%; }
 .toast-enter-from, .toast-leave-to { opacity: 0; transform: translate(-50%, 8px); }
 @media (max-width: 1060px) { .sandbox-shell { grid-template-columns: 1fr; } .preview-wrap { order: -1; } .principle-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 720px) {
-  .sandbox-page { padding: 4rem .8rem 3rem; }
-  h1 { font-size: clamp(3.55rem, 15.5vw, 4.2rem); line-height: .82; margin: 1rem 0 1.4rem; }
+  .sandbox-page { padding: 3.2rem .8rem 3rem; }
+  .sandbox-intro { display: block; }
+  h1 { font-size: clamp(3.25rem, 14vw, 3.8rem); line-height: .82; margin: .85rem 0 1.05rem; }
+  h1 br { display: block; }
+  h1 em { margin-left: 0; }
   .intro-copy { font-size: .96rem; line-height: 1.5; }
-  .sandbox-shell { gap: .75rem; margin-top: 3.3rem; }
+  .sandbox-shell { gap: .75rem; margin-top: 2.2rem; }
   .control-panel {
     bottom: .55rem;
     box-shadow: 0 10px 30px rgb(27 24 19 / 18%);
@@ -863,10 +1034,16 @@ input[type="range"] { accent-color: #111; width: 100%; }
     z-index: 140;
   }
   .control-panel.mobile-open { display: grid; }
-  .panel-heading, .design-note { grid-column: 1 / -1; }
+  .panel-heading, .advanced-toggle, .advanced-controls, .design-note { grid-column: 1 / -1; }
+  .advanced-controls { display: grid; gap: .25rem .72rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .mobile-dock-close { background: #111; border-color: #111; color: #fff; display: inline-flex; font-size: .62rem; padding: .3rem .42rem; }
   .mobile-control-toggle { background: #111; border-color: #111; bottom: .7rem; color: #fff; display: block; font-size: .67rem; letter-spacing: .08em; padding: .68rem .82rem; position: fixed; right: .7rem; text-transform: uppercase; z-index: 135; }
   .preview-wrap { order: initial; padding: .5rem; scroll-margin-top: 4rem; }
+  .tour-card { display: block; padding: .68rem .72rem; top: 3.8rem; }
+  .tour-meta { align-items: center; border-bottom: 1px solid #ebe7df; border-right: 0; flex-direction: row; padding: 0 0 .5rem; }
+  .tour-content { align-items: flex-start; display: block; }
+  .tour-content p { font-size: .65rem; }
+  .tour-actions { justify-content: flex-start; margin-top: .58rem; }
   .panel-heading h2 { font-size: 1rem; }
   .select-control { margin-top: 0; }
   .control { min-width: 0; padding: .52rem 0; }
@@ -877,7 +1054,7 @@ input[type="range"] { accent-color: #111; width: 100%; }
   .design-note { font-size: .82rem; margin-top: .28rem; padding: .62rem; }
   .design-note span { font-size: .51rem; margin-bottom: .3rem; }
   .preview-topline { flex-wrap: wrap; padding: .18rem .08rem .55rem; }
-  .app-frame, .workspace { min-height: 0; }
+  .app-frame, .workspace { height: auto; min-height: 0; overflow: visible; }
   .chat-header { align-items: flex-start; flex-direction: column; gap: .5rem; padding: .72rem; }
   .header-status { justify-content: flex-start; }
   .workspace.instrumented { grid-template-columns: 1fr; }
