@@ -26,7 +26,7 @@ This project is a Vue.js application that uses D3.js to visualize data from a Gi
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (version 14.x or higher recommended)
+- [Node.js](https://nodejs.org/) (version 20.19.0 or higher)
 - npm (comes with Node.js)
 
 ### Steps
