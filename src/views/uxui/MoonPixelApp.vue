@@ -543,6 +543,11 @@ export default {
   border-radius: var(--radius-sm);
 }
 
+.media-container .split-image {
+  border-radius: 0;
+  box-shadow: none;
+}
+
 .split-image,
 .split-video {
   width: 100%;

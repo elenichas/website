@@ -45,7 +45,7 @@
             v-for="(project, index) in featuredProjects" 
             :key="index" 
             class="project-card-frame"
-            :style="{ '--i': index, '--card-top': (72 + index * 96) + 'px' }"
+            :style="{ '--i': index, '--card-top': (72 + index * 44) + 'px' }"
           >
             <router-link
               :to="project.route"
@@ -256,7 +256,6 @@ export default {
 
 @media (prefers-reduced-motion: no-preference) {
   .anim-fade-in {
-    opacity: 0;
     animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     animation-delay: var(--delay, 0s);
   }
@@ -285,7 +284,7 @@ export default {
   z-index: 1;
   width: min(100%, 1240px);
   margin: 0 auto;
-  padding: 0 var(--space-8);
+  padding: 0 var(--space-8) var(--space-12);
   flex: 1;
 }
 
@@ -313,13 +312,13 @@ export default {
 
 /* ===== HERO ===== */
 .hero-section {
-  padding: var(--space-8) 0 var(--space-8);
+  padding: var(--space-5) 0 var(--space-6);
 }
 
 .hero-shell {
   position: relative;
   isolation: isolate;
-  min-height: clamp(560px, calc(100vh - 128px), 720px);
+  min-height: clamp(520px, calc(100vh - 220px), 640px);
   overflow: hidden;
   border-radius: 0;
   background: #ffffff;
@@ -336,8 +335,8 @@ export default {
   grid-template-columns: minmax(0, 1fr) minmax(160px, 240px);
   gap: clamp(2rem, 5vw, 5rem);
   min-height: inherit;
-  padding: clamp(2.5rem, 5.5vw, 5rem);
-  align-items: end;
+  padding: clamp(2rem, 4vw, 4rem);
+  align-items: center;
 }
 
 .content-column {
@@ -390,7 +389,7 @@ export default {
 
 .content-column :deep(.btn-primary),
 .content-column :deep(.btn-secondary) {
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-sm);
 }
 
 .content-column :deep(.btn-primary) {
@@ -470,7 +469,7 @@ export default {
 .featured-section {
   position: relative;
   margin: 0 calc(50% - 50vw + 7px);
-  padding: var(--space-14) 0 var(--space-16);
+  padding: var(--space-14) 0 var(--space-6);
   overflow: visible;
   background: #d8d6ce;
   color: #111111;
@@ -513,13 +512,13 @@ export default {
 }
 
 .projects-stack {
-  --stack-runway: clamp(260px, 24vh, 320px);
+  --stack-runway: clamp(64px, 8vh, 96px);
   position: relative;
   z-index: 2;
   width: 100%;
   max-width: none;
-  margin: 0 auto calc(var(--stack-runway) * -1);
-  padding-bottom: var(--stack-runway);
+  margin: 0 auto;
+  padding-bottom: 0;
 }
 
 .project-card-frame {
@@ -551,7 +550,7 @@ export default {
 }
 
 .project-card-frame:last-child .project-card {
-  margin-bottom: clamp(260px, 40vh, 520px);
+  margin-bottom: var(--stack-runway);
 }
 
 .project-card:hover,
@@ -670,7 +669,7 @@ export default {
 .stack-section {
   position: relative;
   z-index: 20;
-  margin: calc(clamp(340px, 32vh, 480px) * -1) calc(50% - 50vw + 7px) 0;
+  margin: 0 calc(50% - 50vw + 7px);
   padding: 0;
   border: 0;
   background: transparent;

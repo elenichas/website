@@ -203,7 +203,7 @@ export default {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: var(--space-20) var(--space-8);
+  padding: var(--space-12) var(--space-8) var(--space-20);
 }
 
 /* Page Header */

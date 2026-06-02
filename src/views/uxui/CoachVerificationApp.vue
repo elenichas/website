@@ -470,6 +470,11 @@ export default {
   box-shadow: none !important;
 }
 
+.showcase-section-reverse .showcase-screens-2 .screen-image,
+.showcase-section-reverse .showcase-screens-3 .screen-image {
+  box-shadow: none !important;
+}
+
 .screen-image {
   flex: 1;
   min-width: 0;
