@@ -12,8 +12,12 @@
           {{ $t("common.downloadResume") }}
           <span class="mdi mdi-download"></span>
         </a>
-        <router-link to="/playground" class="btn-secondary">
-          Explore Playground
+        <a href="mailto:eleni.chasioti@gmail.com" class="btn-secondary">
+          {{ $t("common.getInTouch") }}
+          <span class="mdi mdi-arrow-right"></span>
+        </a>
+        <router-link to="/playground" class="btn-ghost">
+          {{ $t("common.explorePlayground") }}
         </router-link>
       </div>
     </div>

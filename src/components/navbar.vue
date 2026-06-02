@@ -46,7 +46,7 @@
       <button
         class="mobile-menu-btn"
         type="button"
-        aria-label="Toggle menu"
+        :aria-label="isMobileMenuOpen ? $t('nav.closeMenu') : $t('nav.openMenu')"
         aria-controls="mobile-navigation"
         :aria-expanded="isMobileMenuOpen"
         @click="toggleMobileMenu"
@@ -290,7 +290,9 @@ export default {
   height: 1.5px;
   background: var(--color-text);
   border-radius: 2px;
-  transition: all var(--duration-normal) var(--ease-out);
+  transition:
+    opacity var(--duration-normal) var(--ease-out),
+    transform var(--duration-normal) var(--ease-out);
 }
 
 .hamburger-line.open:nth-child(1) {
@@ -319,7 +321,10 @@ export default {
   transform: translateY(-100%);
   opacity: 0;
   visibility: hidden;
-  transition: all var(--duration-normal) var(--ease-out);
+  transition:
+    opacity var(--duration-normal) var(--ease-out),
+    transform var(--duration-normal) var(--ease-out),
+    visibility var(--duration-normal) var(--ease-out);
   overflow: hidden;
 }
 

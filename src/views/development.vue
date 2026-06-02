@@ -198,7 +198,7 @@ export default {
 /* Project Cards - borderless, image-forward */
 .project-card {
   overflow: hidden;
-  transition: all var(--duration-normal) var(--ease-out);
+  transition: transform var(--duration-normal) var(--ease-out);
 }
 
 .project-card:hover {
@@ -555,7 +555,9 @@ export default {
   font-size: 0.75rem;
   letter-spacing: 0;
   text-transform: uppercase;
-  transition: all var(--duration-fast) var(--ease-out);
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
   display: flex;
   align-items: center;
   gap: 0.5rem;

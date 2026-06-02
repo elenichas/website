@@ -69,7 +69,9 @@ export default {
   padding: var(--space-5) var(--space-6);
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-border-strong);
-  transition: all var(--duration-normal) var(--ease-out);
+  transition:
+    border-color var(--duration-normal) var(--ease-out),
+    transform var(--duration-normal) var(--ease-out);
 }
 
 .next-link:hover {

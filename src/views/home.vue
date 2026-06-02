@@ -40,7 +40,7 @@
           <h2 class="featured-title">{{ $t("home.featuredProjects") }}</h2>
         </div>
 
-        <div class="projects-stack" aria-label="Featured projects">
+        <div class="projects-stack" :aria-label="$t('home.featuredProjectsLabel')">
           <div
             v-for="(project, index) in featuredProjects" 
             :key="index" 
@@ -50,6 +50,7 @@
             <router-link
               :to="project.route"
               class="project-card"
+              :aria-label="`${$t('common.viewCaseStudy')}: ${project.name}`"
             >
               <div class="project-card__body">
                 <div class="project-card__header">
@@ -59,17 +60,19 @@
 
                 <div class="project-card__details">
                   <p class="project-card__desc">{{ project.description }}</p>
-                  <ul class="project-card__services" :aria-label="`${project.name} capabilities`">
+                  <ul class="project-card__services" :aria-label="`${project.name}: ${$t('home.capabilitiesLabel')}`">
                     <li v-for="label in project.services" :key="label">{{ label }}</li>
                   </ul>
                 </div>
+
+                <span class="project-card__cta">
+                  {{ $t("common.viewCaseStudy") }}
+                  <span class="mdi mdi-arrow-right" aria-hidden="true"></span>
+                </span>
               </div>
 
               <div class="project-card__image">
                 <img :src="project.image" :alt="project.name" loading="lazy" />
-                <div class="project-card__overlay">
-                  <span class="project-card__cta">{{ $t("common.viewProject") }}</span>
-                </div>
               </div>
             </router-link>
           </div>
@@ -385,8 +388,6 @@ export default {
 .content-column :deep(.btn-primary),
 .content-column :deep(.btn-secondary) {
   border-radius: var(--radius-full);
-  backdrop-filter: var(--glass-blur-sm);
-  -webkit-backdrop-filter: var(--glass-blur-sm);
 }
 
 .content-column :deep(.btn-primary) {
@@ -394,7 +395,11 @@ export default {
 }
 
 .content-column :deep(.btn-secondary) {
-  background: rgba(255, 255, 255, 0.46);
+  background: #ffffff;
+}
+
+.content-column :deep(.btn-ghost) {
+  margin-left: var(--space-1);
 }
 
 .avatar-column {
@@ -572,19 +577,26 @@ export default {
   transform: scale(1.045);
 }
 
-.project-card__overlay {
-  display: none;
+.project-card__cta {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: var(--space-2);
+  color: #111111;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.32);
+  font-size: 0.78rem;
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.06em;
+  padding-bottom: var(--space-1);
+  text-transform: uppercase;
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
 }
 
-.project-card__cta {
-  color: #111111;
-  background: rgba(255, 255, 255, 0.92);
-  border-radius: var(--radius-full);
-  font-size: 0.72rem;
-  font-weight: var(--weight-semibold);
-  letter-spacing: 0.08em;
-  padding: 0.62rem 1rem;
-  text-transform: uppercase;
+.project-card:hover .project-card__cta,
+.project-card:focus-visible .project-card__cta {
+  border-color: #111111;
 }
 
 .project-card__body {
@@ -909,6 +921,10 @@ export default {
   .content-column :deep(.btn-secondary) {
     width: 100%;
     justify-content: center;
+  }
+
+  .content-column :deep(.btn-ghost) {
+    margin-left: 0;
   }
 
   .avatar-wrapper {

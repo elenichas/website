@@ -118,7 +118,10 @@ export default {
   text-decoration: none;
   font-weight: var(--weight-medium);
   font-size: 0.8125rem;
-  transition: all var(--duration-normal) var(--ease-out);
+  transition:
+    border-color var(--duration-normal) var(--ease-out),
+    color var(--duration-normal) var(--ease-out),
+    transform var(--duration-normal) var(--ease-out);
   padding: 0.4rem 0.75rem;
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-border-strong);
