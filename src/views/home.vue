@@ -18,7 +18,7 @@
 
             <div class="avatar-column anim-fade-in" style="--delay: 0.28s;">
               <div class="avatar-wrapper">
-                <img :src="avatarSrc" alt="Eleni Chasioti" class="avatar" />
+                <img :src="avatarSrc" alt="Portrait of Eleni Chasioti" class="avatar" />
                 <div class="avatar-caption">
                   <span>{{ $t("common.portfolio") }}</span>
                   <span>2026</span>
@@ -72,7 +72,7 @@
               </div>
 
               <div class="project-card__image">
-                <img :src="project.image" :alt="project.name" loading="lazy" />
+                <img :src="project.image" :alt="project.imageAlt" loading="lazy" />
               </div>
             </router-link>
           </div>
@@ -161,16 +161,19 @@ export default {
         {
           ...projectCopy.coach,
           image: resolveAsset("@/images/gallery/coachHero.jpg"),
+          imageAlt: "Vintage Coach Catalog interface showing searchable bag reference entries",
           route: "/products/coach-verification-app",
         },
         {
           ...projectCopy.moon,
           image: resolveAsset("@/images/gallery/moonPixel.webp"),
+          imageAlt: "Moon habitat configurator interface with a modular 3D settlement",
           route: "/products/lunar-app",
         },
         {
           ...projectCopy.language,
           image: resolveAsset("@/images/gallery/language.jpg"),
+          imageAlt: "Arabiya language app lesson interface with Arabic learning content",
           route: "/products/language-learning-app",
         },
       ];

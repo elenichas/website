@@ -8,7 +8,7 @@
 
     <!-- Hero Image -->
     <div class="case-hero anim-reveal" style="--delay: 0.15s;">
-      <img class="hero-image" :src="hero" alt="Cricket Plugin" />
+      <img class="hero-image" :src="hero" alt="Architectural massing study generated with the Cricket plugin" />
     </div>
 
     <!-- Project Info - split layout -->

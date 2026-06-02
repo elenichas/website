@@ -8,7 +8,7 @@
 
     <!-- Hero Image -->
     <div class="case-hero anim-reveal" style="--delay: 0.15s;">
-      <img class="hero-image" :src="hero" alt="Industrial Facility Configurator" />
+      <img class="hero-image" :src="hero" alt="Industrial facility configurator showing a structured plant layout" />
     </div>
 
     <!-- Project Info - split layout -->

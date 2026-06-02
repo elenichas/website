@@ -8,7 +8,7 @@
 
     <!-- Hero Image -->
     <div class="case-hero anim-reveal" style="--delay: 0.15s;">
-      <img class="hero-image" :src="hero" alt="Moon Habitat Configurator" />
+      <img class="hero-image" :src="hero" alt="Moon habitat configurator with modular settlement geometry" />
     </div>
 
     <!-- Project Info - split layout -->

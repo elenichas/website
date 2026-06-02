@@ -8,7 +8,7 @@
 
     <!-- Hero Image -->
     <div class="case-hero anim-reveal" style="--delay: 0.15s;">
-      <img class="hero-image" :src="hero" alt="Hapi Project" />
+      <img class="hero-image" :src="hero" alt="Isometric rendering of the Hapi modular housing system" />
     </div>
 
     <!-- Project Info - split layout -->

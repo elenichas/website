@@ -8,7 +8,7 @@
 
     <!-- Hero Image -->
     <div class="case-hero anim-reveal" style="--delay: 0.15s;">
-      <img class="hero-image" :src="hero" alt="Arabiya Language Learning App" />
+      <img class="hero-image" :src="hero" alt="Arabiya app interface for studying Egyptian Arabic lessons" />
     </div>
 
     <!-- Project Info - split layout -->

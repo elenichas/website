@@ -8,7 +8,7 @@
 
     <!-- Hero Image -->
     <div class="case-hero anim-reveal" style="--delay: 0.15s;">
-      <img class="hero-image" :src="hero" alt="Vintage Coach Catalog" />
+      <img class="hero-image" :src="hero" alt="Vintage Coach Catalog interface with searchable bag references" />
     </div>
 
     <!-- Project Info - split layout -->

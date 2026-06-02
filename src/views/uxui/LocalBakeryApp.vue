@@ -8,7 +8,7 @@
 
     <!-- Hero Image -->
     <div class="case-hero anim-reveal" style="--delay: 0.15s;">
-      <img class="hero-image" :src="hero" alt="Brew & Crumb App" />
+      <img class="hero-image" :src="hero" alt="Brew and Crumb cafe ordering app interface" />
     </div>
 
     <!-- Project Info - split layout -->

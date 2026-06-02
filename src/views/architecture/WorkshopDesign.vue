@@ -8,7 +8,7 @@
 
     <!-- Hero Image -->
     <div class="case-hero anim-reveal" style="--delay: 0.15s;">
-      <img class="hero-image" :src="hero" alt="Digital Futures Workshop" />
+      <img class="hero-image" :src="hero" alt="Voxel housing aggregation study from the Digital Futures Workshop" />
     </div>
 
     <!-- Project Info - split layout -->
