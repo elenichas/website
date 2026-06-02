@@ -219,7 +219,7 @@
                         <span>Launch checklist</span>
                         <strong>{{ completedCount }}/{{ checklist.length }} complete</strong>
                       </div>
-                      <div class="progress-track"><i :style="{ width: `${taskProgress}%` }"></i></div>
+                      <div class="progress-track"><i :style="{ transform: `scaleX(${taskProgress / 100})` }"></i></div>
                     </div>
                     <ul>
                       <li v-for="item in checklist" :key="item.label">
@@ -951,7 +951,7 @@ input[type="range"] { accent-color: #111; width: 100%; }
 .task-widget { background: #fff; border: 1px solid #ddd8ce; margin-top: .58rem; padding: .58rem; }
 .widget-heading div:first-child { display: flex; font-size: .65rem; justify-content: space-between; }
 .progress-track { background: #e8e4dc; height: 3px; margin: .52rem 0 .3rem; overflow: hidden; }
-.progress-track i { background: #4d7b5d; display: block; height: 100%; transition: width .3s ease; }
+.progress-track i { background: #4d7b5d; display: block; height: 100%; transform-origin: left center; transition: transform .3s ease; }
 .task-widget ul { list-style: none; margin: 0; padding: 0; }
 .task-widget li { align-items: center; border-top: 1px solid #eeeae3; display: flex; font-size: .65rem; gap: .48rem; padding: .35rem 0; }
 .task-widget li button { align-items: center; display: flex; height: .8rem; justify-content: center; padding: 0; width: .8rem; }

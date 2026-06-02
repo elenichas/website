@@ -8,7 +8,7 @@
 
     <!-- Hero Image -->
     <div class="case-hero anim-reveal" style="--delay: 0.15s;">
-      <img class="hero-image" :src="hero" alt="Hapi Project" />
+      <img class="hero-image" :src="hero" alt="Isometric rendering of the Hapi modular housing system" />
     </div>
 
     <!-- Project Info - split layout -->
@@ -49,7 +49,7 @@
     <!-- Isometric -->
     <section class="content-section">
       <figure class="image-figure">
-        <img :src="tall" alt="Isometric architectural view" class="content-image" />
+        <img loading="lazy" :src="tall" alt="Isometric architectural view" class="content-image" />
       </figure>
     </section>
 
@@ -69,7 +69,7 @@
               v-for="(image, index) in images"
               :key="index"
             >
-              <img :src="image.url" :alt="'Technical Study ' + (index + 1)" class="carousel-img" />
+              <img loading="lazy" :src="image.url" :alt="'Technical Study ' + (index + 1)" class="carousel-img" />
             </v-carousel-item>
           </v-carousel>
         </div>
@@ -97,7 +97,7 @@
               v-for="(image, index) in renders"
               :key="index"
             >
-              <img :src="image.url" :alt="'Architectural illustration ' + (index + 1)" class="carousel-img" />
+              <img loading="lazy" :src="image.url" :alt="'Architectural illustration ' + (index + 1)" class="carousel-img" />
             </v-carousel-item>
           </v-carousel>
         </div>
@@ -184,7 +184,7 @@ export default {
 
 .case-title {
   font-family: var(--font-serif);
-  font-size: clamp(3.5rem, 10vw, 8rem);
+  font-size: clamp(3.5rem, 10vw, 6rem);
   font-weight: var(--weight-normal);
   font-style: italic;
   line-height: 0.95;

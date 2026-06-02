@@ -466,7 +466,7 @@ export default {
   max-width: 960px;
   margin: var(--space-4) 0 0;
   color: #111111;
-  font-size: clamp(3rem, 8vw, 7.8rem);
+  font-size: clamp(3rem, 8vw, 6rem);
   font-weight: 900;
   letter-spacing: 0;
   line-height: 0.88;
@@ -555,7 +555,7 @@ export default {
 
   .page-title {
     margin-top: var(--space-5);
-    font-size: clamp(3.5rem, 16vw, 6.8rem);
+    font-size: clamp(3.5rem, 16vw, 6rem);
   }
 
   .page-subtitle {

@@ -11,7 +11,7 @@
       <div class="skills-grid">
         <div v-for="(skill, index) in designSkills" :key="index" class="skill-item">
           <div class="skill-icon">
-            <img :src="skill.src" :alt="skill.name" />
+            <img loading="lazy" :src="skill.src" :alt="skill.name" />
           </div>
           <span class="skill-name">{{ skill.name }}</span>
         </div>
@@ -24,7 +24,7 @@
       <div class="skills-grid">
         <div v-for="(skill, index) in developmentSkills" :key="index" class="skill-item">
           <div class="skill-icon">
-            <img :src="skill.src" :alt="skill.name" />
+            <img loading="lazy" :src="skill.src" :alt="skill.name" />
           </div>
           <span class="skill-name">{{ skill.name }}</span>
         </div>

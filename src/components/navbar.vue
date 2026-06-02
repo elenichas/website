@@ -43,7 +43,14 @@
       </div>
       
       <!-- Mobile Menu Button -->
-      <button class="mobile-menu-btn" @click="toggleMobileMenu" aria-label="Toggle menu">
+      <button
+        class="mobile-menu-btn"
+        type="button"
+        :aria-label="isMobileMenuOpen ? $t('nav.closeMenu') : $t('nav.openMenu')"
+        aria-controls="mobile-navigation"
+        :aria-expanded="isMobileMenuOpen"
+        @click="toggleMobileMenu"
+      >
         <span class="hamburger-line" :class="{ open: isMobileMenuOpen }"></span>
         <span class="hamburger-line" :class="{ open: isMobileMenuOpen }"></span>
         <span class="hamburger-line" :class="{ open: isMobileMenuOpen }"></span>
@@ -51,7 +58,12 @@
     </div>
 
     <!-- Mobile Menu -->
-    <div class="mobile-menu" :class="{ open: isMobileMenuOpen }">
+    <div
+      id="mobile-navigation"
+      class="mobile-menu"
+      :class="{ open: isMobileMenuOpen }"
+      :aria-hidden="!isMobileMenuOpen"
+    >
       <nav class="mobile-nav">
         <router-link to="/" class="mobile-nav-link" @click="closeMobileMenu">
           {{ $t("nav.home") }}
@@ -205,8 +217,8 @@ export default {
 }
 
 .language-option {
-  min-width: 2.1rem;
-  height: 1.8rem;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
   border: 0;
   border-radius: calc(var(--radius-sm) - 2px);
   background: transparent;
@@ -267,6 +279,10 @@ export default {
   border: none;
   cursor: pointer;
   padding: 0.5rem;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
 }
 
 .hamburger-line {
@@ -274,7 +290,9 @@ export default {
   height: 1.5px;
   background: var(--color-text);
   border-radius: 2px;
-  transition: all var(--duration-normal) var(--ease-out);
+  transition:
+    opacity var(--duration-normal) var(--ease-out),
+    transform var(--duration-normal) var(--ease-out);
 }
 
 .hamburger-line.open:nth-child(1) {
@@ -303,7 +321,10 @@ export default {
   transform: translateY(-100%);
   opacity: 0;
   visibility: hidden;
-  transition: all var(--duration-normal) var(--ease-out);
+  transition:
+    opacity var(--duration-normal) var(--ease-out),
+    transform var(--duration-normal) var(--ease-out),
+    visibility var(--duration-normal) var(--ease-out);
   overflow: hidden;
 }
 

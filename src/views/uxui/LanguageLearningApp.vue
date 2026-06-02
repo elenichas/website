@@ -8,7 +8,7 @@
 
     <!-- Hero Image -->
     <div class="case-hero anim-reveal" style="--delay: 0.15s;">
-      <img class="hero-image" :src="hero" alt="Arabiya Language Learning App" />
+      <img class="hero-image" :src="hero" alt="Arabiya app interface for studying Egyptian Arabic lessons" />
     </div>
 
     <!-- Project Info - split layout -->
@@ -68,7 +68,7 @@
         </p>
       </div>
       <div class="split-media media-container-amber">
-        <img :src="dialectSelect" alt="Dialect Selection Screen" class="split-image" />
+        <img loading="lazy" :src="dialectSelect" alt="Dialect Selection Screen" class="split-image" />
       </div>
     </section>
 
@@ -89,7 +89,7 @@
     <!-- Learning Flow -->
     <section class="split-section split-section-right">
       <div class="split-media media-container-green">
-        <img :src="lessonHub" alt="Lesson Hub" class="split-image" />
+        <img loading="lazy" :src="lessonHub" alt="Lesson Hub" class="split-image" />
       </div>
       <div class="split-content">
         <p class="section-label">Experience</p>
@@ -108,7 +108,7 @@
         The alphabet lesson provides a complete reference table showing each of the 28 Arabic letters with their name, sound description, and all four positional forms. It explains how letters connect in Arabic script, distinguishing between full connectors and the six right-only connectors (Alif, Dal, Zal, Ra, Zay, Waw).
       </p>
       <figure class="image-figure">
-        <img :src="alphabetStudy" alt="Alphabet Study Mode" class="content-image" />
+        <img loading="lazy" :src="alphabetStudy" alt="Alphabet Study Mode" class="content-image" />
       </figure>
     </section>
 
@@ -122,7 +122,7 @@
         </p>
       </div>
       <div class="split-media media-container-blue">
-        <img :src="alphabetQuiz" alt="Alphabet Quiz Mode" class="split-image" />
+        <img loading="lazy" :src="alphabetQuiz" alt="Alphabet Quiz Mode" class="split-image" />
       </div>
     </section>
 
@@ -134,14 +134,14 @@
         Arabic script normally only writes consonants. Short vowels are shown as small marks called harakat. The vowels lesson teaches learners to distinguish Fatha (short 'a'), Kasra (short 'i'), Damma (short 'u'), and Sukun (no vowel), demonstrating how the same consonant produces completely different sounds with each diacritic.
       </p>
       <figure class="image-figure">
-        <img :src="diacriticsStudy" alt="Diacritics Study Mode" class="content-image" />
+        <img loading="lazy" :src="diacriticsStudy" alt="Diacritics Study Mode" class="content-image" />
       </figure>
     </section>
 
     <!-- Phrases -->
     <section class="split-section split-section-right">
       <div class="split-media media-container-yellow">
-        <img :src="phrasesStudy" alt="Phrases Study Mode" class="split-image" />
+        <img loading="lazy" :src="phrasesStudy" alt="Phrases Study Mode" class="split-image" />
       </div>
       <div class="split-content">
         <p class="section-label">Greetings Lesson</p>
@@ -335,7 +335,7 @@ export default {
 
 .case-title {
   font-family: var(--font-serif);
-  font-size: clamp(3.5rem, 10vw, 8rem);
+  font-size: clamp(3.5rem, 10vw, 6rem);
   font-weight: var(--weight-normal);
   font-style: italic;
   line-height: 0.95;

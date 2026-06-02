@@ -18,7 +18,7 @@
 
             <div class="avatar-column anim-fade-in" style="--delay: 0.28s;">
               <div class="avatar-wrapper">
-                <img :src="avatarSrc" alt="Eleni Chasioti" class="avatar" />
+                <img :src="avatarSrc" alt="Portrait of Eleni Chasioti" class="avatar" />
                 <div class="avatar-caption">
                   <span>{{ $t("common.portfolio") }}</span>
                   <span>2026</span>
@@ -40,16 +40,17 @@
           <h2 class="featured-title">{{ $t("home.featuredProjects") }}</h2>
         </div>
 
-        <div class="projects-stack" aria-label="Featured projects">
+        <div class="projects-stack" :aria-label="$t('home.featuredProjectsLabel')">
           <div
             v-for="(project, index) in featuredProjects" 
             :key="index" 
             class="project-card-frame"
-            :style="{ '--i': index, '--card-top': (72 + index * 96) + 'px' }"
+            :style="{ '--i': index, '--card-top': (72 + index * 44) + 'px' }"
           >
             <router-link
               :to="project.route"
               class="project-card"
+              :aria-label="`${$t('common.viewCaseStudy')}: ${project.name}`"
             >
               <div class="project-card__body">
                 <div class="project-card__header">
@@ -59,17 +60,19 @@
 
                 <div class="project-card__details">
                   <p class="project-card__desc">{{ project.description }}</p>
-                  <ul class="project-card__services" :aria-label="`${project.name} capabilities`">
+                  <ul class="project-card__services" :aria-label="`${project.name}: ${$t('home.capabilitiesLabel')}`">
                     <li v-for="label in project.services" :key="label">{{ label }}</li>
                   </ul>
                 </div>
+
+                <span class="project-card__cta">
+                  {{ $t("common.viewCaseStudy") }}
+                  <span class="mdi mdi-arrow-right" aria-hidden="true"></span>
+                </span>
               </div>
 
               <div class="project-card__image">
-                <img :src="project.image" :alt="project.name" loading="lazy" />
-                <div class="project-card__overlay">
-                  <span class="project-card__cta">{{ $t("common.viewProject") }}</span>
-                </div>
+                <img :src="project.image" :alt="project.imageAlt" loading="lazy" />
               </div>
             </router-link>
           </div>
@@ -158,16 +161,19 @@ export default {
         {
           ...projectCopy.coach,
           image: resolveAsset("@/images/gallery/coachHero.jpg"),
+          imageAlt: "Vintage Coach Catalog interface showing searchable bag reference entries",
           route: "/products/coach-verification-app",
         },
         {
           ...projectCopy.moon,
           image: resolveAsset("@/images/gallery/moonPixel.webp"),
+          imageAlt: "Moon habitat configurator interface with a modular 3D settlement",
           route: "/products/lunar-app",
         },
         {
           ...projectCopy.language,
           image: resolveAsset("@/images/gallery/language.jpg"),
+          imageAlt: "Arabiya language app lesson interface with Arabic learning content",
           route: "/products/language-learning-app",
         },
       ];
@@ -235,22 +241,33 @@ export default {
 }
 
 .anim-fade-in {
-  opacity: 0;
-  animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  animation-delay: var(--delay, 0s);
+  opacity: 1;
 }
 
 .scroll-reveal {
-  opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  transition-delay: var(--delay, 0s);
+  opacity: 1;
+  transform: none;
 }
 
 .scroll-reveal.revealed {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .anim-fade-in {
+    animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: var(--delay, 0s);
+  }
+
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--delay, 0s);
+  }
 }
 
 .page-layout {
@@ -267,7 +284,7 @@ export default {
   z-index: 1;
   width: min(100%, 1240px);
   margin: 0 auto;
-  padding: 0 var(--space-8);
+  padding: 0 var(--space-8) var(--space-12);
   flex: 1;
 }
 
@@ -295,13 +312,13 @@ export default {
 
 /* ===== HERO ===== */
 .hero-section {
-  padding: var(--space-8) 0 var(--space-8);
+  padding: var(--space-5) 0 var(--space-6);
 }
 
 .hero-shell {
   position: relative;
   isolation: isolate;
-  min-height: clamp(560px, calc(100vh - 128px), 720px);
+  min-height: clamp(520px, calc(100vh - 220px), 640px);
   overflow: hidden;
   border-radius: 0;
   background: #ffffff;
@@ -318,8 +335,8 @@ export default {
   grid-template-columns: minmax(0, 1fr) minmax(160px, 240px);
   gap: clamp(2rem, 5vw, 5rem);
   min-height: inherit;
-  padding: clamp(2.5rem, 5.5vw, 5rem);
-  align-items: end;
+  padding: clamp(2rem, 4vw, 4rem);
+  align-items: center;
 }
 
 .content-column {
@@ -342,7 +359,7 @@ export default {
 .content-column :deep(.name) {
   max-width: 10.6ch;
   font-family: var(--font-sans);
-  font-size: clamp(5.2rem, 10.4vw, 11rem);
+  font-size: clamp(4.5rem, 9vw, 6rem);
   font-style: normal;
   font-weight: 900;
   line-height: 0.82;
@@ -372,9 +389,7 @@ export default {
 
 .content-column :deep(.btn-primary),
 .content-column :deep(.btn-secondary) {
-  border-radius: var(--radius-full);
-  backdrop-filter: var(--glass-blur-sm);
-  -webkit-backdrop-filter: var(--glass-blur-sm);
+  border-radius: var(--radius-sm);
 }
 
 .content-column :deep(.btn-primary) {
@@ -382,7 +397,11 @@ export default {
 }
 
 .content-column :deep(.btn-secondary) {
-  background: rgba(255, 255, 255, 0.46);
+  background: #ffffff;
+}
+
+.content-column :deep(.btn-ghost) {
+  margin-left: var(--space-1);
 }
 
 .avatar-column {
@@ -450,7 +469,7 @@ export default {
 .featured-section {
   position: relative;
   margin: 0 calc(50% - 50vw + 7px);
-  padding: var(--space-14) 0 var(--space-16);
+  padding: var(--space-14) 0 var(--space-6);
   overflow: visible;
   background: #d8d6ce;
   color: #111111;
@@ -485,7 +504,7 @@ export default {
   margin: 0;
   color: #111111;
   font-family: var(--font-sans);
-  font-size: clamp(3rem, 8vw, 7.8rem);
+  font-size: clamp(3rem, 8vw, 6rem);
   font-weight: 900;
   line-height: 0.88;
   letter-spacing: 0;
@@ -493,13 +512,13 @@ export default {
 }
 
 .projects-stack {
-  --stack-runway: clamp(260px, 24vh, 320px);
+  --stack-runway: clamp(64px, 8vh, 96px);
   position: relative;
   z-index: 2;
   width: 100%;
   max-width: none;
-  margin: 0 auto calc(var(--stack-runway) * -1);
-  padding-bottom: var(--stack-runway);
+  margin: 0 auto;
+  padding-bottom: 0;
 }
 
 .project-card-frame {
@@ -531,7 +550,7 @@ export default {
 }
 
 .project-card-frame:last-child .project-card {
-  margin-bottom: clamp(260px, 40vh, 520px);
+  margin-bottom: var(--stack-runway);
 }
 
 .project-card:hover,
@@ -560,19 +579,26 @@ export default {
   transform: scale(1.045);
 }
 
-.project-card__overlay {
-  display: none;
+.project-card__cta {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: var(--space-2);
+  color: #111111;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.32);
+  font-size: 0.78rem;
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.06em;
+  padding-bottom: var(--space-1);
+  text-transform: uppercase;
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
 }
 
-.project-card__cta {
-  color: #111111;
-  background: rgba(255, 255, 255, 0.92);
-  border-radius: var(--radius-full);
-  font-size: 0.72rem;
-  font-weight: var(--weight-semibold);
-  letter-spacing: 0.08em;
-  padding: 0.62rem 1rem;
-  text-transform: uppercase;
+.project-card:hover .project-card__cta,
+.project-card:focus-visible .project-card__cta {
+  border-color: #111111;
 }
 
 .project-card__body {
@@ -610,7 +636,7 @@ export default {
 .project-card__title {
   margin: 0;
   color: #111111;
-  font-size: clamp(2.6rem, 6vw, 6.9rem);
+  font-size: clamp(2.6rem, 6vw, 6rem);
   font-weight: 900;
   letter-spacing: 0;
   line-height: 0.86;
@@ -643,7 +669,7 @@ export default {
 .stack-section {
   position: relative;
   z-index: 20;
-  margin: calc(clamp(340px, 32vh, 480px) * -1) calc(50% - 50vw + 7px) 0;
+  margin: 0 calc(50% - 50vw + 7px);
   padding: 0;
   border: 0;
   background: transparent;
@@ -674,7 +700,7 @@ export default {
   display: inline-flex;
   align-items: center;
   min-height: clamp(5.2rem, 12vw, 9.5rem);
-  font-size: clamp(2.4rem, 7vw, 7rem);
+  font-size: clamp(2.4rem, 7vw, 6rem);
   font-weight: 900;
   letter-spacing: 0;
   line-height: 0.86;
@@ -752,7 +778,7 @@ export default {
 
   .content-column :deep(.name) {
     max-width: 9.8ch;
-    font-size: clamp(3.6rem, 16vw, 6.8rem);
+    font-size: clamp(3.6rem, 16vw, 6rem);
   }
 
   .content-column :deep(.description) {
@@ -811,8 +837,8 @@ export default {
     min-height: 0;
     margin-bottom: var(--space-6);
     border-radius: 18px;
-    opacity: 0;
-    transform: translateY(28px);
+    opacity: 1;
+    transform: none;
     transition:
       opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
       transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
@@ -822,6 +848,13 @@ export default {
   .project-card.revealed {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .project-card {
+      opacity: 0;
+      transform: translateY(28px);
+    }
   }
 
   .project-card-frame:last-child .project-card {
@@ -890,6 +923,10 @@ export default {
   .content-column :deep(.btn-secondary) {
     width: 100%;
     justify-content: center;
+  }
+
+  .content-column :deep(.btn-ghost) {
+    margin-left: 0;
   }
 
   .avatar-wrapper {

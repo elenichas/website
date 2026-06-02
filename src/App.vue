@@ -74,7 +74,21 @@ export default {
 
       translateCaseStudy(page, window.location.pathname, this.$i18n.locale);
 
-      if (window.location.pathname.includes("/workshop-design")) {
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      if (prefersReducedMotion) {
+        page.querySelectorAll("video").forEach((video) => {
+          video.autoplay = false;
+          video.pause();
+        });
+      }
+
+      if (
+        !prefersReducedMotion &&
+        window.location.pathname.includes("/workshop-design")
+      ) {
         page.querySelectorAll("video").forEach((video) => {
           video.autoplay = true;
           video.muted = true;

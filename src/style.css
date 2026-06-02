@@ -12,7 +12,7 @@
   --color-surface-glass: rgba(255, 255, 255, 0.55);
   --color-text: #111111;
   --color-text-secondary: #555555;
-  --color-text-muted: #999999;
+  --color-text-muted: #666666;
   --color-border: rgba(0, 0, 0, 0.06);
   --color-border-strong: rgba(0, 0, 0, 0.12);
   --color-accent: #111111;
@@ -35,9 +35,11 @@
   --space-4: 1rem;
   --space-5: 1.25rem;
   --space-6: 1.5rem;
+  --space-7: 1.75rem;
   --space-8: 2rem;
   --space-10: 2.5rem;
   --space-12: 3rem;
+  --space-14: 3.5rem;
   --space-16: 4rem;
   --space-20: 5rem;
   --space-24: 6rem;
@@ -151,6 +153,12 @@ a:hover {
   color: var(--color-text-secondary);
 }
 
+/* ============== KEYBOARD FOCUS ============== */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 3px;
+}
+
 /* ============== BUTTONS ============== */
 .btn-primary {
   display: inline-flex;
@@ -166,7 +174,12 @@ a:hover {
   font-size: 0.8125rem;
   letter-spacing: 0;
   cursor: pointer;
-  transition: all var(--duration-normal) var(--ease-out);
+  transition:
+    background-color var(--duration-normal) var(--ease-out),
+    border-color var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out),
+    color var(--duration-normal) var(--ease-out),
+    transform var(--duration-normal) var(--ease-out);
   text-decoration: none;
 }
 
@@ -196,7 +209,11 @@ a:hover {
   font-size: 0.8125rem;
   letter-spacing: 0;
   cursor: pointer;
-  transition: all var(--duration-normal) var(--ease-out);
+  transition:
+    border-color var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out),
+    color var(--duration-normal) var(--ease-out),
+    transform var(--duration-normal) var(--ease-out);
   text-decoration: none;
 }
 
@@ -227,7 +244,9 @@ a:hover {
   font-size: 0.8125rem;
   letter-spacing: 0;
   cursor: pointer;
-  transition: all var(--duration-normal) var(--ease-out);
+  transition:
+    border-bottom-color var(--duration-normal) var(--ease-out),
+    color var(--duration-normal) var(--ease-out);
   text-decoration: none;
   border-bottom: 1px solid transparent;
 }
@@ -252,7 +271,11 @@ a:hover {
   border: var(--glass-border);
   border-radius: var(--radius-lg);
   box-shadow: var(--glass-shadow);
-  transition: all var(--duration-normal) var(--ease-out);
+  transition:
+    background-color var(--duration-normal) var(--ease-out),
+    border-color var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out),
+    transform var(--duration-normal) var(--ease-out);
 }
 
 /* ============== SECTION LABEL (editorial detail) ============== */
@@ -1034,6 +1057,15 @@ a:hover {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
   .case-study.case-study .editorial-reveal {
     opacity: 1;
     transform: none;

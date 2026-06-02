@@ -15,11 +15,11 @@
         <!-- Footer Info -->
         <div class="footer-info">
           <div class="footer-links">
-            <a href="https://www.linkedin.com/in/eleni-chasioti-948486194/" target="_blank" class="social-link">
+            <a href="https://www.linkedin.com/in/eleni-chasioti-948486194/" target="_blank" rel="noopener noreferrer" class="social-link">
               <span class="mdi mdi-linkedin"></span>
               LinkedIn
             </a>
-            <a href="https://github.com/elenichas" target="_blank" class="social-link">
+            <a href="https://github.com/elenichas" target="_blank" rel="noopener noreferrer" class="social-link">
               <span class="mdi mdi-github"></span>
               GitHub
             </a>
@@ -118,7 +118,10 @@ export default {
   text-decoration: none;
   font-weight: var(--weight-medium);
   font-size: 0.8125rem;
-  transition: all var(--duration-normal) var(--ease-out);
+  transition:
+    border-color var(--duration-normal) var(--ease-out),
+    color var(--duration-normal) var(--ease-out),
+    transform var(--duration-normal) var(--ease-out);
   padding: 0.4rem 0.75rem;
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-border-strong);

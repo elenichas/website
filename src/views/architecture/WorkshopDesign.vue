@@ -8,7 +8,7 @@
 
     <!-- Hero Image -->
     <div class="case-hero anim-reveal" style="--delay: 0.15s;">
-      <img class="hero-image" :src="hero" alt="Digital Futures Workshop" />
+      <img class="hero-image" :src="hero" alt="Voxel housing aggregation study from the Digital Futures Workshop" />
     </div>
 
     <!-- Project Info - split layout -->
@@ -62,7 +62,7 @@
               v-for="(image, index) in images"
               :key="index"
             >
-              <img :src="image.url" :alt="'Process step ' + (index + 1)" class="carousel-img" />
+              <img loading="lazy" :src="image.url" :alt="'Process step ' + (index + 1)" class="carousel-img" />
             </v-carousel-item>
           </v-carousel>
         </div>
@@ -86,7 +86,7 @@
       <!-- <p class="section-label">Final Assembly</p>
       <h2 class="section-heading">Physical prototype</h2> -->
       <figure class="video-figure">
-        <video controls class="content-video">
+        <video preload="metadata" controls class="content-video">
           <source src="/vids/habitatVideo.webm" type="video/webm" />
           Your browser does not support the video tag.
         </video>
@@ -164,7 +164,7 @@ export default {
 
 .case-title {
   font-family: var(--font-serif);
-  font-size: clamp(3.5rem, 10vw, 8rem);
+  font-size: clamp(3.5rem, 10vw, 6rem);
   font-weight: var(--weight-normal);
   font-style: italic;
   line-height: 0.95;
