@@ -49,7 +49,7 @@
     <!-- System Diagram Video -->
     <section class="content-section-wide industrial-media-story industrial-video-only">
       <figure class="image-figure">
-        <video :src="diagramVideo" autoplay muted loop playsinline class="content-video">
+        <video preload="metadata" :src="diagramVideo" autoplay muted loop playsinline class="content-video">
           Your browser does not support the video tag.
         </video>
       </figure>
@@ -65,7 +65,7 @@
         </p>
       </div>
       <div class="split-media media-container-blue">
-        <video :src="diagramVideo" autoplay muted loop playsinline class="split-image">
+        <video preload="metadata" :src="diagramVideo" autoplay muted loop playsinline class="split-image">
           Your browser does not support the video tag.
         </video>
       </div>
@@ -101,7 +101,7 @@
               v-for="(wireframe, index) in wireframes"
               :key="index"
             >
-              <img :src="wireframe.url" :alt="'Wireframe ' + (index + 1)" class="carousel-img" />
+              <img loading="lazy" :src="wireframe.url" :alt="'Wireframe ' + (index + 1)" class="carousel-img" />
             </v-carousel-item>
           </v-carousel>
         </div>
@@ -111,7 +111,7 @@
     <!-- Model Properties -->
     <section class="split-section split-section-right">
       <div class="split-media media-container-purple">
-        <img :src="modelPropertiesDetailed" alt="Detailed Model Properties" class="split-image" />
+        <img loading="lazy" :src="modelPropertiesDetailed" alt="Detailed Model Properties" class="split-image" />
       </div>
       <div class="split-content">
         <p class="section-label">Component Details</p>
@@ -132,7 +132,7 @@
         </p>
       </div>
       <div class="split-media media-container-green">
-        <img :src="nodeUI" alt="Node Interface" class="split-image" />
+        <img loading="lazy" :src="nodeUI" alt="Node Interface" class="split-image" />
       </div>
     </section>
 
@@ -144,14 +144,14 @@
         The catalog gives teams a consistent way to select and add industrial units, compare component properties, and move from scattered technical references toward a shared design language.
       </p>
       <figure class="image-figure">
-        <img :src="addModel" alt="Add Model Interface" class="content-image" />
+        <img loading="lazy" :src="addModel" alt="Add Model Interface" class="content-image" />
       </figure>
     </section>
 
     <!-- Rule Validation -->
     <section class="split-section split-section-right">
       <div class="split-media media-container-yellow">
-        <img :src="checkRules" alt="Rule Validation" class="split-image" />
+        <img loading="lazy" :src="checkRules" alt="Rule Validation" class="split-image" />
       </div>
       <div class="split-content">
         <p class="section-label">Validation</p>
@@ -172,7 +172,7 @@
         </p>
       </div>
       <div class="split-media media-container-blue">
-        <img :src="modelProperties" alt="Model Properties" class="split-image" />
+        <img loading="lazy" :src="modelProperties" alt="Model Properties" class="split-image" />
       </div>
     </section>
 
@@ -185,10 +185,10 @@
       </p>
       <div class="catalog-image-grid">
         <figure class="catalog-figure">
-          <img :src="modelCatalogCompare" alt="Catalog Comparison" class="content-image" />
+          <img loading="lazy" :src="modelCatalogCompare" alt="Catalog Comparison" class="content-image" />
         </figure>
         <figure class="catalog-figure">
-          <img :src="modelCatalogDetailed" alt="Detailed Catalog View" class="content-image" />
+          <img loading="lazy" :src="modelCatalogDetailed" alt="Detailed Catalog View" class="content-image" />
         </figure>
       </div>
     </section>
@@ -302,7 +302,7 @@ export default {
 
 .case-title {
   font-family: var(--font-serif);
-  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-size: clamp(3rem, 8vw, 6rem);
   font-weight: var(--weight-normal);
   font-style: italic;
   line-height: 1;

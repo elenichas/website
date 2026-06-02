@@ -36,7 +36,7 @@
 
     <!-- Paper Link -->
     <section class="content-section">
-      <a href="https://ucl.academia.edu/EleniChasioti" target="_blank" class="paper-link">
+      <a href="https://ucl.academia.edu/EleniChasioti" target="_blank" rel="noopener noreferrer" class="paper-link">
         <span>Read Full Paper</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <line x1="7" y1="17" x2="17" y2="7"></line>
@@ -67,14 +67,14 @@
         </p>
       </div>
       <div class="split-media media-container-blue">
-        <img :src="wfcdiagram" alt="WFC Diagram" class="split-image" />
+        <img loading="lazy" :src="wfcdiagram" alt="WFC Diagram" class="split-image" />
       </div>
     </section>
 
     <!-- Implementation -->
     <section class="content-section implementation-section">
       <figure class="image-figure">
-        <img :src="grasshopper" alt="Grasshopper Implementation" class="content-image" />
+        <img loading="lazy" :src="grasshopper" alt="Grasshopper Implementation" class="content-image" />
       </figure>
       
       <p class="section-label">Technical Implementation</p>
@@ -90,7 +90,7 @@
     <!-- Results -->
     <section class="split-section split-section-right results-section">
       <div class="split-media media-container-green">
-        <img :src="segmentation" alt="Tileset Segmentation" class="split-image" />
+        <img loading="lazy" :src="segmentation" alt="Tileset Segmentation" class="split-image" />
       </div>
       <div class="split-content">
         <p class="section-label">Results</p>
@@ -104,10 +104,10 @@
     <!-- Models -->
     <section class="content-section">
       <figure class="image-figure">
-        <img :src="models1" alt="Generated Models" class="content-image" />
+        <img loading="lazy" :src="models1" alt="Generated Models" class="content-image" />
       </figure>
       <figure class="image-figure">
-        <img :src="models2" alt="Rendered Models" class="content-image" />
+        <img loading="lazy" :src="models2" alt="Rendered Models" class="content-image" />
       </figure>
     </section>
 
@@ -198,7 +198,7 @@ export default {
 
 .case-title {
   font-family: var(--font-serif);
-  font-size: clamp(3.5rem, 10vw, 8rem);
+  font-size: clamp(3.5rem, 10vw, 6rem);
   font-weight: var(--weight-normal);
   font-style: italic;
   line-height: 0.95;

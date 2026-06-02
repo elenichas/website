@@ -44,7 +44,7 @@
         </p>
       </div>
       <div class="split-media media-container-blue">
-        <img :src="picture1" alt="Lunar habitat visualization" class="split-image" />
+        <img loading="lazy" :src="picture1" alt="Lunar habitat visualization" class="split-image" />
       </div>
     </section>
 
@@ -80,14 +80,14 @@
         design exploration and optimization.
       </p>
       <figure class="image-figure">
-        <img :src="configuratorDiagram" alt="Configurator System Diagram" class="content-image" />
+        <img loading="lazy" :src="configuratorDiagram" alt="Configurator System Diagram" class="content-image" />
       </figure>
     </section>
 
     <!-- Module Typologies - Split Layout -->
     <section class="split-section split-section-right">
       <div class="split-media media-container">
-        <img :src="moduleTypologies" alt="Module Typologies" class="split-image" />
+        <img loading="lazy" :src="moduleTypologies" alt="Module Typologies" class="split-image" />
       </div>
       <div class="split-content">
         <p class="section-label">Catalog</p>
@@ -106,7 +106,7 @@
         Spatial diagrams showing how different functional spaces are organized and connected within the modular system.
       </p>
       <figure class="image-figure">
-        <img :src="roomsDiagram" alt="Rooms Diagram" class="content-image" />
+        <img loading="lazy" :src="roomsDiagram" alt="Rooms Diagram" class="content-image" />
       </figure>
     </section>
 
@@ -120,7 +120,7 @@
         </p>
       </div>
       <div class="split-media media-container-purple">
-        <video :src="viewer3D" autoplay muted loop playsinline class="split-video">
+        <video preload="metadata" :src="viewer3D" autoplay muted loop playsinline class="split-video">
           Your browser does not support the video tag.
         </video>
       </div>
@@ -131,14 +131,14 @@
       <div class="video-grid">
         <figure class="video-figure">
           <!-- <figcaption class="video-caption">Configuration Demo</figcaption> -->
-          <video :src="demo" autoplay muted loop playsinline class="content-video">
+          <video preload="metadata" :src="demo" autoplay muted loop playsinline class="content-video">
             Your browser does not support the video tag.
           </video>
         </figure>
 
         <!-- <figure class="video-figure">
 
-          <video :src="solutions" autoplay muted loop playsinline class="content-video">
+          <video preload="metadata" :src="solutions" autoplay muted loop playsinline class="content-video">
             Your browser does not support the video tag.
           </video>
         </figure> -->
@@ -148,7 +148,7 @@
     <!-- Design Explorations - Split -->
     <section class="split-section split-section-right">
       <!-- <div class="split-media media-container">
-        <img :src="picture2" alt="Design Exploration" class="split-image" />
+        <img loading="lazy" :src="picture2" alt="Design Exploration" class="split-image" />
       </div> -->
       <div class="split-content">
         <p class="section-label">Exploration</p>
@@ -165,7 +165,7 @@
 
         <figure class="video-figure">
 
-          <video :src="solutions" autoplay muted loop playsinline class="content-video">
+          <video preload="metadata" :src="solutions" autoplay muted loop playsinline class="content-video">
             Your browser does not support the video tag.
           </video>
         </figure>
@@ -272,7 +272,7 @@ export default {
 
 .case-title {
   font-family: var(--font-serif);
-  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-size: clamp(3rem, 8vw, 6rem);
   font-weight: var(--weight-normal);
   font-style: italic;
   line-height: 1;

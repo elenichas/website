@@ -220,7 +220,7 @@ export default {
 
 .page-title {
   font-family: var(--font-sans);
-  font-size: clamp(4rem, 9vw, 8rem);
+  font-size: clamp(4rem, 9vw, 6rem);
   font-weight: var(--weight-bold);
   font-style: normal;
   color: var(--color-text);

@@ -235,22 +235,34 @@ export default {
 }
 
 .anim-fade-in {
-  opacity: 0;
-  animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  animation-delay: var(--delay, 0s);
+  opacity: 1;
 }
 
 .scroll-reveal {
-  opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  transition-delay: var(--delay, 0s);
+  opacity: 1;
+  transform: none;
 }
 
 .scroll-reveal.revealed {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .anim-fade-in {
+    opacity: 0;
+    animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: var(--delay, 0s);
+  }
+
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--delay, 0s);
+  }
 }
 
 .page-layout {
@@ -342,7 +354,7 @@ export default {
 .content-column :deep(.name) {
   max-width: 10.6ch;
   font-family: var(--font-sans);
-  font-size: clamp(5.2rem, 10.4vw, 11rem);
+  font-size: clamp(4.5rem, 9vw, 6rem);
   font-style: normal;
   font-weight: 900;
   line-height: 0.82;
@@ -485,7 +497,7 @@ export default {
   margin: 0;
   color: #111111;
   font-family: var(--font-sans);
-  font-size: clamp(3rem, 8vw, 7.8rem);
+  font-size: clamp(3rem, 8vw, 6rem);
   font-weight: 900;
   line-height: 0.88;
   letter-spacing: 0;
@@ -610,7 +622,7 @@ export default {
 .project-card__title {
   margin: 0;
   color: #111111;
-  font-size: clamp(2.6rem, 6vw, 6.9rem);
+  font-size: clamp(2.6rem, 6vw, 6rem);
   font-weight: 900;
   letter-spacing: 0;
   line-height: 0.86;
@@ -674,7 +686,7 @@ export default {
   display: inline-flex;
   align-items: center;
   min-height: clamp(5.2rem, 12vw, 9.5rem);
-  font-size: clamp(2.4rem, 7vw, 7rem);
+  font-size: clamp(2.4rem, 7vw, 6rem);
   font-weight: 900;
   letter-spacing: 0;
   line-height: 0.86;
@@ -752,7 +764,7 @@ export default {
 
   .content-column :deep(.name) {
     max-width: 9.8ch;
-    font-size: clamp(3.6rem, 16vw, 6.8rem);
+    font-size: clamp(3.6rem, 16vw, 6rem);
   }
 
   .content-column :deep(.description) {
@@ -811,8 +823,8 @@ export default {
     min-height: 0;
     margin-bottom: var(--space-6);
     border-radius: 18px;
-    opacity: 0;
-    transform: translateY(28px);
+    opacity: 1;
+    transform: none;
     transition:
       opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
       transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
@@ -822,6 +834,13 @@ export default {
   .project-card.revealed {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .project-card {
+      opacity: 0;
+      transform: translateY(28px);
+    }
   }
 
   .project-card-frame:last-child .project-card {

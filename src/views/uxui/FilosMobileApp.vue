@@ -53,7 +53,7 @@
         </p>
       </div>
       <div class="split-media media-container-purple">
-        <img :src="wireframes" alt="Filos wireframes" class="split-image" />
+        <img loading="lazy" :src="wireframes" alt="Filos wireframes" class="split-image" />
       </div>
     </section>
 
@@ -155,7 +155,7 @@
         </p>
       </div>
       <figure class="wide-image-frame">
-        <img :src="prototypes" alt="Filos high fidelity prototype screens" class="wide-image" />
+        <img loading="lazy" :src="prototypes" alt="Filos high fidelity prototype screens" class="wide-image" />
       </figure>
     </section>
 
@@ -192,7 +192,7 @@
         </p>
       </div>
       <figure class="wide-image-frame">
-        <img :src="responsive" alt="Filos responsive interface layouts" class="wide-image" />
+        <img loading="lazy" :src="responsive" alt="Filos responsive interface layouts" class="wide-image" />
       </figure>
     </section>
 
@@ -307,7 +307,7 @@ export default {
 
 .case-title {
   font-family: var(--font-serif);
-  font-size: clamp(3.5rem, 10vw, 8rem);
+  font-size: clamp(3.5rem, 10vw, 6rem);
   font-weight: var(--weight-normal);
   font-style: italic;
   line-height: 0.95;

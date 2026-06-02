@@ -53,7 +53,7 @@
         </p>
       </div>
       <div class="split-media media-container-green">
-        <img :src="wireframes" alt="Brew & Crumb wireframes" class="split-image" />
+        <img loading="lazy" :src="wireframes" alt="Brew & Crumb wireframes" class="split-image" />
       </div>
     </section>
 
@@ -69,7 +69,7 @@
     <!-- Prototypes -->
     <section class="split-section split-section-right">
       <div class="split-media media-container-yellow">
-        <img :src="prototypes" alt="High-fidelity screens" class="split-image" />
+        <img loading="lazy" :src="prototypes" alt="High-fidelity screens" class="split-image" />
       </div>
       <div class="split-content">
         <p class="section-label">Design</p>
@@ -226,7 +226,7 @@ export default {
 
 .case-title {
   font-family: var(--font-serif);
-  font-size: clamp(3.5rem, 10vw, 8rem);
+  font-size: clamp(3.5rem, 10vw, 6rem);
   font-weight: var(--weight-normal);
   font-style: italic;
   line-height: 0.95;

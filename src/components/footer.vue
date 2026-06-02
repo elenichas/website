@@ -15,11 +15,11 @@
         <!-- Footer Info -->
         <div class="footer-info">
           <div class="footer-links">
-            <a href="https://www.linkedin.com/in/eleni-chasioti-948486194/" target="_blank" class="social-link">
+            <a href="https://www.linkedin.com/in/eleni-chasioti-948486194/" target="_blank" rel="noopener noreferrer" class="social-link">
               <span class="mdi mdi-linkedin"></span>
               LinkedIn
             </a>
-            <a href="https://github.com/elenichas" target="_blank" class="social-link">
+            <a href="https://github.com/elenichas" target="_blank" rel="noopener noreferrer" class="social-link">
               <span class="mdi mdi-github"></span>
               GitHub
             </a>

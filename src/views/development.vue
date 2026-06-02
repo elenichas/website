@@ -15,7 +15,7 @@
       <section class="projects-section">
         <div class="projects-grid">
           <article v-for="(project, index) in images" :key="index" class="project-card">
-            <a :href="project.gitlabLink" target="_blank" class="project-link">
+            <a :href="project.gitlabLink" target="_blank" rel="noopener noreferrer" class="project-link">
               <div class="project-image">
                 <div
                   class="engineering-poster"
@@ -144,7 +144,7 @@ export default {
 
 .page-title {
   font-family: var(--font-sans);
-  font-size: clamp(4rem, 9vw, 8rem);
+  font-size: clamp(4rem, 9vw, 6rem);
   font-weight: var(--weight-bold);
   font-style: normal;
   color: var(--color-text);

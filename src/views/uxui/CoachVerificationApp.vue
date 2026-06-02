@@ -58,8 +58,8 @@
         </p>
       </div>
       <div class="showcase-screens showcase-screens-2">
-        <img :src="catalogFilter" alt="Catalog grid with filters" class="screen-image" />
-        <img :src="itemPreview" alt="Bag detail page" class="screen-image" />
+        <img loading="lazy" :src="catalogFilter" alt="Catalog grid with filters" class="screen-image" />
+        <img loading="lazy" :src="itemPreview" alt="Bag detail page" class="screen-image" />
       </div>
     </section>
 
@@ -73,7 +73,7 @@
         </p>
       </div>
       <div class="tablet-frame">
-        <img :src="tabletPreview" alt="Tablet responsive view" class="tablet-image" />
+        <img loading="lazy" :src="tabletPreview" alt="Tablet responsive view" class="tablet-image" />
       </div>
     </section>
 
@@ -87,15 +87,15 @@
         </p>
       </div>
       <div class="video-phone-container">
-        <video :src="appRecording" autoplay muted loop playsinline class="video-phone"></video>
+        <video preload="metadata" :src="appRecording" autoplay muted loop playsinline class="video-phone"></video>
       </div>
     </section>
 
     <!-- Color Encyclopedia: 2 screens side by side -->
     <section class="showcase-section showcase-section-reverse">
       <div class="showcase-screens showcase-screens-2 media-container-green">
-        <img :src="colorFamily" alt="Color encyclopedia grid" class="screen-image" />
-        <img :src="colorFilters" alt="Color filtering with bags" class="screen-image" />
+        <img loading="lazy" :src="colorFamily" alt="Color encyclopedia grid" class="screen-image" />
+        <img loading="lazy" :src="colorFilters" alt="Color filtering with bags" class="screen-image" />
       </div>
       <div class="showcase-text">
         <p class="section-label">Color System</p>
@@ -117,9 +117,9 @@
         </p>
       </div>
       <div class="showcase-screens showcase-screens-3 media-container-purple">
-        <img :src="authInfo" alt="Serial number format guide" class="screen-image" />
-        <img :src="authSuccess" alt="Successful authentication" class="screen-image" />
-        <img :src="authFail" alt="Failed authentication" class="screen-image" />
+        <img loading="lazy" :src="authInfo" alt="Serial number format guide" class="screen-image" />
+        <img loading="lazy" :src="authSuccess" alt="Successful authentication" class="screen-image" />
+        <img loading="lazy" :src="authFail" alt="Failed authentication" class="screen-image" />
       </div>
     </section>
  
@@ -213,7 +213,7 @@ export default {
 
 .case-title {
   font-family: var(--font-serif);
-  font-size: clamp(3.5rem, 10vw, 8rem);
+  font-size: clamp(3.5rem, 10vw, 6rem);
   font-weight: var(--weight-normal);
   font-style: italic;
   line-height: 0.95;

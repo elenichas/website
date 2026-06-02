@@ -55,6 +55,10 @@ export default {
   methods: {
     startTypingAnimation() {
       const titles = this.$t("home.roleTitles");
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        this.animatedTitle = titles[0];
+        return;
+      }
       let fullTitle = titles[this.currentTitleIndex]; // Get the current title
       let charIndex = 0;
       let isTyping = true; // Start with typing

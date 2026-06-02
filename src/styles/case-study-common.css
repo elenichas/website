@@ -75,7 +75,7 @@
   font-size: clamp(0.75rem, 1.5vw, 0.85rem); /* 12-13.6px */
   text-transform: uppercase;
   letter-spacing: 0.0625rem; /* 1px */
-  color: #999;
+  color: #666;
   font-weight: 600;
 }
 
@@ -239,7 +239,7 @@
   left: 50%;
   transform: translateX(-50%);
   font-size: clamp(0.6rem, 1.2vw, 0.7rem); /* 9.6-11.2px */
-  color: #999;
+  color: #666;
   white-space: nowrap;
   background: #fffacd;
   padding: 0.25rem 0.5rem;
@@ -463,7 +463,7 @@
 
 .color-name {
   font-size: clamp(0.75rem, 1.5vw, 0.85rem); /* 12-13.6px */
-  color: #999;
+  color: #666;
 }
 
 /* Key Components */
@@ -484,7 +484,7 @@
   font-size: clamp(0.7rem, 1.4vw, 0.8rem); /* 11.2-12.8px */
   text-transform: uppercase;
   letter-spacing: 0.0625rem; /* 1px */
-  color: #999;
+  color: #666;
   font-weight: 600;
 }
 
@@ -549,7 +549,7 @@
   font-size: clamp(0.65rem, 1.3vw, 0.75rem); /* 10.4-12px */
   text-transform: uppercase;
   letter-spacing: 0.09375rem; /* 1.5px */
-  color: #999;
+  color: #666;
   font-weight: 600;
   margin-bottom: 0.25rem;
 }
@@ -576,7 +576,7 @@
 
 .type-meta {
   font-size: clamp(0.75rem, 1.5vw, 0.85rem); /* 12-13.6px */
-  color: #999;
+  color: #666;
   margin-top: 0.5rem;
 }
 
@@ -822,7 +822,7 @@
 }
 
 .placeholder-text {
-  color: #999;
+  color: #666;
   font-size: clamp(1rem, 2vw, 1.1rem);
   font-weight: 500;
   margin: 0;

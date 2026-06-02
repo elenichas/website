@@ -117,7 +117,7 @@
         </p>
       </div>
       <div class="showcase-media media-container-green">
-        <img :src="wireframes" alt="Brew & Crumb wireframes" class="showcase-image" />
+        <img loading="lazy" :src="wireframes" alt="Brew & Crumb wireframes" class="showcase-image" />
       </div>
     </section>
 
@@ -140,7 +140,7 @@
         </p>
       </div>
       <div class="showcase-media media-container-yellow">
-        <img :src="prototypes" alt="High-fidelity screens" class="showcase-image" />
+        <img loading="lazy" :src="prototypes" alt="High-fidelity screens" class="showcase-image" />
       </div>
     </section>
 
@@ -290,7 +290,7 @@ export default {
 
 .case-title {
   font-family: var(--font-serif);
-  font-size: clamp(3.5rem, 10vw, 8rem);
+  font-size: clamp(3.5rem, 10vw, 6rem);
   font-weight: var(--weight-normal);
   font-style: italic;
   line-height: 0.95;
