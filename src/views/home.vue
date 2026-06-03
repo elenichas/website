@@ -276,7 +276,7 @@ export default {
   display: flex;
   flex-direction: column;
   overflow: visible;
-  background: #ffffff;
+  background: var(--color-bg);
 }
 
 .container {
@@ -321,7 +321,7 @@ export default {
   min-height: clamp(520px, calc(100vh - 220px), 640px);
   overflow: hidden;
   border-radius: 0;
-  background: #ffffff;
+  background: var(--color-bg);
 }
 
 .hero-shell::before {
@@ -450,7 +450,7 @@ export default {
   overflow: hidden;
   border-top: 1px solid rgba(17, 17, 17, 0.1);
   border-bottom: 1px solid rgba(17, 17, 17, 0.1);
-  background: #ffffff;
+  background: var(--color-bg);
   color: rgba(17, 17, 17, 0.52);
   font-size: clamp(0.72rem, 1vw, 0.9rem);
   font-weight: var(--weight-semibold);
@@ -471,7 +471,7 @@ export default {
   margin: 0 calc(50% - 50vw + 7px);
   padding: var(--space-14) 0 var(--space-6);
   overflow: visible;
-  background: #d8d6ce;
+  background: var(--color-bg);
   color: #111111;
 }
 
@@ -541,7 +541,7 @@ export default {
   text-decoration: none;
   border: 1px solid rgba(17, 17, 17, 0.08);
   border-radius: 10px;
-  background: #f7f7f4;
+  background: #ffffff;
   box-shadow: 0 18px 45px rgba(17, 17, 17, 0.12);
   transform-origin: center top;
   transition: box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -603,6 +603,7 @@ export default {
 
 .project-card__body {
   position: relative;
+  background: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

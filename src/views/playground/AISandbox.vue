@@ -2,6 +2,11 @@
   <app-navbar />
 
   <main class="sandbox-page">
+    <router-link class="back-to-playground" to="/playground">
+      <ArrowLeft :size="14" />
+      Playground
+    </router-link>
+
     <section class="sandbox-intro">
       <p class="eyebrow">AI UI Sandbox / 03</p>
       <h1>UI for<br /><em>uncertain systems.</em></h1>
@@ -448,6 +453,7 @@
 <script>
 import {
   Activity,
+  ArrowLeft,
   ArrowUp,
   Brain,
   Check,
@@ -493,6 +499,7 @@ export default {
     Activity,
     AppNavbar,
     AppFooter,
+    ArrowLeft,
     ArrowUp,
     Brain,
     Check,
@@ -869,6 +876,8 @@ export default {
 <style scoped>
 .sandbox-page { background: #f4f1e9; color: #111; min-height: 100vh; padding: clamp(2rem, 3vw, 3.4rem) clamp(1rem, 5vw, 5rem); }
 .sandbox-intro, .sandbox-shell, .principles { margin: 0 auto; max-width: 1460px; }
+.back-to-playground { align-items: center; color: #706b62; display: inline-flex; font-size: .74rem; gap: .35rem; margin: 0 auto 1rem; max-width: 1460px; text-decoration: none; width: fit-content; }
+.back-to-playground:hover { color: #111; }
 .sandbox-intro { align-items: end; display: grid; gap: .45rem 2rem; grid-template-columns: minmax(0, 1fr) minmax(21rem, 29rem); }
 .sandbox-intro > .eyebrow { grid-column: 1 / -1; }
 .eyebrow, .card-kicker { color: #706b62; font-size: .64rem; font-weight: 700; letter-spacing: .14em; margin: 0; text-transform: uppercase; }

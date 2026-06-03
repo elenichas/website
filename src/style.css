@@ -354,7 +354,7 @@ a:hover {
   margin: 0;
   padding-bottom: var(--space-16);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.94) 0%, rgba(251, 251, 250, 0.92) 34%, #ffffff 68%),
+    linear-gradient(180deg, rgba(250, 250, 250, 0.94) 0%, rgba(250, 250, 250, 0.92) 34%, var(--color-bg) 68%),
     radial-gradient(circle at 12% 18%, rgba(17, 17, 17, 0.055), transparent 28rem),
     radial-gradient(circle at 84% 42%, rgba(188, 176, 153, 0.16), transparent 30rem);
 }

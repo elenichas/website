@@ -11,20 +11,33 @@
         <p class="project-label">Independent speculative prototype</p>
         <h1>Smart Local Bundling for Vinted</h1>
         <p class="hero-copy">
-          A marketplace interaction that helps buyers see the real cost of a
-          second-hand purchase: item price, delivery, distance, and bundle
-          savings in one decision.
+          A marketplace interaction that helps buyers understand the full value
+          of a pre-loved find: item price, delivery, distance, and bundle
+          opportunities in one confident decision.
         </p>
         <p class="disclaimer">
-          Independent speculative prototype. Not affiliated with Vinted.
+          Independent speculative prototype. Not affiliated with Vinted. Play with
+          the prototype to explore the new features.
         </p>
+        <div class="feature-brief" aria-label="Designed prototype features">
+          <article>
+            <span>Feature 1</span>
+            <strong>Smart Discovery</strong>
+            <p>Rank listings by full value, not just the first price a buyer sees.</p>
+          </article>
+          <article>
+            <span>Feature 2</span>
+            <strong>Smart Local Bundling</strong>
+            <p>Surface thoughtful same-seller additions when delivery is already part of the order.</p>
+          </article>
+        </div>
       </div>
 
       <section class="prototype-stage" aria-label="Interactive Vinted-inspired prototype">
         <div class="phone-frame">
           <div class="phone-status">
             <span>9:41</span>
-            <span>Local prototype</span>
+            <span>Interactive prototype</span>
           </div>
 
           <div class="app-screen">
@@ -32,6 +45,7 @@
               <div class="search-bar">
                 <Search :size="16" />
                 <span>yellow cotton t-shirt</span>
+                <Camera class="camera-icon" :size="17" />
               </div>
               <button type="button" aria-label="Open filters">
                 <SlidersHorizontal :size="18" />
@@ -74,7 +88,7 @@
             <section v-if="screen === 'results'" class="results-view" aria-label="Search results">
               <div class="results-summary">
                 <strong>{{ filteredListings.length }} results</strong>
-                <span>{{ sortMode === "total" ? "Sorted by real cost" : "Sorted by item price" }}</span>
+                <span>{{ sortMode === "total" ? "Sorted by full value" : "Sorted by item price" }}</span>
               </div>
 
               <div class="listing-grid">
@@ -85,20 +99,23 @@
                   :class="{ selected: selectedListingId === listing.id }"
                 >
                   <button type="button" @click="openListing(listing.id)">
-                    <span class="listing-photo" :class="listing.photoClass">
-                      <span v-if="listing.favourite" class="heart-badge"><Heart :size="12" fill="currentColor" /></span>
+                    <span class="listing-photo" :style="productImageStyle(listing)">
+                      <span class="heart-badge">
+                        <Heart :size="14" />
+                        <span>{{ likeCount(listing) }}</span>
+                      </span>
                     </span>
                     <span class="listing-meta">
-                      <strong>{{ listing.title }}</strong>
-                      <span>{{ listing.size }} · {{ listing.condition }}</span>
-                      <span class="cost-row">
-                        <b>{{ money(listing.itemPrice) }}</b>
-                        <small>{{ money(listing.shipping) }} shipping</small>
+                      <strong>{{ listing.brand }}</strong>
+                      <span class="item-line">{{ listing.title }}</span>
+                      <span class="detail-line">{{ listing.size }} · {{ listing.condition }}</span>
+                      <b class="item-price">{{ money(listing.itemPrice) }}</b>
+                      <span class="included-price">
+                        {{ money(totalCost(listing)) }} incl.
+                        <ShieldCheck :size="12" />
                       </span>
-                      <span class="total-pill">Total {{ money(totalCost(listing)) }}</span>
-                      <span class="location-line">
-                        <MapPin :size="11" />
-                        {{ listing.distanceLabel }} · {{ listing.area }}
+                      <span class="delivery-line">
+                        {{ listing.delivery }} · {{ listing.distanceLabel }}
                       </span>
                     </span>
                   </button>
@@ -112,7 +129,7 @@
                 Back to results
               </button>
 
-              <div class="detail-photo" :class="selectedListing.photoClass">
+              <div class="detail-photo" :style="productImageStyle(selectedListing, 'detail')">
                 <span>{{ selectedListing.brand }}</span>
               </div>
 
@@ -145,15 +162,15 @@
                 <div class="impact-icon"><Leaf :size="17" /></div>
                 <div>
                   <strong>Delivery impact</strong>
-                  <span>{{ selectedListing.delivery }} · {{ selectedListing.distanceLabel }} · no exact seller location shown</span>
+                  <span>{{ selectedListing.delivery }} · {{ selectedListing.distanceLabel }} · approximate location only</span>
                 </div>
               </article>
 
               <article class="bundle-module">
                 <div>
-                  <p>Make the delivery worth it</p>
-                  <h3>You are already paying delivery from this seller.</h3>
-                  <span>Add another item and pay shipping once.</span>
+                  <p>Make delivery work smarter</p>
+                  <h3>This seller has more pre-loved pieces to consider.</h3>
+                  <span>Add a matching item and keep delivery efficient.</span>
                 </div>
                 <button type="button" @click="bundleOpen = true">
                   View bundle
@@ -176,7 +193,7 @@
 
                 <div class="recommendation-list">
                   <article v-for="item in bundleRecommendations" :key="item.id">
-                    <span class="bundle-thumb" :class="item.photoClass"></span>
+                    <span class="bundle-thumb" :style="productImageStyle(item)"></span>
                     <div>
                       <strong>{{ item.title }}</strong>
                       <span>{{ item.reason }}</span>
@@ -198,11 +215,11 @@
                     <strong>{{ 1 + selectedBundleItems.length }} items</strong>
                   </div>
                   <div>
-                    <span>Shipping saved</span>
+                    <span>Delivery saved</span>
                     <strong>{{ money(shippingSaved) }}</strong>
                   </div>
                   <div>
-                    <span>Bundle discount</span>
+                    <span>Bundle value</span>
                     <strong>{{ money(bundleDiscount) }}</strong>
                   </div>
                   <div class="summary-total">
@@ -215,10 +232,10 @@
 
             <nav class="bottom-nav" aria-label="Prototype mobile navigation">
               <button type="button"><Home :size="18" /><span>Home</span></button>
-              <button type="button" class="active"><Search :size="18" /><span>Search</span></button>
+              <button type="button" class="active"><Grid2X2 :size="18" /><span>Browse</span></button>
               <button type="button" class="sell-button"><Plus :size="18" /><span>Sell</span></button>
-              <button type="button"><MessageCircle :size="18" /><span>Inbox</span></button>
-              <button type="button"><User :size="18" /><span>Profile</span></button>
+              <button type="button" class="inbox-button"><Mail :size="18" /><i aria-hidden="true"></i><span>Inbox</span></button>
+              <button type="button"><UserRound :size="18" /><span>Profile</span></button>
             </nav>
           </div>
         </div>
@@ -234,43 +251,24 @@
     <section class="story-section problem-section">
       <div>
         <p class="project-label">Problem</p>
-        <h2>The cheapest listing can be the expensive choice.</h2>
+        <h2>The item price is only part of what the buyer pays.</h2>
       </div>
       <p>
-        Buyers often scan item price first, but delivery cost, delivery method,
-        distance, and missed bundle opportunities decide what the purchase
-        actually costs.
+        Delivery, distance, and bundle opportunities can all change the final
+        amount. The prototype makes those signals visible before a pre-loved find
+        becomes a decision.
       </p>
-    </section>
-
-    <section class="insight-band">
-      <article>
-        <ShoppingBag :size="20" />
-        <h3>Sort by total cost</h3>
-        <p>Show the buyer the combined item and delivery price before they commit.</p>
-      </article>
-      <article>
-        <MapPin :size="20" />
-        <h3>Protect seller privacy</h3>
-        <p>Use area labels and distance bands instead of exact streets or postcodes.</p>
-      </article>
-      <article>
-        <PackagePlus :size="20" />
-        <h3>Make bundles obvious</h3>
-        <p>Surface relevant same-seller items when delivery is already being paid.</p>
-      </article>
     </section>
 
     <section class="story-section">
       <div>
         <p class="project-label">Reflection</p>
-        <h2>A prototype for marketplace judgment.</h2>
+        <h2>Small additions can solve real product problems.</h2>
       </div>
       <p>
-        This case study demonstrates product strategy, recommendation logic, and
-        trust-aware UI through one contained prototype. It does not need a full
-        shopping app to prove the interaction: the valuable moment is the decision
-        before checkout.
+        The prototype does not reimagine the marketplace from scratch. It works
+        within a familiar product flow and adds the missing signals that help
+        buyers understand what they will pay before choosing a pre-loved find.
       </p>
     </section>
   </main>
@@ -281,20 +279,23 @@
 <script>
 import {
   ArrowLeft,
+  Camera,
+  Grid2X2,
   Heart,
   Home,
   Leaf,
+  Mail,
   MapPin,
-  MessageCircle,
   PackagePlus,
   Plus,
   Search,
-  ShoppingBag,
+  ShieldCheck,
   SlidersHorizontal,
-  User,
+  UserRound,
   X,
 } from "lucide-vue-next";
 import { useHead } from "@vueuse/head";
+import { resolveAsset } from "@/assetUrl";
 import AppNavbar from "@/components/navbar.vue";
 import AppFooter from "@/components/footer.vue";
 
@@ -313,7 +314,9 @@ const listings = [
     size: "M",
     condition: "Very good",
     favourite: false,
-    photoClass: "photo-yellow",
+    imagePosition: "0% 0%",
+    score: 62,
+    reason: "Nearby pickup with a delivery trade-off",
   },
   {
     id: "yellow-b",
@@ -329,11 +332,13 @@ const listings = [
     size: "M",
     condition: "Good",
     favourite: true,
-    photoClass: "photo-sun",
+    imagePosition: "25% 0%",
+    score: 96,
+    reason: "Same seller bundle opportunity",
   },
   {
     id: "yellow-c",
-    title: "Lemon baby tee",
+    title: "Lemon cotton baby tee",
     brand: "Monki",
     seller: "Nora",
     itemPrice: 6,
@@ -345,11 +350,13 @@ const listings = [
     size: "S",
     condition: "New without tags",
     favourite: false,
-    photoClass: "photo-lemon",
+    imagePosition: "50% 0%",
+    score: 84,
+    reason: "Same seller · style match",
   },
   {
     id: "yellow-d",
-    title: "Vintage yellow top",
+    title: "Vintage yellow cotton top",
     brand: "Zara",
     seller: "Iris",
     itemPrice: 3.5,
@@ -361,37 +368,297 @@ const listings = [
     size: "M",
     condition: "Good",
     favourite: false,
-    photoClass: "photo-gold",
+    imagePosition: "75% 0%",
+    score: 58,
+    reason: "Affordable piece with a delivery trade-off",
   },
-];
-
-const bundleItems = [
   {
-    id: "jeans",
-    title: "Straight leg jeans",
+    id: "jeans-a",
+    title: "Sun-washed cotton tee",
+    brand: "Weekday",
+    seller: "Nora",
     itemPrice: 9,
-    seller: "Nora",
-    score: 90,
+    shipping: 1.99,
+    delivery: "Home delivery",
+    distanceMiles: 2.4,
+    distanceLabel: "Under 5 miles",
+    area: "North London",
+    size: "M",
+    condition: "Very good",
+    favourite: true,
+    imagePosition: "100% 0%",
+    score: 91,
     reason: "Same seller · size match",
-    photoClass: "photo-denim",
   },
   {
-    id: "skirt",
-    title: "Black midi skirt",
+    id: "skirt-a",
+    title: "Mustard boxy T-shirt",
+    brand: "Monki",
+    seller: "Nora",
     itemPrice: 7.5,
-    seller: "Nora",
-    score: 82,
+    shipping: 1.99,
+    delivery: "Home delivery",
+    distanceMiles: 2.4,
+    distanceLabel: "Under 5 miles",
+    area: "North London",
+    size: "M",
+    condition: "Good",
+    favourite: true,
+    imagePosition: "0% 33.333%",
+    score: 88,
     reason: "Same seller · favourited",
-    photoClass: "photo-black",
   },
   {
-    id: "cardigan",
-    title: "Mint cardigan",
-    itemPrice: 8,
+    id: "cardigan-a",
+    title: "Pale yellow ribbed top",
+    brand: "Arket",
     seller: "Nora",
-    score: 74,
-    reason: "Same seller · style match",
-    photoClass: "photo-mint",
+    itemPrice: 8,
+    shipping: 1.99,
+    delivery: "Home delivery",
+    distanceMiles: 2.4,
+    distanceLabel: "Under 5 miles",
+    area: "North London",
+    size: "M",
+    condition: "Very good",
+    favourite: false,
+    imagePosition: "25% 33.333%",
+    score: 79,
+    reason: "Same seller · colour match",
+  },
+  {
+    id: "stripe-top",
+    title: "Yellow striped cotton tee",
+    brand: "Cos",
+    seller: "Nora",
+    itemPrice: 6.5,
+    shipping: 1.99,
+    delivery: "Home delivery",
+    distanceMiles: 2.4,
+    distanceLabel: "Under 5 miles",
+    area: "North London",
+    size: "M",
+    condition: "Good",
+    favourite: false,
+    imagePosition: "50% 33.333%",
+    score: 72,
+    reason: "Same seller · wardrobe match",
+  },
+  {
+    id: "cream-jumper",
+    title: "Butter yellow fitted tee",
+    brand: "Arket",
+    seller: "Maya",
+    itemPrice: 11,
+    shipping: 4.29,
+    delivery: "Pickup point",
+    distanceMiles: 1.8,
+    distanceLabel: "1.8 miles away",
+    area: "East London",
+    size: "M",
+    condition: "Very good",
+    favourite: true,
+    imagePosition: "75% 33.333%",
+    score: 66,
+    reason: "Favourite · pickup only",
+  },
+  {
+    id: "green-tote",
+    title: "Oversized yellow T-shirt",
+    brand: "No label",
+    seller: "Nora",
+    itemPrice: 4.5,
+    shipping: 1.99,
+    delivery: "Home delivery",
+    distanceMiles: 2.4,
+    distanceLabel: "Under 5 miles",
+    area: "North London",
+    size: "M",
+    condition: "Good",
+    favourite: false,
+    imagePosition: "100% 33.333%",
+    score: 70,
+    reason: "Same seller · efficient add-on",
+  },
+  {
+    id: "trainers",
+    title: "Cropped lemon tee",
+    brand: "Zara",
+    seller: "Iris",
+    itemPrice: 14,
+    shipping: 3.49,
+    delivery: "Either",
+    distanceMiles: 8.5,
+    distanceLabel: "Under 10 miles",
+    area: "West London",
+    size: "S",
+    condition: "Good",
+    favourite: false,
+    imagePosition: "0% 66.667%",
+    score: 61,
+    reason: "Flexible delivery · wider distance band",
+  },
+  {
+    id: "blue-shirt",
+    title: "Soft yellow cotton shirt",
+    brand: "Uniqlo",
+    seller: "Nora",
+    itemPrice: 7,
+    shipping: 1.99,
+    delivery: "Home delivery",
+    distanceMiles: 2.4,
+    distanceLabel: "Under 5 miles",
+    area: "North London",
+    size: "M",
+    condition: "Very good",
+    favourite: false,
+    imagePosition: "25% 66.667%",
+    score: 77,
+    reason: "Same seller · size match",
+  },
+  {
+    id: "floral-dress",
+    title: "Yellow scoop-neck tee",
+    brand: "Nobody's Child-style",
+    seller: "Sofia",
+    itemPrice: 13,
+    shipping: 2.49,
+    delivery: "Home delivery",
+    distanceMiles: 4.8,
+    distanceLabel: "Under 5 miles",
+    area: "South London",
+    size: "M",
+    condition: "Very good",
+    favourite: true,
+    imagePosition: "50% 66.667%",
+    score: 69,
+    reason: "Favourite · home delivery",
+  },
+  {
+    id: "linen-trousers",
+    title: "Linen yellow T-shirt",
+    brand: "Mango",
+    seller: "Sofia",
+    itemPrice: 10,
+    shipping: 2.49,
+    delivery: "Home delivery",
+    distanceMiles: 4.8,
+    distanceLabel: "Under 5 miles",
+    area: "South London",
+    size: "M",
+    condition: "Good",
+    favourite: false,
+    imagePosition: "75% 66.667%",
+    score: 67,
+    reason: "Same area · home delivery",
+  },
+  {
+    id: "beige-jacket",
+    title: "Faded yellow pocket tee",
+    brand: "Muji-style",
+    seller: "Maya",
+    itemPrice: 16,
+    shipping: 4.29,
+    delivery: "Pickup point",
+    distanceMiles: 1.8,
+    distanceLabel: "1.8 miles away",
+    area: "East London",
+    size: "M",
+    condition: "Very good",
+    favourite: false,
+    imagePosition: "100% 66.667%",
+    score: 57,
+    reason: "Nearby pickup option",
+  },
+  {
+    id: "scarf",
+    title: "Yellow cotton vest top",
+    brand: "Vintage",
+    seller: "Nora",
+    itemPrice: 3,
+    shipping: 1.99,
+    delivery: "Home delivery",
+    distanceMiles: 2.4,
+    distanceLabel: "Under 5 miles",
+    area: "North London",
+    size: "S",
+    condition: "Good",
+    favourite: false,
+    imagePosition: "0% 100%",
+    score: 73,
+    reason: "Same seller · easy add-on",
+  },
+  {
+    id: "hoodie",
+    title: "Golden yellow long-sleeve",
+    brand: "Weekday",
+    seller: "Iris",
+    itemPrice: 8,
+    shipping: 3.49,
+    delivery: "Either",
+    distanceMiles: 8.5,
+    distanceLabel: "Under 10 miles",
+    area: "West London",
+    size: "M",
+    condition: "Good",
+    favourite: false,
+    imagePosition: "25% 100%",
+    score: 59,
+    reason: "Flexible delivery · moderate distance",
+  },
+  {
+    id: "belt",
+    title: "Vintage yellow graphic-free tee",
+    brand: "Vintage",
+    seller: "Nora",
+    itemPrice: 5,
+    shipping: 1.99,
+    delivery: "Home delivery",
+    distanceMiles: 2.4,
+    distanceLabel: "Under 5 miles",
+    area: "North London",
+    size: "M",
+    condition: "Good",
+    favourite: false,
+    imagePosition: "50% 100%",
+    score: 71,
+    reason: "Same seller · bundle discount",
+  },
+  {
+    id: "small-handbag",
+    title: "Yellow relaxed cotton tee",
+    brand: "Vintage",
+    seller: "Sofia",
+    itemPrice: 12,
+    shipping: 2.49,
+    delivery: "Home delivery",
+    distanceMiles: 4.8,
+    distanceLabel: "Under 5 miles",
+    area: "South London",
+    size: "M",
+    condition: "Very good",
+    favourite: false,
+    imagePosition: "75% 100%",
+    score: 64,
+    reason: "Home delivery · nearby band",
+  },
+  {
+    id: "sunglasses",
+    title: "Light lemon crew neck",
+    brand: "No label",
+    seller: "Maya",
+    itemPrice: 4,
+    shipping: 4.29,
+    delivery: "Pickup point",
+    distanceMiles: 1.8,
+    distanceLabel: "1.8 miles away",
+    area: "East London",
+    size: "M",
+    condition: "Good",
+    favourite: false,
+    imagePosition: "100% 100%",
+    score: 55,
+    reason: "Affordable piece, delivery changes the value",
   },
 ];
 
@@ -401,17 +668,19 @@ export default {
     AppFooter,
     AppNavbar,
     ArrowLeft,
+    Camera,
+    Grid2X2,
     Heart,
     Home,
     Leaf,
+    Mail,
     MapPin,
-    MessageCircle,
     PackagePlus,
     Plus,
     Search,
-    ShoppingBag,
+    ShieldCheck,
     SlidersHorizontal,
-    User,
+    UserRound,
     X,
   },
   setup() {
@@ -421,7 +690,7 @@ export default {
         {
           name: "description",
           content:
-            "Speculative Vinted-inspired prototype exploring total purchase cost, privacy-safe distance, and smart local bundling.",
+            "Speculative Vinted-inspired prototype exploring full-value discovery, privacy-safe distance, and smart local bundling for pre-loved fashion.",
         },
       ],
     });
@@ -430,14 +699,15 @@ export default {
     return {
       screen: "results",
       sortMode: "total",
-      deliveryFilter: "home",
-      distanceFilter: "under-5",
+      deliveryFilter: "any",
+      distanceFilter: "any",
       selectedListingId: "yellow-b",
       bundleOpen: false,
-      selectedBundleIds: ["jeans", "skirt"],
+      selectedBundleIds: ["jeans-a", "skirt-a"],
+      productSheet: resolveAsset("@/images/vinted/product-sheet.png"),
       sortOptions: [
         { id: "item", label: "Item price" },
-        { id: "total", label: "Total cost" },
+        { id: "total", label: "Full value" },
       ],
       deliveryOptions: [
         { id: "any", label: "Either" },
@@ -452,7 +722,6 @@ export default {
         { id: "london", label: "Greater London" },
       ],
       listings,
-      bundleItems,
     };
   },
   computed: {
@@ -460,8 +729,8 @@ export default {
       const filtered = this.listings.filter((listing) => {
         const deliveryMatch =
           this.deliveryFilter === "any" ||
-          (this.deliveryFilter === "home" && listing.delivery === "Home delivery") ||
-          (this.deliveryFilter === "pickup" && listing.delivery === "Pickup point");
+          (this.deliveryFilter === "home" && ["Home delivery", "Either"].includes(listing.delivery)) ||
+          (this.deliveryFilter === "pickup" && ["Pickup point", "Either"].includes(listing.delivery));
 
         const distanceMatch =
           this.distanceFilter === "any" ||
@@ -482,8 +751,8 @@ export default {
       return this.listings.find((listing) => listing.id === this.selectedListingId) || this.listings[0];
     },
     bundleRecommendations() {
-      return this.bundleItems
-        .filter((item) => item.seller === this.selectedListing.seller)
+      return this.listings
+        .filter((item) => item.seller === this.selectedListing.seller && item.id !== this.selectedListing.id)
         .sort((a, b) => b.score - a.score);
     },
     selectedBundleItems() {
@@ -501,16 +770,16 @@ export default {
     noteTitle() {
       if (this.bundleOpen) return "Bundle math updates as you add items.";
       if (this.screen === "detail") return "The item detail creates the bundling moment.";
-      return this.sortMode === "total" ? "Total cost beats item price." : "Item-price sorting hides delivery friction.";
+      return this.sortMode === "total" ? "Clear pricing helps you find the best item." : "Price-only sorting can hide the full picture.";
     },
     noteCopy() {
       if (this.bundleOpen) {
-        return "Recommendations are mocked, but scored like a real product decision: same seller first, then favourites, size, style, and bundle discount.";
+        return "Recommendations are mocked, but scored like a considered product decision: same seller first, then favourites, size, style, and bundle value.";
       }
       if (this.screen === "detail") {
-        return "The buyer sees delivery impact and a same-seller opportunity before checkout, while the seller location stays approximate.";
+        return "The buyer sees delivery impact and a same-seller opportunity before committing, while location details stay approximate.";
       }
-      return "Try switching to item-price sorting. The £4 shirt rises, even though it costs more after shipping.";
+      return "Try switching to price-only sorting. The affordable shirt moves up, even when delivery makes another option better value.";
     },
   },
   methods: {
@@ -519,6 +788,23 @@ export default {
     },
     totalCost(listing) {
       return listing.itemPrice + listing.shipping;
+    },
+    likeCount(listing) {
+      return Math.max(8, Math.round(listing.score / 3) + (listing.favourite ? 6 : 0));
+    },
+    productImageStyle(item, mode = "card") {
+      const columns = 5;
+      const rows = 4;
+      const detailZoom = 1.08;
+
+      return {
+        backgroundImage: `url(${this.productSheet})`,
+        backgroundPosition: item.imagePosition,
+        backgroundSize:
+          mode === "detail"
+            ? `${columns * detailZoom * 100}% ${rows * detailZoom * 100}%`
+            : `${columns * 100}% ${rows * 100}%`,
+      };
     },
     openListing(id) {
       this.selectedListingId = id;
@@ -542,8 +828,8 @@ export default {
   --vinted-teal-dark: #005f68;
   --vinted-mint: #e4f7f3;
   --vinted-line: #dce5e3;
-  background: #f7faf9;
-  color: #12211f;
+  background: var(--color-bg);
+  color: var(--color-text);
   min-height: 100vh;
 }
 
@@ -559,7 +845,7 @@ export default {
 
 .back-link {
   align-items: center;
-  color: var(--vinted-teal-dark);
+  color: var(--color-text-secondary);
   display: inline-flex;
   font-size: 0.86rem;
   gap: 0.35rem;
@@ -567,7 +853,7 @@ export default {
 }
 
 .project-label {
-  color: var(--vinted-teal-dark);
+  color: var(--color-text-secondary);
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0;
@@ -583,7 +869,7 @@ export default {
 }
 
 .hero-copy {
-  color: #425250;
+  color: var(--color-text-secondary);
   font-size: clamp(1rem, 1.4vw, 1.2rem);
   line-height: 1.6;
   margin: 1.25rem 0 0;
@@ -592,14 +878,54 @@ export default {
 
 .disclaimer {
   background: #ffffff;
-  border: 1px solid var(--vinted-line);
+  border: 1px solid var(--color-border-strong);
   border-radius: 8px;
-  color: #52615f;
+  color: var(--color-text-secondary);
   font-size: 0.84rem;
   line-height: 1.45;
   margin-top: 1.35rem;
   max-width: 28rem;
   padding: 0.75rem 0.85rem;
+}
+
+.feature-brief {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 1rem;
+  max-width: 38rem;
+}
+
+.feature-brief article {
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 0.85rem;
+}
+
+.feature-brief span,
+.feature-brief strong,
+.feature-brief p {
+  display: block;
+}
+
+.feature-brief span {
+  color: var(--color-text-muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.feature-brief strong {
+  color: var(--color-text);
+  font-size: 0.9rem;
+}
+
+.feature-brief p {
+  color: var(--color-text-secondary);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  margin: 0.35rem 0 0;
 }
 
 .prototype-stage {
@@ -610,15 +936,17 @@ export default {
 }
 
 .phone-frame {
-  background: #10211f;
+  background: #111111;
   border-radius: 34px;
-  box-shadow: 0 24px 60px rgba(0, 74, 69, 0.22);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.16);
+  justify-self: center;
   padding: 0.65rem;
+  width: min(100%, 24rem);
 }
 
 .phone-status {
   align-items: center;
-  color: #d8fffa;
+  color: #ffffff;
   display: flex;
   font-size: 0.72rem;
   justify-content: space-between;
@@ -628,6 +956,8 @@ export default {
 .app-screen {
   background: #f5f7f6;
   border-radius: 26px;
+  color: #182220;
+  font-family: Inter, Arial, Helvetica, sans-serif;
   height: 42.5rem;
   overflow: hidden;
   position: relative;
@@ -639,27 +969,33 @@ export default {
   border-bottom: 1px solid var(--vinted-line);
   display: flex;
   gap: 0.55rem;
-  padding: 0.85rem 0.75rem 0.65rem;
+  padding: 0.82rem 0.75rem 0.62rem;
 }
 
 .search-bar {
   align-items: center;
-  background: #f3f6f5;
-  border: 1px solid #d8e0de;
-  border-radius: 999px;
-  color: #576562;
+  background: #eef3f2;
+  border: 1px solid #d5dddb;
+  border-radius: 12px;
+  color: #69706f;
   display: flex;
   flex: 1;
-  font-size: 0.83rem;
+  font-size: 0.86rem;
   gap: 0.45rem;
   min-width: 0;
-  padding: 0.58rem 0.72rem;
+  padding: 0.58rem 0.62rem;
 }
 
 .search-bar span {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.camera-icon {
+  color: var(--vinted-teal);
+  flex: 0 0 auto;
+  margin-left: auto;
 }
 
 .market-header button,
@@ -703,8 +1039,8 @@ export default {
   border-radius: 999px;
   color: #40504e;
   flex: 0 0 auto;
-  font-size: 0.72rem;
-  padding: 0.42rem 0.62rem;
+  font-size: 0.78rem;
+  padding: 0.46rem 0.68rem;
 }
 
 .filter-row button.active,
@@ -764,19 +1100,19 @@ export default {
 
 .listing-grid {
   display: grid;
-  gap: 0.65rem;
+  column-gap: 0.65rem;
+  row-gap: 1rem;
   grid-template-columns: 1fr 1fr;
 }
 
 .listing-card {
-  background: #ffffff;
-  border: 1px solid #e1e7e5;
-  border-radius: 11px;
-  overflow: hidden;
+  background: transparent;
+  border: 0;
 }
 
 .listing-card.selected {
-  border-color: var(--vinted-teal);
+  outline: 2px solid rgba(0, 119, 130, 0.28);
+  outline-offset: 3px;
 }
 
 .listing-card button {
@@ -794,120 +1130,103 @@ export default {
 .listing-photo,
 .detail-photo,
 .bundle-thumb {
-  background: #f1d23f;
+  background-color: #f3f3f3;
+  background-repeat: no-repeat;
   display: block;
   position: relative;
 }
 
 .listing-photo {
-  height: 8rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 100%;
 }
 
 .heart-badge {
   align-items: center;
-  background: #ffffff;
-  border-radius: 50%;
-  color: var(--vinted-teal);
+  background: rgba(20, 28, 27, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  bottom: 0.45rem;
+  color: #edf5f3;
   display: inline-flex;
-  height: 1.55rem;
+  gap: 0.22rem;
+  height: 1.85rem;
   justify-content: center;
   position: absolute;
   right: 0.45rem;
-  top: 0.45rem;
-  width: 1.55rem;
+  width: auto;
+  min-width: 2.8rem;
+  padding: 0 0.48rem;
+}
+
+.heart-badge span {
+  color: #edf5f3;
+  display: inline;
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin: 0;
 }
 
 .listing-meta {
   display: block;
-  padding: 0.52rem;
+  padding: 0.42rem 0 0;
 }
 
 .listing-meta strong,
-.listing-meta span {
+.listing-meta span,
+.listing-meta b {
   display: block;
 }
 
 .listing-meta strong {
-  color: #172523;
-  font-size: 0.78rem;
-  line-height: 1.25;
-  min-height: 2rem;
+  color: #293332;
+  font-size: 0.82rem;
+  font-weight: 500;
+  line-height: 1.22;
+  min-height: 0;
 }
 
 .listing-meta span {
-  color: #687472;
-  font-size: 0.65rem;
-  margin-top: 0.18rem;
+  color: #6c7473;
+  font-size: 0.69rem;
+  line-height: 1.25;
+  margin-top: 0.16rem;
 }
 
-.cost-row {
-  align-items: baseline;
-  display: flex !important;
-  gap: 0.35rem;
-  justify-content: space-between;
+.item-line {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.cost-row b {
-  color: #172523;
-  font-size: 0.82rem;
+.detail-line {
+  color: #727b79 !important;
 }
 
-.cost-row small {
-  color: #697572;
-  font-size: 0.56rem;
-  text-align: right;
+.item-price {
+  color: #293332;
+  font-size: 0.83rem;
+  font-weight: 500;
+  margin-top: 0.48rem;
 }
 
-.total-pill {
-  background: var(--vinted-mint);
-  border-radius: 999px;
-  color: var(--vinted-teal-dark) !important;
-  font-weight: 800;
-  margin-top: 0.38rem !important;
-  padding: 0.28rem 0.42rem;
-  width: max-content;
-}
-
-.location-line {
+.included-price {
   align-items: center;
-  display: flex !important;
-  gap: 0.22rem;
+  color: var(--vinted-teal-dark) !important;
+  display: inline-flex !important;
+  font-size: 0.86rem !important;
+  font-weight: 500;
+  gap: 0.18rem;
+  line-height: 1.2;
+  margin-top: 0.16rem !important;
 }
 
-.photo-yellow {
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.35), transparent 42%),
-    linear-gradient(145deg, #f4d642 0 58%, #e5b332 58%);
-}
-
-.photo-sun {
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.42), transparent 44%),
-    linear-gradient(145deg, #f7d953 0 50%, #008c84 50%);
-}
-
-.photo-lemon {
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.4), transparent 44%),
-    linear-gradient(145deg, #f3d85a 0 54%, #b9dfd7 54%);
-}
-
-.photo-gold {
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.35), transparent 44%),
-    linear-gradient(145deg, #f0c84c 0 55%, #df8c76 55%);
-}
-
-.photo-denim {
-  background: linear-gradient(145deg, #37688c 0 52%, #b7d9e4 52%);
-}
-
-.photo-black {
-  background: linear-gradient(145deg, #1f2526 0 58%, #c8cec9 58%);
-}
-
-.photo-mint {
-  background: linear-gradient(145deg, #a8ddd1 0 56%, #f1d64f 56%);
+.delivery-line {
+  color: #7c8583 !important;
+  font-size: 0.62rem !important;
+  margin-top: 0.22rem !important;
 }
 
 .back-to-results {
@@ -920,9 +1239,10 @@ export default {
 }
 
 .detail-photo {
+  aspect-ratio: 1 / 1;
   border-radius: 12px;
-  height: 15rem;
   overflow: hidden;
+  width: 100%;
 }
 
 .detail-photo span {
@@ -1133,6 +1453,7 @@ export default {
 }
 
 .bundle-thumb {
+  aspect-ratio: 1 / 1;
   border-radius: 8px;
   height: 3.4rem;
 }
@@ -1226,8 +1547,10 @@ export default {
   color: #687471;
   display: flex;
   flex-direction: column;
-  font-size: 0.58rem;
-  gap: 0.16rem;
+  font-size: 0.66rem;
+  font-weight: 600;
+  gap: 0.18rem;
+  position: relative;
 }
 
 .bottom-nav button.active {
@@ -1239,9 +1562,25 @@ export default {
   font-weight: 800;
 }
 
+.bottom-nav .sell-button svg {
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  padding: 0.08rem;
+}
+
+.inbox-button i {
+  background: #d85765;
+  border-radius: 50%;
+  height: 0.58rem;
+  position: absolute;
+  right: 1.15rem;
+  top: -0.06rem;
+  width: 0.58rem;
+}
+
 .prototype-notes {
   background: #ffffff;
-  border: 1px solid var(--vinted-line);
+  border: 1px solid var(--color-border);
   border-radius: 12px;
   padding: 1rem;
 }
@@ -1253,14 +1592,13 @@ export default {
 }
 
 .prototype-notes p:not(.project-label) {
-  color: #52615f;
+  color: var(--color-text-secondary);
   font-size: 0.92rem;
   line-height: 1.55;
   margin: 0.7rem 0 0;
 }
 
-.story-section,
-.insight-band {
+.story-section {
   margin: 0 auto;
   max-width: 1120px;
   padding: clamp(3rem, 7vw, 6rem) clamp(1rem, 5vw, 4rem);
@@ -1288,37 +1626,7 @@ export default {
 }
 
 .problem-section {
-  border-top: 1px solid var(--vinted-line);
-}
-
-.insight-band {
-  display: grid;
-  gap: 0.9rem;
-  grid-template-columns: repeat(3, 1fr);
-  padding-top: 0;
-}
-
-.insight-band article {
-  background: #ffffff;
-  border: 1px solid var(--vinted-line);
-  border-radius: 12px;
-  padding: 1rem;
-}
-
-.insight-band svg {
-  color: var(--vinted-teal);
-}
-
-.insight-band h3 {
-  font-size: 1.08rem;
-  margin: 1.1rem 0 0.35rem;
-}
-
-.insight-band p {
-  color: #52615f;
-  font-size: 0.9rem;
-  line-height: 1.55;
-  margin: 0;
+  border-top: 1px solid var(--color-border-strong);
 }
 
 .drawer-enter-active,
@@ -1358,8 +1666,6 @@ export default {
 
   .phone-frame {
     border-radius: 28px;
-    max-width: 24rem;
-    width: 100%;
   }
 
   .app-screen {
@@ -1374,9 +1680,6 @@ export default {
     margin-top: 0;
   }
 
-  .insight-band {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 420px) {
@@ -1392,10 +1695,6 @@ export default {
   .phone-status {
     padding-left: 0.6rem;
     padding-right: 0.6rem;
-  }
-
-  .listing-photo {
-    height: 7rem;
   }
 
   .listing-meta {
