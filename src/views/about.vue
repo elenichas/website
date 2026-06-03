@@ -202,7 +202,7 @@ export default {
 .about-page {
   min-height: 100vh;
   overflow: visible;
-  background: #ffffff;
+  background: var(--color-bg);
   color: #111111;
 }
 
@@ -252,7 +252,7 @@ export default {
   position: relative;
   min-height: clamp(500px, calc(100vh - 180px), 640px);
   overflow: hidden;
-  background: #ffffff;
+  background: var(--color-bg);
 }
 
 .about-hero__copy {
@@ -304,7 +304,7 @@ export default {
   overflow: hidden;
   border-top: 1px solid rgba(17, 17, 17, 0.1);
   border-bottom: 1px solid rgba(17, 17, 17, 0.1);
-  background: #ffffff;
+  background: var(--color-bg);
   color: rgba(17, 17, 17, 0.52);
   font-size: clamp(0.72rem, 1vw, 0.9rem);
   font-weight: var(--weight-semibold);
@@ -361,7 +361,7 @@ export default {
 }
 
 .about-story {
-  background: #ffffff;
+  background: var(--color-bg);
 }
 
 .story-grid {
@@ -442,7 +442,7 @@ export default {
   margin: 0 calc(50% - 50vw + 7px);
   padding: clamp(4rem, 8vw, 7rem) 0 clamp(5rem, 9vw, 8rem);
   overflow: hidden;
-  background: #d8d6ce;
+  background: var(--color-bg);
   color: #111111;
 }
 

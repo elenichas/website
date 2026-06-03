@@ -4,7 +4,9 @@ import "./style.css";
 // Lazy-loaded route components (code-split per page)
 const Home = () => import(/* webpackChunkName: "home" */ "./views/home.vue");
 const Craft = () => import("./views/design.vue");
-const Playground = () => import("./views/playground/AISandbox.vue");
+const Playground = () => import("./views/playground/PlaygroundIndex.vue");
+const AISandbox = () => import("./views/playground/AISandbox.vue");
+const VintedSmartBundling = () => import("./views/playground/VintedSmartBundling.vue");
 const About = () => import(/* webpackChunkName: "about" */ "./views/about.vue");
 const NotFound = () => import(/* webpackChunkName: "not-found" */ "./views/not-found.vue");
 const HapiProject = () => import(/* webpackChunkName: "hapi" */ "./views/architecture/HapiProject.vue");
@@ -39,6 +41,16 @@ const routes = [
     name: "Playground",
     path: "/playground",
     component: Playground,
+  },
+  {
+    name: "AI Sandbox",
+    path: "/playground/ai-sandbox",
+    component: AISandbox,
+  },
+  {
+    name: "Vinted Smart Bundling",
+    path: "/playground/vinted-smart-bundling",
+    component: VintedSmartBundling,
   },
   {
     name: "About",
