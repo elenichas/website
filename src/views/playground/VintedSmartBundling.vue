@@ -22,70 +22,86 @@
         <div class="feature-brief" aria-label="Designed prototype features">
           <article>
             <span>Feature 1</span>
-            <strong>Smart Discovery</strong>
-            <p>Rank listings by full value, not just the first price a buyer sees.</p>
+            <strong>Full-value discovery</strong>
+            <p>Annotate the normal search flow with total price, delivery, and distance signals.</p>
           </article>
           <article>
             <span>Feature 2</span>
-            <strong>Smart Local Bundling</strong>
-            <p>Surface thoughtful same-seller additions when delivery is already part of the order.</p>
+            <strong>Smart same-seller bundles</strong>
+            <p>Use favorites and size signals to suggest different items from the same seller.</p>
           </article>
         </div>
       </div>
 
       <section class="prototype-stage" aria-label="Interactive Vinted-inspired prototype">
-        <div class="phone-frame">
-          <div class="phone-status">
-            <span>9:41</span>
-            <span>Interactive prototype</span>
+        <div class="prototype-device">
+          <div class="annotation-layer" aria-label="Prototype annotations">
+            <article
+              v-for="annotation in activeAnnotations"
+              :key="annotation.id"
+              class="annotation-note"
+              :class="annotation.position"
+            >
+              <span>{{ annotation.kicker }}</span>
+              <strong>{{ annotation.title }}</strong>
+              <p>{{ annotation.copy }}</p>
+            </article>
           </div>
 
-          <div class="app-screen">
-            <header class="market-header">
-              <div class="search-bar">
-                <Search :size="16" />
-                <span>yellow cotton t-shirt</span>
-                <Camera class="camera-icon" :size="17" />
+          <div class="phone-frame">
+            <div class="phone-status">
+              <span>9:41</span>
+              <span>Interactive prototype</span>
+            </div>
+
+            <div class="app-screen">
+              <header class="market-header">
+                <div class="search-bar">
+                  <Search :size="16" />
+                  <span>yellow cotton t-shirt</span>
+                  <Camera class="camera-icon" :size="17" />
+                </div>
+                <button type="button" aria-label="Open filters">
+                  <SlidersHorizontal :size="18" />
+                </button>
+              </header>
+
+              <div v-if="screen === 'results'" class="control-panel">
+                <div class="control-panel-top">
+                  <label for="distance-filter">Distance</label>
+                  <select id="distance-filter" v-model="distanceFilter">
+                    <option v-for="option in distanceOptions" :key="option.id" :value="option.id">
+                      {{ option.label }}
+                    </option>
+                  </select>
+                </div>
+
+                <nav class="filter-row" aria-label="Listing controls">
+                  <button
+                    v-for="option in sortOptions"
+                    :key="option.id"
+                    type="button"
+                    :class="{ active: sortMode === option.id }"
+                    @click="sortMode = option.id"
+                  >
+                    {{ option.label }}
+                  </button>
+                </nav>
+
+                <div class="chip-scroll" aria-label="Delivery filters">
+                  <button
+                    v-for="option in deliveryOptions"
+                    :key="option.id"
+                    type="button"
+                    :class="{ active: deliveryFilter === option.id }"
+                    @click="deliveryFilter = option.id"
+                  >
+                    {{ option.label }}
+                  </button>
+                </div>
               </div>
-              <button type="button" aria-label="Open filters">
-                <SlidersHorizontal :size="18" />
-              </button>
-            </header>
 
-            <nav class="filter-row" aria-label="Listing controls">
-              <button
-                v-for="option in sortOptions"
-                :key="option.id"
-                type="button"
-                :class="{ active: sortMode === option.id }"
-                @click="sortMode = option.id"
-              >
-                {{ option.label }}
-              </button>
-            </nav>
-
-            <div class="chip-scroll" aria-label="Delivery filters">
-              <button
-                v-for="option in deliveryOptions"
-                :key="option.id"
-                type="button"
-                :class="{ active: deliveryFilter === option.id }"
-                @click="deliveryFilter = option.id"
-              >
-                {{ option.label }}
-              </button>
-            </div>
-
-            <div class="distance-control">
-              <label for="distance-filter">Distance</label>
-              <select id="distance-filter" v-model="distanceFilter">
-                <option v-for="option in distanceOptions" :key="option.id" :value="option.id">
-                  {{ option.label }}
-                </option>
-              </select>
-            </div>
-
-            <section v-if="screen === 'results'" class="results-view" aria-label="Search results">
+              <section v-if="screen === 'results'" class="results-view" aria-label="Search results">
               <div class="results-summary">
                 <strong>{{ filteredListings.length }} results</strong>
                 <span>{{ sortMode === "total" ? "Sorted by full value" : "Sorted by item price" }}</span>
@@ -121,9 +137,9 @@
                   </button>
                 </article>
               </div>
-            </section>
+              </section>
 
-            <section v-else class="detail-view" aria-label="Item detail">
+              <section v-else class="detail-view" aria-label="Item detail">
               <button class="back-to-results" type="button" @click="screen = 'results'">
                 <ArrowLeft :size="14" />
                 Back to results
@@ -138,7 +154,7 @@
                   <h2>{{ selectedListing.title }}</h2>
                   <p>{{ selectedListing.size }} · {{ selectedListing.condition }} · {{ selectedListing.area }}</p>
                 </div>
-                <button type="button" class="heart-button" :aria-label="selectedListing.favourite ? 'Saved item' : 'Save item'">
+                <button type="button" class="heart-button" :aria-label="selectedListing.favourite ? 'Favorite item' : 'Add to favorites'">
                   <Heart :size="17" :fill="selectedListing.favourite ? 'currentColor' : 'none'" />
                 </button>
               </div>
@@ -158,6 +174,18 @@
                 </div>
               </dl>
 
+              <article class="bundle-module">
+                <div>
+                  <p>Make delivery work smarter</p>
+                  <h3>{{ selectedListing.seller }} also has items from your favorites.</h3>
+                  <span>Blue jeans and shoes in your size can ship with this order.</span>
+                </div>
+                <button type="button" @click="bundleOpen = true">
+                  View bundle
+                  <PackagePlus :size="15" />
+                </button>
+              </article>
+
               <article class="impact-card">
                 <div class="impact-icon"><Leaf :size="17" /></div>
                 <div>
@@ -165,26 +193,17 @@
                   <span>{{ selectedListing.delivery }} · {{ selectedListing.distanceLabel }} · approximate location only</span>
                 </div>
               </article>
+              </section>
 
-              <article class="bundle-module">
-                <div>
-                  <p>Make delivery work smarter</p>
-                  <h3>This seller has more pre-loved pieces to consider.</h3>
-                  <span>Add a matching item and keep delivery efficient.</span>
-                </div>
-                <button type="button" @click="bundleOpen = true">
-                  View bundle
-                  <PackagePlus :size="15" />
-                </button>
-              </article>
-            </section>
-
-            <transition name="drawer">
+              <transition name="drawer">
               <section v-if="bundleOpen" class="bundle-drawer" aria-label="Bundle recommendations">
                 <div class="drawer-top">
                   <div>
                     <p>Smart bundle</p>
-                    <h2>Same seller finds</h2>
+                    <h2>From the same seller</h2>
+                    <span class="drawer-context">
+                      Based on items in your favorites.
+                    </span>
                   </div>
                   <button type="button" aria-label="Close bundle drawer" @click="bundleOpen = false">
                     <X :size="17" />
@@ -192,12 +211,16 @@
                 </div>
 
                 <div class="recommendation-list">
-                  <article v-for="item in bundleRecommendations" :key="item.id">
+                  <article
+                    v-for="item in bundleRecommendations"
+                    :key="item.id"
+                    :class="{ selected: selectedBundleIds.includes(item.id) }"
+                  >
                     <span class="bundle-thumb" :style="productImageStyle(item)"></span>
                     <div>
                       <strong>{{ item.title }}</strong>
                       <span>{{ item.reason }}</span>
-                      <small>Score {{ item.score }} · {{ money(item.itemPrice) }}</small>
+                      <small>{{ item.matchLabel }} · {{ money(item.itemPrice) }}</small>
                     </div>
                     <button
                       type="button"
@@ -210,33 +233,48 @@
                 </div>
 
                 <div class="bundle-summary">
-                  <div>
-                    <span>Selected</span>
-                    <strong>{{ 1 + selectedBundleItems.length }} items</strong>
+                  <div class="bundle-summary-copy">
+                    <span>{{ selectedBundleItems.length ? "Bundle savings" : "No bundle savings yet" }}</span>
+                    <strong>{{ selectedBundleItems.length ? money(estimatedSavings) : "Add an item to unlock savings" }}</strong>
                   </div>
-                  <div>
-                    <span>Delivery saved</span>
-                    <strong>{{ money(shippingSaved) }}</strong>
-                  </div>
-                  <div>
-                    <span>Bundle value</span>
-                    <strong>{{ money(bundleDiscount) }}</strong>
-                  </div>
-                  <div class="summary-total">
-                    <span>Estimated savings</span>
-                    <strong>{{ money(estimatedSavings) }}</strong>
+                  <div v-if="selectedBundleItems.length" class="bundle-summary-row">
+                    <span>{{ selectedBundleItems.length }} add-on{{ selectedBundleItems.length === 1 ? "" : "s" }} selected</span>
+                    <strong>{{ money(bundleTotal) }} total</strong>
                   </div>
                 </div>
-              </section>
-            </transition>
 
-            <nav class="bottom-nav" aria-label="Prototype mobile navigation">
-              <button type="button"><Home :size="18" /><span>Home</span></button>
-              <button type="button" class="active"><Grid2X2 :size="18" /><span>Browse</span></button>
-              <button type="button" class="sell-button"><Plus :size="18" /><span>Sell</span></button>
-              <button type="button" class="inbox-button"><Mail :size="18" /><i aria-hidden="true"></i><span>Inbox</span></button>
-              <button type="button"><UserRound :size="18" /><span>Profile</span></button>
-            </nav>
+                <button
+                  type="button"
+                  class="fake-buy-button"
+                  :disabled="selectedBundleItems.length === 0"
+                  @click="completePurchase"
+                >
+                  {{ selectedBundleItems.length ? `Buy bundle for ${money(bundleTotal)}` : "Add an item to buy bundle" }}
+                  <ShoppingBag :size="15" />
+                </button>
+              </section>
+              </transition>
+
+              <transition name="purchase">
+              <section v-if="purchaseComplete" class="purchase-complete" aria-live="polite">
+                <CheckCircle2 :size="34" />
+                <p>Prototype purchase complete</p>
+                <h2>{{ 1 + selectedBundleItems.length }} items from {{ selectedListing.seller }}</h2>
+                <span>
+                  The discovery and bundle prompts now connect to a single buying decision.
+                </span>
+                <button type="button" @click="resetPurchase">Keep exploring</button>
+              </section>
+              </transition>
+
+              <nav class="bottom-nav" aria-label="Prototype mobile navigation">
+                <button type="button"><Home :size="18" /><span>Home</span></button>
+                <button type="button" class="active"><Grid2X2 :size="18" /><span>Browse</span></button>
+                <button type="button" class="sell-button"><Plus :size="18" /><span>Sell</span></button>
+                <button type="button" class="inbox-button"><Mail :size="18" /><i aria-hidden="true"></i><span>Inbox</span></button>
+                <button type="button"><UserRound :size="18" /><span>Profile</span></button>
+              </nav>
+            </div>
           </div>
         </div>
 
@@ -280,6 +318,7 @@
 import {
   ArrowLeft,
   Camera,
+  CheckCircle2,
   Grid2X2,
   Heart,
   Home,
@@ -290,6 +329,7 @@ import {
   Plus,
   Search,
   ShieldCheck,
+  ShoppingBag,
   SlidersHorizontal,
   UserRound,
   X,
@@ -662,6 +702,189 @@ const listings = [
   },
 ];
 
+const bundleItems = [
+  {
+    id: "light-jeans",
+    title: "Light-wash straight jeans",
+    brand: "Weekday",
+    seller: "Nora",
+    itemPrice: 13,
+    size: "W28",
+    condition: "Very good",
+    favourite: true,
+    imageSheet: "bundle",
+    imagePosition: "0% 0%",
+    score: 98,
+    reason: "Same seller · similar to favorite jeans",
+    matchLabel: "Closest favorite match",
+  },
+  {
+    id: "white-trainers",
+    title: "White leather trainers",
+    brand: "Veja-style",
+    seller: "Nora",
+    itemPrice: 18,
+    size: "UK 5",
+    condition: "Good",
+    favourite: true,
+    imageSheet: "bundle",
+    imagePosition: "66.667% 0%",
+    score: 94,
+    reason: "Same seller · shoe size match",
+    matchLabel: "Matches your shoe size",
+  },
+  {
+    id: "cream-cardigan",
+    title: "Cream rib cardigan",
+    brand: "Arket",
+    seller: "Nora",
+    itemPrice: 11,
+    size: "M",
+    condition: "Very good",
+    favourite: false,
+    imageSheet: "bundle",
+    imagePosition: "0% 50%",
+    score: 87,
+    reason: "Same seller · outfit match",
+    matchLabel: "Works with this outfit",
+  },
+  {
+    id: "denim-shirt",
+    title: "Soft denim overshirt",
+    brand: "Uniqlo",
+    seller: "Nora",
+    itemPrice: 12,
+    size: "M",
+    condition: "Very good",
+    favourite: false,
+    imageSheet: "bundle",
+    imagePosition: "66.667% 50%",
+    score: 84,
+    reason: "Same seller · layer in your size",
+    matchLabel: "Layer in your size",
+  },
+  {
+    id: "mary-janes",
+    title: "Burgundy Mary Jane flats",
+    brand: "Vintage",
+    seller: "Nora",
+    itemPrice: 16,
+    size: "UK 5",
+    condition: "Good",
+    favourite: true,
+    imageSheet: "bundle",
+    imagePosition: "100% 0%",
+    score: 82,
+    reason: "Same seller · favorite shoe style",
+    matchLabel: "Similar to favorite shoes",
+  },
+  {
+    id: "olive-tote",
+    title: "Olive canvas tote",
+    brand: "No label",
+    seller: "Nora",
+    itemPrice: 6,
+    size: "One size",
+    condition: "Good",
+    favourite: false,
+    imageSheet: "bundle",
+    imagePosition: "33.333% 50%",
+    score: 75,
+    reason: "Same seller · low-cost add-on",
+    matchLabel: "Easy add-on",
+  },
+  {
+    id: "dark-jeans",
+    title: "Dark indigo straight jeans",
+    brand: "Cos",
+    seller: "Maya",
+    itemPrice: 15,
+    size: "W28",
+    condition: "Very good",
+    favourite: true,
+    imageSheet: "bundle",
+    imagePosition: "33.333% 0%",
+    score: 86,
+    reason: "Same seller · favorite denim style",
+    matchLabel: "Similar to favorite denim",
+  },
+  {
+    id: "black-belt",
+    title: "Black leather belt",
+    brand: "Vintage",
+    seller: "Maya",
+    itemPrice: 7,
+    size: "M",
+    condition: "Good",
+    favourite: false,
+    imageSheet: "bundle",
+    imagePosition: "100% 50%",
+    score: 74,
+    reason: "Same seller · outfit add-on",
+    matchLabel: "Easy add-on",
+  },
+  {
+    id: "navy-skirt",
+    title: "Navy cotton midi skirt",
+    brand: "Monki",
+    seller: "Iris",
+    itemPrice: 10,
+    size: "M",
+    condition: "Good",
+    favourite: true,
+    imageSheet: "bundle",
+    imagePosition: "0% 100%",
+    score: 83,
+    reason: "Same seller · favorite skirt style",
+    matchLabel: "Similar to a favorite",
+  },
+  {
+    id: "striped-top",
+    title: "Striped long-sleeve top",
+    brand: "Cos",
+    seller: "Iris",
+    itemPrice: 8,
+    size: "M",
+    condition: "Very good",
+    favourite: false,
+    imageSheet: "bundle",
+    imagePosition: "33.333% 100%",
+    score: 76,
+    reason: "Same seller · wardrobe match",
+    matchLabel: "Wardrobe match",
+  },
+  {
+    id: "tan-loafers",
+    title: "Tan leather loafers",
+    brand: "Vintage",
+    seller: "Sofia",
+    itemPrice: 19,
+    size: "UK 5",
+    condition: "Good",
+    favourite: false,
+    imageSheet: "bundle",
+    imagePosition: "66.667% 100%",
+    score: 77,
+    reason: "Same seller · shoe size match",
+    matchLabel: "Matches your shoe size",
+  },
+  {
+    id: "blue-button-up",
+    title: "Pale blue button-up shirt",
+    brand: "Uniqlo",
+    seller: "Sofia",
+    itemPrice: 9,
+    size: "M",
+    condition: "Very good",
+    favourite: true,
+    imageSheet: "bundle",
+    imagePosition: "100% 100%",
+    score: 73,
+    reason: "Same seller · favorite blue item",
+    matchLabel: "Similar to a favorite",
+  },
+];
+
 export default {
   name: "VintedSmartBundling",
   components: {
@@ -669,6 +892,7 @@ export default {
     AppNavbar,
     ArrowLeft,
     Camera,
+    CheckCircle2,
     Grid2X2,
     Heart,
     Home,
@@ -679,6 +903,7 @@ export default {
     Plus,
     Search,
     ShieldCheck,
+    ShoppingBag,
     SlidersHorizontal,
     UserRound,
     X,
@@ -703,8 +928,10 @@ export default {
       distanceFilter: "any",
       selectedListingId: "yellow-b",
       bundleOpen: false,
-      selectedBundleIds: ["jeans-a", "skirt-a"],
+      purchaseComplete: false,
+      selectedBundleIds: ["light-jeans", "white-trainers"],
       productSheet: resolveAsset("@/images/vinted/product-sheet.png"),
+      bundleSheet: resolveAsset("@/images/vinted/bundle-sheet.png"),
       sortOptions: [
         { id: "item", label: "Item price" },
         { id: "total", label: "Full value" },
@@ -722,6 +949,7 @@ export default {
         { id: "london", label: "Greater London" },
       ],
       listings,
+      bundleItems,
     };
   },
   computed: {
@@ -750,8 +978,76 @@ export default {
     selectedListing() {
       return this.listings.find((listing) => listing.id === this.selectedListingId) || this.listings[0];
     },
+    activeAnnotations() {
+      if (this.purchaseComplete) {
+        return [
+          {
+            id: "purchase-outcome",
+            kicker: "Outcome",
+            title: "Both proposed features converge here.",
+            copy: "Discovery starts the decision. Bundling increases the basket before the fake purchase.",
+            position: "note-right note-purchase",
+          },
+        ];
+      }
+
+      if (this.bundleOpen) {
+        return [
+          {
+            id: "bundle-recs",
+            kicker: "Feature 2",
+            title: "Bundle recommendations stay outside the search task.",
+            copy: "Same seller first, then favorite categories and size signals.",
+            position: "note-right note-drawer",
+          },
+          {
+            id: "bundle-buy",
+            kicker: "Prototype outcome",
+            title: "The fake buy button closes the loop.",
+            copy: "The flow shows how these prompts can lead to a larger order.",
+            position: "note-left note-buy",
+          },
+        ];
+      }
+
+      if (this.screen === "detail") {
+        return [
+          {
+            id: "pricing-layer",
+            kicker: "Feature 1",
+            title: "Added pricing layer.",
+            copy: "Item, delivery, and total are visible before commitment.",
+            position: "note-left note-price",
+          },
+          {
+            id: "bundle-trigger",
+            kicker: "Feature 2",
+            title: "Same-seller bundle prompt.",
+            copy: "The app shifts from one item to relevant same-seller additions.",
+            position: "note-right note-trigger",
+          },
+        ];
+      }
+
+      return [
+        {
+            id: "existing-shell",
+            kicker: "Existing flow",
+            title: "The search UI stays familiar.",
+            copy: "The normal browse pattern stays intact.",
+          position: "note-left note-existing",
+        },
+        {
+            id: "full-value-sort",
+            kicker: "Feature 1",
+            title: "Sort by full value, not just item price.",
+            copy: "Delivery and distance change which item is best value.",
+          position: "note-right note-sort",
+        },
+      ];
+    },
     bundleRecommendations() {
-      return this.listings
+      return this.bundleItems
         .filter((item) => item.seller === this.selectedListing.seller && item.id !== this.selectedListing.id)
         .sort((a, b) => b.score - a.score);
     },
@@ -767,14 +1063,22 @@ export default {
     estimatedSavings() {
       return this.shippingSaved + this.bundleDiscount;
     },
+    bundleTotal() {
+      const itemsTotal = this.selectedBundleItems.reduce((sum, item) => sum + item.itemPrice, this.selectedListing.itemPrice);
+      return Math.max(0, itemsTotal + this.selectedListing.shipping - this.estimatedSavings);
+    },
     noteTitle() {
-      if (this.bundleOpen) return "Bundle math updates as you add items.";
+      if (this.purchaseComplete) return "Both proposed features now end in a purchase.";
+      if (this.bundleOpen) return "Bundle value updates as you add items.";
       if (this.screen === "detail") return "The item detail creates the bundling moment.";
       return this.sortMode === "total" ? "Clear pricing helps you find the best item." : "Price-only sorting can hide the full picture.";
     },
     noteCopy() {
+      if (this.purchaseComplete) {
+        return "The fake buy step shows the product outcome: full-value discovery starts the decision, then same-seller recommendations increase basket value.";
+      }
       if (this.bundleOpen) {
-        return "Recommendations are mocked, but scored like a considered product decision: same seller first, then favourites, size, style, and bundle value.";
+        return "The summary now keeps the decision simple: add at least one item, see the bundle saving, then buy the combined order.";
       }
       if (this.screen === "detail") {
         return "The buyer sees delivery impact and a same-seller opportunity before committing, while location details stay approximate.";
@@ -793,23 +1097,22 @@ export default {
       return Math.max(8, Math.round(listing.score / 3) + (listing.favourite ? 6 : 0));
     },
     productImageStyle(item, mode = "card") {
-      const columns = 5;
-      const rows = 4;
-      const detailZoom = 1.08;
+      const isBundleImage = item.imageSheet === "bundle";
+      const columns = isBundleImage ? 4 : 5;
+      const rows = isBundleImage ? 3 : 4;
 
       return {
-        backgroundImage: `url(${this.productSheet})`,
+        backgroundImage: `url(${isBundleImage ? this.bundleSheet : this.productSheet})`,
         backgroundPosition: item.imagePosition,
-        backgroundSize:
-          mode === "detail"
-            ? `${columns * detailZoom * 100}% ${rows * detailZoom * 100}%`
-            : `${columns * 100}% ${rows * 100}%`,
+        backgroundSize: `${columns * 100}% ${rows * 100}%`,
       };
     },
     openListing(id) {
       this.selectedListingId = id;
       this.screen = "detail";
       this.bundleOpen = false;
+      this.purchaseComplete = false;
+      this.selectedBundleIds = this.bundleRecommendations.slice(0, 2).map((item) => item.id);
     },
     toggleBundleItem(id) {
       if (this.selectedBundleIds.includes(id)) {
@@ -817,6 +1120,15 @@ export default {
         return;
       }
       this.selectedBundleIds = [...this.selectedBundleIds, id];
+    },
+    completePurchase() {
+      if (this.selectedBundleItems.length === 0) return;
+      this.bundleOpen = false;
+      this.purchaseComplete = true;
+    },
+    resetPurchase() {
+      this.purchaseComplete = false;
+      this.screen = "results";
     },
   },
 };
@@ -932,7 +1244,16 @@ export default {
   align-items: center;
   display: grid;
   gap: 1.2rem;
-  grid-template-columns: minmax(18rem, 24rem) minmax(12rem, 1fr);
+  grid-column: 1 / -1;
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+
+.prototype-device {
+  justify-self: center;
+  min-height: 46rem;
+  position: relative;
+  width: min(100%, 54rem);
 }
 
 .phone-frame {
@@ -941,7 +1262,129 @@ export default {
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.16);
   justify-self: center;
   padding: 0.65rem;
+  position: relative;
+  z-index: 2;
+  margin: 0 auto;
   width: min(100%, 24rem);
+}
+
+.annotation-layer {
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.annotation-note {
+  background: #ffffff;
+  border: 1px solid rgba(17, 17, 17, 0.12);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(17, 17, 17, 0.08);
+  color: #17201e;
+  max-width: 10.2rem;
+  padding: 0.72rem 0.78rem;
+  position: absolute;
+  z-index: 3;
+}
+
+.annotation-note::after {
+  background: rgba(17, 17, 17, 0.24);
+  content: "";
+  height: 1px;
+  position: absolute;
+  top: 50%;
+  transform-origin: center;
+}
+
+.annotation-note::before {
+  background: #111111;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(17, 17, 17, 0.18);
+  content: "";
+  height: 0.42rem;
+  position: absolute;
+  top: calc(50% - 0.21rem);
+  width: 0.42rem;
+}
+
+.annotation-note span,
+.annotation-note strong,
+.annotation-note p {
+  display: block;
+}
+
+.annotation-note span {
+  color: var(--color-text-muted);
+  font-size: 0.64rem;
+  font-weight: 800;
+  margin-bottom: 0.26rem;
+}
+
+.annotation-note strong {
+  font-size: 0.83rem;
+  line-height: 1.22;
+}
+
+.annotation-note p {
+  color: #53605d;
+  font-size: 0.68rem;
+  line-height: 1.42;
+  margin: 0.32rem 0 0;
+}
+
+.note-left {
+  left: 0;
+}
+
+.note-left::after {
+  left: 100%;
+  width: 3rem;
+}
+
+.note-left::before {
+  left: calc(100% + 3rem);
+}
+
+.note-right {
+  right: 0;
+}
+
+.note-right::after {
+  right: 100%;
+  width: 3rem;
+}
+
+.note-right::before {
+  right: calc(100% + 3rem);
+}
+
+.note-existing {
+  top: 4.4rem;
+}
+
+.note-sort {
+  top: 13rem;
+}
+
+.note-price {
+  top: 19.4rem;
+}
+
+.note-trigger {
+  top: 29.8rem;
+}
+
+.note-drawer {
+  top: 14.2rem;
+}
+
+.note-buy {
+  bottom: 7.6rem;
+}
+
+.note-purchase {
+  top: 19rem;
 }
 
 .phone-status {
@@ -970,6 +1413,7 @@ export default {
   display: flex;
   gap: 0.55rem;
   padding: 0.82rem 0.75rem 0.62rem;
+  position: relative;
 }
 
 .search-bar {
@@ -1024,13 +1468,51 @@ export default {
   width: 2.25rem;
 }
 
+.control-panel {
+  background: #ffffff;
+  border-bottom: 1px solid var(--vinted-line);
+  padding: 0.48rem 0.75rem 0.62rem;
+}
+
+.control-panel-top {
+  align-items: center;
+  display: flex;
+  gap: 0.45rem;
+  min-height: 1.75rem;
+  justify-content: flex-end;
+}
+
+.control-panel-top label {
+  color: #61706e;
+  font-size: 0.68rem;
+}
+
+.control-panel-top select {
+  background: #f3f6f5;
+  border: 1px solid #d8e0de;
+  border-radius: 999px;
+  color: #243432;
+  font: inherit;
+  font-size: 0.68rem;
+  max-width: 7.2rem;
+  padding: 0.3rem 0.42rem;
+}
+
 .filter-row,
 .chip-scroll {
   background: #ffffff;
   display: flex;
-  gap: 0.45rem;
+  gap: 0.35rem;
   overflow-x: auto;
-  padding: 0.45rem 0.75rem;
+  padding: 0;
+}
+
+.filter-row {
+  margin-top: 0.34rem;
+}
+
+.chip-scroll {
+  margin-top: 0.36rem;
 }
 
 .filter-row button,
@@ -1039,8 +1521,9 @@ export default {
   border-radius: 999px;
   color: #40504e;
   flex: 0 0 auto;
-  font-size: 0.78rem;
-  padding: 0.46rem 0.68rem;
+  font-size: 0.69rem;
+  min-height: 1.72rem;
+  padding: 0.32rem 0.54rem;
 }
 
 .filter-row button.active,
@@ -1050,43 +1533,23 @@ export default {
   color: var(--vinted-teal-dark);
 }
 
-.distance-control {
-  align-items: center;
-  background: #ffffff;
-  border-bottom: 1px solid var(--vinted-line);
-  display: flex;
-  gap: 0.5rem;
-  justify-content: space-between;
-  padding: 0 0.75rem 0.6rem;
-}
-
-.distance-control label {
-  color: #61706e;
-  font-size: 0.72rem;
-}
-
-.distance-control select {
-  background: #f3f6f5;
-  border: 1px solid #d8e0de;
-  border-radius: 999px;
-  color: #243432;
-  font: inherit;
-  font-size: 0.72rem;
-  padding: 0.36rem 0.5rem;
-}
-
-.results-view,
-.detail-view {
-  height: calc(100% - 12.95rem);
+.results-view {
+  height: calc(100% - 10.32rem);
   overflow-y: auto;
-  padding: 0.75rem 0.75rem 5.2rem;
+  padding: 0.68rem 0.75rem 5.45rem;
+}
+
+.detail-view {
+  height: calc(100% - 4.7rem);
+  overflow-y: auto;
+  padding: 0.62rem 0.75rem 6.2rem;
 }
 
 .results-summary {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.55rem;
 }
 
 .results-summary strong {
@@ -1102,12 +1565,13 @@ export default {
   display: grid;
   column-gap: 0.65rem;
   row-gap: 1rem;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .listing-card {
   background: transparent;
   border: 0;
+  min-width: 0;
 }
 
 .listing-card.selected {
@@ -1122,6 +1586,7 @@ export default {
   cursor: pointer;
   display: block;
   font: inherit;
+  min-width: 0;
   padding: 0;
   text-align: left;
   width: 100%;
@@ -1233,9 +1698,9 @@ export default {
   align-items: center;
   color: var(--vinted-teal-dark);
   display: inline-flex;
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   gap: 0.3rem;
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.48rem;
 }
 
 .detail-photo {
@@ -1262,18 +1727,18 @@ export default {
   display: flex;
   gap: 1rem;
   justify-content: space-between;
-  padding: 0.85rem 0 0.65rem;
+  padding: 0.62rem 0 0.52rem;
 }
 
 .detail-content h2 {
-  font-size: 1.24rem;
+  font-size: 1.1rem;
   line-height: 1.2;
   margin: 0;
 }
 
 .detail-content p {
   color: #65716f;
-  font-size: 0.8rem;
+  font-size: 0.73rem;
   line-height: 1.45;
   margin: 0.22rem 0 0;
 }
@@ -1286,9 +1751,9 @@ export default {
   color: var(--vinted-teal);
   display: inline-flex;
   flex: 0 0 auto;
-  height: 2.35rem;
+  height: 2.12rem;
   justify-content: center;
-  width: 2.35rem;
+  width: 2.12rem;
 }
 
 .price-breakdown {
@@ -1296,22 +1761,23 @@ export default {
   border: 1px solid var(--vinted-line);
   border-radius: 10px;
   margin: 0;
-  padding: 0.7rem;
+  padding: 0.58rem 0.68rem 0.55rem;
+  position: relative;
 }
 
 .price-breakdown div {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding: 0.32rem 0;
+  padding: 0.24rem 0;
 }
 
 .price-breakdown div:last-child {
   border-top: 1px solid #e7eeee;
   color: var(--vinted-teal-dark);
   font-weight: 800;
-  margin-top: 0.25rem;
-  padding-top: 0.55rem;
+  margin-top: 0.16rem;
+  padding-top: 0.42rem;
 }
 
 .price-breakdown dt,
@@ -1327,8 +1793,8 @@ export default {
   border-radius: 10px;
   display: flex;
   gap: 0.7rem;
-  margin-top: 0.75rem;
-  padding: 0.78rem;
+  margin-top: 0.62rem;
+  padding: 0.68rem;
 }
 
 .impact-icon {
@@ -1358,27 +1824,30 @@ export default {
 .impact-card span,
 .bundle-module span {
   color: #65716f;
-  font-size: 0.68rem;
-  line-height: 1.45;
+  font-size: 0.64rem;
+  line-height: 1.35;
   margin-top: 0.16rem;
 }
 
 .bundle-module {
   align-items: center;
   justify-content: space-between;
+  padding-top: 0.68rem;
+  position: relative;
 }
 
 .bundle-module p {
   color: var(--vinted-teal-dark);
-  font-size: 0.68rem;
+  font-size: 0.63rem;
   font-weight: 800;
-  margin: 0 0 0.25rem;
+  margin: 0 0 0.18rem;
 }
 
 .bundle-module h3 {
-  font-size: 0.92rem;
+  font-size: 0.82rem;
   line-height: 1.25;
   margin: 0;
+  max-width: 10.8rem;
 }
 
 .bundle-module button {
@@ -1388,21 +1857,23 @@ export default {
   color: #ffffff;
   display: inline-flex;
   flex: 0 0 auto;
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   gap: 0.35rem;
-  padding: 0.58rem 0.68rem;
+  padding: 0.52rem 0.6rem;
 }
 
 .bundle-drawer {
   background: #ffffff;
   border-top: 1px solid var(--vinted-line);
   border-radius: 22px 22px 0 0;
-  bottom: 4.35rem;
+  bottom: 4rem;
   box-shadow: 0 -16px 36px rgba(0, 49, 46, 0.16);
+  display: flex;
+  flex-direction: column;
   left: 0;
-  max-height: 76%;
-  overflow-y: auto;
-  padding: 1rem;
+  max-height: 78%;
+  overflow: hidden;
+  padding: 0.85rem;
   position: absolute;
   right: 0;
   z-index: 5;
@@ -1416,14 +1887,23 @@ export default {
 
 .drawer-top p {
   color: var(--vinted-teal-dark);
-  font-size: 0.68rem;
+  font-size: 0.64rem;
   font-weight: 800;
   margin: 0 0 0.2rem;
 }
 
 .drawer-top h2 {
-  font-size: 1.08rem;
+  font-size: 1rem;
   margin: 0;
+}
+
+.drawer-context {
+  color: #65716f;
+  display: block;
+  font-size: 0.62rem;
+  line-height: 1.35;
+  margin-top: 0.22rem;
+  max-width: 14.5rem;
 }
 
 .drawer-top button {
@@ -1431,15 +1911,18 @@ export default {
   border: 1px solid var(--vinted-line);
   border-radius: 50%;
   display: inline-flex;
-  height: 2rem;
+  height: 1.85rem;
   justify-content: center;
-  width: 2rem;
+  width: 1.85rem;
 }
 
 .recommendation-list {
   display: grid;
-  gap: 0.65rem;
-  margin-top: 0.85rem;
+  gap: 0.46rem;
+  margin-top: 0.68rem;
+  max-height: min(12.8rem, 30vh);
+  overflow-y: auto;
+  padding-right: 0.12rem;
 }
 
 .recommendation-list article {
@@ -1447,15 +1930,20 @@ export default {
   border: 1px solid #e2e9e7;
   border-radius: 10px;
   display: grid;
-  gap: 0.6rem;
-  grid-template-columns: 3.4rem minmax(0, 1fr) auto;
-  padding: 0.5rem;
+  gap: 0.48rem;
+  grid-template-columns: 3rem minmax(0, 1fr) auto;
+  padding: 0.42rem;
+}
+
+.recommendation-list article.selected {
+  background: #f1faf8;
+  border-color: #9fd8d0;
 }
 
 .bundle-thumb {
   aspect-ratio: 1 / 1;
   border-radius: 8px;
-  height: 3.4rem;
+  height: 3rem;
 }
 
 .recommendation-list strong,
@@ -1465,14 +1953,15 @@ export default {
 }
 
 .recommendation-list strong {
-  font-size: 0.76rem;
+  font-size: 0.7rem;
+  line-height: 1.2;
 }
 
 .recommendation-list span,
 .recommendation-list small {
   color: #667471;
-  font-size: 0.62rem;
-  line-height: 1.35;
+  font-size: 0.58rem;
+  line-height: 1.25;
   margin-top: 0.14rem;
 }
 
@@ -1481,9 +1970,9 @@ export default {
   border: 1px solid #b8dfd8;
   border-radius: 999px;
   color: var(--vinted-teal-dark);
-  font-size: 0.68rem;
+  font-size: 0.62rem;
   font-weight: 800;
-  padding: 0.42rem 0.58rem;
+  padding: 0.34rem 0.48rem;
 }
 
 .recommendation-list button.active {
@@ -1497,35 +1986,122 @@ export default {
   border: 1px solid #d7ebe7;
   border-radius: 12px;
   display: grid;
-  gap: 0.5rem;
-  margin-top: 0.85rem;
-  padding: 0.75rem;
-}
-
-.bundle-summary div {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
+  gap: 0.46rem;
+  margin-top: 0.56rem;
+  padding: 0.58rem 0.64rem;
 }
 
 .bundle-summary span {
   color: #667471;
-  font-size: 0.68rem;
+  font-size: 0.62rem;
 }
 
 .bundle-summary strong {
   color: #172523;
-  font-size: 0.78rem;
+  font-size: 0.72rem;
 }
 
-.summary-total {
-  border-top: 1px solid #cfe7e2;
-  padding-top: 0.55rem;
+.bundle-summary-copy span,
+.bundle-summary-copy strong {
+  display: block;
 }
 
-.summary-total strong {
+.bundle-summary-copy strong {
   color: var(--vinted-teal-dark);
-  font-size: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.25;
+  margin-top: 0.16rem;
+}
+
+.bundle-summary-copy strong:not(:only-child) {
+  text-wrap: pretty;
+}
+
+.bundle-summary-row {
+  align-items: center;
+  border-top: 1px solid #cfe7e2;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0.44rem;
+}
+
+.fake-buy-button {
+  align-items: center;
+  background: var(--vinted-teal);
+  border: 0;
+  border-radius: 9px;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  font: inherit;
+  font-size: 0.74rem;
+  font-weight: 800;
+  gap: 0.38rem;
+  justify-content: center;
+  margin-top: 0.56rem;
+  padding: 0.68rem 0.82rem;
+  width: 100%;
+}
+
+.fake-buy-button:disabled {
+  background: #d7e3e0;
+  color: #5d6d69;
+  cursor: not-allowed;
+}
+
+.purchase-complete {
+  align-items: center;
+  background: rgba(246, 250, 248, 0.96);
+  color: #172523;
+  display: flex;
+  flex-direction: column;
+  inset: 0;
+  justify-content: center;
+  padding: 2rem;
+  position: absolute;
+  text-align: center;
+  z-index: 8;
+}
+
+.purchase-complete svg {
+  color: var(--vinted-teal);
+  margin-bottom: 0.8rem;
+}
+
+.purchase-complete p {
+  color: var(--vinted-teal-dark);
+  font-size: 0.7rem;
+  font-weight: 800;
+  margin: 0 0 0.25rem;
+}
+
+.purchase-complete h2 {
+  font-size: 1.35rem;
+  line-height: 1.14;
+  margin: 0;
+  max-width: 16rem;
+}
+
+.purchase-complete span {
+  color: #53605d;
+  display: block;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  margin-top: 0.55rem;
+  max-width: 17rem;
+}
+
+.purchase-complete button {
+  background: #ffffff;
+  border: 1px solid #b8d8d3;
+  border-radius: 8px;
+  color: var(--vinted-teal-dark);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 800;
+  margin-top: 1rem;
+  padding: 0.62rem 0.82rem;
 }
 
 .bottom-nav {
@@ -1582,6 +2158,7 @@ export default {
   background: #ffffff;
   border: 1px solid var(--color-border);
   border-radius: 12px;
+  max-width: 24rem;
   padding: 1rem;
 }
 
@@ -1630,12 +2207,16 @@ export default {
 }
 
 .drawer-enter-active,
-.drawer-leave-active {
+.drawer-leave-active,
+.purchase-enter-active,
+.purchase-leave-active {
   transition: transform 220ms var(--ease-out), opacity 220ms var(--ease-out);
 }
 
 .drawer-enter-from,
-.drawer-leave-to {
+.drawer-leave-to,
+.purchase-enter-from,
+.purchase-leave-to {
   opacity: 0;
   transform: translateY(24px);
 }
@@ -1666,6 +2247,34 @@ export default {
 
   .phone-frame {
     border-radius: 28px;
+  }
+
+  .prototype-device {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    min-height: 0;
+  }
+
+  .annotation-layer {
+    display: grid;
+    gap: 0.6rem;
+    order: 2;
+    position: static;
+  }
+
+  .annotation-note {
+    max-width: none;
+    position: static;
+  }
+
+  .annotation-note::before,
+  .annotation-note::after {
+    display: none;
+  }
+
+  .phone-frame {
+    order: 1;
   }
 
   .app-screen {
@@ -1713,7 +2322,9 @@ export default {
 
 @media (prefers-reduced-motion: reduce) {
   .drawer-enter-active,
-  .drawer-leave-active {
+  .drawer-leave-active,
+  .purchase-enter-active,
+  .purchase-leave-active {
     transition-duration: 1ms;
   }
 }
