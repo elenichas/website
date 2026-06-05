@@ -1938,7 +1938,6 @@ export default {
 .recommendation-list article.selected {
   background: #f1faf8;
   border-color: #9fd8d0;
-  box-shadow: inset 3px 0 0 var(--vinted-teal);
 }
 
 .bundle-thumb {
