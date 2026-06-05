@@ -28,7 +28,7 @@
           <article>
             <span>Feature 2</span>
             <strong>Smart same-seller bundles</strong>
-            <p>Use favourites and size signals to suggest different items from the same seller.</p>
+            <p>Use favorites and size signals to suggest different items from the same seller.</p>
           </article>
         </div>
       </div>
@@ -154,7 +154,7 @@
                   <h2>{{ selectedListing.title }}</h2>
                   <p>{{ selectedListing.size }} · {{ selectedListing.condition }} · {{ selectedListing.area }}</p>
                 </div>
-                <button type="button" class="heart-button" :aria-label="selectedListing.favourite ? 'Saved item' : 'Save item'">
+                <button type="button" class="heart-button" :aria-label="selectedListing.favourite ? 'Favorite item' : 'Add to favorites'">
                   <Heart :size="17" :fill="selectedListing.favourite ? 'currentColor' : 'none'" />
                 </button>
               </div>
@@ -177,7 +177,7 @@
               <article class="bundle-module">
                 <div>
                   <p>Make delivery work smarter</p>
-                  <h3>{{ selectedListing.seller }} also has items from your favourites.</h3>
+                  <h3>{{ selectedListing.seller }} also has items from your favorites.</h3>
                   <span>Blue jeans and shoes in your size can ship with this order.</span>
                 </div>
                 <button type="button" @click="bundleOpen = true">
@@ -202,7 +202,7 @@
                     <p>Smart bundle</p>
                     <h2>From the same seller</h2>
                     <span class="drawer-context">
-                      Based on items in your favourites.
+                      Based on items in your favorites.
                     </span>
                   </div>
                   <button type="button" aria-label="Close bundle drawer" @click="bundleOpen = false">
@@ -211,12 +211,16 @@
                 </div>
 
                 <div class="recommendation-list">
-                  <article v-for="item in bundleRecommendations" :key="item.id">
+                  <article
+                    v-for="item in bundleRecommendations"
+                    :key="item.id"
+                    :class="{ selected: selectedBundleIds.includes(item.id) }"
+                  >
                     <span class="bundle-thumb" :style="productImageStyle(item)"></span>
                     <div>
                       <strong>{{ item.title }}</strong>
                       <span>{{ item.reason }}</span>
-                      <small>Score {{ item.score }} · {{ money(item.itemPrice) }}</small>
+                      <small>{{ item.matchLabel }} · {{ money(item.itemPrice) }}</small>
                     </div>
                     <button
                       type="button"
@@ -711,7 +715,8 @@ const bundleItems = [
     imageSheet: "bundle",
     imagePosition: "0% 0%",
     score: 98,
-    reason: "Same seller · similar to saved blue jeans",
+    reason: "Same seller · similar to favorite jeans",
+    matchLabel: "Closest favorite match",
   },
   {
     id: "white-trainers",
@@ -726,6 +731,7 @@ const bundleItems = [
     imagePosition: "66.667% 0%",
     score: 94,
     reason: "Same seller · shoe size match",
+    matchLabel: "Matches your shoe size",
   },
   {
     id: "cream-cardigan",
@@ -740,6 +746,7 @@ const bundleItems = [
     imagePosition: "0% 50%",
     score: 87,
     reason: "Same seller · outfit match",
+    matchLabel: "Works with this outfit",
   },
   {
     id: "denim-shirt",
@@ -754,6 +761,7 @@ const bundleItems = [
     imagePosition: "66.667% 50%",
     score: 84,
     reason: "Same seller · layer in your size",
+    matchLabel: "Layer in your size",
   },
   {
     id: "mary-janes",
@@ -767,7 +775,8 @@ const bundleItems = [
     imageSheet: "bundle",
     imagePosition: "100% 0%",
     score: 82,
-    reason: "Same seller · saved shoe style",
+    reason: "Same seller · favorite shoe style",
+    matchLabel: "Similar to favorite shoes",
   },
   {
     id: "olive-tote",
@@ -782,6 +791,7 @@ const bundleItems = [
     imagePosition: "33.333% 50%",
     score: 75,
     reason: "Same seller · low-cost add-on",
+    matchLabel: "Easy add-on",
   },
   {
     id: "dark-jeans",
@@ -795,7 +805,8 @@ const bundleItems = [
     imageSheet: "bundle",
     imagePosition: "33.333% 0%",
     score: 86,
-    reason: "Same seller · saved denim style",
+    reason: "Same seller · favorite denim style",
+    matchLabel: "Similar to favorite denim",
   },
   {
     id: "black-belt",
@@ -810,6 +821,7 @@ const bundleItems = [
     imagePosition: "100% 50%",
     score: 74,
     reason: "Same seller · outfit add-on",
+    matchLabel: "Easy add-on",
   },
   {
     id: "navy-skirt",
@@ -823,7 +835,8 @@ const bundleItems = [
     imageSheet: "bundle",
     imagePosition: "0% 100%",
     score: 83,
-    reason: "Same seller · saved skirt style",
+    reason: "Same seller · favorite skirt style",
+    matchLabel: "Similar to a favorite",
   },
   {
     id: "striped-top",
@@ -838,6 +851,7 @@ const bundleItems = [
     imagePosition: "33.333% 100%",
     score: 76,
     reason: "Same seller · wardrobe match",
+    matchLabel: "Wardrobe match",
   },
   {
     id: "tan-loafers",
@@ -852,6 +866,7 @@ const bundleItems = [
     imagePosition: "66.667% 100%",
     score: 77,
     reason: "Same seller · shoe size match",
+    matchLabel: "Matches your shoe size",
   },
   {
     id: "blue-button-up",
@@ -865,7 +880,8 @@ const bundleItems = [
     imageSheet: "bundle",
     imagePosition: "100% 100%",
     score: 73,
-    reason: "Same seller · saved blue item",
+    reason: "Same seller · favorite blue item",
+    matchLabel: "Similar to a favorite",
   },
 ];
 
@@ -981,7 +997,7 @@ export default {
             id: "bundle-recs",
             kicker: "Feature 2",
             title: "Bundle recommendations stay outside the search task.",
-            copy: "Same seller first, then saved categories and size signals.",
+            copy: "Same seller first, then favorite categories and size signals.",
             position: "note-right note-drawer",
           },
           {
@@ -1280,6 +1296,18 @@ export default {
   transform-origin: center;
 }
 
+.annotation-note::before {
+  background: #111111;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(17, 17, 17, 0.18);
+  content: "";
+  height: 0.42rem;
+  position: absolute;
+  top: calc(50% - 0.21rem);
+  width: 0.42rem;
+}
+
 .annotation-note span,
 .annotation-note strong,
 .annotation-note p {
@@ -1314,6 +1342,10 @@ export default {
   width: 3rem;
 }
 
+.note-left::before {
+  left: calc(100% + 3rem);
+}
+
 .note-right {
   right: 0;
 }
@@ -1321,6 +1353,10 @@ export default {
 .note-right::after {
   right: 100%;
   width: 3rem;
+}
+
+.note-right::before {
+  right: calc(100% + 3rem);
 }
 
 .note-existing {
@@ -1899,6 +1935,12 @@ export default {
   padding: 0.42rem;
 }
 
+.recommendation-list article.selected {
+  background: #f1faf8;
+  border-color: #9fd8d0;
+  box-shadow: inset 3px 0 0 var(--vinted-teal);
+}
+
 .bundle-thumb {
   aspect-ratio: 1 / 1;
   border-radius: 8px;
@@ -1970,6 +2012,10 @@ export default {
   font-size: 0.9rem;
   line-height: 1.25;
   margin-top: 0.16rem;
+}
+
+.bundle-summary-copy strong:not(:only-child) {
+  text-wrap: pretty;
 }
 
 .bundle-summary-row {
@@ -2223,6 +2269,7 @@ export default {
     position: static;
   }
 
+  .annotation-note::before,
   .annotation-note::after {
     display: none;
   }
