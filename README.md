@@ -63,6 +63,16 @@ This project is a Vue.js application that uses D3.js to visualize data from a Gi
 
 ## Configuration
 
+### Cloudflare Web Analytics
+
+To enable Cloudflare Web Analytics in production, create a Web Analytics site in Cloudflare and set this environment variable in your Cloudflare Pages project:
+
+```bash
+VITE_CLOUDFLARE_WEB_ANALYTICS_TOKEN=your-cloudflare-token
+```
+
+The analytics beacon is only injected in production builds when this value is present, so local development will not send analytics events.
+
 ### GitHub API Token
 
 To fetch repository data from GitHub, you may need to configure a Personal Access Token:
