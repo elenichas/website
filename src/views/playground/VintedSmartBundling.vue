@@ -67,44 +67,41 @@
               </header>
 
               <div v-if="screen === 'results'" class="control-panel">
-                <div class="control-panel-top">
-                  <label for="distance-filter">Distance</label>
-                  <select id="distance-filter" v-model="distanceFilter">
-                    <option v-for="option in distanceOptions" :key="option.id" :value="option.id">
+                <div class="control-group">
+                  <span class="control-label">Sort</span>
+                  <nav class="sort-segment" aria-label="Sort listings">
+                    <button
+                      v-for="option in sortOptions"
+                      :key="option.id"
+                      type="button"
+                      :class="{ active: sortMode === option.id }"
+                      @click="sortMode = option.id"
+                    >
                       {{ option.label }}
-                    </option>
-                  </select>
+                    </button>
+                  </nav>
                 </div>
 
-                <nav class="filter-row" aria-label="Listing controls">
-                  <button
-                    v-for="option in sortOptions"
-                    :key="option.id"
-                    type="button"
-                    :class="{ active: sortMode === option.id }"
-                    @click="sortMode = option.id"
-                  >
-                    {{ option.label }}
-                  </button>
-                </nav>
-
-                <div class="chip-scroll" aria-label="Delivery filters">
-                  <button
-                    v-for="option in deliveryOptions"
-                    :key="option.id"
-                    type="button"
-                    :class="{ active: deliveryFilter === option.id }"
-                    @click="deliveryFilter = option.id"
-                  >
-                    {{ option.label }}
-                  </button>
+                <div class="control-group delivery-group">
+                  <span class="control-label">Delivery</span>
+                  <div class="delivery-filter" aria-label="Delivery filters">
+                    <button
+                      v-for="option in deliveryOptions"
+                      :key="option.id"
+                      type="button"
+                      :class="{ active: deliveryFilter === option.id }"
+                      @click="deliveryFilter = option.id"
+                    >
+                      {{ option.label }}
+                    </button>
+                  </div>
                 </div>
               </div>
 
               <section v-if="screen === 'results'" class="results-view" aria-label="Search results">
               <div class="results-summary">
                 <strong>{{ filteredListings.length }} results</strong>
-                <span>{{ sortMode === "total" ? "Sorted by full value" : "Sorted by item price" }}</span>
+                <span>{{ sortSummary }}</span>
               </div>
 
               <div class="listing-grid">
@@ -116,6 +113,7 @@
                 >
                   <button type="button" @click="openListing(listing.id)">
                     <span class="listing-photo" :style="productImageStyle(listing)">
+                      <img :src="productImageSrc(listing)" :alt="productImageAlt(listing)" loading="lazy" />
                       <span class="heart-badge">
                         <Heart :size="14" />
                         <span>{{ likeCount(listing) }}</span>
@@ -125,10 +123,22 @@
                       <strong>{{ listing.brand }}</strong>
                       <span class="item-line">{{ listing.title }}</span>
                       <span class="detail-line">{{ listing.size }} · {{ listing.condition }}</span>
-                      <b class="item-price">{{ money(listing.itemPrice) }}</b>
-                      <span class="included-price">
-                        {{ money(totalCost(listing)) }} incl.
-                        <ShieldCheck :size="12" />
+                      <span class="price-comparison" aria-label="Price comparison">
+                        <span>
+                          <small>Item</small>
+                          <b>{{ money(listing.itemPrice) }}</b>
+                        </span>
+                        <span class="fee-price">
+                          <small>
+                            + fee
+                            <ShieldCheck :size="9" />
+                          </small>
+                          <b>{{ money(appPrice(listing)) }}</b>
+                        </span>
+                        <span class="full-total">
+                          <small>Full total</small>
+                          <b>{{ money(totalCost(listing)) }}</b>
+                        </span>
                       </span>
                       <span class="delivery-line">
                         {{ listing.delivery }} · {{ listing.distanceLabel }}
@@ -146,6 +156,7 @@
               </button>
 
               <div class="detail-photo" :style="productImageStyle(selectedListing, 'detail')">
+                <img :src="productImageSrc(selectedListing)" :alt="productImageAlt(selectedListing)" />
                 <span>{{ selectedListing.brand }}</span>
               </div>
 
@@ -159,17 +170,31 @@
                 </button>
               </div>
 
+              <article class="full-total-callout">
+                <span>Full total</span>
+                <strong>{{ money(totalCost(selectedListing)) }}</strong>
+                <small>Item + buyer fee + delivery</small>
+              </article>
+
               <dl class="price-breakdown">
                 <div>
                   <dt>Item</dt>
                   <dd>{{ money(selectedListing.itemPrice) }}</dd>
                 </div>
                 <div>
+                  <dt>Buyer fee</dt>
+                  <dd>{{ money(buyerFee(selectedListing)) }}</dd>
+                </div>
+                <div>
+                  <dt>Item + fee</dt>
+                  <dd>{{ money(appPrice(selectedListing)) }}</dd>
+                </div>
+                <div>
                   <dt>Delivery</dt>
                   <dd>{{ money(selectedListing.shipping) }}</dd>
                 </div>
-                <div>
-                  <dt>Total</dt>
+                <div class="price-breakdown-total">
+                  <dt>Full total</dt>
                   <dd>{{ money(totalCost(selectedListing)) }}</dd>
                 </div>
               </dl>
@@ -216,7 +241,9 @@
                     :key="item.id"
                     :class="{ selected: selectedBundleIds.includes(item.id) }"
                   >
-                    <span class="bundle-thumb" :style="productImageStyle(item)"></span>
+                    <span class="bundle-thumb" :style="productImageStyle(item)">
+                      <img :src="productImageSrc(item)" :alt="productImageAlt(item)" loading="lazy" />
+                    </span>
                     <div>
                       <strong>{{ item.title }}</strong>
                       <span>{{ item.reason }}</span>
@@ -260,9 +287,6 @@
                 <CheckCircle2 :size="34" />
                 <p>Prototype purchase complete</p>
                 <h2>{{ 1 + selectedBundleItems.length }} items from {{ selectedListing.seller }}</h2>
-                <span>
-                  The discovery and bundle prompts now connect to a single buying decision.
-                </span>
                 <button type="button" @click="resetPurchase">Keep exploring</button>
               </section>
               </transition>
@@ -885,6 +909,41 @@ const bundleItems = [
   },
 ];
 
+const imageFits = {
+  "yellow-a": { zoom: 1.04 },
+  "yellow-b": { zoom: 1.1 },
+  "yellow-c": { zoom: 1.04 },
+  "yellow-d": { zoom: 1.01 },
+  "jeans-a": { zoom: 1.04 },
+  "skirt-a": { zoom: 1.01 },
+  "cardigan-a": { zoom: 1.08 },
+  "stripe-top": { zoom: 1.04 },
+  "cream-jumper": { zoom: 1.03 },
+  "green-tote": { zoom: 1.02 },
+  "trainers": { zoom: 1.02 },
+  "blue-shirt": { zoom: 1.08 },
+  "floral-dress": { zoom: 1.08 },
+  "linen-trousers": { zoom: 1.06 },
+  "beige-jacket": { zoom: 1.02 },
+  "scarf": { zoom: 1.12 },
+  "hoodie": { zoom: 1.05 },
+  "belt": { zoom: 1.08 },
+  "small-handbag": { zoom: 1.02 },
+  "sunglasses": { zoom: 1.02 },
+  "light-jeans": { zoom: 1.02 },
+  "dark-jeans": { zoom: 1.02 },
+  "white-trainers": { zoom: 1.06 },
+  "mary-janes": { zoom: 1.06 },
+  "cream-cardigan": { zoom: 1.03 },
+  "olive-tote": { zoom: 1.05 },
+  "denim-shirt": { zoom: 1.04 },
+  "black-belt": { zoom: 1.08 },
+  "navy-skirt": { zoom: 1.02 },
+  "striped-top": { zoom: 1.03 },
+  "tan-loafers": { zoom: 1.06 },
+  "blue-button-up": { zoom: 1.03 },
+};
+
 export default {
   name: "VintedSmartBundling",
   components: {
@@ -925,28 +984,19 @@ export default {
       screen: "results",
       sortMode: "total",
       deliveryFilter: "any",
-      distanceFilter: "any",
       selectedListingId: "yellow-b",
       bundleOpen: false,
       purchaseComplete: false,
       selectedBundleIds: ["light-jeans", "white-trainers"],
-      productSheet: resolveAsset("@/images/vinted/product-sheet.png"),
-      bundleSheet: resolveAsset("@/images/vinted/bundle-sheet.png"),
       sortOptions: [
-        { id: "item", label: "Item price" },
         { id: "total", label: "Full value" },
+        { id: "distance", label: "Distance" },
+        { id: "item", label: "Item price" },
       ],
       deliveryOptions: [
-        { id: "any", label: "Either" },
-        { id: "home", label: "Home delivery" },
-        { id: "pickup", label: "Pickup point" },
-      ],
-      distanceOptions: [
-        { id: "any", label: "Any distance" },
-        { id: "under-2", label: "Under 2 miles" },
-        { id: "under-5", label: "Under 5 miles" },
-        { id: "under-10", label: "Under 10 miles" },
-        { id: "london", label: "Greater London" },
+        { id: "any", label: "Any" },
+        { id: "home", label: "Home" },
+        { id: "pickup", label: "Pickup" },
       ],
       listings,
       bundleItems,
@@ -960,18 +1010,12 @@ export default {
           (this.deliveryFilter === "home" && ["Home delivery", "Either"].includes(listing.delivery)) ||
           (this.deliveryFilter === "pickup" && ["Pickup point", "Either"].includes(listing.delivery));
 
-        const distanceMatch =
-          this.distanceFilter === "any" ||
-          this.distanceFilter === "london" ||
-          (this.distanceFilter === "under-2" && listing.distanceMiles <= 2) ||
-          (this.distanceFilter === "under-5" && listing.distanceMiles <= 5) ||
-          (this.distanceFilter === "under-10" && listing.distanceMiles <= 10);
-
-        return deliveryMatch && distanceMatch;
+        return deliveryMatch;
       });
 
       return filtered.sort((a, b) => {
         if (this.sortMode === "item") return a.itemPrice - b.itemPrice;
+        if (this.sortMode === "distance") return a.distanceMiles - b.distanceMiles;
         return this.totalCost(a) - this.totalCost(b);
       });
     },
@@ -1054,8 +1098,16 @@ export default {
     selectedBundleItems() {
       return this.bundleRecommendations.filter((item) => this.selectedBundleIds.includes(item.id));
     },
+    sortSummary() {
+      if (this.sortMode === "distance") return "Nearest first";
+      if (this.sortMode === "item") return "Sorted by item price";
+      return "Sorted by full value";
+    },
     shippingSaved() {
       return this.selectedBundleItems.length > 0 ? this.selectedListing.shipping * this.selectedBundleItems.length : 0;
+    },
+    bundleBuyerFees() {
+      return [this.selectedListing, ...this.selectedBundleItems].reduce((sum, item) => sum + this.buyerFee(item), 0);
     },
     bundleDiscount() {
       return this.selectedBundleItems.length >= 2 ? 1.2 : 0;
@@ -1065,7 +1117,7 @@ export default {
     },
     bundleTotal() {
       const itemsTotal = this.selectedBundleItems.reduce((sum, item) => sum + item.itemPrice, this.selectedListing.itemPrice);
-      return Math.max(0, itemsTotal + this.selectedListing.shipping - this.estimatedSavings);
+      return Math.max(0, itemsTotal + this.bundleBuyerFees + this.selectedListing.shipping - this.estimatedSavings);
     },
     noteTitle() {
       if (this.purchaseComplete) return "Both proposed features now end in a purchase.";
@@ -1091,20 +1143,31 @@ export default {
       return `£${value.toFixed(2)}`;
     },
     totalCost(listing) {
-      return listing.itemPrice + listing.shipping;
+      return this.appPrice(listing) + listing.shipping;
+    },
+    buyerFee(listing) {
+      return Math.round((listing.itemPrice * 0.07 + 0.45) * 100) / 100;
+    },
+    appPrice(listing) {
+      return listing.itemPrice + this.buyerFee(listing);
     },
     likeCount(listing) {
       return Math.max(8, Math.round(listing.score / 3) + (listing.favourite ? 6 : 0));
     },
+    productImageSrc(item) {
+      const folder = item.imageSheet === "bundle" ? "bundles" : "products";
+      return resolveAsset(`@/images/vinted/${folder}/${item.id}.png`);
+    },
+    productImageAlt(item) {
+      return `${item.brand} ${item.title}`;
+    },
     productImageStyle(item, mode = "card") {
-      const isBundleImage = item.imageSheet === "bundle";
-      const columns = isBundleImage ? 4 : 5;
-      const rows = isBundleImage ? 3 : 4;
+      const fit = imageFits[item.id] || {};
+      const modeZoom = mode === "detail" ? 0.96 : 1;
+      const zoom = Math.max(1, (fit.zoom || 1) * modeZoom);
 
       return {
-        backgroundImage: `url(${isBundleImage ? this.bundleSheet : this.productSheet})`,
-        backgroundPosition: item.imagePosition,
-        backgroundSize: `${columns * 100}% ${rows * 100}%`,
+        "--image-scale": zoom,
       };
     },
     openListing(id) {
@@ -1443,8 +1506,8 @@ export default {
 }
 
 .market-header button,
-.filter-row button,
-.chip-scroll button,
+.sort-segment button,
+.delivery-filter button,
 .back-to-results,
 .heart-button,
 .bundle-module button,
@@ -1469,67 +1532,75 @@ export default {
 }
 
 .control-panel {
-  background: #ffffff;
+  background: #f8fbfa;
   border-bottom: 1px solid var(--vinted-line);
-  padding: 0.48rem 0.75rem 0.62rem;
+  display: grid;
+  gap: 0.42rem;
+  padding: 0.56rem 0.75rem 0.6rem;
 }
 
-.control-panel-top {
+.control-group {
   align-items: center;
-  display: flex;
-  gap: 0.45rem;
-  min-height: 1.75rem;
-  justify-content: flex-end;
+  display: grid;
+  gap: 0.48rem;
+  grid-template-columns: 3.2rem minmax(0, 1fr);
 }
 
-.control-panel-top label {
-  color: #61706e;
-  font-size: 0.68rem;
+.control-label {
+  align-self: center;
+  color: #5f6d6a;
+  font-size: 0.64rem;
+  font-weight: 800;
+  line-height: 1;
 }
 
-.control-panel-top select {
-  background: #f3f6f5;
-  border: 1px solid #d8e0de;
-  border-radius: 999px;
-  color: #243432;
-  font: inherit;
-  font-size: 0.68rem;
-  max-width: 7.2rem;
-  padding: 0.3rem 0.42rem;
-}
-
-.filter-row,
-.chip-scroll {
-  background: #ffffff;
-  display: flex;
-  gap: 0.35rem;
-  overflow-x: auto;
+.sort-segment,
+.delivery-filter {
+  background: #d8e6e3;
+  border: 1px solid #d8e6e3;
+  border-radius: 10px;
+  display: grid;
+  gap: 1px;
+  min-width: 0;
+  overflow: hidden;
   padding: 0;
 }
 
-.filter-row {
-  margin-top: 0.34rem;
+.sort-segment {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.chip-scroll {
-  margin-top: 0.36rem;
+.delivery-filter {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.filter-row button,
-.chip-scroll button {
-  border: 1px solid #d5e0de;
-  border-radius: 999px;
+.sort-segment button,
+.delivery-filter button {
+  background: #ffffff;
   color: #40504e;
-  flex: 0 0 auto;
-  font-size: 0.69rem;
-  min-height: 1.72rem;
-  padding: 0.32rem 0.54rem;
+  font-size: 0.66rem;
+  font-weight: 650;
+  min-height: 1.9rem;
+  overflow: hidden;
+  padding: 0.38rem 0.24rem;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.filter-row button.active,
-.chip-scroll button.active {
+.sort-segment button:focus,
+.delivery-filter button:focus {
+  outline: 0;
+}
+
+.sort-segment button:focus-visible,
+.delivery-filter button:focus-visible {
+  box-shadow: inset 0 0 0 2px rgba(0, 119, 130, 0.34);
+}
+
+.sort-segment button.active,
+.delivery-filter button.active {
   background: var(--vinted-mint);
-  border-color: #9bd9d0;
   color: var(--vinted-teal-dark);
 }
 
@@ -1596,15 +1667,25 @@ export default {
 .detail-photo,
 .bundle-thumb {
   background-color: #f3f3f3;
-  background-repeat: no-repeat;
   display: block;
+  overflow: hidden;
   position: relative;
+}
+
+.listing-photo img,
+.detail-photo img,
+.bundle-thumb img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(var(--image-scale, 1));
+  width: 100%;
 }
 
 .listing-photo {
   aspect-ratio: 1 / 1;
   border-radius: 8px;
-  overflow: hidden;
   width: 100%;
 }
 
@@ -1619,6 +1700,7 @@ export default {
   gap: 0.22rem;
   height: 1.85rem;
   justify-content: center;
+  z-index: 1;
   position: absolute;
   right: 0.45rem;
   width: auto;
@@ -1670,22 +1752,67 @@ export default {
   color: #727b79 !important;
 }
 
-.item-price {
-  color: #293332;
-  font-size: 0.83rem;
-  font-weight: 500;
-  margin-top: 0.48rem;
+.price-comparison {
+  background: #ffffff;
+  border: 1px solid #dce8e5;
+  border-radius: 8px;
+  display: grid !important;
+  gap: 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 0.48rem !important;
+  overflow: hidden;
 }
 
-.included-price {
+.price-comparison > span {
+  border-right: 1px solid #edf2f1;
+  margin: 0 !important;
+  min-width: 0;
+  padding: 0.31rem 0.22rem;
+}
+
+.price-comparison > span:last-child {
+  border-right: 0;
+}
+
+.price-comparison small,
+.price-comparison b {
+  display: block;
+}
+
+.price-comparison small {
   align-items: center;
-  color: var(--vinted-teal-dark) !important;
-  display: inline-flex !important;
-  font-size: 0.86rem !important;
-  font-weight: 500;
-  gap: 0.18rem;
-  line-height: 1.2;
-  margin-top: 0.16rem !important;
+  color: #7a8583;
+  font-size: 0.5rem;
+  font-weight: 700;
+  gap: 0.08rem;
+  line-height: 1.15;
+  margin-bottom: 0.12rem;
+  min-width: 0;
+}
+
+.price-comparison b {
+  color: #293332;
+  font-size: 0.67rem;
+  font-weight: 700;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.price-comparison .fee-price small {
+  color: var(--vinted-teal-dark);
+  display: inline-flex;
+}
+
+.price-comparison .fee-price svg {
+  flex: 0 0 auto;
+}
+
+.price-comparison .full-total {
+  background: #eefaf7;
+}
+
+.price-comparison .full-total b {
+  color: var(--vinted-teal-dark);
 }
 
 .delivery-line {
@@ -1706,7 +1833,6 @@ export default {
 .detail-photo {
   aspect-ratio: 1 / 1;
   border-radius: 12px;
-  overflow: hidden;
   width: 100%;
 }
 
@@ -1720,6 +1846,7 @@ export default {
   padding: 0.34rem 0.55rem;
   position: absolute;
   top: 0.8rem;
+  z-index: 1;
 }
 
 .detail-content {
@@ -1756,6 +1883,36 @@ export default {
   width: 2.12rem;
 }
 
+.full-total-callout {
+  align-items: center;
+  background: #eefaf7;
+  border: 1px solid #bde4dd;
+  border-radius: 10px;
+  display: grid;
+  gap: 0.12rem 0.55rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  margin-bottom: 0.5rem;
+  padding: 0.58rem 0.68rem;
+}
+
+.full-total-callout span,
+.full-total-callout small {
+  color: #536d68;
+  font-size: 0.68rem;
+  line-height: 1.25;
+}
+
+.full-total-callout strong {
+  color: var(--vinted-teal-dark);
+  font-size: 1.02rem;
+  grid-row: span 2;
+  line-height: 1.1;
+}
+
+.full-total-callout small {
+  display: block;
+}
+
 .price-breakdown {
   background: #ffffff;
   border: 1px solid var(--vinted-line);
@@ -1772,7 +1929,7 @@ export default {
   padding: 0.24rem 0;
 }
 
-.price-breakdown div:last-child {
+.price-breakdown-total {
   border-top: 1px solid #e7eeee;
   color: var(--vinted-teal-dark);
   font-weight: 800;
