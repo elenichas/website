@@ -387,19 +387,6 @@ export default {
   margin-top: var(--space-4);
 }
 
-.content-column :deep(.btn-primary),
-.content-column :deep(.btn-secondary) {
-  border-radius: var(--radius-sm);
-}
-
-.content-column :deep(.btn-primary) {
-  background: #111111;
-}
-
-.content-column :deep(.btn-secondary) {
-  background: #ffffff;
-}
-
 .content-column :deep(.btn-ghost) {
   margin-left: var(--space-1);
 }

@@ -224,10 +224,6 @@ const messages = {
     about: {
       eyebrow: "About",
       subtitle: "Product designer and engineer building precise, human-centered tools for spatial systems and digital workflows.",
-      marquee: ["ARCHITECTURE TO PRODUCT", "UX SYSTEMS", "COMPUTATIONAL DESIGN", "PRODUCT ENGINEERING"],
-      glanceYears: "Years in Design & Engineering",
-      glanceRole: "Associate Design Systems Analyst",
-      glanceEducation: "Architectural Computation, UCL",
       profile: "Profile",
       profileHeading: "Human interfaces for complex systems.",
       journeyTitle: "The Journey",
@@ -241,6 +237,103 @@ const messages = {
         "Last year, I attended UXDX USA 2025 in New York, an incredible conference bringing together designers, developers, and product managers. It was inspiring to connect with industry leaders, explore emerging trends in product development, and share ideas about the future of design systems and collaborative workflows.",
       fieldNotes: "Moments",
       galleryAlt: "UXDX Conference",
+      experience: {
+        eyebrow: "Experience map",
+        skillsTitle: "Core toolkit",
+        educationTitle: "Education",
+        timeline: [
+          {
+            period: "Dec 2024 - Present",
+            role: "Associate Design Systems Analyst",
+            company: "Foster + Partners",
+            location: "London, hybrid",
+            summary:
+              "Designing and building internal tools, marketing platforms, immersive applications, and full-stack web products for creative teams.",
+            points: [
+              "Own product coordination across supported teams, aligning design intent with technical delivery.",
+              "Conduct user research and usability testing to validate product decisions.",
+              "Build and maintain React design-system components for consistent product experiences.",
+              "Shape product strategy and roadmaps for internal tooling initiatives.",
+            ],
+          },
+          {
+            period: "Nov 2020 - Nov 2024",
+            role: "Senior Front-End Developer",
+            company: "Bryden Wood",
+            location: "London, hybrid",
+            summary:
+              "Led web-based configurators and design tools for the AEC industry, translating complex architectural workflows into usable digital products.",
+            points: [
+              "Led end-to-end design, development, and testing of configurators and internal tools.",
+              "Moved front-end architecture from vanilla JavaScript to Vue.js for better maintainability.",
+              "Designed interaction patterns that made technical design workflows easier to use.",
+              "Established reusable component guidelines and mentored junior developers.",
+            ],
+          },
+          {
+            period: "Sep 2021 - Mar 2022",
+            role: "Associate Lecturer",
+            company: "Anglia Ruskin University",
+            location: "London, hybrid",
+            summary:
+              "Taught architecture students the essential skills behind design fundamentals, digital tools, and computational workflows.",
+            points: [
+              "Delivered workshops, lectures, and hands-on learning sessions.",
+              "Assessed student work and provided constructive feedback.",
+              "Integrated computational design methods into architectural education.",
+            ],
+          },
+          {
+            period: "Mar 2019 - Aug 2019",
+            role: "Architect",
+            company: "Makridis Associates",
+            location: "Greece, on-site",
+            summary:
+              "Worked on hospitality and leisure projects, building the spatial design foundation that still shapes my product thinking.",
+            points: [
+              "Designed small to mid-scale hospitality and leisure projects.",
+              "Produced architectural drawings, 3D visualizations, and client presentations.",
+              "Supported design development, technical coordination, and documentation.",
+            ],
+          },
+        ],
+        skills: [
+          {
+            title: "Front-end",
+            items: ["React.js", "Vue.js", "JavaScript", "TypeScript", "HTML5", "CSS3", "SASS"],
+          },
+          {
+            title: "UX/UI",
+            items: ["User research", "Personas", "Journey maps", "Wireframes", "Prototypes", "Usability testing"],
+          },
+          {
+            title: "Systems",
+            items: ["Design systems", "Component libraries", "Design tokens", "Style guides", "Accessibility"],
+          },
+          {
+            title: "Computational",
+            items: ["Grasshopper", "Rhino", "Python", "Algorithmic design", "AEC workflows"],
+          },
+          {
+            title: "Delivery",
+            items: ["Agile", "Scrum", "Product coordination", "Roadmaps", "Performance"],
+          },
+        ],
+        education: [
+          {
+            year: "2019 - 2020",
+            degree: "MSc Architectural Computation",
+            school: "The Bartlett School of Architecture, UCL",
+            grade: "Distinction",
+          },
+          {
+            year: "2013 - 2019",
+            degree: "Master of Architecture",
+            school: "Aristotle University of Thessaloniki",
+            grade: "Distinction",
+          },
+        ],
+      },
     },
     notFound: {
       title: "OOPS! PAGE NOT FOUND",
@@ -479,10 +572,6 @@ const messages = {
     about: {
       eyebrow: "Σχετικά",
       subtitle: "Product designer και engineer με έμφαση σε human-centered tools για spatial systems και digital workflows.",
-      marquee: ["ARCHITECTURE TO PRODUCT", "UX SYSTEMS", "COMPUTATIONAL DESIGN", "PRODUCT ENGINEERING"],
-      glanceYears: "Χρόνια σε Design & Engineering",
-      glanceRole: "Associate Design Systems Analyst",
-      glanceEducation: "Architectural Computation, UCL",
       profile: "Προφίλ",
       profileHeading: "Human interfaces for complex systems.",
       journeyTitle: "Η διαδρομή",
@@ -496,6 +585,103 @@ const messages = {
         "Πέρυσι συμμετείχα στο UXDX USA 2025 στη Νέα Υόρκη, ένα συνέδριο που φέρνει κοντά designers, developers και product managers. Ήταν πολύτιμο να γνωρίσω ανθρώπους του χώρου, να δω από κοντά νέες κατευθύνσεις στο product development και να συζητήσω για το μέλλον των design systems και της συνεργατικής δουλειάς.",
       fieldNotes: "Moments",
       galleryAlt: "Συνέδριο UXDX",
+      experience: {
+        eyebrow: "Experience map",
+        skillsTitle: "Core toolkit",
+        educationTitle: "Εκπαίδευση",
+        timeline: [
+          {
+            period: "Δεκ 2024 - Σήμερα",
+            role: "Associate Design Systems Analyst",
+            company: "Foster + Partners",
+            location: "Λονδίνο, hybrid",
+            summary:
+              "Σχεδιάζω και υλοποιώ internal tools, marketing platforms, immersive applications και full-stack web products για creative teams.",
+            points: [
+              "Συντονίζω product work ανάμεσα σε ομάδες, κρατώντας ευθυγραμμισμένα design intent και technical delivery.",
+              "Κάνω user research και usability testing για να ελέγχονται οι product αποφάσεις.",
+              "Χτίζω και συντηρώ React design-system components για συνεπείς product εμπειρίες.",
+              "Συμβάλλω σε product strategy και roadmaps για internal tooling initiatives.",
+            ],
+          },
+          {
+            period: "Νοε 2020 - Νοε 2024",
+            role: "Senior Front-End Developer",
+            company: "Bryden Wood",
+            location: "Λονδίνο, hybrid",
+            summary:
+              "Οδήγησα web-based configurators και design tools για την AEC industry, μεταφράζοντας σύνθετα architectural workflows σε εύχρηστα digital products.",
+            points: [
+              "Ανέλαβα end-to-end design, development και testing για configurators και internal tools.",
+              "Μετέφερα front-end architecture από vanilla JavaScript σε Vue.js για καλύτερη συντηρησιμότητα.",
+              "Σχεδίασα interaction patterns που έκαναν τεχνικά design workflows πιο καθαρά.",
+              "Έστησα reusable component guidelines και καθοδήγησα junior developers.",
+            ],
+          },
+          {
+            period: "Σεπ 2021 - Μαρ 2022",
+            role: "Associate Lecturer",
+            company: "Anglia Ruskin University",
+            location: "Λονδίνο, hybrid",
+            summary:
+              "Δίδαξα σε φοιτητές αρχιτεκτονικής essential skills γύρω από design fundamentals, digital tools και computational workflows.",
+            points: [
+              "Παρέδωσα workshops, lectures και hands-on learning sessions.",
+              "Αξιολόγησα εργασίες και έδωσα constructive feedback.",
+              "Ένταξα computational design methods στην αρχιτεκτονική εκπαίδευση.",
+            ],
+          },
+          {
+            period: "Μαρ 2019 - Αυγ 2019",
+            role: "Architect",
+            company: "Makridis Associates",
+            location: "Ελλάδα, on-site",
+            summary:
+              "Δούλεψα σε hospitality και leisure projects, χτίζοντας τη spatial design βάση που ακόμα επηρεάζει τον τρόπο που σκέφτομαι προϊόντα.",
+            points: [
+              "Σχεδίασα small to mid-scale hospitality και leisure projects.",
+              "Παρήγαγα architectural drawings, 3D visualizations και client presentations.",
+              "Στήριξα design development, technical coordination και documentation.",
+            ],
+          },
+        ],
+        skills: [
+          {
+            title: "Front-end",
+            items: ["React.js", "Vue.js", "JavaScript", "TypeScript", "HTML5", "CSS3", "SASS"],
+          },
+          {
+            title: "UX/UI",
+            items: ["User research", "Personas", "Journey maps", "Wireframes", "Prototypes", "Usability testing"],
+          },
+          {
+            title: "Systems",
+            items: ["Design systems", "Component libraries", "Design tokens", "Style guides", "Accessibility"],
+          },
+          {
+            title: "Computational",
+            items: ["Grasshopper", "Rhino", "Python", "Algorithmic design", "AEC workflows"],
+          },
+          {
+            title: "Delivery",
+            items: ["Agile", "Scrum", "Product coordination", "Roadmaps", "Performance"],
+          },
+        ],
+        education: [
+          {
+            year: "2019 - 2020",
+            degree: "MSc Architectural Computation",
+            school: "The Bartlett School of Architecture, UCL",
+            grade: "Distinction",
+          },
+          {
+            year: "2013 - 2019",
+            degree: "Master of Architecture",
+            school: "Aristotle University of Thessaloniki",
+            grade: "Distinction",
+          },
+        ],
+      },
     },
     notFound: {
       title: "ΩΧ! Η ΣΕΛΙΔΑ ΔΕΝ ΒΡΕΘΗΚΕ",
