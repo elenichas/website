@@ -11,11 +11,12 @@
             <p class="page-subtitle">{{ $t("about.subtitle") }}</p>
             <div class="hero-actions">
               <a :href="cvLink" download class="btn-primary cv-download">
-                <span class="mdi mdi-download"></span>
                 {{ $t("common.downloadResume") }}
+                <span class="mdi mdi-download"></span>
               </a>
               <a href="mailto:eleni.chasioti@gmail.com" class="btn-secondary">
                 {{ $t("common.getInTouch") }}
+                <span class="mdi mdi-arrow-right"></span>
               </a>
             </div>
           </div>
@@ -23,24 +24,6 @@
         </div>
       </section>
 
-      <section class="about-glance about-reveal">
-        <div class="glance-item">
-          <span class="glance-value">5+</span>
-          <span class="glance-label">{{ $t("about.glanceYears") }}</span>
-        </div>
-        <div class="glance-item">
-          <span class="glance-value">{{ $t("about.glanceRole") }}</span>
-          <span class="glance-label">Foster + Partners</span>
-        </div>
-        <div class="glance-item">
-          <span class="glance-value">MSc</span>
-          <span class="glance-label">{{ $t("about.glanceEducation") }}</span>
-        </div>
-      </section>
-    </div>
-
-    <div class="about-marquee" aria-hidden="true">
-      <span v-for="item in $t('about.marquee')" :key="item">{{ item }}</span>
     </div>
 
     <section class="about-story">
@@ -74,6 +57,85 @@
               <p>{{ $t("about.conferenceText") }}</p>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="experience-section">
+      <div class="about-container experience-grid">
+        <div class="experience-heading">
+          <p class="section-eyebrow">{{ $t("about.experience.eyebrow") }}</p>
+        </div>
+
+        <div class="experience-board">
+          <div class="timeline-list" role="list">
+            <article
+              v-for="(item, index) in $t('about.experience.timeline')"
+              :key="item.company"
+              class="timeline-card"
+              :class="{ active: isExperienceExpanded(index) }"
+            >
+              <button
+                class="timeline-trigger"
+                type="button"
+                :aria-expanded="isExperienceExpanded(index)"
+                :aria-controls="experiencePanelId(index)"
+                @click="toggleExperience(index)"
+              >
+                <span class="timeline-year">{{ item.period }}</span>
+                <span class="timeline-main">
+                  <span class="timeline-role">{{ item.role }}</span>
+                  <span class="timeline-company">{{ item.company }} · {{ item.location }}</span>
+                </span>
+                <span class="timeline-toggle" aria-hidden="true">{{ isExperienceExpanded(index) ? "-" : "+" }}</span>
+              </button>
+
+              <transition name="experience-panel">
+                <div
+                  v-show="isExperienceExpanded(index)"
+                  :id="experiencePanelId(index)"
+                  class="timeline-detail"
+                >
+                  <p class="timeline-summary">{{ item.summary }}</p>
+                  <div class="timeline-highlights">
+                    <p v-for="point in item.points" :key="point" class="timeline-highlight">{{ point }}</p>
+                  </div>
+                </div>
+              </transition>
+            </article>
+          </div>
+
+          <aside class="experience-side">
+            <div class="skill-radar" aria-label="Skill overview">
+              <h3>{{ $t("about.experience.skillsTitle") }}</h3>
+              <div
+                v-for="cluster in $t('about.experience.skills')"
+                :key="cluster.title"
+                class="skill-cluster"
+              >
+                <p>{{ cluster.title }}</p>
+                <div class="skill-chips">
+                  <span v-for="skill in cluster.items" :key="skill">{{ skill }}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="education-strip">
+              <h3>{{ $t("about.experience.educationTitle") }}</h3>
+              <article
+                v-for="item in $t('about.experience.education')"
+                :key="item.degree"
+                class="education-item"
+              >
+                <span>{{ item.year }}</span>
+                <div>
+                  <h4>{{ item.degree }}</h4>
+                  <p>{{ item.school }}</p>
+                  <small>{{ item.grade }}</small>
+                </div>
+              </article>
+            </div>
+          </aside>
         </div>
       </div>
     </section>
@@ -127,6 +189,19 @@ export default {
     this.pauseCarousel();
   },
   methods: {
+    experiencePanelId(index) {
+      return `experience-panel-${index}`;
+    },
+    isExperienceExpanded(index) {
+      return this.expandedExperiences.includes(index);
+    },
+    toggleExperience(index) {
+      if (this.isExperienceExpanded(index)) {
+        this.expandedExperiences = this.expandedExperiences.filter((item) => item !== index);
+      } else {
+        this.expandedExperiences = [...this.expandedExperiences, index];
+      }
+    },
     initGalleryReveal() {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         this.$nextTick(() => {
@@ -174,6 +249,7 @@ export default {
   data() {
     return {
       cvLink,
+      expandedExperiences: [0],
       currentSlide: 0,
       carouselTimer: null,
       conferenceImages: [
@@ -245,12 +321,12 @@ export default {
 }
 
 .about-hero {
-  padding: var(--space-8) 0 var(--space-6);
+  padding: var(--space-8) 0 clamp(1.5rem, 3vw, 3rem);
 }
 
 .about-hero__shell {
   position: relative;
-  min-height: clamp(500px, calc(100vh - 180px), 640px);
+  min-height: auto;
   overflow: hidden;
   background: var(--color-bg);
 }
@@ -290,76 +366,6 @@ export default {
   margin-top: clamp(1.35rem, 2vw, 1.8rem);
 }
 
-.hero-actions .btn-primary,
-.hero-actions .btn-secondary {
-  border-radius: var(--radius-full);
-}
-
-.about-marquee {
-  display: flex;
-  gap: clamp(1.5rem, 4vw, 3rem);
-  width: auto;
-  margin: 0 calc(50% - 50vw + 7px);
-  padding: 0 clamp(1rem, 4vw, 4rem);
-  overflow: hidden;
-  border-top: 1px solid rgba(17, 17, 17, 0.1);
-  border-bottom: 1px solid rgba(17, 17, 17, 0.1);
-  background: var(--color-bg);
-  color: rgba(17, 17, 17, 0.52);
-  font-size: clamp(0.72rem, 1vw, 0.9rem);
-  font-weight: var(--weight-semibold);
-  letter-spacing: 0;
-  line-height: 1;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.about-marquee span {
-  flex: 0 0 auto;
-  padding: 1rem 0;
-}
-
-.about-glance {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin: 0 0 var(--space-10);
-  overflow: hidden;
-  border: 1px solid rgba(17, 17, 17, 0.1);
-  border-radius: 10px;
-  background: #f7f7f4;
-}
-
-.glance-item {
-  display: grid;
-  gap: 0.35rem;
-  min-height: 108px;
-  padding: clamp(0.9rem, 1.8vw, 1.35rem);
-  border-right: 1px solid rgba(17, 17, 17, 0.1);
-  align-content: end;
-}
-
-.glance-item:last-child {
-  border-right: 0;
-}
-
-.glance-value {
-  color: #111111;
-  font-size: clamp(1.2rem, 2vw, 2.15rem);
-  font-weight: 900;
-  letter-spacing: 0;
-  line-height: 0.95;
-  text-transform: uppercase;
-}
-
-.glance-label {
-  max-width: 250px;
-  color: rgba(17, 17, 17, 0.58);
-  font-size: 0.74rem;
-  font-weight: var(--weight-semibold);
-  line-height: 1.35;
-  text-transform: uppercase;
-}
-
 .about-story {
   background: var(--color-bg);
 }
@@ -368,7 +374,7 @@ export default {
   display: grid;
   grid-template-columns: minmax(260px, 0.82fr) minmax(0, 1.18fr);
   gap: clamp(2rem, 7vw, 8rem);
-  padding-top: clamp(4.5rem, 9vw, 8rem);
+  padding-top: clamp(2.75rem, 5vw, 5rem);
   padding-bottom: clamp(4.5rem, 9vw, 8rem);
 }
 
@@ -435,6 +441,302 @@ export default {
 .story-section strong {
   color: #111111;
   font-weight: var(--weight-semibold);
+}
+
+.experience-section {
+  position: relative;
+  background: #111111;
+  color: #ffffff;
+}
+
+.experience-grid {
+  padding-top: clamp(4.5rem, 9vw, 8rem);
+  padding-bottom: clamp(4.5rem, 9vw, 8rem);
+}
+
+.experience-heading {
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.experience-heading .section-eyebrow {
+  color: rgba(255, 255, 255, 0.56);
+  font-size: clamp(1rem, 1.8vw, 1.35rem);
+  font-weight: var(--weight-bold);
+}
+
+.experience-board {
+  display: grid;
+  grid-template-columns: minmax(0, 1.28fr) minmax(300px, 0.72fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+}
+
+.timeline-list {
+  position: relative;
+  display: grid;
+  gap: var(--space-3);
+}
+
+.timeline-list::before {
+  content: "";
+  position: absolute;
+  top: 1.1rem;
+  bottom: 1.1rem;
+  left: 1.05rem;
+  width: 1px;
+  background: linear-gradient(180deg, #ffffff, rgba(255, 255, 255, 0.14));
+}
+
+.timeline-card {
+  position: relative;
+  padding-left: clamp(2.25rem, 4vw, 3.25rem);
+}
+
+.timeline-card::before {
+  content: "";
+  position: absolute;
+  top: 1.16rem;
+  left: 0.71rem;
+  width: 0.72rem;
+  height: 0.72rem;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: var(--radius-full);
+  background: #111111;
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.22);
+  transition:
+    background-color var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out),
+    transform var(--duration-normal) var(--ease-out);
+}
+
+.timeline-card.active::before {
+  background: #ffffff;
+  box-shadow: 0 0 0 0.55rem rgba(255, 255, 255, 0.12);
+  transform: scale(1.08);
+}
+
+.timeline-trigger {
+  display: grid;
+  grid-template-columns: minmax(8.5rem, 0.3fr) minmax(0, 1fr) auto;
+  gap: clamp(0.9rem, 2vw, 1.5rem);
+  width: 100%;
+  min-height: 5.4rem;
+  padding: clamp(1rem, 2.4vw, 1.5rem);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.045);
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  transition:
+    background-color var(--duration-normal) var(--ease-out),
+    border-color var(--duration-normal) var(--ease-out),
+    transform var(--duration-normal) var(--ease-out);
+}
+
+.timeline-trigger:hover,
+.timeline-card.active .timeline-trigger {
+  border-color: rgba(255, 255, 255, 0.38);
+  background: rgba(255, 255, 255, 0.085);
+  transform: translateY(-1px);
+}
+
+.timeline-trigger:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 4px;
+}
+
+.timeline-year {
+  color: rgba(255, 255, 255, 0.54);
+  font-size: 0.74rem;
+  font-weight: var(--weight-semibold);
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.timeline-main {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.timeline-role {
+  color: #ffffff;
+  font-size: clamp(1.12rem, 2vw, 1.7rem);
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 1.02;
+  text-transform: uppercase;
+}
+
+.timeline-company {
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+.timeline-toggle {
+  display: inline-grid;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-full);
+  place-items: center;
+  color: #ffffff;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.timeline-detail {
+  margin-top: var(--space-3);
+  padding: clamp(1rem, 2vw, 1.35rem) clamp(1rem, 2.4vw, 1.5rem);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.93);
+  color: #111111;
+  transform-origin: top;
+}
+
+.timeline-summary {
+  max-width: 720px;
+  margin: 0 0 var(--space-4);
+  color: rgba(17, 17, 17, 0.74);
+  font-size: clamp(1rem, 1.2vw, 1.12rem);
+  line-height: 1.62;
+  text-wrap: pretty;
+}
+
+.timeline-highlights {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.timeline-highlight {
+  min-height: 100%;
+  margin: 0;
+  padding: 0.82rem 0.9rem;
+  border: 1px solid rgba(17, 17, 17, 0.12);
+  border-radius: var(--radius-sm);
+  background: rgba(17, 17, 17, 0.035);
+  color: rgba(17, 17, 17, 0.78);
+  font-size: 0.88rem;
+  line-height: 1.48;
+  text-wrap: pretty;
+}
+
+.experience-panel-enter-active,
+.experience-panel-leave-active {
+  overflow: hidden;
+  transition:
+    opacity 260ms var(--ease-out),
+    transform 260ms var(--ease-out);
+}
+
+.experience-panel-enter-from,
+.experience-panel-leave-to {
+  opacity: 0;
+  transform: translateY(-0.5rem) scaleY(0.98);
+}
+
+.experience-side {
+  position: sticky;
+  top: 88px;
+  display: grid;
+  gap: clamp(1.25rem, 2.6vw, 2rem);
+}
+
+.skill-radar,
+.education-strip {
+  padding: clamp(1.1rem, 2.4vw, 1.6rem);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.skill-radar h3,
+.education-strip h3 {
+  margin: 0 0 var(--space-5);
+  color: #ffffff;
+  font-size: clamp(1.2rem, 2vw, 1.65rem);
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.skill-cluster {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.skill-cluster p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.76rem;
+  font-weight: var(--weight-semibold);
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.skill-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.skill-chips span {
+  display: inline-flex;
+  min-height: 1.8rem;
+  align-items: center;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.76rem;
+  line-height: 1;
+}
+
+.education-item {
+  display: grid;
+  grid-template-columns: 5.2rem minmax(0, 1fr);
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.education-item span {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.72rem;
+  font-weight: var(--weight-semibold);
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.education-item h4 {
+  margin: 0 0 0.35rem;
+  color: #ffffff;
+  font-size: 0.98rem;
+  font-weight: var(--weight-semibold);
+  line-height: 1.25;
+}
+
+.education-item p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.education-item small {
+  display: inline-flex;
+  margin-top: 0.55rem;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 0.74rem;
+  line-height: 1.3;
 }
 
 .gallery-section {
@@ -523,6 +825,13 @@ export default {
   .carousel-slide {
     transition: none;
   }
+
+  .timeline-trigger,
+  .timeline-card::before,
+  .experience-panel-enter-active,
+  .experience-panel-leave-active {
+    transition: none;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -535,6 +844,15 @@ export default {
   }
 
   .story-sticky {
+    position: static;
+  }
+
+  .experience-heading,
+  .experience-board {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-side {
     position: static;
   }
 
@@ -568,50 +886,46 @@ export default {
     margin-top: 0;
   }
 
-  .about-glance {
-    grid-template-columns: 1fr;
-    margin-bottom: var(--space-6);
-  }
-
-  .glance-item {
-    min-height: 82px;
-    padding: var(--space-4) var(--space-5);
-    border-right: 0;
-    border-bottom: 1px solid rgba(17, 17, 17, 0.1);
-  }
-
-  .glance-value {
-    font-size: 1.45rem;
-  }
-
-  .glance-label {
-    font-size: 0.72rem;
-    line-height: 1.25;
-  }
-
-  .glance-item:last-child {
-    border-bottom: 0;
-  }
-
-  .about-marquee {
-    flex-wrap: wrap;
-    gap: 0 var(--space-5);
-    margin: 0;
-    padding: var(--space-3) var(--space-5);
-    overflow: visible;
-    white-space: normal;
-  }
-
-  .about-marquee span {
-    padding: var(--space-2) 0;
-  }
-
   .story-grid {
-    padding-top: var(--space-10);
+    padding-top: var(--space-7);
     padding-bottom: var(--space-10);
   }
 
   .story-section {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-grid {
+    padding-top: var(--space-12);
+    padding-bottom: var(--space-12);
+  }
+
+  .timeline-list::before {
+    display: none;
+  }
+
+  .timeline-card {
+    padding-left: 0;
+  }
+
+  .timeline-card::before {
+    display: none;
+  }
+
+  .timeline-trigger {
+    grid-template-columns: 1fr auto;
+    gap: var(--space-3);
+  }
+
+  .timeline-year {
+    grid-column: 1 / -1;
+  }
+
+  .timeline-detail {
+    margin-top: var(--space-2);
+  }
+
+  .timeline-highlights {
     grid-template-columns: 1fr;
   }
 
@@ -663,6 +977,16 @@ export default {
 
   .gallery-bg-title {
     font-size: clamp(5.4rem, 27vw, 8rem);
+  }
+
+  .skill-radar,
+  .education-strip {
+    padding: var(--space-5);
+  }
+
+  .education-item {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
   }
 
 }
