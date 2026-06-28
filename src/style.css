@@ -17,6 +17,11 @@
   --color-border-strong: rgba(0, 0, 0, 0.12);
   --color-accent: #111111;
   --color-accent-soft: rgba(17, 17, 17, 0.06);
+  --color-on-ink: #ffffff;
+  --color-ink-subtle: rgba(17, 17, 17, 0.48);
+  --color-ink-faint: rgba(17, 17, 17, 0.08);
+  --color-canvas-wash: #f3f2ea;
+  --color-system-tint: #f5f7fa;
 
   /* Typography */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -66,6 +71,7 @@
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.08);
   --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.1);
+  --shadow-media: 0 1.25rem 3.5rem rgba(17, 17, 17, 0.1);
 
   /* Transitions */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -168,7 +174,7 @@ a:hover {
   min-height: 44px;
   padding: 0.65rem 1.4rem;
   background: var(--color-text);
-  color: #fff;
+  color: var(--color-on-ink);
   border: 1px solid var(--color-text);
   border-radius: var(--radius-sm);
   font-family: var(--font-sans);
@@ -416,7 +422,7 @@ a:hover {
 .case-study.case-study .split-video,
 .case-study.case-study .carousel-wrapper {
   border-radius: var(--radius-sm);
-  box-shadow: 0 1.25rem 3.5rem rgba(17, 17, 17, 0.1);
+  box-shadow: var(--shadow-media);
 }
 
 .case-study.case-study .hero-image {

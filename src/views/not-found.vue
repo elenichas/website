@@ -1,58 +1,79 @@
 <template>
-  <div class="not-found-container1">
-    <h3>{{ $t("notFound.title") }}</h3>
-    <div class="not-found-container2"><h1 class="not-found-text2">404</h1></div>
-    <div class="not-found-container3">
-      <h2 class="not-found-text3">
-        {{ $t("notFound.message") }}
-      </h2>
-    </div>
-  </div>
+  <main class="not-found-page">
+    <app-navbar />
+
+    <section class="not-found-shell" aria-labelledby="not-found-title">
+      <p class="section-label">Missing route</p>
+      <h1 id="not-found-title">404</h1>
+      <p class="not-found-message">{{ $t("notFound.message") }}</p>
+      <router-link to="/" class="btn-primary">
+        {{ $t("nav.home") }}
+        <span class="mdi mdi-arrow-right"></span>
+      </router-link>
+    </section>
+
+    <app-footer />
+  </main>
 </template>
 
 <script>
+import AppNavbar from "@/components/navbar.vue";
+import AppFooter from "@/components/footer.vue";
+
 export default {
   name: "NotFound",
-  metaInfo: {
-    title: "404 - Not Found",
+  components: {
+    AppNavbar,
+    AppFooter,
   },
 };
 </script>
 
 <style scoped>
-.not-found-container1 {
-  width: 100%;
-  display: flex;
-  overflow: auto;
+.not-found-page {
   min-height: 100vh;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
+  background: var(--color-bg);
+  color: var(--color-text);
 }
-.not-found-container2 {
-  display: flex;
-  position: relative;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
+
+.not-found-shell {
+  width: min(100%, 58rem);
+  min-height: calc(100vh - 72px);
+  margin: 0 auto;
+  padding: clamp(5rem, 12vw, 9rem) var(--space-8);
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: var(--space-5);
 }
-.not-found-text2 {
-  color: rgb(38, 38, 38);
-  font-size: 252px;
-  margin-top: -20px;
+
+.not-found-shell h1 {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: clamp(5.5rem, 18vw, 13rem);
   font-weight: 900;
-  margin-bottom: -20px;
-  letter-spacing: -20px;
+  line-height: 0.9;
+  letter-spacing: 0;
 }
-.not-found-container3 {
-  width: 421px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
+
+.not-found-message {
+  max-width: 38rem;
+  color: var(--color-text-secondary);
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  line-height: 1.45;
 }
-.not-found-text3 {
-  text-align: center;
-  font-weight: 400;
+
+@media (max-width: 768px) {
+  .not-found-shell {
+    min-height: auto;
+    padding: var(--space-20) var(--space-5) var(--space-12);
+  }
+}
+
+@media (max-width: 480px) {
+  .not-found-shell {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
 }
 </style>
