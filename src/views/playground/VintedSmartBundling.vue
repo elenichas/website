@@ -19,18 +19,6 @@
           Independent speculative prototype. Not affiliated with Vinted. Play with
           the prototype to explore the new features.
         </p>
-        <div class="feature-brief" aria-label="Designed prototype features">
-          <article>
-            <span>Feature 1</span>
-            <strong>Full-value discovery</strong>
-            <p>Annotate the normal search flow with total price, delivery, and distance signals.</p>
-          </article>
-          <article>
-            <span>Feature 2</span>
-            <strong>Smart same-seller bundles</strong>
-            <p>Use favorites and size signals to suggest different items from the same seller.</p>
-          </article>
-        </div>
       </div>
 
       <section class="prototype-stage" aria-label="Interactive Vinted-inspired prototype">
@@ -300,14 +288,27 @@
               </nav>
             </div>
           </div>
-        </div>
 
-        <aside class="prototype-notes">
-          <p class="project-label">Live mock data</p>
-          <h2>{{ noteTitle }}</h2>
-          <p>{{ noteCopy }}</p>
-        </aside>
+          <aside class="prototype-notes">
+            <p class="project-label">Live mock data</p>
+            <h2>{{ noteTitle }}</h2>
+            <p>{{ noteCopy }}</p>
+          </aside>
+        </div>
       </section>
+
+      <div class="feature-brief" aria-label="Designed prototype features">
+        <article>
+          <span>Feature 1</span>
+          <strong>Full-value discovery</strong>
+          <p>Annotate the normal search flow with total price, delivery, and distance signals.</p>
+        </article>
+        <article>
+          <span>Feature 2</span>
+          <strong>Smart same-seller bundles</strong>
+          <p>Use favorites and size signals to suggest different items from the same seller.</p>
+        </article>
+      </div>
     </section>
 
     <section class="story-section problem-section">
@@ -1211,11 +1212,17 @@ export default {
 .vinted-hero {
   align-items: center;
   display: grid;
-  gap: clamp(2rem, 5vw, 5rem);
-  grid-template-columns: minmax(0, 0.82fr) minmax(24rem, 1.18fr);
+  gap: clamp(1.75rem, 4vw, 3.25rem);
+  grid-template-columns: minmax(0, 1fr);
   margin: 0 auto;
-  max-width: 1320px;
-  padding: clamp(2rem, 5vw, 5rem) clamp(1rem, 5vw, 4rem);
+  max-width: 1280px;
+  padding: clamp(2rem, 4vw, 3.75rem) clamp(1rem, 5vw, 4rem) clamp(3rem, 5vw, 5rem);
+}
+
+.hero-story {
+  justify-self: center;
+  max-width: 54rem;
+  text-align: center;
 }
 
 .back-link {
@@ -1236,10 +1243,10 @@ export default {
 }
 
 .hero-story h1 {
-  font-size: clamp(3.2rem, 6vw, 5.7rem);
+  font-size: clamp(3.2rem, 5.4vw, 5rem);
   line-height: 0.96;
-  margin: 0;
-  max-width: 10ch;
+  margin: 0 auto;
+  max-width: 16ch;
   text-wrap: balance;
 }
 
@@ -1247,7 +1254,7 @@ export default {
   color: var(--color-text-secondary);
   font-size: clamp(1rem, 1.4vw, 1.2rem);
   line-height: 1.6;
-  margin: 1.25rem 0 0;
+  margin: 1.25rem auto 0;
   max-width: 36rem;
 }
 
@@ -1258,7 +1265,7 @@ export default {
   color: var(--color-text-secondary);
   font-size: 0.84rem;
   line-height: 1.45;
-  margin-top: 1.35rem;
+  margin: 1.35rem auto 0;
   max-width: 28rem;
   padding: 0.75rem 0.85rem;
 }
@@ -1267,8 +1274,9 @@ export default {
   display: grid;
   gap: 0.75rem;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin-top: 1rem;
+  margin: 1rem auto 0;
   max-width: 38rem;
+  text-align: left;
 }
 
 .feature-brief article {
@@ -1307,22 +1315,27 @@ export default {
   align-items: center;
   display: grid;
   gap: 1.2rem;
-  grid-column: 1 / -1;
   grid-template-columns: 1fr;
   justify-items: center;
+  width: 100%;
 }
 
 .prototype-device {
+  display: grid;
+  gap: clamp(1rem, 2.4vw, 2rem);
+  grid-template-areas: "annotations phone notes";
+  grid-template-columns: minmax(11rem, 1fr) minmax(21rem, 24rem) minmax(11rem, 1fr);
   justify-self: center;
   min-height: 46rem;
   position: relative;
-  width: min(100%, 54rem);
+  width: min(100%, 70rem);
 }
 
 .phone-frame {
   background: #111111;
   border-radius: 34px;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.16);
+  grid-area: phone;
   justify-self: center;
   padding: 0.65rem;
   position: relative;
@@ -1332,9 +1345,14 @@ export default {
 }
 
 .annotation-layer {
-  inset: 0;
+  align-content: start;
+  display: grid;
+  gap: 0.8rem;
+  grid-area: annotations;
+  inset: auto;
+  padding-top: 1rem;
   pointer-events: none;
-  position: absolute;
+  position: static;
   z-index: 1;
 }
 
@@ -1344,9 +1362,9 @@ export default {
   border-radius: 8px;
   box-shadow: 0 10px 30px rgba(17, 17, 17, 0.08);
   color: #17201e;
-  max-width: 10.2rem;
+  max-width: none;
   padding: 0.72rem 0.78rem;
-  position: absolute;
+  position: static;
   z-index: 3;
 }
 
@@ -1357,6 +1375,11 @@ export default {
   position: absolute;
   top: 50%;
   transform-origin: center;
+}
+
+.annotation-note::before,
+.annotation-note::after {
+  display: none;
 }
 
 .annotation-note::before {
@@ -2312,10 +2335,13 @@ export default {
 }
 
 .prototype-notes {
+  align-self: start;
   background: #ffffff;
   border: 1px solid var(--color-border);
   border-radius: 12px;
-  max-width: 24rem;
+  grid-area: notes;
+  justify-self: stretch;
+  margin-top: 1rem;
   padding: 1rem;
 }
 
@@ -2379,16 +2405,21 @@ export default {
 }
 
 @media (max-width: 1120px) {
-  .vinted-hero,
-  .prototype-stage {
+  .prototype-device {
+    grid-template-areas:
+      "phone"
+      "annotations"
+      "notes";
     grid-template-columns: 1fr;
+    width: min(100%, 54rem);
   }
 
-  .prototype-stage {
-    justify-items: center;
+  .phone-frame {
+    width: min(100%, 24rem);
   }
 
   .prototype-notes {
+    justify-self: center;
     max-width: 24rem;
   }
 }
@@ -2400,6 +2431,10 @@ export default {
 
   .hero-story h1 {
     font-size: clamp(3rem, 14vw, 4.6rem);
+  }
+
+  .feature-brief {
+    grid-template-columns: 1fr;
   }
 
   .phone-frame {
@@ -2432,6 +2467,10 @@ export default {
 
   .phone-frame {
     order: 1;
+  }
+
+  .prototype-notes {
+    order: 3;
   }
 
   .app-screen {

@@ -8,6 +8,7 @@ const Playground = () => import("./views/playground/PlaygroundIndex.vue");
 const AISandbox = () => import("./views/playground/AISandbox.vue");
 const VintedSmartBundling = () => import("./views/playground/VintedSmartBundling.vue");
 const About = () => import(/* webpackChunkName: "about" */ "./views/about.vue");
+const HiddenDesignSystem = () => import(/* webpackChunkName: "design-system" */ "./views/hidden/DesignSystemCaseStudy.vue");
 const NotFound = () => import(/* webpackChunkName: "not-found" */ "./views/not-found.vue");
 const HapiProject = () => import(/* webpackChunkName: "hapi" */ "./views/architecture/HapiProject.vue");
 const ThesisProject = () => import(/* webpackChunkName: "thesis" */ "./views/architecture/ThesisProject.vue");
@@ -58,9 +59,9 @@ const routes = [
     component: About,
   },
   {
-    name: "404 - Not Found",
-    path: "/:pathMatch(.*)*", // This is the Vue 3 equivalent for catching all unmatched routes
-    component: NotFound,
+    name: "Hidden Design System",
+    path: "/hidden/design-system",
+    component: HiddenDesignSystem,
   },
     // Legacy redirects for old URLs
   {
@@ -90,6 +91,10 @@ const routes = [
   {
     path: "/products/brew-crumb",
     component: LocalBakeryApp,
+  },
+  {
+    path: "/products/modular-app",
+    component: ModularApp,
   },
   {
     path: "/products/lunar-app",
@@ -135,6 +140,11 @@ const routes = [
   {
     path: "/uxui/lunar-app",
     redirect: "/products/lunar-app",
+  },
+  {
+    name: "404 - Not Found",
+    path: "/:pathMatch(.*)*",
+    component: NotFound,
   },
 ];
 

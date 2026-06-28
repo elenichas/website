@@ -115,7 +115,7 @@ export default {
   color: var(--color-text-muted);
   font-size: 0.75rem;
   font-weight: var(--weight-semibold);
-  letter-spacing: 0.12em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -179,9 +179,9 @@ export default {
 }
 
 .engineering-poster {
-  --poster-bg: #f3f2ea;
-  --poster-ink: #111111;
-  --poster-muted: rgba(17, 17, 17, 0.48);
+  --poster-bg: var(--color-canvas-wash);
+  --poster-ink: var(--color-text);
+  --poster-muted: var(--color-ink-subtle);
   --poster-red: #e54832;
   --poster-blue: #24539a;
   --poster-green: #2d7148;
@@ -204,7 +204,7 @@ export default {
   content: "";
   position: absolute;
   inset: 0;
-  border: 1px solid rgba(17, 17, 17, 0.08);
+  border: 1px solid var(--color-ink-faint);
   pointer-events: none;
   z-index: 4;
 }

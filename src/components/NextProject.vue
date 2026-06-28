@@ -53,7 +53,7 @@ export default {
 .next-label {
   font-size: 0.6875rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0;
   color: var(--color-text-muted);
   font-weight: var(--weight-semibold);
   display: block;
@@ -99,7 +99,7 @@ export default {
   color: var(--color-text-muted);
   margin: 0;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0;
   font-weight: var(--weight-medium);
 }
 
