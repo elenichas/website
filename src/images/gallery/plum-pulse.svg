@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
+  <title id="title">Plum Pulse mobile investment review</title>
+  <desc id="desc">A purple mobile interface showing portfolio value, a line chart and monthly investment breakdown.</desc>
+  <rect width="1200" height="750" fill="#efe8f3"/>
+  <circle cx="1050" cy="90" r="170" fill="#ffd76b"/>
+  <circle cx="100" cy="690" r="210" fill="#c6f1db"/>
+  <rect x="380" y="55" width="440" height="640" rx="54" fill="#171717"/>
+  <rect x="394" y="69" width="412" height="612" rx="43" fill="#f7f7f7"/>
+  <rect x="424" y="105" width="58" height="28" rx="10" fill="#8e21e6"/>
+  <text x="453" y="124" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="white">Pro</text>
+  <text x="600" y="126" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#202020">Pulse</text>
+  <text x="432" y="176" font-family="Arial, sans-serif" font-size="14" fill="#777">PULSE MONTHLY REVIEW</text>
+  <text x="432" y="207" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#202020">September</text>
+  <rect x="422" y="232" width="356" height="180" rx="18" fill="white"/>
+  <text x="446" y="266" font-family="Arial, sans-serif" font-size="14" fill="#666">Portfolio value</text>
+  <text x="446" y="306" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#181818">£4,407.82</text>
+  <path d="M446 374 C485 366 510 343 541 348 S600 322 630 330 S690 290 722 300 S751 279 758 277" fill="none" stroke="#008d78" stroke-width="5" stroke-linecap="round"/>
+  <path d="M446 385 C510 379 560 368 615 361 S705 345 758 337" fill="none" stroke="#8e21e6" stroke-width="4" stroke-linecap="round"/>
+  <rect x="422" y="430" width="356" height="188" rx="18" fill="white"/>
+  <text x="446" y="465" font-family="Arial, sans-serif" font-size="14" fill="#666">Your portfolio changed by</text>
+  <text x="446" y="503" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#008d78">+£193.62</text>
+  <circle cx="450" cy="541" r="6" fill="#8e21e6"/><text x="465" y="546" font-family="Arial, sans-serif" font-size="13" fill="#333">Contributions</text><rect x="585" y="535" width="150" height="12" rx="6" fill="#eee"/><rect x="585" y="535" width="135" height="12" rx="6" fill="#8e21e6"/>
+  <circle cx="450" cy="574" r="6" fill="#008d78"/><text x="465" y="579" font-family="Arial, sans-serif" font-size="13" fill="#333">Market movement</text><rect x="585" y="568" width="150" height="12" rx="6" fill="#eee"/><rect x="585" y="568" width="75" height="12" rx="6" fill="#008d78"/>
+  <circle cx="450" cy="607" r="6" fill="#777"/><text x="465" y="612" font-family="Arial, sans-serif" font-size="13" fill="#333">Fees</text><rect x="585" y="601" width="150" height="12" rx="6" fill="#eee"/><rect x="585" y="601" width="22" height="12" rx="6" fill="#777"/>
+</svg>

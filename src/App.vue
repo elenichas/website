@@ -1,12 +1,16 @@
 <template>
   <router-view />
+  <cursor-trail />
 </template>
 
 <script>
 import { translateCaseStudy } from "./caseStudyTranslations";
+import CursorTrail from "./components/CursorTrail.vue";
+import "./styles/studio-theme.css";
 
 export default {
   name: "App",
+  components: { CursorTrail },
   data() {
     return {
       caseStudyObserver: null,

@@ -69,6 +69,14 @@ export default {
           title: "Vinted Smart Local Bundling",
           route: "/playground/vinted-smart-bundling",
         },
+        {
+          id: "plum",
+          shape: "square",
+          question: "Understand a month of investing",
+          answerHint: "Performance, automation, fees",
+          title: "Plum Pulse",
+          route: "/playground/plum-pulse",
+        },
       ],
     };
   },
@@ -148,6 +156,13 @@ export default {
   clip-path: polygon(50% 0, 100% 100%, 0 100%);
   height: clamp(5.4rem, 11vw, 8.6rem);
   width: clamp(6.2rem, 12vw, 9.8rem);
+}
+
+.shape-link.square .shape-mark {
+  animation-delay: 440ms;
+  border-radius: 12px;
+  height: clamp(5.4rem, 11vw, 8.6rem);
+  width: clamp(5.4rem, 11vw, 8.6rem);
 }
 
 .shape-link:hover .shape-mark,

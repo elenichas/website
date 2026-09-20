@@ -15,9 +15,6 @@
       <!-- Desktop Navigation -->
       <nav class="desktop-nav">
         <router-link to="/" class="nav-link" exact-active-class="active">
-          {{ $t("nav.home") }}
-        </router-link>
-        <router-link to="/craft" class="nav-link" active-class="active">
           {{ $t("nav.craft") }}
         </router-link>
         <router-link to="/playground" class="nav-link" active-class="active">
@@ -66,9 +63,6 @@
     >
       <nav class="mobile-nav">
         <router-link to="/" class="mobile-nav-link" @click="closeMobileMenu">
-          {{ $t("nav.home") }}
-        </router-link>
-        <router-link to="/craft" class="mobile-nav-link" @click="closeMobileMenu">
           {{ $t("nav.craft") }}
         </router-link>
         <router-link to="/playground" class="mobile-nav-link" @click="closeMobileMenu">

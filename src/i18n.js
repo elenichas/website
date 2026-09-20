@@ -17,7 +17,7 @@ const messages = {
       home: "Home",
       products: "Products",
       engineering: "Engineering",
-      craft: "Craft",
+      craft: "Work index",
       playground: "Playground",
       about: "About",
       letsTalk: "Let's Talk",

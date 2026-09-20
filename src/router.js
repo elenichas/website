@@ -2,11 +2,11 @@ import { createRouter, createWebHistory } from "vue-router";
 import "./style.css";
 
 // Lazy-loaded route components (code-split per page)
-const Home = () => import(/* webpackChunkName: "home" */ "./views/home.vue");
 const Craft = () => import("./views/design.vue");
 const Playground = () => import("./views/playground/PlaygroundIndex.vue");
 const AISandbox = () => import("./views/playground/AISandbox.vue");
 const VintedSmartBundling = () => import("./views/playground/VintedSmartBundling.vue");
+const PlumPulse = () => import("./views/playground/PlumPulse.vue");
 const About = () => import(/* webpackChunkName: "about" */ "./views/about.vue");
 const HiddenDesignSystem = () => import(/* webpackChunkName: "design-system" */ "./views/hidden/DesignSystemCaseStudy.vue");
 const NotFound = () => import(/* webpackChunkName: "not-found" */ "./views/not-found.vue");
@@ -26,7 +26,7 @@ const routes = [
   {
     name: "Home",
     path: "/",
-    component: Home,
+    component: Craft,
   },
     {
     name: "Products Redirect",
@@ -36,7 +36,7 @@ const routes = [
   {
     name: "Craft", 
     path: "/craft",
-    component: Craft,
+    redirect: "/",
   },
   {
     name: "Playground",
@@ -52,6 +52,11 @@ const routes = [
     name: "Vinted Smart Bundling",
     path: "/playground/vinted-smart-bundling",
     component: VintedSmartBundling,
+  },
+  {
+    name: "Plum Pulse",
+    path: "/playground/plum-pulse",
+    component: PlumPulse,
   },
   {
     name: "About",
