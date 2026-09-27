@@ -1,121 +1,63 @@
-# Personal Website
+# Eleni Chasioti — Portfolio
 
-## Overview
+A Vue-based portfolio presenting product-design, design-systems, and computational-design case studies.
 
-This project is a Vue.js application that uses D3.js to visualize data from a GitHub account. The data is fetched from GitHub's API. It features a modern portfolio website with interactive 3D graphics and data visualizations.
+## Highlights
 
-## Features
+- Responsive portfolio and case-study layouts
+- Structured project narratives and design documentation
+- Multilingual content infrastructure
+- Accessible navigation and reusable visual components
+- Separate product and design-system documentation in [`PRODUCT.md`](PRODUCT.md) and [`DESIGN.md`](DESIGN.md)
 
-- Fetches data from GitHub's API using a Personal Access Token
-- Visualizes repositories with D3.js
-- Interactive 3D graphics with Three.js
-- Modern Material Design UI with Vuetify
-- Responsive and mobile-friendly design
+## Technology
 
-## Technologies Used
+- Vue 3 and Vue Router
+- Vuetify
+- Vite
+- Lucide icons
+- `@vueuse/head` for document metadata
 
-- **Vue.js 3**: Frontend framework for building the user interface
-- **Vuetify 3**: Material Design component framework for Vue.js
-- **Vue Router**: Client-side routing
-- **D3.js**: Library for creating data visualizations
-- **Three.js**: 3D graphics library
-- **Axios**: HTTP client for making API requests
-- **GitHub API**: To fetch repository data
+## Run locally
 
-## Installation
+Requires Node.js 20.19 or later.
 
-### Prerequisites
-
-- [Node.js](https://nodejs.org/) (version 20.19.0 or higher)
-- npm (comes with Node.js)
-
-### Steps
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/your-username/your-repo.git
-   cd your-repo
-   ```
-
-2. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-3. Run the development server:
-
-   ```bash
-   npm run serve
-   ```
-
-4. Open your browser and navigate to:
-   ```
-   http://localhost:8080
-   ```
-
-## Available Scripts
-
-- **`npm run serve`**: Starts the development server with hot-reload
-- **`npm run build`**: Builds the app for production to the `dist` folder
-
-## Configuration
-
-### GitHub API Token
-
-To fetch repository data from GitHub, you may need to configure a Personal Access Token:
-
-1. Go to [GitHub Settings > Developer Settings > Personal Access Tokens](https://github.com/settings/tokens)
-2. Generate a new token with `repo` scope
-3. Configure the token in your application as needed
-
-## Development
-
-### Project Structure
-
-```
-├── public/          # Static files
-├── src/
-│   ├── assets/      # Images, styles, and other assets
-│   ├── components/  # Vue components
-│   ├── views/       # Page components
-│   ├── router/      # Vue Router configuration
-│   ├── App.vue      # Root component
-│   └── main.js      # Application entry point
-└── package.json     # Project dependencies and scripts
+```bash
+git clone https://github.com/elenichas/website.git
+cd website
+npm install
+npm run serve
 ```
 
-## Building for Production
+Open the local URL printed by Vite, normally `http://localhost:5173`.
 
-To create an optimized production build:
+## Build
 
 ```bash
 npm run build
+npm run preview
 ```
 
-The built files will be in the `dist/` directory, ready to be deployed to a web server.
+The production build is written to `dist/`.
 
-## Useful Tips
+## Project structure
 
-### Optimize MP4 Videos
-
-To optimize video files for web use:
-
-```bash
-ffmpeg -i source.mp4 -c:v libvpx -b:v 1M -c:a libvorbis target.webm
+```text
+src/
+├── components/   # Reusable UI and portfolio components
+├── views/        # Page-level views and case studies
+├── images/       # Project imagery
+├── i18n.js       # Localized interface content
+├── router.js     # Application routes
+└── App.vue       # Root application component
 ```
 
-Or for MP4 format:
+## Documentation
 
-```bash
-ffmpeg -i source.mp4 -c:v libx264 -crf 23 -c:a aac -b:a 128k optimized.mp4
-```
+- [`PRODUCT.md`](PRODUCT.md) describes the portfolio’s goals and content model.
+- [`DESIGN.md`](DESIGN.md) documents the visual system and interaction direction.
+- [`SANDBOX_BEHAVIOR_MAP.md`](SANDBOX_BEHAVIOR_MAP.md) records the experimental sandbox behaviour.
 
 ## License
 
-This project is private and proprietary.
-
-## Contact
-
-For questions or feedback, please open an issue on GitHub.
+Released under [CC0 1.0](LICENSE).
