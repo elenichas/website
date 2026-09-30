@@ -1,25 +1,39 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
-  <title id="title">Plum Pulse mobile investment review</title>
-  <desc id="desc">A purple mobile interface showing portfolio value, a line chart and monthly investment breakdown.</desc>
-  <rect width="1200" height="750" fill="#efe8f3"/>
-  <circle cx="1050" cy="90" r="170" fill="#ffd76b"/>
-  <circle cx="100" cy="690" r="210" fill="#c6f1db"/>
-  <rect x="380" y="55" width="440" height="640" rx="54" fill="#171717"/>
-  <rect x="394" y="69" width="412" height="612" rx="43" fill="#f7f7f7"/>
-  <rect x="424" y="105" width="58" height="28" rx="10" fill="#8e21e6"/>
-  <text x="453" y="124" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="white">Pro</text>
-  <text x="600" y="126" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#202020">Pulse</text>
-  <text x="432" y="176" font-family="Arial, sans-serif" font-size="14" fill="#777">PULSE MONTHLY REVIEW</text>
-  <text x="432" y="207" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#202020">September</text>
-  <rect x="422" y="232" width="356" height="180" rx="18" fill="white"/>
-  <text x="446" y="266" font-family="Arial, sans-serif" font-size="14" fill="#666">Portfolio value</text>
-  <text x="446" y="306" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#181818">£4,407.82</text>
-  <path d="M446 374 C485 366 510 343 541 348 S600 322 630 330 S690 290 722 300 S751 279 758 277" fill="none" stroke="#008d78" stroke-width="5" stroke-linecap="round"/>
-  <path d="M446 385 C510 379 560 368 615 361 S705 345 758 337" fill="none" stroke="#8e21e6" stroke-width="4" stroke-linecap="round"/>
-  <rect x="422" y="430" width="356" height="188" rx="18" fill="white"/>
-  <text x="446" y="465" font-family="Arial, sans-serif" font-size="14" fill="#666">Your portfolio changed by</text>
-  <text x="446" y="503" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#008d78">+£193.62</text>
-  <circle cx="450" cy="541" r="6" fill="#8e21e6"/><text x="465" y="546" font-family="Arial, sans-serif" font-size="13" fill="#333">Contributions</text><rect x="585" y="535" width="150" height="12" rx="6" fill="#eee"/><rect x="585" y="535" width="135" height="12" rx="6" fill="#8e21e6"/>
-  <circle cx="450" cy="574" r="6" fill="#008d78"/><text x="465" y="579" font-family="Arial, sans-serif" font-size="13" fill="#333">Market movement</text><rect x="585" y="568" width="150" height="12" rx="6" fill="#eee"/><rect x="585" y="568" width="75" height="12" rx="6" fill="#008d78"/>
-  <circle cx="450" cy="607" r="6" fill="#777"/><text x="465" y="612" font-family="Arial, sans-serif" font-size="13" fill="#333">Fees</text><rect x="585" y="601" width="150" height="12" rx="6" fill="#eee"/><rect x="585" y="601" width="22" height="12" rx="6" fill="#777"/>
+  <title id="title">Plum Pulse financial agent experience</title>
+  <desc id="desc">A financial agent prepares a single payment skip, shows its exact consequences and waits for user approval.</desc>
+  <rect width="1200" height="750" fill="#632297"/>
+  <g font-family="Arial, sans-serif" fill="#fff">
+    <text x="72" y="112" font-size="21" fill="#e5cbed">AGENT EXPERIENCE DESIGN</text>
+    <text x="68" y="220" font-size="66" letter-spacing="-2">Plum Pulse</text>
+    <text x="72" y="287" font-size="27">A clearer picture.</text>
+    <text x="72" y="327" font-size="27">A considered next step.</text>
+    <path d="M74 407 H495" stroke="#a36cc5"/>
+    <text x="72" y="458" font-size="20" fill="#eadbf4">Investigate with evidence.</text>
+    <text x="72" y="500" font-size="20" fill="#eadbf4">Ask before acting.</text>
+    <text x="72" y="542" font-size="20" fill="#eadbf4">Verify the outcome.</text>
+    <text x="72" y="674" font-size="16" fill="#e5cbed">Independent concept · Fictional account data</text>
+  </g>
+  <rect x="580" y="55" width="540" height="640" rx="16" fill="#fff"/>
+  <g font-family="Arial, sans-serif" fill="#291835">
+    <rect x="612" y="87" width="42" height="42" rx="10" fill="#7521b8"/>
+    <path d="M620 108 H628 L632 99 L638 118 L642 108 H647" stroke="#fff" stroke-width="2" fill="none"/>
+    <text x="670" y="105" font-size="23" font-weight="700">Pulse</text>
+    <text x="670" y="128" font-size="14" fill="#6d5a79">Your account, explained.</text>
+    <path d="M580 154 H1120" stroke="#e6ddeb"/>
+    <rect x="634" y="177" width="454" height="51" rx="10" fill="#f2ebf8"/>
+    <text x="651" y="209" font-size="18" fill="#542477">Skip my next £75 investment.</text>
+    <text x="612" y="268" font-size="14" fill="#7521b8">Your approval is needed</text>
+    <text x="612" y="309" font-size="30" font-weight="700">Skip one payment?</text>
+    <g font-size="16">
+      <text x="612" y="355" fill="#6d5a79">Amount</text><text x="1088" y="355" text-anchor="end">£75.00</text>
+      <text x="612" y="393" fill="#6d5a79">Payment date</text><text x="1088" y="393" text-anchor="end">8 October 2026</text>
+      <text x="612" y="431" fill="#6d5a79">Resumes</text><text x="1088" y="431" text-anchor="end">£75 on 8 November</text>
+    </g>
+    <text x="612" y="482" font-size="17" fill="#6d5a79">Only this payment will be skipped.</text>
+    <text x="612" y="510" font-size="17" fill="#6d5a79">Future monthly payments continue.</text>
+    <rect x="612" y="540" width="476" height="49" rx="7" fill="#7521b8"/>
+    <text x="850" y="570" text-anchor="middle" font-size="17" fill="#fff">Confirm skip of £75 on 8 Oct</text>
+    <rect x="612" y="600" width="476" height="49" rx="7" fill="#fff" stroke="#cdbdd8"/>
+    <text x="850" y="630" text-anchor="middle" font-size="17" fill="#5e2b80">Keep payment unchanged</text>
+  </g>
 </svg>

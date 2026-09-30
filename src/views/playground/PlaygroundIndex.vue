@@ -72,8 +72,8 @@ export default {
         {
           id: "plum",
           shape: "square",
-          question: "Understand a month of investing",
-          answerHint: "Performance, automation, fees",
+          question: "Explore a financial agent",
+          answerHint: "Evidence, approval, recovery",
           title: "Plum Pulse",
           route: "/playground/plum-pulse",
         },

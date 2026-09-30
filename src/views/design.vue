@@ -99,8 +99,8 @@ export default {
           image: resolveAsset("@/images/gallery/coachHero.jpg"), imageAlt: "Vintage Coach Catalog authentication interface", tags: ["Commerce", "Desktop", "Data"], disciplines: ["commerce", "desktop"], format: "Reference platform", year: 2025, tone: "leather", size: "tall",
         },
         {
-          slug: "plum-pulse", title: "Plum Pulse", summary: "A monthly review that connects investment performance, automations and fees in one mobile story.", route: "/playground/plum-pulse",
-          image: resolveAsset("@/images/gallery/plum-pulse.svg"), imageAlt: "Plum Pulse monthly investment review interface", tags: ["Finance", "Mobile", "Data"], disciplines: ["finance", "mobile"], format: "Feature concept", year: 2026, tone: "finance", size: "standard",
+          slug: "plum-pulse", title: "Plum Pulse", summary: "A bounded financial agent: investigate account changes, inspect evidence and approve a specific next step.", route: "/playground/plum-pulse",
+          image: resolveAsset("@/images/gallery/plum-pulse.svg"), imageAlt: "Plum Pulse financial agent concept", tags: ["Agent UX", "Finance", "Prototype"], disciplines: ["finance", "mobile"], format: "Feature concept", year: 2026, tone: "finance", size: "standard",
         },
         {
           slug: "industrial", title: "Industrial Facility Configurator", summary: "A rule-aware 3D workspace for specifying complex industrial facilities.", route: "/products/industrial-configurator",
