@@ -17,7 +17,7 @@ const messages = {
       home: "Home",
       products: "Products",
       engineering: "Engineering",
-      craft: "Work index",
+      craft: "Home",
       playground: "Playground",
       about: "About",
       letsTalk: "Let's Talk",
@@ -300,11 +300,11 @@ const messages = {
         skills: [
           {
             title: "Front-end",
-            items: ["React.js", "Vue.js", "JavaScript", "TypeScript", "HTML5", "CSS3", "SASS"],
+            items: ["React", "Next.js", "Vue.js", "TypeScript", "JavaScript", "Tailwind CSS", "Material UI"],
           },
           {
-            title: "UX/UI",
-            items: ["User research", "Personas", "Journey maps", "Wireframes", "Prototypes", "Usability testing"],
+            title: "Product & interaction",
+            items: ["Figma", "User research", "Interaction design", "Code prototyping", "Usability testing", "AI-enabled workflows"],
           },
           {
             title: "Systems",
@@ -312,11 +312,15 @@ const messages = {
           },
           {
             title: "Computational",
-            items: ["Grasshopper", "Rhino", "Python", "Algorithmic design", "AEC workflows"],
+            items: ["Three.js", "3D interfaces", "Grasshopper", "Rhino", "Python", "Algorithmic design"],
           },
           {
-            title: "Delivery",
-            items: ["Agile", "Scrum", "Product coordination", "Roadmaps", "Performance"],
+            title: "Data & APIs",
+            items: ["REST", "GraphQL", "Node.js", "Schema design", "Neon"],
+          },
+          {
+            title: "Testing & delivery",
+            items: ["Vitest", "Git", "Azure", "CI/CD", "Agile", "End-to-end product ownership"],
           },
         ],
         education: [
@@ -365,7 +369,7 @@ const messages = {
       home: "Αρχική",
       products: "Web Applications",
       engineering: "Engineering",
-      craft: "Έργα",
+      craft: "Αρχική",
       playground: "Εργαστήριο",
       about: "Σχετικά",
       letsTalk: "Ας μιλήσουμε",
@@ -648,11 +652,11 @@ const messages = {
         skills: [
           {
             title: "Front-end",
-            items: ["React.js", "Vue.js", "JavaScript", "TypeScript", "HTML5", "CSS3", "SASS"],
+            items: ["React", "Next.js", "Vue.js", "TypeScript", "JavaScript", "Tailwind CSS", "Material UI"],
           },
           {
-            title: "UX/UI",
-            items: ["User research", "Personas", "Journey maps", "Wireframes", "Prototypes", "Usability testing"],
+            title: "Product & interaction",
+            items: ["Figma", "User research", "Interaction design", "Code prototyping", "Usability testing", "AI-enabled workflows"],
           },
           {
             title: "Systems",
@@ -660,11 +664,15 @@ const messages = {
           },
           {
             title: "Computational",
-            items: ["Grasshopper", "Rhino", "Python", "Algorithmic design", "AEC workflows"],
+            items: ["Three.js", "3D interfaces", "Grasshopper", "Rhino", "Python", "Algorithmic design"],
           },
           {
-            title: "Delivery",
-            items: ["Agile", "Scrum", "Product coordination", "Roadmaps", "Performance"],
+            title: "Data & APIs",
+            items: ["REST", "GraphQL", "Node.js", "Schema design", "Neon"],
+          },
+          {
+            title: "Testing & delivery",
+            items: ["Vitest", "Git", "Azure", "CI/CD", "Agile", "End-to-end product ownership"],
           },
         ],
         education: [

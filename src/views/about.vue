@@ -173,7 +173,7 @@ import AppNavbar from "../components/navbar.vue";
 import AppFooter from "../components/footer.vue";
 
 // Use a direct path for the CV as it's located in the public folder
-const cvLink = "/cv/EleniChasiotiCV2026.pdf";
+const cvLink = "/cv/Eleni_Chasioti_Design_Engineer.pdf";
 
 export default {
   name: "About",

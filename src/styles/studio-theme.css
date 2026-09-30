@@ -23,8 +23,6 @@
 }
 ::selection { background: #e6dafa; color: #151515; }
 #app .modern-navbar { background: #fff; backdrop-filter: none; border-bottom: 1px solid #e8e8e8; }
-#app .brand-initial { background: #ffd76b; border-radius: 8px; }
-#app .brand-link:hover .brand-initial { transform: translateY(-1px); color: #111; }
 #app .brand-name { font-weight: 600; }
 #app .nav-link { text-transform: none; font-size: 13px; letter-spacing: 0; }
 #app .nav-link.active::after { background: #f24e1e; height: 3px; }

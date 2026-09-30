@@ -3,19 +3,19 @@
   <main id="project-index" class="playroom">
     <header class="room-heading">
       <div class="room-intro">
-        <span class="studio-label">Eleni Chasioti · Designer & Engineer</span>
+        <span class="studio-label">Eleni Chasioti · Design Engineer / UX Engineer</span>
         <h1>Spatial roots.<br /><span>Product expertise.</span></h1>
       </div>
       <div class="room-note">
-        <p>I’m a <strong>product designer and engineer</strong> with a background in architecture, building tools for complex spatial and digital workflows.</p>
-        <p>That’s my foundation. <span>Commerce, learning and everyday services</span> are where I explore what else that expertise can do.</p>
+        <p>I’m a London-based Design Engineer and UX Engineer with 5+ years of experience designing and building digital products from discovery through production.</p>
+        <p>I combine product design, user research and front-end engineering to turn complex workflows into usable tools, including 3D interfaces and AI-enabled products.</p>
       </div>
     </header>
 
-    <nav class="worlds" aria-label="Explore work by discipline">
+    <nav class="worlds" aria-label="Filter projects by category">
       <button v-for="discipline in disciplines" :key="discipline.id"
-        type="button" :aria-pressed="activeDiscipline === discipline.id"
-        :class="{ selected: activeDiscipline === discipline.id }"
+        type="button" :aria-pressed="isDisciplineSelected(discipline.id)"
+        :class="{ selected: isDisciplineSelected(discipline.id) }"
         @click="setDiscipline(discipline.id)">
         {{ discipline.label }} <sup>{{ countForDiscipline(discipline.id) }}</sup>
       </button>
@@ -52,11 +52,11 @@
     <section v-else class="nothing-found" role="status">
       <span aria-hidden="true">↻</span>
       <h2>A little too specific?</h2>
-      <p>No projects are available in {{ activeDisciplineLabel.toLowerCase() }}.</p>
+      <p>No projects match all selected tags. Deselect a tag or show all work.</p>
       <button type="button" @click="setDiscipline('all')">Show all work</button>
     </section>
 
-    <div class="room-signoff"><span>Architecture · Commerce · Finance · Mobile · Desktop · 3D · Hospitality</span><span>Different worlds. Same curiosity. <span aria-hidden="true">✳</span></span></div>
+    <div class="room-signoff"><span>Architecture · Products · Learning · Accessibility · Agent UX</span><span>Different worlds. Same curiosity. <span aria-hidden="true">✳</span></span></div>
   </main>
   <app-footer />
 </template>
@@ -78,7 +78,7 @@ export default {
   },
   data() {
     return {
-      activeDiscipline: "all",
+      activeDisciplines: [],
       disciplines: [
         { id: "all", label: "All work" },
         { id: "architecture", label: "Architecture" },
@@ -88,6 +88,11 @@ export default {
         { id: "three-d", label: "3D systems" },
         { id: "hospitality", label: "Hospitality" },
         { id: "finance", label: "Finance" },
+        { id: "learning", label: "Learning" },
+        { id: "accessibility", label: "Accessibility" },
+        { id: "agent-ux", label: "Agent UX" },
+        { id: "ai-ux", label: "AI UX" },
+        { id: "playground", label: "Playground" },
       ],
       projects: [
         {
@@ -100,7 +105,15 @@ export default {
         },
         {
           slug: "plum-pulse", title: "Plum Pulse", summary: "A bounded financial agent: investigate account changes, inspect evidence and approve a specific next step.", route: "/playground/plum-pulse",
-          image: resolveAsset("@/images/gallery/plum-pulse.svg"), imageAlt: "Plum Pulse financial agent concept", tags: ["Agent UX", "Finance", "Prototype"], disciplines: ["finance", "mobile"], format: "Feature concept", year: 2026, tone: "finance", size: "standard",
+          image: resolveAsset("@/images/gallery/plum-pulse.svg"), imageAlt: "Plum Pulse financial agent concept", tags: ["Agent UX", "Finance", "Mobile"], disciplines: ["finance", "mobile", "agent-ux", "ai-ux", "playground"], format: "Feature concept", year: 2026, tone: "finance", size: "standard",
+        },
+        {
+          slug: "ai-sandbox", title: "AI Interface Sandbox", summary: "Explore how permissions, memory and uncertainty change an AI assistant’s interface.", route: "/playground/ai-sandbox",
+          image: resolveAsset("@/images/gallery/ai-sandbox.svg"), imageAlt: "Illustrated AI sandbox with permission settings and a review response", tags: ["AI UX", "Desktop", "Playground"], disciplines: ["ai-ux", "desktop", "playground"], format: "Interactive prototype", year: 2026, tone: "sandbox", size: "standard",
+        },
+        {
+          slug: "vinted-bundling", title: "Vinted Smart Local Bundling", summary: "A marketplace concept that brings item price, delivery and nearby bundles into one decision.", route: "/playground/vinted-smart-bundling",
+          image: resolveAsset("@/images/gallery/vinted-bundling.svg"), imageAlt: "Vinted prototype showing a yellow T-shirt listing and its full price breakdown", tags: ["Commerce", "Mobile", "Playground"], disciplines: ["commerce", "mobile", "playground"], format: "Interactive prototype", year: 2026, tone: "commerce", size: "standard",
         },
         {
           slug: "industrial", title: "Industrial Facility Configurator", summary: "A rule-aware 3D workspace for specifying complex industrial facilities.", route: "/products/industrial-configurator",
@@ -112,15 +125,15 @@ export default {
         },
         {
           slug: "arabiya", title: "Arabiya Language App", summary: "A bilingual learning experience built around practice, progress and context.", route: "/products/language-learning-app",
-          image: resolveAsset("@/images/gallery/language.jpg"), imageAlt: "Arabiya language learning interface", tags: ["Mobile", "Education", "Product"], disciplines: ["mobile"], format: "Learning product", year: 2024, tone: "language", size: "wide",
+          image: resolveAsset("@/images/gallery/language.jpg"), imageAlt: "Arabiya language learning interface", tags: ["Mobile", "Learning"], disciplines: ["mobile", "learning"], format: "Learning product", year: 2024, tone: "language", size: "wide",
         },
         {
           slug: "hapi", title: "Hapi Modular Housing", summary: "A parametric kit of parts for adaptable housing configurations.", route: "/products/hapi-project",
           image: resolveAsset("@/images/gallery/hapi.webp"), imageAlt: "Hapi modular housing system render", tags: ["Architecture", "3D systems", "Research"], disciplines: ["architecture", "three-d"], format: "Spatial system", year: 2019, tone: "hapi", size: "standard",
         },
         {
-          slug: "filos", title: "Filos Inclusive Activity App", summary: "A mobile concept that helps people find accessible activities and routes.", route: "/products/filos-mobile-app",
-          image: resolveAsset("@/images/gallery/filos.webp"), imageAlt: "Filos inclusive activity app screens", tags: ["Mobile", "Inclusion", "Service"], disciplines: ["mobile"], format: "Mobile concept", year: 2023, tone: "filos", size: "tall",
+          slug: "filos", title: "Filos Inclusive Activity App", summary: "A mobile concept connecting people with disabilities and volunteer companions around shared activities.", route: "/products/filos-mobile-app",
+          image: resolveAsset("@/images/gallery/filos.webp"), imageAlt: "Filos inclusive activity app screens", tags: ["Mobile", "Accessibility", "Service"], disciplines: ["mobile", "accessibility"], format: "Mobile concept", year: 2023, tone: "filos", size: "tall",
         },
         {
           slug: "workshop", title: "Digital Futures Workshop", summary: "A study in voxel housing, aggregation logic and robotic fabrication.", route: "/products/workshop-design",
@@ -134,15 +147,22 @@ export default {
     };
   },
   computed: {
-    activeDisciplineLabel() { return this.disciplines.find((discipline) => discipline.id === this.activeDiscipline)?.label || "All work"; },
+    activeDisciplineLabel() { return this.activeDisciplines.length ? this.disciplines.filter((discipline) => this.activeDisciplines.includes(discipline.id)).map((discipline) => discipline.label).join(" + ") : "All work · Select tags to combine filters"; },
     filteredProjects() {
-      if (this.activeDiscipline === "all") return this.projects;
-      return this.projects.filter((project) => project.disciplines.includes(this.activeDiscipline));
+      return this.projects.filter((project) => this.activeDisciplines.every((id) => project.disciplines.includes(id)));
     },
   },
   methods: {
-    countForDiscipline(id) { return id === "all" ? this.projects.length : this.projects.filter((project) => project.disciplines.includes(id)).length; },
-    setDiscipline(id) { this.activeDiscipline = id; },
+    isDisciplineSelected(id) { return id === "all" ? this.activeDisciplines.length === 0 : this.activeDisciplines.includes(id); },
+    countForDiscipline(id) {
+      if (id === "all") return this.projects.length;
+      return this.projects.filter((project) => [...this.activeDisciplines, id].every((tag) => project.disciplines.includes(tag))).length;
+    },
+    setDiscipline(id) {
+      if (id === "all") this.activeDisciplines = [];
+      else if (this.activeDisciplines.includes(id)) this.activeDisciplines = this.activeDisciplines.filter((tag) => tag !== id);
+      else this.activeDisciplines.push(id);
+    },
   },
 };
 </script>
@@ -211,10 +231,7 @@ export default {
   color: var(--muted);
   font-size: 13px;
 }
-.room-note p + p span {
-  color: #6841a5;
-  font-weight: 650;
-}
+
 .worlds {
   display: flex;
   flex-wrap: wrap;

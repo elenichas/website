@@ -73,7 +73,7 @@ export class PulseTask {
     return ['Explain my fees', 'Explain my balance'];
   }
   respond(question) {
-    const q = question.trim(); if (!q) return;
+    const q = question.trim(); if (!q) return; this.error = '';
     let answer;
     if (/buy|sell|stock|recover.*loss|ignore.*rule|recommend/i.test(q)) {
       answer = 'I can explain your records, but cannot choose investments or promise a recovery. Rephrasing the request does not change that boundary.';
@@ -96,7 +96,8 @@ export class PulseTask {
     } else if (/balance|portfolio/i.test(q)) {
       answer = ['partial','unresolved','failed'].includes(this.status) ? 'The current investigation is incomplete. I cannot replace the missing evidence with a full explanation.' : this.scenario === 'empty' ? 'This empty account has a £0 balance and no recorded activity.' : 'Your balance fell £40: £100 added, −£135 market movement and −£5 fees. Opening £4,447.82 → closing £4,407.82. These figures describe September only.';
     } else {
-      answer = 'This scripted demo does not cover that wording. Choose one of the suggested follow-ups; I will not substitute an unrelated answer.';
+      this.error = 'This demo does not cover that wording. Try a suggested follow-up in the phone. No response has been generated.';
+      return;
     }
     if (/worried|scared|anxious|upset/i.test(q)) answer = 'Seeing an unexpected change can be worrying. ' + answer;
     this.messages.push({ question: q, answer });

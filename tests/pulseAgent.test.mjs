@@ -47,3 +47,15 @@ test('a dismissed review stays dismissed after days and preference toggles', () 
 test('opened reviews do not repeatedly reappear', () => { const r=new ReviewOffer(); r.setEnabled(true); r.advanceDay(); r.open(); r.advanceDay(); assert.equal(r.state,'opened'); });
 
 test('expressed concern is acknowledged without promising recovery', () => { const t=run('complete'); t.respond('I am worried about my balance'); assert.match(t.messages[0].answer,/can be worrying/); assert.match(t.messages[0].answer,/£40/); assert.doesNotMatch(t.messages[0].answer,/will recover/); });
+
+ test('unsupported demo wording stays outside the customer conversation', () => {
+  const t=run('complete');
+  t.respond('Tell me a joke');
+  assert.equal(t.messages.length,0);
+  assert.match(t.error,/demo does not cover/);
+  assert.equal(t.status,'complete');
+  t.respond('Explain my fees');
+  assert.equal(t.error,'');
+  assert.equal(t.messages.length,1);
+  assert.match(t.messages[0].answer,/£5/);
+});
