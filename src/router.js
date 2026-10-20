@@ -23,6 +23,7 @@ const CoachVerificationApp = () => import(/* webpackChunkName: "coach" */ "./vie
 
 // Define your routes
 const routes = [
+  { path: "/products/map3d-studio", redirect: "/playground" },
   {
     name: "Home",
     path: "/",

@@ -4,11 +4,6 @@
       <!-- Logo/Brand -->
       <div class="brand">
         <router-link to="/" class="brand-link" aria-label="Eleni Chasioti · Home">
-          <svg class="brand-symbol" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
-            <path d="M25 6H6V25H25V19H12V12H25Z" fill="currentColor" />
-            <path d="M34 15H28V28H15V34H34Z" fill="currentColor" />
-            <path d="M28 6H34V12H28Z" fill="#e6ac27" />
-          </svg>
           <span class="brand-name">Eleni Chasioti</span>
         </router-link>
       </div>
@@ -26,6 +21,7 @@
         </router-link>
       </nav>
 
+      <theme-picker />
       <div class="language-switcher" :aria-label="$t('nav.languageLabel')">
         <button
           v-for="(locale, key) in $locales"
@@ -94,8 +90,10 @@
 </template>
 
 <script>
+import ThemePicker from "./ThemePicker.vue";
 export default {
   name: "Navbar",
+  components: { ThemePicker },
   data() {
     return {
       isMobileMenuOpen: false,
@@ -147,13 +145,6 @@ export default {
   color: var(--color-text);
 }
 
-.brand-symbol {
-  display: block;
-  width: 40px;
-  height: 40px;
-  flex-shrink: 0;
-  color: var(--color-text);
-}
 
 .brand-link:focus-visible {
   outline: 2px solid var(--color-text);
@@ -353,7 +344,7 @@ export default {
   }
 
   .brand-name {
-    display: none;
+    display: inline;
   }
 }
 
@@ -363,9 +354,5 @@ export default {
     padding: 0 var(--space-4);
   }
 
-  .brand-symbol {
-    width: 36px;
-    height: 36px;
-  }
 }
 </style>

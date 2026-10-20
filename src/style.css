@@ -6,7 +6,7 @@
 
 :root {
   /* Colors */
-  --color-bg: #fafafa;
+  --color-bg: #ffffff;
   --color-surface: #ffffff;
   --color-surface-raised: rgba(255, 255, 255, 0.72);
   --color-surface-glass: rgba(255, 255, 255, 0.55);
@@ -479,7 +479,7 @@ a:hover {
 
 .case-study.case-study .section-label {
   display: inline-flex;
-  align-items: baseline;
+  align-items: center;
   gap: 0.75rem;
   width: auto;
   max-width: max-content;
@@ -539,9 +539,14 @@ a:hover {
 
 .case-study.case-study .section-number {
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex: 0 0 auto;
   min-width: 1.45rem;
-  color: rgba(17, 17, 17, 0.22);
+  min-height: 1.45rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--portfolio-ink, #111111);
   font-size: 0.75rem;
   font-weight: var(--weight-semibold);
   letter-spacing: 0;

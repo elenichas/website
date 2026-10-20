@@ -1,4 +1,5 @@
 <template>
+  <div class="portfolio-theme">
   <app-navbar />
   <main id="project-index" class="playroom">
     <header class="room-heading">
@@ -56,9 +57,9 @@
       <button type="button" @click="setDiscipline('all')">Show all work</button>
     </section>
 
-    <div class="room-signoff"><span>Architecture · Products · Learning · Accessibility · Agent UX</span><span>Different worlds. Same curiosity. <span aria-hidden="true">✳</span></span></div>
   </main>
   <app-footer />
+  </div>
 </template>
 
 <script>
@@ -147,7 +148,7 @@ export default {
     };
   },
   computed: {
-    activeDisciplineLabel() { return this.activeDisciplines.length ? this.disciplines.filter((discipline) => this.activeDisciplines.includes(discipline.id)).map((discipline) => discipline.label).join(" + ") : "All work · Select tags to combine filters"; },
+    activeDisciplineLabel() { return this.activeDisciplines.length ? this.disciplines.filter((discipline) => this.activeDisciplines.includes(discipline.id)).map((discipline) => discipline.label).join(" + ") : "Select tags to combine filters"; },
     filteredProjects() {
       return this.projects.filter((project) => this.activeDisciplines.every((id) => project.disciplines.includes(id)));
     },
