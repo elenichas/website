@@ -1,4 +1,5 @@
 <template>
+  <div class="portfolio-theme">
   <app-navbar></app-navbar>
 
   <main class="page-layout about-page">
@@ -50,13 +51,7 @@
             </div>
           </article>
 
-          <article class="story-section about-reveal">
-            <p class="story-index">03</p>
-            <div>
-              <h3>{{ $t("about.conferenceTitle") }}</h3>
-              <p>{{ $t("about.conferenceText") }}</p>
-            </div>
-          </article>
+
         </div>
       </div>
     </section>
@@ -140,35 +135,16 @@
       </div>
     </section>
 
-    <section class="gallery-section">
-      <div class="about-container">
-        <div class="gallery-header about-reveal">
-          <p class="section-eyebrow">{{ $t("about.fieldNotes") }}</p>
-          <h2>{{ $t("about.conferenceTitle") }}</h2>
-        </div>
-
-        <div class="image-carousel about-reveal">
-          <div class="carousel-stage">
-            <figure
-              v-for="(item, index) in conferenceImages"
-              :key="index"
-              class="carousel-slide"
-              :class="{ active: index === currentSlide }"
-              :aria-hidden="index !== currentSlide"
-            >
-              <img :src="item.src" :alt="`${$t('about.galleryAlt')} ${index + 1}`" loading="lazy" />
-            </figure>
-          </div>
-        </div>
-      </div>
-    </section>
+    <conference-gallery :uxdx-images="conferenceImages" />
 
     <app-footer></app-footer>
   </main>
+  </div>
 </template>
 
 <script>
 import { resolveAsset } from "@/assetUrl";
+import ConferenceGallery from "../components/ConferenceGallery.vue";
 import AppNavbar from "../components/navbar.vue";
 import AppFooter from "../components/footer.vue";
 
@@ -178,15 +154,16 @@ const cvLink = "/cv/Eleni_Chasioti_Design_Engineer.pdf";
 export default {
   name: "About",
   components: {
+    ConferenceGallery,
     AppNavbar,
     AppFooter,
   },
   mounted() {
-    this.initGalleryReveal();
-    this.startCarousel();
+    this.initTextReveal();
+
   },
   beforeUnmount() {
-    this.pauseCarousel();
+    this.textObserver?.disconnect();
   },
   methods: {
     experiencePanelId(index) {
@@ -202,56 +179,35 @@ export default {
         this.expandedExperiences = [...this.expandedExperiences, index];
       }
     },
-    initGalleryReveal() {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        this.$nextTick(() => {
-          document.querySelectorAll('.about-reveal, .gallery-item').forEach((el) => {
-            el.classList.add('revealed');
-          });
-        });
-        return;
-      }
+    initTextReveal() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
 
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('revealed');
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.1, rootMargin: '0px 0px -30px 0px' }
-      );
-
-      this.$nextTick(() => {
-        document.querySelectorAll('.about-reveal').forEach((el) => {
-          observer.observe(el);
+      this.textObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('text-revealed');
+            this.textObserver.unobserve(entry.target);
+          }
         });
+      }, { threshold: 0.12 });
+
+      // Animate text blocks once, preserving real text and normal keyboard access.
+      this.$el.querySelectorAll([
+        '.about-hero__copy > p', '.about-hero__copy > h1',
+        '.story-sticky > p', '.story-sticky > h2', '.story-section h3', '.story-section div > p',
+        '.experience-heading', '.timeline-main', '.skill-radar h3', '.skill-cluster',
+        '.education-strip h3', '.education-item',
+        '.conference-inner > h2', '.section-intro', '.event-note > h3', '.event-note > p'
+      ].join(',')).forEach((element) => {
+        element.classList.add('scroll-text');
+        this.textObserver.observe(element);
       });
-    },
-    startCarousel() {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || this.carouselTimer) {
-        return;
-      }
-
-      this.carouselTimer = window.setInterval(() => {
-        this.currentSlide = (this.currentSlide + 1) % this.conferenceImages.length;
-      }, 3200);
-    },
-    pauseCarousel() {
-      if (this.carouselTimer) {
-        window.clearInterval(this.carouselTimer);
-        this.carouselTimer = null;
-      }
     },
   },
   data() {
     return {
       cvLink,
       expandedExperiences: [0],
-      currentSlide: 0,
-      carouselTimer: null,
       conferenceImages: [
         { src: resolveAsset('@/images/about/Image (3).webp'), shape: 'tall' },
         { src: resolveAsset('@/images/about/Image (4).webp'), shape: 'tall' },
@@ -306,18 +262,19 @@ export default {
   text-transform: uppercase;
 }
 
-.about-reveal {
-  opacity: 0;
-  transform: translateY(2.2rem);
-  transition:
-    opacity 760ms var(--ease-out),
-    transform 760ms var(--ease-out);
-  transition-delay: calc(var(--i, 0) * 60ms);
+.about-reveal { opacity: 1; transform: none; }
+
+.about-page :deep(.scroll-text.text-revealed) {
+  animation: about-text-arrive 680ms cubic-bezier(.22, 1, .36, 1) both;
 }
 
-.about-reveal.revealed {
-  opacity: 1;
-  transform: translateY(0);
+@keyframes about-text-arrive {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-page :deep(.scroll-text.text-revealed) { animation: none; }
 }
 
 .about-hero {

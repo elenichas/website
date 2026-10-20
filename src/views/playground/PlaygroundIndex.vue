@@ -1,10 +1,11 @@
 <template>
+  <div class="portfolio-theme">
   <app-navbar />
 
   <main class="playground-page">
     <section class="playground-stage" aria-labelledby="playground-title">
-      <p class="playground-kicker">Prototype playground</p>
-      <h1 id="playground-title">What do you want to play with?</h1>
+      <header class="playground-heading"><p class="playground-kicker">Prototype playground</p>
+      <h1 id="playground-title">What do you want to play with?</h1></header>
 
       <nav class="shape-links" aria-label="Open a playground prototype">
         <router-link
@@ -15,17 +16,31 @@
           :to="experiment.route"
           :aria-label="`Open ${experiment.title}`"
         >
-          <span class="shape-mark" aria-hidden="true"></span>
+          <span class="prototype-arrow" aria-hidden="true">↗</span>
           <span class="shape-copy">
             <strong>{{ experiment.question }}</strong>
             <small>{{ experiment.answerHint }}</small>
           </span>
         </router-link>
+        <a
+          class="shape-link"
+          href="https://map3d-studio-eleni.pages.dev/map"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open Map3D Studio (opens in a new tab)"
+        >
+          <span class="prototype-arrow" aria-hidden="true">↗</span>
+          <span class="shape-copy">
+            <strong>Map3D Studio</strong>
+            <small>Explore places in 3D · Open-source contribution</small>
+          </span>
+        </a>
       </nav>
     </section>
   </main>
 
   <app-footer />
+  </div>
 </template>
 
 <script>
