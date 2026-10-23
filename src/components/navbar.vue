@@ -71,6 +71,9 @@
         <router-link to="/about" class="mobile-nav-link" @click="closeMobileMenu">
           {{ $t("nav.about") }}
         </router-link>
+        <router-link to="/book" class="btn-primary mobile-cta" @click="closeMobileMenu">
+          {{ $t("common.bookCall") }}
+        </router-link>
         <div class="language-switcher language-switcher-mobile" :aria-label="$t('nav.languageLabel')">
           <button
             v-for="(locale, key) in $locales"
@@ -84,9 +87,6 @@
             {{ locale.shortLabel }}
           </button>
         </div>
-        <router-link to="/book" class="btn-primary mobile-cta" @click="closeMobileMenu">
-          {{ $t("common.bookCall") }}
-        </router-link>
       </nav>
     </div>
   </header>
@@ -202,6 +202,21 @@ export default {
 
 .language-switcher-mobile {
   align-self: flex-start;
+  gap: 0.75rem;
+  padding: 0.125rem;
+}
+
+.language-switcher-mobile .language-option {
+  position: relative;
+  min-width: 2rem;
+  min-height: 2rem;
+  font-size: 0.6875rem;
+}
+
+.language-switcher-mobile .language-option::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
 }
 
 .nav-link {

@@ -6,14 +6,16 @@
         <div class="footer-cta">
           <h3 class="cta-title">{{ $t("footer.title") }}</h3>
           <p class="cta-text">{{ $t("footer.text") }}</p>
-          <router-link to="/book" class="btn-primary footer-btn">
-            {{ $t("common.bookCall") }}
-            <span class="mdi mdi-arrow-right" aria-hidden="true"></span>
-          </router-link>
-          <a href="mailto:eleni.chasioti@gmail.com" class="social-link footer-btn">
-            {{ $t("common.getInTouch") }}
-            <span class="mdi mdi-arrow-right"></span>
-          </a>
+          <div class="footer-actions">
+            <router-link v-if="$route.name !== 'Booking'" to="/book" class="btn-primary footer-btn">
+              {{ $t("common.bookCall") }}
+              <span class="mdi mdi-arrow-right" aria-hidden="true"></span>
+            </router-link>
+            <a href="mailto:eleni.chasioti@gmail.com" class="social-link footer-btn">
+              {{ $t("common.getInTouch") }}
+              <span class="mdi mdi-arrow-right"></span>
+            </a>
+          </div>
         </div>
         
         <!-- Footer Info -->
@@ -95,9 +97,16 @@ export default {
   line-height: 1.6;
 }
 
-.footer-btn {
-  align-self: flex-start;
+.footer-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
   margin-top: var(--space-2);
+}
+
+.footer-actions .footer-btn {
+  min-height: 44px;
+  justify-content: center;
 }
 
 /* Footer Info */
@@ -185,8 +194,8 @@ export default {
     font-size: 1.75rem;
   }
 
-  .footer-btn {
-    align-self: center;
+  .footer-actions {
+    justify-content: center;
   }
 
   .footer-info {
