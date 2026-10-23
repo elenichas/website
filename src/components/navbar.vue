@@ -19,6 +19,9 @@
         <router-link to="/about" class="nav-link" active-class="active">
           {{ $t("nav.about") }}
         </router-link>
+        <router-link to="/book" class="nav-link" active-class="active">
+          {{ $t("common.bookCall") }}
+        </router-link>
       </nav>
 
       <theme-picker />
@@ -81,9 +84,9 @@
             {{ locale.shortLabel }}
           </button>
         </div>
-        <a href="mailto:eleni.chasioti@gmail.com" class="btn-primary mobile-cta" @click="closeMobileMenu">
-          {{ $t("nav.letsTalk") }}
-        </a>
+        <router-link to="/book" class="btn-primary mobile-cta" @click="closeMobileMenu">
+          {{ $t("common.bookCall") }}
+        </router-link>
       </nav>
     </div>
   </header>
@@ -163,7 +166,7 @@ export default {
 .desktop-nav {
   display: flex;
   align-items: center;
-  gap: 2.5rem;
+  gap: clamp(1rem, 2.5vw, 2.5rem);
 }
 
 .language-switcher {

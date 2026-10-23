@@ -7,6 +7,7 @@ const Playground = () => import("./views/playground/PlaygroundIndex.vue");
 const AISandbox = () => import("./views/playground/AISandbox.vue");
 const VintedSmartBundling = () => import("./views/playground/VintedSmartBundling.vue");
 const PlumPulse = () => import("./views/playground/PlumPulse.vue");
+const Booking = () => import("./views/Booking.vue");
 const About = () => import(/* webpackChunkName: "about" */ "./views/about.vue");
 const HiddenDesignSystem = () => import(/* webpackChunkName: "design-system" */ "./views/hidden/DesignSystemCaseStudy.vue");
 const NotFound = () => import(/* webpackChunkName: "not-found" */ "./views/not-found.vue");
@@ -59,6 +60,7 @@ const routes = [
     path: "/playground/plum-pulse",
     component: PlumPulse,
   },
+  { path: "/book", name: "Booking", component: Booking },
   {
     name: "About",
     path: "/about",

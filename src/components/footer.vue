@@ -6,7 +6,11 @@
         <div class="footer-cta">
           <h3 class="cta-title">{{ $t("footer.title") }}</h3>
           <p class="cta-text">{{ $t("footer.text") }}</p>
-          <a href="mailto:eleni.chasioti@gmail.com" class="btn-primary footer-btn">
+          <router-link to="/book" class="btn-primary footer-btn">
+            {{ $t("common.bookCall") }}
+            <span class="mdi mdi-arrow-right" aria-hidden="true"></span>
+          </router-link>
+          <a href="mailto:eleni.chasioti@gmail.com" class="social-link footer-btn">
             {{ $t("common.getInTouch") }}
             <span class="mdi mdi-arrow-right"></span>
           </a>
