@@ -13,6 +13,14 @@ export const supportedLocales = {
 
 const messages = {
   en: {
+    booking: {
+      title: "Let’s find a time.",
+      intro: "Have a project in mind, an opportunity to share, or an idea to discuss? Choose an available time below.",
+      calendarTitle: "Book a meeting with Eleni Chasioti",
+      direct: "Open booking calendar in a new tab",
+      email: "Prefer email?",
+      description: "Book a meeting with Eleni Chasioti. Choose an available date and time in the booking calendar.",
+    },
     nav: {
       home: "Home",
       products: "Products",
@@ -28,6 +36,7 @@ const messages = {
       closeMenu: "Close menu",
     },
     common: {
+      bookCall: "Book a call",
       viewProject: "View Project",
       viewOnGithub: "View on GitHub",
       downloadResume: "Download Resume",
@@ -365,6 +374,14 @@ const messages = {
     },
   },
   el: {
+    booking: {
+      title: "Ας βρούμε μια ώρα.",
+      intro: "Έχετε ένα έργο, μια ευκαιρία συνεργασίας ή μια ιδέα για συζήτηση; Επιλέξτε μια διαθέσιμη ώρα παρακάτω.",
+      calendarTitle: "Κλείστε μια συνάντηση με την Ελένη Χασιώτη",
+      direct: "Ανοίξτε το ημερολόγιο κρατήσεων σε νέα καρτέλα",
+      email: "Προτιμάτε email;",
+      description: "Κλείστε μια συνάντηση με την Ελένη Χασιώτη. Επιλέξτε διαθέσιμη ημερομηνία και ώρα στο ημερολόγιο κρατήσεων.",
+    },
     nav: {
       home: "Αρχική",
       products: "Web Applications",
@@ -380,6 +397,7 @@ const messages = {
       closeMenu: "Κλείσιμο μενού",
     },
     common: {
+      bookCall: "Κλείστε μια συνάντηση",
       viewProject: "Δείτε το έργο",
       viewOnGithub: "Δείτε το στο GitHub",
       downloadResume: "Λήψη βιογραφικού",
