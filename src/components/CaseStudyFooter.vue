@@ -45,6 +45,11 @@ export default {
           route: "/products/coach-verification-app",
         },
         {
+          title: "Map3D Studio",
+          type: "Open-source Data Tools",
+          route: "/products/map3d-studio",
+        },
+        {
           title: "Industrial Facility Configurator",
           type: "Configuration System",
           route: "/products/industrial-configurator",

@@ -10,7 +10,7 @@ The primary audience is recruiters, hiring managers, and potential clients evalu
 
 ## Product Purpose
 
-This portfolio presents product design, engineering, and spatial-computing work with enough clarity and depth to build confidence. It should make complex projects easy to browse while showing that Eleni can move from user needs and systems thinking to polished implementation. Success means a visitor can identify relevant work, understand Eleni's strengths, and take the next step by getting in touch or downloading her resume.
+This portfolio supports Eleni’s transition from architecture into fintech through product design and UX engineering. Lead with transferable product skills, fintech concepts, commerce, and AI interaction work. Architecture, spatial computing, and 3D projects remain evidence of range, but must not dominate the homepage, positioning, or project order. Clearly distinguish independent concepts from professional experience; do not imply shipped fintech work. It should make complex projects easy to browse while showing that Eleni can move from user needs and systems thinking to polished implementation. Success means a visitor can identify relevant work, understand Eleni's strengths, and take the next step by getting in touch or downloading her resume.
 
 ## Brand Personality
 
@@ -22,7 +22,7 @@ Avoid AI slop websites: generic template compositions, repetitive card grids, gr
 
 ## Design Principles
 
-1. Show the work before describing the work.
+1. Show the work before describing the work: open with a compact introduction and a four-column gallery on desktop, two columns on tablets, and a single column on phones. Keep fintech, commerce and AI product work first.
 2. Make complex systems legible without flattening their depth.
 3. Use confident visual hierarchy so visitors can scan quickly and choose where to dive deeper.
 4. Let creative moments demonstrate judgment, not compete with the projects.

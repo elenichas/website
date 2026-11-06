@@ -232,7 +232,7 @@ const messages = {
     },
     about: {
       eyebrow: "About",
-      subtitle: "Product designer and engineer building precise, human-centered tools for spatial systems and digital workflows.",
+      subtitle: "Product designer and UX engineer turning complex workflows into clear interfaces, with a growing focus on fintech.",
       profile: "Profile",
       profileHeading: "Human interfaces for complex systems.",
       journeyTitle: "The Journey",
@@ -362,6 +362,7 @@ const messages = {
       duration: "Duration",
       nextProjects: [
         ["Vintage Coach Catalog", "Authentication System"],
+        ["Map3D Studio", "Open-source Data Tools"],
         ["Industrial Facility Configurator", "Configuration System"],
         ["Moon Habitat Configurator", "Design Automation"],
         ["Arabiya Language App", "Educational Web App"],
@@ -593,7 +594,7 @@ const messages = {
     },
     about: {
       eyebrow: "Σχετικά",
-      subtitle: "Product designer και engineer με έμφαση σε human-centered tools για spatial systems και digital workflows.",
+      subtitle: "Product designer και UX engineer που μετατρέπει σύνθετες ροές εργασίας σε κατανοητά interfaces, με αυξανόμενη έμφαση στο fintech.",
       profile: "Προφίλ",
       profileHeading: "Human interfaces for complex systems.",
       journeyTitle: "Η διαδρομή",
@@ -723,6 +724,7 @@ const messages = {
       duration: "Διάρκεια",
       nextProjects: [
         ["Vintage Coach Catalog", "Authentication System"],
+        ["Map3D Studio", "Open-source Data Tools"],
         ["Industrial Facility Configurator", "Configuration System"],
         ["Moon Habitat Configurator", "Design Automation"],
         ["Arabiya Language App", "Educational Web App"],

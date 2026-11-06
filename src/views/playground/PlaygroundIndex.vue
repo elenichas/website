@@ -22,19 +22,17 @@
             <small>{{ experiment.answerHint }}</small>
           </span>
         </router-link>
-        <a
+        <router-link
           class="shape-link"
-          href="https://map3d-studio-eleni.pages.dev/map"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Open Map3D Studio (opens in a new tab)"
+          to="/products/map3d-studio"
+          aria-label="View the Map3D Studio project"
         >
           <span class="prototype-arrow" aria-hidden="true">↗</span>
           <span class="shape-copy">
             <strong>Map3D Studio</strong>
-            <small>Explore places in 3D · Open-source contribution</small>
+            <small>Product workflow & data tools · View project</small>
           </span>
-        </a>
+        </router-link>
       </nav>
     </section>
   </main>

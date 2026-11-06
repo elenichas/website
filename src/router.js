@@ -21,10 +21,11 @@ const MoonPixelApp = () => import(/* webpackChunkName: "moon" */ "./views/uxui/M
 const IndustrialConfigurator = () => import(/* webpackChunkName: "industrial" */ "./views/uxui/IndustrialConfigurator.vue");
 const LanguageLearningApp = () => import(/* webpackChunkName: "language" */ "./views/uxui/LanguageLearningApp.vue");
 const CoachVerificationApp = () => import(/* webpackChunkName: "coach" */ "./views/uxui/CoachVerificationApp.vue");
+const Map3DStudio = () => import("./views/uxui/Map3DStudio.vue");
 
 // Define your routes
 const routes = [
-  { path: "/products/map3d-studio", redirect: "/playground" },
+  { path: "/products/map3d-studio", name: "Map3D Studio", component: Map3DStudio },
   {
     name: "Home",
     path: "/",

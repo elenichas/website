@@ -1,16 +1,10 @@
 <template>
-  <div class="portfolio-theme">
+  <div class="portfolio-theme portfolio-gallery">
   <app-navbar />
   <main id="project-index" class="playroom">
-    <header class="room-heading">
-      <div class="room-intro">
-        <span class="studio-label">Eleni Chasioti · Design Engineer / UX Engineer</span>
-        <h1>Spatial roots.<br /><span>Product expertise.</span></h1>
-      </div>
-      <div class="room-note">
-        <p>I’m a London-based Design Engineer and UX Engineer with 5+ years of experience designing and building digital products from discovery through production.</p>
-        <p>I combine product design, user research and front-end engineering to turn complex workflows into usable tools, including 3D interfaces and AI-enabled products.</p>
-      </div>
+    <header class="gallery-intro">
+      <h1>Product design &amp; UX engineering, with a focus on fintech.</h1>
+      <router-link to="/about">About Eleni <span aria-hidden="true">↗</span></router-link>
     </header>
 
     <nav class="worlds" aria-label="Filter projects by category">
@@ -34,12 +28,18 @@
         class="project-tile"
       >
         <router-link :to="project.route" :aria-label="`View ${project.title}`">
-          <div class="tile-visual">
+          <project-motion-card v-if="project.slug === 'vinted-bundling' || project.slug === 'plum-pulse'" :kind="project.slug === 'vinted-bundling' ? 'vinted' : 'plum'" />
+          <div v-else-if="project.slug === 'coach'" class="coach-showcase">
+            <img class="coach-screen coach-screen-left" src="/media/coach-colors.webp" alt="" aria-hidden="true" />
+            <img class="coach-screen coach-screen-right" src="/media/coach-authentication.webp" alt="" aria-hidden="true" />
+            <video class="coach-screen coach-screen-main" :src="project.preview" :poster="project.poster" autoplay muted loop playsinline preload="metadata" aria-label="Vintage Coach Catalog recorded interface preview" />
+          </div>
+          <video v-else-if="project.preview" class="tile-recording" :class="{ 'tile-recording-light': project.slug === 'industrial' || project.slug === 'workshop' }" :src="project.preview" :poster="project.poster" autoplay muted loop playsinline preload="metadata" :aria-label="`${project.title} motion preview`" />
+          <div v-else class="tile-visual">
             <img :src="project.image" :alt="project.imageAlt" :loading="index < 3 ? 'eager' : 'lazy'" draggable="false" />
             <span class="tile-action" aria-hidden="true">Open project <b>↗</b></span>
           </div>
           <div class="tile-copy">
-            <p class="project-format">{{ project.format }} · {{ project.year }}</p>
             <h2>{{ project.title }}</h2>
             <p class="project-summary">{{ project.summary }}</p>
             <ul class="tags" :aria-label="`${project.title} categories`">
@@ -53,7 +53,7 @@
     <section v-else class="nothing-found" role="status">
       <span aria-hidden="true">↻</span>
       <h2>A little too specific?</h2>
-      <p>No projects match all selected tags. Deselect a tag or show all work.</p>
+      <p>No projects in this category yet. Explore the complete collection.</p>
       <button type="button" @click="setDiscipline('all')">Show all work</button>
     </section>
 
@@ -64,17 +64,18 @@
 
 <script>
 import { resolveAsset } from "@/assetUrl";
+import ProjectMotionCard from "../components/ProjectMotionCard.vue";
 import AppNavbar from "../components/navbar.vue";
 import AppFooter from "../components/footer.vue";
 import { useHead } from "@vueuse/head";
 
 export default {
   name: "Design",
-  components: { AppNavbar, AppFooter },
+  components: { AppNavbar, AppFooter, ProjectMotionCard },
   setup() {
     useHead({
-      title: "Eleni Chasioti · Design, code & spatial systems",
-      meta: [{ name: "description", content: "Explore Eleni Chasioti’s work across architecture, commerce, mobile, desktop, 3D systems and hospitality." }],
+      title: "Eleni Chasioti · Product design & UX engineering",
+      meta: [{ name: "description", content: "Product design and UX engineering by Eleni Chasioti. Explore fintech concepts, commerce experiences, AI interfaces and complex workflow tools." }],
     });
   },
   data() {
@@ -82,26 +83,25 @@ export default {
       activeDisciplines: [],
       disciplines: [
         { id: "all", label: "All work" },
-        { id: "architecture", label: "Architecture" },
-        { id: "commerce", label: "Commerce" },
+        { id: "product", label: "Products" },
+        { id: "finance", label: "Fintech" },
         { id: "mobile", label: "Mobile" },
         { id: "desktop", label: "Desktop" },
-        { id: "three-d", label: "3D systems" },
-        { id: "hospitality", label: "Hospitality" },
-        { id: "finance", label: "Finance" },
-        { id: "learning", label: "Learning" },
-        { id: "accessibility", label: "Accessibility" },
-        { id: "agent-ux", label: "Agent UX" },
-        { id: "ai-ux", label: "AI UX" },
-        { id: "playground", label: "Playground" },
+        { id: "playground", label: "Experiments" },
       ],
       projects: [
         {
+          slug: "map3d", title: "Map3D Studio", summary: "An open-source workflow for exploring map data, inspecting a site and exporting the results.", route: "/products/map3d-studio",
+          image: "/images/map3d/scene-night.webp", imageAlt: "Map3D Studio showing an Athens site with scene layers and exploration tools", preview: "/media/map3d-preview.mp4", poster: "/images/map3d/scene-night.webp", tags: ["Open source", "Desktop", "Data tools"], disciplines: ["desktop", "data"],
+        },
+        {
           slug: "moon", title: "Moon Habitat Configurator", summary: "A spatial planning tool for assembling modular lunar habitats.", route: "/products/lunar-app",
+          preview: "/media/moon-preview.mp4", poster: "/media/moon-preview.webp",
           image: resolveAsset("@/images/gallery/moonPixel.webp"), imageAlt: "Modular lunar habitat shown in a 3D configurator", tags: ["Architecture", "3D systems", "Desktop"], disciplines: ["architecture", "three-d", "desktop"], format: "Design automation", year: 2025, tone: "space", size: "wide",
         },
         {
           slug: "coach", title: "Vintage Coach Catalog", summary: "A searchable reference and authentication system for vintage leather goods.", route: "/products/coach-verification-app",
+          preview: "/media/coach-preview.mp4", poster: "/media/coach-preview.webp",
           image: resolveAsset("@/images/gallery/coachHero.jpg"), imageAlt: "Vintage Coach Catalog authentication interface", tags: ["Commerce", "Desktop", "Data"], disciplines: ["commerce", "desktop"], format: "Reference platform", year: 2025, tone: "leather", size: "tall",
         },
         {
@@ -118,6 +118,7 @@ export default {
         },
         {
           slug: "industrial", title: "Industrial Facility Configurator", summary: "A rule-aware 3D workspace for specifying complex industrial facilities.", route: "/products/industrial-configurator",
+          preview: "/media/industrial-preview.mp4", poster: "/media/industrial-preview.webp",
           image: resolveAsset("@/images/gallery/industrial.png"), imageAlt: "Industrial facility configurator showing a plant in 3D", tags: ["3D systems", "Desktop", "Architecture"], disciplines: ["three-d", "desktop", "architecture"], format: "Configuration system", year: 2025, tone: "industrial", size: "standard",
         },
         {
@@ -138,6 +139,7 @@ export default {
         },
         {
           slug: "workshop", title: "Digital Futures Workshop", summary: "A study in voxel housing, aggregation logic and robotic fabrication.", route: "/products/workshop-design",
+          preview: "/media/workshop-preview.mp4", poster: "/media/workshop-preview.webp",
           image: resolveAsset("@/images/gallery/workshop.webp"), imageAlt: "Voxel housing aggregation study from the Digital Futures Workshop", tags: ["Architecture", "3D systems", "Fabrication"], disciplines: ["architecture", "three-d"], format: "Computational study", year: 2022, tone: "workshop", size: "wide",
         },
         {
@@ -148,321 +150,74 @@ export default {
     };
   },
   computed: {
-    activeDisciplineLabel() { return this.activeDisciplines.length ? this.disciplines.filter((discipline) => this.activeDisciplines.includes(discipline.id)).map((discipline) => discipline.label).join(" + ") : "Select tags to combine filters"; },
-    filteredProjects() {
-      return this.projects.filter((project) => this.activeDisciplines.every((id) => project.disciplines.includes(id)));
-    },
+    activeDisciplineLabel() { return this.activeDisciplines.length ? this.disciplines.find(d => d.id === this.activeDisciplines[0]).label : 'The complete collection'; },
+    filteredProjects() { const order = ['plum-pulse', 'coach', 'vinted-bundling', 'ai-sandbox', 'map3d', 'arabiya', 'filos', 'brew-crumb', 'industrial', 'moon', 'hapi', 'cricket', 'workshop'];
+      return [...this.projects].sort((a, b) => order.indexOf(a.slug) - order.indexOf(b.slug)).filter(project => this.matchesDiscipline(project, this.activeDisciplines[0] || 'all')); },
   },
   methods: {
-    isDisciplineSelected(id) { return id === "all" ? this.activeDisciplines.length === 0 : this.activeDisciplines.includes(id); },
-    countForDiscipline(id) {
-      if (id === "all") return this.projects.length;
-      return this.projects.filter((project) => [...this.activeDisciplines, id].every((tag) => project.disciplines.includes(tag))).length;
+    matchesDiscipline(project, id) {
+      if (id === 'all') return true;
+      if (id === 'spatial') return project.disciplines.includes('three-d');
+      if (id === 'product') return !project.disciplines.includes('playground') && (project.disciplines.includes('mobile') || project.disciplines.includes('desktop'));
+      return project.disciplines.includes(id);
     },
-    setDiscipline(id) {
-      if (id === "all") this.activeDisciplines = [];
-      else if (this.activeDisciplines.includes(id)) this.activeDisciplines = this.activeDisciplines.filter((tag) => tag !== id);
-      else this.activeDisciplines.push(id);
-    },
+    isDisciplineSelected(id) { return id === (this.activeDisciplines[0] || 'all'); },
+    countForDiscipline(id) { return this.projects.filter(project => this.matchesDiscipline(project, id)).length; },
+    setDiscipline(id) { this.activeDisciplines = id === 'all' ? [] : [id]; },
   },
 };
 </script>
 
 <style scoped>
-.playroom {
-  --room: #fafafa;
-  --ink: #111;
-  --muted: #595959;
-  min-height: 100vh;
-  padding: clamp(36px, 5vw, 68px) max(20px, calc((100vw - 1380px) / 2)) 28px;
-  overflow: visible;
-  background: var(--room);
-  color: var(--ink);
-  scroll-margin-top: 72px;
-}
-.room-heading {
-  display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(260px, .55fr);
-  align-items: start;
-  gap: clamp(32px, 7vw, 112px);
-}
-.studio-label {
-  display: inline-block;
-  margin-bottom: 18px;
-  padding-bottom: 5px;
-  border-bottom: 3px solid #f24e1e;
-  font-size: clamp(15px, 1.3vw, 18px);
-  font-weight: 650;
-}
-.room-heading h1 {
-  max-width: 900px;
-  color: var(--ink);
-  font-size: clamp(44px, 6vw, 86px);
-  font-weight: 650;
-  letter-spacing: -.04em;
-  line-height: .96;
-  text-wrap: balance;
-}
-.room-heading h1 > span {
-  color: var(--ink);
-  text-decoration: underline;
-  text-decoration-color: #ffd76b;
-  text-decoration-thickness: .12em;
-  text-underline-offset: .09em;
-}
-.room-note {
-  max-width: 360px;
-  padding-bottom: 5px;
-}
-.room-note p {
-  margin: 0;
-  color: var(--ink);
-  font-size: 15px;
-  line-height: 1.6;
-}
-.room-note strong {
-  font-weight: 700;
-  text-decoration: underline;
-  text-decoration-color: #f24e1e;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 3px;
-}
-.room-note p + p {
-  margin-top: 18px;
-  color: var(--muted);
-  font-size: 13px;
-}
+.tile-recording { display:block; width:100%; aspect-ratio:16/11; object-fit:contain; background:#18191b; border-radius:8px; }
+.tile-recording-light { background:#fff; border:1px solid #eeedf0; }
+.coach-showcase { position:relative; aspect-ratio:16/11; overflow:hidden; border-radius:8px; background:radial-gradient(ellipse at 50% 25%, #f3ece1, #c7b7a2); isolation:isolate; }
+.coach-showcase .coach-screen { position:absolute; display:block; width:35%; height:auto; border:3px solid #29241f; border-radius:12px; box-shadow:0 14px 28px #34261935; }
+.coach-showcase .coach-screen-left { left:3%; top:16%; transform:rotate(-9deg); }
+.coach-showcase .coach-screen-right { right:3%; top:13%; transform:rotate(9deg); }
+.coach-showcase .coach-screen-main { z-index:1; width:38%; left:31%; top:5%; }
+.project-tile a:hover .coach-screen-left { transform:rotate(-9deg); }
+.project-tile a:hover .coach-screen-right { transform:rotate(9deg); }
+.playroom { --ink:#202024; --muted:#626266; min-height:100vh; padding:0 max(24px,calc((100vw - 1600px)/2)) 80px; background:#fff; color:var(--ink); }
+.gallery-intro { display:flex; justify-content:space-between; align-items:center; gap:24px; padding:36px 0 30px; }
+.gallery-intro h1 { font-size:clamp(20px,2vw,28px); letter-spacing:-.025em; line-height:1.35; font-weight:450; color:#202024; margin:0; }
+.gallery-intro > a { flex-shrink:0; display:inline-flex; align-items:center; gap:16px; min-height:44px; font-size:13px; color:#55555b; text-decoration:none; }
+.gallery-intro > a:hover { color:#202024; }
+.worlds { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+.worlds button { display:flex; align-items:center; gap:8px; min-height:44px; padding:8px 16px; border:1px solid #d5d5d8; border-radius:6px; background:#fff; color:#333338; font:inherit; font-size:13px; cursor:pointer; transition:background 180ms ease; }
+.worlds button:hover { background:#f1f1f3; }
+.worlds sup { font-size:10px; }
+.room-toolbar { display:flex; justify-content:space-between; border-top:1px solid #e3e3e6; padding-top:14px; gap:20px; }
+.room-toolbar p { margin:0; font-size:12px; color:#626266; }
+.project-field { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:40px 24px; padding-top:24px; }
+.project-tile { min-width:0; }
+.project-tile a { display:block; color:#202024; text-decoration:none; }
+.tile-visual { position:relative; aspect-ratio:16/11; overflow:hidden; border-radius:8px; background:#f0f0f2; }
+.tile-visual img { display:block; width:100%; height:100%; object-fit:cover; transition:transform 450ms cubic-bezier(.22,1,.36,1); }
+.project-tile a:hover img { transform:scale(1.025); }
+.tile-copy { padding-top:16px; }
+.tile-copy h2 { font-size:20px; font-weight:550; line-height:1.25; letter-spacing:-.025em; }
+.project-summary { font-size:14px; line-height:1.6; color:#626266; margin:8px 0 0; max-width:48ch; }
+.tile-action { position:absolute; right:12px; bottom:12px; background:#fff; color:#202024; padding:9px 12px; border-radius:5px; display:flex; gap:14px; align-items:center; font-size:12px; opacity:0; transition:opacity 180ms ease; }
+.project-tile a:is(:hover,:focus-visible) .tile-action { opacity:1; }
+.tags { display:flex; flex-wrap:wrap; list-style:none; gap:8px; padding:0; margin:12px 0 0; }
+.tags li { font-size:11px; color:#626266; }
+.nothing-found { padding:60px 0; text-align:center; }
+.playroom :is(a,button):focus-visible { outline:2px solid #202024; outline-offset:5px; }
+@media(max-width:1100px) { .project-field { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:600px) { .playroom { padding-inline:18px; } .gallery-intro { align-items:flex-start; flex-direction:column; gap:8px; padding:22px 0 20px; } .gallery-intro h1 { font-size:22px; max-width:30ch; } .gallery-intro > a { min-height:36px; } .project-field { grid-template-columns:1fr; gap:36px; } .worlds { gap:6px; } .worlds button { padding-inline:10px; font-size:12px; } .tile-action { opacity:1; } }
+@media(hover:none) { .tile-action { opacity:1; } }
+@media(prefers-reduced-motion:reduce) { .tile-visual img,.tile-action,.worlds button { transition:none; } .project-tile a:hover img { transform:none; } }
+</style>
 
-.worlds {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 34px 0 20px;
-}
-.worlds button {
-  display: flex;
-  min-height: 40px;
-  align-items: center;
-  gap: 9px;
-  padding: 8px 15px;
-  border: 1px solid #cecece;
-  border-radius: 999px;
-  background: transparent;
-  color: var(--ink);
-  font: inherit;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
-}
-.worlds button:hover { border-color: var(--ink); background: #fff; }
-.worlds button.selected { border-color: var(--ink); background: var(--ink); color: #fff; }
-.worlds sup { font-size: 9px; font-variant-numeric: tabular-nums; }
-.room-toolbar {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding-top: 14px;
-  border-top: 1px solid #ddd;
-}
-.room-toolbar p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 11px;
-}
-.project-field {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-  padding: clamp(30px, 4vw, 54px) 0 clamp(72px, 8vw, 112px);
-}
-.project-tile {
-  position: relative;
-  z-index: 1;
-  min-width: 0;
-  transform-origin: center;
-  transition: transform 320ms cubic-bezier(.22, 1, .36, 1);
-}
-.project-tile:hover,
-.project-tile:focus-within {
-  z-index: 10;
-  transform: scale(1.18);
-}
-.project-tile a {
-  display: block;
-  padding: 8px;
-  border-radius: 8px;
-  background: #fff;
-  color: var(--ink);
-  box-shadow: 0 1px 3px #00000014;
-  transition: box-shadow 320ms cubic-bezier(.22, 1, .36, 1);
-}
-.project-tile:hover a,
-.project-tile:focus-within a {
-  box-shadow: 0 18px 38px #00000029;
-}
-.tile-visual {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 16 / 10;
-  border-radius: 4px;
-  background: #e8e8e8;
-}
-.tile-visual img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 420ms cubic-bezier(.22, 1, .36, 1), filter 260ms ease;
-}
-.project-tile:hover img,
-.project-tile:focus-within img {
-  filter: saturate(1.04);
-  transform: scale(1.035);
-}
-.tile-copy {
-  padding: 14px 6px 7px;
-}
-.project-format {
-  margin: 0 0 6px;
-  color: #5f5f5f;
-  font-size: 9px;
-  font-weight: 600;
-}
-.tile-copy h2 {
-  color: var(--ink);
-  font-size: clamp(15px, 1.3vw, 19px);
-  line-height: 1.15;
-  letter-spacing: -.02em;
-  text-wrap: balance;
-}
-.project-summary {
-  margin: 7px 0 0;
-  color: #4e4e4e;
-  font-size: 10px;
-  line-height: 1.5;
-}
-.tile-action {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 10px;
-  border-radius: 5px;
-  background: #fff;
-  color: var(--ink);
-  font-size: 9px;
-  font-weight: 650;
-  opacity: 0;
-  transform: translateY(5px);
-  transition: opacity 180ms ease, transform 260ms cubic-bezier(.22, 1, .36, 1);
-}
-.tile-action b { font-size: 14px; line-height: 1; }
-.project-tile:hover .tile-action,
-.project-tile:focus-within .tile-action {
-  opacity: 1;
-  transform: translateY(0);
-}
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin: 12px 0 0;
-  padding: 0;
-  list-style: none;
-}
-.tags li {
-  padding: 4px 7px;
-  border-radius: 4px;
-  color: #242424;
-  font-size: 8px;
-  font-weight: 550;
-}
-.tags .tag-0 { background: #ffd76b; }
-.tags .tag-1 { background: #e6dafa; }
-.tags .tag-2 { background: #c6f1db; }
-.room-signoff {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  padding-top: 20px;
-  border-top: 1px solid #ddd;
-  color: var(--muted);
-  font-size: 10px;
-}
-.room-signoff > span:last-child { display: flex; align-items: center; gap: 10px; }
-.room-signoff > span:last-child > span { color: #f24e1e; font-size: 22px; line-height: 1; }
-.nothing-found {
-  display: flex;
-  min-height: 360px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  text-align: center;
-}
-.nothing-found > span { font-size: 54px; line-height: 1; }
-.nothing-found h2,
-.nothing-found p { color: var(--ink); }
-.nothing-found button {
-  min-height: 42px;
-  padding: 10px 16px;
-  border: 0;
-  border-radius: 5px;
-  background: var(--ink);
-  color: #fff;
-  font: inherit;
-  cursor: pointer;
-}
-.playroom :where(button, a):focus-visible {
-  outline: 3px solid #7851a9;
-  outline-offset: 4px;
-}
-@media (max-width: 1050px) {
-  .project-field { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .project-tile:hover,
-  .project-tile:focus-within { transform: scale(1.14); }
-}
-@media (max-width: 760px) {
-  .room-heading { grid-template-columns: 1fr; gap: 22px; }
-  .room-heading h1 { font-size: clamp(44px, 11vw, 68px); }
-  .room-note { max-width: 38rem; }
-  .project-field { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-  .project-tile:hover,
-  .project-tile:focus-within { transform: scale(1.08); }
-}
-@media (max-width: 520px) {
-  .playroom { padding: 26px 14px 20px; }
-  .room-heading h1 { font-size: clamp(40px, 13vw, 58px); }
-  .studio-label { font-size: 14px; }
-  .worlds {
-    margin: 24px -14px 16px;
-    padding: 0 14px 4px;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-  .worlds::-webkit-scrollbar { display: none; }
-  .worlds button { flex: 0 0 auto; min-height: 38px; padding: 7px 11px; font-size: 10px; }
-  .project-field { grid-template-columns: 1fr; gap: 12px; padding-top: 28px; }
-  .project-tile:hover,
-  .project-tile:focus-within { transform: none; }
-  .tile-visual { aspect-ratio: 16 / 10; }
-  .tile-action { opacity: 1; transform: none; }
-  .room-signoff { flex-direction: column; gap: 10px; }
-}
-@media (hover: none) {
-  .project-tile:hover { transform: none; }
-  .tile-action { opacity: 1; transform: none; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .project-tile,
-  .project-tile a,
-  .tile-visual img,
-  .tile-action { transition: none; }
-  .project-tile:hover,
-  .project-tile:focus-within { transform: none; }
-}
+<style>
+/* Scope the quieter shell to the work index; other pages retain their identity. */
+#app .portfolio-gallery .modern-navbar { background:#fff; border-bottom:1px solid #e7e7e9; }
+#app .portfolio-gallery .modern-navbar :is(.nav-link,.brand-link,.brand-name) { color:#202024; }
+#app .portfolio-gallery .nav-link.active::after { background:var(--portfolio-header,#f65b32); }
+#app .portfolio-gallery .language-switcher { background:#f2f2f4; }
+#app .portfolio-gallery .worlds button { border-color:#d5d5d8; }
+#app .portfolio-gallery .worlds button.selected { background:#202024; border-color:#202024; color:#fff; }
+#app .portfolio-gallery .tags li { display:inline-flex; align-items:center; justify-content:center; padding:4px 8px; margin:0; line-height:1.2; border-radius:3px; background:var(--workshop-lilac, #e6dafa); color:var(--workshop-ink, #251a25); }
+#app .portfolio-gallery .tags li + li::before { content:none; }
 </style>

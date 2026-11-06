@@ -10,7 +10,7 @@
       </div>
     </header>
 
-    <nav class="case-nav" aria-label="Case study sections"><a @click.prevent="jumpToSection" href="#premise">The idea</a><a @click.prevent="jumpToSection" href="#prototype">Prototype</a><a @click.prevent="jumpToSection" href="#agent-model">Agent model</a><a @click.prevent="jumpToSection" href="#boundaries">Trust & control</a><a @click.prevent="jumpToSection" href="#evaluation">Evaluation</a></nav>
+    <nav class="case-nav" aria-label="Case study sections"><a @click.prevent="jumpToSection" href="#premise">The idea<span aria-hidden="true">↓</span></a><a @click.prevent="jumpToSection" href="#prototype">Prototype<span aria-hidden="true">↓</span></a><a @click.prevent="jumpToSection" href="#agent-model">Agent model<span aria-hidden="true">↓</span></a><a @click.prevent="jumpToSection" href="#boundaries">Trust & control<span aria-hidden="true">↓</span></a><a @click.prevent="jumpToSection" href="#evaluation">Evaluation<span aria-hidden="true">↓</span></a></nav>
 
     <section id="premise" class="section premise">
       <div class="section-intro"><p class="section-label">The opportunity</p><h2>Numbers are visible.<br>Meaning takes work.</h2></div>
@@ -250,4 +250,13 @@ const qualities=[
 .compact-study small { font-size:.75rem; color:var(--color-text-secondary); }
 .compact-closing .closing-credit { margin-top:28px; }
 @media(max-width:650px) { .compact-section { padding-top:36px; padding-bottom:36px; }.compact-permissions>div { grid-template-columns:1fr; gap:6px; padding:14px 0; }.compact-recovery { grid-template-columns:1fr; }.compact-qualities summary { padding:12px 0; }.compact-qualities summary>span:nth-child(2) { font-size:.75rem; } }
+
+/* Section links should read as navigation controls at a glance. */
+.case-nav { gap:10px; padding:12px 24px; }
+.case-nav a { gap:18px; padding:0 16px; min-height:44px; border:1px solid #c9c2d1; border-radius:6px; background:#fff; color:var(--color-text); font-size:.8rem; font-weight:500; cursor:pointer; transition:background 160ms ease,border-color 160ms ease; }
+.case-nav a > span { color:var(--pulse-purple); font-size:1rem; }
+.case-nav a:hover { background:#f0e8f7; border-color:var(--pulse-purple); color:var(--color-text); }
+.case-nav a:focus-visible { outline:2px solid var(--pulse-purple); outline-offset:3px; background:#f0e8f7; }
+@media(max-width:680px) { .case-nav { gap:8px; padding:12px 18px; } .case-nav a { padding-inline:12px; gap:12px; font-size:.75rem; } }
+@media(prefers-reduced-motion:reduce) { .case-nav a { transition:none; } }
 </style>
