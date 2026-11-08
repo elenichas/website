@@ -64,14 +64,7 @@
       </div>
       <div class="split-media media-container-blue">
         <div class="carousel-wrapper">
-                    <v-carousel cycle hide-delimiters show-arrows="hover" height="400">
-            <v-carousel-item
-              v-for="(image, index) in images"
-              :key="index"
-            >
-              <img loading="lazy" :src="image.url" :alt="'Technical Study ' + (index + 1)" class="carousel-img" />
-            </v-carousel-item>
-          </v-carousel>
+                    <media-carousel :images="images" alt-prefix="Technical Study" label="Technical Study gallery" fit="cover" :height="400" />
         </div>
       </div>
     </section>
@@ -92,14 +85,7 @@
     <section class="split-section split-section-right">
       <div class="split-media media-container-green">
         <div class="carousel-wrapper">
-                    <v-carousel cycle hide-delimiters interval="4000" show-arrows="hover" height="450">
-            <v-carousel-item
-              v-for="(image, index) in renders"
-              :key="index"
-            >
-              <img loading="lazy" :src="image.url" :alt="'Architectural illustration ' + (index + 1)" class="carousel-img" />
-            </v-carousel-item>
-          </v-carousel>
+                    <media-carousel :images="renders" alt-prefix="Architectural illustration" label="Architectural illustration gallery" fit="cover" :height="450" />
         </div>
       </div>
       <div class="split-content">
@@ -116,6 +102,7 @@
 </template>
 
 <script>
+import MediaCarousel from "@/components/MediaCarousel.vue";
 import { resolveAsset } from "@/assetUrl";
 import AppNavbar from "@/components/navbar.vue";
 import CaseStudyFooter from "@/components/CaseStudyFooter.vue";
@@ -123,6 +110,7 @@ import CaseStudyFooter from "@/components/CaseStudyFooter.vue";
 export default {
   name: "HapiProject",
   components: {
+    MediaCarousel,
     AppNavbar,
     CaseStudyFooter,
   },
@@ -363,13 +351,8 @@ export default {
 /* Carousel */
 .carousel-wrapper {
   border-radius: var(--radius-sm);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
 }
 
-.carousel-wrapper :deep(.v-carousel) {
-  border-radius: var(--radius-sm);
-}
 
 .carousel-img {
   width: 100%;

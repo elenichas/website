@@ -35,6 +35,8 @@
     </div>
 
     <!-- Background -->
+    <case-snapshot page="arabiya" />
+
     <section class="content-section">
       <p class="section-label">Background</p>
       <h2 class="section-heading">A personal learning tool</h2>
@@ -263,6 +265,7 @@
 </template>
 
 <script>
+import CaseSnapshot from "@/components/CaseSnapshot.vue";
 import { resolveAsset } from "@/assetUrl";
 import AppNavbar from "@/components/navbar.vue";
 import CaseStudyFooter from "@/components/CaseStudyFooter.vue";
@@ -271,12 +274,12 @@ import { useHead } from "@vueuse/head";
 export default {
   name: "LanguageLearningApp",
   components: {
+    CaseSnapshot,
     AppNavbar,
     CaseStudyFooter,
   },
   setup() {
     useHead({
-      title: "Arabiya Language App — Eleni Chasioti",
       meta: [
         { name: "description", content: "Case study: A personal Egyptian Arabic learning app built around real lessons, interactive study flows, quizzes, and content modeling." },
         { property: "og:title", content: "Arabiya Language App — Eleni Chasioti" },

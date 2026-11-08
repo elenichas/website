@@ -1,0 +1,160 @@
+/* Visual portfolio: monochrome framing lets the work carry the colour. */
+/* Type scale (1.25 ratio) shared by the gallery and project tiles. */
+:root {
+  --type-xs:12px;
+  --type-sm:14px;
+  --type-md:16px;
+  --type-lg:20px;
+  --type-xl:clamp(22px, 2vw, 28px);
+  --type-2xl:clamp(28px, 3.2vw, 40px);
+  --type-display:clamp(40px, 6.4vw, 88px);
+}
+:root,
+:root[data-visual-theme="dark"] {
+  color-scheme:dark;
+  --visual-bg:#080808;
+  --visual-fg:#f4f4f1;
+  --visual-muted:#b0b0ad;
+  --visual-border:#30302f;
+  --visual-surface:#161615;
+  --color-bg:var(--visual-bg);
+  --color-surface:var(--visual-surface);
+  --color-surface-raised:#20201e;
+  --color-text:var(--visual-fg);
+  --color-text-secondary:var(--visual-muted);
+  --color-text-muted:#a0a09d;
+  --color-border:var(--visual-border);
+  --color-border-strong:#575754;
+  --color-accent-soft:#222220;
+  --color-canvas-wash:#111110;
+  --color-system-tint:#1b1b19;
+  --glass-bg:var(--visual-bg);
+  --glass-bg-strong:var(--visual-bg);
+}
+:root[data-visual-theme="light"] {
+  color-scheme:light;
+  --visual-bg:#f9f9f6;
+  --visual-fg:#111110;
+  --visual-muted:#5a5a56;
+  --visual-border:#d5d5ce;
+  --visual-surface:#efefe9;
+  --color-surface-raised:#e7e7df;
+  --color-text-muted:#60605c;
+  --color-border-strong:#aaa;
+  --color-accent-soft:#e9e9e2;
+  --color-canvas-wash:#eee;
+  --color-system-tint:#ecece6;
+}
+body { background:var(--visual-bg); color:var(--visual-fg); }
+#app { min-height:100vh; }
+#app .modern-navbar { background:var(--visual-bg); border-bottom:0; backdrop-filter:none; }
+#app .navbar-container { max-width:none; padding-inline:4%; height:88px; }
+#app .brand-name { color:var(--visual-fg); font-size:17px; font-weight:500; letter-spacing:-.03em; }
+#app .nav-link { color:var(--visual-muted); font-size:12px; text-transform:uppercase; letter-spacing:.14em; padding-block:12px; }
+#app .nav-link:is(:hover,.active) { color:var(--visual-fg); }
+#app .nav-link.active::after { background:var(--visual-fg); height:1px; }
+#app .desktop-nav { gap:36px; }
+#app .language-switcher { background:transparent; border:1px solid var(--visual-border); padding:0; border-radius:0; }
+#app .language-option { border-radius:0; background:transparent; color:var(--visual-muted); min-width:36px; min-height:36px; font-size:12px; }
+#app .language-option.active { background:var(--visual-fg); color:var(--visual-bg); }
+#app .visual-theme-toggle { background:transparent; border:0; color:var(--visual-fg); width:44px; height:44px; font-size:26px; cursor:pointer; }
+#app .hamburger-line { background:var(--visual-fg); }
+#app .mobile-menu { background:var(--visual-bg); border-color:var(--visual-border); }
+#app .mobile-nav-link { color:var(--visual-fg); }
+#app .footer { background:var(--visual-bg); color:var(--visual-fg); border-color:var(--visual-border); }
+#app .footer-container { max-width:none; padding:64px 4% 0; }
+#app .footer-content { grid-template-columns:1.2fr 1fr; gap:80px; }
+#app .footer .cta-title { color:var(--visual-fg); font-size:clamp(36px,5vw,64px); font-weight:450; }
+#app .footer :is(.cta-text,.copyright,.made-with) { color:var(--visual-muted); }
+#app :is(.footer .social-link,.footer .btn-primary) { color:var(--visual-fg); background:transparent; border:0; border-bottom:1px solid var(--visual-border); border-radius:0; padding:10px 0; }
+/* Footer actions match the pill buttons used in the home intro. */
+#app .footer .footer-actions .footer-btn { display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:0 20px; border:1px solid var(--visual-border); border-radius:999px; font-size:14px; font-weight:500; }
+#app .footer .footer-actions .btn-primary { background:var(--visual-fg); border-color:var(--visual-fg); color:var(--visual-bg); }
+#app .footer .footer-actions .btn-primary:hover { background:transparent; color:var(--visual-fg); }
+#app .footer .footer-actions .social-link:hover { border-color:var(--visual-fg); }
+#app .footer .footer-actions { gap:28px; }
+#app .footer-signature { color:var(--visual-fg); font-size:clamp(42px,8vw,96px); letter-spacing:-.04em; font-weight:450; line-height:1.1; padding:64px 0 32px; margin-top:56px; border-top:1px solid var(--visual-border); }
+#app .portfolio-theme { --portfolio-header:var(--visual-bg); --portfolio-header-ink:var(--visual-fg); --portfolio-ink:var(--visual-fg); --workshop-ink:var(--visual-fg); --workshop-lilac:var(--visual-surface); --workshop-lime:var(--visual-surface); }
+#app .portfolio-gallery .tags li { background:transparent; color:var(--visual-muted); border:1px solid var(--visual-border); border-radius:0; }
+#app .project-preview :is(.tile-recording,.tile-visual,.coach-showcase,.project-motion) { border-radius:0; }
+#app .portfolio-gallery .project-tile a { color:var(--visual-fg); }
+#app .case-study { background:var(--visual-bg); color:var(--visual-fg); }
+#app .case-study :is(.case-title,.section-heading,.info-text,.meta-value,.body-text) { color:var(--visual-fg); }
+#app .case-study .body-text { color:var(--visual-muted); }
+#app .case-study .case-header { border:0; }
+#app .case-study .meta-label { color:var(--visual-muted); }
+#app .case-study .section-label { color:var(--visual-muted); }
+#app .case-study .section-number { background:var(--visual-surface); color:var(--visual-muted); }
+#app .case-study .project-links a { color:var(--visual-fg); }
+#app .next-project-section { background:var(--visual-bg); border-color:var(--visual-border); }
+#app .about-page,#app .about-hero,#app .about-story,#app .experience-section,#app .timeline-card,#app .booking-page,#app .playground-page { background:var(--visual-bg); color:var(--visual-fg); }
+#app .about-page :is(.page-title,.story-sticky h2,.story-section h3,.timeline-role,.timeline-company,.section-eyebrow) { color:var(--visual-fg); }
+#app .about-hero { padding-block:64px; }
+#app .about-page .page-title { font-size:clamp(56px,8vw,96px); font-weight:450; }
+#app .about-hero .section-eyebrow { display:none; }
+#app .about-page .story-index { background:transparent; color:var(--visual-muted); }
+#app .about-page .timeline-card::before { background:var(--visual-bg); border-color:var(--visual-border); }
+#app .portfolio-theme :is(.page-subtitle,.story-section p,.timeline-description,.timeline-period) { color:var(--visual-muted); }
+/* One button system across pages: pill shape, filled primary, outlined secondary. */
+#app :is(.btn-primary,.btn-secondary) { min-height:44px; padding:0 20px; border:1px solid var(--visual-fg); border-radius:999px; font-size:14px; font-weight:500; box-shadow:none; transform:none; }
+#app .btn-primary { background:var(--visual-fg); color:var(--visual-bg); }
+#app .btn-primary:hover { background:transparent; color:var(--visual-fg); border-color:var(--visual-fg); }
+#app .btn-secondary { background:transparent; color:var(--visual-fg); border-color:var(--visual-border); }
+#app .btn-secondary:hover { background:transparent; color:var(--visual-fg); border-color:var(--visual-fg); }
+#app .portfolio-theme :is(.about-hero, *) .btn-secondary { background:transparent; color:var(--visual-fg); border-color:var(--visual-border); }
+#app .portfolio-theme :is(.about-hero, *) .btn-primary:hover { background:transparent; color:var(--visual-fg); border-color:var(--visual-fg); }
+#app .portfolio-theme :is(.about-hero, *) .btn-secondary:hover { background:transparent; color:var(--visual-fg); border-color:var(--visual-fg); }
+#app .booking-intro h1 { font-size:clamp(48px,7vw,96px); font-weight:450; }
+#app .booking-alternatives a { color:var(--visual-fg); }
+#app .playground-page .shape-copy { color:var(--visual-fg); }
+#app .playground-page .shape-link { border-color:var(--visual-border); background:var(--visual-surface); color:var(--visual-fg); }
+#app .case-nav a { background:var(--visual-surface); color:var(--visual-fg); border-color:var(--visual-border); }
+#app .case-nav a:hover { background:var(--color-accent-soft); color:var(--visual-fg); }
+#app .pulse-page .hero-foot,#app .case-nav { border-color:var(--visual-border); }
+@media(max-width:760px) { #app .navbar-container { height:72px; padding-inline:22px; } #app .brand-name { font-size:15px; } #app .modern-navbar > .navbar-container > .language-switcher { display:none; } #app .footer-content { grid-template-columns:1fr; gap:40px; } #app .footer-container { padding:48px 22px 0; } #app .footer-signature { padding-block:36px 28px; margin-top:32px; } }
+/* Override the previous colour-picker theme at the shared shell boundary. */
+#app .portfolio-theme .modern-navbar .language-option { background:transparent; color:var(--visual-muted); }
+#app .portfolio-theme .modern-navbar .language-option.active { background:var(--visual-fg); color:var(--visual-bg); }
+#app .portfolio-gallery .project-tile .tags li:nth-child(n) { background:transparent; border:1px solid var(--visual-border); color:var(--visual-muted); }
+#app .portfolio-gallery .worlds button { background:transparent; border:0; color:var(--visual-muted); border-radius:0; }
+#app .portfolio-gallery .worlds button.selected { color:var(--visual-fg); }
+#app .portfolio-theme .about-page > .about-container:first-child { padding-inline:4%; }
+#app .portfolio-theme .about-story > .about-container { padding-inline:4%; }
+#app .portfolio-theme .playground-page { background:var(--visual-bg); }
+#app .portfolio-theme .playground-heading { background:var(--visual-bg); color:var(--visual-fg); padding-top:72px; }
+#app .portfolio-theme .playground-stage h1 { color:var(--visual-fg); font-weight:450; }
+#app .portfolio-theme .shape-links .shape-link { background:var(--visual-bg); color:var(--visual-fg); border-color:var(--visual-border); }
+#app .portfolio-theme .shape-links .shape-link:nth-child(n) .prototype-arrow { background:var(--visual-surface); color:var(--visual-fg); border-radius:0; }
+#app .modern-navbar :is(a,button):focus-visible { outline:2px solid currentColor; outline-offset:5px; }
+:root { --portfolio-header:var(--visual-bg); --portfolio-header-ink:var(--visual-fg); --portfolio-ink:var(--visual-fg); }
+html,body,#app { background:var(--visual-bg); }
+#app .modern-navbar .language-switcher { background:transparent; border:1px solid var(--visual-border); }
+#app :is(.pulse-case,.vinted-case,.design-system-page,.not-found-page) { background:var(--visual-bg); color:var(--visual-fg); }
+#app .pulse-case { --pulse-wash:var(--visual-surface); }
+#app .pulse-case .pulse-hero { background:var(--visual-bg); }
+#app .pulse-case .case-nav a > span { color:#bc89e5; }
+#app .pulse-case .scenario-list > button:is(:hover,[aria-pressed="true"]) { background:var(--visual-surface); color:var(--visual-fg); }
+#app .sandbox-page { background:var(--visual-bg); color:var(--visual-fg); }
+#app .sandbox-page :is(.sandbox-intro h1,.principles h2) { color:var(--visual-fg); }
+#app .sandbox-page :is(.sandbox-intro p,.back-to-projects,.principles > p) { color:var(--visual-muted); }
+#app .modern-navbar .mobile-menu { background:var(--visual-bg); backdrop-filter:none; -webkit-backdrop-filter:none; box-shadow:none; border-bottom:1px solid var(--visual-border); }
+#app .modern-navbar .mobile-menu::before { content:none; }
+#app .modern-navbar .mobile-nav-link { color:var(--visual-fg); }
+#app .modern-navbar .mobile-cta { background:var(--visual-fg); color:var(--visual-bg); border-color:var(--visual-fg); border-radius:0; }
+#app .modern-navbar .mobile-nav-link { display:flex; align-items:center; min-height:44px; }
+#app .modern-navbar .language-switcher .language-option.active { background:var(--visual-fg); color:var(--visual-bg); }
+
+:root { --visual-accent:#c998ff; --visual-teal:#74d2c4; }
+:root[data-visual-theme="light"] { --visual-accent:#7521b8; --visual-teal:#007782; }
+:root[data-visual-theme="dark"] #app .pulse-case :is(.hero-symbol,.diagram-icon,.allowed,.approval-tag) { background:var(--visual-surface); border-color:var(--visual-border); }
+:root[data-visual-theme="dark"] #app .pulse-case .hero-symbol { color:var(--visual-accent); }
+:root[data-visual-theme="dark"] #app .pulse-case .allowed { color:#8dd9b5; }
+:root[data-visual-theme="dark"] #app .pulse-case .approval-tag { color:#e8ca8c; }
+#app .portfolio-theme .footer { background:var(--visual-bg); color:var(--visual-fg); border-color:var(--visual-border); }
+#app .portfolio-theme .footer :is(.social-link,.cta-title,.footer-signature) { color:var(--visual-fg); }
+/* Light recordings sit on a full white panel so every preview reads as the same-size card. */
+#app .portfolio-gallery .tile-recording-light { background:#fff; box-shadow:inset 0 0 0 1px var(--visual-border); }
+#app :is(.skill-radar,.education-strip) { background:var(--visual-surface); border-color:var(--visual-border); }
+#app :is(.skill-radar h3,.education-strip h3,.skill-cluster h4,.education-item h4) { color:var(--visual-fg); }
+#app :is(.skill-cluster p,.education-item p,.timeline-highlight) { color:var(--visual-muted); }
+#app .skill-radar .skill-cluster:nth-child(n) .skill-chips span { background:var(--visual-bg); color:var(--visual-muted); border:1px solid var(--visual-border); }

@@ -4,9 +4,9 @@
   <main class="vinted-case">
     <section class="vinted-hero">
       <div class="hero-story">
-        <router-link class="back-link" to="/playground">
+        <router-link class="back-link" to="/">
           <ArrowLeft :size="15" />
-          Playground
+          All projects
         </router-link>
         <p class="project-label">Independent speculative prototype</p>
         <h1>Smart Local Bundling for Vinted</h1>
@@ -22,7 +22,7 @@
       </div>
 
       <section class="prototype-stage" aria-label="Interactive Vinted-inspired prototype">
-        <div class="prototype-device">
+        <div class="project-ui prototype-device">
           <div class="annotation-layer" aria-label="Prototype annotations">
             <article
               v-for="annotation in activeAnnotations"
@@ -311,6 +311,8 @@
       </div>
     </section>
 
+    <case-snapshot page="vinted" class="snapshot-in-playground" />
+
     <section class="story-section problem-section">
       <div>
         <p class="project-label">Problem</p>
@@ -340,6 +342,7 @@
 </template>
 
 <script>
+import CaseSnapshot from "@/components/CaseSnapshot.vue";
 import {
   ArrowLeft,
   Camera,
@@ -948,6 +951,7 @@ const imageFits = {
 export default {
   name: "VintedSmartBundling",
   components: {
+    CaseSnapshot,
     AppFooter,
     AppNavbar,
     ArrowLeft,
@@ -970,7 +974,6 @@ export default {
   },
   setup() {
     useHead({
-      title: "Vinted Smart Local Bundling - Eleni Chasioti",
       meta: [
         {
           name: "description",
@@ -1259,7 +1262,7 @@ export default {
 }
 
 .disclaimer {
-  background: #ffffff;
+  background: var(--color-surface);
   border: 1px solid var(--color-border-strong);
   border-radius: 8px;
   color: var(--color-text-secondary);
@@ -1280,7 +1283,7 @@ export default {
 }
 
 .feature-brief article {
-  background: #ffffff;
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 8px;
   padding: 0.85rem;
@@ -1357,11 +1360,11 @@ export default {
 }
 
 .annotation-note {
-  background: #ffffff;
+  background: var(--color-surface);
   border: 1px solid rgba(17, 17, 17, 0.12);
   border-radius: 8px;
   box-shadow: 0 10px 30px rgba(17, 17, 17, 0.08);
-  color: #17201e;
+  color: var(--color-text);
   max-width: none;
   padding: 0.72rem 0.78rem;
   position: static;
@@ -1384,7 +1387,7 @@ export default {
 
 .annotation-note::before {
   background: #111111;
-  border: 2px solid #ffffff;
+  border: 2px solid var(--color-border);
   border-radius: 50%;
   box-shadow: 0 0 0 1px rgba(17, 17, 17, 0.18);
   content: "";
@@ -1413,7 +1416,7 @@ export default {
 }
 
 .annotation-note p {
-  color: #53605d;
+  color: var(--color-text-secondary);
   font-size: 0.68rem;
   line-height: 1.42;
   margin: 0.32rem 0 0;
@@ -2336,7 +2339,7 @@ export default {
 
 .prototype-notes {
   align-self: start;
-  background: #ffffff;
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 12px;
   grid-area: notes;
@@ -2379,7 +2382,7 @@ export default {
 }
 
 .story-section > p {
-  color: #40504e;
+  color: var(--color-text-secondary);
   font-size: clamp(1rem, 1.5vw, 1.2rem);
   line-height: 1.65;
   margin: 2.1rem 0 0;

@@ -8,16 +8,16 @@
         <div class="about-hero__shell">
           <div class="about-hero__copy about-reveal">
             <p class="section-eyebrow">{{ $t("about.eyebrow") }}</p>
-            <h1 class="page-title">Eleni Chasioti</h1>
+            <h1 class="page-title">{{ $i18n.locale === 'el' ? 'Σχετικά' : 'About' }}</h1>
             <p class="page-subtitle">{{ $t("about.subtitle") }}</p>
             <div class="hero-actions">
               <a :href="cvLink" download class="btn-primary cv-download">
                 {{ $t("common.downloadResume") }}
-                <span class="mdi mdi-download"></span>
+                <span class="icon-glyph" aria-hidden="true">↓</span>
               </a>
               <a href="mailto:eleni.chasioti@gmail.com" class="btn-secondary">
                 {{ $t("common.getInTouch") }}
-                <span class="mdi mdi-arrow-right"></span>
+                <span class="icon-glyph" aria-hidden="true">→</span>
               </a>
             </div>
           </div>
@@ -235,7 +235,7 @@ export default {
   min-height: 100vh;
   overflow: visible;
   background: var(--color-bg);
-  color: #111111;
+  color: var(--color-text);
 }
 
 .about-container {
@@ -298,7 +298,7 @@ export default {
 .page-title {
   max-width: 8.8ch;
   margin: var(--space-5) 0 0;
-  color: #111111;
+  color: var(--color-text);
   font-family: var(--font-sans);
   font-size: clamp(4.6rem, 10vw, 10.6rem);
   font-weight: 900;
@@ -344,7 +344,7 @@ export default {
 .story-sticky h2 {
   max-width: 570px;
   margin: var(--space-5) 0 0;
-  color: #111111;
+  color: var(--color-text);
   font-size: clamp(2.6rem, 6vw, 6rem);
   font-weight: 900;
   letter-spacing: 0;
@@ -379,7 +379,7 @@ export default {
 
 .story-section h3 {
   margin: 0 0 var(--space-4);
-  color: #111111;
+  color: var(--color-text);
   font-size: clamp(1.55rem, 3vw, 3rem);
   font-weight: 900;
   letter-spacing: 0;
@@ -396,7 +396,7 @@ export default {
 }
 
 .story-section strong {
-  color: #111111;
+  color: var(--color-text);
   font-weight: var(--weight-semibold);
 }
 
@@ -441,7 +441,7 @@ export default {
   bottom: 1.1rem;
   left: 1.05rem;
   width: 1px;
-  background: linear-gradient(180deg, #ffffff, rgba(255, 255, 255, 0.14));
+  background: linear-gradient(180deg, var(--color-surface), var(--color-surface));
 }
 
 .timeline-card {
@@ -467,7 +467,7 @@ export default {
 }
 
 .timeline-card.active::before {
-  background: #ffffff;
+  background: var(--color-surface);
   box-shadow: 0 0 0 0.55rem rgba(255, 255, 255, 0.12);
   transform: scale(1.08);
 }
@@ -481,7 +481,7 @@ export default {
   padding: clamp(1rem, 2.4vw, 1.5rem);
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.045);
+  background: var(--color-surface);
   color: inherit;
   cursor: pointer;
   font: inherit;
@@ -495,7 +495,7 @@ export default {
 .timeline-trigger:hover,
 .timeline-card.active .timeline-trigger {
   border-color: rgba(255, 255, 255, 0.38);
-  background: rgba(255, 255, 255, 0.085);
+  background: var(--color-surface);
   transform: translateY(-1px);
 }
 
@@ -549,8 +549,8 @@ export default {
   padding: clamp(1rem, 2vw, 1.35rem) clamp(1rem, 2.4vw, 1.5rem);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.93);
-  color: #111111;
+  background: var(--color-surface);
+  color: var(--color-text);
   transform-origin: top;
 }
 
@@ -608,7 +608,7 @@ export default {
   padding: clamp(1.1rem, 2.4vw, 1.6rem);
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--color-surface);
 }
 
 .skill-radar h3,
@@ -651,7 +651,7 @@ export default {
   padding: 0.35rem 0.65rem;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-surface);
   color: rgba(255, 255, 255, 0.86);
   font-size: 0.76rem;
   line-height: 1;
@@ -702,7 +702,7 @@ export default {
   padding: clamp(4rem, 8vw, 7rem) 0 clamp(5rem, 9vw, 8rem);
   overflow: hidden;
   background: var(--color-bg);
-  color: #111111;
+  color: var(--color-text);
 }
 
 .gallery-bg-title {
@@ -724,7 +724,7 @@ export default {
 .gallery-header h2 {
   max-width: 960px;
   margin: var(--space-4) 0 0;
-  color: #111111;
+  color: var(--color-text);
   font-size: clamp(3rem, 8vw, 6rem);
   font-weight: 900;
   letter-spacing: 0;

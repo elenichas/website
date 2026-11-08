@@ -3,18 +3,28 @@
 </template>
 
 <script>
-import { translateCaseStudy } from "./caseStudyTranslations";
+// Greek case-study copy is only needed once someone switches to Greek, so it
+// is loaded on demand instead of shipping in the main bundle.
+let caseStudyTranslations = null;
+async function translateCaseStudy(page, path, locale) {
+  if (locale !== "el" && !caseStudyTranslations) return;
+  caseStudyTranslations ||= await import("./caseStudyTranslations");
+  if (page.isConnected) caseStudyTranslations.translateCaseStudy(page, path, locale);
+}
 import "./styles/studio-theme.css";
-import { initTheme } from "./themes";
+import "./styles/visual-portfolio.css";
+import "./styles/project-showcase.css";
+import { initVisualTheme } from "./visualTheme";
 
 export default {
   name: "App",
   created() {
-    initTheme();
+    initVisualTheme();
   },
   data() {
     return {
       caseStudyObserver: null,
+      videoObserver: null,
       productLinkClickHandler: null,
     };
   },
@@ -40,6 +50,7 @@ export default {
     if (this.caseStudyObserver) {
       this.caseStudyObserver.disconnect();
     }
+    this.videoObserver?.disconnect();
     if (this.productLinkClickHandler) {
       document.removeEventListener("click", this.productLinkClickHandler, true);
     }
@@ -69,6 +80,20 @@ export default {
         setTimeout(scrollTop, 80);
       });
     },
+    // Videos marked data-autoplay only download and play while on screen,
+    // instead of every recording on the page loading at once.
+    observeLazyVideos(page, prefersReducedMotion) {
+      this.videoObserver?.disconnect();
+      const videos = [...page.querySelectorAll("video[data-autoplay]")];
+      if (!videos.length || prefersReducedMotion || !("IntersectionObserver" in window)) return;
+      this.videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(({ target, isIntersecting }) => {
+          if (isIntersecting) target.play().catch(() => {});
+          else target.pause();
+        });
+      }, { rootMargin: "200px 0px" });
+      videos.forEach((video) => this.videoObserver.observe(video));
+    },
     prepareEditorialSections() {
       if (this.caseStudyObserver) {
         this.caseStudyObserver.disconnect();
@@ -90,6 +115,8 @@ export default {
         });
       }
 
+      this.observeLazyVideos(page, prefersReducedMotion);
+
       if (
         !prefersReducedMotion &&
         window.location.pathname.includes("/workshop-design")
@@ -107,26 +134,26 @@ export default {
 
       const greekRoles = {
         "/products/brew-crumb": "UX/UI Designer",
-        "/products/lunar-app": "UX/UI Designer, Front End Developer",
-        "/products/industrial-configurator": "UX/UI Designer, Front End Developer",
+        "/products/lunar-app": "Product Design Lead, 3D Front End",
+        "/products/industrial-configurator": "Lead Product Designer",
         "/products/hapi-project": "Φοιτήτρια πανεπιστημίου",
         "/products/workshop-design": "Computational Designer",
         "/products/thesis-project": "Φοιτήτρια πανεπιστημίου",
         "/products/filos-mobile-app": "UX/UI Designer",
-        "/products/language-learning-app": "UX/UI Designer, Front End Developer",
-        "/products/coach-verification-app": "UX/UI Designer, Front End Developer",
+        "/products/language-learning-app": "Sole Designer & Developer",
+        "/products/coach-verification-app": "Sole Designer & Developer",
       };
 
       const englishRoles = {
         "/products/brew-crumb": "UX/UI Designer",
-        "/products/lunar-app": "UX/UI Designer, Front End Developer",
-        "/products/industrial-configurator": "UX/UI Designer, Front End Developer",
+        "/products/lunar-app": "Product Design Lead, 3D Front End",
+        "/products/industrial-configurator": "Lead Product Designer",
         "/products/hapi-project": "University Student",
         "/products/workshop-design": "Computational Designer",
         "/products/thesis-project": "University Student",
         "/products/filos-mobile-app": "UX/UI Designer",
-        "/products/language-learning-app": "UX/UI Designer, Front End Developer",
-        "/products/coach-verification-app": "UX/UI Designer, Front End Developer",
+        "/products/language-learning-app": "Sole Designer & Developer",
+        "/products/coach-verification-app": "Sole Designer & Developer",
       };
 
       const roleByPath = this.$i18n.locale === "el" ? greekRoles : englishRoles;

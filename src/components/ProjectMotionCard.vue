@@ -10,7 +10,6 @@
           <g class="scene scene-a"><text x="48" y="320" class="caption">Start with something you love.</text></g>
           <g class="scene scene-b"><text x="48" y="320" class="caption">See every cost, together.</text></g>
           <g class="scene scene-c"><text x="48" y="320" class="caption">More finds. One delivery.</text></g>
-          <path d="M48 500H395" stroke="#a8c6bb" />
           <text x="48" y="540" class="footnote">Smart Local Bundling</text>
           <text x="48" y="571" class="small">Illustrative prototype sequence</text>
         </g>
@@ -58,7 +57,6 @@
           <g class="scene scene-a"><text x="48" y="320" class="caption">Ask for a specific change.</text></g>
           <g class="scene scene-b"><text x="48" y="320" class="caption">Review before you approve.</text></g>
           <g class="scene scene-c"><text x="48" y="320" class="caption">Know exactly what happened.</text></g>
-          <path d="M48 500H395" stroke="#ac7dce" />
           <text x="48" y="540" class="footnote">Specific approval. Verified outcome.</text>
           <text x="48" y="571" class="small">Independent concept · Fictional data</text>
         </g>
@@ -100,9 +98,6 @@
         </g>
       </template>
       <g :fill="kind === 'vinted' ? '#007d82' : '#e4c6fa'">
-        <rect class="progress progress-a" x="48" y="385" width="103" height="4" rx="2" />
-        <rect class="progress progress-b" x="170" y="385" width="103" height="4" rx="2" />
-        <rect class="progress progress-c" x="292" y="385" width="103" height="4" rx="2" />
       </g>
     </svg>
   </div>
@@ -138,22 +133,16 @@ onBeforeUnmount(() => observer?.disconnect());
 .scene { animation:chapter-a 12s infinite; }
 .scene-b { animation-name:chapter-b; opacity:0; }
 .scene-c { animation-name:chapter-c; opacity:0; }
-.progress { opacity:.25; animation:progress-a 12s infinite; }
-.progress-b { animation-name:progress-b; }
-.progress-c { animation-name:progress-c; }
 .demo-pointer { animation:approve 12s infinite; }
 .receipt-check { stroke-dasharray:55; animation:receipt 12s infinite; }
-.is-paused :is(.scene,.progress,.demo-pointer,.receipt-check) { animation-play-state:paused; }
+.is-paused :is(.scene,.demo-pointer,.receipt-check) { animation-play-state:paused; }
 @keyframes chapter-a { 0%,27% { opacity:1; transform:translateY(0); } 31%,96% { opacity:0; transform:translateY(-8px); } 100% { opacity:1; transform:translateY(0); } }
 @keyframes chapter-b { 0%,28% { opacity:0; transform:translateY(8px); } 33%,62% { opacity:1; transform:translateY(0); } 66%,100% { opacity:0; transform:translateY(-8px); } }
 @keyframes chapter-c { 0%,63% { opacity:0; transform:translateY(8px); } 68%,95% { opacity:1; transform:translateY(0); } 100% { opacity:0; transform:translateY(-8px); } }
-@keyframes progress-a { 0%,28% { opacity:1; } 33%,100% { opacity:.25; } }
-@keyframes progress-b { 0%,28%,66%,100% { opacity:.25; } 33%,62% { opacity:1; } }
-@keyframes progress-c { 0%,63%,100% { opacity:.25; } 68%,95% { opacity:1; } }
 @keyframes approve { 0%,46% { opacity:0; transform:translate(32px,35px); } 53%,59% { opacity:1; transform:translate(0,0); } 61%,100% { opacity:0; transform:translate(0,0); } }
 @keyframes receipt { 0%,66% { stroke-dashoffset:55; } 73%,100% { stroke-dashoffset:0; } }
 @media(prefers-reduced-motion:reduce) {
-  .project-motion :is(.scene,.progress,.demo-pointer,.receipt-check) { animation:none; transform:none; }
+  .project-motion :is(.scene,.demo-pointer,.receipt-check) { animation:none; transform:none; }
   .project-motion .scene-a,.project-motion .scene-b,.project-motion .demo-pointer { opacity:0; }
   .project-motion .scene-c { opacity:1; }
 }

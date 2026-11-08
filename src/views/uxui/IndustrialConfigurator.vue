@@ -35,6 +35,8 @@
     </div>
 
     <!-- Problem Space -->
+    <case-snapshot page="industrial" />
+
     <section class="content-section">
       <p class="section-label">Challenge</p>
       <h2 class="section-heading">Turning expert workflows into a structured design system</h2>
@@ -49,7 +51,7 @@
     <!-- System Diagram Video -->
     <section class="content-section-wide industrial-media-story industrial-video-only">
       <figure class="image-figure">
-        <video preload="metadata" :src="diagramVideo" autoplay muted loop playsinline class="content-video">
+        <video preload="metadata" :src="diagramVideo" data-autoplay muted loop playsinline class="content-video">
           Your browser does not support the video tag.
         </video>
       </figure>
@@ -65,7 +67,7 @@
         </p>
       </div>
       <div class="split-media media-container-blue">
-        <video preload="metadata" :src="diagramVideo" autoplay muted loop playsinline class="split-image">
+        <video preload="metadata" :src="diagramVideo" data-autoplay muted loop playsinline class="split-image">
           Your browser does not support the video tag.
         </video>
       </div>
@@ -96,14 +98,7 @@
       </div>
       <div class="split-media media-container-purple">
         <div class="carousel-wrapper">
-                    <v-carousel cycle hide-delimiters interval="6000" show-arrows="hover" height="400" class="wireframe-carousel">
-            <v-carousel-item
-              v-for="(wireframe, index) in wireframes"
-              :key="index"
-            >
-              <img loading="lazy" :src="wireframe.url" :alt="'Wireframe ' + (index + 1)" class="carousel-img" />
-            </v-carousel-item>
-          </v-carousel>
+                    <media-carousel :images="wireframes" alt-prefix="Wireframe" label="Wireframe gallery" fit="contain" />
         </div>
       </div>
     </section>
@@ -219,6 +214,8 @@
 </template>
 
 <script>
+import MediaCarousel from "@/components/MediaCarousel.vue";
+import CaseSnapshot from "@/components/CaseSnapshot.vue";
 import { resolveAsset } from "@/assetUrl";
 import AppNavbar from "@/components/navbar.vue";
 import CaseStudyFooter from "@/components/CaseStudyFooter.vue";
@@ -227,12 +224,13 @@ import { useHead } from "@vueuse/head";
 export default {
   name: "IndustrialConfigurator",
   components: {
+    MediaCarousel,
+    CaseSnapshot,
     AppNavbar,
     CaseStudyFooter,
   },
   setup() {
     useHead({
-      title: "Industrial Facility Configurator — Eleni Chasioti",
       meta: [
         { name: "description", content: "Case study: A consultancy product for power plant design automation, with a unit catalog, configurator, data structure, and validation alerts." },
         { property: "og:title", content: "Industrial Facility Configurator — Eleni Chasioti" },
@@ -539,22 +537,11 @@ export default {
 
 /* Carousel Wrapper */
 .carousel-wrapper {
-  overflow: hidden;
-  aspect-ratio: 16 / 10;
   width: 100%;
 }
 
-.carousel-wrapper :deep(.v-carousel) {
-  border-radius: var(--radius-sm);
-}
 
-.wireframe-carousel {
-  aspect-ratio: 16 / 10;
-}
 
-.wireframe-carousel :deep(.v-carousel__item) {
-  aspect-ratio: 16 / 10;
-}
 
 .carousel-img {
   width: 100%;

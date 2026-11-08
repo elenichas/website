@@ -35,6 +35,8 @@
     </div>
 
     <!-- Challenge -->
+    <case-snapshot page="brew" />
+
     <section class="content-section">
       <p class="section-label">Challenge</p>
       <h2 class="section-heading">Solving the morning rush</h2>
@@ -54,7 +56,7 @@
       </div>
       <div class="perspective-grid">
         <article class="perspective-card perspective-card-customer">
-          <div class="perspective-visual" aria-hidden="true">
+          <div class="project-ui perspective-visual" aria-hidden="true">
             <div class="perspective-phone">
               <div class="order-card order-card-primary">
                 <span class="order-dot"></span>
@@ -78,7 +80,7 @@
         </article>
 
         <article class="perspective-card perspective-card-staff">
-          <div class="perspective-visual" aria-hidden="true">
+          <div class="project-ui perspective-visual" aria-hidden="true">
             <div class="perspective-counter">
               <div class="ticket ticket-one">
                 <span></span>
@@ -231,6 +233,7 @@
 </template>
 
 <script>
+import CaseSnapshot from "@/components/CaseSnapshot.vue";
 import { resolveAsset } from "@/assetUrl";
 import AppNavbar from "@/components/navbar.vue";
 import CaseStudyFooter from "@/components/CaseStudyFooter.vue";
@@ -238,12 +241,13 @@ import CaseStudyFooter from "@/components/CaseStudyFooter.vue";
 export default {
   name: "LocalBakeryApp",
   components: {
+    CaseSnapshot,
     AppNavbar,
     CaseStudyFooter,
   },
   data() {
     return {
-      hero: resolveAsset("@/images/kapihanHeroProfessional.png"),
+      hero: resolveAsset("@/images/kapihanHeroProfessional.webp"),
       wireframes: resolveAsset("@/images/kapihanWireframes.webp"),
       prototypes: resolveAsset("@/images/kapihanPrototypes.webp"),
       figmaSrc: "https://www.figma.com/proto/dSiLtVj2GKzRZYcfYoe8iW/KapihanApp?node-id=49-5572&t=qR7dRV7dwGhpgw8c-1",
@@ -451,7 +455,7 @@ export default {
   padding: var(--space-5);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.58);
+  background: var(--color-surface);
   display: grid;
   grid-template-rows: minmax(260px, 1fr) auto;
   gap: var(--space-5);

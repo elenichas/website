@@ -2,13 +2,13 @@
   <app-navbar />
 
   <main class="sandbox-page">
-    <router-link class="back-to-playground" to="/playground">
+    <router-link class="back-to-projects" to="/">
       <ArrowLeft :size="14" />
-      Playground
+      All projects
     </router-link>
 
     <section class="sandbox-intro">
-      <p class="eyebrow">AI UI Sandbox / 03</p>
+      <p class="eyebrow">AI Interface Sandbox · Interactive prototype</p>
       <h1>UI for<br /><em>uncertain systems.</em></h1>
       <p class="intro-copy">
         A simulated launch-review assistant. Change one product decision at a time
@@ -16,7 +16,7 @@
       </p>
     </section>
 
-    <section class="sandbox-shell" aria-label="AI interface sandbox">
+    <section class="project-ui sandbox-shell" aria-label="AI interface sandbox">
       <aside class="control-panel" :class="{ 'mobile-open': mobileControlsOpen }">
         <div class="panel-heading">
           <div>
@@ -412,6 +412,8 @@
       </button>
     </section>
 
+    <case-snapshot page="aiSandbox" class="snapshot-in-playground" />
+
     <transition name="toast">
       <div v-if="toast.visible" class="undo-toast" role="status">
         <Check :size="15" />
@@ -451,6 +453,7 @@
 </template>
 
 <script>
+import CaseSnapshot from "@/components/CaseSnapshot.vue";
 import {
   Activity,
   ArrowLeft,
@@ -496,6 +499,7 @@ const initialChecklist = [
 export default {
   name: "AISandbox",
   components: {
+    CaseSnapshot,
     Activity,
     AppNavbar,
     AppFooter,
@@ -874,17 +878,17 @@ export default {
 </script>
 
 <style scoped>
-.sandbox-page { background: #f4f1e9; color: #111; min-height: 100vh; padding: clamp(2rem, 3vw, 3.4rem) clamp(1rem, 5vw, 5rem); }
+.sandbox-page { background: var(--color-surface); color: var(--color-text); min-height: 100vh; padding: clamp(2rem, 3vw, 3.4rem) clamp(1rem, 5vw, 5rem); }
 .sandbox-intro, .sandbox-shell, .principles { margin: 0 auto; max-width: 1460px; }
-.back-to-playground { align-items: center; color: #706b62; display: inline-flex; font-size: .74rem; gap: .35rem; margin: 0 auto 1rem; max-width: 1460px; text-decoration: none; width: fit-content; }
-.back-to-playground:hover { color: #111; }
+.back-to-projects { align-items: center; color: var(--color-text-secondary); display: inline-flex; font-size: .74rem; gap: .35rem; margin: 0 auto 1rem; max-width: 1460px; text-decoration: none; width: fit-content; }
+.back-to-projects:hover { color: var(--color-text); }
 .sandbox-intro { align-items: end; display: grid; gap: .45rem 2rem; grid-template-columns: minmax(0, 1fr) minmax(21rem, 29rem); }
 .sandbox-intro > .eyebrow { grid-column: 1 / -1; }
-.eyebrow, .card-kicker { color: #706b62; font-size: .64rem; font-weight: 700; letter-spacing: .14em; margin: 0; text-transform: uppercase; }
+.eyebrow, .card-kicker { color: var(--color-text-secondary); font-size: .64rem; font-weight: 700; letter-spacing: .14em; margin: 0; text-transform: uppercase; }
 h1 { font-size: clamp(3.5rem, 5.25vw, 5.4rem); letter-spacing: -.09em; line-height: .82; margin: .45rem 0 0; text-transform: uppercase; }
 h1 br { display: none; }
 h1 em { font-family: var(--font-serif); font-weight: 400; margin-left: .12em; text-transform: none; }
-.intro-copy { color: #5c5851; font-size: clamp(.9rem, 1.25vw, 1.02rem); line-height: 1.45; margin-bottom: .28rem; max-width: 29rem; }
+.intro-copy { color: var(--color-text-secondary); font-size: clamp(.9rem, 1.25vw, 1.02rem); line-height: 1.45; margin-bottom: .28rem; max-width: 29rem; }
 .sandbox-shell { display: grid; gap: 1rem; grid-template-columns: minmax(270px, 305px) 1fr; margin-top: 1.1rem; }
 .control-panel, .preview-wrap { background: #fff; border: 1px solid #dcd7cd; }
 .control-panel { align-self: start; padding: 1.2rem; }
@@ -1010,12 +1014,12 @@ input[type="range"] { accent-color: #111; width: 100%; }
 .inspector dd { color: #756f66; margin: 0; text-align: right; }
 .undo-toast { align-items: center; background: #111; bottom: 1.2rem; color: #fff; display: flex; font-size: .68rem; gap: .52rem; left: 50%; padding: .68rem .82rem; position: fixed; transform: translateX(-50%); z-index: 150; }
 .undo-toast button { align-items: center; border-color: #5d5d5d; color: #fff; display: flex; font-size: .62rem; gap: .28rem; margin-left: .2rem; padding: .3rem .4rem; }
-.principles { border-top: 1px solid #d6d1c7; margin-top: 4.5rem; padding-top: 1.2rem; }
+.principles { border-top: 1px solid var(--color-border); margin-top: 4.5rem; padding-top: 1.2rem; }
 .principle-grid { display: grid; gap: 1rem; grid-template-columns: repeat(4, 1fr); margin-top: 2rem; }
 .principle-grid article { border-top: 3px solid #111; padding-top: 1rem; }
 .principle-grid span { color: #8d6b2f; font-size: .74rem; font-weight: 700; }
 .principle-grid h2 { font-size: clamp(1.5rem, 3vw, 2.6rem); letter-spacing: -.07em; line-height: .95; margin: 2rem 0 .8rem; text-transform: uppercase; }
-.principle-grid p { color: #645f57; font-size: .8rem; line-height: 1.55; max-width: 20rem; }
+.principle-grid p { color: var(--color-text-secondary); font-size: .8rem; line-height: 1.55; max-width: 20rem; }
 .lift-enter-active, .lift-leave-active, .toast-enter-active, .toast-leave-active { transition: opacity .3s ease, transform .3s ease; }
 .lift-enter-from, .lift-leave-to { opacity: 0; transform: translateY(8px); }
 .toast-enter-from, .toast-leave-to { opacity: 0; transform: translate(-50%, 8px); }
@@ -1049,7 +1053,7 @@ input[type="range"] { accent-color: #111; width: 100%; }
   .mobile-control-toggle { background: #111; border-color: #111; bottom: .7rem; color: #fff; display: block; font-size: .67rem; letter-spacing: .08em; padding: .68rem .82rem; position: fixed; right: .7rem; text-transform: uppercase; z-index: 135; }
   .preview-wrap { order: initial; padding: .5rem; scroll-margin-top: 4rem; }
   .tour-card { display: block; padding: .68rem .72rem; top: 3.8rem; }
-  .tour-meta { align-items: center; border-bottom: 1px solid #ebe7df; border-right: 0; flex-direction: row; padding: 0 0 .5rem; }
+  .tour-meta { align-items: center; border-bottom: 1px solid var(--color-border); border-right: 0; flex-direction: row; padding: 0 0 .5rem; }
   .tour-content { align-items: flex-start; display: block; }
   .tour-content p { font-size: .65rem; }
   .tour-actions { justify-content: flex-start; margin-top: .58rem; }
@@ -1082,7 +1086,7 @@ input[type="range"] { accent-color: #111; width: 100%; }
   .action-card h3 { line-height: 1.35; }
   .file-scope span, .resource-list span { overflow-wrap: anywhere; }
   .composer { margin-top: .85rem; padding: .52rem; }
-  .inspector { border-left: 0; border-top: 1px solid #e3ded5; padding: .55rem; }
+  .inspector { border-left: 0; border-top: 1px solid var(--color-border); padding: .55rem; }
   .inspector-section { margin-bottom: .48rem; padding: .62rem; }
   .undo-toast { bottom: .75rem; box-sizing: border-box; max-width: calc(100vw - 1.5rem); width: max-content; }
   .principles { margin-top: 4rem; }

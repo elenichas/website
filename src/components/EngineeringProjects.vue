@@ -38,7 +38,7 @@
                 </div>
                 <div class="project-overlay">
                   <span class="view-project">
-                    <span class="mdi mdi-github"></span>
+                    <Github :size="16" aria-hidden="true" />
                     {{ $t("common.viewOnGithub") }}
                   </span>
                 </div>
@@ -54,8 +54,10 @@
 </template>
 
 <script>
+import { Github } from "lucide-vue-next";
 export default {
   name: "EngineeringProjects",
+  components: { Github },
   computed: {
     images() {
       const items = this.$t("engineering.items");
@@ -368,8 +370,8 @@ export default {
 }
 .poster-api .shape-d { left: 18%; top: 37%; background: var(--poster-blue); }
 .poster-api .shape-e { right: 18%; top: 57%; background: var(--poster-red); animation-delay: 0.55s; }
-.poster-api .line-a { left: 28%; top: 45%; width: 45%; background: #fff; }
-.poster-api .line-b { left: 28%; top: 65%; width: 36%; background: #fff; animation-delay: 0.45s; }
+.poster-api .line-a { left: 28%; top: 45%; width: 45%; background: var(--color-surface); }
+.poster-api .line-b { left: 28%; top: 65%; width: 36%; background: var(--color-surface); animation-delay: 0.45s; }
 
 .poster-search .shape-a {
   left: 15%;
@@ -415,7 +417,7 @@ export default {
 .poster-framework .shape-b { left: 36%; top: 34%; background: var(--poster-yellow); animation-delay: 0.3s; }
 .poster-framework .shape-c { right: 24%; top: 50%; background: var(--poster-red); animation-delay: 0.6s; }
 .poster-framework .shape-d { right: 5%; top: 33%; background: var(--poster-green); animation-delay: 0.9s; }
-.poster-framework .shape-e { left: 46%; bottom: 5%; background: #fff; animation-delay: 1.2s; }
+.poster-framework .shape-e { left: 46%; bottom: 5%; background: var(--color-surface); animation-delay: 1.2s; }
 .poster-framework .line-a { left: 21%; top: 52%; width: 58%; transform: rotate(-15deg); }
 .poster-framework .line-b { left: 47%; top: 46%; width: 36%; transform: rotate(22deg); animation-delay: 0.4s; }
 .poster-framework .line-c { left: 28%; top: 70%; width: 37%; transform: rotate(15deg); animation-delay: 0.8s; }
@@ -511,7 +513,7 @@ export default {
 }
 
 .view-project:hover {
-  background: white;
+  background: var(--color-surface);
   color: var(--color-text);
 }
 

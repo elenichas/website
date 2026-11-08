@@ -35,6 +35,8 @@
     </div>
 
         <!-- Problem Space -->
+    <case-snapshot page="filos" />
+
     <section class="content-section">
       <p class="section-label">Challenge</p>
       <h2 class="section-heading">Breaking down barriers to connection</h2>
@@ -86,7 +88,7 @@
       </div>
       <div class="scenario-grid">
         <article class="scenario-card scenario-card-teacher">
-          <div class="scenario-visual" aria-hidden="true">
+          <div class="project-ui scenario-visual" aria-hidden="true">
             <div class="scenario-device">
               <span class="scenario-dot dot-one"></span>
               <span class="scenario-dot dot-two"></span>
@@ -108,7 +110,7 @@
         </article>
 
         <article class="scenario-card scenario-card-user">
-          <div class="scenario-visual" aria-hidden="true">
+          <div class="project-ui scenario-visual" aria-hidden="true">
             <div class="scenario-device">
               <span class="scenario-node node-main"></span>
               <span class="scenario-node node-top"></span>
@@ -208,7 +210,7 @@
       </ol>
 
       <div class="phone-gallery">
-        <article class="phone-frame" aria-label="Set access preferences screen">
+        <article class="project-ui phone-frame" aria-label="Set access preferences screen">
           <div class="phone-status"><span>9:41</span><span class="phone-sensors">● ●</span></div>
           <div class="phone-toolbar">
             <button class="icon-button" type="button" aria-label="Go back"><ArrowLeft :size="16" /></button>
@@ -234,7 +236,7 @@
           <div class="phone-home-indicator"></div>
         </article>
 
-        <article class="phone-frame" aria-label="Review a potential activity companion screen">
+        <article class="project-ui phone-frame" aria-label="Review a potential activity companion screen">
           <div class="phone-status"><span>9:41</span><span class="phone-sensors">● ●</span></div>
           <div class="phone-toolbar">
             <button class="icon-button" type="button" aria-label="Go back"><ArrowLeft :size="16" /></button>
@@ -263,7 +265,7 @@
           <div class="phone-home-indicator"></div>
         </article>
 
-        <article class="phone-frame" aria-label="Agree activity plan screen">
+        <article class="project-ui phone-frame" aria-label="Agree activity plan screen">
           <div class="phone-status"><span>9:41</span><span class="phone-sensors">● ●</span></div>
           <div class="phone-toolbar">
             <button class="icon-button" type="button" aria-label="Go back"><ArrowLeft :size="16" /></button>
@@ -291,7 +293,7 @@
           <div class="phone-home-indicator"></div>
         </article>
 
-        <article class="phone-frame phone-frame-checkin" aria-label="Activity safety check-in screen">
+        <article class="project-ui phone-frame phone-frame-checkin" aria-label="Activity safety check-in screen">
           <div class="phone-status"><span>12:15</span><span class="phone-sensors">● ●</span></div>
           <div class="phone-toolbar phone-toolbar-light">
             <span class="pulse-badge"><span></span>Activity in progress</span>
@@ -383,6 +385,7 @@
 </template>
 
 <script>
+import CaseSnapshot from "@/components/CaseSnapshot.vue";
 import { resolveAsset } from "@/assetUrl";
 import AppNavbar from "@/components/navbar.vue";
 import CaseStudyFooter from "@/components/CaseStudyFooter.vue";
@@ -406,6 +409,7 @@ import {
 export default {
   name: "FilosMobileApp",
   components: {
+    CaseSnapshot,
     AppNavbar,
     CaseStudyFooter,
     ArrowLeft,
@@ -425,7 +429,7 @@ export default {
   },
     data() {
     return {
-      hero: resolveAsset("@/images/filosHeroProfessional.png"),
+      hero: resolveAsset("@/images/filosHeroProfessional.webp"),
       wireframes: resolveAsset("@/images/filosWireframes.webp"),
       prototypes: resolveAsset("@/images/filosPrototypes.webp"),
       responsive: resolveAsset("@/images/filosResponsive.webp"),
@@ -647,7 +651,7 @@ export default {
   padding: var(--space-5);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.58);
+  background: var(--color-surface);
   display: grid;
   grid-template-rows: minmax(260px, 1fr) auto;
   gap: var(--space-5);
@@ -862,7 +866,7 @@ export default {
   padding: var(--space-5);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.52);
+  background: var(--color-surface);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1026,7 +1030,7 @@ export default {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(0.75rem, 1.8vw, 1.4rem);
   padding: clamp(1rem, 3vw, 2.5rem);
-  background: #ece8f2;
+  background: var(--color-surface);
   border-radius: var(--radius-sm);
   align-items: start;
   overflow: hidden;

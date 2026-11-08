@@ -25,7 +25,7 @@ defineEmits(['evidence','advance','start','reset']);
 const reviewHint = computed(() => !props.offer.enabled ? 'First, enable monthly reviews in the phone. No review appears without consent.' : ({armed:'Consent is on. Simulate the arrival of month-end records.',available:'The invitation is visible in Review. Open it, snooze it, or dismiss it in the phone.',snoozed:'The customer chose Tomorrow. Advance the demo to bring the invitation back.',dismissed:'The customer dismissed this review. It will not reappear. Reset to try another path.',opened:'The customer opened this review. It will not be offered again. Reset to try snoozing or dismissal.'}[props.offer.state]));
 </script>
 <style scoped>
-.scenario-controls{padding:18px;margin:8px 0 16px;border:1px dashed #999;border-radius:8px;background:var(--color-surface);color:var(--color-text)}
+.scenario-controls{padding:18px;margin:8px 0 16px;border:1px dashed var(--color-border);border-radius:8px;background:var(--color-surface);color:var(--color-text)}
 .scenario-controls>strong{display:block;font-size:.8rem}.scenario-controls>small{display:block;font-size:.7rem;color:var(--color-text-secondary);margin-top:4px}
 .scenario-controls p{font-size:.8rem;line-height:1.65;margin:12px 0;color:var(--color-text-secondary)}
 .scenario-controls fieldset{border:0;padding:0;margin:16px 0}.scenario-controls legend{font-size:.75rem;font-weight:600;margin-bottom:6px}.scenario-controls label{display:flex;align-items:center;gap:8px;min-height:40px;font-size:.8rem}.scenario-controls input{accent-color:var(--color-text)}

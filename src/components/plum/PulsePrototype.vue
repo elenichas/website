@@ -18,7 +18,7 @@
 
     <div class="app-stage">
       <div class="prototype-topline"><span class="active-scenario-label">{{ scenarioNumber }} · {{ scenario.label }}</span><strong>Proposed app UI</strong></div>
-      <div class="pulse-app" aria-label="Plum Pulse phone prototype">
+      <div class="project-ui pulse-app" aria-label="Plum Pulse phone prototype">
         <div class="phone-display">
           <div class="phone-status-bar" aria-hidden="true"><span>9:41</span><span class="phone-camera"></span><span class="phone-status-icons"><Signal :size="14" /><Wifi :size="14" /><BatteryFull :size="18" /></span></div>
         <header class="app-header"><span class="pulse-mark"><Activity :size="23" /></span><div><strong>Pulse</strong><span>Your account, explained.</span></div></header>

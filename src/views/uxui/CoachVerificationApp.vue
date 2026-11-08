@@ -35,6 +35,8 @@
     </div>
 
     <!-- Challenge + Solution -->
+    <case-snapshot page="coach" />
+
     <section class="content-section">
       <p class="section-label">Challenge</p>
       <h2 class="section-heading">Scattered knowledge, hard-to-check authenticity</h2>
@@ -87,7 +89,7 @@
         </p>
       </div>
       <div class="video-phone-container">
-        <video preload="metadata" :src="appRecording" autoplay muted loop playsinline class="video-phone"></video>
+        <video preload="metadata" :src="appRecording" data-autoplay muted loop playsinline class="video-phone"></video>
       </div>
     </section>
 
@@ -137,6 +139,7 @@
 </template>
 
 <script>
+import CaseSnapshot from "@/components/CaseSnapshot.vue";
 import { resolveAsset } from "@/assetUrl";
 import AppNavbar from "@/components/navbar.vue";
 import CaseStudyFooter from "@/components/CaseStudyFooter.vue";
@@ -145,12 +148,12 @@ import { useHead } from "@vueuse/head";
 export default {
   name: "CoachVerificationApp",
   components: {
+    CaseSnapshot,
     AppNavbar,
     CaseStudyFooter,
   },
   setup() {
     useHead({
-      title: "Vintage Coach Catalog — Eleni Chasioti",
       meta: [
         { name: "description", content: "Case study: A personal data product cataloging 778 vintage Coach styles with search, filtering, color organization, and serial number decoding." },
         { property: "og:title", content: "Vintage Coach Catalog — Eleni Chasioti" },

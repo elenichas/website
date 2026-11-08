@@ -67,7 +67,7 @@
 
                 <span class="project-card__cta">
                   {{ $t("common.viewCaseStudy") }}
-                  <span class="mdi mdi-arrow-right" aria-hidden="true"></span>
+                  <span class="icon-glyph" aria-hidden="true">→</span>
                 </span>
               </div>
 
@@ -122,7 +122,6 @@ export default {
   },
   setup() {
     useHead({
-      title: "Eleni Chasioti, Product Designer & Engineer",
       meta: [
         { name: "description", content: "Portfolio of Eleni Chasioti, Product Designer & Engineer at Foster + Partners. Designing and building complex digital products at the intersection of spatial computing and user experience." },
         { property: "og:title", content: "Eleni Chasioti, Product Designer & Engineer" },

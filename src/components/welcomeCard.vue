@@ -10,14 +10,14 @@
       <div class="cta-buttons">
         <a :href="cvLink" download class="btn-primary">
           {{ $t("common.downloadResume") }}
-          <span class="mdi mdi-download"></span>
+          <span class="icon-glyph" aria-hidden="true">↓</span>
         </a>
         <a href="mailto:eleni.chasioti@gmail.com" class="btn-secondary">
           {{ $t("common.getInTouch") }}
-          <span class="mdi mdi-arrow-right"></span>
+          <span class="icon-glyph" aria-hidden="true">→</span>
         </a>
-        <router-link to="/playground" class="btn-ghost">
-          {{ $t("common.explorePlayground") }}
+        <router-link to="/" class="btn-ghost">
+          {{ $t("common.exploreProjects") }}
         </router-link>
       </div>
     </div>

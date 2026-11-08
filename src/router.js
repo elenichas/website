@@ -3,7 +3,6 @@ import "./style.css";
 
 // Lazy-loaded route components (code-split per page)
 const Craft = () => import("./views/design.vue");
-const Playground = () => import("./views/playground/PlaygroundIndex.vue");
 const AISandbox = () => import("./views/playground/AISandbox.vue");
 const VintedSmartBundling = () => import("./views/playground/VintedSmartBundling.vue");
 const PlumPulse = () => import("./views/playground/PlumPulse.vue");
@@ -25,6 +24,7 @@ const Map3DStudio = () => import("./views/uxui/Map3DStudio.vue");
 
 // Define your routes
 const routes = [
+  { path: "/work", redirect: "/" },
   { path: "/products/map3d-studio", name: "Map3D Studio", component: Map3DStudio },
   {
     name: "Home",
@@ -42,23 +42,22 @@ const routes = [
     redirect: "/",
   },
   {
-    name: "Playground",
     path: "/playground",
-    component: Playground,
+    redirect: "/",
   },
   {
     name: "AI Sandbox",
-    path: "/playground/ai-sandbox",
+    path: "/products/ai-sandbox",
     component: AISandbox,
   },
   {
     name: "Vinted Smart Bundling",
-    path: "/playground/vinted-smart-bundling",
+    path: "/products/vinted-smart-bundling",
     component: VintedSmartBundling,
   },
   {
     name: "Plum Pulse",
-    path: "/playground/plum-pulse",
+    path: "/products/plum-pulse",
     component: PlumPulse,
   },
   { path: "/book", name: "Booking", component: Booking },
@@ -72,7 +71,10 @@ const routes = [
     path: "/hidden/design-system",
     component: HiddenDesignSystem,
   },
-    // Legacy redirects for old URLs
+    { path: "/playground/ai-sandbox", redirect: "/products/ai-sandbox" },
+  { path: "/playground/vinted-smart-bundling", redirect: "/products/vinted-smart-bundling" },
+  { path: "/playground/plum-pulse", redirect: "/products/plum-pulse" },
+  // Legacy redirects for old URLs
   {
     path: "/design",
     redirect: "/products",
@@ -172,6 +174,38 @@ const router = createRouter({
 
     return { left: 0, top: 0, behavior: "auto" };
   },
+});
+
+// One title format for every page: "<Page> · Eleni Chasioti".
+const SITE = "Eleni Chasioti";
+const HOME_TITLE = `${SITE} · Product designer & UX engineer`;
+const PAGE_TITLES = {
+  "/about": "About",
+  "/book": "Book a call",
+  "/products/plum-pulse": "Plum Pulse",
+  "/products/ai-sandbox": "AI Interface Sandbox",
+  "/products/vinted-smart-bundling": "Vinted Smart Local Bundling",
+  "/products/map3d-studio": "Map3D Studio",
+  "/products/industrial-configurator": "Industrial Facility Configurator",
+  "/products/lunar-app": "Moon Habitat Configurator",
+  "/products/coach-verification-app": "Vintage Coach Catalog",
+  "/products/language-learning-app": "Arabiya Language App",
+  "/products/filos-mobile-app": "Filos Inclusive Activity App",
+  "/products/brew-crumb": "Brew & Crumb",
+  "/products/modular-app": "Modular App",
+  "/products/hapi-project": "Hapi Modular Housing",
+  "/products/thesis-project": "Cricket WFC Plugin",
+  "/products/workshop-design": "Digital Futures Workshop",
+  "/hidden/design-system": "Design System",
+};
+
+router.afterEach((to) => {
+  if (to.path === "/") {
+    document.title = HOME_TITLE;
+    return;
+  }
+  const page = PAGE_TITLES[to.path] || (to.matched.some((r) => r.name === "NotFound" || r.path.includes("pathMatch")) ? "Page not found" : null);
+  document.title = page ? `${page} · ${SITE}` : HOME_TITLE;
 });
 
 export default router;

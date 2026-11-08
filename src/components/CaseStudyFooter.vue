@@ -39,80 +39,21 @@ export default {
   data() {
     return {
       projects: [
-        {
-          title: "Vintage Coach Catalog",
-          type: "Authentication System",
-          route: "/products/coach-verification-app",
-        },
-        {
-          title: "Map3D Studio",
-          type: "Open-source Data Tools",
-          route: "/products/map3d-studio",
-        },
-        {
-          title: "Industrial Facility Configurator",
-          type: "Configuration System",
-          route: "/products/industrial-configurator",
-        },
-        {
-          title: "Moon Habitat Configurator",
-          type: "Design Automation",
-          route: "/products/lunar-app",
-        },
-        {
-          title: "Arabiya Language App",
-          type: "Educational Web App",
-          route: "/products/language-learning-app",
-        },
-        {
-          title: "Filos Mobile Experience",
-          type: "Accessible Experience",
-          route: "/products/filos-mobile-app",
-        },
-        {
-          title: "Brew & Crumb",
-          type: "Product Design",
-          route: "/products/brew-crumb",
-        },
-        {
-          title: "Cricket Plugin",
-          type: "Computational Framework",
-          route: "/products/thesis-project",
-        },
-        {
-          title: "Architectural System",
-          type: "Parametric Modular Design",
-          route: "/products/hapi-project",
-        },
-        {
-          title: "Digital Futures Workshop",
-          type: "Prefabrication & Automation",
-          route: "/products/workshop-design",
-        },
+        { title: "Plum Pulse", type: "Fintech · Agent UX", route: "/products/plum-pulse" },
+        { title: "Industrial Facility Configurator", type: "Enterprise · 3D configurator", route: "/products/industrial-configurator" },
+        { title: "Vinted Smart Local Bundling", type: "Commerce · Mobile", route: "/products/vinted-smart-bundling" },
+        { title: "AI Interface Sandbox", type: "AI UX · Desktop", route: "/products/ai-sandbox" },
+        { title: "Vintage Coach Catalog", type: "Data product", route: "/products/coach-verification-app" },
+        { title: "Map3D Studio", type: "Open-source data tools", route: "/products/map3d-studio" },
+        { title: "Moon Habitat Configurator", type: "Design automation", route: "/products/lunar-app" },
+        { title: "Filos Inclusive Activity App", type: "Mobile service", route: "/products/filos-mobile-app" },
+        { title: "Brew & Crumb", type: "Mobile ordering", route: "/products/brew-crumb" },
+        { title: "Arabiya Language App", type: "Learning product", route: "/products/language-learning-app" },
+        { title: "Cricket WFC Plugin", type: "Earlier work · Computational tool", route: "/products/thesis-project" },
+        { title: "Digital Futures Workshop", type: "Earlier work · Fabrication", route: "/products/workshop-design" },
+        { title: "Hapi Modular Housing", type: "Earlier work · Architecture", route: "/products/hapi-project" },
       ],
     };
-  },
-  watch: {
-    "$i18n.locale"() {
-      this.projects = this.projects.map((project, index) => {
-        const [title, type] = this.$t("caseStudy.nextProjects")[index];
-        return {
-          ...project,
-          title,
-          type,
-        };
-      });
-    },
-  },
-  created() {
-    this.projects = this.projects.map((project, index) => {
-      const [title, type] = this.$t("caseStudy.nextProjects")[index];
-      return {
-        ...project,
-        title,
-        type,
-      };
-    });
-  },
+  }
 };
 </script>

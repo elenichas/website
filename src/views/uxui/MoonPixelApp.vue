@@ -35,6 +35,8 @@
     </div>
 
     <!-- Overview Section -->
+    <case-snapshot page="moon" />
+
     <section class="split-section split-section-left">
       <div class="split-content">
         <p class="section-label">Background</p>
@@ -120,7 +122,7 @@
         </p>
       </div>
       <div class="split-media media-container-purple">
-        <video preload="metadata" :src="viewer3D" autoplay muted loop playsinline class="split-video">
+        <video preload="metadata" :src="viewer3D" data-autoplay muted loop playsinline class="split-video">
           Your browser does not support the video tag.
         </video>
       </div>
@@ -131,14 +133,14 @@
       <div class="video-grid">
         <figure class="video-figure">
           <!-- <figcaption class="video-caption">Configuration Demo</figcaption> -->
-          <video preload="metadata" :src="demo" autoplay muted loop playsinline class="content-video">
+          <video preload="metadata" :src="demo" data-autoplay muted loop playsinline class="content-video">
             Your browser does not support the video tag.
           </video>
         </figure>
 
         <!-- <figure class="video-figure">
 
-          <video preload="metadata" :src="solutions" autoplay muted loop playsinline class="content-video">
+          <video preload="metadata" :src="solutions" data-autoplay muted loop playsinline class="content-video">
             Your browser does not support the video tag.
           </video>
         </figure> -->
@@ -165,7 +167,7 @@
 
         <figure class="video-figure">
 
-          <video preload="metadata" :src="solutions" autoplay muted loop playsinline class="content-video">
+          <video preload="metadata" :src="solutions" data-autoplay muted loop playsinline class="content-video">
             Your browser does not support the video tag.
           </video>
         </figure>
@@ -194,6 +196,7 @@
 </template>
 
 <script>
+import CaseSnapshot from "@/components/CaseSnapshot.vue";
 import { resolveAsset } from "@/assetUrl";
 import AppNavbar from "@/components/navbar.vue";
 import CaseStudyFooter from "@/components/CaseStudyFooter.vue";
@@ -202,12 +205,12 @@ import { useHead } from "@vueuse/head";
 export default {
   name: "MoonPixelApp",
   components: {
+    CaseSnapshot,
     AppNavbar,
     CaseStudyFooter,
   },
   setup() {
     useHead({
-      title: "Moon Habitat Configurator — Eleni Chasioti",
       meta: [
         { name: "description", content: "Case study: A professional proof of concept applying design automation methods to a hypothetical lunar habitat configurator." },
         { property: "og:title", content: "Moon Habitat Configurator — Eleni Chasioti" },

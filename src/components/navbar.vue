@@ -10,21 +10,18 @@
 
       <!-- Desktop Navigation -->
       <nav class="desktop-nav">
-        <router-link to="/" class="nav-link" exact-active-class="active">
-          {{ $t("nav.craft") }}
-        </router-link>
-        <router-link to="/playground" class="nav-link" active-class="active">
-          {{ $t("nav.playground") }}
+        <router-link to="/" class="nav-link" active-class="active">
+          {{ $i18n.locale === 'el' ? 'Αρχική' : 'Home' }}
         </router-link>
         <router-link to="/about" class="nav-link" active-class="active">
           {{ $t("nav.about") }}
         </router-link>
         <router-link to="/book" class="nav-link" active-class="active">
-          {{ $t("common.bookCall") }}
+          {{ $i18n.locale === 'el' ? 'Επικοινωνία' : 'Contact' }}
         </router-link>
       </nav>
 
-      <theme-picker />
+      <button type="button" class="visual-theme-toggle" :aria-label="visualTheme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'" @click="toggleVisualTheme"><span aria-hidden="true">{{ visualTheme === 'dark' ? '☼' : '◐' }}</span></button>
       <div class="language-switcher" :aria-label="$t('nav.languageLabel')">
         <button
           v-for="(locale, key) in $locales"
@@ -63,16 +60,13 @@
     >
       <nav class="mobile-nav">
         <router-link to="/" class="mobile-nav-link" @click="closeMobileMenu">
-          {{ $t("nav.craft") }}
-        </router-link>
-        <router-link to="/playground" class="mobile-nav-link" @click="closeMobileMenu">
-          {{ $t("nav.playground") }}
+          {{ $i18n.locale === 'el' ? 'Αρχική' : 'Home' }}
         </router-link>
         <router-link to="/about" class="mobile-nav-link" @click="closeMobileMenu">
           {{ $t("nav.about") }}
         </router-link>
         <router-link to="/book" class="btn-primary mobile-cta" @click="closeMobileMenu">
-          {{ $t("common.bookCall") }}
+          {{ $i18n.locale === 'el' ? 'Επικοινωνία' : 'Contact' }}
         </router-link>
         <div class="language-switcher language-switcher-mobile" :aria-label="$t('nav.languageLabel')">
           <button
@@ -93,16 +87,21 @@
 </template>
 
 <script>
-import ThemePicker from "./ThemePicker.vue";
+import { visualThemeState, setVisualTheme } from "../visualTheme";
 export default {
   name: "Navbar",
-  components: { ThemePicker },
   data() {
     return {
       isMobileMenuOpen: false,
     };
   },
+  computed: {
+    visualTheme() { return visualThemeState.mode; },
+  },
   methods: {
+    toggleVisualTheme() {
+      setVisualTheme(this.visualTheme === 'dark' ? 'light' : 'dark');
+    },
     toggleMobileMenu() {
       this.isMobileMenuOpen = !this.isMobileMenuOpen;
     },

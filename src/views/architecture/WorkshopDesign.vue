@@ -57,14 +57,7 @@
       </div>
       <div class="split-media media-container-purple">
         <div class="carousel-wrapper">
-                    <v-carousel cycle hide-delimiters interval="4000" show-arrows="hover" height="400">
-            <v-carousel-item
-              v-for="(image, index) in images"
-              :key="index"
-            >
-              <img loading="lazy" :src="image.url" :alt="'Process step ' + (index + 1)" class="carousel-img" />
-            </v-carousel-item>
-          </v-carousel>
+                    <media-carousel :images="images" alt-prefix="Process step" label="Process step gallery" fit="cover" :height="400" />
         </div>
       </div>
     </section>
@@ -98,6 +91,7 @@
 </template>
 
 <script>
+import MediaCarousel from "@/components/MediaCarousel.vue";
 import { resolveAsset } from "@/assetUrl";
 import AppNavbar from "@/components/navbar.vue";
 import CaseStudyFooter from "@/components/CaseStudyFooter.vue";
@@ -105,6 +99,7 @@ import CaseStudyFooter from "@/components/CaseStudyFooter.vue";
 export default {
   name: "WorkshopDesign",
   components: {
+    MediaCarousel,
     AppNavbar,
     CaseStudyFooter,
   },
@@ -329,13 +324,8 @@ export default {
 /* Carousel */
 .carousel-wrapper {
   border-radius: var(--radius-sm);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
 }
 
-.carousel-wrapper :deep(.v-carousel) {
-  border-radius: var(--radius-sm);
-}
 
 .carousel-img {
   width: 100%;

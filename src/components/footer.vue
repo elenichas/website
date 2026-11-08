@@ -9,11 +9,11 @@
           <div class="footer-actions">
             <router-link v-if="$route.name !== 'Booking'" to="/book" class="btn-primary footer-btn">
               {{ $t("common.bookCall") }}
-              <span class="mdi mdi-arrow-right" aria-hidden="true"></span>
+              <span class="icon-glyph" aria-hidden="true">→</span>
             </router-link>
             <a href="mailto:eleni.chasioti@gmail.com" class="social-link footer-btn">
               {{ $t("common.getInTouch") }}
-              <span class="mdi mdi-arrow-right"></span>
+              <span class="icon-glyph" aria-hidden="true">→</span>
             </a>
           </div>
         </div>
@@ -22,11 +22,11 @@
         <div class="footer-info">
           <div class="footer-links">
             <a href="https://www.linkedin.com/in/eleni-chasioti-948486194/" target="_blank" rel="noopener noreferrer" class="social-link">
-              <span class="mdi mdi-linkedin"></span>
+              <Linkedin :size="16" aria-hidden="true" />
               LinkedIn
             </a>
             <a href="https://github.com/elenichas" target="_blank" rel="noopener noreferrer" class="social-link">
-              <span class="mdi mdi-github"></span>
+              <Github :size="16" aria-hidden="true" />
               GitHub
             </a>
           </div>
@@ -37,13 +37,16 @@
           </div>
         </div>
       </div>
+      <div v-if="$route.path !== '/'" class="footer-signature" aria-hidden="true">Eleni Chasioti</div>
     </div>
   </footer>
 </template>
 
 <script>
+import { Github, Linkedin } from "lucide-vue-next";
 export default {
   name: "FooterComponent",
+  components: { Github, Linkedin },
   computed: {
     currentYear() {
       return new Date().getFullYear();
@@ -146,7 +149,7 @@ export default {
   transform: translateY(-1px);
 }
 
-.social-link .mdi {
+.social-link svg {
   font-size: 1.125rem;
 }
 

@@ -8,7 +8,7 @@
       <p class="not-found-message">{{ $t("notFound.message") }}</p>
       <router-link to="/" class="btn-primary">
         {{ $t("nav.home") }}
-        <span class="mdi mdi-arrow-right"></span>
+        <span class="icon-glyph" aria-hidden="true">→</span>
       </router-link>
     </section>
 

@@ -86,14 +86,14 @@ export default {
 .skills-title {
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: 600;
-  color: #000;
+  color: var(--color-text);
   margin-bottom: 0.75rem;
   letter-spacing: -0.02em;
 }
 
 .skills-subtitle {
   font-size: 1.125rem;
-  color: #333;
+  color: var(--color-text);
   margin: 0;
   font-weight: 400;
 }
@@ -109,7 +109,7 @@ export default {
 .category-title {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #000;
+  color: var(--color-text);
   text-align: center;
   margin-bottom: 2rem;
 }
@@ -135,8 +135,8 @@ export default {
 .skill-icon {
   width: 70px;
   height: 70px;
-  background: #fff;
-  border: 1px solid #e0e0e0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -154,7 +154,7 @@ export default {
 .skill-name {
   font-size: 0.875rem;
   font-weight: 500;
-  color: #666;
+  color: var(--color-text-secondary);
 }
 
 /* Responsive Design */

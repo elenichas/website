@@ -45,7 +45,7 @@
                 </div>
                 <div class="project-overlay">
                   <span class="view-project">
-                    <span class="mdi mdi-github"></span>
+                    <Github :size="16" aria-hidden="true" />
                     {{ $t("common.viewOnGithub") }}
                   </span>
                 </div>
@@ -65,12 +65,14 @@
 </template>
 
 <script>
+import { Github } from "lucide-vue-next";
 import AppNavbar from "../components/navbar.vue";
 import AppFooter from "../components/footer.vue";
 
 export default {
   name: "ImageGallery",
   components: {
+    Github,
     AppNavbar,
     AppFooter,
   },

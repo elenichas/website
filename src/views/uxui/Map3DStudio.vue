@@ -3,7 +3,7 @@
   <main class="case-study map-case">
     <header class="case-header"><h1 class="case-title">Map3D Studio</h1></header>
     <figure class="case-hero">
-      <video class="hero-image" src="/media/map3d-preview.mp4" poster="/images/map3d/scene-night.webp" autoplay muted loop playsinline preload="metadata" aria-label="Map3D Studio: orbiting the Athens scene" />
+      <video class="hero-image" src="/media/map3d-preview.mp4" poster="/images/map3d/scene-night.webp" data-autoplay muted loop playsinline preload="metadata" aria-label="Map3D Studio: orbiting the Athens scene" />
     </figure>
 
     <div class="case-info">
@@ -17,6 +17,8 @@
         <div class="project-links"><a :href="liveUrl" target="_blank" rel="noopener noreferrer">{{ el ? 'Άνοιγμα εφαρμογής' : 'Open the live app' }} ↗</a><a href="https://github.com/elenichas/map3d" target="_blank" rel="noopener noreferrer">{{ el ? 'Κώδικας στο GitHub' : 'View source on GitHub' }} ↗</a></div>
       </div>
     </div>
+
+    <case-snapshot page="map3d" />
 
     <section class="content-section">
       <p class="section-label">{{ el ? 'Πρόκληση' : 'Challenge' }}</p>
@@ -38,7 +40,7 @@
         <h2 id="inspection-title" class="section-heading">{{ el ? 'Επίλεξε κτίρια για προεπισκόπηση δεδομένων' : 'Select buildings to preview data' }}</h2>
         <p class="body-text">{{ el ? 'Η επιλογή ενός κτιρίου συνδέει το μοντέλο με τα αρχικά δεδομένα του. Το panel εμφανίζει τα tags του OpenStreetMap, το ύψος και το υλικό, όταν είναι διαθέσιμα.' : 'Selecting a building connects the model to its source data. The inspector reveals OpenStreetMap tags, height and material where available, while the highlight keeps the selected feature in context.' }}</p>
       </div>
-      <figure class="showcase-media"><video src="/media/map3d-inspection.mp4" poster="/images/map3d/building-inspector.webp" autoplay muted loop playsinline preload="metadata" aria-label="Selecting a Parthenon building part and viewing its source metadata" /><figcaption>{{ el ? 'Επιλογή τμήματος του Παρθενώνα και προβολή των αρχικών tags του.' : 'Select a Parthenon building part, then read its source tags in the building inspector.' }}</figcaption></figure>
+      <figure class="showcase-media"><video src="/media/map3d-inspection.mp4" poster="/images/map3d/building-inspector.webp" data-autoplay muted loop playsinline preload="metadata" aria-label="Selecting a Parthenon building part and viewing its source metadata" /><figcaption>{{ el ? 'Επιλογή τμήματος του Παρθενώνα και προβολή των αρχικών tags του.' : 'Select a Parthenon building part, then read its source tags in the building inspector.' }}</figcaption></figure>
     </section>
 
     <section class="content-section">
@@ -53,6 +55,7 @@
 </template>
 
 <script setup>
+import CaseSnapshot from '@/components/CaseSnapshot.vue';
 import { computed } from 'vue';
 import { useHead } from '@vueuse/head';
 import { i18nState } from '../../i18n';
@@ -89,7 +92,7 @@ const contributions=computed(()=>el.value ? [
  'Background loading, automatic retries and clearer feedback when data is missing.',
  'Dashboard with metrics driven by imported geometry data.'
 ]);
-useHead({title:'Map3D Studio · Eleni Chasioti',meta:[{name:'description',content:'My first open-source contribution: extending map3d with a redesigned workflow, spatial exploration tools, exports and a site dashboard.'}]});
+useHead({meta:[{name:'description',content:'My first open-source contribution: extending map3d with a redesigned workflow, spatial exploration tools, exports and a site dashboard.'}]});
 </script>
 <style scoped src="../../styles/editorial-case-study.css"></style>
 <style scoped>

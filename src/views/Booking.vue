@@ -26,14 +26,20 @@
 </template>
 
 <script setup>
+import { computed } from "vue";
+import { visualThemeState } from "../visualTheme";
 import { useHead } from "@vueuse/head";
 import AppNavbar from "../components/navbar.vue";
 import AppFooter from "../components/footer.vue";
 import { t } from "../i18n";
 
-const bookingUrl = "https://calendly.com/eleni-chasioti-arch/30min";
+const bookingUrl = computed(() => {
+  const colors = visualThemeState.mode === 'dark'
+    ? 'background_color=080808&text_color=f4f4f1&primary_color=c998ff'
+    : 'background_color=f9f9f6&text_color=111110&primary_color=7521b8';
+  return `https://calendly.com/eleni-chasioti-arch/30min?${colors}`;
+});
 useHead(() => ({
-  title: `${t("common.bookCall")} | Eleni Chasioti`,
   meta: [{ name: "description", content: t("booking.description") }],
 }));
 </script>
@@ -54,7 +60,7 @@ useHead(() => ({
   text-wrap: balance;
 }
 .booking-intro p { font-size: 1.0625rem; line-height: 1.7; color: var(--color-text-secondary); }
-.booking-calendar { background: #fff; }
+.booking-calendar { background: var(--color-surface); }
 .booking-frame { display: block; width: 100%; height: 850px; border: 0; }
 .booking-alternatives { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px 32px; padding-top: 24px; border-top: 1px solid var(--color-border); font-size: 0.875rem; }
 .booking-alternatives p { margin: 0; color: var(--color-text-secondary); }

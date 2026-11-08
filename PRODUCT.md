@@ -14,7 +14,7 @@ This portfolio supports Eleni’s transition from architecture into fintech thro
 
 ## Brand Personality
 
-Professional, confident, creative. The tone should feel considered and capable, with enough personality to be memorable without becoming decorative or self-indulgent.
+Professional, confident, creative. Use a monochrome black canvas, large sans-serif type, restrained rules and generous spacing. Project imagery carries the colour. Offer a light theme, keep each showcased interface’s original palette independent of the portfolio theme, and use subtle motion with reduced-motion alternatives.
 
 ## Anti-references
 
@@ -22,7 +22,7 @@ Avoid AI slop websites: generic template compositions, repetitive card grids, gr
 
 ## Design Principles
 
-1. Show the work before describing the work: open with a compact introduction and a four-column gallery on desktop, two columns on tablets, and a single column on phones. Keep fintech, commerce and AI product work first.
+1. Start the homepage directly with Selected work, with sparse navigation and no introductory hero. Keep the restrained dark visual direction inspired by eleni-chasioti-visual-portfolio.lovable.app. The homepage holds the only project collection, with gallery and index views, four columns on desktop, and responsive tablet and phone layouts. All project previews animate using existing footage or sequences of actual project assets; pause them offscreen and provide pause and reduced-motion controls. Keep fintech, commerce and AI product work first.
 2. Make complex systems legible without flattening their depth.
 3. Use confident visual hierarchy so visitors can scan quickly and choose where to dive deeper.
 4. Let creative moments demonstrate judgment, not compete with the projects.
@@ -30,4 +30,6 @@ Avoid AI slop websites: generic template compositions, repetitive card grids, gr
 
 ## Accessibility & Inclusion
 
-Target WCAG 2.2 AA across the portfolio. Preserve keyboard access, visible focus states, semantic structure, readable contrast, meaningful alt text, and comfortable touch targets. Respect reduced-motion preferences throughout, especially for reveals, marquees, carousels, and animated playground interactions.
+Target WCAG 2.2 AA across the portfolio. Preserve keyboard access, visible focus states, semantic structure, readable contrast, meaningful alt text, and comfortable touch targets. Respect reduced-motion preferences throughout, especially for reveals, marquees, carousels, and animated project interactions.
+
+Navigation has Home, About and Contact. There is no separate Playground listing; all case studies are linked from the homepage, with legacy Playground URLs redirected.

@@ -109,7 +109,7 @@
               <nav aria-label="Navigation preview">
                 <span>Home</span>
                 <span>Craft</span>
-                <span>Playground</span>
+                <span>Home</span>
                 <span>About</span>
               </nav>
               <div class="language-preview">
@@ -134,13 +134,13 @@
             <div class="button-row">
               <a href="mailto:eleni.chasioti@gmail.com" class="btn-primary">
                 Get in touch
-                <span class="mdi mdi-arrow-right"></span>
+                <span class="icon-glyph" aria-hidden="true">→</span>
               </a>
               <a href="/cv/EleniChasiotiCV2026.pdf" class="btn-secondary">
                 Download resume
-                <span class="mdi mdi-download"></span>
+                <span class="icon-glyph" aria-hidden="true">↓</span>
               </a>
-              <router-link to="/playground" class="btn-ghost">Explore playground</router-link>
+              <router-link to="/" class="btn-ghost">Explore projects</router-link>
             </div>
             <div class="chip-row">
               <span class="tag">UX/UI</span>
