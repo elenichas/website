@@ -4,7 +4,7 @@
     <main id="main" class="playroom">
       <div class="work-collection">
         <section class="intro" aria-labelledby="intro-title">
-          <h1 id="intro-title">I design and build interfaces for complex work.</h1>
+          <h1 id="intro-title">I design and build for work, life, and play.</h1>
           <div class="intro-meta">
             <p>Product designer &amp; UX engineer in London.</p>
             <p class="intro-links">
