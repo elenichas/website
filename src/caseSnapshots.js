@@ -1,6 +1,34 @@
 // "At a glance" summaries for product case studies. Every statement is drawn
 // from the case study's own content; keep them in sync when a page changes.
 export default {
+  simba: {
+    en: {
+      problem: "Could a small Game Boy Color game turn my cat's everyday habits into a readable, playful world?",
+      role: "Concept, game design, narrative and visual direction, with Codex assisting implementation.",
+      did: "Built an editable GB Studio game with a photo-inspired cat and flat, platforming, collectible rewards, needs, family interactions and short quests.",
+      outcome: "A compiled Game Boy Color ROM and a recorded browser playtest. A personal prototype, not a permanently hosted game.",
+    },
+    el: {
+      problem: "Μπορεί ένα μικρό παιχνίδι Game Boy Color να μετατρέψει τις καθημερινές συνήθειες του γάτου μου σε έναν ευανάγνωστο, παιχνιδιάρικο κόσμο;",
+      role: "Ιδέα, σχεδιασμός παιχνιδιού, ιστορία και οπτική κατεύθυνση, με βοήθεια του Codex στην υλοποίηση.",
+      did: "Δημιούργησα επεξεργάσιμο project GB Studio με τον γάτο και το σπίτι μας, πλατφόρμες, συλλεκτικά, ανάγκες, αλληλεπιδράσεις και μικρές αποστολές.",
+      outcome: "Ένα λειτουργικό ROM για Game Boy Color και μια καταγεγραμμένη δοκιμή στο browser. Προσωπικό πρωτότυπο, όχι μόνιμα διαθέσιμο online παιχνίδι.",
+    },
+  },
+  paperAndParcel: {
+    en: {
+      problem: "Course sandboxes made it easy to follow exercises, but I wanted to connect an agent to a complete web app and see how it actually worked.",
+      role: "Independent learning project: experience design and full-stack prototyping, built with an AI coding assistant.",
+      did: "Built a stationery-shop dashboard, connected a local model to bounded Python tools, and exposed real execution events in an inspector and Learning Lab.",
+      outcome: "A working local app with report, SQL and chart workflows, fictional business records, a public repository and 42 automated tests. Not a deployed shop.",
+    },
+    el: {
+      problem: "Τα περιβάλλοντα των μαθημάτων βοηθούσαν στην εξάσκηση, αλλά ήθελα να συνδέσω έναν agent με μια ολοκληρωμένη εφαρμογή και να δω πώς λειτουργεί.",
+      role: "Ανεξάρτητο εκπαιδευτικό project: σχεδιασμός εμπειρίας και full-stack πρωτότυπο, με τη βοήθεια AI coding assistant.",
+      did: "Δημιούργησα dashboard καταστήματος, συνέδεσα τοπικό μοντέλο με συγκεκριμένα εργαλεία Python και εμφάνισα τα πραγματικά events σε inspector και Learning Lab.",
+      outcome: "Λειτουργική τοπική εφαρμογή με αναφορές, SQL και γραφήματα, υποθετικά δεδομένα, δημόσιο repository και 42 αυτοματοποιημένα tests. Δεν είναι online κατάστημα.",
+    },
+  },
   industrial: {
     en: {
       problem: "Power-plant design knowledge sat with specialists and in scattered documents, so facility configurations were inconsistent and hard to check.",

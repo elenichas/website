@@ -14,7 +14,7 @@
         <video
           v-else-if="project.preview"
           class="tile-recording"
-          :class="{ 'tile-recording-light': project.light }"
+          :class="{ 'tile-recording-light': project.light, 'tile-recording-simba': project.slug === 'simba', 'tile-recording-cover': project.slug === 'moon' || project.slug === 'map3d' }"
           :src="project.preview"
           :poster="project.poster"
           muted loop playsinline preload="none"
@@ -58,11 +58,13 @@ export default {
 .tile-link:hover .project-preview { transform: translateY(-3px); }
 
 .tile-recording { display: block; width: 100%; aspect-ratio: 16 / 11; object-fit: contain; background: #18191b; border-radius: 8px; }
+.tile-recording-simba { object-fit: fill; }
+.tile-recording-cover { object-fit: cover; }
 .tile-recording-light { background: #fff; }
 .coach-showcase { position: relative; aspect-ratio: 16 / 11; overflow: hidden; border-radius: 8px; background: radial-gradient(ellipse at 50% 25%, #f3ece1, #c7b7a2); isolation: isolate; }
 .coach-screen { position: absolute; display: block; width: 35%; height: auto; border: 3px solid #29241f; border-radius: 12px; box-shadow: 0 14px 28px #34261935; }
-.coach-screen-left { left: 3%; top: 16%; transform: rotate(-9deg); }
-.coach-screen-right { right: 3%; top: 13%; transform: rotate(9deg); }
+.coach-screen-left { left: 3%; top: 16%; }
+.coach-screen-right { right: 3%; top: 13%; }
 .coach-screen-main { z-index: 1; width: 38%; left: 31%; top: 5%; }
 
 .tile-copy { padding-top: 14px; }

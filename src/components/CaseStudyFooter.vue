@@ -39,6 +39,8 @@ export default {
   data() {
     return {
       projects: [
+        { title: "The Adventures of Simba", type: "Personal game · Game Boy Color", route: "/products/adventures-of-simba" },
+        { title: "Paper & Parcel", type: "Local AI · Agent workflows", route: "/products/paper-and-parcel" },
         { title: "Plum Pulse", type: "Fintech · Agent UX", route: "/products/plum-pulse" },
         { title: "Vinted Smart Local Bundling", type: "Commerce · Mobile", route: "/products/vinted-smart-bundling" },
         { title: "AI Interface Sandbox", type: "AI UX · Desktop", route: "/products/ai-sandbox" },
