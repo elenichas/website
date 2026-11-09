@@ -1,5 +1,5 @@
 <template>
-  <header class="modern-navbar" @click.capture="interceptNav">
+  <header class="modern-navbar">
     <div class="navbar-container">
       <!-- Logo/Brand -->
       <div class="brand">
@@ -89,7 +89,7 @@
 
 <script>
 import { visualThemeState, setVisualTheme } from "../visualTheme";
-import { navigateWithTransition, placePill, isTransitioning } from "../navTransition";
+import { placePill } from "../navTransition";
 export default {
   name: "Navbar",
   data() {
@@ -104,8 +104,7 @@ export default {
     "$i18n.locale"() { this.$nextTick(() => this.updatePill()); },
   },
   mounted() {
-    // Start the slide as the page wipe lifts, so it is visible.
-    this.updatePill(isTransitioning() ? 220 : 0);
+    this.updatePill();
     document.fonts?.ready.then(() => this.updatePill());
     window.addEventListener("resize", this.updatePill);
   },
@@ -113,19 +112,8 @@ export default {
     window.removeEventListener("resize", this.updatePill);
   },
   methods: {
-    updatePill(delay = 0) {
-      const active = this.$refs.desktopNav?.querySelector(".nav-link.active");
-      placePill(this.$refs.pill, active, { delay: typeof delay === "number" ? delay : 0 });
-    },
-    interceptNav(event) {
-      const link = event.target.closest("a");
-      if (!link || event.defaultPrevented || event.button !== 0) return;
-      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-      const href = link.getAttribute("href");
-      if (!href || !href.startsWith("/") || href === this.$route.path) return;
-      event.preventDefault();
-      this.closeMobileMenu();
-      navigateWithTransition(this.$router, href, link);
+    updatePill() {
+      placePill(this.$refs.pill, this.$refs.desktopNav?.querySelector(".nav-link.active"));
     },
     toggleVisualTheme() {
       setVisualTheme(this.visualTheme === 'dark' ? 'light' : 'dark');

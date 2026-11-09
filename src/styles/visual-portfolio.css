@@ -166,4 +166,3 @@ html,body,#app { background:var(--visual-bg); }
 /* Display type for page titles; body text stays in the reading face. */
 #app h1 { font-family:var(--font-display); font-variation-settings:'opsz' 96; letter-spacing:-.03em; }
 #app .brand-name { font-family:var(--font-display); font-size:21px; color:var(--visual-fg); font-weight:700; letter-spacing:-.03em; font-variation-settings:'opsz' 48; }
-.page-wipe { position:fixed; inset:0; z-index:1000; background:var(--visual-fg); pointer-events:all; }
