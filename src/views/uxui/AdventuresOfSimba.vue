@@ -3,7 +3,7 @@
   <main class="case-study simba-case">
     <header class="case-header"><h1 class="case-title">The Adventures of Simba</h1></header>
     <figure class="case-hero">
-      <video class="hero-image" src="/media/simba-demo.webm" poster="/images/simba/poster.jpg" data-autoplay autoplay muted loop playsinline controls preload="metadata" disablepictureinpicture disableremoteplayback :aria-label="copy.videoAlt" />
+      <video class="hero-image" src="/media/simba-demo.webm" poster="/images/simba/poster.jpg" data-autoplay autoplay muted loop playsinline preload="metadata" disablepictureinpicture disableremoteplayback :aria-label="copy.videoAlt" />
       <figcaption>{{ copy.videoCaption }}</figcaption>
     </figure>
     <div class="case-info">
@@ -71,7 +71,8 @@ useHead(() => ({ meta: [
 <style scoped>
 .simba-case .case-title { white-space: normal; }
 .simba-case .case-hero { min-height: 0; }
-.simba-case .hero-image { display:block; width:100%; height:auto; min-height:0; max-height:min(72vh,680px); object-fit:contain; background:#141414; }
+.simba-case .hero-image { display:block; width:100%; height:auto; min-height:0; max-height:min(72vh,680px); object-fit:contain; background:#141414; pointer-events:none; }
+.simba-case video::-webkit-media-controls { display:none !important; }
 .simba-case figcaption { margin-top:12px; font-size:.8rem; line-height:1.5; color:var(--color-text-secondary); }
 .simba-case .showcase-section { display:flex; align-items:center; gap:var(--space-10); max-width:1400px; margin:var(--space-12) auto; padding:0 var(--space-8); }
 .simba-case .showcase-section-reverse { flex-direction:row-reverse; }
