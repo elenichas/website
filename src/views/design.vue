@@ -18,7 +18,7 @@
         <div class="toolbar">
           <div class="filters" role="group" aria-label="Filter projects">
             <button
-              v-for="filter in filters" :key="filter.id" type="button"
+              v-for="filter in sortedFilters" :key="filter.id" type="button"
               :aria-pressed="activeFilter === filter.id" :class="{ selected: activeFilter === filter.id }"
               @click="activeFilter = filter.id"
             >
@@ -137,6 +137,9 @@ export default {
     };
   },
   computed: {
+    sortedFilters() {
+      return [...this.filters].sort((a, b) => this.countFor(b.id) - this.countFor(a.id));
+    },
     visibleProjects() {
       if (this.activeFilter === "all") return this.projects;
       return this.projects.filter((p) => p.tags.includes(this.activeFilter));
