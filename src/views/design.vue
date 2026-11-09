@@ -65,6 +65,11 @@ export default {
       ],
       // Newest first, every project shown at the same size.
       projects: [
+        project("simba", {
+          title: "The Adventures of Simba", route: "/products/adventures-of-simba", meta: "Personal game · 2026", tags: ["desktop"],
+          summary: "A Game Boy Color adventure about my cat, his flat and his ideal day.",
+          preview: "/media/simba-demo.webm", poster: "/images/simba/poster.jpg",
+        }),
         project("paper-and-parcel", {
           title: "Paper & Parcel", route: "/products/paper-and-parcel", meta: "Local AI agent · 2026", tags: ["desktop", "ai"],
           summary: "A shop assistant with real tools, an execution inspector and a lab for learning how agents work.",
