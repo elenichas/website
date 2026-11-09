@@ -39,9 +39,9 @@
 
     <section class="content-section">
       <p class="section-label">Challenge</p>
-      <h2 class="section-heading">Breaking down barriers to connection</h2>
+      <h2 class="section-heading">Barriers to joining in</h2>
       <p class="body-text">
-        People with disabilities can face physical, sensory, and social barriers to participation. At the same time, people who want to volunteer may not know what respectful support looks like. The opportunity was not simply to create a matching app, but to design a service where both people can understand expectations and where the participant remains in control.
+        People with disabilities can face physical, sensory, and social barriers to participation. At the same time, people who want to volunteer may not know what respectful support looks like. So the project designs a whole service, where both people know what to expect and the participant stays in control.
       </p>
     </section>
 
@@ -64,7 +64,7 @@
       <p class="section-label">Users</p>
       <h2 class="section-heading">Designing for diverse needs</h2>
       <p class="body-text">
-        Understanding the people who would use Filos was essential. As part of the course project, I consulted my sister, a special needs teacher, and had a couple of early feedback sessions with her students. The concept considered a range of access needs, including wheelchair access, blindness, and autism.
+        As part of the course project, I consulted my sister, a special needs teacher, and had a couple of early feedback sessions with her students. The concept considered a range of access needs, including wheelchair access, blindness, and autism.
       </p>
       <aside class="research-note" aria-label="Research boundary">
         <div>

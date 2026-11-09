@@ -11,9 +11,7 @@
         <p class="project-label">Independent speculative prototype</p>
         <h1>Smart Local Bundling for Vinted</h1>
         <p class="hero-copy">
-          A marketplace interaction that helps buyers understand the full value
-          of a pre-loved find: item price, delivery, distance, and bundle
-          opportunities in one confident decision.
+          A marketplace prototype that shows what a pre-loved find really costs, with item price, delivery, distance and bundle savings side by side before you buy.
         </p>
         <p class="disclaimer">
           Independent speculative prototype. Not affiliated with Vinted. Play with
@@ -153,7 +151,7 @@
                   <h2>{{ selectedListing.title }}</h2>
                   <p>{{ selectedListing.size }} · {{ selectedListing.condition }} · {{ selectedListing.area }}</p>
                 </div>
-                <button type="button" class="heart-button" :aria-label="selectedListing.favourite ? 'Favorite item' : 'Add to favorites'">
+                <button type="button" class="heart-button" :aria-label="selectedListing.favourite ? 'Favourite item' : 'Add to favourites'">
                   <Heart :size="17" :fill="selectedListing.favourite ? 'currentColor' : 'none'" />
                 </button>
               </div>
@@ -190,7 +188,7 @@
               <article class="bundle-module">
                 <div>
                   <p>Make delivery work smarter</p>
-                  <h3>{{ selectedListing.seller }} also has items from your favorites.</h3>
+                  <h3>{{ selectedListing.seller }} also has items from your favourites.</h3>
                   <span>Blue jeans and shoes in your size can ship with this order.</span>
                 </div>
                 <button type="button" @click="bundleOpen = true">
@@ -215,7 +213,7 @@
                     <p>Smart bundle</p>
                     <h2>From the same seller</h2>
                     <span class="drawer-context">
-                      Based on items in your favorites.
+                      Based on items in your favourites.
                     </span>
                   </div>
                   <button type="button" aria-label="Close bundle drawer" @click="bundleOpen = false">
@@ -306,7 +304,7 @@
         <article>
           <span>Feature 2</span>
           <strong>Smart same-seller bundles</strong>
-          <p>Use favorites and size signals to suggest different items from the same seller.</p>
+          <p>Use favourites and size signals to suggest different items from the same seller.</p>
         </article>
       </div>
     </section>
@@ -328,7 +326,7 @@
     <section class="story-section">
       <div>
         <p class="project-label">Reflection</p>
-        <h2>Small additions can solve real product problems.</h2>
+        <h2>Small additions, not a redesign.</h2>
       </div>
       <p>
         The prototype does not reimagine the marketplace from scratch. It works
@@ -743,8 +741,8 @@ const bundleItems = [
     imageSheet: "bundle",
     imagePosition: "0% 0%",
     score: 98,
-    reason: "Same seller · similar to favorite jeans",
-    matchLabel: "Closest favorite match",
+    reason: "Same seller · similar to favourite jeans",
+    matchLabel: "Closest favourite match",
   },
   {
     id: "white-trainers",
@@ -803,8 +801,8 @@ const bundleItems = [
     imageSheet: "bundle",
     imagePosition: "100% 0%",
     score: 82,
-    reason: "Same seller · favorite shoe style",
-    matchLabel: "Similar to favorite shoes",
+    reason: "Same seller · favourite shoe style",
+    matchLabel: "Similar to favourite shoes",
   },
   {
     id: "olive-tote",
@@ -833,8 +831,8 @@ const bundleItems = [
     imageSheet: "bundle",
     imagePosition: "33.333% 0%",
     score: 86,
-    reason: "Same seller · favorite denim style",
-    matchLabel: "Similar to favorite denim",
+    reason: "Same seller · favourite denim style",
+    matchLabel: "Similar to favourite denim",
   },
   {
     id: "black-belt",
@@ -863,8 +861,8 @@ const bundleItems = [
     imageSheet: "bundle",
     imagePosition: "0% 100%",
     score: 83,
-    reason: "Same seller · favorite skirt style",
-    matchLabel: "Similar to a favorite",
+    reason: "Same seller · favourite skirt style",
+    matchLabel: "Similar to a favourite",
   },
   {
     id: "striped-top",
@@ -908,8 +906,8 @@ const bundleItems = [
     imageSheet: "bundle",
     imagePosition: "100% 100%",
     score: 73,
-    reason: "Same seller · favorite blue item",
-    matchLabel: "Similar to a favorite",
+    reason: "Same seller · favourite blue item",
+    matchLabel: "Similar to a favourite",
   },
 ];
 
@@ -1045,7 +1043,7 @@ export default {
             id: "bundle-recs",
             kicker: "Feature 2",
             title: "Bundle recommendations stay outside the search task.",
-            copy: "Same seller first, then favorite categories and size signals.",
+            copy: "Same seller first, then favourite categories and size signals.",
             position: "note-right note-drawer",
           },
           {

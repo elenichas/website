@@ -136,9 +136,9 @@
     <section class="content-section-wide bakery-showcase bakery-showcase-right animate-on-scroll reveal-from-left">
       <div class="showcase-copy">
         <p class="section-label">Design</p>
-        <h3 class="section-heading">Warm and inviting</h3>
+        <h3 class="section-heading">Colour and type</h3>
         <p class="body-text">
-          I developed a warm, inviting visual language that reflects the cozy atmosphere of a neighborhood coffee shop. The earthy tones and clean typography create an approachable yet modern aesthetic.
+          The palette pairs deep forest green with golden cream. Sansation headings sit over Inter body text, which keeps menu items easy to scan on a phone.
         </p>
       </div>
       <div class="showcase-media media-container-yellow">
@@ -224,7 +224,7 @@
         Through the Google UX Design curriculum, I practiced research synthesis, persona development, wireframing, and high-fidelity prototyping. Because the project was based on a real cafe but completed as a course exercise, I focused on showing a realistic service concept without overstating production impact.
       </p>
       <p class="body-text">
-        This project reinforced the importance of mobile-first design, balancing constraints with usability and visual appeal.
+        The main lesson was that someone ordering on the way to work needs pickup time, price and confirmation visible without scrolling.
       </p>
     </section>
 

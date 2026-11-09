@@ -42,7 +42,7 @@
         Hapi explored how people might coexist in future megacities where housing demand, construction speed, and adaptability become increasingly urgent. The thesis proposed a modular housing system that could support variation without losing the efficiency of a repeatable construction logic.
       </p>
       <p class="body-text">
-        The project proposes a large-scale structure composed of 3D-printed elements that are assembled on-site and elevated to their designated floors. Each home is generated through an algorithmic process, allowing different unit sizes and configurations to fit within a shared structural system.
+        The project proposes a large-scale structure of 3D-printed elements, assembled on site and lifted into place floor by floor. An algorithm generates each home, so units of different sizes and layouts fit within one shared structural system.
       </p>
     </section>
 
@@ -59,7 +59,7 @@
         <p class="section-label">Technical Studies</p>
         <h2 class="section-heading">Modular design and fabrication</h2>
         <p class="body-text">
-          The modular approach enabled flexible housing configurations within a scalable urban framework. Shortest path and density studies helped evaluate circulation, access, and livability across different aggregation options.
+          The modular approach allowed many housing layouts within one repeatable urban structure. Shortest-path and density studies compared circulation, access and livability across different aggregation options.
         </p>
       </div>
       <div class="split-media media-container-blue">
@@ -77,7 +77,7 @@
         The system supports cohabitation through units that can connect, expand, or adapt over time. Smart sensors and robotic systems were explored as part of the broader infrastructure, connecting the architectural concept to automated production and building management.
       </p>
       <p class="body-text">
-        Modular components were analyzed into rulings for fabrication with hotwire cutting techniques, demonstrating advanced fabrication approaches for architectural-scale 3D printing.
+        The modular components were broken down into ruled surfaces so they could be fabricated by hot-wire cutting.
       </p>
     </section>
 
@@ -92,7 +92,7 @@
         <p class="section-label">Visualization</p>
         <h3 class="section-heading">Living in the modular city</h3>
         <p class="body-text">
-          Architectural illustrations showcase the potential of modular, algorithmically-designed housing systems to create diverse, adaptable living environments in dense urban contexts.
+          The illustrations show what everyday life could look like in the generated housing, with different unit types side by side in a dense city.
         </p>
       </div>
     </section>

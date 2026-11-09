@@ -59,8 +59,7 @@
         algorithms to adapt habitat layouts to spatial constraints. Key elements include:
       </p>
       <ul class="simple-list">
-        <li><strong>Terrain Analysis</strong> Systematic analysis of solar terrain conditions to inform site selection
-          and orientation</li>
+        <li><strong>Terrain Analysis</strong> Analysis of sunlight and terrain to choose a site and orient the habitat</li>
         <li><strong>Module Catalog</strong> Library of modular units with different functions and spatial configurations
         </li>
         <li><strong>Network System</strong> Connection framework linking modules through pathways and infrastructure
@@ -78,8 +77,7 @@
       <p class="section-label">System Architecture</p>
       <h2 class="section-heading">From terrain to habitat</h2>
       <p class="body-text">
-        The system follows a systematic approach from terrain analysis to final configuration, allowing for iterative
-        design exploration and optimization.
+        The workflow runs from terrain analysis to final configuration, and any step can be rerun to try another option.
       </p>
       <figure class="image-figure">
         <img loading="lazy" :src="configuratorDiagram" alt="Configurator System Diagram" class="content-image" />
@@ -116,7 +114,7 @@
     <section class="split-section split-section-left">
       <div class="split-content">
         <p class="section-label">Interactive System</p>
-        <h2 class="section-heading">Real-time configuration and visualization</h2>
+        <h2 class="section-heading">Configure it and see the result in 3D</h2>
         <p class="body-text">
           The 3D environment lets users explore habitat layouts as configurable systems. Module choices, connections, and spatial relationships can be tested visually, making the automation logic easier to understand than through diagrams alone.
         </p>
@@ -185,9 +183,9 @@
 
     <section class="content-section">
       <p class="section-label">Impact</p>
-      <h2 class="section-heading">Bridging design automation and extreme environments</h2>
+      <h2 class="section-heading">What the concept showed</h2>
       <p class="body-text">
-        The project helped communicate design automation methods through a vivid scenario. It showed how catalogs, rules, optimization, and 3D interaction can work together as a product experience, even when the context is hypothetical.
+        The lunar scenario gave the conference audience a concrete way into design automation methods. It showed catalogs, rules, optimisation and 3D interaction working together in one product, even though the setting is hypothetical.
       </p>
     </section>
 
@@ -213,7 +211,7 @@ export default {
     useHead({
       meta: [
         { name: "description", content: "Case study: A professional proof of concept applying design automation methods to a hypothetical lunar habitat configurator." },
-        { property: "og:title", content: "Moon Habitat Configurator — Eleni Chasioti" },
+        { property: "og:title", content: "Moon Habitat Configurator · Eleni Chasioti" },
         { property: "og:description", content: "A conference proof of concept showing how catalogs, rules, optimization, and 3D interaction can support design automation." },
       ],
     });

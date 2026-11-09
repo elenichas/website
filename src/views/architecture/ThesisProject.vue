@@ -48,9 +48,9 @@
     <!-- Overview -->
     <section class="content-section">
       <p class="section-label">Research</p>
-      <h2 class="section-heading">Bridging game design and architecture</h2>
+      <h2 class="section-heading">Using a game-design algorithm for architecture</h2>
       <p class="body-text">
-        This project explores the intersection between architectural computation and procedural content generation. The thesis adapts the Wave Function Collapse algorithm, often used in game design, into a framework for generating early-stage architectural massing studies from encoded tilesets.
+        The thesis adapts Wave Function Collapse, a procedural generation algorithm common in game design, into a framework that generates early-stage architectural massing studies from encoded tilesets.
       </p>
       <p class="body-text">
         The goal was to automate repetitive massing exploration without removing designer control. Architects can encode key elements into tile rules, then use the system to generate many valid design variations while maintaining constraints around density, direction, and adjacency.
@@ -83,7 +83,7 @@
         Built in Rhinoceros 3D with Grasshopper, the plugin uses custom WFC components. Architectural elements are encoded into digital tilesets with unique geometry-based identifiers. A voxel grid breaks input models into individual 3D tiles for processing, and the non-backtracking algorithm restarts quickly on contradictions for improved computational speed.
       </p>
       <p class="body-text">
-        Users can define constraints for density, facade direction, and gradient control, while the system generates varied sizes while maintaining architectural constraints.
+        Users set constraints for density, facade direction and gradient, and the system generates massing of different sizes within those limits.
       </p>
     </section>
 
@@ -96,7 +96,7 @@
         <p class="section-label">Results</p>
         <h3 class="section-heading">Flexible design variations</h3>
         <p class="body-text">
-          Architectural elements are divided into tiles for flexible manipulation and combination into new forms. The WFC algorithm ensures all generated designs adhere to predefined architectural constraints and rules.
+          The plugin splits architectural elements into tiles that can be recombined into new forms. WFC only places a tile where its adjacency rules allow it, so every generated design follows the constraints the architect set.
         </p>
       </div>
     </section>
@@ -124,10 +124,10 @@
       <p class="section-label">Impact</p>
       <h2 class="section-heading">Future directions</h2>
       <p class="body-text">
-        This research demonstrated procedural generation's potential to simplify tasks and offer real-time feedback, empowering creative exploration while maintaining constraint control. Machine learning integration could make the system adaptive, learning from designs to optimize for sustainability and aesthetics.
+        The thesis showed that procedural generation can take over repetitive massing work and give designers immediate feedback, without overriding their constraints. A next step would be to train a model on past designs so the system can rank options for sustainability and aesthetics.
       </p>
       <p class="body-text">
-        Extension to irregular grids would expand applicability, while refining the interface for accessibility across technical expertise levels could make this a valuable tool in architectural design's future.
+        Supporting irregular grids would let the tool work on more sites, and a simpler interface would open it to architects with less scripting experience.
       </p>
     </section>
 

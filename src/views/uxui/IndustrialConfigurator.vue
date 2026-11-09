@@ -110,7 +110,7 @@
       </div>
       <div class="split-content">
         <p class="section-label">Component Details</p>
-        <h3 class="section-heading">Comprehensive specifications</h3>
+        <h3 class="section-heading">What each unit records</h3>
         <p class="body-text">
           Each unit includes the information needed to make configuration decisions: dimensions, technical properties, connection points, compatibility rules, and requirements that affect downstream validation.
         </p>
@@ -150,7 +150,7 @@
       </div>
       <div class="split-content">
         <p class="section-label">Validation</p>
-        <h3 class="section-heading">Intelligent rule checking</h3>
+        <h3 class="section-heading">Rules flag broken designs</h3>
         <p class="body-text">
           The system checks configurations against logical and spatial rules and raises alerts when a design breaks technical requirements, helping teams catch issues earlier in the process.
         </p>
@@ -200,9 +200,9 @@
     <!-- Impact -->
     <section class="content-section">
       <p class="section-label">Impact</p>
-      <h2 class="section-heading">Systematizing industrial facility design</h2>
+      <h2 class="section-heading">From manual interpretation to encoded rules</h2>
       <p class="body-text">
-        The configurator helped move the design process from manual interpretation toward structured automation. By cataloging units, standardizing data, and encoding validation rules, the tool created a more consistent foundation for facility configuration.
+        The configurator moved facility design from manual interpretation toward structured automation. With units catalogued, data standardised and validation rules encoded, teams configured facilities the same way and checked them against the same rules.
       </p>
       <p class="body-text">
         It also acted as a training and communication tool: teams could see how units connect, where rules apply, and why alerts were triggered, making complex plant logic easier to review and explain.
@@ -233,8 +233,8 @@ export default {
     useHead({
       meta: [
         { name: "description", content: "Case study: A consultancy product for power plant design automation, with a unit catalog, configurator, data structure, and validation alerts." },
-        { property: "og:title", content: "Industrial Facility Configurator — Eleni Chasioti" },
-        { property: "og:description", content: "Systematizing power plant design through structured unit data, configuration workflows, and rule-based validation." },
+        { property: "og:title", content: "Industrial Facility Configurator · Eleni Chasioti" },
+        { property: "og:description", content: "Power plant design rules encoded into a unit catalog, a configuration workflow and validation alerts." },
       ],
     });
   },

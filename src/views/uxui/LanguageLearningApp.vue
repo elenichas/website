@@ -53,10 +53,10 @@
       <p class="section-label">Challenge</p>
       <h2 class="section-heading">Learning a script-based language from scratch</h2>
       <p class="body-text">
-        Arabic presents unique challenges for Western learners: an entirely new script written right-to-left, letters that change shape based on position, short vowels represented by diacritics rather than letters, and significant differences between dialects. Most existing resources teach Modern Standard Arabic, which differs greatly from the spoken dialects people actually use.
+        For a Western learner, Arabic means a new script written right to left, letters that change shape depending on their position, short vowels written as marks instead of letters, and large differences between dialects. Most resources teach Modern Standard Arabic, which is not what people speak day to day.
       </p>
       <p class="body-text">
-        Learners need a focused, approachable tool that breaks down these complexities into digestible lessons and provides immediate feedback through interactive practice.
+        I wanted short lessons that deal with one of these problems at a time, and quizzes that tell you straight away whether you got it right.
       </p>
     </section>
 
@@ -83,7 +83,7 @@
         <li><strong>Dialect Selection</strong> Focus on Egyptian Arabic with a framework designed to support Syrian, Lebanese, Gulf, Moroccan, and Iraqi dialects</li>
         <li><strong>Alphabet Mastery</strong> Complete 28-letter reference with all four positional forms (isolated, initial, medial, final) plus letter connection rules</li>
         <li><strong>Vowels &amp; Diacritics</strong> Dedicated lesson for Fatha, Kasra, Damma, and Sukun with explanations of why diacritics matter in Arabic</li>
-        <li><strong>Greetings &amp; Phrases</strong> 16 essential Egyptian Arabic phrases with cultural context and pronunciation guides</li>
+        <li><strong>Greetings &amp; Phrases</strong> 16 common Egyptian Arabic phrases with cultural context and pronunciation guides</li>
         <li><strong>Interactive Quizzes</strong> Multiple-choice exercises with instant feedback, scoring, and progress tracking across each lesson</li>
       </ul>
     </section>
@@ -97,7 +97,7 @@
         <p class="section-label">Experience</p>
         <h3 class="section-heading">Study then practice</h3>
         <p class="body-text">
-          Each lesson follows a two-phase approach: a comprehensive study mode with reference tables, examples, and contextual explanations, followed by multiple quiz exercises that reinforce what was learned. Learners can freely switch between study material and practice.
+          Each lesson has two phases: a study mode with reference tables, examples and explanations, then quiz exercises on the same material. Learners can switch between the two at any time.
         </p>
       </div>
     </section>
@@ -149,7 +149,7 @@
         <p class="section-label">Greetings Lesson</p>
         <h3 class="section-heading">Real Egyptian expressions</h3>
         <p class="body-text">
-          The greetings lesson teaches 16 essential Egyptian Arabic phrases organized by category: greetings, responses, courtesies, farewells, introductions, and basics. Each phrase includes the Arabic script, transliteration, and meaning, with cultural context explaining Egyptian customs around greetings.
+          The greetings lesson teaches 16 common Egyptian Arabic phrases organized by category: greetings, responses, courtesies, farewells, introductions, and basics. Each phrase includes the Arabic script, transliteration, and meaning, with cultural context explaining Egyptian customs around greetings.
         </p>
       </div>
     </section>
@@ -159,7 +159,7 @@
       <p class="section-label">Visual Design</p>
       <h2 class="section-heading">Dark glassmorphism with warm tones</h2>
       <p class="body-text">
-        The visual identity draws inspiration from desert landscapes with a dark atmospheric background, glassmorphic card elements, and a warm amber/gold color palette. Arabic text is rendered using Noto Sans Arabic for optimal readability, while the modern oklch() color space ensures consistent, vibrant hues throughout the interface.
+        The amber and gold palette comes from desert landscapes, set on a dark background with translucent glass cards. Arabic text uses Noto Sans Arabic for legibility, and colours are defined in oklch() so different hues keep the same perceived brightness.
       </p>
 
       <div class="style-guide">
@@ -256,7 +256,7 @@
       </p>
  
       <p class="body-text">
-        Because this is a living project tied to my own language studies, it continues to evolve. Each new lesson with my teacher becomes potential content for the app, keeping both the learning and the development process closely connected.
+        I keep adding to the app as my classes continue. Each new lesson with my teacher can become a new study screen or quiz.
       </p>
     </section>
 
@@ -282,7 +282,7 @@ export default {
     useHead({
       meta: [
         { name: "description", content: "Case study: A personal Egyptian Arabic learning app built around real lessons, interactive study flows, quizzes, and content modeling." },
-        { property: "og:title", content: "Arabiya Language App — Eleni Chasioti" },
+        { property: "og:title", content: "Arabiya Language App · Eleni Chasioti" },
         { property: "og:description", content: "A personal learning tool that turns Arabic lesson material into structured study screens and practice flows." },
       ],
     });
