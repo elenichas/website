@@ -11,7 +11,7 @@ Verified against `elenichas/website` main at `46c1d68` on 9 November 2026. Reche
 - `src/components/GalleryPreview.vue`: pauses videos offscreen, in hidden documents, and under reduced motion. Reuse rather than adding a competing observer.
 - `src/views/uxui/Map3DStudio.vue`: useful template for a project with media, implementation detail, links and English/Greek copy. Use the current neighbouring page if conventions have changed.
 - `src/style.css` also overrides case-study media with a minimum hero height and `object-fit: cover`; for a screen recording, explicitly use a scoped `min-height: 0` and `object-fit: contain` to preserve the complete frame at phone widths.
-- `src/styles/editorial-case-study.css`: case header, hero, metadata, content and shared reading styles. `src/App.vue` applies section reveals and observes `video[data-autoplay]`; omit that marker for a user-controlled full demo.
+- `src/styles/editorial-case-study.css`: case header, hero, metadata, content and shared reading styles. `src/App.vue` applies section reveals and observes `video[data-autoplay]`; use that marker for presentation videos, keeping autoplay muted, looping and free of player controls.
 - `src/components/CaseSnapshot.vue` and `src/caseSnapshots.js`: bilingual “At a glance” summary, keyed by project.
 - `src/components/CaseStudyFooter.vue`: independent ordered list for next-project navigation.
 - `src/i18n.js`: reactive `i18nState.locale`; newer pages use computed English/Greek content. `src/caseStudyTranslations.js` handles older DOM-translated pages. Avoid mixing translated DOM mutation with conflicting reactive text.
@@ -23,4 +23,4 @@ The owner has a main-branch automatic website build/deployment pipeline. There i
 
 ## Paper & Parcel precedent
 
-The first use is documented in `docs/launch-paper-and-parcel.md`. It adds a real local AI demo, makes its fictional records and local-only runtime explicit, and preserves the supplied 78-second recording as a controlled video rather than implying a publicly hosted chatbot.
+The first use is documented in `docs/launch-paper-and-parcel.md`. It adds a real local AI demo, makes its fictional records and local-only runtime explicit, and preserves the supplied 78-second recording as a silent looping presentation rather than implying a publicly hosted chatbot.

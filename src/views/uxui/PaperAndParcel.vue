@@ -4,15 +4,11 @@
     <header class="case-header"><h1 class="case-title">Paper &amp; Parcel</h1></header>
 
     <figure id="walkthrough" class="case-hero">
-      <video ref="demoVideo" class="hero-image" src="/media/paper-and-parcel-demo.mp4"
-        poster="/images/paper-and-parcel/video-poster.jpg" controls playsinline preload="none"
+      <video class="hero-image" src="/media/paper-and-parcel-demo.mp4"
+        poster="/images/paper-and-parcel/video-poster.jpg" data-autoplay autoplay muted loop playsinline preload="metadata"
+        disablepictureinpicture disableremoteplayback tabindex="-1"
         :aria-label="copy.videoLabel" aria-describedby="walkthrough-caption" />
       <figcaption id="walkthrough-caption">{{ copy.videoCaption }}</figcaption>
-      <div class="video-chapters" :aria-label="copy.chaptersLabel" role="group">
-        <button v-for="chapter in copy.chapters" :key="chapter.seconds" type="button" @click="seekTo(chapter.seconds)">
-          <span>{{ chapter.time }}</span> {{ chapter.title }}
-        </button>
-      </div>
     </figure>
 
     <div class="case-info">
@@ -83,25 +79,16 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue';
+import { computed } from 'vue';
 import { useHead } from '@vueuse/head';
 import { i18nState } from '../../i18n';
 import AppNavbar from '../../components/navbar.vue';
 import CaseSnapshot from '../../components/CaseSnapshot.vue';
 import CaseStudyFooter from '../../components/CaseStudyFooter.vue';
 const el = computed(() => i18nState.locale === 'el');
-const demoVideo = ref(null);
-function seekTo(seconds) {
-  const video = demoVideo.value;
-  if (!video) return;
-  // A chapter click is an explicit playback request; the full demo never autoplays.
-  video.currentTime = seconds;
-  video.play().catch(() => {});
-}
 const copy = computed(() => el.value ? {
   videoLabel: 'Paper & Parcel: βίντεο της εφαρμογής, του inspector και του Learning Lab',
   videoCaption: 'Βίντεο χωρίς ήχο · 1:18 · Ερωτήσεις για πωλήσεις, κλήσεις εργαλείων, γραφήματα και Learning Lab.',
-  chaptersLabel: 'Κεφάλαια βίντεο', chapters: [{seconds:0,time:'0:00',title:'Η εφαρμογή'},{seconds:11,time:'0:11',title:'Inspector'},{seconds:45,time:'0:45',title:'Learning Lab'}],
   type: 'Ανεξάρτητο εκπαιδευτικό project', role: 'Σχεδιασμός εμπειρίας & full-stack πρωτότυπο',
   intro: 'Ένας τοπικός AI agent για ένα υποθετικό κατάστημα χαρτικών, με ορατή τη διαδρομή από την ερώτηση μέχρι την απάντηση.',
   sourceLink: 'Κώδικας στο GitHub', guideLink: 'Οδηγός Learning Lab', status: 'Τοπική εφαρμογή με υποθετικά δεδομένα. Ο κώδικας είναι δημόσιος· το μοντέλο τρέχει στον δικό μου Mac.',
@@ -124,7 +111,6 @@ const copy = computed(() => el.value ? {
 } : {
   videoLabel: 'Paper & Parcel walkthrough: shop assistant, tool inspector and Learning Lab',
   videoCaption: 'Silent walkthrough · 1:18 · Business questions, tool calls, charts and the Learning Lab.',
-  chaptersLabel: 'Video chapters',chapters:[{seconds:0,time:'0:00',title:'Shop assistant'},{seconds:11,time:'0:11',title:'Agent inspector'},{seconds:45,time:'0:45',title:'Learning Lab'}],
   type:'Independent learning project',role:'Experience design & full-stack prototyping',
   intro:'A local AI agent for a fictional stationery shop, with a visible path from the question to the answer.',
   sourceLink:'View source on GitHub',guideLink:'Read the Learning Lab guide',status:'A local app with fictional business records. The code is public; the model runs on my Mac.',
@@ -157,14 +143,11 @@ useHead(() => ({meta:[
 <style scoped>
 .parcel-case .case-title { white-space:normal; }
 .parcel-case .case-hero { scroll-margin-top:90px; }
-.parcel-case .hero-image { background:#14161b; aspect-ratio:1632 / 1080; min-height:0; object-fit:contain; }
+.parcel-case .hero-image { background:#14161b; aspect-ratio:1632 / 1080; min-height:0; object-fit:contain; pointer-events:none; }
+.parcel-case video::-webkit-media-controls { display:none !important; }
 figcaption { margin-top:14px; color:var(--color-text-secondary); font-size:.8125rem; line-height:1.6; }
-.video-chapters { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
-.video-chapters button { display:flex; align-items:center; gap:8px; min-height:44px; padding:8px 14px; border:1px solid var(--color-border-strong); border-radius:6px; background:transparent; color:var(--color-text); font:inherit; font-size:.8125rem; cursor:pointer; }
-.video-chapters button span { color:var(--color-text-secondary); font-variant-numeric:tabular-nums; }
-.video-chapters button:hover { background:var(--color-accent-soft); }
-.video-chapters button:focus-visible,.project-links a:focus-visible { outline:2px solid currentColor; outline-offset:4px; }
 .project-links { display:flex; flex-wrap:wrap; gap:12px 24px; margin-top:24px; }
+.project-links a:focus-visible { outline:2px solid currentColor; outline-offset:4px; }
 .project-links a { min-height:44px; display:inline-flex; align-items:center; font-size:.875rem; color:var(--color-text); text-decoration:underline; text-underline-offset:4px; }
 .project-status,.scope-note,.view-detail { font-size:.875rem; line-height:1.7; color:var(--color-text-secondary); }
 .project-status { margin-top:12px; max-width:65ch; }
@@ -191,6 +174,6 @@ figcaption { margin-top:14px; color:var(--color-text-secondary); font-size:.8125
   .case-info { grid-template-columns:1fr; gap:24px; padding:0 20px; margin-bottom:64px; }
   .info-meta { display:grid; grid-template-columns:1fr 1fr; gap:20px; }.info-text { font-size:1.6rem; }
   .showcase-section { margin:64px auto; }.stack-details { grid-template-columns:1fr; gap:24px; }
-  .execution-flow { grid-template-columns:1fr 1fr; }.video-chapters { gap:8px; }.video-chapters button { flex:1 1 auto; justify-content:center; }
+  .execution-flow { grid-template-columns:1fr 1fr; }
 }
 </style>

@@ -84,3 +84,8 @@ Review captures: [phone](review/paper-and-parcel-phone.png), [desktop inspector 
 ## Handoff
 
 The feature branch is pushed and available as draft PR [#24](https://github.com/elenichas/website/pull/24), targeting `main`. Production merge and automatic deployment remain for owner review. The local preview is left running for that review. The reusable skill can be invoked as `$launch-to-website` for the next project.
+
+
+### Video presentation update
+
+At the owner’s request, the full recording now autoplays silently and loops. Native controls, chapter buttons, picture-in-picture and pointer interaction with the video are disabled. The existing visibility observer pauses it offscreen, and reduced-motion preferences retain a static poster. The launch skill records the same presentation preference for future project videos. Earlier chapter/control verification above describes the initial version and is superseded by this update.
