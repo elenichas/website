@@ -65,6 +65,11 @@ export default {
       ],
       // Newest first, every project shown at the same size.
       projects: [
+        project("paper-and-parcel", {
+          title: "Paper & Parcel", route: "/products/paper-and-parcel", meta: "Local AI agent · 2026", tags: ["desktop", "ai"],
+          summary: "A shop assistant with real tools, an execution inspector and a lab for learning how agents work.",
+          preview: "/media/paper-and-parcel-preview.mp4", poster: "/images/paper-and-parcel/video-poster.jpg",
+        }),
         project("plum-pulse", {
           title: "Plum Pulse", route: "/products/plum-pulse", meta: "Fintech concept · 2026", tags: ["mobile", "ai"],
           summary: "A money assistant that explains what changed in your account and waits for your approval before acting.",

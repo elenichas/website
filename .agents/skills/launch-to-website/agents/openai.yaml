@@ -1,0 +1,4 @@
+interface:
+  display_name: "Launch to website"
+  short_description: "Turn a finished project into a portfolio entry"
+  default_prompt: "Use $launch-to-website to add this project and its media to my portfolio on a separate branch, preview it locally, and prepare it for review."
