@@ -11,27 +11,27 @@
               <a :href="cvLink" download>CV</a>
               <router-link to="/book">Book a call</router-link>
               <a href="mailto:eleni.chasioti@gmail.com">Email</a>
-              <button type="button" class="motion-toggle" :aria-pressed="!motionEnabled" @click="motionEnabled = !motionEnabled">
-                {{ motionEnabled ? 'Pause previews' : 'Play previews' }}
-              </button>
             </p>
           </div>
         </section>
 
-        <section id="work" class="work-section" aria-label="Selected work">
-          <div class="grid grid--featured">
-            <project-tile v-for="project in featured" :key="project.slug" :project="project" :motion-enabled="motionEnabled" size="featured" />
+        <div class="toolbar">
+          <div class="filters" role="group" aria-label="Filter projects">
+            <button
+              v-for="filter in filters" :key="filter.id" type="button"
+              :aria-pressed="activeFilter === filter.id" :class="{ selected: activeFilter === filter.id }"
+              @click="activeFilter = filter.id"
+            >
+              {{ filter.label }} <span class="count">{{ countFor(filter.id) }}</span>
+            </button>
           </div>
-          <div class="grid grid--standard">
-            <project-tile v-for="project in more" :key="project.slug" :project="project" :motion-enabled="motionEnabled" />
-          </div>
-        </section>
+          <button type="button" class="motion-toggle" :aria-pressed="!motionEnabled" @click="motionEnabled = !motionEnabled">
+            {{ motionEnabled ? 'Pause previews' : 'Play previews' }}
+          </button>
+        </div>
 
-        <section class="work-section work-section--archive" aria-labelledby="archive-title">
-          <h2 id="archive-title" class="archive-title">Earlier: architecture and computational design, 2019–2022</h2>
-          <div class="grid grid--compact">
-            <project-tile v-for="project in archive" :key="project.slug" :project="project" :motion-enabled="motionEnabled" size="compact" />
-          </div>
+        <section id="work" class="gallery" aria-label="Projects" aria-live="polite">
+          <project-tile v-for="project in visibleProjects" :key="project.slug" :project="project" :motion-enabled="motionEnabled" />
         </section>
       </div>
     </main>
@@ -59,70 +59,86 @@ export default {
     return {
       cvLink: "/cv/Eleni_Chasioti_Design_Engineer.pdf",
       motionEnabled: true,
-      featured: [
+      activeFilter: "all",
+      filters: [
+        { id: "all", label: "All" },
+        { id: "mobile", label: "Mobile" },
+        { id: "desktop", label: "Desktop & 3D" },
+        { id: "ai", label: "AI & fintech" },
+        { id: "architecture", label: "Architecture" },
+      ],
+      // Newest first, every project shown at the same size.
+      projects: [
         project("plum-pulse", {
-          title: "Plum Pulse", route: "/products/plum-pulse", meta: "Fintech concept · 2026",
+          title: "Plum Pulse", route: "/products/plum-pulse", meta: "Fintech concept · 2026", tags: ["mobile", "ai"],
           summary: "A money assistant that explains what changed in your account and waits for your approval before acting.",
         }),
-        project("industrial", {
-          title: "Industrial Facility Configurator", route: "/products/industrial-configurator", meta: "Client project · 2025",
-          summary: "A 3D tool for configuring power plants, with the engineering rules built in.",
-          preview: "/media/industrial-preview.mp4", poster: "/media/industrial-preview.webp", light: true,
-        }),
         project("vinted-bundling", {
-          title: "Vinted Smart Local Bundling", route: "/products/vinted-smart-bundling", meta: "Commerce concept · 2026",
+          title: "Vinted Smart Local Bundling", route: "/products/vinted-smart-bundling", meta: "Commerce concept · 2026", tags: ["mobile"],
           summary: "Shows the real cost of an item, delivery included, before you buy.",
         }),
         project("ai-sandbox", {
-          title: "AI Interface Sandbox", route: "/products/ai-sandbox", meta: "AI prototype · 2026",
+          title: "AI Interface Sandbox", route: "/products/ai-sandbox", meta: "AI prototype · 2026", tags: ["desktop", "ai"],
           summary: "Change what an AI assistant can see and remember, and watch the interface adapt.",
         }),
-      ],
-      more: [
+        project("industrial", {
+          title: "Industrial Facility Configurator", route: "/products/industrial-configurator", meta: "Client project · 2025", tags: ["desktop"],
+          summary: "A 3D tool for configuring power plants, with the engineering rules built in.",
+          preview: "/media/industrial-preview.mp4", poster: "/media/industrial-preview.webp", light: true,
+        }),
         project("coach", {
-          title: "Vintage Coach Catalog", route: "/products/coach-verification-app", meta: "Personal project · 2025",
+          title: "Vintage Coach Catalog", route: "/products/coach-verification-app", meta: "Personal project · 2025", tags: ["desktop"],
           summary: "778 bag styles, 104 colours and a serial-number decoder.",
           preview: "/media/coach-preview.mp4", poster: "/media/coach-preview.webp",
         }),
-        project("map3d", {
-          title: "Map3D Studio", route: "/products/map3d-studio", meta: "Open source",
-          summary: "Pick a site on a map, explore it in 3D and export it.",
-          preview: "/media/map3d-preview.mp4", poster: "/images/map3d/scene-night.webp",
-        }),
         project("moon", {
-          title: "Moon Habitat Configurator", route: "/products/lunar-app", meta: "Team concept · 2025",
+          title: "Moon Habitat Configurator", route: "/products/lunar-app", meta: "Team concept · 2025", tags: ["desktop"],
           summary: "Plan a modular lunar habitat with real design-automation methods.",
           preview: "/media/moon-preview.mp4", poster: "/media/moon-preview.webp",
         }),
+        project("map3d", {
+          title: "Map3D Studio", route: "/products/map3d-studio", meta: "Open source", tags: ["desktop"],
+          summary: "Pick a site on a map, explore it in 3D and export it.",
+          preview: "/media/map3d-preview.mp4", poster: "/images/map3d/scene-night.webp",
+        }),
+        project("arabiya", {
+          title: "Arabiya", route: "/products/language-learning-app", meta: "Personal project · 2024", tags: ["mobile"],
+          summary: "Egyptian Arabic lessons and quizzes, built from my own classes.",
+        }),
         project("filos", {
-          title: "Filos", route: "/products/filos-mobile-app", meta: "Course project · 2023",
+          title: "Filos", route: "/products/filos-mobile-app", meta: "Course project · 2023", tags: ["mobile"],
           summary: "Pairs people with disabilities with volunteers for everyday activities.",
         }),
         project("brew-crumb", {
-          title: "Brew & Crumb", route: "/products/brew-crumb", meta: "Course project · 2023",
+          title: "Brew & Crumb", route: "/products/brew-crumb", meta: "Course project · 2023", tags: ["mobile"],
           summary: "Order ahead and skip the morning queue at a busy café.",
         }),
-        project("arabiya", {
-          title: "Arabiya", route: "/products/language-learning-app", meta: "Personal project · 2024",
-          summary: "Egyptian Arabic lessons and quizzes, built from my own classes.",
-        }),
-      ],
-      archive: [
-        project("cricket", {
-          title: "Cricket WFC Plugin", route: "/products/thesis-project", meta: "MSc thesis, UCL · 2020",
-          summary: "A rule-based tool for generative spatial design.",
-        }),
         project("workshop", {
-          title: "Digital Futures Workshop", route: "/products/workshop-design", meta: "Workshop · 2022",
+          title: "Digital Futures Workshop", route: "/products/workshop-design", meta: "Workshop · 2022", tags: ["architecture"],
           summary: "Voxel housing and robotic fabrication.",
           preview: "/media/workshop-preview.mp4", poster: "/media/workshop-preview.webp", light: true,
         }),
+        project("cricket", {
+          title: "Cricket WFC Plugin", route: "/products/thesis-project", meta: "MSc thesis, UCL · 2020", tags: ["architecture", "desktop"],
+          summary: "A rule-based tool for generative spatial design.",
+        }),
         project("hapi", {
-          title: "Hapi Modular Housing", route: "/products/hapi-project", meta: "Architecture thesis · 2019",
+          title: "Hapi Modular Housing", route: "/products/hapi-project", meta: "Architecture thesis · 2019", tags: ["architecture"],
           summary: "A kit of parts for adaptable housing.",
         }),
       ],
     };
+  },
+  computed: {
+    visibleProjects() {
+      if (this.activeFilter === "all") return this.projects;
+      return this.projects.filter((p) => p.tags.includes(this.activeFilter));
+    },
+  },
+  methods: {
+    countFor(id) {
+      return id === "all" ? this.projects.length : this.projects.filter((p) => p.tags.includes(id)).length;
+    },
   },
 };
 </script>
@@ -131,55 +147,44 @@ export default {
 .playroom { background: var(--visual-bg); color: var(--visual-fg); }
 .work-collection { max-width: 1440px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 56px) 112px; }
 
-/* Intro: one statement and a line of facts, so the work starts in the first screen. */
-.intro { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr); align-items: end; gap: 24px clamp(32px, 6vw, 96px); padding: clamp(32px, 5vw, 64px) 0 clamp(32px, 4vw, 48px); }
-.intro h1 { max-width: 24ch; margin: 0; font-size: clamp(32px, 3.6vw, 52px); font-weight: 500; line-height: 1.08; letter-spacing: -.03em; text-wrap: balance; color: var(--visual-fg); }
+/* Intro: one statement and a line of facts, so the gallery starts in the first screen. */
+.intro { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr); align-items: end; gap: 20px clamp(32px, 6vw, 96px); padding: clamp(28px, 4vw, 48px) 0 clamp(24px, 3vw, 36px); }
+.intro h1 { max-width: 24ch; margin: 0; font-size: clamp(30px, 3.2vw, 46px); font-weight: 500; line-height: 1.08; letter-spacing: -.03em; text-wrap: balance; color: var(--visual-fg); }
 .intro-meta p { margin: 0; max-width: 40ch; font-size: var(--type-md); line-height: 1.5; color: var(--visual-muted); }
-.intro-meta .intro-links { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 20px; margin-top: 14px; }
+.intro-meta .intro-links { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-top: 12px; }
 .intro-links a, .motion-toggle { display: inline-flex; align-items: center; min-height: 32px; padding: 0; border: 0; background: none; font: inherit; font-size: var(--type-sm); color: var(--visual-fg); text-decoration: underline; text-decoration-color: var(--visual-border); text-underline-offset: 5px; cursor: pointer; transition: text-decoration-color 160ms ease; }
 .intro-links a:hover, .motion-toggle:hover { text-decoration-color: currentColor; }
-.motion-toggle { color: var(--visual-muted); }
-.intro-links a:focus-visible, .motion-toggle:focus-visible { outline: 2px solid var(--visual-fg); outline-offset: 3px; }
+.motion-toggle { flex: none; color: var(--visual-muted); }
+:is(.intro-links a, .motion-toggle, .filters button):focus-visible { outline: 2px solid var(--visual-fg); outline-offset: 3px; }
 
-/* Work */
-.work-section { scroll-margin-top: 72px; }
-.grid { display: grid; }
-.grid--featured, .grid--standard { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 56px 28px; }
-.grid--standard { margin-top: 72px; }
-.grid--featured > :first-child { grid-column: 1 / -1; margin-bottom: -12px; }
-.grid--featured > :first-child :deep(.tile-link) { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(260px, 1fr); gap: clamp(24px, 4vw, 64px); align-items: end; }
-.grid--featured > :first-child :deep(.tile-copy) { padding: 0 0 8px; }
-.grid--featured > :first-child :deep(.tile-title) { font-size: clamp(26px, 2.6vw, 36px); line-height: 1.1; }
-.grid--featured > :first-child :deep(.tile-summary) { font-size: var(--type-md); max-width: 36ch; }
+/* Filters */
+.toolbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 28px; }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.filters button { display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 0 14px; border: 1px solid var(--visual-border); border-radius: 999px; background: transparent; color: var(--visual-fg); font: inherit; font-size: var(--type-sm); cursor: pointer; transition: border-color 160ms ease, background-color 160ms ease; }
+.filters button:hover { border-color: var(--visual-fg); }
+.filters button.selected { background: var(--visual-fg); border-color: var(--visual-fg); color: var(--visual-bg); }
+.count { font-family: var(--font-mono); font-size: var(--type-xs); opacity: .7; }
 
-.work-section--archive { padding-top: 120px; }
-.archive-title { margin: 0 0 28px; font-family: var(--font-mono); font-size: var(--type-xs); font-weight: 400; color: var(--visual-muted); }
-.grid--compact { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 40px 24px; }
+/* Gallery: every project at the same size. */
+.gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 48px 24px; scroll-margin-top: 72px; }
 
-@media (max-width: 1024px) {
-  .grid--standard, .grid--compact { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
+@media (max-width: 1100px) { .gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 860px) {
   .intro { grid-template-columns: 1fr; }
-  .grid--featured > :first-child :deep(.tile-link) { grid-template-columns: 1fr; gap: 0; }
-  .grid--featured > :first-child :deep(.tile-copy) { padding: 18px 0 0; }
-  .grid--featured { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .grid--featured > :last-child { grid-column: 1 / -1; }
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 640px) {
   .work-collection { padding-bottom: 72px; }
-  .intro { padding: 28px 0 32px; gap: 16px; }
-  .grid--featured, .grid--standard { grid-template-columns: 1fr; gap: 44px; }
-  .grid--featured > :last-child { grid-column: auto; }
-  .grid--standard { margin-top: 44px; }
-  .work-section--archive { padding-top: 80px; }
-  .grid--compact { grid-template-columns: 1fr; gap: 20px; }
-  .grid--compact :deep(.tile-link) { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 16px; align-items: start; }
-  .grid--compact :deep(.tile-copy) { padding-top: 0; }
+  .intro { padding: 24px 0 28px; gap: 14px; }
+  .toolbar { flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: 24px; }
+  .filters { flex-wrap: nowrap; overflow-x: auto; max-width: 100%; padding-bottom: 4px; scrollbar-width: none; }
+  .filters button { flex: none; }
+  .gallery { grid-template-columns: 1fr; gap: 40px; }
 }
 @media (prefers-reduced-motion: no-preference) {
   .intro > * { animation: arrive 640ms cubic-bezier(.16,1,.3,1) both; }
   .intro > :nth-child(2) { animation-delay: 80ms; }
 }
+@media (prefers-reduced-motion: reduce) { .filters button { transition: none; } }
 @keyframes arrive { from { opacity: .4; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 </style>
