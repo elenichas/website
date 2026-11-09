@@ -89,7 +89,7 @@ export default {
           summary: "Change what an AI assistant can see and remember, and watch the interface adapt.",
         }),
         project("industrial", {
-          title: "Industrial Facility Configurator", route: "/products/industrial-configurator", meta: "Client project · 2025", tags: ["desktop"],
+          title: "Industrial Facility Configurator", route: "/products/industrial-configurator", meta: "Professional work · 2025", tags: ["desktop"],
           summary: "A 3D tool for configuring power plants, with the engineering rules built in.",
           preview: "/media/industrial-preview.mp4", poster: "/media/industrial-preview.webp", light: true,
         }),
