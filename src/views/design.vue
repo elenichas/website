@@ -99,7 +99,7 @@ export default {
           preview: "/media/coach-preview.mp4", poster: "/media/coach-preview.webp",
         }),
         project("moon", {
-          title: "Moon Habitat Configurator", route: "/products/lunar-app", meta: "Team concept · 2025", tags: ["desktop"],
+          title: "Moon Habitat Configurator", route: "/products/lunar-app", meta: "Professional work · 2025", tags: ["desktop"],
           summary: "Plan a modular lunar habitat with real design-automation methods.",
           preview: "/media/moon-preview.mp4", poster: "/media/moon-preview.webp",
         }),
