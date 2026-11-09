@@ -6,7 +6,7 @@
         <section class="intro" aria-labelledby="intro-title">
           <h1 id="intro-title">I design and build interfaces for complex work.</h1>
           <div class="intro-meta">
-            <p>Product designer &amp; UX engineer in London. Now at Foster + Partners, before that Bryden Wood.</p>
+            <p>Product designer &amp; UX engineer in London.</p>
             <p class="intro-links">
               <a :href="cvLink" download>CV</a>
               <router-link to="/book">Book a call</router-link>
