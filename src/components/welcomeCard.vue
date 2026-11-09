@@ -9,7 +9,7 @@
 
       <div class="cta-buttons">
         <a :href="cvLink" download class="btn-primary">
-          {{ $t("common.downloadResume") }}
+          {{ $t("common.downloadCV") }}
           <span class="icon-glyph" aria-hidden="true">↓</span>
         </a>
         <a href="mailto:eleni.chasioti@gmail.com" class="btn-secondary">

@@ -12,7 +12,7 @@
             <p class="page-subtitle">{{ $t("about.subtitle") }}</p>
             <div class="hero-actions">
               <a :href="cvLink" download class="btn-primary cv-download">
-                {{ $t("common.downloadResume") }}
+                {{ $t("common.downloadCV") }}
                 <span class="icon-glyph" aria-hidden="true">↓</span>
               </a>
               <a href="mailto:eleni.chasioti@gmail.com" class="btn-secondary">

@@ -137,7 +137,7 @@
                 <span class="icon-glyph" aria-hidden="true">→</span>
               </a>
               <a href="/cv/EleniChasiotiCV2026.pdf" class="btn-secondary">
-                Download resume
+                Download CV
                 <span class="icon-glyph" aria-hidden="true">↓</span>
               </a>
               <router-link to="/" class="btn-ghost">Explore projects</router-link>
