@@ -44,7 +44,7 @@ const messages = {
       exploreProjects: "Explore projects",
       viewCaseStudy: "View case study",
       portfolio: "Portfolio",
-      nextProject: "Next Project",
+      nextProject: "Next project",
       allRightsReserved: "All rights reserved.",
     },
     footer: {

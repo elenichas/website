@@ -3,6 +3,7 @@
     <div class="next-project-inner">
       <span class="next-label">{{ $t("common.nextProject") }}</span>
       <router-link :to="route" class="next-link">
+        <span class="next-fill" aria-hidden="true"></span>
         <div class="next-info">
           <h3 class="next-title">{{ title }}</h3>
           <p class="next-type">{{ type }}</p>
@@ -45,119 +46,100 @@ export default {
   padding: 0 var(--space-8) var(--space-12);
 }
 
-.next-project-inner {
-  padding-top: var(--space-12);
- 
-}
+.next-project-inner { padding-top: var(--space-12); }
 
 .next-label {
-  font-size: 0.6875rem;
-  text-transform: uppercase;
-  letter-spacing: 0;
-  color: var(--color-text-muted);
-  font-weight: var(--weight-semibold);
   display: block;
-  margin-bottom: var(--space-4);
+  margin: 0 0 14px 28px;
+  font-size: var(--type-sm, 14px);
+  color: var(--color-text-muted);
 }
 
+/* Pill link. On hover a circle grows from the arrow to fill the pill; it is
+   blended with "difference", so the text flips black/white like the nav pill. */
 .next-link {
+  position: relative;
+  isolation: isolate;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  text-decoration: none;
-  color: inherit;
-  padding: var(--space-5) var(--space-6);
-  border-radius: var(--radius-sm);
+  gap: 16px;
+  min-height: 76px;
+  padding: 8px 8px 8px 28px;
   border: 1px solid var(--color-border-strong);
-  transition:
-    border-color var(--duration-normal) var(--ease-out),
-    transform var(--duration-normal) var(--ease-out);
+  border-radius: 999px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  text-decoration: none;
 }
 
-.next-link:hover {
-  border-color: var(--color-text);
-  transform: translateX(4px);
+.next-link:focus-visible { outline: 2px solid var(--color-text); outline-offset: 4px; }
+
+.next-fill {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  bottom: 8px;
+  z-index: 1;
+  width: 60px;
+  border-radius: 999px;
+  background: #fff;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  transition: width 560ms cubic-bezier(.65, 0, .35, 1), top 560ms cubic-bezier(.65, 0, .35, 1), bottom 560ms cubic-bezier(.65, 0, .35, 1), right 560ms cubic-bezier(.65, 0, .35, 1);
 }
 
-.next-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+.next-link:is(:hover, :focus-visible) .next-fill {
+  top: -1px;
+  right: -1px;
+  bottom: -1px;
+  width: calc(100% + 2px);
 }
+
+.next-info { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 
 .next-title {
-  font-size: 1.25rem;
-  font-weight: var(--weight-semibold);
-  color: var(--color-text);
   margin: 0;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: inherit;
 }
 
-.next-type {
-  font-size: 0.75rem;
-  color: var(--color-text-muted);
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 0;
-  font-weight: var(--weight-medium);
-}
+.next-type { margin: 0; font-size: 0.8125rem; color: var(--color-text-muted); }
 
 .next-arrow {
-  color: var(--color-text-muted);
-  transition: transform var(--duration-normal) var(--ease-out), color var(--duration-normal) var(--ease-out);
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  color: var(--color-text);
+  transition: transform 560ms cubic-bezier(.65, 0, .35, 1);
 }
 
-.next-link:hover .next-arrow {
-  color: var(--color-text);
-  transform: translateX(4px);
+.next-link:is(:hover, :focus-visible) .next-arrow { transform: translateX(-6px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .next-fill, .next-arrow { transition: none; }
 }
 
 @media (max-width: 768px) {
-  .next-project {
-    padding: 0 var(--space-5) var(--space-8);
-    margin-top: var(--space-12);
-  }
-
-  .next-project-inner {
-    padding-top: var(--space-8);
-  }
-
-  .next-link {
-    padding: var(--space-4) var(--space-5);
-  }
-
-  .next-title {
-    font-size: 1.125rem;
-  }
+  .next-project { padding: 0 var(--space-5) var(--space-8); margin-top: var(--space-12); }
+  .next-project-inner { padding-top: var(--space-8); }
+  .next-title { font-size: 1.125rem; }
 }
 
 @media (max-width: 480px) {
-  .next-project {
-    padding: 0 var(--space-4) var(--space-6);
-    margin-top: var(--space-8);
-  }
-
-  .next-project-inner {
-    padding-top: var(--space-6);
-  }
-
-  .next-link {
-    padding: var(--space-4);
-    border-radius: var(--radius-sm);
-  }
-
-  .next-title {
-    font-size: 1rem;
-  }
-
-  .next-type {
-    font-size: 0.625rem;
-  }
-
-  .next-arrow svg {
-    width: 20px;
-    height: 20px;
-  }
+  .next-project { padding: 0 var(--space-4) var(--space-6); margin-top: var(--space-8); }
+  .next-project-inner { padding-top: var(--space-6); }
+  .next-link { min-height: 64px; padding-left: 22px; }
+  .next-label { margin-left: 22px; }
+  .next-fill { width: 48px; }
+  .next-arrow { width: 48px; height: 48px; }
+  .next-title { font-size: 1rem; }
+  .next-arrow svg { width: 20px; height: 20px; }
 }
 </style>
