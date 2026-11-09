@@ -63,8 +63,8 @@ export default {
 .tile-recording-light { background: #fff; }
 .coach-showcase { position: relative; aspect-ratio: 16 / 11; overflow: hidden; border-radius: 8px; background: radial-gradient(ellipse at 50% 25%, #f3ece1, #c7b7a2); isolation: isolate; }
 .coach-screen { position: absolute; display: block; width: 35%; height: auto; border: 3px solid #29241f; border-radius: 12px; box-shadow: 0 14px 28px #34261935; }
-.coach-screen-left { left: 3%; top: 16%; transform: rotate(-9deg); }
-.coach-screen-right { right: 3%; top: 13%; transform: rotate(9deg); }
+.coach-screen-left { left: 3%; top: 16%; }
+.coach-screen-right { right: 3%; top: 13%; }
 .coach-screen-main { z-index: 1; width: 38%; left: 31%; top: 5%; }
 
 .tile-copy { padding-top: 14px; }
