@@ -88,8 +88,8 @@
           A walkthrough of the app experience, from searching and filtering to viewing product details and decoding serial numbers in real time.
         </p>
       </div>
-      <div class="video-phone-container">
-        <video preload="metadata" :src="appRecording" data-autoplay muted loop playsinline class="video-phone"></video>
+      <div class="phone-crop">
+        <video preload="metadata" :src="appRecording" data-autoplay muted loop playsinline aria-label="Screen recording of the catalog app on a phone"></video>
       </div>
     </section>
 
@@ -226,26 +226,29 @@ export default {
   align-items: center;
 }
 
-.live-demo-section .video-phone-container {
-  flex: 1 1 0;
-  width: 100%;
-  max-width: min(52rem, 100%);
-  padding: 0 !important;
-  background: transparent !important;
-  border: 0 !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  overflow: visible;
+/* The recording is 1276x996 with the phone screen at x 426-854, y 20-950.
+   Crop to that region so it reads as a phone. */
+.phone-crop {
+  position: relative;
+  flex: none;
+  width: min(clamp(240px, 24vw, 340px), 36vh);
+  aspect-ratio: 428 / 930;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 6px solid #1c1c1b;
+  border-radius: 28px;
+  background: #fff;
+  box-shadow: 0 24px 48px rgb(0 0 0 / .28);
 }
 
-.live-demo-section .video-phone {
-  width: 100% !important;
-  height: auto !important;
-  max-height: min(78vh, 48rem);
-  object-fit: contain;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  background: transparent !important;
+.phone-crop video {
+  position: absolute;
+  left: -99.53%;   /* 426 / 428 */
+  top: -2.15%;     /* 20 / 930 */
+  width: 298.13%;  /* 1276 / 428 */
+  max-width: none;
+  height: auto;
+  display: block;
 }
 
 /* ===== SHOWCASE SECTIONS ===== */
@@ -380,13 +383,6 @@ export default {
     align-items: stretch;
   }
 
-  .live-demo-section .video-phone-container {
-    max-width: 100%;
-  }
-
-  .live-demo-section .video-phone {
-    max-height: 72vh;
-  }
 }
 
 @media (max-width: 768px) {
@@ -547,24 +543,9 @@ export default {
     max-height: 420px;
   }
 
-  .live-demo-section .video-phone-container {
-    align-items: center;
-    justify-content: center;
-    width: min(72vw, 260px);
-    max-width: 260px;
-    aspect-ratio: 9 / 18;
-    margin: 0 auto;
-    overflow: hidden;
-    border-radius: var(--radius-sm);
-    box-shadow: var(--shadow-md);
-  }
-
-  .live-demo-section .video-phone {
-    width: 100% !important;
-    height: 100% !important;
-    max-height: none;
-    object-fit: cover;
-    object-position: center;
+  .phone-crop {
+    width: min(68vw, 260px);
+    border-radius: 24px;
   }
 }
 
