@@ -4,6 +4,7 @@ import "./style.css";
 // Lazy-loaded route components (code-split per page)
 const Craft = () => import("./views/design.vue");
 const PaperAndParcel = () => import("./views/uxui/PaperAndParcel.vue");
+const AdventuresOfSimba = () => import("./views/uxui/AdventuresOfSimba.vue");
 const AISandbox = () => import("./views/playground/AISandbox.vue");
 const VintedSmartBundling = () => import("./views/playground/VintedSmartBundling.vue");
 const PlumPulse = () => import("./views/playground/PlumPulse.vue");
@@ -27,6 +28,7 @@ const Map3DStudio = () => import("./views/uxui/Map3DStudio.vue");
 const routes = [
   { path: "/work", redirect: "/" },
   { path: "/products/paper-and-parcel", name: "Paper & Parcel", component: PaperAndParcel },
+  { path: "/products/adventures-of-simba", name: "The Adventures of Simba", component: AdventuresOfSimba },
   { path: "/products/map3d-studio", name: "Map3D Studio", component: Map3DStudio },
   {
     name: "Home",
@@ -185,6 +187,7 @@ const PAGE_TITLES = {
   "/about": "About",
   "/book": "Book a call",
   "/products/paper-and-parcel": "Paper & Parcel",
+  "/products/adventures-of-simba": "The Adventures of Simba",
   "/products/plum-pulse": "Plum Pulse",
   "/products/ai-sandbox": "AI Interface Sandbox",
   "/products/vinted-smart-bundling": "Vinted Smart Local Bundling",

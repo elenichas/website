@@ -1,6 +1,20 @@
 // "At a glance" summaries for product case studies. Every statement is drawn
 // from the case study's own content; keep them in sync when a page changes.
 export default {
+  simba: {
+    en: {
+      problem: "Could a small Game Boy Color game turn my cat's everyday habits into a readable, playful world?",
+      role: "Concept, game design, narrative and visual direction, with Codex assisting implementation.",
+      did: "Built an editable GB Studio game with a photo-inspired cat and flat, platforming, collectible rewards, needs, family interactions and short quests.",
+      outcome: "A compiled Game Boy Color ROM and a recorded browser playtest. A personal prototype, not a permanently hosted game.",
+    },
+    el: {
+      problem: "Μπορεί ένα μικρό παιχνίδι Game Boy Color να μετατρέψει τις καθημερινές συνήθειες του γάτου μου σε έναν ευανάγνωστο, παιχνιδιάρικο κόσμο;",
+      role: "Ιδέα, σχεδιασμός παιχνιδιού, ιστορία και οπτική κατεύθυνση, με βοήθεια του Codex στην υλοποίηση.",
+      did: "Δημιούργησα επεξεργάσιμο project GB Studio με τον γάτο και το σπίτι μας, πλατφόρμες, συλλεκτικά, ανάγκες, αλληλεπιδράσεις και μικρές αποστολές.",
+      outcome: "Ένα λειτουργικό ROM για Game Boy Color και μια καταγεγραμμένη δοκιμή στο browser. Προσωπικό πρωτότυπο, όχι μόνιμα διαθέσιμο online παιχνίδι.",
+    },
+  },
   paperAndParcel: {
     en: {
       problem: "Course sandboxes made it easy to follow exercises, but I wanted to connect an agent to a complete web app and see how it actually worked.",

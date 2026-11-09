@@ -4,7 +4,7 @@
     <main id="main" class="playroom">
       <div class="work-collection">
         <section class="intro" aria-labelledby="intro-title">
-          <h1 id="intro-title">I design and build interfaces for complex work.</h1>
+          <h1 id="intro-title">I design and build for work, life, and play.</h1>
           <div class="intro-meta">
             <p>Product designer &amp; UX engineer in London.</p>
             <p class="intro-links">
@@ -18,7 +18,7 @@
         <div class="toolbar">
           <div class="filters" role="group" aria-label="Filter projects">
             <button
-              v-for="filter in filters" :key="filter.id" type="button"
+              v-for="filter in sortedFilters" :key="filter.id" type="button"
               :aria-pressed="activeFilter === filter.id" :class="{ selected: activeFilter === filter.id }"
               @click="activeFilter = filter.id"
             >
@@ -58,6 +58,7 @@ export default {
       activeFilter: "all",
       filters: [
         { id: "all", label: "All" },
+        { id: "gaming", label: "Gaming" },
         { id: "mobile", label: "Mobile" },
         { id: "desktop", label: "Desktop & 3D" },
         { id: "ai", label: "AI & fintech" },
@@ -65,6 +66,11 @@ export default {
       ],
       // Newest first, every project shown at the same size.
       projects: [
+        project("simba", {
+          title: "Modretro App Design", route: "/products/adventures-of-simba", meta: "Personal game · 2026", tags: ["desktop", "gaming"],
+          summary: "A Game Boy Color adventure about my cat, his flat and his ideal day.",
+          preview: "/media/simba-demo.webm", poster: "/images/simba/poster.jpg",
+        }),
         project("paper-and-parcel", {
           title: "Paper & Parcel", route: "/products/paper-and-parcel", meta: "Local AI agent · 2026", tags: ["desktop", "ai"],
           summary: "A shop assistant with real tools, an execution inspector and a lab for learning how agents work.",
@@ -83,7 +89,7 @@ export default {
           summary: "Change what an AI assistant can see and remember, and watch the interface adapt.",
         }),
         project("industrial", {
-          title: "Industrial Facility Configurator", route: "/products/industrial-configurator", meta: "Client project · 2025", tags: ["desktop"],
+          title: "Industrial Facility Configurator", route: "/products/industrial-configurator", meta: "Professional work · 2025", tags: ["desktop"],
           summary: "A 3D tool for configuring power plants, with the engineering rules built in.",
           preview: "/media/industrial-preview.mp4", poster: "/media/industrial-preview.webp", light: true,
         }),
@@ -93,7 +99,7 @@ export default {
           preview: "/media/coach-preview.mp4", poster: "/media/coach-preview.webp",
         }),
         project("moon", {
-          title: "Moon Habitat Configurator", route: "/products/lunar-app", meta: "Team concept · 2025", tags: ["desktop"],
+          title: "Moon Habitat Configurator", route: "/products/lunar-app", meta: "Professional work · 2025", tags: ["desktop"],
           summary: "Plan a modular lunar habitat with real design-automation methods.",
           preview: "/media/moon-preview.mp4", poster: "/media/moon-preview.webp",
         }),
@@ -131,6 +137,9 @@ export default {
     };
   },
   computed: {
+    sortedFilters() {
+      return [...this.filters].sort((a, b) => this.countFor(b.id) - this.countFor(a.id));
+    },
     visibleProjects() {
       if (this.activeFilter === "all") return this.projects;
       return this.projects.filter((p) => p.tags.includes(this.activeFilter));
