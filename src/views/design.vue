@@ -25,13 +25,10 @@
               {{ filter.label }} <span class="count">{{ countFor(filter.id) }}</span>
             </button>
           </div>
-          <button type="button" class="motion-toggle" :aria-pressed="!motionEnabled" @click="motionEnabled = !motionEnabled">
-            {{ motionEnabled ? 'Pause previews' : 'Play previews' }}
-          </button>
         </div>
 
         <section id="work" class="gallery" aria-label="Projects" aria-live="polite">
-          <project-tile v-for="project in visibleProjects" :key="project.slug" :project="project" :motion-enabled="motionEnabled" />
+          <project-tile v-for="project in visibleProjects" :key="project.slug" :project="project" />
         </section>
       </div>
     </main>
@@ -58,7 +55,6 @@ export default {
   data() {
     return {
       cvLink: "/cv/Eleni_Chasioti_Design_Engineer.pdf",
-      motionEnabled: true,
       activeFilter: "all",
       filters: [
         { id: "all", label: "All" },
@@ -152,10 +148,9 @@ export default {
 .intro h1 { max-width: 24ch; margin: 0; font-size: clamp(30px, 3.2vw, 46px); font-weight: 500; line-height: 1.08; letter-spacing: -.03em; text-wrap: balance; color: var(--visual-fg); }
 .intro-meta p { margin: 0; max-width: 40ch; font-size: var(--type-md); line-height: 1.5; color: var(--visual-muted); }
 .intro-meta .intro-links { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-top: 12px; }
-.intro-links a, .motion-toggle { display: inline-flex; align-items: center; min-height: 32px; padding: 0; border: 0; background: none; font: inherit; font-size: var(--type-sm); color: var(--visual-fg); text-decoration: underline; text-decoration-color: var(--visual-border); text-underline-offset: 5px; cursor: pointer; transition: text-decoration-color 160ms ease; }
-.intro-links a:hover, .motion-toggle:hover { text-decoration-color: currentColor; }
-.motion-toggle { flex: none; color: var(--visual-muted); }
-:is(.intro-links a, .motion-toggle, .filters button):focus-visible { outline: 2px solid var(--visual-fg); outline-offset: 3px; }
+.intro-links a { display: inline-flex; align-items: center; min-height: 32px; padding: 0; border: 0; background: none; font: inherit; font-size: var(--type-sm); color: var(--visual-fg); text-decoration: underline; text-decoration-color: var(--visual-border); text-underline-offset: 5px; cursor: pointer; transition: text-decoration-color 160ms ease; }
+.intro-links a:hover { text-decoration-color: currentColor; }
+:is(.intro-links a, .filters button):focus-visible { outline: 2px solid var(--visual-fg); outline-offset: 3px; }
 
 /* Filters */
 .toolbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 28px; }
