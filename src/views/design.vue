@@ -174,7 +174,11 @@ export default {
   .toolbar { flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: 24px; }
   .filters { flex-wrap: nowrap; overflow-x: auto; max-width: 100%; padding-bottom: 4px; scrollbar-width: none; }
   .filters button { flex: none; }
-  .gallery { grid-template-columns: 1fr; gap: 40px; }
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 12px; }
+  .gallery :deep(.tile-copy) { padding-top: 10px; }
+  .gallery :deep(.tile-title) { font-size: var(--type-sm); line-height: 1.3; }
+  .gallery :deep(.tile-arrow) { display: none; }
+  .gallery :deep(.tile-meta) { margin-top: 4px; }
 }
 @media (prefers-reduced-motion: no-preference) {
   .intro > * { animation: arrive 640ms cubic-bezier(.16,1,.3,1) both; }
