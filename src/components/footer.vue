@@ -37,7 +37,6 @@
           </div>
         </div>
       </div>
-      <div v-if="$route.path !== '/'" class="footer-signature" aria-hidden="true">Eleni Chasioti</div>
     </div>
   </footer>
 </template>

@@ -73,7 +73,6 @@ body { background:var(--visual-bg); color:var(--visual-fg); }
 #app .footer .footer-actions .btn-primary:hover { background:transparent; color:var(--visual-fg); }
 #app .footer .footer-actions .social-link:hover { border-color:var(--visual-fg); }
 #app .footer .footer-actions { gap:28px; }
-#app .footer-signature { color:var(--visual-fg); font-size:clamp(42px,8vw,96px); letter-spacing:-.04em; font-weight:450; line-height:1.1; padding:64px 0 32px; margin-top:56px; border-top:1px solid var(--visual-border); }
 #app .portfolio-theme { --portfolio-header:var(--visual-bg); --portfolio-header-ink:var(--visual-fg); --portfolio-ink:var(--visual-fg); --workshop-ink:var(--visual-fg); --workshop-lilac:var(--visual-surface); --workshop-lime:var(--visual-surface); }
 #app .portfolio-gallery .tags li { background:transparent; color:var(--visual-muted); border:1px solid var(--visual-border); border-radius:0; }
 #app .project-preview :is(.tile-recording,.tile-visual,.coach-showcase,.project-motion) { border-radius:0; }
@@ -111,7 +110,7 @@ body { background:var(--visual-bg); color:var(--visual-fg); }
 #app .case-nav a { background:var(--visual-surface); color:var(--visual-fg); border-color:var(--visual-border); }
 #app .case-nav a:hover { background:var(--color-accent-soft); color:var(--visual-fg); }
 #app .pulse-page .hero-foot,#app .case-nav { border-color:var(--visual-border); }
-@media(max-width:760px) { #app .navbar-container { height:72px; padding-inline:22px; } #app .brand-name { font-size:15px; } #app .modern-navbar > .navbar-container > .language-switcher { display:none; } #app .footer-content { grid-template-columns:1fr; gap:40px; } #app .footer-container { padding:48px 22px 0; } #app .footer-signature { padding-block:36px 28px; margin-top:32px; } }
+@media(max-width:760px) { #app .navbar-container { height:72px; padding-inline:22px; } #app .brand-name { font-size:15px; } #app .modern-navbar > .navbar-container > .language-switcher { display:none; } #app .footer-content { grid-template-columns:1fr; gap:40px; } #app .footer-container { padding:48px 22px 0; } }
 /* Override the previous colour-picker theme at the shared shell boundary. */
 #app .portfolio-theme .modern-navbar .language-option { background:transparent; color:var(--visual-muted); }
 #app .portfolio-theme .modern-navbar .language-option.active { background:var(--visual-fg); color:var(--visual-bg); }
@@ -151,7 +150,7 @@ html,body,#app { background:var(--visual-bg); }
 :root[data-visual-theme="dark"] #app .pulse-case .allowed { color:#8dd9b5; }
 :root[data-visual-theme="dark"] #app .pulse-case .approval-tag { color:#e8ca8c; }
 #app .portfolio-theme .footer { background:var(--visual-bg); color:var(--visual-fg); border-color:var(--visual-border); }
-#app .portfolio-theme .footer :is(.social-link,.cta-title,.footer-signature) { color:var(--visual-fg); }
+#app .portfolio-theme .footer :is(.social-link,.cta-title) { color:var(--visual-fg); }
 /* Light recordings sit on a full white panel so every preview reads as the same-size card. */
 #app .portfolio-gallery .tile-recording-light { background:#fff; box-shadow:inset 0 0 0 1px var(--visual-border); }
 #app :is(.skill-radar,.education-strip) { background:var(--visual-surface); border-color:var(--visual-border); }
