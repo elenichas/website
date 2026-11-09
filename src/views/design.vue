@@ -58,6 +58,7 @@ export default {
       activeFilter: "all",
       filters: [
         { id: "all", label: "All" },
+        { id: "gaming", label: "Gaming" },
         { id: "mobile", label: "Mobile" },
         { id: "desktop", label: "Desktop & 3D" },
         { id: "ai", label: "AI & fintech" },
@@ -66,7 +67,7 @@ export default {
       // Newest first, every project shown at the same size.
       projects: [
         project("simba", {
-          title: "Modretro App Design", route: "/products/adventures-of-simba", meta: "Personal game · 2026", tags: ["desktop"],
+          title: "Modretro App Design", route: "/products/adventures-of-simba", meta: "Personal game · 2026", tags: ["gaming"],
           summary: "A Game Boy Color adventure about my cat, his flat and his ideal day.",
           preview: "/media/simba-demo.webm", poster: "/images/simba/poster.jpg",
         }),
