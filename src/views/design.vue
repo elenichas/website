@@ -145,7 +145,7 @@ export default {
 
 /* Intro: one statement and a line of facts, so the gallery starts in the first screen. */
 .intro { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr); align-items: end; gap: 20px clamp(32px, 6vw, 96px); padding: clamp(28px, 4vw, 48px) 0 clamp(24px, 3vw, 36px); }
-.intro h1 { max-width: 24ch; margin: 0; font-size: clamp(30px, 3.2vw, 46px); font-weight: 500; line-height: 1.08; letter-spacing: -.03em; text-wrap: balance; color: var(--visual-fg); }
+.intro h1 { max-width: 24ch; margin: 0; font-family: var(--font-display); font-size: clamp(40px, 4.6vw, 68px); font-weight: 600; font-variation-settings: 'opsz' 96; line-height: 1; letter-spacing: -.035em; text-wrap: balance; color: var(--visual-fg); }
 .intro-meta p { margin: 0; max-width: 40ch; font-size: var(--type-md); line-height: 1.5; color: var(--visual-muted); }
 .intro-meta .intro-links { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-top: 12px; }
 .intro-links a { display: inline-flex; align-items: center; min-height: 32px; padding: 0; border: 0; background: none; font: inherit; font-size: var(--type-sm); color: var(--visual-fg); text-decoration: underline; text-decoration-color: var(--visual-border); text-underline-offset: 5px; cursor: pointer; transition: text-decoration-color 160ms ease; }
@@ -158,7 +158,7 @@ export default {
 .filters button { display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 0 14px; border: 1px solid var(--visual-border); border-radius: 999px; background: transparent; color: var(--visual-fg); font: inherit; font-size: var(--type-sm); cursor: pointer; transition: border-color 160ms ease, background-color 160ms ease; }
 .filters button:hover { border-color: var(--visual-fg); }
 .filters button.selected { background: var(--visual-fg); border-color: var(--visual-fg); color: var(--visual-bg); }
-.count { font-family: var(--font-mono); font-size: var(--type-xs); opacity: .7; }
+.count { font-size: var(--type-xs); opacity: .7; }
 
 /* Gallery: every project at the same size. */
 .gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 36px 24px; scroll-margin-top: 72px; }

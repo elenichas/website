@@ -49,11 +49,16 @@ body { background:var(--visual-bg); color:var(--visual-fg); }
 #app { min-height:100vh; }
 #app .modern-navbar { background:var(--visual-bg); border-bottom:0; backdrop-filter:none; }
 #app .navbar-container { max-width:none; padding-inline:4%; height:88px; }
-#app .brand-name { color:var(--visual-fg); font-size:17px; font-weight:500; letter-spacing:-.03em; }
-#app .nav-link { color:var(--visual-muted); font-size:var(--type-sm); padding-block:12px; }
-#app .nav-link:is(:hover,.active) { color:var(--visual-fg); }
-#app .nav-link.active::after { background:var(--visual-fg); height:1px; }
-#app .desktop-nav { gap:36px; }
+#app .brand-name { color:var(--visual-fg); }
+#app .nav-link { color:var(--visual-muted); font-size:15px; font-weight:500; letter-spacing:0; text-transform:none; padding:9px 18px; border-radius:999px; transition:color 200ms ease, background-color 200ms ease; }
+#app .nav-link:hover { color:var(--visual-fg); background:var(--visual-surface); }
+#app .nav-link.active { color:var(--visual-fg); background:transparent; }
+#app .nav-link.active::after { display:none; }
+#app .desktop-nav { position:relative; gap:4px; }
+/* One white pill blended with "difference": it reads as a white pill with dark
+   text on the dark theme and a black pill with light text on the light theme. */
+#app .nav-pill { position:absolute; top:0; left:0; z-index:1; height:100%; border-radius:999px; background:#fff; mix-blend-mode:difference; pointer-events:none; opacity:0; }
+#app .nav-pill.ready { opacity:1; }
 #app .language-switcher { background:transparent; border:1px solid var(--visual-border); padding:0; border-radius:0; }
 #app .language-option { border-radius:0; background:transparent; color:var(--visual-muted); min-width:36px; min-height:36px; font-size:12px; }
 #app .language-option.active { background:var(--visual-fg); color:var(--visual-bg); }
@@ -157,3 +162,8 @@ html,body,#app { background:var(--visual-bg); }
 #app :is(.skill-radar h3,.education-strip h3,.skill-cluster h4,.education-item h4) { color:var(--visual-fg); }
 #app :is(.skill-cluster p,.education-item p,.timeline-highlight) { color:var(--visual-muted); }
 #app .skill-radar .skill-cluster:nth-child(n) .skill-chips span { background:var(--visual-bg); color:var(--visual-muted); border:1px solid var(--visual-border); }
+
+/* Display type for page titles; body text stays in the reading face. */
+#app h1 { font-family:var(--font-display); font-variation-settings:'opsz' 96; letter-spacing:-.03em; }
+#app .brand-name { font-family:var(--font-display); font-size:21px; color:var(--visual-fg); font-weight:700; letter-spacing:-.03em; font-variation-settings:'opsz' 48; }
+.page-wipe { position:fixed; inset:0; z-index:1000; background:var(--visual-fg); pointer-events:all; }

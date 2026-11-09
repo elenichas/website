@@ -1,5 +1,5 @@
 <template>
-  <header class="modern-navbar">
+  <header class="modern-navbar" @click.capture="interceptNav">
     <div class="navbar-container">
       <!-- Logo/Brand -->
       <div class="brand">
@@ -9,7 +9,8 @@
       </div>
 
       <!-- Desktop Navigation -->
-      <nav class="desktop-nav">
+      <nav ref="desktopNav" class="desktop-nav">
+        <span ref="pill" class="nav-pill" aria-hidden="true"></span>
         <router-link to="/" class="nav-link" active-class="active">
           {{ $i18n.locale === 'el' ? 'Αρχική' : 'Home' }}
         </router-link>
@@ -88,6 +89,7 @@
 
 <script>
 import { visualThemeState, setVisualTheme } from "../visualTheme";
+import { navigateWithTransition, placePill, isTransitioning } from "../navTransition";
 export default {
   name: "Navbar",
   data() {
@@ -98,7 +100,33 @@ export default {
   computed: {
     visualTheme() { return visualThemeState.mode; },
   },
+  watch: {
+    "$i18n.locale"() { this.$nextTick(() => this.updatePill()); },
+  },
+  mounted() {
+    // Start the slide as the page wipe lifts, so it is visible.
+    this.updatePill(isTransitioning() ? 220 : 0);
+    document.fonts?.ready.then(() => this.updatePill());
+    window.addEventListener("resize", this.updatePill);
+  },
+  beforeUnmount() {
+    window.removeEventListener("resize", this.updatePill);
+  },
   methods: {
+    updatePill(delay = 0) {
+      const active = this.$refs.desktopNav?.querySelector(".nav-link.active");
+      placePill(this.$refs.pill, active, { delay: typeof delay === "number" ? delay : 0 });
+    },
+    interceptNav(event) {
+      const link = event.target.closest("a");
+      if (!link || event.defaultPrevented || event.button !== 0) return;
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const href = link.getAttribute("href");
+      if (!href || !href.startsWith("/") || href === this.$route.path) return;
+      event.preventDefault();
+      this.closeMobileMenu();
+      navigateWithTransition(this.$router, href, link);
+    },
     toggleVisualTheme() {
       setVisualTheme(this.visualTheme === 'dark' ? 'light' : 'dark');
     },
