@@ -24,17 +24,12 @@
       </gallery-preview>
 
       <div class="tile-copy">
-        <p v-if="project.kicker" class="tile-kicker">{{ project.kicker }}</p>
         <h3 class="tile-title">
           <span>{{ project.title }}</span>
           <span class="tile-arrow" aria-hidden="true">→</span>
         </h3>
         <p class="tile-summary">{{ project.summary }}</p>
-        <dl v-if="size !== 'compact'" class="tile-meta">
-          <div><dt>Role</dt><dd>{{ project.role }}</dd></div>
-          <div><dt>Context</dt><dd>{{ project.context }}</dd></div>
-        </dl>
-        <p v-else class="tile-compact-meta">{{ project.context }}</p>
+        <p v-if="project.meta" class="tile-meta">{{ project.meta }}</p>
       </div>
     </router-link>
   </article>
@@ -71,19 +66,13 @@ export default {
 .coach-screen-right { right: 3%; top: 13%; transform: rotate(9deg); }
 .coach-screen-main { z-index: 1; width: 38%; left: 31%; top: 5%; }
 
-.tile-copy { padding-top: 20px; }
-.tile-kicker { margin: 0 0 8px; font-size: var(--type-xs); letter-spacing: .08em; text-transform: uppercase; color: var(--visual-muted); }
-.tile-title { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin: 0; font-size: var(--type-lg); font-weight: 500; line-height: 1.3; letter-spacing: -.02em; color: var(--visual-fg); }
+.tile-copy { padding-top: 18px; }
+.tile-title { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin: 0; font-size: var(--type-lg); font-weight: 500; line-height: 1.25; letter-spacing: -.015em; color: var(--visual-fg); }
 .tile-arrow { flex: none; transform: translateX(-4px); opacity: .45; transition: transform 200ms ease, opacity 200ms ease; }
 .tile-link:is(:hover, :focus-visible) .tile-arrow { transform: none; opacity: 1; }
-.tile-summary { margin: 10px 0 0; font-size: var(--type-sm); line-height: 1.6; color: var(--visual-muted); max-width: 60ch; }
-.tile-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0 0; }
-.tile-meta dt { font-size: var(--type-xs); letter-spacing: .08em; text-transform: uppercase; color: var(--visual-muted); }
-.tile-meta dd { margin: 4px 0 0; font-size: var(--type-sm); line-height: 1.45; color: var(--visual-fg); }
-.tile-compact-meta { margin: 8px 0 0; font-size: var(--type-xs); color: var(--visual-muted); }
+.tile-summary { margin: 8px 0 0; font-size: var(--type-sm); line-height: 1.55; color: var(--visual-muted); max-width: 52ch; }
+.tile-meta { margin: 12px 0 0; font-family: var(--font-mono); font-size: var(--type-xs); color: var(--visual-muted); }
 
-.project-tile--featured .tile-title { font-size: var(--type-xl); }
-.project-tile--featured .tile-summary { font-size: var(--type-md); }
 .project-tile--compact .tile-title { font-size: var(--type-md); }
 
 @media (prefers-reduced-motion: reduce) {

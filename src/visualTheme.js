@@ -11,7 +11,8 @@ export function setVisualTheme(mode, persist = true) {
 }
 
 export function initVisualTheme() {
-  let mode = 'dark';
+  // Follow the visitor's system setting unless they picked a theme here.
+  let mode = window.matchMedia?.('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
   try { mode = localStorage.getItem('visual-theme') || mode; } catch { /* Use the default. */ }
   setVisualTheme(mode, false);
 }

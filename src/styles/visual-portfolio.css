@@ -50,7 +50,7 @@ body { background:var(--visual-bg); color:var(--visual-fg); }
 #app .modern-navbar { background:var(--visual-bg); border-bottom:0; backdrop-filter:none; }
 #app .navbar-container { max-width:none; padding-inline:4%; height:88px; }
 #app .brand-name { color:var(--visual-fg); font-size:17px; font-weight:500; letter-spacing:-.03em; }
-#app .nav-link { color:var(--visual-muted); font-size:12px; text-transform:uppercase; letter-spacing:.14em; padding-block:12px; }
+#app .nav-link { color:var(--visual-muted); font-size:var(--type-sm); padding-block:12px; }
 #app .nav-link:is(:hover,.active) { color:var(--visual-fg); }
 #app .nav-link.active::after { background:var(--visual-fg); height:1px; }
 #app .desktop-nav { gap:36px; }
