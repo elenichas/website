@@ -67,7 +67,7 @@ export default {
       // Newest first, every project shown at the same size.
       projects: [
         project("simba", {
-          title: "Modretro App Design", route: "/products/adventures-of-simba", meta: "Personal game · 2026", tags: ["gaming"],
+          title: "Modretro App Design", route: "/products/adventures-of-simba", meta: "Personal game · 2026", tags: ["desktop", "gaming"],
           summary: "A Game Boy Color adventure about my cat, his flat and his ideal day.",
           preview: "/media/simba-demo.webm", poster: "/images/simba/poster.jpg",
         }),
