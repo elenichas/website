@@ -6,7 +6,7 @@ Prepared on 9 November 2026, on `codex/paper-and-parcel-project`.
 
 Add one independent learning project to the existing portfolio, including the supplied recording. Keep the current visual system, bilingual support and main-branch deployment pipeline. Prepare and push a review branch; do not merge or deploy to production during this task.
 
-The destination baseline is `elenichas/website` main at `46c1d68`. The source is `elenichas/paper-and-parcel` at `c179c82`. No source-project files, runtime logs, model downloads or Python environments are copied into the website.
+The destination baseline is `elenichas/website` main at `46c1d68`. The source is `elenichas/paper-and-parcel` at `c179c82`. No source-project application code, runtime logs, model downloads or Python environments are copied into the website; only the reviewed presentation assets are reused.
 
 ## Evidence and content decisions
 
@@ -83,4 +83,4 @@ Review captures: [phone](review/paper-and-parcel-phone.png), [desktop inspector 
 
 ## Handoff
 
-The feature branch is prepared for a draft pull request targeting `main`. Production merge and automatic deployment remain for owner review. The local preview is left running for that review. The reusable skill can be invoked as `$launch-to-website` for the next project.
+The feature branch is pushed and available as draft PR [#24](https://github.com/elenichas/website/pull/24), targeting `main`. Production merge and automatic deployment remain for owner review. The local preview is left running for that review. The reusable skill can be invoked as `$launch-to-website` for the next project.
