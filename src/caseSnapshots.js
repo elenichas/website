@@ -3,13 +3,13 @@
 export default {
   simba: {
     en: {
-      problem: "Could a small Game Boy Color game turn my cat's everyday habits into a readable, playful world?",
+      problem: "Could I turn my cat's daily routine into a Game Boy Color game that reads clearly on a 160 × 144 pixel screen?",
       role: "Concept, game design, narrative and visual direction, with Codex assisting implementation.",
       did: "Built an editable GB Studio game with a photo-inspired cat and flat, platforming, collectible rewards, needs, family interactions and short quests.",
       outcome: "A compiled Game Boy Color ROM and a recorded browser playtest. A personal prototype, not a permanently hosted game.",
     },
     el: {
-      problem: "Μπορεί ένα μικρό παιχνίδι Game Boy Color να μετατρέψει τις καθημερινές συνήθειες του γάτου μου σε έναν ευανάγνωστο, παιχνιδιάρικο κόσμο;",
+      problem: "Μπορώ να μετατρέψω την καθημερινότητα του γάτου μου σε ένα παιχνίδι Game Boy Color που διαβάζεται καθαρά σε οθόνη 160 × 144 pixel;",
       role: "Ιδέα, σχεδιασμός παιχνιδιού, ιστορία και οπτική κατεύθυνση, με βοήθεια του Codex στην υλοποίηση.",
       did: "Δημιούργησα επεξεργάσιμο project GB Studio με τον γάτο και το σπίτι μας, πλατφόρμες, συλλεκτικά, ανάγκες, αλληλεπιδράσεις και μικρές αποστολές.",
       outcome: "Ένα λειτουργικό ROM για Game Boy Color και μια καταγεγραμμένη δοκιμή στο browser. Προσωπικό πρωτότυπο, όχι μόνιμα διαθέσιμο online παιχνίδι.",

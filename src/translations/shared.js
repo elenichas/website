@@ -143,6 +143,8 @@ export default {
   "Earlier work · Fabrication": "Παλαιότερη δουλειά · Κατασκευή",
   "Earlier work · Computational tool": "Παλαιότερη δουλειά · Υπολογιστικό εργαλείο",
   "Earlier work · Architecture": "Παλαιότερη δουλειά · Αρχιτεκτονική",
+  "Personal game · Game Boy Color": "Προσωπικό παιχνίδι · Game Boy Color",
+  "Local AI · Agent workflows": "Τοπικό AI · Ροές agent",
 
   // Image carousel (MediaCarousel.vue)
   "Previous image": "Προηγούμενη εικόνα",

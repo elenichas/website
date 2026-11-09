@@ -1,7 +1,16 @@
 // Greek for the home page (src/views/design.vue). Keys must match the
 // rendered English text exactly; see caseStudyTranslations.js.
 export default {
-  "I design and build interfaces for complex work.": "Σχεδιάζω και υλοποιώ διεπαφές για σύνθετες εργασίες.",
+  "I design and build for work, life, and play.": "Σχεδιάζω και φτιάχνω για τη δουλειά, τη ζωή και το παιχνίδι.",
+  "Gaming": "Παιχνίδια",
+  "Modretro App Design": "Modretro App Design",
+  "Personal game · 2026": "Προσωπικό παιχνίδι · 2026",
+  "A Game Boy Color adventure about my cat, his flat and his ideal day.":
+    "Μια περιπέτεια Game Boy Color για τον γάτο μου, το σπίτι του και την ιδανική του μέρα.",
+  "Local AI agent · 2026": "Τοπικός agent AI · 2026",
+  "A shop assistant with real tools, an execution inspector and a lab for learning how agents work.":
+    "Ένας βοηθός καταστήματος με πραγματικά εργαλεία, έναν επιθεωρητή εκτέλεσης και ένα εργαστήριο για να μάθετε πώς δουλεύουν οι agents.",
+  "Professional work · 2025": "Επαγγελματική δουλειά · 2025",
   "Product designer & UX engineer in London.": "Product designer & UX engineer στο Λονδίνο.",
   "CV": "Βιογραφικό",
   "Book a call": "Κλείστε μια κλήση",
