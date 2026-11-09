@@ -166,7 +166,7 @@ export default {
 .count { font-family: var(--font-mono); font-size: var(--type-xs); opacity: .7; }
 
 /* Gallery: every project at the same size. */
-.gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 48px 24px; scroll-margin-top: 72px; }
+.gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 36px 24px; scroll-margin-top: 72px; }
 
 @media (max-width: 1100px) { .gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 860px) {

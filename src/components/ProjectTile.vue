@@ -28,7 +28,6 @@
           <span>{{ project.title }}</span>
           <span class="tile-arrow" aria-hidden="true">→</span>
         </h3>
-        <p class="tile-summary">{{ project.summary }}</p>
         <p v-if="project.meta" class="tile-meta">{{ project.meta }}</p>
       </div>
     </router-link>
@@ -66,12 +65,11 @@ export default {
 .coach-screen-right { right: 3%; top: 13%; transform: rotate(9deg); }
 .coach-screen-main { z-index: 1; width: 38%; left: 31%; top: 5%; }
 
-.tile-copy { padding-top: 18px; }
+.tile-copy { padding-top: 14px; }
 .tile-title { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin: 0; font-size: var(--type-md); font-weight: 500; line-height: 1.25; letter-spacing: -.015em; color: var(--visual-fg); }
 .tile-arrow { flex: none; transform: translateX(-4px); opacity: .45; transition: transform 200ms ease, opacity 200ms ease; }
 .tile-link:is(:hover, :focus-visible) .tile-arrow { transform: none; opacity: 1; }
-.tile-summary { margin: 8px 0 0; font-size: var(--type-sm); line-height: 1.55; color: var(--visual-muted); max-width: 52ch; }
-.tile-meta { margin: 12px 0 0; font-family: var(--font-mono); font-size: var(--type-xs); color: var(--visual-muted); }
+.tile-meta { margin: 6px 0 0; font-family: var(--font-mono); font-size: var(--type-xs); color: var(--visual-muted); }
 
 
 @media (prefers-reduced-motion: reduce) {
