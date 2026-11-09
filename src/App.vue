@@ -6,15 +6,20 @@
 // Greek case-study copy is only needed once someone switches to Greek, so it
 // is loaded on demand instead of shipping in the main bundle.
 let caseStudyTranslations = null;
-async function translateCaseStudy(page, path, locale) {
+let currentLocale = "en";
+async function translatePage(root, path, locale) {
+  currentLocale = locale;
   if (locale !== "el" && !caseStudyTranslations) return;
   caseStudyTranslations ||= await import("./caseStudyTranslations");
-  if (page.isConnected) caseStudyTranslations.translateCaseStudy(page, path, locale);
+  if (!root.isConnected) return;
+  caseStudyTranslations.translateCaseStudy(root, path, locale);
+  caseStudyTranslations.watchPage(root, () => window.location.pathname, () => currentLocale);
 }
 import "./styles/studio-theme.css";
 import "./styles/visual-portfolio.css";
 import "./styles/project-showcase.css";
 import { initVisualTheme } from "./visualTheme";
+import { updateDocumentTitle } from "./router";
 
 export default {
   name: "App",
@@ -60,6 +65,7 @@ export default {
       this.forceTopScroll();
     },
     "$i18n.locale"() {
+      updateDocumentTitle();
       this.$nextTick(() => {
         this.prepareEditorialSections();
       });
@@ -99,10 +105,10 @@ export default {
         this.caseStudyObserver.disconnect();
       }
 
+      translatePage(document.getElementById("app") || document.body, window.location.pathname, this.$i18n.locale);
+
       const page = document.querySelector(".case-study");
       if (!page) return;
-
-      translateCaseStudy(page, window.location.pathname, this.$i18n.locale);
 
       const prefersReducedMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)"

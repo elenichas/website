@@ -73,7 +73,7 @@
           <text x="478" y="365" class="caption">Confirming when it resumes</text>
           <rect x="478" y="430" width="408" height="117" rx="8" fill="#f6f2f8" />
           <text x="498" y="478" class="title">Your schedule is unchanged.</text>
-          <text x="498" y="516" class="small">You’ll review the details first.</text>
+          <text x="498" y="516" class="small">You'll review the details first.</text>
         </g>
         <g class="scene scene-b">
           <text x="478" y="239" class="title">Skip one payment?</text>

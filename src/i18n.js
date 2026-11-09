@@ -14,7 +14,7 @@ export const supportedLocales = {
 const messages = {
   en: {
     booking: {
-      title: "Let’s find a time.",
+      title: "Let's find a time.",
       intro: "Have a project in mind, an opportunity to share, or an idea to discuss? Choose an available time below.",
       calendarTitle: "Book a meeting with Eleni Chasioti",
       direct: "Open booking calendar in a new tab",
@@ -28,7 +28,7 @@ const messages = {
       craft: "Home",
       playground: "Playground",
       about: "About",
-      letsTalk: "Let's Talk",
+      letsTalk: "Let's talk",
       languageLabel: "Language",
       switchToEnglish: "Switch to English",
       switchToGreek: "Switch to Greek",
@@ -37,10 +37,10 @@ const messages = {
     },
     common: {
       bookCall: "Book a call",
-      viewProject: "View Project",
+      viewProject: "View project",
       viewOnGithub: "View on GitHub",
       downloadCV: "Download CV",
-      getInTouch: "Get in Touch",
+      getInTouch: "Get in touch",
       exploreProjects: "Explore projects",
       viewCaseStudy: "View case study",
       portfolio: "Portfolio",
@@ -49,7 +49,7 @@ const messages = {
     },
     footer: {
       title: "Let's connect",
-      text: "I'd love to discuss ideas, share insights, or explore future opportunities.",
+      text: "Have a role or a project in mind? Book a call or send me an email.",
       madeWith: "Made with Vue.js and lots of espresso",
     },
     home: {
@@ -57,10 +57,10 @@ const messages = {
       marquee: ["PRODUCT ENGINEERING", "UX SYSTEMS", "SPATIAL COMPUTING", "FRONT-END DEVELOPMENT"],
       work: "WORK",
       selectedWork: "Selected work",
-      featuredProjects: "Featured Projects",
+      featuredProjects: "Featured projects",
       featuredProjectsLabel: "Featured projects",
       capabilitiesLabel: "Capabilities",
-      technicalStack: "Technical Stack",
+      technicalStack: "Technical stack",
       roleTitles: ["Product Engineer", "Product Designer", "Front-end Developer"],
       description:
         "From 3D configurators to mobile apps, I design and build complex digital products at the intersection of spatial computing and user experience. From concept to code, I bridge the gap between user needs and technical solutions.",
@@ -235,12 +235,12 @@ const messages = {
       subtitle: "Product designer and UX engineer turning complex workflows into clear interfaces, with a growing focus on fintech.",
       profile: "Profile",
       profileHeading: "Human interfaces for complex systems.",
-      journeyTitle: "The Journey",
+      journeyTitle: "The journey",
       journeyText:
-        "I started in architecture, designing spaces and thinking about how people interact with environments. The transition to digital products felt natural. Both require understanding user needs, creating intuitive flows, and bringing complex systems to life. The tools changed, but the problem-solving mindset remained.",
-      nowTitle: "What I Do Now",
+        "I trained and worked as an architect, designing hospitality projects and studying how people move through buildings. At Bryden Wood I moved into software, building web configurators that turned architectural rules into tools engineers could use. From architecture I kept the habit of starting with how people will actually use something, then designing the system around that.",
+      nowTitle: "What I do now",
       nowText:
-        "As an Associate Design Systems Analyst at Foster + Partners, I work at the intersection of design and engineering, creating tools and systems that help creative teams do their best work. From design systems to full web applications, I design and build solutions that make complex workflows feel effortless.",
+        "I'm an Associate Design Systems Analyst at Foster + Partners. I design and build internal tools, marketing platforms and full-stack web apps for the firm's design teams, maintain the React design-system components, and run user research and usability tests to decide what to build next.",
       conferenceTitle: "UXDX USA 2025",
       conferenceText:
         "Last year, I attended UXDX USA 2025 in New York, an incredible conference bringing together designers, developers, and product managers. It was inspiring to connect with industry leaders, explore emerging trends in product development, and share ideas about the future of design systems and collaborative workflows.",
@@ -399,7 +399,7 @@ const messages = {
     },
     footer: {
       title: "Ας μιλήσουμε",
-      text: "Θα χαρώ να συζητήσουμε ιδέες, να ανταλλάξουμε σκέψεις ή να δούμε πιθανές συνεργασίες.",
+      text: "Έχετε μια θέση εργασίας ή ένα project στο μυαλό σας; Κλείστε μια κλήση ή στείλτε μου email.",
       madeWith: "Φτιαγμένο με Vue.js και πολλούς espresso",
     },
     home: {
@@ -584,21 +584,21 @@ const messages = {
       eyebrow: "Σχετικά",
       subtitle: "Product designer και UX engineer που μετατρέπει σύνθετες ροές εργασίας σε κατανοητά interfaces, με αυξανόμενη έμφαση στο fintech.",
       profile: "Προφίλ",
-      profileHeading: "Human interfaces for complex systems.",
+      profileHeading: "Ανθρώπινες διεπαφές για σύνθετα συστήματα.",
       journeyTitle: "Η διαδρομή",
       journeyText:
-        "Ξεκίνησα από την αρχιτεκτονική, σχεδιάζοντας χώρους και παρατηρώντας πώς οι άνθρωποι κινούνται και αποφασίζουν μέσα σε ένα περιβάλλον. Η μετάβαση στα digital products ήρθε φυσικά: και εκεί χρειάζεται να καταλάβεις τις ανάγκες των χρηστών, να χτίσεις καθαρές ροές και να κάνεις σύνθετα συστήματα πιο κατανοητά. Τα εργαλεία άλλαξαν, αλλά ο τρόπος σκέψης έμεινε ο ίδιος.",
+        "Σπούδασα και δούλεψα ως αρχιτέκτονας, σχεδιάζοντας ξενοδοχειακά έργα και μελετώντας πώς κινούνται οι άνθρωποι μέσα στα κτίρια. Στη Bryden Wood πέρασα στο software, φτιάχνοντας web configurators που μετέτρεπαν αρχιτεκτονικούς κανόνες σε εργαλεία για μηχανικούς. Από την αρχιτεκτονική κράτησα τη συνήθεια να ξεκινάω από το πώς θα χρησιμοποιηθεί κάτι στην πράξη και μετά να σχεδιάζω το σύστημα γύρω από αυτό.",
       nowTitle: "Τι κάνω τώρα",
       nowText:
-        "Ως Associate Design Systems Analyst στη Foster + Partners, δουλεύω ανάμεσα σε design και engineering, δημιουργώντας εργαλεία και συστήματα για creative teams. Από design systems μέχρι full web applications, σχεδιάζω και υλοποιώ λύσεις που κάνουν απαιτητικές ροές εργασίας πιο καθαρές και εύχρηστες.",
+        "Είμαι Associate Design Systems Analyst στη Foster + Partners. Σχεδιάζω και υλοποιώ εσωτερικά εργαλεία, πλατφόρμες marketing και full-stack web εφαρμογές για τις ομάδες σχεδιασμού του γραφείου, συντηρώ τα React components του design system και κάνω έρευνα χρηστών και usability tests για να αποφασίσουμε τι θα φτιάξουμε στη συνέχεια.",
       conferenceTitle: "UXDX USA 2025",
       conferenceText:
         "Πέρυσι συμμετείχα στο UXDX USA 2025 στη Νέα Υόρκη, ένα συνέδριο που φέρνει κοντά designers, developers και product managers. Ήταν πολύτιμο να γνωρίσω ανθρώπους του χώρου, να δω από κοντά νέες κατευθύνσεις στο product development και να συζητήσω για το μέλλον των design systems και της συνεργατικής δουλειάς.",
-      fieldNotes: "Moments",
+      fieldNotes: "Στιγμές",
       galleryAlt: "Συνέδριο UXDX",
       experience: {
-        eyebrow: "Experience map",
-        skillsTitle: "Core toolkit",
+        eyebrow: "Επαγγελματική διαδρομή",
+        skillsTitle: "Βασικά εργαλεία",
         educationTitle: "Εκπαίδευση",
         timeline: [
           {
@@ -662,38 +662,38 @@ const messages = {
             items: ["React", "Next.js", "Vue.js", "TypeScript", "JavaScript", "Tailwind CSS", "Material UI"],
           },
           {
-            title: "Product & interaction",
-            items: ["Figma", "User research", "Interaction design", "Code prototyping", "Usability testing", "AI-enabled workflows"],
+            title: "Προϊόν & αλληλεπίδραση",
+            items: ["Figma", "Έρευνα χρηστών", "Interaction design", "Πρωτότυπα σε κώδικα", "Usability testing", "Ροές εργασίας με AI"],
           },
           {
-            title: "Systems",
-            items: ["Design systems", "Component libraries", "Design tokens", "Style guides", "Accessibility"],
+            title: "Συστήματα",
+            items: ["Design systems", "Βιβλιοθήκες components", "Design tokens", "Style guides", "Προσβασιμότητα"],
           },
           {
-            title: "Computational",
-            items: ["Three.js", "3D interfaces", "Grasshopper", "Rhino", "Python", "Algorithmic design"],
+            title: "Υπολογιστικός σχεδιασμός",
+            items: ["Three.js", "3D διεπαφές", "Grasshopper", "Rhino", "Python", "Αλγοριθμικός σχεδιασμός"],
           },
           {
             title: "Data & APIs",
-            items: ["REST", "GraphQL", "Node.js", "Schema design", "Neon"],
+            items: ["REST", "GraphQL", "Node.js", "Σχεδιασμός σχημάτων δεδομένων", "Neon"],
           },
           {
-            title: "Testing & delivery",
-            items: ["Vitest", "Git", "Azure", "CI/CD", "Agile", "End-to-end product ownership"],
+            title: "Testing & παράδοση",
+            items: ["Vitest", "Git", "Azure", "CI/CD", "Agile", "Πλήρης ευθύνη προϊόντος"],
           },
         ],
         education: [
           {
             year: "2019 - 2020",
-            degree: "MSc Architectural Computation",
+            degree: "MSc Architectural Computation (Μεταπτυχιακό)",
             school: "The Bartlett School of Architecture, UCL",
-            grade: "Distinction",
+            grade: "Άριστα",
           },
           {
             year: "2013 - 2019",
-            degree: "Master of Architecture",
-            school: "Aristotle University of Thessaloniki",
-            grade: "Distinction",
+            degree: "Δίπλωμα Αρχιτέκτονα Μηχανικού",
+            school: "Αριστοτέλειο Πανεπιστήμιο Θεσσαλονίκης",
+            grade: "Άριστα",
           },
         ],
       },

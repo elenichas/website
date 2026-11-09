@@ -51,6 +51,8 @@ There are currently no configured npm scripts for tests, linting, formatting, or
 - `src/components/`: reusable Vue components.
 - `src/views/`: top-level pages and portfolio case-study pages.
 - `src/plugins/vuetify.js`: Vuetify plugin setup, though `src/main.js` currently creates Vuetify inline.
+- `src/i18n.js`: English and Greek strings for shared UI (navigation, footer, About, Booking).
+- `src/caseStudyTranslations.js` and `src/translations/`: Greek for page text, keyed by the exact rendered English. `App.vue` applies it to every page and re-applies it as prototypes change. When you change English copy on a page, update the matching key here too, or that text stays English on the Greek site.
 - `src/style.css`: global application styles.
 - `src/styles/case-study-common.css`: shared case-study styles.
 - `public/`: static files copied as-is, including `index.html`, fonts, CV, and video assets.

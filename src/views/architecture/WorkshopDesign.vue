@@ -67,11 +67,9 @@
       <p class="section-label">Innovation</p>
       <h2 class="section-heading">Robotic fabrication techniques</h2>
       <p class="body-text">
-        Robotic fabrication techniques were explored for constructing these complex geometries. Modular components were analyzed into rulings for fabrication with hotwire cutting techniques. The modular approach enabled flexible and scalable housing solutions adaptable to various urban contexts.
+        We tested robotic fabrication methods for building these geometries. The modular components were broken down into ruled surfaces so they could be fabricated by hot-wire cutting, and the same set of parts could be repeated on different urban sites.
       </p>
-      <p class="body-text">
-        Shortest path and density studies ensured functional and livable environments with optimal circulation, demonstrating how computational design can address real-world spatial challenges.
-      </p>
+      
     </section>
 
         <!-- Video -->

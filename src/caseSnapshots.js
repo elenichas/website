@@ -73,7 +73,7 @@ export default {
   },
   filos: {
     en: {
-      problem: "People with disabilities face barriers to joining everyday activities, and volunteers often don’t know what respectful support looks like.",
+      problem: "People with disabilities face barriers to joining everyday activities, and volunteers often don't know what respectful support looks like.",
       role: "UX/UI designer on a one-month course project (2023).",
       did: "Ran early feedback sessions with a special-needs teacher and her students, then defined scenarios, design priorities and a mobile prototype covering access needs, matching and safety.",
       outcome: "A prototype of the full journey, from choosing an activity to agreeing a plan, with a defined research boundary and next phase.",
@@ -115,7 +115,7 @@ export default {
   },
   aiSandbox: {
     en: {
-      problem: "AI assistants behave differently depending on input type, file access and memory, but interfaces rarely show those boundaries, so people can’t tell what the assistant can see or change.",
+      problem: "AI assistants behave differently depending on input type, file access and memory, but interfaces rarely show those boundaries, so people can't tell what the assistant can see or change.",
       role: "Interaction design and front-end build. Independent prototype, 2026.",
       did: "Built a simulated launch-review assistant where input type, access, memory and proactivity can be changed one at a time to see how the interface adapts.",
       outcome: "A working local simulation, with no model calls, showing patterns such as visible evidence, approval before any write, and memory people can inspect and remove.",

@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import "./style.css";
+import { i18nState } from "./i18n";
 
 // Lazy-loaded route components (code-split per page)
 const Craft = () => import("./views/design.vue");
@@ -15,7 +16,6 @@ const ThesisProject = () => import(/* webpackChunkName: "thesis" */ "./views/arc
 const WorkshopDesign = () => import(/* webpackChunkName: "workshop" */ "./views/architecture/WorkshopDesign.vue");
 const FilosMobileApp = () => import(/* webpackChunkName: "filos" */ "./views/uxui/FilosMobileApp.vue");
 const LocalBakeryApp = () => import(/* webpackChunkName: "bakery" */ "./views/uxui/LocalBakeryApp.vue");
-const ModularApp = () => import(/* webpackChunkName: "modular" */ "./views/uxui/ModularApp.vue");
 const MoonPixelApp = () => import(/* webpackChunkName: "moon" */ "./views/uxui/MoonPixelApp.vue");
 const IndustrialConfigurator = () => import(/* webpackChunkName: "industrial" */ "./views/uxui/IndustrialConfigurator.vue");
 const LanguageLearningApp = () => import(/* webpackChunkName: "language" */ "./views/uxui/LanguageLearningApp.vue");
@@ -105,7 +105,7 @@ const routes = [
   },
   {
     path: "/products/modular-app",
-    component: ModularApp,
+    redirect: "/products/brew-crumb",
   },
   {
     path: "/products/lunar-app",
@@ -146,7 +146,7 @@ const routes = [
   },
     {
     path: "/uxui/modular-app",
-    redirect: "/products/modular-app",
+    redirect: "/products/brew-crumb",
   },
   {
     path: "/uxui/lunar-app",
@@ -177,11 +177,14 @@ const router = createRouter({
 });
 
 // One title format for every page: "<Page> · Eleni Chasioti".
-const SITE = "Eleni Chasioti";
-const HOME_TITLE = `${SITE} · Product designer & UX engineer`;
+const SITE = { en: "Eleni Chasioti", el: "Ελένη Χασιώτη" };
+const HOME_TITLE = {
+  en: `${SITE.en} · Product designer & UX engineer`,
+  el: `${SITE.el} · Product designer & UX engineer`,
+};
 const PAGE_TITLES = {
-  "/about": "About",
-  "/book": "Book a call",
+  "/about": { en: "About", el: "Σχετικά" },
+  "/book": { en: "Book a call", el: "Κλείστε μια κλήση" },
   "/products/plum-pulse": "Plum Pulse",
   "/products/ai-sandbox": "AI Interface Sandbox",
   "/products/vinted-smart-bundling": "Vinted Smart Local Bundling",
@@ -192,20 +195,26 @@ const PAGE_TITLES = {
   "/products/language-learning-app": "Arabiya Language App",
   "/products/filos-mobile-app": "Filos Inclusive Activity App",
   "/products/brew-crumb": "Brew & Crumb",
-  "/products/modular-app": "Modular App",
   "/products/hapi-project": "Hapi Modular Housing",
   "/products/thesis-project": "Cricket WFC Plugin",
   "/products/workshop-design": "Digital Futures Workshop",
   "/hidden/design-system": "Design System",
 };
+const NOT_FOUND_TITLE = { en: "Page not found", el: "Η σελίδα δεν βρέθηκε" };
 
-router.afterEach((to) => {
-  if (to.path === "/") {
-    document.title = HOME_TITLE;
+export function updateDocumentTitle(route = router.currentRoute.value) {
+  const locale = i18nState.locale === "el" ? "el" : "en";
+  if (route.path === "/") {
+    document.title = HOME_TITLE[locale];
     return;
   }
-  const page = PAGE_TITLES[to.path] || (to.matched.some((r) => r.name === "NotFound" || r.path.includes("pathMatch")) ? "Page not found" : null);
-  document.title = page ? `${page} · ${SITE}` : HOME_TITLE;
-});
+  const entry =
+    PAGE_TITLES[route.path] ||
+    (route.matched.some((r) => r.name === "NotFound" || r.path.includes("pathMatch")) ? NOT_FOUND_TITLE : null);
+  const page = typeof entry === "string" ? entry : entry?.[locale];
+  document.title = page ? `${page} · ${SITE[locale]}` : HOME_TITLE[locale];
+}
+
+router.afterEach((to) => updateDocumentTitle(to));
 
 export default router;

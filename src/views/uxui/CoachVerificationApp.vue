@@ -41,10 +41,10 @@
       <p class="section-label">Challenge</p>
       <h2 class="section-heading">Scattered knowledge, hard-to-check authenticity</h2>
       <p class="body-text">
-        Vintage Coach collectors and resellers rely on fragmented information spread across forums, social media groups, and personal knowledge. Authentication is hard. Serial number formats changed across three distinct eras, and understanding what a legitimate serial looks like for a specific bag requires cross-referencing multiple data points that didn&rsquo;t exist in one place.
+        Vintage Coach collectors and resellers rely on fragmented information spread across forums, social media groups, and personal knowledge. Authentication is hard. Serial number formats changed across three distinct eras, and understanding what a legitimate serial looks like for a specific bag requires cross-referencing multiple data points that didn't exist in one place.
       </p>
       <p class="section-label" style="margin-top: 2.5rem;">Solution</p>
-      <h2 class="section-heading">A comprehensive digital catalog and authentication tool</h2>
+      <h2 class="section-heading">A searchable catalog with a serial-number decoder</h2>
       <p class="body-text">
         I built a web application that structures publicly available catalog data into a searchable, filterable reference with detailed product pages, a color encyclopedia, and an interactive serial number decoder. The app is currently private, with plans to share it publicly.
       </p>
@@ -69,7 +69,7 @@
     <section class="tablet-section">
       <div class="tablet-text">
         <p class="section-label">Responsive</p>
-        <h2 class="section-heading">Designed for any device</h2>
+        <h2 class="section-heading">Phone at the flea market, laptop at home</h2>
         <p class="body-text">
           The interface adapts from mobile through tablet to desktop. Collectors can reference the catalog at flea markets on their phone or browse the full collection at home on a larger screen.
         </p>
@@ -83,7 +83,7 @@
     <section class="showcase-section live-demo-section">
       <div class="showcase-text">
         <p class="section-label">Live Demo</p>
-        <h2 class="section-heading">Browsing the catalog in action</h2>
+        <h2 class="section-heading">Searching, filtering and decoding</h2>
         <p class="body-text">
           A walkthrough of the app experience, from searching and filtering to viewing product details and decoding serial numbers in real time.
         </p>
@@ -130,7 +130,7 @@
       <p class="section-label">Reflection</p>
       <h2 class="section-heading">Turning research into a usable product</h2>
       <p class="body-text">
-        This project sits at the intersection of my interests in sustainability, fashion, and data. The biggest challenge was turning scraped and publicly available reference material into a structured dataset that could support useful interactions. Designing the decoder taught me how to present complex, multi-format parsing logic in a way that feels simple while remaining transparent about what the system checks and why.
+        This project combines three things I care about: sustainability, fashion and data. The biggest challenge was turning scraped and publicly available reference material into a structured dataset that could support useful interactions. Designing the decoder taught me how to present complex, multi-format parsing logic in a way that feels simple while remaining transparent about what the system checks and why.
       </p>
     </section>
 
@@ -156,7 +156,7 @@ export default {
     useHead({
       meta: [
         { name: "description", content: "Case study: A personal data product cataloging 778 vintage Coach styles with search, filtering, color organization, and serial number decoding." },
-        { property: "og:title", content: "Vintage Coach Catalog — Eleni Chasioti" },
+        { property: "og:title", content: "Vintage Coach Catalog · Eleni Chasioti" },
         { property: "og:description", content: "A searchable vintage Coach reference and authentication research tool built from structured catalog data." },
       ],
     });
