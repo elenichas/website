@@ -1,2528 +1,1690 @@
 <template>
   <app-navbar />
-
-  <main class="vinted-case">
-    <section class="vinted-hero">
-      <div class="hero-story">
-        <router-link class="back-link" to="/">
-          <ArrowLeft :size="15" />
-          All projects
-        </router-link>
-        <p class="project-label">Independent speculative prototype</p>
-        <h1>Smart Local Bundling for Vinted</h1>
-        <p class="hero-copy">
-          A marketplace prototype that shows what a pre-loved find really costs, with item price, delivery, distance and bundle savings side by side before you buy.
-        </p>
-        <p class="disclaimer">
-          Independent speculative prototype. Not affiliated with Vinted. Play with
-          the prototype to explore the new features.
-        </p>
+  <main class="vinted-case bundle-case">
+    <header class="bundle-hero case-width">
+      <router-link class="back-link" to="/"
+        ><ArrowLeft :size="15" /> All projects</router-link
+      >
+      <div class="hero-topline">
+        <span>Vinted / Independent product exploration</span
+        ><span>Research → interaction design → evaluation plan</span>
       </div>
-
-      <section class="prototype-stage" aria-label="Interactive Vinted-inspired prototype">
-        <div class="project-ui prototype-device">
-          <div class="annotation-layer" aria-label="Prototype annotations">
-            <article
-              v-for="annotation in activeAnnotations"
-              :key="annotation.id"
-              class="annotation-note"
-              :class="annotation.position"
-            >
-              <span>{{ annotation.kicker }}</span>
-              <strong>{{ annotation.title }}</strong>
-              <p>{{ annotation.copy }}</p>
-            </article>
+      <h1>Is this bundle<br /><em>actually a better deal?</em></h1>
+      <div class="hero-intro">
+        <p>
+          Helping second-hand buyers find useful items from one seller and
+          understand the complete cost before deciding to bundle.
+        </p>
+        <a class="outline-link" href="#prototype"
+          >Try the prototype <ArrowDown :size="16"
+        /></a>
+      </div>
+      <div
+        class="hero-composition"
+        aria-label="Illustrative bundle decision: a tee alone costs £8.24; adding a shirt brings the estimated total to £10.55"
+      >
+        <div class="hero-finds">
+          <div class="composition-heading">
+            <span>A wardrobe worth exploring.</span
+            ><span>One seller · two useful finds</span>
           </div>
-
-          <div class="phone-frame">
-            <div class="phone-status">
-              <span>9:41</span>
-              <span>Interactive prototype</span>
-            </div>
-
-            <div class="app-screen">
-              <header class="market-header">
-                <div class="search-bar">
-                  <Search :size="16" />
-                  <span>yellow cotton t-shirt</span>
-                  <Camera class="camera-icon" :size="17" />
-                </div>
-                <button type="button" aria-label="Open filters">
-                  <SlidersHorizontal :size="18" />
-                </button>
-              </header>
-
-              <div v-if="screen === 'results'" class="control-panel">
-                <div class="control-group">
-                  <span class="control-label">Sort</span>
-                  <nav class="sort-segment" aria-label="Sort listings">
-                    <button
-                      v-for="option in sortOptions"
-                      :key="option.id"
-                      type="button"
-                      :class="{ active: sortMode === option.id }"
-                      @click="sortMode = option.id"
-                    >
-                      {{ option.label }}
-                    </button>
-                  </nav>
-                </div>
-
-                <div class="control-group delivery-group">
-                  <span class="control-label">Delivery</span>
-                  <div class="delivery-filter" aria-label="Delivery filters">
-                    <button
-                      v-for="option in deliveryOptions"
-                      :key="option.id"
-                      type="button"
-                      :class="{ active: deliveryFilter === option.id }"
-                      @click="deliveryFilter = option.id"
-                    >
-                      {{ option.label }}
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <section v-if="screen === 'results'" class="results-view" aria-label="Search results">
-              <div class="results-summary">
-                <strong>{{ filteredListings.length }} results</strong>
-                <span>{{ sortSummary }}</span>
-              </div>
-
-              <div class="listing-grid">
-                <article
-                  v-for="listing in filteredListings"
-                  :key="listing.id"
-                  class="listing-card"
-                  :class="{ selected: selectedListingId === listing.id }"
-                >
-                  <button type="button" @click="openListing(listing.id)">
-                    <span class="listing-photo" :style="productImageStyle(listing)">
-                      <img :src="productImageSrc(listing)" :alt="productImageAlt(listing)" loading="lazy" />
-                      <span class="heart-badge">
-                        <Heart :size="14" />
-                        <span>{{ likeCount(listing) }}</span>
-                      </span>
-                    </span>
-                    <span class="listing-meta">
-                      <strong>{{ listing.brand }}</strong>
-                      <span class="item-line">{{ listing.title }}</span>
-                      <span class="detail-line">{{ listing.size }} · {{ listing.condition }}</span>
-                      <span class="price-comparison" aria-label="Price comparison">
-                        <span>
-                          <small>Item</small>
-                          <b>{{ money(listing.itemPrice) }}</b>
-                        </span>
-                        <span class="fee-price">
-                          <small>
-                            + fee
-                            <ShieldCheck :size="9" />
-                          </small>
-                          <b>{{ money(appPrice(listing)) }}</b>
-                        </span>
-                        <span class="full-total">
-                          <small>Full total</small>
-                          <b>{{ money(totalCost(listing)) }}</b>
-                        </span>
-                      </span>
-                      <span class="delivery-line">
-                        {{ listing.delivery }} · {{ listing.distanceLabel }}
-                      </span>
-                    </span>
-                  </button>
-                </article>
-              </div>
-              </section>
-
-              <section v-else class="detail-view" aria-label="Item detail">
-              <button class="back-to-results" type="button" @click="screen = 'results'">
-                <ArrowLeft :size="14" />
-                Back to results
-              </button>
-
-              <div class="detail-photo" :style="productImageStyle(selectedListing, 'detail')">
-                <img :src="productImageSrc(selectedListing)" :alt="productImageAlt(selectedListing)" />
-                <span>{{ selectedListing.brand }}</span>
-              </div>
-
-              <div class="detail-content">
-                <div>
-                  <h2>{{ selectedListing.title }}</h2>
-                  <p>{{ selectedListing.size }} · {{ selectedListing.condition }} · {{ selectedListing.area }}</p>
-                </div>
-                <button type="button" class="heart-button" :aria-label="selectedListing.favourite ? 'Favourite item' : 'Add to favourites'">
-                  <Heart :size="17" :fill="selectedListing.favourite ? 'currentColor' : 'none'" />
-                </button>
-              </div>
-
-              <article class="full-total-callout">
-                <span>Full total</span>
-                <strong>{{ money(totalCost(selectedListing)) }}</strong>
-                <small>Item + buyer fee + delivery</small>
-              </article>
-
-              <dl class="price-breakdown">
-                <div>
-                  <dt>Item</dt>
-                  <dd>{{ money(selectedListing.itemPrice) }}</dd>
-                </div>
-                <div>
-                  <dt>Buyer fee</dt>
-                  <dd>{{ money(buyerFee(selectedListing)) }}</dd>
-                </div>
-                <div>
-                  <dt>Item + fee</dt>
-                  <dd>{{ money(appPrice(selectedListing)) }}</dd>
-                </div>
-                <div>
-                  <dt>Delivery</dt>
-                  <dd>{{ money(selectedListing.shipping) }}</dd>
-                </div>
-                <div class="price-breakdown-total">
-                  <dt>Full total</dt>
-                  <dd>{{ money(totalCost(selectedListing)) }}</dd>
-                </div>
-              </dl>
-
-              <article class="bundle-module">
-                <div>
-                  <p>Make delivery work smarter</p>
-                  <h3>{{ selectedListing.seller }} also has items from your favourites.</h3>
-                  <span>Blue jeans and shoes in your size can ship with this order.</span>
-                </div>
-                <button type="button" @click="bundleOpen = true">
-                  View bundle
-                  <PackagePlus :size="15" />
-                </button>
-              </article>
-
-              <article class="impact-card">
-                <div class="impact-icon"><Leaf :size="17" /></div>
-                <div>
-                  <strong>Delivery impact</strong>
-                  <span>{{ selectedListing.delivery }} · {{ selectedListing.distanceLabel }} · approximate location only</span>
-                </div>
-              </article>
-              </section>
-
-              <transition name="drawer">
-              <section v-if="bundleOpen" class="bundle-drawer" aria-label="Bundle recommendations">
-                <div class="drawer-top">
-                  <div>
-                    <p>Smart bundle</p>
-                    <h2>From the same seller</h2>
-                    <span class="drawer-context">
-                      Based on items in your favourites.
-                    </span>
-                  </div>
-                  <button type="button" aria-label="Close bundle drawer" @click="bundleOpen = false">
-                    <X :size="17" />
-                  </button>
-                </div>
-
-                <div class="recommendation-list">
-                  <article
-                    v-for="item in bundleRecommendations"
-                    :key="item.id"
-                    :class="{ selected: selectedBundleIds.includes(item.id) }"
-                  >
-                    <span class="bundle-thumb" :style="productImageStyle(item)">
-                      <img :src="productImageSrc(item)" :alt="productImageAlt(item)" loading="lazy" />
-                    </span>
-                    <div>
-                      <strong>{{ item.title }}</strong>
-                      <span>{{ item.reason }}</span>
-                      <small>{{ item.matchLabel }} · {{ money(item.itemPrice) }}</small>
-                    </div>
-                    <button
-                      type="button"
-                      :class="{ active: selectedBundleIds.includes(item.id) }"
-                      @click="toggleBundleItem(item.id)"
-                    >
-                      {{ selectedBundleIds.includes(item.id) ? "Added" : "Add" }}
-                    </button>
-                  </article>
-                </div>
-
-                <div class="bundle-summary">
-                  <div class="bundle-summary-copy">
-                    <span>{{ selectedBundleItems.length ? "Bundle savings" : "No bundle savings yet" }}</span>
-                    <strong>{{ selectedBundleItems.length ? money(estimatedSavings) : "Add an item to unlock savings" }}</strong>
-                  </div>
-                  <div v-if="selectedBundleItems.length" class="bundle-summary-row">
-                    <span>{{ selectedBundleItems.length }} add-on{{ selectedBundleItems.length === 1 ? "" : "s" }} selected</span>
-                    <strong>{{ money(bundleTotal) }} total</strong>
-                  </div>
-                </div>
-
-                <button
-                  type="button"
-                  class="fake-buy-button"
-                  :disabled="selectedBundleItems.length === 0"
-                  @click="completePurchase"
-                >
-                  {{ selectedBundleItems.length ? `Buy bundle for ${money(bundleTotal)}` : "Add an item to buy bundle" }}
-                  <ShoppingBag :size="15" />
-                </button>
-              </section>
-              </transition>
-
-              <transition name="purchase">
-              <section v-if="purchaseComplete" class="purchase-complete" aria-live="polite">
-                <CheckCircle2 :size="34" />
-                <p>Prototype purchase complete</p>
-                <h2>{{ 1 + selectedBundleItems.length }} items from {{ selectedListing.seller }}</h2>
-                <button type="button" @click="resetPurchase">Keep exploring</button>
-              </section>
-              </transition>
-
-              <nav class="bottom-nav" aria-label="Prototype mobile navigation">
-                <button type="button"><Home :size="18" /><span>Home</span></button>
-                <button type="button" class="active"><Grid2X2 :size="18" /><span>Browse</span></button>
-                <button type="button" class="sell-button"><Plus :size="18" /><span>Sell</span></button>
-                <button type="button" class="inbox-button"><Mail :size="18" /><i aria-hidden="true"></i><span>Inbox</span></button>
-                <button type="button"><UserRound :size="18" /><span>Profile</span></button>
-              </nav>
-            </div>
+          <div class="hero-products">
+            <figure>
+              <img :src="tee" alt="Illustrative yellow cotton tee" />
+              <figcaption>
+                <span>Yellow cotton tee</span><strong>£5.00</strong>
+              </figcaption>
+            </figure>
+            <span class="plus-sign" aria-hidden="true">+</span>
+            <figure>
+              <img :src="shirt" alt="Illustrative blue cotton shirt" />
+              <figcaption>
+                <span>Blue cotton shirt</span><strong>£3.00</strong>
+              </figcaption>
+            </figure>
           </div>
-
-          <aside class="prototype-notes">
-            <p class="project-label">Live mock data</p>
-            <h2>{{ noteTitle }}</h2>
-            <p>{{ noteCopy }}</p>
-          </aside>
         </div>
-      </section>
+        <div class="hero-receipt">
+          <span class="receipt-eyebrow">The whole decision</span>
+          <h2>Two items.<br />Every cost.</h2>
+          <dl>
+            <div>
+              <dt>Items</dt>
+              <dd>£8.00</dd>
+            </div>
+            <div>
+              <dt>Seller discount</dt>
+              <dd>−£0.80</dd>
+            </div>
+            <div>
+              <dt>Illustrative fee</dt>
+              <dd>£0.86</dd>
+            </div>
+            <div>
+              <dt>Delivery estimate</dt>
+              <dd>£2.49</dd>
+            </div>
+            <div class="hero-total">
+              <dt>Estimated total</dt>
+              <dd>£10.55</dd>
+            </div>
+          </dl>
+          <p>
+            £2.31 more than the tee alone.<br />Same delivery cost. Your choice.
+          </p>
+          <small>Fictional items and prices · proposed interface</small>
+        </div>
+      </div>
+      <dl class="project-facts">
+        <div>
+          <dt>My role</dt>
+          <dd>Research synthesis, product design & interactive prototyping</dd>
+        </div>
+        <div>
+          <dt>Scope</dt>
+          <dd>UK domestic bundle decisions</dd>
+        </div>
+        <div>
+          <dt>Evidence</dt>
+          <dd>Public Reddit discussions & Vinted documentation</dd>
+        </div>
+        <div>
+          <dt>Status</dt>
+          <dd>Independent concept · not shipped or user-tested</dd>
+        </div>
+      </dl>
+    </header>
 
-      <div class="feature-brief" aria-label="Designed prototype features">
+    <nav class="case-index case-width" aria-label="Case study sections">
+      <a href="#research">Research</a><a href="#decision">Focus</a
+      ><a href="#current">Current experience</a
+      ><a href="#prototype">Prototype</a><a href="#validation">Validation</a
+      ><a href="#sources">Sources</a>
+    </nav>
+
+    <section id="research" class="case-width story-block">
+      <div class="section-intro">
+        <p class="section-kicker">The starting point</p>
+        <h2>A concept first.<br />Then an evidence check.</h2>
+        <p>
+          The original “Smart Local Bundling” concept combined total-cost
+          discovery, nearby sellers and same-seller recommendations. It started
+          as a speculative learning project. Before taking it further, I used
+          public Reddit discussions to challenge the problem and the proposed
+          solution.
+        </p>
+      </div>
+      <div class="research-method">
+        <Search :size="22" />
+        <div>
+          <h3>Look for friction, not agreement.</h3>
+          <p>
+            The first scan explored support, search, sizing, fees and delivery
+            in r/vinted and r/vintedUK. Three recurring themes emerged. A
+            second, targeted pass examined the original bundling assumptions:
+            shipping cost, finding relevant wardrobe items and whether bundles
+            really save money.
+          </p>
+          <p class="method-detail">
+            Eight purposively selected Reddit threads are cited below, dated
+            April 2025–September 2026. Reviewed 10 November 2026. This is
+            qualitative secondary research, not a representative sample or a
+            ranking by complaint frequency. Some evidence was available only as
+            indexed text.
+          </p>
+        </div>
+      </div>
+      <div class="theme-grid">
         <article>
-          <span>Feature 1</span>
-          <strong>Full-value discovery</strong>
-          <p>Annotate the normal search flow with total price, delivery, and distance signals.</p>
+          <span>Trust & recovery</span>
+          <h3>Getting help when an order goes wrong</h3>
+          <p>
+            Users report delayed support and repeated replies when an order goes
+            wrong.
+          </p>
+          <a href="#source-R1"
+            >Read the discussion · R1 <ArrowUpRight :size="13"
+          /></a>
         </article>
         <article>
-          <span>Feature 2</span>
-          <strong>Smart same-seller bundles</strong>
-          <p>Use favourites and size signals to suggest different items from the same seller.</p>
+          <span>Discovery</span>
+          <h3>Finding relevant search results</h3>
+          <p>
+            Buyers describe search results that do not match their specific
+            terms.
+          </p>
+          <a href="#source-R2"
+            >Read the discussion · R2 <ArrowUpRight :size="13"
+          /></a>
+        </article>
+        <article>
+          <span>Size confidence</span>
+          <h3>Knowing which size to trust</h3>
+          <p>
+            Labels, sizing systems and filters do not always give buyers enough
+            certainty.
+          </p>
+          <a href="#source-R3"
+            >Read the discussion · R3 <ArrowUpRight :size="13"
+          /></a>
+        </article>
+      </div>
+      <div class="research-pivot">
+        <span>What changed the direction?</span>
+        <p>
+          Sizing was a credible alternative. But the focused audit found an
+          existing behaviour behind the original idea: buyers already build
+          bundles to make postage worthwhile. The opportunity was to help them
+          judge a bundle—not persuade them to buy more.
+        </p>
+      </div>
+      <div class="evidence-heading">
+        <h3>What people actually said</h3>
+        <p>
+          Public comments, quoted verbatim. Individual experiences, not verified
+          platform-wide facts.
+        </p>
+      </div>
+      <div class="evidence-grid">
+        <figure v-for="item in evidence" :key="item.source">
+          <figcaption>
+            <strong>{{ item.finding }}</strong
+            ><a :href="'#source-' + item.source"
+              >{{ sourceById[item.source].date }} · {{ item.source }}
+              <ArrowUpRight :size="13"
+            /></a>
+          </figcaption>
+          <blockquote lang="en">“{{ item.quote }}”</blockquote>
+          <p><span>Design implication</span>{{ item.implication }}</p>
+        </figure>
+      </div>
+    </section>
+
+    <section id="decision" class="decision-band">
+      <div class="case-width">
+        <p class="section-kicker">From evidence to a bounded problem</p>
+        <h2>
+          Make the total understandable.<br />Make the extra item relevant.
+        </h2>
+        <p class="problem-statement">
+          When buying an inexpensive item, buyers can struggle to find useful
+          additions from the same seller and judge whether the complete order is
+          worth the cost.
+        </p>
+        <div class="decision-columns">
+          <div>
+            <h3>Keep</h3>
+            <p>
+              Same-seller discovery, category and size controls, and a running
+              estimate that includes items, discount, fee and delivery.
+            </p>
+          </div>
+          <div>
+            <h3>Change</h3>
+            <p>
+              Replace “unlock savings” with a comparison against the original
+              item. Adding an item costs more, even when a discount applies.
+            </p>
+          </div>
+          <div>
+            <h3>Remove</h3>
+            <p>
+              Nearby rankings, distance badges, promised delivery dates and
+              environmental claims. The research did not establish a need or
+              reliable data for them.
+            </p>
+          </div>
+        </div>
+        <div class="hypothesis">
+          <span>Design hypothesis · not a finding</span>
+          <p>
+            If buyers can find relevant same-seller items and see how each
+            addition changes the complete total, they can make a better-informed
+            decision within their budget.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="current" class="case-width story-block">
+      <div class="section-intro">
+        <p class="section-kicker">Work with the product that exists</p>
+        <h2>Bundling already exists.<br />The decision can be clearer.</h2>
+        <p>
+          Vinted’s official help describes creating bundles from a listing or
+          seller profile, showing favourites first and updating the bundle
+          price. Shipping and the fee are added after “Buy now.” Fee information
+          already appears while browsing. This concept extends the existing
+          flow; it does not introduce bundles or fees for the first time.
+          <a href="#source-P1">P1</a> · <a href="#source-P2">P2</a>
+        </p>
+      </div>
+      <div class="current-reference">
+        <div class="reference-images">
+          <figure>
+            <a
+              href="https://play.google.com/store/apps/details?id=fr.vinted&hl=en_GB"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><img
+                src="/images/vinted-research/official-listing.webp"
+                alt="Vinted publisher screenshot showing its listing form, presented in promotional artwork"
+                loading="lazy"
+            /></a>
+            <figcaption>Publisher screenshot / listing</figcaption>
+          </figure>
+          <figure>
+            <a
+              href="https://play.google.com/store/apps/details?id=fr.vinted&hl=en_GB"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><img
+                src="/images/vinted-research/official-item.webp"
+                alt="Vinted publisher screenshot showing a photographed item and item-detail interface in promotional artwork"
+                loading="lazy"
+            /></a>
+            <figcaption>Publisher screenshot / item detail</figcaption>
+          </figure>
+        </div>
+        <div class="reference-copy">
+          <span class="section-kicker"
+            >Visual reference, not a fabricated “before”</span
+          >
+          <h3>Keep the familiar product language.</h3>
+          <p>
+            Product photography, white surfaces, teal actions, compact item
+            details and a seller-led buying journey informed the proposed
+            screens.
+          </p>
+          <p>
+            These are Vinted’s public promotional screenshots, observed on
+            Google Play on 10 November 2026. Artwork © Vinted. They establish
+            visual direction, not the exact current UK bundle screens.
+            <a href="#source-P4">P4</a>
+          </p>
+          <p>
+            The behavioural baseline comes from official help. An authenticated,
+            device-specific walkthrough is still needed before usability
+            comparisons. Features can vary by market and app version.
+          </p>
+        </div>
+      </div>
+      <div class="comparison-table">
+        <table>
+          <caption>
+            Documented baseline → proposed change
+          </caption>
+          <thead>
+            <tr>
+              <th>Decision</th>
+              <th>Documented today</th>
+              <th>Proposed experience</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Find another item</th>
+              <td>
+                Create a same-seller bundle; favourites appear first.
+                <a href="#source-P1">P1</a>
+              </td>
+              <td>
+                Keep favourites visible; add explicit category and label-size
+                controls within bundle selection.
+              </td>
+            </tr>
+            <tr>
+              <th>Understand cost</th>
+              <td>
+                Bundle price updates; shipping and fee join at Buy now.
+                <a href="#source-P1">P1</a>
+              </td>
+              <td>
+                Use the chosen delivery option for a complete, clearly labelled
+                estimate while building.
+              </td>
+            </tr>
+            <tr>
+              <th>Spot a trade-off</th>
+              <td>
+                Parcel size depends on item type and quantity.
+                <a href="#source-P5">P5</a>
+              </td>
+              <td>
+                Explain delivery increases and compare with the original item
+                using the same delivery option.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="prototype" class="case-width prototype-section">
+      <div class="section-intro">
+        <p class="section-kicker">The proposed experience</p>
+        <h2>Explore. Compare.<br />Decide for yourself.</h2>
+        <p>
+          A working interaction prototype using the existing project’s
+          illustrative product imagery. Prices, sellers, parcel weights and
+          availability are fictional. The underlying calculations respond to
+          every selection; there is no connection to Vinted or a payment system.
+        </p>
+      </div>
+      <vinted-bundle-prototype />
+      <div class="design-principles">
+        <article>
+          <span>Relevance before volume</span>
+          <p>
+            Let the buyer narrow the wardrobe. A label-size match is a filter,
+            not a promise of fit.
+          </p>
+        </article>
+        <article>
+          <span>Costs before commitment</span>
+          <p>
+            Keep the estimate visible. A heavier parcel can outweigh an item
+            discount.
+          </p>
+        </article>
+        <article>
+          <span>A genuine way out</span>
+          <p>
+            Keep the original item available. Choosing not to bundle can be a
+            successful outcome.
+          </p>
         </article>
       </div>
     </section>
 
-    <case-snapshot page="vinted" class="snapshot-in-playground" />
-
-    <section class="story-section problem-section">
-      <div>
-        <p class="project-label">Problem</p>
-        <h2>The item price is only part of what the buyer pays.</h2>
+    <section class="case-width story-block implementation-block">
+      <div class="section-intro">
+        <p class="section-kicker">Real-world constraints</p>
+        <h2>An estimate is a contract<br />with uncertainty.</h2>
       </div>
+      <div class="constraint-grid">
+        <article>
+          <h3>Quote the actual destination.</h3>
+          <p>
+            A production version needs the buyer’s destination, eligible
+            carriers, selected delivery method and parcel information. If those
+            are unknown, request them or show a range. Do not label a “from”
+            price as the total. <a href="#source-P3">P3</a>
+          </p>
+        </article>
+        <article>
+          <h3>Recalculate before payment.</h3>
+          <p>
+            Availability and prices can change. Refresh a server-issued quote,
+            explain any difference and ask the buyer to review again. Sold items
+            and failed quotes need recovery, not silent substitutions.
+          </p>
+        </article>
+        <article>
+          <h3>Respect marketplace constraints.</h3>
+          <p>
+            Seller discounts are optional. Some bundle changes require parcel
+            approval. Start with eligible domestic orders; international taxes
+            and verification services need separate handling.
+            <a href="#source-P1">P1</a> · <a href="#source-P5">P5</a>
+          </p>
+        </article>
+        <article>
+          <h3>Keep the model inspectable.</h3>
+          <p>
+            This demo uses integer-pence arithmetic, 10% off 2+ items and a
+            fictional fee of 5% + £0.50. Weight bands simulate delivery changes.
+            These are declared test assumptions, not Vinted’s tariff.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="validation" class="validation-band">
+      <div class="case-width">
+        <div class="section-intro">
+          <p class="section-kicker">How I would know it helps</p>
+          <h2>A testable proposition.<br />No invented results.</h2>
+          <p>
+            No participant interviews, usability sessions or live experiment
+            have been conducted for this concept. The guided walkthrough
+            demonstrates the interface; it is not user-testing footage. The next
+            step is to test whether people understand the decision—not whether
+            they can click a purchase button.
+          </p>
+        </div>
+        <div class="validation-plan">
+          <div>
+            <span class="plan-stage">First / establish the baseline</span>
+            <h3>Observe real shopping decisions.</h3>
+            <p>
+              Recruit 6–8 recent UK Vinted buyers, including people who buy
+              low-priced items, bundle regularly or avoid bundles. Ask them to
+              show a recent purchase and explain when delivery changed its
+              value. Check the current app on their device with consent.
+            </p>
+            <p>
+              Review the flow with 3–4 sellers to understand discounts,
+              parcel-size changes and any extra work the proposal would create.
+            </p>
+          </div>
+          <div>
+            <span class="plan-stage">Then / moderated comparison</span>
+            <h3>Test a choice, not a sales funnel.</h3>
+            <p>
+              Use the verified current flow and this prototype, counterbalancing
+              order with equivalent product sets. Ask buyers to find a useful
+              extra within £15, explain the full total, spot a delivery increase
+              and recover from an unavailable method.
+            </p>
+            <p>
+              Record screen and audio only with consent. Report observed
+              behaviours and denominators; a small qualitative sample cannot
+              prove a conversion lift.
+            </p>
+          </div>
+        </div>
+        <div class="comparison-table">
+          <table>
+            <caption>
+              Proposed measures and decision rules · not achieved outcomes
+            </caption>
+            <thead>
+              <tr>
+                <th>Question</th>
+                <th>Measure</th>
+                <th>What would change the design?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Do buyers understand the cost?</th>
+                <td>
+                  Unprompted explanation of total, delivery increase and
+                  difference from the original item.
+                </td>
+                <td>
+                  Any repeated confusion between a discount and lower overall
+                  spending triggers a copy or hierarchy revision.
+                </td>
+              </tr>
+              <tr>
+                <th>Can they find something useful?</th>
+                <td>
+                  Task completion, time, irrelevant items inspected and filter
+                  use, relative to the verified baseline.
+                </td>
+                <td>
+                  If controls add effort or hide wanted items, simplify them
+                  before adding recommendations.
+                </td>
+              </tr>
+              <tr>
+                <th>Can they keep control?</th>
+                <td>
+                  Notice budget feedback, remove an item and choose the
+                  single-item alternative without help.
+                </td>
+                <td>
+                  If people feel pressured to add items, revise the prompt and
+                  prioritise the exit.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="live-experiment">
+          <div>
+            <span class="plan-stage"
+              >If shipped / a separate live experiment</span
+            >
+            <h3>Measure informed decisions,<br />not bigger baskets alone.</h3>
+          </div>
+          <div>
+            <p>
+              Randomise eligible buyers, rather than individual visits, to avoid
+              mixing experiences. Define eligibility as starting a bundle from
+              an item with eligible same-seller inventory. Choose sample size
+              and duration from baseline rates, a minimum detectable effect and
+              a power calculation before launch.
+            </p>
+            <p>
+              <strong>Primary:</strong> completed eligible orders per exposed
+              buyer. <strong>Diagnostics:</strong> bundle completion,
+              original-item purchases, quote-to-final-price differences and cost
+              comprehension. <strong>Guardrails:</strong> cancellations,
+              returns, cost-related support contacts and reported pressure to
+              buy unwanted items. Balance with seller workload and margin.
+            </p>
+            <p class="honest-outcome">
+              Current outcome: a research-informed prototype and an evaluation
+              plan. Business impact remains unknown.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-width story-block closing-reflection">
+      <p class="section-kicker">Reflection</p>
+      <h2>The research kept the idea.<br />It changed the promise.</h2>
       <p>
-        Delivery, distance, and bundle opportunities can all change the final
-        amount. The prototype makes those signals visible before a pre-loved find
-        becomes a decision.
+        The useful opportunity was not “buy more nearby.” It was helping someone
+        see whether a particular bundle is worthwhile. Removing distance claims,
+        guaranteed savings and a forced bundle checkout made the concept
+        narrower, more honest and easier to test.
       </p>
     </section>
 
-    <section class="story-section">
-      <div>
-        <p class="project-label">Reflection</p>
-        <h2>Small additions, not a redesign.</h2>
+    <section id="sources" class="case-width sources-section">
+      <div class="source-heading">
+        <div>
+          <p class="section-kicker">Research trail</p>
+          <h2>Evidence you can inspect.</h2>
+        </div>
+        <p>
+          Selected public sources. Reddit accounts are anecdotal; votes are not
+          treated as prevalence. Official help supports the product baseline.
+          Original quotes remain in English.
+        </p>
       </div>
-      <p>
-        The prototype does not reimagine the marketplace from scratch. It works
-        within a familiar product flow and adds the missing signals that help
-        buyers understand what they will pay before choosing a pre-loved find.
-      </p>
+      <details>
+        <summary>
+          Method, limitations & remaining questions <Plus :size="17" />
+        </summary>
+        <div class="method-expanded">
+          <p>
+            Search terms included “Vinted customer support automated replies”,
+            “Vinted search irrelevant results”, “Vinted sizing filters”, “Vinted
+            shipping cheap items bundles”, “wardrobes and bundles” and “bundle
+            postage doubled”. Searches were purposive, expanded as themes
+            emerged and checked against counterexamples.
+          </p>
+          <p>
+            Sources include English-language discussions across more than one
+            market. The prototype is limited to a UK domestic scenario; amounts
+            from other markets are not used as UK tariffs. Public posts may be
+            incomplete, deleted or unrepresentative. Thread dates follow indexed
+            search metadata. No personal profiles or private conversations were
+            collected.
+          </p>
+          <p>
+            Open questions: How often does cost uncertainty stop a purchase? Do
+            wardrobe filters outperform favourites-first browsing? Can useful
+            delivery estimates be served before checkout without excessive
+            friction? Would buyers feel helped or encouraged to overspend?
+          </p>
+        </div>
+      </details>
+      <ol class="source-list">
+        <li
+          v-for="source in sources"
+          :key="source.id"
+          :id="'source-' + source.id"
+        >
+          <span class="source-id">{{ source.id }}</span>
+          <div>
+            <a :href="source.url" target="_blank" rel="noopener noreferrer"
+              >{{ source.title }} <ArrowUpRight :size="13" /></a
+            ><span>{{ source.type }} · {{ source.date }}</span>
+            <p>{{ source.note }}</p>
+          </div>
+        </li>
+      </ol>
     </section>
   </main>
-
   <app-footer />
 </template>
 
-<script>
-import CaseSnapshot from "@/components/CaseSnapshot.vue";
+<script setup>
+import { useHead } from "@vueuse/head";
 import {
   ArrowLeft,
-  Camera,
-  CheckCircle2,
-  Grid2X2,
-  Heart,
-  Home,
-  Leaf,
-  Mail,
-  MapPin,
-  PackagePlus,
+  ArrowDown,
+  ArrowUpRight,
   Plus,
   Search,
-  ShieldCheck,
-  ShoppingBag,
-  SlidersHorizontal,
-  UserRound,
-  X,
 } from "lucide-vue-next";
-import { useHead } from "@vueuse/head";
-import { resolveAsset } from "@/assetUrl";
 import AppNavbar from "@/components/navbar.vue";
 import AppFooter from "@/components/footer.vue";
-
-const listings = [
-  {
-    id: "yellow-a",
-    title: "Yellow cotton T-shirt",
-    brand: "Weekday",
-    seller: "Maya",
-    itemPrice: 4,
-    shipping: 4.29,
-    delivery: "Pickup point",
-    distanceMiles: 1.8,
-    distanceLabel: "1.8 miles away",
-    area: "East London",
-    size: "M",
-    condition: "Very good",
-    favourite: false,
-    imagePosition: "0% 0%",
-    score: 62,
-    reason: "Nearby pickup with a delivery trade-off",
-  },
-  {
-    id: "yellow-b",
-    title: "Soft yellow tee",
-    brand: "Arket",
-    seller: "Nora",
-    itemPrice: 5,
-    shipping: 1.99,
-    delivery: "Home delivery",
-    distanceMiles: 2.4,
-    distanceLabel: "Under 5 miles",
-    area: "North London",
-    size: "M",
-    condition: "Good",
-    favourite: true,
-    imagePosition: "25% 0%",
-    score: 96,
-    reason: "Same seller bundle opportunity",
-  },
-  {
-    id: "yellow-c",
-    title: "Lemon cotton baby tee",
-    brand: "Monki",
-    seller: "Nora",
-    itemPrice: 6,
-    shipping: 1.99,
-    delivery: "Home delivery",
-    distanceMiles: 3.6,
-    distanceLabel: "Under 5 miles",
-    area: "North London",
-    size: "S",
-    condition: "New without tags",
-    favourite: false,
-    imagePosition: "50% 0%",
-    score: 84,
-    reason: "Same seller · style match",
-  },
-  {
-    id: "yellow-d",
-    title: "Vintage yellow cotton top",
-    brand: "Zara",
-    seller: "Iris",
-    itemPrice: 3.5,
-    shipping: 3.49,
-    delivery: "Either",
-    distanceMiles: 8.5,
-    distanceLabel: "Under 10 miles",
-    area: "West London",
-    size: "M",
-    condition: "Good",
-    favourite: false,
-    imagePosition: "75% 0%",
-    score: 58,
-    reason: "Affordable piece with a delivery trade-off",
-  },
-  {
-    id: "jeans-a",
-    title: "Sun-washed cotton tee",
-    brand: "Weekday",
-    seller: "Nora",
-    itemPrice: 9,
-    shipping: 1.99,
-    delivery: "Home delivery",
-    distanceMiles: 2.4,
-    distanceLabel: "Under 5 miles",
-    area: "North London",
-    size: "M",
-    condition: "Very good",
-    favourite: true,
-    imagePosition: "100% 0%",
-    score: 91,
-    reason: "Same seller · size match",
-  },
-  {
-    id: "skirt-a",
-    title: "Mustard boxy T-shirt",
-    brand: "Monki",
-    seller: "Nora",
-    itemPrice: 7.5,
-    shipping: 1.99,
-    delivery: "Home delivery",
-    distanceMiles: 2.4,
-    distanceLabel: "Under 5 miles",
-    area: "North London",
-    size: "M",
-    condition: "Good",
-    favourite: true,
-    imagePosition: "0% 33.333%",
-    score: 88,
-    reason: "Same seller · favourited",
-  },
-  {
-    id: "cardigan-a",
-    title: "Pale yellow ribbed top",
-    brand: "Arket",
-    seller: "Nora",
-    itemPrice: 8,
-    shipping: 1.99,
-    delivery: "Home delivery",
-    distanceMiles: 2.4,
-    distanceLabel: "Under 5 miles",
-    area: "North London",
-    size: "M",
-    condition: "Very good",
-    favourite: false,
-    imagePosition: "25% 33.333%",
-    score: 79,
-    reason: "Same seller · colour match",
-  },
-  {
-    id: "stripe-top",
-    title: "Yellow striped cotton tee",
-    brand: "Cos",
-    seller: "Nora",
-    itemPrice: 6.5,
-    shipping: 1.99,
-    delivery: "Home delivery",
-    distanceMiles: 2.4,
-    distanceLabel: "Under 5 miles",
-    area: "North London",
-    size: "M",
-    condition: "Good",
-    favourite: false,
-    imagePosition: "50% 33.333%",
-    score: 72,
-    reason: "Same seller · wardrobe match",
-  },
-  {
-    id: "cream-jumper",
-    title: "Butter yellow fitted tee",
-    brand: "Arket",
-    seller: "Maya",
-    itemPrice: 11,
-    shipping: 4.29,
-    delivery: "Pickup point",
-    distanceMiles: 1.8,
-    distanceLabel: "1.8 miles away",
-    area: "East London",
-    size: "M",
-    condition: "Very good",
-    favourite: true,
-    imagePosition: "75% 33.333%",
-    score: 66,
-    reason: "Favourite · pickup only",
-  },
-  {
-    id: "green-tote",
-    title: "Oversized yellow T-shirt",
-    brand: "No label",
-    seller: "Nora",
-    itemPrice: 4.5,
-    shipping: 1.99,
-    delivery: "Home delivery",
-    distanceMiles: 2.4,
-    distanceLabel: "Under 5 miles",
-    area: "North London",
-    size: "M",
-    condition: "Good",
-    favourite: false,
-    imagePosition: "100% 33.333%",
-    score: 70,
-    reason: "Same seller · efficient add-on",
-  },
-  {
-    id: "trainers",
-    title: "Cropped lemon tee",
-    brand: "Zara",
-    seller: "Iris",
-    itemPrice: 14,
-    shipping: 3.49,
-    delivery: "Either",
-    distanceMiles: 8.5,
-    distanceLabel: "Under 10 miles",
-    area: "West London",
-    size: "S",
-    condition: "Good",
-    favourite: false,
-    imagePosition: "0% 66.667%",
-    score: 61,
-    reason: "Flexible delivery · wider distance band",
-  },
-  {
-    id: "blue-shirt",
-    title: "Soft yellow cotton shirt",
-    brand: "Uniqlo",
-    seller: "Nora",
-    itemPrice: 7,
-    shipping: 1.99,
-    delivery: "Home delivery",
-    distanceMiles: 2.4,
-    distanceLabel: "Under 5 miles",
-    area: "North London",
-    size: "M",
-    condition: "Very good",
-    favourite: false,
-    imagePosition: "25% 66.667%",
-    score: 77,
-    reason: "Same seller · size match",
-  },
-  {
-    id: "floral-dress",
-    title: "Yellow scoop-neck tee",
-    brand: "Nobody's Child-style",
-    seller: "Sofia",
-    itemPrice: 13,
-    shipping: 2.49,
-    delivery: "Home delivery",
-    distanceMiles: 4.8,
-    distanceLabel: "Under 5 miles",
-    area: "South London",
-    size: "M",
-    condition: "Very good",
-    favourite: true,
-    imagePosition: "50% 66.667%",
-    score: 69,
-    reason: "Favourite · home delivery",
-  },
-  {
-    id: "linen-trousers",
-    title: "Linen yellow T-shirt",
-    brand: "Mango",
-    seller: "Sofia",
-    itemPrice: 10,
-    shipping: 2.49,
-    delivery: "Home delivery",
-    distanceMiles: 4.8,
-    distanceLabel: "Under 5 miles",
-    area: "South London",
-    size: "M",
-    condition: "Good",
-    favourite: false,
-    imagePosition: "75% 66.667%",
-    score: 67,
-    reason: "Same area · home delivery",
-  },
-  {
-    id: "beige-jacket",
-    title: "Faded yellow pocket tee",
-    brand: "Muji-style",
-    seller: "Maya",
-    itemPrice: 16,
-    shipping: 4.29,
-    delivery: "Pickup point",
-    distanceMiles: 1.8,
-    distanceLabel: "1.8 miles away",
-    area: "East London",
-    size: "M",
-    condition: "Very good",
-    favourite: false,
-    imagePosition: "100% 66.667%",
-    score: 57,
-    reason: "Nearby pickup option",
-  },
-  {
-    id: "scarf",
-    title: "Yellow cotton vest top",
-    brand: "Vintage",
-    seller: "Nora",
-    itemPrice: 3,
-    shipping: 1.99,
-    delivery: "Home delivery",
-    distanceMiles: 2.4,
-    distanceLabel: "Under 5 miles",
-    area: "North London",
-    size: "S",
-    condition: "Good",
-    favourite: false,
-    imagePosition: "0% 100%",
-    score: 73,
-    reason: "Same seller · easy add-on",
-  },
-  {
-    id: "hoodie",
-    title: "Golden yellow long-sleeve",
-    brand: "Weekday",
-    seller: "Iris",
-    itemPrice: 8,
-    shipping: 3.49,
-    delivery: "Either",
-    distanceMiles: 8.5,
-    distanceLabel: "Under 10 miles",
-    area: "West London",
-    size: "M",
-    condition: "Good",
-    favourite: false,
-    imagePosition: "25% 100%",
-    score: 59,
-    reason: "Flexible delivery · moderate distance",
-  },
-  {
-    id: "belt",
-    title: "Vintage yellow graphic-free tee",
-    brand: "Vintage",
-    seller: "Nora",
-    itemPrice: 5,
-    shipping: 1.99,
-    delivery: "Home delivery",
-    distanceMiles: 2.4,
-    distanceLabel: "Under 5 miles",
-    area: "North London",
-    size: "M",
-    condition: "Good",
-    favourite: false,
-    imagePosition: "50% 100%",
-    score: 71,
-    reason: "Same seller · bundle discount",
-  },
-  {
-    id: "small-handbag",
-    title: "Yellow relaxed cotton tee",
-    brand: "Vintage",
-    seller: "Sofia",
-    itemPrice: 12,
-    shipping: 2.49,
-    delivery: "Home delivery",
-    distanceMiles: 4.8,
-    distanceLabel: "Under 5 miles",
-    area: "South London",
-    size: "M",
-    condition: "Very good",
-    favourite: false,
-    imagePosition: "75% 100%",
-    score: 64,
-    reason: "Home delivery · nearby band",
-  },
-  {
-    id: "sunglasses",
-    title: "Light lemon crew neck",
-    brand: "No label",
-    seller: "Maya",
-    itemPrice: 4,
-    shipping: 4.29,
-    delivery: "Pickup point",
-    distanceMiles: 1.8,
-    distanceLabel: "1.8 miles away",
-    area: "East London",
-    size: "M",
-    condition: "Good",
-    favourite: false,
-    imagePosition: "100% 100%",
-    score: 55,
-    reason: "Affordable piece, delivery changes the value",
-  },
-];
-
-const bundleItems = [
-  {
-    id: "light-jeans",
-    title: "Light-wash straight jeans",
-    brand: "Weekday",
-    seller: "Nora",
-    itemPrice: 13,
-    size: "W28",
-    condition: "Very good",
-    favourite: true,
-    imageSheet: "bundle",
-    imagePosition: "0% 0%",
-    score: 98,
-    reason: "Same seller · similar to favourite jeans",
-    matchLabel: "Closest favourite match",
-  },
-  {
-    id: "white-trainers",
-    title: "White leather trainers",
-    brand: "Veja-style",
-    seller: "Nora",
-    itemPrice: 18,
-    size: "UK 5",
-    condition: "Good",
-    favourite: true,
-    imageSheet: "bundle",
-    imagePosition: "66.667% 0%",
-    score: 94,
-    reason: "Same seller · shoe size match",
-    matchLabel: "Matches your shoe size",
-  },
-  {
-    id: "cream-cardigan",
-    title: "Cream rib cardigan",
-    brand: "Arket",
-    seller: "Nora",
-    itemPrice: 11,
-    size: "M",
-    condition: "Very good",
-    favourite: false,
-    imageSheet: "bundle",
-    imagePosition: "0% 50%",
-    score: 87,
-    reason: "Same seller · outfit match",
-    matchLabel: "Works with this outfit",
-  },
-  {
-    id: "denim-shirt",
-    title: "Soft denim overshirt",
-    brand: "Uniqlo",
-    seller: "Nora",
-    itemPrice: 12,
-    size: "M",
-    condition: "Very good",
-    favourite: false,
-    imageSheet: "bundle",
-    imagePosition: "66.667% 50%",
-    score: 84,
-    reason: "Same seller · layer in your size",
-    matchLabel: "Layer in your size",
-  },
-  {
-    id: "mary-janes",
-    title: "Burgundy Mary Jane flats",
-    brand: "Vintage",
-    seller: "Nora",
-    itemPrice: 16,
-    size: "UK 5",
-    condition: "Good",
-    favourite: true,
-    imageSheet: "bundle",
-    imagePosition: "100% 0%",
-    score: 82,
-    reason: "Same seller · favourite shoe style",
-    matchLabel: "Similar to favourite shoes",
-  },
-  {
-    id: "olive-tote",
-    title: "Olive canvas tote",
-    brand: "No label",
-    seller: "Nora",
-    itemPrice: 6,
-    size: "One size",
-    condition: "Good",
-    favourite: false,
-    imageSheet: "bundle",
-    imagePosition: "33.333% 50%",
-    score: 75,
-    reason: "Same seller · low-cost add-on",
-    matchLabel: "Easy add-on",
-  },
-  {
-    id: "dark-jeans",
-    title: "Dark indigo straight jeans",
-    brand: "Cos",
-    seller: "Maya",
-    itemPrice: 15,
-    size: "W28",
-    condition: "Very good",
-    favourite: true,
-    imageSheet: "bundle",
-    imagePosition: "33.333% 0%",
-    score: 86,
-    reason: "Same seller · favourite denim style",
-    matchLabel: "Similar to favourite denim",
-  },
-  {
-    id: "black-belt",
-    title: "Black leather belt",
-    brand: "Vintage",
-    seller: "Maya",
-    itemPrice: 7,
-    size: "M",
-    condition: "Good",
-    favourite: false,
-    imageSheet: "bundle",
-    imagePosition: "100% 50%",
-    score: 74,
-    reason: "Same seller · outfit add-on",
-    matchLabel: "Easy add-on",
-  },
-  {
-    id: "navy-skirt",
-    title: "Navy cotton midi skirt",
-    brand: "Monki",
-    seller: "Iris",
-    itemPrice: 10,
-    size: "M",
-    condition: "Good",
-    favourite: true,
-    imageSheet: "bundle",
-    imagePosition: "0% 100%",
-    score: 83,
-    reason: "Same seller · favourite skirt style",
-    matchLabel: "Similar to a favourite",
-  },
-  {
-    id: "striped-top",
-    title: "Striped long-sleeve top",
-    brand: "Cos",
-    seller: "Iris",
-    itemPrice: 8,
-    size: "M",
-    condition: "Very good",
-    favourite: false,
-    imageSheet: "bundle",
-    imagePosition: "33.333% 100%",
-    score: 76,
-    reason: "Same seller · wardrobe match",
-    matchLabel: "Wardrobe match",
-  },
-  {
-    id: "tan-loafers",
-    title: "Tan leather loafers",
-    brand: "Vintage",
-    seller: "Sofia",
-    itemPrice: 19,
-    size: "UK 5",
-    condition: "Good",
-    favourite: false,
-    imageSheet: "bundle",
-    imagePosition: "66.667% 100%",
-    score: 77,
-    reason: "Same seller · shoe size match",
-    matchLabel: "Matches your shoe size",
-  },
-  {
-    id: "blue-button-up",
-    title: "Pale blue button-up shirt",
-    brand: "Uniqlo",
-    seller: "Sofia",
-    itemPrice: 9,
-    size: "M",
-    condition: "Very good",
-    favourite: true,
-    imageSheet: "bundle",
-    imagePosition: "100% 100%",
-    score: 73,
-    reason: "Same seller · favourite blue item",
-    matchLabel: "Similar to a favourite",
-  },
-];
-
-const imageFits = {
-  "yellow-a": { zoom: 1.04 },
-  "yellow-b": { zoom: 1.1 },
-  "yellow-c": { zoom: 1.04 },
-  "yellow-d": { zoom: 1.01 },
-  "jeans-a": { zoom: 1.04 },
-  "skirt-a": { zoom: 1.01 },
-  "cardigan-a": { zoom: 1.08 },
-  "stripe-top": { zoom: 1.04 },
-  "cream-jumper": { zoom: 1.03 },
-  "green-tote": { zoom: 1.02 },
-  "trainers": { zoom: 1.02 },
-  "blue-shirt": { zoom: 1.08 },
-  "floral-dress": { zoom: 1.08 },
-  "linen-trousers": { zoom: 1.06 },
-  "beige-jacket": { zoom: 1.02 },
-  "scarf": { zoom: 1.12 },
-  "hoodie": { zoom: 1.05 },
-  "belt": { zoom: 1.08 },
-  "small-handbag": { zoom: 1.02 },
-  "sunglasses": { zoom: 1.02 },
-  "light-jeans": { zoom: 1.02 },
-  "dark-jeans": { zoom: 1.02 },
-  "white-trainers": { zoom: 1.06 },
-  "mary-janes": { zoom: 1.06 },
-  "cream-cardigan": { zoom: 1.03 },
-  "olive-tote": { zoom: 1.05 },
-  "denim-shirt": { zoom: 1.04 },
-  "black-belt": { zoom: 1.08 },
-  "navy-skirt": { zoom: 1.02 },
-  "striped-top": { zoom: 1.03 },
-  "tan-loafers": { zoom: 1.06 },
-  "blue-button-up": { zoom: 1.03 },
-};
-
-export default {
-  name: "VintedSmartBundling",
-  components: {
-    CaseSnapshot,
-    AppFooter,
-    AppNavbar,
-    ArrowLeft,
-    Camera,
-    CheckCircle2,
-    Grid2X2,
-    Heart,
-    Home,
-    Leaf,
-    Mail,
-    MapPin,
-    PackagePlus,
-    Plus,
-    Search,
-    ShieldCheck,
-    ShoppingBag,
-    SlidersHorizontal,
-    UserRound,
-    X,
-  },
-  setup() {
-    useHead({
-      meta: [
-        {
-          name: "description",
-          content:
-            "Speculative Vinted-inspired prototype exploring full-value discovery, privacy-safe distance, and smart local bundling for pre-loved fashion.",
-        },
-      ],
-    });
-  },
-  data() {
-    return {
-      screen: "results",
-      sortMode: "total",
-      deliveryFilter: "any",
-      selectedListingId: "yellow-b",
-      bundleOpen: false,
-      purchaseComplete: false,
-      selectedBundleIds: ["light-jeans", "white-trainers"],
-      sortOptions: [
-        { id: "total", label: "Full value" },
-        { id: "distance", label: "Distance" },
-        { id: "item", label: "Item price" },
-      ],
-      deliveryOptions: [
-        { id: "any", label: "Any" },
-        { id: "home", label: "Home" },
-        { id: "pickup", label: "Pickup" },
-      ],
-      listings,
-      bundleItems,
-    };
-  },
-  computed: {
-    filteredListings() {
-      const filtered = this.listings.filter((listing) => {
-        const deliveryMatch =
-          this.deliveryFilter === "any" ||
-          (this.deliveryFilter === "home" && ["Home delivery", "Either"].includes(listing.delivery)) ||
-          (this.deliveryFilter === "pickup" && ["Pickup point", "Either"].includes(listing.delivery));
-
-        return deliveryMatch;
-      });
-
-      return filtered.sort((a, b) => {
-        if (this.sortMode === "item") return a.itemPrice - b.itemPrice;
-        if (this.sortMode === "distance") return a.distanceMiles - b.distanceMiles;
-        return this.totalCost(a) - this.totalCost(b);
-      });
+import VintedBundlePrototype from "@/components/VintedBundlePrototype.vue";
+import { evidence, sources } from "@/data/vintedResearch";
+import tee from "@/images/vinted/products/yellow-b.png";
+import shirt from "@/images/vinted/bundles/blue-button-up.png";
+const sourceById = Object.fromEntries(
+  sources.map((source) => [source.id, source]),
+);
+useHead({
+  meta: [
+    {
+      name: "description",
+      content:
+        "A research-informed Vinted bundle concept: relevant same-seller discovery, transparent total costs, an interactive prototype and an honest evaluation plan.",
     },
-    selectedListing() {
-      return this.listings.find((listing) => listing.id === this.selectedListingId) || this.listings[0];
-    },
-    activeAnnotations() {
-      if (this.purchaseComplete) {
-        return [
-          {
-            id: "purchase-outcome",
-            kicker: "Outcome",
-            title: "Both proposed features converge here.",
-            copy: "Discovery starts the decision. Bundling increases the basket before the fake purchase.",
-            position: "note-right note-purchase",
-          },
-        ];
-      }
-
-      if (this.bundleOpen) {
-        return [
-          {
-            id: "bundle-recs",
-            kicker: "Feature 2",
-            title: "Bundle recommendations stay outside the search task.",
-            copy: "Same seller first, then favourite categories and size signals.",
-            position: "note-right note-drawer",
-          },
-          {
-            id: "bundle-buy",
-            kicker: "Prototype outcome",
-            title: "The fake buy button closes the loop.",
-            copy: "The flow shows how these prompts can lead to a larger order.",
-            position: "note-left note-buy",
-          },
-        ];
-      }
-
-      if (this.screen === "detail") {
-        return [
-          {
-            id: "pricing-layer",
-            kicker: "Feature 1",
-            title: "Added pricing layer.",
-            copy: "Item, delivery, and total are visible before commitment.",
-            position: "note-left note-price",
-          },
-          {
-            id: "bundle-trigger",
-            kicker: "Feature 2",
-            title: "Same-seller bundle prompt.",
-            copy: "The app shifts from one item to relevant same-seller additions.",
-            position: "note-right note-trigger",
-          },
-        ];
-      }
-
-      return [
-        {
-            id: "existing-shell",
-            kicker: "Existing flow",
-            title: "The search UI stays familiar.",
-            copy: "The normal browse pattern stays intact.",
-          position: "note-left note-existing",
-        },
-        {
-            id: "full-value-sort",
-            kicker: "Feature 1",
-            title: "Sort by full value, not just item price.",
-            copy: "Delivery and distance change which item is best value.",
-          position: "note-right note-sort",
-        },
-      ];
-    },
-    bundleRecommendations() {
-      return this.bundleItems
-        .filter((item) => item.seller === this.selectedListing.seller && item.id !== this.selectedListing.id)
-        .sort((a, b) => b.score - a.score);
-    },
-    selectedBundleItems() {
-      return this.bundleRecommendations.filter((item) => this.selectedBundleIds.includes(item.id));
-    },
-    sortSummary() {
-      if (this.sortMode === "distance") return "Nearest first";
-      if (this.sortMode === "item") return "Sorted by item price";
-      return "Sorted by full value";
-    },
-    shippingSaved() {
-      return this.selectedBundleItems.length > 0 ? this.selectedListing.shipping * this.selectedBundleItems.length : 0;
-    },
-    bundleBuyerFees() {
-      return [this.selectedListing, ...this.selectedBundleItems].reduce((sum, item) => sum + this.buyerFee(item), 0);
-    },
-    bundleDiscount() {
-      return this.selectedBundleItems.length >= 2 ? 1.2 : 0;
-    },
-    estimatedSavings() {
-      return this.shippingSaved + this.bundleDiscount;
-    },
-    bundleTotal() {
-      const itemsTotal = this.selectedBundleItems.reduce((sum, item) => sum + item.itemPrice, this.selectedListing.itemPrice);
-      return Math.max(0, itemsTotal + this.bundleBuyerFees + this.selectedListing.shipping - this.estimatedSavings);
-    },
-    noteTitle() {
-      if (this.purchaseComplete) return "Both proposed features now end in a purchase.";
-      if (this.bundleOpen) return "Bundle value updates as you add items.";
-      if (this.screen === "detail") return "The item detail creates the bundling moment.";
-      return this.sortMode === "total" ? "Clear pricing helps you find the best item." : "Price-only sorting can hide the full picture.";
-    },
-    noteCopy() {
-      if (this.purchaseComplete) {
-        return "The fake buy step shows the product outcome: full-value discovery starts the decision, then same-seller recommendations increase basket value.";
-      }
-      if (this.bundleOpen) {
-        return "The summary now keeps the decision simple: add at least one item, see the bundle saving, then buy the combined order.";
-      }
-      if (this.screen === "detail") {
-        return "The buyer sees delivery impact and a same-seller opportunity before committing, while location details stay approximate.";
-      }
-      return "Try switching to price-only sorting. The affordable shirt moves up, even when delivery makes another option better value.";
-    },
-  },
-  methods: {
-    money(value) {
-      return `£${value.toFixed(2)}`;
-    },
-    totalCost(listing) {
-      return this.appPrice(listing) + listing.shipping;
-    },
-    buyerFee(listing) {
-      return Math.round((listing.itemPrice * 0.07 + 0.45) * 100) / 100;
-    },
-    appPrice(listing) {
-      return listing.itemPrice + this.buyerFee(listing);
-    },
-    likeCount(listing) {
-      return Math.max(8, Math.round(listing.score / 3) + (listing.favourite ? 6 : 0));
-    },
-    productImageSrc(item) {
-      const folder = item.imageSheet === "bundle" ? "bundles" : "products";
-      return resolveAsset(`@/images/vinted/${folder}/${item.id}.png`);
-    },
-    productImageAlt(item) {
-      return `${item.brand} ${item.title}`;
-    },
-    productImageStyle(item, mode = "card") {
-      const fit = imageFits[item.id] || {};
-      const modeZoom = mode === "detail" ? 0.96 : 1;
-      const zoom = Math.max(1, (fit.zoom || 1) * modeZoom);
-
-      return {
-        "--image-scale": zoom,
-      };
-    },
-    openListing(id) {
-      this.selectedListingId = id;
-      this.screen = "detail";
-      this.bundleOpen = false;
-      this.purchaseComplete = false;
-      this.selectedBundleIds = this.bundleRecommendations.slice(0, 2).map((item) => item.id);
-    },
-    toggleBundleItem(id) {
-      if (this.selectedBundleIds.includes(id)) {
-        this.selectedBundleIds = this.selectedBundleIds.filter((itemId) => itemId !== id);
-        return;
-      }
-      this.selectedBundleIds = [...this.selectedBundleIds, id];
-    },
-    completePurchase() {
-      if (this.selectedBundleItems.length === 0) return;
-      this.bundleOpen = false;
-      this.purchaseComplete = true;
-    },
-    resetPurchase() {
-      this.purchaseComplete = false;
-      this.screen = "results";
-    },
-  },
-};
+  ],
+});
 </script>
 
 <style scoped>
-.vinted-case {
-  --vinted-teal: #007782;
-  --vinted-teal-dark: #005f68;
-  --vinted-mint: #e4f7f3;
-  --vinted-line: #dce5e3;
+.bundle-case {
+  --bundle-mint: #e6efeb;
+  --bundle-green: #007782;
   background: var(--color-bg);
   color: var(--color-text);
-  min-height: 100vh;
+  padding-bottom: 80px;
 }
-
-.vinted-hero {
-  align-items: center;
-  display: grid;
-  gap: clamp(1.75rem, 4vw, 3.25rem);
-  grid-template-columns: minmax(0, 1fr);
-  margin: 0 auto;
-  max-width: 1280px;
-  padding: clamp(2rem, 4vw, 3.75rem) clamp(1rem, 5vw, 4rem) clamp(3rem, 5vw, 5rem);
+.case-width {
+  width: calc(100% - 80px);
+  max-width: 1160px;
+  margin-inline: auto;
 }
-
-.hero-story {
-  justify-self: center;
-  max-width: 54rem;
-  text-align: center;
+.bundle-hero {
+  padding-top: 44px;
 }
-
 .back-link {
-  align-items: center;
-  color: var(--color-text-secondary);
   display: inline-flex;
-  font-size: 0.86rem;
-  gap: 0.35rem;
-  margin-bottom: 1.3rem;
-}
-
-.project-label {
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
   color: var(--color-text-secondary);
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0;
-  margin: 0 0 0.75rem;
+  margin-bottom: 54px;
 }
-
-.hero-story h1 {
-  font-size: clamp(3.2rem, 5.4vw, 5rem);
-  line-height: 0.96;
-  margin: 0 auto;
-  max-width: 16ch;
-  text-wrap: balance;
-}
-
-.hero-copy {
+.hero-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  font-size: 12px;
   color: var(--color-text-secondary);
-  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  border-top: 1px solid var(--color-border);
+  padding-top: 18px;
+  margin-bottom: 35px;
+}
+.bundle-hero h1 {
+  font-size: clamp(44px, 6.8vw, 86px);
+  font-weight: 550;
+  line-height: 1.05;
+  letter-spacing: -0.055em;
+  margin: 0;
+  max-width: 1000px;
+}
+.bundle-hero h1 em {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  color: #87c8b4;
+}
+:root[data-visual-theme="light"] .bundle-hero h1 em {
+  color: #006b64;
+}
+.hero-intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 48px;
+  margin: 30px 0 48px;
+}
+.hero-intro > p {
+  max-width: 610px;
+  font-size: 18px;
   line-height: 1.6;
-  margin: 1.25rem auto 0;
-  max-width: 36rem;
+  color: var(--color-text-secondary);
+  margin: 0;
 }
-
-.disclaimer {
-  background: var(--color-surface);
+.outline-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  white-space: nowrap;
   border: 1px solid var(--color-border-strong);
-  border-radius: 8px;
-  color: var(--color-text-secondary);
-  font-size: 0.84rem;
-  line-height: 1.45;
-  margin: 1.35rem auto 0;
-  max-width: 28rem;
-  padding: 0.75rem 0.85rem;
-}
-
-.feature-brief {
-  display: grid;
-  gap: 0.75rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin: 1rem auto 0;
-  max-width: 38rem;
-  text-align: left;
-}
-
-.feature-brief article {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  padding: 0.85rem;
-}
-
-.feature-brief span,
-.feature-brief strong,
-.feature-brief p {
-  display: block;
-}
-
-.feature-brief span {
-  color: var(--color-text-muted);
-  font-size: 0.68rem;
-  font-weight: 700;
-  margin-bottom: 0.35rem;
-}
-
-.feature-brief strong {
+  border-radius: 5px;
+  padding: 13px 18px;
+  font-size: 12px;
   color: var(--color-text);
-  font-size: 0.9rem;
 }
-
-.feature-brief p {
-  color: var(--color-text-secondary);
-  font-size: 0.78rem;
-  line-height: 1.45;
-  margin: 0.35rem 0 0;
-}
-
-.prototype-stage {
-  align-items: center;
-  display: grid;
-  gap: 1.2rem;
-  grid-template-columns: 1fr;
-  justify-items: center;
-  width: 100%;
-}
-
-.prototype-device {
-  display: grid;
-  gap: clamp(1rem, 2.4vw, 2rem);
-  grid-template-areas: "annotations phone notes";
-  grid-template-columns: minmax(11rem, 1fr) minmax(21rem, 24rem) minmax(11rem, 1fr);
-  justify-self: center;
-  min-height: 46rem;
-  position: relative;
-  width: min(100%, 70rem);
-}
-
-.phone-frame {
-  background: #111111;
-  border-radius: 34px;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.16);
-  grid-area: phone;
-  justify-self: center;
-  padding: 0.65rem;
-  position: relative;
-  z-index: 2;
-  margin: 0 auto;
-  width: min(100%, 24rem);
-}
-
-.annotation-layer {
-  align-content: start;
-  display: grid;
-  gap: 0.8rem;
-  grid-area: annotations;
-  inset: auto;
-  padding-top: 1rem;
-  pointer-events: none;
-  position: static;
-  z-index: 1;
-}
-
-.annotation-note {
+.outline-link:hover {
   background: var(--color-surface);
-  border: 1px solid rgba(17, 17, 17, 0.12);
+}
+.hero-composition {
+  display: grid;
+  grid-template-columns: 1.65fr 1fr;
+  background: #e6efeb;
+  color: #163c32;
   border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(17, 17, 17, 0.08);
-  color: var(--color-text);
-  max-width: none;
-  padding: 0.72rem 0.78rem;
-  position: static;
-  z-index: 3;
-}
-
-.annotation-note::after {
-  background: rgba(17, 17, 17, 0.24);
-  content: "";
-  height: 1px;
-  position: absolute;
-  top: 50%;
-  transform-origin: center;
-}
-
-.annotation-note::before,
-.annotation-note::after {
-  display: none;
-}
-
-.annotation-note::before {
-  background: #111111;
-  border: 2px solid var(--color-border);
-  border-radius: 50%;
-  box-shadow: 0 0 0 1px rgba(17, 17, 17, 0.18);
-  content: "";
-  height: 0.42rem;
-  position: absolute;
-  top: calc(50% - 0.21rem);
-  width: 0.42rem;
-}
-
-.annotation-note span,
-.annotation-note strong,
-.annotation-note p {
-  display: block;
-}
-
-.annotation-note span {
-  color: var(--color-text-muted);
-  font-size: 0.64rem;
-  font-weight: 800;
-  margin-bottom: 0.26rem;
-}
-
-.annotation-note strong {
-  font-size: 0.83rem;
-  line-height: 1.22;
-}
-
-.annotation-note p {
-  color: var(--color-text-secondary);
-  font-size: 0.68rem;
-  line-height: 1.42;
-  margin: 0.32rem 0 0;
-}
-
-.note-left {
-  left: 0;
-}
-
-.note-left::after {
-  left: 100%;
-  width: 3rem;
-}
-
-.note-left::before {
-  left: calc(100% + 3rem);
-}
-
-.note-right {
-  right: 0;
-}
-
-.note-right::after {
-  right: 100%;
-  width: 3rem;
-}
-
-.note-right::before {
-  right: calc(100% + 3rem);
-}
-
-.note-existing {
-  top: 4.4rem;
-}
-
-.note-sort {
-  top: 13rem;
-}
-
-.note-price {
-  top: 19.4rem;
-}
-
-.note-trigger {
-  top: 29.8rem;
-}
-
-.note-drawer {
-  top: 14.2rem;
-}
-
-.note-buy {
-  bottom: 7.6rem;
-}
-
-.note-purchase {
-  top: 19rem;
-}
-
-.phone-status {
-  align-items: center;
-  color: #ffffff;
-  display: flex;
-  font-size: 0.72rem;
-  justify-content: space-between;
-  padding: 0.25rem 0.8rem 0.55rem;
-}
-
-.app-screen {
-  background: #f5f7f6;
-  border-radius: 26px;
-  color: #182220;
-  font-family: Inter, Arial, Helvetica, sans-serif;
-  height: 42.5rem;
   overflow: hidden;
-  position: relative;
+  color-scheme: light;
 }
-
-.market-header {
-  align-items: center;
-  background: #ffffff;
-  border-bottom: 1px solid var(--vinted-line);
-  display: flex;
-  gap: 0.55rem;
-  padding: 0.82rem 0.75rem 0.62rem;
-  position: relative;
+.hero-finds {
+  padding: 35px 32px 24px;
 }
-
-.search-bar {
-  align-items: center;
-  background: #eef3f2;
-  border: 1px solid #d5dddb;
-  border-radius: 12px;
-  color: #69706f;
-  display: flex;
-  flex: 1;
-  font-size: 0.86rem;
-  gap: 0.45rem;
-  min-width: 0;
-  padding: 0.58rem 0.62rem;
-}
-
-.search-bar span {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.camera-icon {
-  color: var(--vinted-teal);
-  flex: 0 0 auto;
-  margin-left: auto;
-}
-
-.market-header button,
-.sort-segment button,
-.delivery-filter button,
-.back-to-results,
-.heart-button,
-.bundle-module button,
-.drawer-top button,
-.recommendation-list button,
-.bottom-nav button {
-  background: transparent;
-  border: 0;
-  color: inherit;
-  cursor: pointer;
-  font: inherit;
-}
-
-.market-header button {
-  align-items: center;
-  border: 1px solid #d8e0de;
-  border-radius: 50%;
-  display: inline-flex;
-  height: 2.25rem;
-  justify-content: center;
-  width: 2.25rem;
-}
-
-.control-panel {
-  background: #f8fbfa;
-  border-bottom: 1px solid var(--vinted-line);
-  display: grid;
-  gap: 0.42rem;
-  padding: 0.56rem 0.75rem 0.6rem;
-}
-
-.control-group {
-  align-items: center;
-  display: grid;
-  gap: 0.48rem;
-  grid-template-columns: 3.2rem minmax(0, 1fr);
-}
-
-.control-label {
-  align-self: center;
-  color: #5f6d6a;
-  font-size: 0.64rem;
-  font-weight: 800;
-  line-height: 1;
-}
-
-.sort-segment,
-.delivery-filter {
-  background: #d8e6e3;
-  border: 1px solid #d8e6e3;
-  border-radius: 10px;
-  display: grid;
-  gap: 1px;
-  min-width: 0;
-  overflow: hidden;
-  padding: 0;
-}
-
-.sort-segment {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.delivery-filter {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.sort-segment button,
-.delivery-filter button {
-  background: #ffffff;
-  color: #40504e;
-  font-size: 0.66rem;
-  font-weight: 650;
-  min-height: 1.9rem;
-  overflow: hidden;
-  padding: 0.38rem 0.24rem;
-  text-align: center;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.sort-segment button:focus,
-.delivery-filter button:focus {
-  outline: 0;
-}
-
-.sort-segment button:focus-visible,
-.delivery-filter button:focus-visible {
-  box-shadow: inset 0 0 0 2px rgba(0, 119, 130, 0.34);
-}
-
-.sort-segment button.active,
-.delivery-filter button.active {
-  background: var(--vinted-mint);
-  color: var(--vinted-teal-dark);
-}
-
-.results-view {
-  height: calc(100% - 10.32rem);
-  overflow-y: auto;
-  padding: 0.68rem 0.75rem 5.45rem;
-}
-
-.detail-view {
-  height: calc(100% - 4.7rem);
-  overflow-y: auto;
-  padding: 0.62rem 0.75rem 6.2rem;
-}
-
-.results-summary {
-  align-items: center;
+.composition-heading {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 0.55rem;
+  gap: 20px;
+  font-size: 12px;
+  margin-bottom: 34px;
 }
-
-.results-summary strong {
-  font-size: 0.82rem;
+.composition-heading > span:last-child {
+  font-size: 10px;
+  color: #45665a;
 }
-
-.results-summary span {
-  color: #65716f;
-  font-size: 0.68rem;
-}
-
-.listing-grid {
+.hero-products {
   display: grid;
-  column-gap: 0.65rem;
-  row-gap: 1rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr 22px 1fr;
+  align-items: center;
+  gap: 18px;
 }
-
-.listing-card {
-  background: transparent;
-  border: 0;
-  min-width: 0;
+.hero-products figure {
+  margin: 0;
 }
-
-.listing-card.selected {
-  outline: 2px solid rgba(0, 119, 130, 0.28);
-  outline-offset: 3px;
-}
-
-.listing-card button {
-  background: transparent;
-  border: 0;
-  color: inherit;
-  cursor: pointer;
-  display: block;
-  font: inherit;
-  min-width: 0;
-  padding: 0;
-  text-align: left;
+.hero-products img {
+  height: 270px;
   width: 100%;
-}
-
-.listing-photo,
-.detail-photo,
-.bundle-thumb {
-  background-color: #f3f3f3;
-  display: block;
-  overflow: hidden;
-  position: relative;
-}
-
-.listing-photo img,
-.detail-photo img,
-.bundle-thumb img {
-  display: block;
-  height: 100%;
   object-fit: cover;
-  object-position: center;
-  transform: scale(var(--image-scale, 1));
-  width: 100%;
-}
-
-.listing-photo {
-  aspect-ratio: 1 / 1;
-  border-radius: 8px;
-  width: 100%;
-}
-
-.heart-badge {
-  align-items: center;
-  background: rgba(20, 28, 27, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 999px;
-  bottom: 0.45rem;
-  color: #edf5f3;
-  display: inline-flex;
-  gap: 0.22rem;
-  height: 1.85rem;
-  justify-content: center;
-  z-index: 1;
-  position: absolute;
-  right: 0.45rem;
-  width: auto;
-  min-width: 2.8rem;
-  padding: 0 0.48rem;
-}
-
-.heart-badge span {
-  color: #edf5f3;
-  display: inline;
-  font-size: 0.72rem;
-  font-weight: 700;
-  margin: 0;
-}
-
-.listing-meta {
+  border-radius: 4px;
   display: block;
-  padding: 0.42rem 0 0;
+  background: #ece9df;
 }
-
-.listing-meta strong,
-.listing-meta span,
-.listing-meta b {
-  display: block;
+.hero-products figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 11px;
+  margin-top: 13px;
 }
-
-.listing-meta strong {
-  color: #293332;
-  font-size: 0.82rem;
-  font-weight: 500;
-  line-height: 1.22;
-  min-height: 0;
-}
-
-.listing-meta span {
-  color: #6c7473;
-  font-size: 0.69rem;
-  line-height: 1.25;
-  margin-top: 0.16rem;
-}
-
-.item-line {
-  overflow: hidden;
-  text-overflow: ellipsis;
+.hero-products figcaption strong {
   white-space: nowrap;
 }
-
-.detail-line {
-  color: #727b79 !important;
-}
-
-.price-comparison {
-  background: #ffffff;
-  border: 1px solid #dce8e5;
-  border-radius: 8px;
-  display: grid !important;
-  gap: 0;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: 0.48rem !important;
-  overflow: hidden;
-}
-
-.price-comparison > span {
-  border-right: 1px solid #edf2f1;
-  margin: 0 !important;
-  min-width: 0;
-  padding: 0.31rem 0.22rem;
-}
-
-.price-comparison > span:last-child {
-  border-right: 0;
-}
-
-.price-comparison small,
-.price-comparison b {
-  display: block;
-}
-
-.price-comparison small {
-  align-items: center;
-  color: #7a8583;
-  font-size: 0.5rem;
-  font-weight: 700;
-  gap: 0.08rem;
-  line-height: 1.15;
-  margin-bottom: 0.12rem;
-  min-width: 0;
-}
-
-.price-comparison b {
-  color: #293332;
-  font-size: 0.67rem;
-  font-weight: 700;
-  line-height: 1.15;
-  white-space: nowrap;
-}
-
-.price-comparison .fee-price small {
-  color: var(--vinted-teal-dark);
-  display: inline-flex;
-}
-
-.price-comparison .fee-price svg {
-  flex: 0 0 auto;
-}
-
-.price-comparison .full-total {
-  background: #eefaf7;
-}
-
-.price-comparison .full-total b {
-  color: var(--vinted-teal-dark);
-}
-
-.delivery-line {
-  color: #7c8583 !important;
-  font-size: 0.62rem !important;
-  margin-top: 0.22rem !important;
-}
-
-.back-to-results {
-  align-items: center;
-  color: var(--vinted-teal-dark);
-  display: inline-flex;
-  font-size: 0.74rem;
-  gap: 0.3rem;
-  margin-bottom: 0.48rem;
-}
-
-.detail-photo {
-  aspect-ratio: 1 / 1;
-  border-radius: 12px;
-  width: 100%;
-}
-
-.detail-photo span {
-  background: rgba(255, 255, 255, 0.84);
-  border-radius: 999px;
-  color: #263532;
-  font-size: 0.68rem;
-  font-weight: 800;
-  left: 0.8rem;
-  padding: 0.34rem 0.55rem;
-  position: absolute;
-  top: 0.8rem;
-  z-index: 1;
-}
-
-.detail-content {
-  align-items: flex-start;
-  display: flex;
-  gap: 1rem;
-  justify-content: space-between;
-  padding: 0.62rem 0 0.52rem;
-}
-
-.detail-content h2 {
-  font-size: 1.1rem;
-  line-height: 1.2;
-  margin: 0;
-}
-
-.detail-content p {
-  color: #65716f;
-  font-size: 0.73rem;
-  line-height: 1.45;
-  margin: 0.22rem 0 0;
-}
-
-.heart-button {
-  align-items: center;
-  background: #ffffff;
-  border: 1px solid var(--vinted-line);
-  border-radius: 50%;
-  color: var(--vinted-teal);
-  display: inline-flex;
-  flex: 0 0 auto;
-  height: 2.12rem;
-  justify-content: center;
-  width: 2.12rem;
-}
-
-.full-total-callout {
-  align-items: center;
-  background: #eefaf7;
-  border: 1px solid #bde4dd;
-  border-radius: 10px;
-  display: grid;
-  gap: 0.12rem 0.55rem;
-  grid-template-columns: minmax(0, 1fr) auto;
-  margin-bottom: 0.5rem;
-  padding: 0.58rem 0.68rem;
-}
-
-.full-total-callout span,
-.full-total-callout small {
-  color: #536d68;
-  font-size: 0.68rem;
-  line-height: 1.25;
-}
-
-.full-total-callout strong {
-  color: var(--vinted-teal-dark);
-  font-size: 1.02rem;
-  grid-row: span 2;
-  line-height: 1.1;
-}
-
-.full-total-callout small {
-  display: block;
-}
-
-.price-breakdown {
-  background: #ffffff;
-  border: 1px solid var(--vinted-line);
-  border-radius: 10px;
-  margin: 0;
-  padding: 0.58rem 0.68rem 0.55rem;
-  position: relative;
-}
-
-.price-breakdown div {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  padding: 0.24rem 0;
-}
-
-.price-breakdown-total {
-  border-top: 1px solid #e7eeee;
-  color: var(--vinted-teal-dark);
-  font-weight: 800;
-  margin-top: 0.16rem;
-  padding-top: 0.42rem;
-}
-
-.price-breakdown dt,
-.price-breakdown dd {
-  font-size: 0.78rem;
-  margin: 0;
-}
-
-.impact-card,
-.bundle-module {
-  background: #ffffff;
-  border: 1px solid var(--vinted-line);
-  border-radius: 10px;
-  display: flex;
-  gap: 0.7rem;
-  margin-top: 0.62rem;
-  padding: 0.68rem;
-}
-
-.impact-icon {
-  align-items: center;
-  background: var(--vinted-mint);
-  border-radius: 8px;
-  color: var(--vinted-teal-dark);
-  display: inline-flex;
-  flex: 0 0 auto;
-  height: 2.2rem;
-  justify-content: center;
-  width: 2.2rem;
-}
-
-.impact-card strong,
-.impact-card span,
-.bundle-module p,
-.bundle-module h3,
-.bundle-module span {
-  display: block;
-}
-
-.impact-card strong {
-  font-size: 0.78rem;
-}
-
-.impact-card span,
-.bundle-module span {
-  color: #65716f;
-  font-size: 0.64rem;
-  line-height: 1.35;
-  margin-top: 0.16rem;
-}
-
-.bundle-module {
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 0.68rem;
-  position: relative;
-}
-
-.bundle-module p {
-  color: var(--vinted-teal-dark);
-  font-size: 0.63rem;
-  font-weight: 800;
-  margin: 0 0 0.18rem;
-}
-
-.bundle-module h3 {
-  font-size: 0.82rem;
-  line-height: 1.25;
-  margin: 0;
-  max-width: 10.8rem;
-}
-
-.bundle-module button {
-  align-items: center;
-  background: var(--vinted-teal);
-  border-radius: 8px;
-  color: #ffffff;
-  display: inline-flex;
-  flex: 0 0 auto;
-  font-size: 0.68rem;
-  gap: 0.35rem;
-  padding: 0.52rem 0.6rem;
-}
-
-.bundle-drawer {
-  background: #ffffff;
-  border-top: 1px solid var(--vinted-line);
-  border-radius: 22px 22px 0 0;
-  bottom: 4rem;
-  box-shadow: 0 -16px 36px rgba(0, 49, 46, 0.16);
-  display: flex;
-  flex-direction: column;
-  left: 0;
-  max-height: 78%;
-  overflow: hidden;
-  padding: 0.85rem;
-  position: absolute;
-  right: 0;
-  z-index: 5;
-}
-
-.drawer-top {
-  align-items: flex-start;
-  display: flex;
-  justify-content: space-between;
-}
-
-.drawer-top p {
-  color: var(--vinted-teal-dark);
-  font-size: 0.64rem;
-  font-weight: 800;
-  margin: 0 0 0.2rem;
-}
-
-.drawer-top h2 {
-  font-size: 1rem;
-  margin: 0;
-}
-
-.drawer-context {
-  color: #65716f;
-  display: block;
-  font-size: 0.62rem;
-  line-height: 1.35;
-  margin-top: 0.22rem;
-  max-width: 14.5rem;
-}
-
-.drawer-top button {
-  align-items: center;
-  border: 1px solid var(--vinted-line);
-  border-radius: 50%;
-  display: inline-flex;
-  height: 1.85rem;
-  justify-content: center;
-  width: 1.85rem;
-}
-
-.recommendation-list {
-  display: grid;
-  gap: 0.46rem;
-  margin-top: 0.68rem;
-  max-height: min(12.8rem, 30vh);
-  overflow-y: auto;
-  padding-right: 0.12rem;
-}
-
-.recommendation-list article {
-  align-items: center;
-  border: 1px solid #e2e9e7;
-  border-radius: 10px;
-  display: grid;
-  gap: 0.48rem;
-  grid-template-columns: 3rem minmax(0, 1fr) auto;
-  padding: 0.42rem;
-}
-
-.recommendation-list article.selected {
-  background: #f1faf8;
-  border-color: #9fd8d0;
-}
-
-.bundle-thumb {
-  aspect-ratio: 1 / 1;
-  border-radius: 8px;
-  height: 3rem;
-}
-
-.recommendation-list strong,
-.recommendation-list span,
-.recommendation-list small {
-  display: block;
-}
-
-.recommendation-list strong {
-  font-size: 0.7rem;
-  line-height: 1.2;
-}
-
-.recommendation-list span,
-.recommendation-list small {
-  color: #667471;
-  font-size: 0.58rem;
-  line-height: 1.25;
-  margin-top: 0.14rem;
-}
-
-.recommendation-list button {
-  background: #edf8f5;
-  border: 1px solid #b8dfd8;
-  border-radius: 999px;
-  color: var(--vinted-teal-dark);
-  font-size: 0.62rem;
-  font-weight: 800;
-  padding: 0.34rem 0.48rem;
-}
-
-.recommendation-list button.active {
-  background: var(--vinted-teal);
-  border-color: var(--vinted-teal);
-  color: #ffffff;
-}
-
-.bundle-summary {
-  background: #f4faf8;
-  border: 1px solid #d7ebe7;
-  border-radius: 12px;
-  display: grid;
-  gap: 0.46rem;
-  margin-top: 0.56rem;
-  padding: 0.58rem 0.64rem;
-}
-
-.bundle-summary span {
-  color: #667471;
-  font-size: 0.62rem;
-}
-
-.bundle-summary strong {
-  color: #172523;
-  font-size: 0.72rem;
-}
-
-.bundle-summary-copy span,
-.bundle-summary-copy strong {
-  display: block;
-}
-
-.bundle-summary-copy strong {
-  color: var(--vinted-teal-dark);
-  font-size: 0.9rem;
-  line-height: 1.25;
-  margin-top: 0.16rem;
-}
-
-.bundle-summary-copy strong:not(:only-child) {
-  text-wrap: pretty;
-}
-
-.bundle-summary-row {
-  align-items: center;
-  border-top: 1px solid #cfe7e2;
-  display: flex;
-  justify-content: space-between;
-  padding-top: 0.44rem;
-}
-
-.fake-buy-button {
-  align-items: center;
-  background: var(--vinted-teal);
-  border: 0;
-  border-radius: 9px;
-  color: #ffffff;
-  cursor: pointer;
-  display: flex;
-  font: inherit;
-  font-size: 0.74rem;
-  font-weight: 800;
-  gap: 0.38rem;
-  justify-content: center;
-  margin-top: 0.56rem;
-  padding: 0.68rem 0.82rem;
-  width: 100%;
-}
-
-.fake-buy-button:disabled {
-  background: #d7e3e0;
-  color: #5d6d69;
-  cursor: not-allowed;
-}
-
-.purchase-complete {
-  align-items: center;
-  background: rgba(246, 250, 248, 0.96);
-  color: #172523;
-  display: flex;
-  flex-direction: column;
-  inset: 0;
-  justify-content: center;
-  padding: 2rem;
-  position: absolute;
+.plus-sign {
   text-align: center;
-  z-index: 8;
+  font-size: 25px;
+  font-weight: 300;
 }
-
-.purchase-complete svg {
-  color: var(--vinted-teal);
-  margin-bottom: 0.8rem;
+.hero-receipt {
+  padding: 36px 34px;
+  background: #d2e2d9;
+  border-left: 1px solid #bdd1c4;
 }
-
-.purchase-complete p {
-  color: var(--vinted-teal-dark);
-  font-size: 0.7rem;
-  font-weight: 800;
-  margin: 0 0 0.25rem;
+.receipt-eyebrow {
+  font-size: 11px;
+  color: #45665a;
 }
-
-.purchase-complete h2 {
-  font-size: 1.35rem;
-  line-height: 1.14;
+.hero-composition .hero-receipt h2 {
+  font-size: 36px;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  margin: 18px 0 25px;
+  font-weight: 550;
+}
+.hero-receipt dl {
   margin: 0;
-  max-width: 16rem;
 }
-
-.purchase-complete span {
-  color: #53605d;
-  display: block;
-  font-size: 0.78rem;
-  line-height: 1.45;
-  margin-top: 0.55rem;
-  max-width: 17rem;
-}
-
-.purchase-complete button {
-  background: #ffffff;
-  border: 1px solid #b8d8d3;
-  border-radius: 8px;
-  color: var(--vinted-teal-dark);
-  cursor: pointer;
-  font: inherit;
-  font-size: 0.76rem;
-  font-weight: 800;
-  margin-top: 1rem;
-  padding: 0.62rem 0.82rem;
-}
-
-.bottom-nav {
-  align-items: center;
-  background: #ffffff;
-  border-top: 1px solid var(--vinted-line);
-  bottom: 0;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  left: 0;
-  padding: 0.46rem 0.2rem 0.55rem;
-  position: absolute;
-  right: 0;
-  z-index: 6;
-}
-
-.bottom-nav button {
-  align-items: center;
-  color: #687471;
+.hero-receipt dl > div {
   display: flex;
-  flex-direction: column;
-  font-size: 0.66rem;
-  font-weight: 600;
-  gap: 0.18rem;
-  position: relative;
+  justify-content: space-between;
+  font-size: 12px;
+  margin: 10px 0;
 }
-
-.bottom-nav button.active {
-  color: var(--vinted-teal);
+.hero-receipt dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
 }
-
-.bottom-nav .sell-button {
-  color: var(--vinted-teal-dark);
-  font-weight: 800;
+.hero-receipt .hero-total {
+  border-top: 1px solid #abc4b4;
+  margin-top: 15px;
+  padding-top: 15px;
+  font-size: 19px;
+  font-weight: 650;
 }
-
-.bottom-nav .sell-button svg {
-  border: 2px solid currentColor;
-  border-radius: 50%;
-  padding: 0.08rem;
+.hero-receipt > p {
+  font-size: 12px;
+  line-height: 1.65;
+  margin: 15px 0;
+  color: #284d3e;
 }
-
-.inbox-button i {
-  background: #d85765;
-  border-radius: 50%;
-  height: 0.58rem;
-  position: absolute;
-  right: 1.15rem;
-  top: -0.06rem;
-  width: 0.58rem;
+.hero-receipt > small {
+  font-size: 9px;
+  color: #45665a;
 }
-
-.prototype-notes {
-  align-self: start;
+.project-facts {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 1fr 1fr;
+  gap: 30px;
+  margin: 32px 0 0;
+}
+.project-facts dt {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  margin-bottom: 9px;
+}
+.project-facts dd {
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0;
+}
+.case-index {
+  display: flex;
+  gap: 28px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--color-border);
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+.case-index a {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  text-underline-offset: 6px;
+}
+.case-index a:hover {
+  text-decoration: underline;
+  color: var(--color-text);
+}
+.story-block {
+  padding-block: 92px;
+  border-bottom: 1px solid var(--color-border);
+}
+.section-intro {
+  max-width: 760px;
+  margin-bottom: 36px;
+}
+.section-kicker {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  margin: 0 0 19px;
+}
+.bundle-case h2 {
+  font-size: clamp(30px, 4.1vw, 48px);
+  font-weight: 550;
+  letter-spacing: -0.04em;
+  line-height: 1.12;
+  margin: 0 0 24px;
+}
+.section-intro > p:not(.section-kicker),
+.closing-reflection > p:last-child {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+.bundle-case a {
+  color: inherit;
+}
+.bundle-case p > a,
+.bundle-case td a {
+  color: #8dd5c4;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+:root[data-visual-theme="light"] .bundle-case p > a,
+:root[data-visual-theme="light"] .bundle-case td a {
+  color: #006b64;
+}
+.research-method {
+  display: flex;
+  gap: 24px;
+  padding: 25px 0;
+  border-top: 1px solid var(--color-border);
+  margin-bottom: 35px;
+}
+.research-method > svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #8dd5c4;
+}
+.research-method h3 {
+  font-size: 18px;
+  font-weight: 550;
+  margin: 0 0 12px;
+}
+.research-method p {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  max-width: 850px;
+  margin: 0 0 14px;
+}
+.research-method .method-detail {
+  font-size: 12px;
+  margin-bottom: 0;
+  max-width: 800px;
+}
+.theme-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 40px;
+}
+.theme-grid article {
+  border-top: 1px solid var(--color-border-strong);
+  padding-top: 20px;
+}
+.theme-grid article > span {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+}
+.theme-grid h3 {
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin: 14px 0;
+}
+.theme-grid p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin: 0 0 18px;
+}
+.theme-grid a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.research-pivot {
+  border-left: 2px solid #78b39f;
+  padding-left: 22px;
+  margin: 45px 0 60px;
+  max-width: 850px;
+}
+.research-pivot > span {
+  font-size: 12px;
+  font-weight: 650;
+}
+.research-pivot p {
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+  margin: 13px 0;
+}
+.evidence-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+.evidence-heading h3 {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0;
+}
+.evidence-heading p {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  max-width: 370px;
+  line-height: 1.7;
+  margin: 0;
+}
+.evidence-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.evidence-grid figure {
+  margin: 0;
+  padding: 28px;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: 12px;
-  grid-area: notes;
-  justify-self: stretch;
-  margin-top: 1rem;
-  padding: 1rem;
+  border-radius: 6px;
 }
-
-.prototype-notes h2 {
-  font-size: 1.35rem;
-  line-height: 1.15;
-  margin: 0;
-}
-
-.prototype-notes p:not(.project-label) {
-  color: var(--color-text-secondary);
-  font-size: 0.92rem;
-  line-height: 1.55;
-  margin: 0.7rem 0 0;
-}
-
-.story-section {
-  margin: 0 auto;
-  max-width: 1120px;
-  padding: clamp(3rem, 7vw, 6rem) clamp(1rem, 5vw, 4rem);
-}
-
-.story-section {
+.evidence-grid figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
   align-items: start;
-  display: grid;
-  gap: clamp(1.5rem, 4vw, 3rem);
-  grid-template-columns: minmax(0, 0.78fr) minmax(20rem, 1fr);
 }
-
-.story-section h2 {
-  font-size: clamp(2rem, 4vw, 4rem);
-  line-height: 1.04;
-  margin: 0;
-  text-wrap: balance;
+.evidence-grid figcaption strong {
+  font-size: 12px;
+  font-weight: 600;
 }
-
-.story-section > p {
+.evidence-grid figcaption a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
   color: var(--color-text-secondary);
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
-  line-height: 1.65;
-  margin: 2.1rem 0 0;
+  text-align: right;
 }
-
-.problem-section {
+.evidence-grid blockquote {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 24px;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  margin: 25px 0;
+  color: var(--color-text);
+}
+.evidence-grid figure > p {
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin: 0;
+  border-top: 1px solid var(--color-border);
+  padding-top: 16px;
+}
+.evidence-grid figure > p span {
+  display: block;
+  font-size: 10px;
+  margin-bottom: 5px;
+  color: var(--color-text);
+}
+.decision-band {
+  background: #dbe9e1;
+  color: #173f32;
+  padding: 76px 0;
+  color-scheme: light;
+}
+.decision-band .section-kicker {
+  color: #466454;
+}
+.decision-band h2 {
+  max-width: 900px;
+}
+.problem-statement {
+  max-width: 750px;
+  font-size: 20px;
+  line-height: 1.6;
+  color: #335547;
+  margin: 30px 0 44px;
+}
+.decision-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 34px;
+}
+.decision-columns > div {
+  border-top: 1px solid #aac2b2;
+  padding-top: 18px;
+}
+.decision-columns h3 {
+  font-size: 14px;
+  font-weight: 650;
+  margin: 0 0 12px;
+}
+.decision-columns p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #335547;
+  margin: 0;
+}
+.hypothesis {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  gap: 36px;
+  border-top: 1px solid #aac2b2;
+  margin-top: 40px;
+  padding-top: 24px;
+}
+.hypothesis > span {
+  font-size: 11px;
+}
+.hypothesis p {
+  font-size: 17px;
+  line-height: 1.7;
+  margin: 0;
+}
+.current-reference {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 55px;
+  align-items: center;
+  margin: 42px 0;
+}
+.reference-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  background: #112e30;
+  padding: 25px;
+  border-radius: 6px;
+}
+.reference-images figure {
+  margin: 0;
+}
+.reference-images img {
+  width: 100%;
+  height: 310px;
+  object-fit: contain;
+  display: block;
+}
+.reference-images figcaption {
+  font-size: 9px;
+  line-height: 1.6;
+  color: #c4d8d2;
+  margin-top: 10px;
+  text-align: center;
+}
+.reference-copy h3 {
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 18px 0;
+}
+.reference-copy p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  margin: 0 0 18px;
+}
+.reference-copy .section-kicker {
+  font-size: 10px;
+}
+.comparison-table {
+  width: 100%;
+  overflow-x: auto;
+}
+.comparison-table table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 13px;
+  line-height: 1.75;
+  min-width: 650px;
+}
+.comparison-table caption {
+  text-align: left;
+  font-size: 12px;
+  margin-bottom: 18px;
+  color: var(--color-text-secondary);
+}
+.comparison-table th,
+.comparison-table td {
+  padding: 18px 20px 18px 0;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: top;
+}
+.comparison-table thead th {
+  font-size: 10px;
+  color: var(--color-text-secondary);
+  font-weight: 500;
   border-top: 1px solid var(--color-border-strong);
 }
-
-.drawer-enter-active,
-.drawer-leave-active,
-.purchase-enter-active,
-.purchase-leave-active {
-  transition: transform 220ms var(--ease-out), opacity 220ms var(--ease-out);
+.comparison-table tbody th {
+  font-weight: 500;
+  width: 23%;
 }
-
-.drawer-enter-from,
-.drawer-leave-to,
-.purchase-enter-from,
-.purchase-leave-to {
-  opacity: 0;
-  transform: translateY(24px);
+.comparison-table td {
+  color: var(--color-text-secondary);
+  width: 38%;
 }
-
-@media (max-width: 1120px) {
-  .prototype-device {
-    grid-template-areas:
-      "phone"
-      "annotations"
-      "notes";
-    grid-template-columns: 1fr;
-    width: min(100%, 54rem);
-  }
-
-  .phone-frame {
-    width: min(100%, 24rem);
-  }
-
-  .prototype-notes {
-    justify-self: center;
-    max-width: 24rem;
-  }
+.prototype-section {
+  padding-top: 90px;
 }
-
-@media (max-width: 760px) {
-  .vinted-hero {
-    padding-top: 3rem;
+.prototype-section .section-intro {
+  margin-bottom: 42px;
+}
+.design-principles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 35px;
+  padding: 30px 0 0;
+}
+.design-principles span {
+  font-size: 12px;
+  font-weight: 600;
+}
+.design-principles p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  margin: 10px 0 0;
+}
+.constraint-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px 50px;
+}
+.constraint-grid article {
+  border-top: 1px solid var(--color-border);
+  padding-top: 20px;
+}
+.constraint-grid h3 {
+  font-size: 17px;
+  font-weight: 500;
+  margin: 0 0 12px;
+}
+.constraint-grid p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+.validation-band {
+  padding: 86px 0;
+  background: var(--color-surface);
+}
+.validation-plan {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 55px;
+  margin: 45px 0;
+}
+.plan-stage {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+}
+.validation-plan h3,
+.live-experiment h3 {
+  font-size: 24px;
+  line-height: 1.25;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin: 15px 0;
+}
+.validation-plan p,
+.live-experiment p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  margin: 12px 0;
+}
+.live-experiment {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 55px;
+  margin-top: 48px;
+}
+.live-experiment strong {
+  color: var(--color-text);
+  font-weight: 550;
+}
+.live-experiment .honest-outcome {
+  border-left: 2px solid #78b39f;
+  padding-left: 18px;
+  color: var(--color-text);
+  margin-top: 25px;
+}
+.closing-reflection {
+  max-width: 850px;
+}
+.closing-reflection > p:last-child {
+  max-width: 750px;
+}
+.sources-section {
+  padding-top: 80px;
+}
+.source-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  align-items: end;
+  margin-bottom: 30px;
+}
+.source-heading > p {
+  max-width: 350px;
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  margin: 0 0 24px;
+}
+.sources-section details {
+  border-block: 1px solid var(--color-border);
+  margin: 0 0 25px;
+}
+.sources-section summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  font-size: 13px;
+  cursor: pointer;
+  list-style: none;
+}
+.sources-section summary::-webkit-details-marker {
+  display: none;
+}
+.sources-section details[open] summary svg {
+  transform: rotate(45deg);
+}
+.method-expanded {
+  max-width: 850px;
+  padding-bottom: 20px;
+}
+.method-expanded p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  margin: 10px 0;
+}
+.source-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 45px;
+}
+.source-list li {
+  display: flex;
+  gap: 17px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--color-border);
+  scroll-margin-top: 100px;
+}
+.source-id {
+  font-size: 10px;
+  color: var(--color-text-secondary);
+  padding-top: 3px;
+  min-width: 20px;
+}
+.source-list li > div {
+  min-width: 0;
+}
+.source-list a {
+  font-size: 12px;
+  line-height: 1.6;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.source-list a svg {
+  display: inline;
+  vertical-align: middle;
+}
+.source-list li > div > span {
+  font-size: 10px;
+  display: block;
+  color: var(--color-text-secondary);
+  margin: 7px 0;
+}
+.source-list p {
+  font-size: 11px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+.bundle-case :is(a, button, summary):focus-visible {
+  outline: 3px solid #b98111;
+  outline-offset: 5px;
+}
+.bundle-case section[id] {
+  scroll-margin-top: 90px;
+}
+@media (max-width: 900px) {
+  .case-width {
+    width: calc(100% - 48px);
   }
-
-  .hero-story h1 {
-    font-size: clamp(3rem, 14vw, 4.6rem);
-  }
-
-  .feature-brief {
-    grid-template-columns: 1fr;
-  }
-
-  .phone-frame {
-    border-radius: 28px;
-  }
-
-  .prototype-device {
-    display: flex;
-    flex-direction: column;
-    gap: 0.85rem;
-    min-height: 0;
-  }
-
-  .annotation-layer {
-    display: grid;
-    gap: 0.6rem;
-    order: 2;
-    position: static;
-  }
-
-  .annotation-note {
-    max-width: none;
-    position: static;
-  }
-
-  .annotation-note::before,
-  .annotation-note::after {
+  .hero-topline > span:last-child {
     display: none;
   }
-
-  .phone-frame {
-    order: 1;
+  .hero-intro {
+    gap: 25px;
   }
-
-  .prototype-notes {
-    order: 3;
+  .hero-composition {
+    grid-template-columns: 1.25fr 1fr;
   }
-
-  .app-screen {
-    height: 40rem;
+  .hero-products {
+    gap: 9px;
+    grid-template-columns: 1fr 15px 1fr;
   }
-
-  .story-section {
+  .hero-products img {
+    height: 230px;
+  }
+  .hero-finds {
+    padding: 25px 20px;
+  }
+  .hero-receipt {
+    padding: 25px 24px;
+  }
+  .composition-heading {
+    display: block;
+  }
+  .composition-heading > span {
+    display: block;
+    margin-bottom: 8px;
+  }
+  .hero-products figcaption {
+    flex-direction: column;
+    gap: 5px;
+  }
+  .project-facts {
+    grid-template-columns: 1fr 1fr;
+  }
+  .current-reference {
+    gap: 28px;
+  }
+  .reference-images {
+    padding: 15px;
+    gap: 10px;
+  }
+  .reference-images img {
+    height: 250px;
+  }
+  .theme-grid {
+    gap: 20px;
+  }
+  .evidence-grid figure {
+    padding: 22px;
+  }
+  .evidence-grid figcaption {
+    display: block;
+  }
+  .evidence-grid figcaption a {
+    margin-top: 9px;
+  }
+  .hypothesis {
+    grid-template-columns: 180px 1fr;
+  }
+  .case-index {
+    gap: 20px;
+  }
+  .source-list {
+    gap: 0 25px;
+  }
+}
+@media (max-width: 600px) {
+  .case-width {
+    width: calc(100% - 36px);
+  }
+  .bundle-hero {
+    padding-top: 28px;
+  }
+  .back-link {
+    margin-bottom: 35px;
+  }
+  .hero-topline {
+    font-size: 10px;
+    margin-bottom: 25px;
+  }
+  .bundle-hero h1 {
+    font-size: 43px;
+    line-height: 1.05;
+  }
+  .hero-intro {
+    display: block;
+    margin: 25px 0 32px;
+  }
+  .hero-intro > p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  .outline-link {
+    font-size: 12px;
+    padding: 11px 15px;
+  }
+  .hero-composition {
     grid-template-columns: 1fr;
   }
-
-  .story-section > p {
-    margin-top: 0;
+  .hero-finds {
+    padding: 22px;
   }
-
+  .composition-heading {
+    display: flex;
+    font-size: 11px;
+    margin-bottom: 18px;
+  }
+  .composition-heading > span:last-child {
+    display: none;
+  }
+  .hero-products img {
+    height: 200px;
+  }
+  .hero-products figcaption {
+    flex-direction: row;
+    font-size: 10px;
+  }
+  .hero-receipt {
+    border-left: 0;
+    border-top: 1px solid #bdd1c4;
+    padding: 24px;
+  }
+  .hero-composition .hero-receipt h2 {
+    font-size: 30px;
+    margin: 10px 0 20px;
+  }
+  .hero-receipt h2 br {
+    display: none;
+  }
+  .project-facts {
+    gap: 24px 20px;
+  }
+  .project-facts dd {
+    font-size: 11px;
+  }
+  .case-index {
+    margin-top: 25px;
+    gap: 16px 20px;
+    padding-block: 20px;
+  }
+  .case-index a {
+    font-size: 11px;
+  }
+  .story-block {
+    padding-block: 60px;
+  }
+  .section-intro > p:not(.section-kicker),
+  .closing-reflection > p:last-child {
+    font-size: 14px;
+  }
+  .research-method {
+    gap: 15px;
+  }
+  .research-method > svg {
+    width: 18px;
+  }
+  .research-method p {
+    font-size: 13px;
+  }
+  .theme-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .theme-grid h3 {
+    font-size: 20px;
+    margin-block: 9px;
+  }
+  .theme-grid p {
+    margin-bottom: 12px;
+  }
+  .research-pivot {
+    margin: 35px 0 45px;
+  }
+  .research-pivot p {
+    font-size: 15px;
+  }
+  .evidence-heading {
+    display: block;
+  }
+  .evidence-heading p {
+    margin-top: 12px;
+  }
+  .evidence-grid {
+    grid-template-columns: 1fr;
+  }
+  .evidence-grid blockquote {
+    font-size: 24px;
+  }
+  .decision-band {
+    padding-block: 55px;
+  }
+  .decision-columns {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .problem-statement {
+    font-size: 17px;
+    margin: 25px 0 35px;
+  }
+  .hypothesis {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .hypothesis p {
+    font-size: 15px;
+  }
+  .current-reference {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .reference-images {
+    padding: 20px;
+    gap: 14px;
+  }
+  .reference-images img {
+    height: 280px;
+  }
+  .comparison-table table {
+    min-width: 620px;
+    font-size: 12px;
+  }
+  .prototype-section {
+    padding-top: 60px;
+  }
+  .design-principles {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .constraint-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .constraint-grid p {
+    font-size: 13px;
+  }
+  .validation-band {
+    padding-block: 60px;
+  }
+  .validation-plan {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    margin: 30px 0;
+  }
+  .validation-plan p,
+  .live-experiment p {
+    font-size: 13px;
+  }
+  .live-experiment {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 35px;
+  }
+  .sources-section {
+    padding-top: 60px;
+  }
+  .source-heading {
+    display: block;
+  }
+  .source-heading > p {
+    margin-bottom: 25px;
+    max-width: none;
+  }
+  .source-list {
+    grid-template-columns: 1fr;
+  }
+  .sources-section summary {
+    font-size: 12px;
+  }
+  .bundle-case {
+    padding-bottom: 50px;
+  }
 }
-
-@media (max-width: 420px) {
-  .vinted-hero {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-  }
-
-  .phone-frame {
-    padding: 0.45rem;
-  }
-
-  .phone-status {
-    padding-left: 0.6rem;
-    padding-right: 0.6rem;
-  }
-
-  .listing-meta {
-    padding: 0.45rem;
-  }
-
-  .listing-meta strong {
-    font-size: 0.72rem;
-  }
-
-  .bundle-module {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .drawer-enter-active,
-  .drawer-leave-active,
-  .purchase-enter-active,
-  .purchase-leave-active {
-    transition-duration: 1ms;
+  .bundle-case * {
+    scroll-behavior: auto !important;
+    transition: none !important;
   }
 }
 </style>

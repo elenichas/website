@@ -193,7 +193,7 @@ const PAGE_TITLES = {
   "/products/adventures-of-simba": "The Adventures of Simba",
   "/products/plum-pulse": "Plum Pulse",
   "/products/ai-sandbox": "AI Interface Sandbox",
-  "/products/vinted-smart-bundling": "Vinted Smart Local Bundling",
+  "/products/vinted-smart-bundling": "Vinted Bundle Decisions",
   "/products/map3d-studio": "Map3D Studio",
   "/products/industrial-configurator": "Industrial Facility Configurator",
   "/products/lunar-app": "Moon Habitat Configurator",
