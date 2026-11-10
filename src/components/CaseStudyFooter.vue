@@ -42,7 +42,7 @@ export default {
         { title: "The Adventures of Simba", type: "Personal game · Game Boy Color", route: "/products/adventures-of-simba" },
         { title: "Paper & Parcel", type: "Local AI · Agent workflows", route: "/products/paper-and-parcel" },
         { title: "Plum Pulse", type: "Fintech · Agent UX", route: "/products/plum-pulse" },
-        { title: "Vinted Smart Local Bundling", type: "Commerce · Mobile", route: "/products/vinted-smart-bundling" },
+        { title: "Vinted Bundle Decisions", type: "Commerce · Mobile", route: "/products/vinted-smart-bundling" },
         { title: "AI Interface Sandbox", type: "AI UX · Desktop", route: "/products/ai-sandbox" },
         { title: "Industrial Facility Configurator", type: "Enterprise · 3D configurator", route: "/products/industrial-configurator" },
         { title: "Vintage Coach Catalog", type: "Data product", route: "/products/coach-verification-app" },

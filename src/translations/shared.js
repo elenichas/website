@@ -1,6 +1,12 @@
 // Greek for components that appear on several pages: the animated project
 // cards, the "Next project" footer and the image carousel.
 export default {
+  "Vinted Bundle Decisions": "Vinted: αποφάσεις για πακέτα",
+  "Better Bundle Decisions": "Καλύτερες αποφάσεις για πακέτα",
+  "A useful find.": "Ένα χρήσιμο εύρημα.",
+  "Nora · Same seller": "Nora · Ίδιος πωλητής",
+  "Find useful items from Nora": "Βρείτε χρήσιμα προϊόντα από τη Nora",
+  "A research-informed bundle flow: relevant finds, transparent costs and a genuine choice.": "Μια ροή πακέτων βασισμένη σε έρευνα: σχετικά προϊόντα, σαφή κόστη και πραγματική επιλογή.",
   // Vinted card (ProjectMotionCard.vue)
   "Vinted · Feature concept": "Vinted · Ιδέα λειτουργίας",
   "A nearby find.": "Ένα εύρημα κοντά σας.",
@@ -26,8 +32,8 @@ export default {
   "Soft yellow tee · £5": "Απαλό κίτρινο T-shirt · £5",
   "Straight jeans · £13": "Ίσιο τζιν · £13",
   "Build your bundle →": "Φτιάξτε το πακέτο σας →",
-  "Vinted concept animation: a £5 tee, its £7.79 full price, and items from the same seller.":
-    "Animation της ιδέας για τη Vinted: ένα T-shirt των £5, η πλήρης τιμή του £7.79 και προϊόντα από τον ίδιο πωλητή.",
+  "Vinted concept animation: a £5 tee, its £8.24 full price, and items from the same seller.":
+    "Animation της ιδέας για τη Vinted: ένα T-shirt των £5, η πλήρης τιμή του £8.24 και προϊόντα από τον ίδιο πωλητή.",
 
   // Plum Pulse card (ProjectMotionCard.vue)
   "Plum Pulse · Agent UX": "Plum Pulse · Agent UX",

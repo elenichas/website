@@ -81,8 +81,8 @@ export default {
           summary: "A money assistant that explains what changed in your account and waits for your approval before acting.",
         }),
         project("vinted-bundling", {
-          title: "Vinted Smart Local Bundling", route: "/products/vinted-smart-bundling", meta: "Commerce concept · 2026", tags: ["mobile"],
-          summary: "Shows the real cost of an item, delivery included, before you buy.",
+          title: "Vinted Bundle Decisions", route: "/products/vinted-smart-bundling", meta: "Commerce concept · 2026", tags: ["mobile"],
+          summary: "A research-informed bundle flow: relevant finds, transparent costs and a genuine choice.",
         }),
         project("ai-sandbox", {
           title: "AI Interface Sandbox", route: "/products/ai-sandbox", meta: "AI prototype · 2026", tags: ["desktop", "ai"],

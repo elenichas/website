@@ -1,21 +1,21 @@
 <template>
-  <div ref="root" class="project-motion" :class="{ 'is-paused': !visible }" role="img" :aria-label="kind === 'vinted' ? 'Vinted concept animation: a £5 tee, its £7.79 full price, and items from the same seller.' : 'Plum Pulse concept animation: request a payment skip, review the exact payment, then see its verified receipt.'">
+  <div ref="root" class="project-motion" :class="{ 'is-paused': !visible }" role="img" :aria-label="kind === 'vinted' ? 'Vinted concept animation: a £5 tee, its £8.24 full price, and items from the same seller.' : 'Plum Pulse concept animation: request a payment skip, review the exact payment, then see its verified receipt.'">
     <svg viewBox="0 0 960 660" aria-hidden="true" focusable="false">
       <template v-if="kind === 'vinted'">
         <rect width="960" height="660" fill="#e1eeea" />
         <g fill="#153f3b">
           <text x="48" y="68" class="eyebrow">Vinted · Feature concept</text>
-          <text x="48" y="198" class="headline">A nearby find.</text>
+          <text x="48" y="198" class="headline">A useful find.</text>
           <text x="48" y="250" class="headline">The full picture.</text>
           <g class="scene scene-a"><text x="48" y="320" class="caption">Start with something you love.</text></g>
           <g class="scene scene-b"><text x="48" y="320" class="caption">See every cost, together.</text></g>
           <g class="scene scene-c"><text x="48" y="320" class="caption">More finds. One delivery.</text></g>
-          <text x="48" y="540" class="footnote">Smart Local Bundling</text>
+          <text x="48" y="540" class="footnote">Better Bundle Decisions</text>
           <text x="48" y="571" class="small">Illustrative prototype sequence</text>
         </g>
         <rect x="451" y="40" width="462" height="583" rx="18" fill="#fff" />
         <text x="478" y="79" class="brand" fill="#007d82">Vinted</text>
-        <text x="886" y="76" class="small" text-anchor="end" fill="#526661">Nora · North London</text>
+        <text x="886" y="76" class="small" text-anchor="end" fill="#526661">Nora · Same seller</text>
         <g class="scene scene-a">
           <image :href="tee" x="478" y="100" width="408" height="340" preserveAspectRatio="xMidYMid slice" />
           <text x="478" y="482" class="title">Soft yellow tee</text>
@@ -29,12 +29,12 @@
           <text x="584" y="139" class="title">Soft yellow tee</text>
           <text x="584" y="172" class="small">From Nora</text>
           <text x="478" y="246" class="caption">Item</text><text x="886" y="246" class="caption" text-anchor="end">£5.00</text>
-          <text x="478" y="296" class="caption">Buyer fee</text><text x="886" y="296" class="caption" text-anchor="end">£0.80</text>
-          <text x="478" y="346" class="caption">Delivery</text><text x="886" y="346" class="caption" text-anchor="end">£1.99</text>
+          <text x="478" y="296" class="caption">Buyer fee</text><text x="886" y="296" class="caption" text-anchor="end">£0.75</text>
+          <text x="478" y="346" class="caption">Delivery</text><text x="886" y="346" class="caption" text-anchor="end">£2.49</text>
           <path d="M478 374H886" stroke="#c7d9d2" />
-          <text x="478" y="424" class="title">Full total</text><text x="886" y="427" class="amount" text-anchor="end">£7.79</text>
+          <text x="478" y="424" class="title">Full total</text><text x="886" y="427" class="amount" text-anchor="end">£8.24</text>
           <rect x="478" y="480" width="408" height="108" rx="8" fill="#e1eeea" />
-          <text x="498" y="518" class="title">Nora has more of your favourites</text>
+          <text x="498" y="518" class="title">Find useful items from Nora</text>
           <text x="498" y="561" class="caption" fill="#007d82">Explore a bundle →</text>
         </g>
         <g class="scene scene-c">

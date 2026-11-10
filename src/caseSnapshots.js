@@ -129,16 +129,16 @@ export default {
   },
   vinted: {
     en: {
-      problem: "On a second-hand marketplace the item price is only part of what a buyer pays. Delivery, distance and bundle savings change the total but appear late.",
-      role: "UX design and interactive prototype. Independent concept, not affiliated with Vinted.",
-      did: "Added full-price, delivery and distance signals to the normal search flow, and suggested same-seller bundles using favourites and size signals.",
-      outcome: "A playable prototype that works within the familiar flow instead of redesigning it, and shows the full cost before the buyer commits.",
+      problem: "Buyers bundle inexpensive finds to make postage worthwhile, but relevant additions and the complete cost can be difficult to judge.",
+      role: "Research synthesis, product design and interactive prototyping. Independent concept, not affiliated with Vinted.",
+      did: "Audited a speculative concept against Reddit discussions and Vinted help; designed wardrobe filters and a complete, responsive order estimate.",
+      outcome: "A working concept with declared pricing assumptions and a validation plan. No participant testing or business impact claimed.",
     },
     el: {
-      problem: "Σε μια αγορά μεταχειρισμένων, η τιμή του αντικειμένου είναι μόνο μέρος του κόστους. Αποστολή, απόσταση και πακέτα αλλάζουν το σύνολο, αλλά εμφανίζονται αργά.",
-      role: "UX design και διαδραστικό prototype. Ανεξάρτητη ιδέα, χωρίς σχέση με τη Vinted.",
-      did: "Πρόσθεσα πλήρη τιμή, αποστολή και απόσταση στη συνηθισμένη αναζήτηση, και προτάσεις πακέτων από τον ίδιο πωλητή με βάση αγαπημένα και μέγεθος.",
-      outcome: "Ένα διαδραστικό prototype που δουλεύει μέσα στη γνώριμη ροή και δείχνει το πλήρες κόστος πριν την αγορά.",
+      problem: "Οι αγοραστές συνδυάζουν οικονομικά ευρήματα για να αξίζουν τα μεταφορικά, αλλά δυσκολεύονται να βρουν χρήσιμες προσθήκες και να κρίνουν το συνολικό κόστος.",
+      role: "Σύνθεση έρευνας, σχεδιασμός προϊόντος και διαδραστικό πρωτότυπο. Ανεξάρτητη ιδέα, χωρίς σχέση με τη Vinted.",
+      did: "Έλεγξα μια υποθετική ιδέα με συζητήσεις στο Reddit και επίσημες οδηγίες της Vinted και σχεδίασα φίλτρα ντουλάπας και δυναμική εκτίμηση συνολικού κόστους.",
+      outcome: "Λειτουργικό πρωτότυπο με δηλωμένες παραδοχές τιμολόγησης και σχέδιο αξιολόγησης. Δεν έχουν γίνει δοκιμές με συμμετέχοντες ή μετρήσεις επιχειρηματικού αποτελέσματος.",
     },
   },
   aiSandbox: {
